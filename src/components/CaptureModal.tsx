@@ -10,6 +10,7 @@ export function CaptureModal() {
     if (sessionStorage.getItem(SESSION_KEY)) return
 
     const show = () => {
+      if (sessionStorage.getItem(SESSION_KEY)) return
       setOpen(true)
       sessionStorage.setItem(SESSION_KEY, '1')
     }
