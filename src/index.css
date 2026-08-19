@@ -1,0 +1,152 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Bodoni Moda', serif;
+  --font-sans: 'Jost', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --color-papel: #f7f6f3;
+  --color-papel-2: #efeee9;
+  --color-papel-3: #e6e5df;
+  --color-mesa: #dedcd7;
+  --color-linha: #dcdbd4;
+  --color-linha-2: #c7c6be;
+  --color-tinta: #2c2c29;
+  --color-tinta-2: #6d6c65;
+  --color-tinta-3: #98978f;
+  --color-latao: #8c7a4b;
+
+  --color-afrodite: #b9697f;
+  --color-imperatriz: #8e4566;
+  --color-cleopatra: #a08148;
+  --color-fada: #8fa3b8;
+  --color-sereia: #3c7484;
+  --color-zeus: #63748c;
+  --color-guerreiro: #5f6b4c;
+  --color-imperador: #7c5236;
+  --color-fenix: #b0563c;
+
+  --color-alerta: #a6472f;
+  --color-ok: #4e7a55;
+  --color-zap: #3e7d5a;
+  --color-bp: #33607a;
+
+  --color-noite: #1a1917;
+  --color-noite-2: #2c2c29;
+  --color-papel-inv: #f7f6f3;
+
+  --section-py: 2rem;
+  --section-py-lg: 3.5rem;
+
+  --radius-card: 1.5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-init {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .reveal-init.fade-in-up {
+    animation: fade-in-up 0.5s ease-out forwards;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .page-fade {
+    animation: page-fade 0.25s ease-out;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-name {
+    animation: reveal-name 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+@keyframes reveal-name {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.hero-timer-bar {
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-timer-bar {
+    animation: hero-timer 5s linear forwards;
+  }
+}
+
+@keyframes hero-timer {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes page-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--color-mesa);
+}
+
+body {
+  color: var(--color-tinta);
+  font-family: var(--font-sans);
+  font-weight: 300;
+}
+
+a,
+button {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+a:active,
+button:active {
+  transform: scale(0.98);
+}
+
+.scroll-pad {
+  scroll-padding-left: 1rem;
+}
+
+.scroll-pad::after {
+  content: '';
+  flex-shrink: 0;
+  width: 1rem;
+}
