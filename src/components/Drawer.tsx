@@ -14,7 +14,6 @@ const GROUPS: DrawerGroup[] = [
   {
     title: 'Descobrir',
     links: [
-      { label: 'Fazer o teste', to: '/teste' },
       { label: 'Os 9 arquétipos', to: '/#catalogo' },
       { label: 'Kit Descoberta', to: '/kit-descoberta' },
     ],

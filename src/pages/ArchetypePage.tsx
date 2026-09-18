@@ -134,12 +134,6 @@ export function ArchetypePage() {
             </Link>
           </>
         )}
-        <Link
-          to="/teste"
-          className="mt-4 block text-center text-sm text-tinta-2 underline decoration-linha-2 underline-offset-4"
-        >
-          Não sei se é o meu — fazer o teste
-        </Link>
       </Reveal>
     </div>
   )

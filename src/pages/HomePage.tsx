@@ -2,17 +2,18 @@ import { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { ARCHETYPES, getArchetype } from '@/data/archetypes'
 import {
+  BODEGON_IMG,
   COMPARISON,
   DIAGNOSIS,
   ENERGIES,
   FAMILIES,
   JOURNAL,
   METHOD_STEPS,
-  PUV,
   QUALIFICATION,
   SEALS,
   SEGMENTS,
   STATS,
+  UGC_CLEOPATRA_IMG,
   UGC_VIDEOS,
 } from '@/data/home'
 import { Eyebrow } from '@/components/ui/Eyebrow'
@@ -35,6 +36,23 @@ function DarkTransition() {
   return <div className="h-8 bg-gradient-to-b from-papel to-noite" aria-hidden />
 }
 
+const SEAL_ICON_PATHS: Record<string, string> = {
+  'Entrega garantida': 'M3 7h11v8H3V7Zm11 3h3.5L20 13v2h-3M6 18a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm10 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z',
+  'Rápido e seguro': 'M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Zm-3 8.5 2 2 4-4.5',
+  Vegano: 'M12 21c-4-1-7-4.5-7-10 5 0 8 2 9 6 1-4 4-6 9-6 0 5.5-3 9-7 10a4 4 0 0 1-4 0Z',
+  'Cruelty free': 'M12 20s-7-4.35-7-9.5A4 4 0 0 1 12 8a4 4 0 0 1 7 2.5C19 15.65 12 20 12 20Z',
+}
+
+function SealIcon({ seal, className }: { seal: string; className?: string }) {
+  const d = SEAL_ICON_PATHS[seal]
+  if (!d) return null
+  return (
+    <svg aria-hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d={d} />
+    </svg>
+  )
+}
+
 export function HomePage() {
   const { hash } = useLocation()
 
@@ -49,26 +67,49 @@ export function HomePage() {
       <HeroCarousel />
 
       <div className="relative z-10 -mt-6 rounded-t-3xl bg-papel">
-        {/* H-04 PUV */}
-        <section className="px-4 py-5">
-          <p className="text-base leading-relaxed text-tinta-2">
-            <b className="text-tinta">Body splash de perfumaria</b> {PUV.replace('Body splash de perfumaria', '')}
-          </p>
-        </section>
-
-        {/* H-05 Selos — strip horizontal */}
-        <section className="flex items-center justify-center gap-4 border-y border-linha px-4 py-3">
+        {/* H-05 Selos — grid 2x2 com ícone, estilo trust badges */}
+        <section className="grid grid-cols-2 divide-x divide-y divide-linha overflow-hidden rounded-t-3xl border-b border-linha">
           {SEALS.map((s) => (
-            <span key={s} className="font-mono text-[9px] tracking-widest text-tinta-3 uppercase">
-              {s}
-            </span>
+            <div key={s} className="flex flex-col items-center gap-2 px-3 py-5">
+              <SealIcon seal={s} className="size-5 text-latao" />
+              <span className="text-center font-mono text-[9px] tracking-widest text-tinta-3 uppercase">{s}</span>
+            </div>
           ))}
         </section>
 
+        {/* H-08 Segmentação */}
+        <Reveal as="section" id="segmentos" className="flex flex-col items-center gap-3 px-4 py-6">
+          {SEGMENTS.map((seg) => (
+            <button
+              key={seg.name}
+              onClick={() => scrollToId('catalogo')}
+              className="block w-[80%] overflow-hidden rounded-2xl border border-linha-2 text-left transition-transform hover:scale-[1.02]"
+              style={{ backgroundColor: `color-mix(in srgb, ${SEGMENT_TINT[seg.seg]} 12%, var(--color-papel))` }}
+            >
+              <MediaSlot
+                aspect="16/9"
+                bg="transparent"
+                src={seg.img}
+                requisito={`FOTO · 16:9 · 1600×900 · LIFESTYLE · ${seg.label.toUpperCase()}`}
+                className="rounded-none border-x-0 border-t-0"
+              />
+              <div className="p-4">
+                <span className="block font-mono text-[9px] tracking-widest text-tinta-3 uppercase">
+                  {seg.label}
+                </span>
+                <span className="mt-1 block font-display text-2xl">{seg.name}</span>
+                <span className="mt-1 block font-mono text-[9px] text-tinta-3">{seg.meta}</span>
+                <span className="mt-3 inline-block rounded-full border border-linha-2 px-6 py-2.5 text-xs font-medium">
+                  Ver coleção
+                </span>
+              </div>
+            </button>
+          ))}
+        </Reveal>
+
         {/* H-06 Diagnóstico */}
         <Reveal as="section" className="bg-papel-2 px-4 py-8">
-          <Eyebrow>Antes de tudo</Eyebrow>
-          <h2 className="mt-2.5 font-display text-2xl">
+          <h2 className="font-display text-2xl">
             Você já comprou um
             <br />
             cheiro que não era seu?
@@ -86,30 +127,6 @@ export function HomePage() {
           </div>
         </Reveal>
 
-        {/* H-08 Segmentação */}
-        <Reveal as="section" id="segmentos" className="flex flex-col items-center gap-3 px-4 py-6">
-          {SEGMENTS.map((seg) => (
-            <button
-              key={seg.name}
-              onClick={() => scrollToId('catalogo')}
-              className="block w-[80%] overflow-hidden rounded-2xl border border-linha-2 text-left transition-transform hover:scale-[1.02]"
-              style={{ backgroundColor: `color-mix(in srgb, ${SEGMENT_TINT[seg.seg]} 12%, var(--color-papel))` }}
-            >
-              <MediaSlot aspect="16/9" bg="transparent" requisito={`LIFESTYLE · ${seg.label.toUpperCase()}`} className="rounded-none border-x-0 border-t-0" />
-              <div className="p-4">
-                <span className="block font-mono text-[9px] tracking-widest text-tinta-3 uppercase">
-                  {seg.label}
-                </span>
-                <span className="mt-1 block font-display text-2xl">{seg.name}</span>
-                <span className="mt-1 block font-mono text-[9px] text-tinta-3">{seg.meta}</span>
-                <span className="mt-3 inline-block rounded-full border border-linha-2 px-6 py-2.5 text-xs font-medium">
-                  Ver coleção
-                </span>
-              </div>
-            </button>
-          ))}
-        </Reveal>
-
         {/* H-09 Por família */}
         <Reveal as="section" className="py-6">
           <div className="px-4">
@@ -123,7 +140,7 @@ export function HomePage() {
                 onClick={() => scrollToId('catalogo')}
                 className="w-48 shrink-0 snap-start overflow-hidden rounded-2xl border border-linha-2 text-left transition-transform hover:scale-[1.02]"
               >
-                <MediaSlot aspect="4/5" requisito={`ATMOSFERA · ${f.nome.toUpperCase()}`} className="rounded-none border-x-0 border-t-0" />
+                <MediaSlot aspect="4/5" requisito={`FOTO · 4:5 · 1600×2000 · ATMOSFERA · ${f.nome.toUpperCase()}`} className="rounded-none border-x-0 border-t-0" />
                 <div className="p-3">
                   <b className="font-display text-base">{f.nome}</b>
                   <span className="mt-0.5 block text-xs text-tinta-2">
@@ -161,7 +178,7 @@ export function HomePage() {
                 onClick={() => scrollToId('catalogo')}
                 className="w-48 shrink-0 snap-start overflow-hidden rounded-2xl border border-linha-2 bg-papel text-left transition-transform hover:scale-[1.02]"
               >
-                <MediaSlot aspect="4/5" requisito={`ATMOSFERA · ${e.nome.toUpperCase()}`} className="rounded-none border-x-0 border-t-0" />
+                <MediaSlot aspect="4/5" requisito={`FOTO · 4:5 · 1600×2000 · ATMOSFERA · ${e.nome.toUpperCase()}`} className="rounded-none border-x-0 border-t-0" />
                 <div className="p-3">
                   <b className="font-display text-base">{e.nome}</b>
                   <span className="mt-0.5 block text-xs text-tinta-2">
@@ -210,12 +227,6 @@ export function HomePage() {
               </div>
             ))}
           </div>
-          <Link
-            to="/teste"
-            className="mt-5 block w-full rounded-lg bg-tinta py-4 text-center text-sm font-medium tracking-wide text-papel uppercase"
-          >
-            Fazer o teste
-          </Link>
         </Reveal>
 
         <DarkTransition />
@@ -225,7 +236,8 @@ export function HomePage() {
           <MediaSlot
             aspect="16/10"
             bg="#2a2a27"
-            requisito="BODEGÓN DOS 9 FRASCOS"
+            src={BODEGON_IMG}
+            requisito="FOTO · 16:10 · 1600×1000 · BODEGÓN DOS 9 FRASCOS"
             className="rounded-none border-x-0 border-t-0"
             dark
           />
@@ -285,7 +297,7 @@ export function HomePage() {
 
         {/* H-15 Kit Descoberta */}
         <Reveal as="section" id="kit">
-          <MediaSlot aspect="16/10" bg="#EFEDE8" requisito="9 MINIS NA MÃO · ESCALA REAL" className="rounded-none border-x-0" />
+          <MediaSlot aspect="16/10" bg="#EFEDE8" requisito="FOTO · 16:10 · 1600×1000 · 9 MINIS NA MÃO · ESCALA REAL" className="rounded-none border-x-0" />
           <div className="px-4 py-6">
             <Eyebrow>Antes de escolher</Eyebrow>
             <h2 className="mt-2.5 font-display text-2xl">Kit Descoberta</h2>
@@ -391,7 +403,12 @@ export function HomePage() {
               if (!arq) return null
               return (
                 <div key={v.creator} className="w-[70%] shrink-0 snap-start">
-                  <MediaSlot aspect="9/16" requisito={`VÍDEO 9:16 · ${v.creator}`} className="rounded-b-none" />
+                  <MediaSlot
+                    aspect="9/16"
+                    src={v.creator === '@marianac_' ? UGC_CLEOPATRA_IMG : undefined}
+                    requisito={`VÍDEO · 9:16 · 1080×1920 · ${v.creator}`}
+                    className="rounded-b-none"
+                  />
                   <Link
                     to={`/loja/${arq.id}`}
                     className="flex items-center gap-2.5 rounded-b-lg border border-t-0 border-linha-2 bg-papel p-2.5 transition-transform hover:scale-[1.02]"
@@ -540,7 +557,6 @@ export function HomePage() {
           <nav className="mt-8 grid grid-cols-2 gap-x-6 gap-y-3 text-sm text-papel-inv/60">
             <Link to="/#catalogo" className="hover:text-papel-inv">Os 9 arquétipos</Link>
             <Link to="/kit-descoberta" className="hover:text-papel-inv">Kit Descoberta</Link>
-            <Link to="/teste" className="hover:text-papel-inv">Teste de arquétipo</Link>
             <Link to="/criadores" className="hover:text-papel-inv">Seja criador</Link>
             <Link to="/#diario" className="hover:text-papel-inv">Diário olfativo</Link>
             <span className="text-papel-inv/30">Trocas e devoluções</span>

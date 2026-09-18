@@ -2,14 +2,13 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import { useCart } from '@/context/CartContext'
 import { REWARD_FREIGHT } from '@/data/home'
-import { Drawer } from '@/components/Drawer'
-import { CaptureModal } from '@/components/CaptureModal'
+import wordmarkPreto from '@/assets/brand/wordmark-preto.png'
+import wordmarkMarmore from '@/assets/brand/wordmark-marmore.png'
 
 const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
 export function Layout() {
   const { items, count, subtotal, removeItem, clear } = useCart()
-  const [menuOpen, setMenuOpen] = useState(false)
   const [cartOpen, setCartOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { pathname } = useLocation()
@@ -48,11 +47,13 @@ export function Layout() {
             : 'border-linha bg-papel/90 text-tinta backdrop-blur'
         }`}
       >
-        <button aria-label="Abrir menu" onClick={() => setMenuOpen(true)} className="text-lg">
-          ☰
-        </button>
-        <Link to="/" className="font-mono text-xs tracking-[0.22em] uppercase">
-          Arquetypus
+        <div className="w-5" aria-hidden />
+        <Link to="/">
+          <img
+            src={headerOverHero ? wordmarkMarmore : wordmarkPreto}
+            alt="Arquetypus"
+            className="h-8 w-auto object-contain pt-1"
+          />
         </Link>
         <button
           onClick={() => count > 0 && setCartOpen((v) => !v)}
@@ -62,9 +63,6 @@ export function Layout() {
           ◎ {count}
         </button>
       </header>
-
-      <Drawer open={menuOpen} onClose={() => setMenuOpen(false)} />
-      <CaptureModal />
 
       <main key={pathname} className="page-fade">
         <Outlet />
@@ -138,16 +136,8 @@ export function Layout() {
             </span>
             <span>{remaining === 0 ? 'Frete grátis desbloqueado' : `Faltam ${brl(remaining)}`}</span>
           </button>
-          <div className="mx-4 mt-1.5 h-1 rounded-full bg-linha">
+          <div className="mx-4 mt-1.5 mb-3 h-1 rounded-full bg-linha">
             <div className="h-1 rounded-full bg-latao transition-[width]" style={{ width: `${progress}%` }} />
-          </div>
-          <div className="px-4 py-3">
-            <Link
-              to="/teste"
-              className="block w-full rounded-lg bg-tinta py-3.5 text-center text-sm font-medium tracking-wide text-papel uppercase"
-            >
-              Fazer o teste
-            </Link>
           </div>
         </div>
       )}

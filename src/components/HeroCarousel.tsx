@@ -27,6 +27,7 @@ export function HeroCarousel() {
         <MediaSlot
           aspect="auto"
           bg="transparent"
+          src={slide.img}
           requisito={slide.requisito}
           dark
           className="h-full w-full rounded-none border-0"
@@ -51,21 +52,22 @@ export function HeroCarousel() {
 
         <p className="mt-3 text-sm text-papel-inv/70">{slide.sub}</p>
 
-        {slide.cta.to.startsWith('#') ? (
-          <button
-            onClick={() => scrollToId(slide.cta.to.slice(1))}
-            className="mx-auto mt-5 block w-full max-w-xs rounded-lg border border-papel-inv/30 bg-papel-inv/10 py-4 text-sm font-medium tracking-wide text-papel-inv uppercase backdrop-blur-sm"
-          >
-            {slide.cta.label}
-          </button>
-        ) : (
-          <Link
-            to={slide.cta.to}
-            className="mx-auto mt-5 block w-full max-w-xs rounded-lg border border-papel-inv/30 bg-papel-inv/10 py-4 text-sm font-medium tracking-wide text-papel-inv uppercase backdrop-blur-sm"
-          >
-            {slide.cta.label}
-          </Link>
-        )}
+        {slide.cta &&
+          (slide.cta.to.startsWith('#') ? (
+            <button
+              onClick={() => scrollToId(slide.cta!.to.slice(1))}
+              className="mx-auto mt-5 block w-full max-w-xs rounded-lg border border-papel-inv/30 bg-papel-inv/10 py-4 text-sm font-medium tracking-wide text-papel-inv uppercase backdrop-blur-sm"
+            >
+              {slide.cta.label}
+            </button>
+          ) : (
+            <Link
+              to={slide.cta.to}
+              className="mx-auto mt-5 block w-full max-w-xs rounded-lg border border-papel-inv/30 bg-papel-inv/10 py-4 text-sm font-medium tracking-wide text-papel-inv uppercase backdrop-blur-sm"
+            >
+              {slide.cta.label}
+            </Link>
+          ))}
       </div>
 
       {/* Navegação — contador + setas com barras */}

@@ -3,6 +3,14 @@
  * seções H-01 a H-25. Não inventar texto novo aqui sem confirmar —
  * ver CLAUDE.md.
  */
+import heroVideoConcept from '@/assets/mocks/hero-video-concept.png'
+import heroAfrodite from '@/assets/mocks/hero-afrodite.png'
+import heroKit from '@/assets/mocks/hero-kit.png'
+import segmentoFeminino from '@/assets/mocks/segmento-feminino.png'
+import segmentoMasculino from '@/assets/mocks/segmento-masculino.png'
+import segmentoUnissex from '@/assets/mocks/segmento-unissex.png'
+export { default as BODEGON_IMG } from '@/assets/mocks/bodegon-9-frascos.png'
+export { default as UGC_CLEOPATRA_IMG } from '@/assets/mocks/ugc-cleopatra.png'
 
 export const PUV =
   'Body splash de perfumaria para quem cansou de cheirar igual a todo mundo e não quer mais escolher fragrância no escuro — nove arquétipos, um teste de 2 minutos e o direito de devolver se não for você.'
@@ -14,8 +22,8 @@ export const HERO_SLIDES = [
     eyebrow: 'Perfumaria de arquétipos',
     heading: 'Qual arquétipo\ndesperta em você?',
     sub: 'Nove fragrâncias. Uma responde pelo seu nome.',
-    cta: { label: 'Fazer o teste', to: '/teste' },
-    requisito: 'VÍDEO 9:16 · HERO FULLSCREEN · AUTOPLAY MUTED LOOP',
+    requisito: 'VÍDEO · 9:16 · 1080×1920 · HERO FULLSCREEN · AUTOPLAY MUTED LOOP',
+    img: heroVideoConcept,
   },
   {
     id: 'afrodite',
@@ -24,7 +32,8 @@ export const HERO_SLIDES = [
     heading: 'Afrodite',
     sub: 'O floral que não pede licença.',
     cta: { label: 'Conhecer Afrodite', to: '/arquetipos/afrodite' },
-    requisito: 'LIFESTYLE · AFRODITE · MODELO + FRASCO',
+    requisito: 'FOTO · 9:16 · 1080×1920 · LIFESTYLE · AFRODITE · MODELO + FRASCO',
+    img: heroAfrodite,
   },
   {
     id: 'kit',
@@ -33,20 +42,12 @@ export const HERO_SLIDES = [
     heading: 'Nove miniaturas.\nO valor volta.',
     sub: 'Teste os nove antes de escolher o seu.',
     cta: { label: 'Quero experimentar', to: '/kit-descoberta' },
-    requisito: '9 MINIS · FLAT LAY OU MÃO SEGURANDO',
-  },
-  {
-    id: 'masculino',
-    type: 'image' as const,
-    eyebrow: 'Coleção masculina · 220 ml',
-    heading: 'Eles também\ntêm arquétipo.',
-    sub: 'Guerreiro, Imperador e Zeus.',
-    cta: { label: 'Ver a coleção', to: '/#segmentos' },
-    requisito: 'LIFESTYLE · MASCULINO · 3 FRASCOS',
+    requisito: 'FOTO · 9:16 · 1080×1920 · 9 MINIS · FLAT LAY OU MÃO SEGURANDO',
+    img: heroKit,
   },
 ]
 
-export const SEALS = ['Vegano', 'Cruelty free', 'Notificado ANVISA', 'Padrão IFRA 51']
+export const SEALS = ['Entrega garantida', 'Rápido e seguro', 'Vegano', 'Cruelty free']
 
 export const DIAGNOSIS = [
   {
@@ -67,9 +68,9 @@ export const DIAGNOSIS = [
 ]
 
 export const SEGMENTS = [
-  { label: 'Para elas', name: 'Feminino', meta: '200 ml · 5 SKUs', seg: 'F' as const },
-  { label: 'Para eles', name: 'Masculino', meta: '220 ml · 3 SKUs', seg: 'M' as const },
-  { label: 'Para todos', name: 'Unissex', meta: '220 ml · 1 SKU', seg: 'U' as const },
+  { label: 'Para elas', name: 'Feminino', meta: '200 ml · 5 SKUs', seg: 'F' as const, img: segmentoFeminino },
+  { label: 'Para eles', name: 'Masculino', meta: '220 ml · 3 SKUs', seg: 'M' as const, img: segmentoMasculino },
+  { label: 'Para todos', name: 'Unissex', meta: '220 ml · 1 SKU', seg: 'U' as const, img: segmentoUnissex },
 ]
 
 export const FAMILIES = [

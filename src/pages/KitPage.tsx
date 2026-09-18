@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { segmentPool } from '@/data/archetypes'
 import { ECON } from '@/data/economics'
 import { Eyebrow } from '@/components/ui/Eyebrow'
@@ -153,12 +153,6 @@ export function KitPage() {
           >
             Já sei o meu — ver os nove
           </button>
-          <Link
-            to="/teste"
-            className="block w-full rounded-lg border border-linha-2 py-4 text-center text-sm font-medium"
-          >
-            Não sei — fazer o teste
-          </Link>
         </div>
       </section>
 

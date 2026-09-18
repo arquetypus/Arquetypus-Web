@@ -6,8 +6,6 @@ import { ArchetypePage } from '@/pages/ArchetypePage'
 import { ProductPage } from '@/pages/ProductPage'
 import { KitPage } from '@/pages/KitPage'
 import { CreatorsPage } from '@/pages/CreatorsPage'
-import { QuizPage } from '@/pages/QuizPage'
-import { ResultPage } from '@/pages/ResultPage'
 
 export default function App() {
   return (
@@ -19,8 +17,6 @@ export default function App() {
           <Route path="loja/:id" element={<ProductPage />} />
           <Route path="kit-descoberta" element={<KitPage />} />
           <Route path="criadores" element={<CreatorsPage />} />
-          <Route path="teste" element={<QuizPage />} />
-          <Route path="resultado" element={<ResultPage />} />
         </Route>
       </Routes>
     </CartProvider>

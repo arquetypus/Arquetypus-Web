@@ -4,6 +4,7 @@ import { getArchetype } from '@/data/archetypes'
 import { useCart } from '@/context/CartContext'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { MediaSlot } from '@/components/ui/MediaSlot'
+import frascoSereia from '@/assets/mocks/frasco-sereia.png'
 
 const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
@@ -133,7 +134,12 @@ export function ProductPage() {
       {/* P-02 Galeria + notas */}
       <section className="mt-2 px-4">
         <div className="relative">
-          <MediaSlot aspect="1/1" bg={a.bg} requisito={`FRASCO · ${a.nome.toUpperCase()}`} />
+          <MediaSlot
+            aspect="1/1"
+            bg={a.bg}
+            src={a.id === 'sereia' ? frascoSereia : undefined}
+            requisito={`FOTO · 1:1 · 1200×1200 · FRASCO · ${a.nome.toUpperCase()}`}
+          />
           {showNotes && (
             <div className="absolute inset-0 flex flex-col justify-center rounded-lg bg-papel/95 p-5">
               <Eyebrow>Notas olfativas · {a.cod}</Eyebrow>
