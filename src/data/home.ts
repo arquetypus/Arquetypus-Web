@@ -9,10 +9,23 @@ import heroKit from '@/assets/mocks/hero-kit.png'
 import segmentoFeminino from '@/assets/mocks/segmento-feminino.png'
 import segmentoMasculino from '@/assets/mocks/segmento-masculino.png'
 import segmentoUnissex from '@/assets/mocks/segmento-unissex.png'
-import familiaFloral from '@/assets/mocks/familia-floral.png'
-import familiaAquatico from '@/assets/mocks/familia-aquatico.png'
-import familiaAmadeirado from '@/assets/mocks/familia-amadeirado.png'
-import familiaOriental from '@/assets/mocks/familia-oriental.png'
+import familiaFloral from '@/assets/mocks/familia-floral-bleed.png'
+import familiaAquatico from '@/assets/mocks/familia-aquatico-bleed.png'
+import familiaAmadeirado from '@/assets/mocks/familia-amadeirado-bleed.png'
+import familiaOriental from '@/assets/mocks/familia-oriental-bleed.png'
+import energiaSeducao from '@/assets/mocks/energia-seducao.png'
+import energiaPoder from '@/assets/mocks/energia-poder.png'
+import energiaMisterio from '@/assets/mocks/energia-misterio.png'
+import energiaForca from '@/assets/mocks/energia-forca.png'
+import frascoAfrodite from '@/assets/mocks/frasco-afrodite.png'
+import frascoImperatriz from '@/assets/mocks/frasco-imperatriz.png'
+import frascoCleopatra from '@/assets/mocks/frasco-cleopatra.png'
+import frascoFada from '@/assets/mocks/frasco-fada.png'
+import frascoSereia2 from '@/assets/mocks/frasco-sereia2.png'
+import frascoZeus from '@/assets/mocks/frasco-zeus.png'
+import frascoGuerreiro from '@/assets/mocks/frasco-guerreiro.png'
+import frascoImperador from '@/assets/mocks/frasco-imperador.png'
+import frascoFenix from '@/assets/mocks/frasco-fenix.png'
 export { default as BODEGON_IMG } from '@/assets/mocks/bodegon-9-frascos.png'
 export { default as UGC_CLEOPATRA_IMG } from '@/assets/mocks/ugc-cleopatra.png'
 
@@ -90,7 +103,6 @@ export const FAMILIES = [
     nome: 'Floral',
     arquetipos: ['afrodite', 'fada'],
     img: familiaFloral,
-    tint: '#F6E9EC',
     desc: 'Sedutor e envolvente.',
     attrs: ['Floral', 'Sedutor', 'Leve'],
   },
@@ -98,7 +110,6 @@ export const FAMILIES = [
     nome: 'Aquático',
     arquetipos: ['sereia', 'guerreiro'],
     img: familiaAquatico,
-    tint: '#E9F1F3',
     desc: 'Fresco e discreto.',
     attrs: ['Aquático', 'Fresco', 'Discreto'],
   },
@@ -106,7 +117,6 @@ export const FAMILIES = [
     nome: 'Amadeirado',
     arquetipos: ['imperador', 'fenix'],
     img: familiaAmadeirado,
-    tint: '#F1EAE0',
     desc: 'Quente e marcante.',
     attrs: ['Amadeirado', 'Intenso', 'Elegante'],
   },
@@ -114,25 +124,44 @@ export const FAMILIES = [
     nome: 'Oriental doce',
     arquetipos: ['cleopatra', 'imperatriz'],
     img: familiaOriental,
-    tint: '#F3E6D9',
     desc: 'Quente e viciante.',
     attrs: ['Oriental', 'Doce', 'Envolvente'],
   },
 ]
 
 export const ENERGIES = [
-  { nome: 'Sedução', arquetipos: ['afrodite', 'cleopatra'] },
-  { nome: 'Poder', arquetipos: ['imperatriz', 'imperador'] },
-  { nome: 'Mistério', arquetipos: ['sereia', 'fada'] },
-  { nome: 'Força', arquetipos: ['guerreiro', 'fenix', 'zeus'] },
+  { nome: 'Sedução', arquetipos: ['afrodite', 'cleopatra'], img: energiaSeducao },
+  { nome: 'Poder', arquetipos: ['imperatriz', 'imperador'], img: energiaPoder },
+  { nome: 'Mistério', arquetipos: ['sereia', 'fada'], img: energiaMisterio },
+  { nome: 'Força', arquetipos: ['guerreiro', 'fenix', 'zeus'], img: energiaForca },
 ]
 
+/** Mock de still-life de frasco por arquétipo — mesmo molde, cor muda por SKU (ver CLAUDE.md). */
+export const FRASCO_IMG: Record<string, string> = {
+  afrodite: frascoAfrodite,
+  imperatriz: frascoImperatriz,
+  cleopatra: frascoCleopatra,
+  fada: frascoFada,
+  sereia: frascoSereia2,
+  zeus: frascoZeus,
+  guerreiro: frascoGuerreiro,
+  imperador: frascoImperador,
+  fenix: frascoFenix,
+}
+
 export const QUALIFICATION = [
-  'Você nunca encontrou um cheiro que parecesse realmente seu',
-  'Você troca de fragrância conforme o humor, não conforme o frasco acaba',
-  'Você quer que perguntem o que você está usando',
-  'Você acha body splash prático, mas cansou de cheirar igual a todo mundo',
-  'Você prefere entender o que está passando na pele a confiar no rótulo',
+  {
+    title: 'Você cansou de cheirar igual a todo mundo.',
+    body: 'Quer uma fragrância com mais identidade e menos obviedade.',
+  },
+  {
+    title: 'Seu perfume muda com o seu momento.',
+    body: 'Você não se sente igual todos os dias — seu cheiro também não precisa ser.',
+  },
+  {
+    title: 'Você quer escolher com intenção.',
+    body: 'Entender o que está usando, em vez de confiar apenas no nome ou na embalagem.',
+  },
 ]
 
 export const METHOD_STEPS = [

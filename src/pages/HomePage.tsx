@@ -7,8 +7,8 @@ import {
   DIAGNOSIS,
   ENERGIES,
   FAMILIES,
+  FRASCO_IMG,
   JOURNAL,
-  METHOD_STEPS,
   QUALIFICATION,
   SEALS,
   SEGMENTS,
@@ -21,8 +21,11 @@ import { MediaSlot } from '@/components/ui/MediaSlot'
 import { KitBuilder } from '@/components/KitBuilder'
 import { HeroCarousel } from '@/components/HeroCarousel'
 import { Reveal } from '@/components/ui/Reveal'
+import { ScrollProgressBar } from '@/components/ui/ScrollProgressBar'
 import { scrollToId } from '@/lib/scrollToId'
+import { useScrollProgress } from '@/lib/useScrollProgress'
 import florArquetypus from '@/assets/brand/flor-arquetypus.png'
+import ribbonArquetypus from '@/assets/brand/ribbon-arquetypus.png'
 
 const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
@@ -34,7 +37,25 @@ const SEGMENT_TINT: Record<'F' | 'M' | 'U', string> = {
 
 /** Faixa curta que suaviza a transição de bg-papel para bg-noite. */
 function DarkTransition() {
-  return <div className="h-8 bg-gradient-to-b from-papel to-noite" aria-hidden />
+  return (
+    <div className="relative h-28 overflow-hidden" aria-hidden>
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'linear-gradient(to bottom, var(--color-papel-2) 0%, color-mix(in srgb, var(--color-papel-2) 90%, var(--color-noite) 10%) 15%, color-mix(in srgb, var(--color-papel-2) 68%, var(--color-noite) 32%) 32%, color-mix(in srgb, var(--color-papel-2) 42%, var(--color-noite) 58%) 50%, color-mix(in srgb, var(--color-papel-2) 20%, var(--color-noite) 80%) 68%, color-mix(in srgb, var(--color-papel-2) 6%, var(--color-noite) 94%) 85%, var(--color-noite) 100%)',
+        }}
+      />
+      <div
+        className="absolute inset-x-0 top-1/2 h-20 -translate-y-1/2"
+        style={{
+          background:
+            'radial-gradient(ellipse at center, color-mix(in srgb, var(--color-latao) 30%, transparent) 0%, transparent 70%)',
+          filter: 'blur(32px)',
+        }}
+      />
+    </div>
+  )
 }
 
 const SEAL_ICON_PATHS: Record<string, string> = {
@@ -56,6 +77,9 @@ function SealIcon({ seal, className }: { seal: string; className?: string }) {
 
 export function HomePage() {
   const { hash } = useLocation()
+  const familiesScroll = useScrollProgress<HTMLDivElement>()
+  const energiesScroll = useScrollProgress<HTMLDivElement>()
+  const catalogoScroll = useScrollProgress<HTMLDivElement>()
 
   useEffect(() => {
     if (!hash) return
@@ -201,51 +225,56 @@ export function HomePage() {
             <h2 className="mt-2.5 font-display text-2xl">Descubra por família</h2>
             <p className="mt-1.5 text-sm text-tinta-2">Encontre a atmosfera que mais combina com você.</p>
           </div>
-          <div className="scroll-pad mt-2 flex snap-x gap-5 overflow-x-auto px-4 pt-28 pb-2">
+          <div
+            ref={familiesScroll.ref}
+            className="scroll-pad no-scrollbar mt-2 flex snap-x gap-4 overflow-x-auto px-4 pb-2"
+          >
             {FAMILIES.map((f) => (
               <div
                 key={f.nome}
-                className="relative w-56 shrink-0 snap-start hover:-translate-y-1.5"
-                style={{ transition: 'transform 900ms cubic-bezier(0.16,1,0.3,1)', willChange: 'transform' }}
+                className="group w-60 shrink-0 snap-start hover:-translate-y-1"
+                style={{ transition: 'transform 500ms cubic-bezier(0.16,1,0.3,1)', willChange: 'transform' }}
               >
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute top-12 left-1/2 h-12 w-28 -translate-x-1/2 rounded-full blur-xl"
-                  style={{ background: `color-mix(in srgb, ${f.tint} 100%, black 25%)`, opacity: 0.55 }}
-                />
-                <img
-                  src={f.img}
-                  alt=""
-                  aria-hidden="true"
-                  className="pointer-events-none absolute -top-20 left-1/2 z-10 w-56 -translate-x-1/2 object-contain"
-                />
                 <button
                   onClick={() => scrollToId('catalogo')}
-                  className="relative block w-full rounded-2xl pt-[104px] px-5 pb-6 text-left"
-                  style={{
-                    background: `linear-gradient(180deg, color-mix(in srgb, ${f.tint} 74%, transparent) 0%, color-mix(in srgb, ${f.tint} 64%, transparent) 100%)`,
-                    border: '1px solid color-mix(in srgb, white 60%, transparent)',
-                    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.5), 0 10px 24px -12px rgba(44,44,41,0.2)',
-                  }}
+                  className="relative block w-full overflow-hidden rounded-3xl border border-linha-2 text-left"
+                  style={{ aspectRatio: '4/5', boxShadow: '0 10px 24px -12px rgba(44,44,41,0.28)' }}
                 >
+                  <img
+                    src={f.img}
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
+                    style={{ willChange: 'transform' }}
+                  />
                   <div
                     aria-hidden
-                    className="pointer-events-none absolute inset-x-0 top-0 h-1/2 rounded-t-2xl"
-                    style={{ background: 'linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%)' }}
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-3/5"
+                    style={{ background: 'linear-gradient(180deg, rgba(20,18,15,0) 0%, rgba(20,18,15,0.55) 55%, rgba(20,18,15,0.8) 100%)' }}
                   />
-                  <b className="relative block font-display text-xl tracking-tight text-tinta">{f.nome}</b>
-                  <div className="relative mt-2.5 h-px w-8 bg-linha-2" />
-                  <p className="relative mt-2.5 text-xs leading-relaxed text-tinta-2">{f.desc}</p>
-                  <div className="relative mt-3 h-px w-8 bg-linha-2" />
-                  <p className="relative mt-3 text-[10px] tracking-wide text-tinta-3">{f.attrs.join(' · ')}</p>
+                  <div className="absolute inset-x-0 bottom-0 z-10 p-5">
+                    <b className="block font-display text-xl text-papel-inv">{f.nome}</b>
+                    <p className="mt-1.5 text-xs text-papel-inv/85">{f.desc}</p>
+                    <p className="mt-2 text-[9.5px] tracking-wide text-papel-inv/55">{f.attrs.join(' · ')}</p>
+                    <span
+                      className="mt-3.5 inline-block rounded-full border border-papel-inv/40 px-4 py-1.5 text-[10px] font-medium tracking-wide text-papel-inv uppercase"
+                      style={{ background: 'rgba(255,255,255,0.08)' }}
+                    >
+                      Ver coleção
+                    </span>
+                  </div>
                 </button>
               </div>
             ))}
           </div>
+          <ScrollProgressBar fillPct={familiesScroll.fillPct} />
         </Reveal>
 
         {/* H-10 Por energia */}
-        <Reveal as="section" className="bg-papel-2 py-6">
+        <Reveal
+          as="section"
+          className="relative z-20 py-8"
+          style={{ background: 'color-mix(in srgb, var(--color-papel-2) 100%, var(--color-latao) 6%)' }}
+        >
           <div className="px-4">
             <Eyebrow>Entrada emocional</Eyebrow>
             <h2 className="mt-2.5 font-display text-2xl">
@@ -253,129 +282,216 @@ export function HomePage() {
               <br />
               quer despertar?
             </h2>
+            <p className="mt-1.5 text-sm text-tinta-2">Escolha pelo que você quer sentir.</p>
           </div>
-          <div className="scroll-pad mt-4 flex snap-x gap-3 overflow-x-auto px-4 pb-2">
+          <div
+            ref={energiesScroll.ref}
+            className="scroll-pad no-scrollbar mt-5 flex snap-x gap-3.5 overflow-x-auto px-4 pt-2 pb-6"
+          >
             {ENERGIES.map((e) => (
               <button
                 key={e.nome}
                 onClick={() => scrollToId('catalogo')}
-                className="w-48 shrink-0 snap-start overflow-hidden rounded-2xl border border-linha-2 bg-papel text-left transition-transform hover:scale-[1.02]"
+                className="group relative w-[80vw] max-w-[320px] shrink-0 snap-start overflow-hidden rounded-3xl text-left"
+                style={{ aspectRatio: '4/5', boxShadow: '0 16px 32px -16px rgba(20,18,15,0.4)' }}
               >
-                <MediaSlot aspect="4/5" requisito={`FOTO · 4:5 · 1600×2000 · ATMOSFERA · ${e.nome.toUpperCase()}`} className="rounded-none border-x-0 border-t-0" />
-                <div className="p-3">
-                  <b className="font-display text-base">{e.nome}</b>
-                  <span className="mt-0.5 block text-xs text-tinta-2">
+                <img
+                  src={e.img}
+                  alt=""
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
+                  style={{ willChange: 'transform' }}
+                />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3"
+                  style={{ background: 'linear-gradient(180deg, rgba(10,9,8,0) 0%, rgba(10,9,8,0.55) 55%, rgba(10,9,8,0.85) 100%)' }}
+                />
+                <div className="absolute inset-x-0 bottom-0 z-10 p-5">
+                  <b className="block font-display text-2xl text-papel-inv">{e.nome}</b>
+                  <span className="mt-1 block text-xs tracking-wide text-papel-inv/70">
                     {e.arquetipos.map((id) => getArchetype(id)?.nome).join(' · ')}
                   </span>
                 </div>
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute right-4 bottom-4 z-10 flex size-8 items-center justify-center rounded-full text-papel-inv/80"
+                  style={{ border: '1px solid rgba(247,246,243,0.4)' }}
+                >
+                  →
+                </span>
               </button>
             ))}
           </div>
+          <ScrollProgressBar fillPct={energiesScroll.fillPct} />
+          <p className="mt-3 px-4 text-center font-mono text-[9.5px] tracking-widest text-tinta-3 uppercase">
+            Deslize para explorar
+          </p>
         </Reveal>
 
-        {/* H-11 Qualificação */}
-        <Reveal as="section" className="px-4 py-6">
-          <Eyebrow>Reconhecimento</Eyebrow>
-          <h2 className="mt-2.5 font-display text-2xl">
-            Arquetypus é para
-            <br />
-            você se…
-          </h2>
-          <ul className="mt-4 flex flex-col gap-2.5">
-            {QUALIFICATION.map((q) => (
-              <li key={q} className="flex gap-2.5 text-sm">
-                <span className="mt-0.5 text-ok">✓</span>
-                {q}
-              </li>
-            ))}
-          </ul>
-        </Reveal>
+        {/* H-11 Reconhecimento */}
+        <Reveal
+          as="section"
+          className="relative z-10 px-5 pt-16 pb-20"
+          style={{
+            background:
+              'linear-gradient(to bottom, color-mix(in srgb, var(--color-papel-2) 100%, var(--color-latao) 6%) 0%, var(--color-papel) 18%, var(--color-papel) 85%, var(--color-papel-2) 100%)',
+          }}
+        >
+          <img
+            src={ribbonArquetypus}
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute select-none"
+            style={{
+              top: '10px',
+              left: '-140px',
+              width: '260px',
+              height: 'auto',
+              opacity: 0.24,
+              transform: 'rotate(80deg)',
+              maskImage: 'radial-gradient(closest-side, black 55%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(closest-side, black 55%, transparent 100%)',
+            }}
+          />
+          <img
+            src={ribbonArquetypus}
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-20 -bottom-6 select-none"
+            style={{
+              width: '260px',
+              height: 'auto',
+              opacity: 0.24,
+              transform: 'rotate(262deg)',
+              maskImage: 'radial-gradient(closest-side, black 55%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(closest-side, black 55%, transparent 100%)',
+            }}
+          />
 
-        {/* H-12 Método */}
-        <Reveal as="section" className="bg-papel-2 px-4 py-8">
-          <Eyebrow>O método</Eyebrow>
-          <h2 className="mt-2.5 font-display text-2xl">
-            Três passos até
-            <br />
-            o seu cheiro
-          </h2>
-          <div className="mt-5 flex flex-col gap-4">
-            {METHOD_STEPS.map((m) => (
-              <div key={m.n} className="flex gap-3">
-                <span className="font-mono text-xs text-latao">{m.n}</span>
-                <div>
-                  <b className="text-sm">{m.title}</b>
-                  <p className="mt-0.5 text-sm text-tinta-2">{m.body}</p>
+          <div className="relative z-10">
+            <Eyebrow>Reconhecimento</Eyebrow>
+            <h2 className="mt-3 max-w-[22ch] font-display text-[26px] leading-[1.25] text-tinta">
+              Talvez você não esteja procurando só um perfume.
+            </h2>
+            <p className="mt-3 max-w-[30ch] text-sm text-tinta-2">
+              Talvez esteja procurando algo que realmente pareça seu.
+            </p>
+
+            <div className="mt-10 flex flex-col">
+              {QUALIFICATION.map((q, i) => (
+                <div key={q.title}>
+                  {i > 0 && <div className="border-t border-linha" />}
+                  <div className="flex gap-4 py-6">
+                    <span
+                      className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full"
+                      style={{ border: '1px solid var(--color-latao)' }}
+                    >
+                      <svg viewBox="0 0 16 16" className="size-3" fill="none" stroke="var(--color-latao)" strokeWidth="1.5">
+                        <path d="M3 8.5l3 3 7-7" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                    <div>
+                      <b className="block text-base font-medium text-tinta">{q.title}</b>
+                      <p className="mt-1.5 text-sm leading-relaxed text-tinta-2">{q.body}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            <p className="mt-10 max-w-[26ch] font-display text-xl leading-snug text-tinta">
+              Se você se reconheceu,
+              <br />
+              a Arquétypus foi pensada <span className="text-latao">para você.</span>
+            </p>
           </div>
         </Reveal>
 
         <DarkTransition />
 
-        {/* H-13 Grade dos 9 (fundido com H-07 bodegón) */}
-        <Reveal as="section" id="catalogo" className="bg-noite py-8" animateContent>
-          <MediaSlot
-            aspect="16/10"
-            bg="#2a2a27"
-            src={BODEGON_IMG}
-            requisito="FOTO · 16:10 · 1600×1000 · BODEGÓN DOS 9 FRASCOS"
-            className="rounded-none border-x-0 border-t-0"
-            dark
-          />
-          <div className="px-4 pt-6 pb-3">
+        {/* H-13 O catálogo (fundido com H-07 bodegón) */}
+        <Reveal as="section" id="catalogo" className="relative bg-noite pt-10 pb-8" animateContent>
+          <div className="relative">
+            <img src={BODEGON_IMG} alt="" className="h-64 w-full object-cover" />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-32"
+              style={{ background: 'linear-gradient(to bottom, rgba(26,25,23,0) 0%, var(--color-noite) 100%)' }}
+            />
+          </div>
+
+          <div className="px-5 pt-3 pb-3">
             <Eyebrow className="text-latao">O catálogo</Eyebrow>
-            <h2 className="mt-2.5 font-display text-3xl text-papel-inv">
+            <h2 className="mt-3 font-display text-4xl leading-[1.1] text-papel-inv">
               Nove arquétipos.
               <br />
               Um sistema.
             </h2>
-            <p className="mt-2 text-sm text-papel-inv/60">
-              Dois perfumes e sete body splashes construídos sobre quatro energias.
+            <p className="mt-3 max-w-[32ch] text-sm text-papel-inv/60">
+              Dois perfumes. Sete body splashes. Nove formas de se expressar.
             </p>
           </div>
-          <div className="scroll-pad flex snap-x gap-3 overflow-x-auto px-4 pb-2">
+
+          <div
+            ref={catalogoScroll.ref}
+            className="scroll-pad no-scrollbar mt-4 flex snap-x gap-4 overflow-x-auto px-5 pb-2"
+          >
             {ARCHETYPES.map((a) => (
               <Link
                 key={a.id}
                 to={`/arquetipos/${a.id}`}
-                className="w-44 shrink-0 snap-start rounded-lg border border-linha-2 bg-papel shadow-lg transition-transform hover:scale-[1.02]"
+                className="group relative w-[78vw] max-w-[300px] shrink-0 snap-start overflow-hidden rounded-3xl bg-papel text-left"
+                style={{ boxShadow: '0 14px 30px -16px rgba(0,0,0,0.5)' }}
               >
                 <div
-                  className="relative flex aspect-[4/5] items-end overflow-hidden rounded-t-lg p-2.5"
+                  className="relative flex aspect-[4/5] items-center justify-center overflow-hidden"
                   style={{ background: a.bg }}
                 >
                   <span
-                    className="pointer-events-none absolute -bottom-2 -left-1 font-display text-[3rem] leading-none tracking-tight opacity-10"
-                    style={{ color: a.cor }}
+                    className="pointer-events-none absolute inset-x-0 bottom-2 text-center font-display leading-none tracking-tight opacity-[0.09]"
+                    style={{ color: a.cor, fontSize: '5.5rem' }}
                   >
                     {a.nome}
                   </span>
-                  <span className="relative font-mono text-[8px] text-tinta-2">{a.cod}</span>
+                  {FRASCO_IMG[a.id] && (
+                    <img
+                      src={FRASCO_IMG[a.id]}
+                      alt=""
+                      className="relative z-10 h-[85%] w-auto object-contain transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+                      style={{ willChange: 'transform' }}
+                    />
+                  )}
                   {a.status === 'wait' && (
-                    <span className="absolute top-1.5 right-1.5 rounded bg-papel/80 px-1 py-0.5 font-mono text-[7px] text-alerta uppercase">
+                    <span className="absolute top-3 right-3 z-10 rounded-full bg-papel/85 px-2.5 py-1 font-mono text-[8px] tracking-wide text-alerta uppercase">
                       Em breve
                     </span>
                   )}
                 </div>
-                <div className="p-2.5">
-                  <p className="flex items-center gap-1.5 font-display text-base">
-                    <span className="size-2.5 rounded-full" style={{ background: a.cor }} />
-                    {a.nome}
-                  </p>
-                  <p className="mt-1 font-mono text-[8px] tracking-wide text-tinta-3 uppercase">
-                    {a.fam}
-                    <br />
+
+                <div className="relative px-5 py-5">
+                  <span className="block font-mono text-[9px] tracking-widest text-tinta-3 uppercase">{a.cod}</span>
+                  <b className="mt-1.5 block font-display text-xl text-tinta">{a.nome}</b>
+                  <span className="mt-1 block text-xs text-tinta-2">{a.fam}</span>
+                  <span className="mt-2 block font-mono text-[9px] tracking-wide text-tinta-3 uppercase">
                     {a.tipo} · {a.vol}
-                  </p>
-                  <p className="mt-1.5 text-sm">
-                    {a.status === 'wait' ? 'Avise-me →' : brl(a.preco)}
-                  </p>
+                  </span>
+                  <span className="mt-3 block text-base font-medium text-tinta">
+                    {a.status === 'wait' ? 'Avise-me' : brl(a.preco)}
+                  </span>
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute right-5 bottom-5 flex size-8 items-center justify-center rounded-full border border-linha-2 text-tinta-2"
+                  >
+                    →
+                  </span>
                 </div>
               </Link>
             ))}
           </div>
+          <ScrollProgressBar fillPct={catalogoScroll.fillPct} />
+          <p className="mt-3 px-5 text-center font-mono text-[9.5px] tracking-widest text-papel-inv/40 uppercase">
+            Deslize para explorar
+          </p>
         </Reveal>
 
         {/* H-15 Kit Descoberta */}

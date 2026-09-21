@@ -150,3 +150,12 @@ button:active {
   flex-shrink: 0;
   width: 1rem;
 }
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
