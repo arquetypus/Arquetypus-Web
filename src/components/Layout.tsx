@@ -27,7 +27,7 @@ export function Layout() {
     <div
       ref={scrollRef}
       data-scroll-container
-      className="relative mx-auto h-svh max-w-md overflow-y-auto overscroll-contain bg-papel pb-24"
+      className="relative mx-auto h-svh max-w-md overflow-x-hidden overflow-y-auto overscroll-contain bg-papel pb-24"
     >
       <header
         className={`sticky top-0 z-20 flex h-14 items-center justify-between border-b px-4 transition-[background-color,border-color,backdrop-filter] duration-300 ease-out relative ${

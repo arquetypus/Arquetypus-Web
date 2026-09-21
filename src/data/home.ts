@@ -9,6 +9,10 @@ import heroKit from '@/assets/mocks/hero-kit.png'
 import segmentoFeminino from '@/assets/mocks/segmento-feminino.png'
 import segmentoMasculino from '@/assets/mocks/segmento-masculino.png'
 import segmentoUnissex from '@/assets/mocks/segmento-unissex.png'
+import familiaFloral from '@/assets/mocks/familia-floral.png'
+import familiaAquatico from '@/assets/mocks/familia-aquatico.png'
+import familiaAmadeirado from '@/assets/mocks/familia-amadeirado.png'
+import familiaOriental from '@/assets/mocks/familia-oriental.png'
 export { default as BODEGON_IMG } from '@/assets/mocks/bodegon-9-frascos.png'
 export { default as UGC_CLEOPATRA_IMG } from '@/assets/mocks/ugc-cleopatra.png'
 
@@ -76,11 +80,44 @@ export const SEGMENTS = [
   { label: 'Para todos', name: 'Compartilhável', meta: '220 ml · 1 SKU', seg: 'U' as const, img: segmentoUnissex },
 ]
 
+/**
+ * desc/attrs são copy nova (mood curto), não vem do v6 — texto pedido
+ * diretamente pelo usuário para os cards de família. Revisar se já
+ * existir equivalente oficial.
+ */
 export const FAMILIES = [
-  { nome: 'Floral', arquetipos: ['afrodite', 'fada'] },
-  { nome: 'Aquático', arquetipos: ['sereia', 'guerreiro'] },
-  { nome: 'Amadeirado', arquetipos: ['imperador', 'fenix'] },
-  { nome: 'Oriental doce', arquetipos: ['cleopatra', 'imperatriz'] },
+  {
+    nome: 'Floral',
+    arquetipos: ['afrodite', 'fada'],
+    img: familiaFloral,
+    tint: '#F6E9EC',
+    desc: 'Sedutor e envolvente.',
+    attrs: ['Floral', 'Sedutor', 'Leve'],
+  },
+  {
+    nome: 'Aquático',
+    arquetipos: ['sereia', 'guerreiro'],
+    img: familiaAquatico,
+    tint: '#E9F1F3',
+    desc: 'Fresco e discreto.',
+    attrs: ['Aquático', 'Fresco', 'Discreto'],
+  },
+  {
+    nome: 'Amadeirado',
+    arquetipos: ['imperador', 'fenix'],
+    img: familiaAmadeirado,
+    tint: '#F1EAE0',
+    desc: 'Quente e marcante.',
+    attrs: ['Amadeirado', 'Intenso', 'Elegante'],
+  },
+  {
+    nome: 'Oriental doce',
+    arquetipos: ['cleopatra', 'imperatriz'],
+    img: familiaOriental,
+    tint: '#F3E6D9',
+    desc: 'Quente e viciante.',
+    attrs: ['Oriental', 'Doce', 'Envolvente'],
+  },
 ]
 
 export const ENERGIES = [

@@ -91,17 +91,13 @@ export function HomePage() {
                 bg="transparent"
                 src={seg.img}
                 requisito={`FOTO · 4:3 · 1600×1200 · LIFESTYLE · ${seg.label.toUpperCase()}`}
-                className="rounded-2xl border-0"
-              />
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 backdrop-blur-md [mask-image:linear-gradient(to_top,black,transparent)]"
+                className="rounded-2xl border-0 [&_img]:will-change-transform [&_img]:transition-transform [&_img]:duration-700 [&_img]:ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:[&_img]:scale-[1.06]"
               />
               <div
                 aria-hidden
                 className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3"
                 style={{
-                  background: `linear-gradient(to top, color-mix(in srgb, ${SEGMENT_TINT[seg.seg]} 45%, transparent) 0%, color-mix(in srgb, ${SEGMENT_TINT[seg.seg]} 20%, transparent) 45%, transparent 100%)`,
+                  background: `linear-gradient(to top, color-mix(in srgb, ${SEGMENT_TINT[seg.seg]} 65%, transparent) 0%, color-mix(in srgb, ${SEGMENT_TINT[seg.seg]} 30%, transparent) 55%, transparent 100%)`,
                 }}
               />
               <div className="absolute inset-x-0 bottom-0 z-10 p-4">
@@ -110,7 +106,7 @@ export function HomePage() {
                 </span>
                 <span className="mt-1 block font-display text-2xl text-papel-inv">{seg.name}</span>
                 <span className="mt-1 block font-mono text-[9px] text-papel-inv/70">{seg.meta}</span>
-                <span className="mt-3 block w-full rounded-full border border-papel-inv/40 bg-papel-inv/10 py-2.5 text-center text-xs font-medium text-papel-inv backdrop-blur-sm transition-all duration-300 ease-out group-hover:scale-[1.015] group-hover:border-papel-inv/60 group-hover:bg-papel-inv/20">
+                <span className="mt-3 block w-full rounded-full border border-papel-inv/40 bg-papel-inv/10 py-2.5 text-center text-xs font-medium text-papel-inv backdrop-blur-sm transition-colors duration-300 ease-out group-hover:border-papel-inv/60 group-hover:bg-papel-inv/20">
                   Ver coleção
                 </span>
               </div>
@@ -199,35 +195,51 @@ export function HomePage() {
         </Reveal>
 
         {/* H-09 Por família */}
-        <Reveal as="section" className="py-6">
+        <Reveal as="section" className="pt-9 pb-6">
           <div className="px-4">
             <Eyebrow>Entrada racional</Eyebrow>
             <h2 className="mt-2.5 font-display text-2xl">Descubra por família</h2>
+            <p className="mt-1.5 text-sm text-tinta-2">Encontre a atmosfera que mais combina com você.</p>
           </div>
-          <div className="scroll-pad mt-4 flex snap-x gap-3 overflow-x-auto px-4 pb-2">
+          <div className="scroll-pad mt-2 flex snap-x gap-5 overflow-x-auto px-4 pt-28 pb-2">
             {FAMILIES.map((f) => (
-              <button
+              <div
                 key={f.nome}
-                onClick={() => scrollToId('catalogo')}
-                className="w-48 shrink-0 snap-start overflow-hidden rounded-2xl border border-linha-2 text-left transition-transform hover:scale-[1.02]"
+                className="relative w-56 shrink-0 snap-start hover:-translate-y-1.5"
+                style={{ transition: 'transform 900ms cubic-bezier(0.16,1,0.3,1)', willChange: 'transform' }}
               >
-                <MediaSlot aspect="4/5" requisito={`FOTO · 4:5 · 1600×2000 · ATMOSFERA · ${f.nome.toUpperCase()}`} className="rounded-none border-x-0 border-t-0" />
-                <div className="p-3">
-                  <b className="font-display text-base">{f.nome}</b>
-                  <span className="mt-0.5 block text-xs text-tinta-2">
-                    {f.arquetipos.map((id) => getArchetype(id)?.nome).join(' · ')}
-                  </span>
-                  <span className="mt-2 flex gap-1">
-                    {f.arquetipos.map((id) => (
-                      <span
-                        key={id}
-                        className="size-3 rounded-full"
-                        style={{ background: getArchetype(id)?.cor }}
-                      />
-                    ))}
-                  </span>
-                </div>
-              </button>
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute top-12 left-1/2 h-12 w-28 -translate-x-1/2 rounded-full blur-xl"
+                  style={{ background: `color-mix(in srgb, ${f.tint} 100%, black 25%)`, opacity: 0.55 }}
+                />
+                <img
+                  src={f.img}
+                  alt=""
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -top-20 left-1/2 z-10 w-56 -translate-x-1/2 object-contain"
+                />
+                <button
+                  onClick={() => scrollToId('catalogo')}
+                  className="relative block w-full rounded-2xl pt-[104px] px-5 pb-6 text-left"
+                  style={{
+                    background: `linear-gradient(180deg, color-mix(in srgb, ${f.tint} 74%, transparent) 0%, color-mix(in srgb, ${f.tint} 64%, transparent) 100%)`,
+                    border: '1px solid color-mix(in srgb, white 60%, transparent)',
+                    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.5), 0 10px 24px -12px rgba(44,44,41,0.2)',
+                  }}
+                >
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-x-0 top-0 h-1/2 rounded-t-2xl"
+                    style={{ background: 'linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%)' }}
+                  />
+                  <b className="relative block font-display text-xl tracking-tight text-tinta">{f.nome}</b>
+                  <div className="relative mt-2.5 h-px w-8 bg-linha-2" />
+                  <p className="relative mt-2.5 text-xs leading-relaxed text-tinta-2">{f.desc}</p>
+                  <div className="relative mt-3 h-px w-8 bg-linha-2" />
+                  <p className="relative mt-3 text-[10px] tracking-wide text-tinta-3">{f.attrs.join(' · ')}</p>
+                </button>
+              </div>
             ))}
           </div>
         </Reveal>
