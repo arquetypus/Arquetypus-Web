@@ -29,8 +29,8 @@ export function MediaSlot({
       >
         <img src={src} alt="" className="absolute inset-0 h-full w-full object-cover" />
         <p
-          className={`absolute inset-x-0 bottom-0 truncate px-2 py-1 font-mono text-[8px] tracking-wide ${
-            dark ? 'bg-noite/60 text-papel-inv/70' : 'bg-tinta/60 text-papel/80'
+          className={`absolute inset-x-0 top-0 z-30 truncate px-2 py-1.5 font-mono text-[9px] font-medium tracking-wide ${
+            dark ? 'bg-noite/75 text-papel-inv' : 'bg-tinta/75 text-papel'
           }`}
         >
           {requisito}

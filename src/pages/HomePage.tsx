@@ -22,6 +22,7 @@ import { KitBuilder } from '@/components/KitBuilder'
 import { HeroCarousel } from '@/components/HeroCarousel'
 import { Reveal } from '@/components/ui/Reveal'
 import { scrollToId } from '@/lib/scrollToId'
+import florArquetypus from '@/assets/brand/flor-arquetypus.png'
 
 const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
@@ -62,11 +63,11 @@ export function HomePage() {
   }, [hash])
 
   return (
-    <div className="relative -mt-12">
+    <div className="relative -mt-14">
       {/* H-03 Hero — carrossel sticky, card sobe por cima */}
       <HeroCarousel />
 
-      <div className="relative z-10 -mt-6 rounded-t-3xl bg-papel">
+      <div className="relative z-10 -mt-28 rounded-t-3xl bg-papel">
         {/* H-05 Selos — grid 2x2 com ícone, estilo trust badges */}
         <section className="grid grid-cols-2 divide-x divide-y divide-linha overflow-hidden rounded-t-3xl border-b border-linha">
           {SEALS.map((s) => (
@@ -78,28 +79,38 @@ export function HomePage() {
         </section>
 
         {/* H-08 Segmentação */}
-        <Reveal as="section" id="segmentos" className="flex flex-col items-center gap-3 px-4 py-6">
+        <Reveal as="section" id="segmentos" className="flex flex-col items-center gap-5 px-4 py-6">
           {SEGMENTS.map((seg) => (
             <button
               key={seg.name}
               onClick={() => scrollToId('catalogo')}
-              className="block w-[80%] overflow-hidden rounded-2xl border border-linha-2 text-left transition-transform hover:scale-[1.02]"
-              style={{ backgroundColor: `color-mix(in srgb, ${SEGMENT_TINT[seg.seg]} 12%, var(--color-papel))` }}
+              className="group relative block w-[80%] overflow-hidden rounded-2xl text-left shadow-[0_2px_6px_rgba(0,0,0,0.08)] ring-1 ring-latao/50"
             >
               <MediaSlot
-                aspect="16/9"
+                aspect="4/3"
                 bg="transparent"
                 src={seg.img}
-                requisito={`FOTO · 16:9 · 1600×900 · LIFESTYLE · ${seg.label.toUpperCase()}`}
-                className="rounded-none border-x-0 border-t-0"
+                requisito={`FOTO · 4:3 · 1600×1200 · LIFESTYLE · ${seg.label.toUpperCase()}`}
+                className="rounded-2xl border-0"
               />
-              <div className="p-4">
-                <span className="block font-mono text-[9px] tracking-widest text-tinta-3 uppercase">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 backdrop-blur-md [mask-image:linear-gradient(to_top,black,transparent)]"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3"
+                style={{
+                  background: `linear-gradient(to top, color-mix(in srgb, ${SEGMENT_TINT[seg.seg]} 45%, transparent) 0%, color-mix(in srgb, ${SEGMENT_TINT[seg.seg]} 20%, transparent) 45%, transparent 100%)`,
+                }}
+              />
+              <div className="absolute inset-x-0 bottom-0 z-10 p-4">
+                <span className="block font-mono text-[9px] tracking-widest text-papel-inv/80 uppercase">
                   {seg.label}
                 </span>
-                <span className="mt-1 block font-display text-2xl">{seg.name}</span>
-                <span className="mt-1 block font-mono text-[9px] text-tinta-3">{seg.meta}</span>
-                <span className="mt-3 inline-block rounded-full border border-linha-2 px-6 py-2.5 text-xs font-medium">
+                <span className="mt-1 block font-display text-2xl text-papel-inv">{seg.name}</span>
+                <span className="mt-1 block font-mono text-[9px] text-papel-inv/70">{seg.meta}</span>
+                <span className="mt-3 block w-full rounded-full border border-papel-inv/40 bg-papel-inv/10 py-2.5 text-center text-xs font-medium text-papel-inv backdrop-blur-sm transition-all duration-300 ease-out group-hover:scale-[1.015] group-hover:border-papel-inv/60 group-hover:bg-papel-inv/20">
                   Ver coleção
                 </span>
               </div>
@@ -108,22 +119,82 @@ export function HomePage() {
         </Reveal>
 
         {/* H-06 Diagnóstico */}
-        <Reveal as="section" className="bg-papel-2 px-4 py-8">
-          <h2 className="font-display text-2xl">
-            Você já comprou um
-            <br />
-            cheiro que não era seu?
-          </h2>
-          <div className="mt-5 flex flex-col gap-5">
-            {DIAGNOSIS.map((d) => (
-              <div key={d.n} className="flex gap-4">
-                <span className="font-display text-4xl text-linha-2">{d.n}</span>
-                <div className="pt-1">
-                  <b className="text-base">{d.title}</b>
-                  <p className="mt-1 text-sm text-tinta-2">{d.body}</p>
+        <Reveal
+          as="section"
+          className="relative z-10 px-5 pt-16 pb-16"
+          style={{
+            background:
+              'linear-gradient(to bottom, var(--color-papel) 0%, var(--color-papel-2) 10%, var(--color-papel-2) 90%, var(--color-papel) 100%)',
+          }}
+        >
+          <img
+            src={florArquetypus}
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute select-none"
+            style={{
+              top: '-25px',
+              right: '-45px',
+              width: '290px',
+              height: 'auto',
+              opacity: 0.38,
+              maskImage: 'radial-gradient(closest-side, black 55%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(closest-side, black 55%, transparent 100%)',
+            }}
+          />
+          <img
+            src={florArquetypus}
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute select-none"
+            style={{
+              bottom: '-40px',
+              left: '-60px',
+              width: '220px',
+              height: 'auto',
+              opacity: 0.3,
+              transform: 'rotate(135deg)',
+              maskImage: 'radial-gradient(closest-side, black 55%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(closest-side, black 55%, transparent 100%)',
+            }}
+          />
+
+          <div className="relative z-10">
+            <Eyebrow>O perfume errado</Eyebrow>
+            <h2 className="mt-3 max-w-[19ch] font-display text-[28px] leading-[1.2] text-tinta">
+              Você já comprou uma fragrância que não parecia sua?
+            </h2>
+            <p className="mt-3 text-sm text-tinta-2">
+              Às vezes, o problema não está no perfume. Está na escolha.
+            </p>
+
+            <div className="mt-7 flex flex-col">
+              {DIAGNOSIS.map((d, i) => (
+                <div key={d.n}>
+                  {i > 0 && <div className="border-t border-linha" />}
+                  <div className="flex gap-4 py-4">
+                    <span
+                      className="font-display text-5xl leading-none font-light"
+                      style={{
+                        color: 'color-mix(in srgb, var(--color-latao) 32%, var(--color-papel-2) 68%)',
+                      }}
+                    >
+                      {d.n}
+                    </span>
+                    <div className="pt-1.5">
+                      <b className="text-base font-medium text-tinta">{d.title}</b>
+                      <p className="mt-1.5 text-sm leading-relaxed text-tinta-2">{d.body}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            <p className="mt-7 text-center font-display text-xl leading-snug text-tinta">
+              Não comece pela marca.
+              <br />
+              <span className="text-latao">Comece por você.</span>
+            </p>
           </div>
         </Reveal>
 

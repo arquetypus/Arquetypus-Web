@@ -164,10 +164,11 @@ export function KitPage() {
           </span>
         </div>
         <button
+          disabled
           onClick={addToCart}
-          className="mt-4 w-full rounded-lg bg-tinta py-4 text-sm font-medium text-papel"
+          className="mt-4 w-full rounded-lg bg-tinta py-4 text-sm font-medium text-papel opacity-40"
         >
-          {added ? 'Adicionado ✓' : 'Adicionar kit à sacola'}
+          {added ? 'Adicionado ✓' : 'Em breve'}
         </button>
       </section>
     </div>

@@ -216,19 +216,14 @@ export function ProductPage() {
         <p className="mt-1.5 font-mono text-[10px] text-ok uppercase">● Em estoque e pronto para envio</p>
       </section>
 
-      {/* P-07 Comprar */}
+      {/* P-07 Comprar — sacola desativada, ver CLAUDE.md */}
       <section className="mt-4 px-4">
         <button
+          disabled
           onClick={addToCart}
-          className="w-full rounded-lg bg-tinta py-4 text-sm font-medium tracking-wide text-papel uppercase"
+          className="w-full rounded-lg bg-tinta py-4 text-sm font-medium tracking-wide text-papel uppercase opacity-40"
         >
-          Comprar agora
-        </button>
-        <button
-          onClick={addToCart}
-          className="mt-2.5 w-full rounded-lg border border-linha-2 py-4 text-sm font-medium"
-        >
-          {added ? 'Adicionado ✓' : 'Adicionar à sacola'}
+          {added ? 'Adicionado ✓' : 'Em breve'}
         </button>
       </section>
 
@@ -342,10 +337,11 @@ export function ProductPage() {
           </h2>
           <p className="mt-2 text-sm text-tinta-2">{a.layer}</p>
           <button
+            disabled
             onClick={levarOsDois}
-            className="mt-4 w-full rounded-lg bg-tinta py-4 text-sm font-medium tracking-wide text-papel uppercase"
+            className="mt-4 w-full rounded-lg bg-tinta py-4 text-sm font-medium tracking-wide text-papel uppercase opacity-40"
           >
-            Levar os dois — {brl(selected.price + par.preco)}
+            Em breve
           </button>
         </section>
       )}

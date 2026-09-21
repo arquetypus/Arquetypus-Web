@@ -148,11 +148,11 @@ export function KitBuilder() {
         <span className="font-display text-xl">{qtd > 0 ? brl(total) : '—'}</span>
       </div>
       <button
-        disabled={qtd === 0}
+        disabled
         onClick={addKitToCart}
         className="mt-4 w-full rounded-lg bg-tinta py-4 text-sm font-medium text-papel disabled:opacity-40"
       >
-        Adicionar kit à sacola
+        Em breve
       </button>
     </div>
   )

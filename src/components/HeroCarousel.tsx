@@ -39,7 +39,9 @@ export function HeroCarousel() {
 
       {/* Conteúdo centralizado */}
       <div className="relative z-10 mt-auto px-10 text-center text-papel-inv">
-        <Eyebrow className="text-latao">{slide.eyebrow}</Eyebrow>
+        <Eyebrow className="" style={{ color: slide.eyebrowColor }}>
+          {slide.eyebrow}
+        </Eyebrow>
 
         <h1 className="mt-3 font-display text-4xl leading-[1.05]">
           {slide.heading.split('\n').map((line, i) => (

@@ -20,6 +20,7 @@ export const HERO_SLIDES = [
     id: 'video',
     type: 'video' as const,
     eyebrow: 'Perfumaria de arquétipos',
+    eyebrowColor: '#c9b98a',
     heading: 'Qual arquétipo\ndesperta em você?',
     sub: 'Nove fragrâncias. Uma responde pelo seu nome.',
     requisito: 'VÍDEO · 9:16 · 1080×1920 · HERO FULLSCREEN · AUTOPLAY MUTED LOOP',
@@ -29,6 +30,7 @@ export const HERO_SLIDES = [
     id: 'afrodite',
     type: 'image' as const,
     eyebrow: 'ARQ-01 · Floral fresco',
+    eyebrowColor: '#e8a9b8',
     heading: 'Afrodite',
     sub: 'O floral que não pede licença.',
     cta: { label: 'Conhecer Afrodite', to: '/arquetipos/afrodite' },
@@ -39,6 +41,7 @@ export const HERO_SLIDES = [
     id: 'kit',
     type: 'image' as const,
     eyebrow: 'Kit Descoberta · R$ 79,90',
+    eyebrowColor: '#f7f6f3',
     heading: 'Nove miniaturas.\nO valor volta.',
     sub: 'Teste os nove antes de escolher o seu.',
     cta: { label: 'Quero experimentar', to: '/kit-descoberta' },
@@ -52,25 +55,25 @@ export const SEALS = ['Entrega garantida', 'Rápido e seguro', 'Vegano', 'Cruelt
 export const DIAGNOSIS = [
   {
     n: '01',
-    title: 'Você escolheu no escuro.',
-    body: 'Comprou pela embalagem, pelo nome ou porque alguém disse que era bom — sem nunca ter cheirado na sua pele.',
+    title: 'Escolheu sem sentir na pele',
+    body: 'Nem toda fragrância combina com a sua presença.',
   },
   {
     n: '02',
-    title: 'Sumiu em duas horas.',
-    body: 'Body splash barato é quase todo álcool e água. Sem fixador, o cheiro evapora antes de você sair de casa.',
+    title: 'Sumiu rápido demais',
+    body: 'Concentração e composição mudam toda a experiência.',
   },
   {
     n: '03',
-    title: 'Todo mundo estava usando o mesmo.',
-    body: 'Três marcas dominam a prateleira, e o cheiro que era seu virou o cheiro do elevador.',
+    title: 'Parecia o cheiro de todo mundo',
+    body: 'Seu perfume também pode ser parte da sua identidade.',
   },
 ]
 
 export const SEGMENTS = [
   { label: 'Para elas', name: 'Feminino', meta: '200 ml · 5 SKUs', seg: 'F' as const, img: segmentoFeminino },
   { label: 'Para eles', name: 'Masculino', meta: '220 ml · 3 SKUs', seg: 'M' as const, img: segmentoMasculino },
-  { label: 'Para todos', name: 'Unissex', meta: '220 ml · 1 SKU', seg: 'U' as const, img: segmentoUnissex },
+  { label: 'Para todos', name: 'Compartilhável', meta: '220 ml · 1 SKU', seg: 'U' as const, img: segmentoUnissex },
 ]
 
 export const FAMILIES = [

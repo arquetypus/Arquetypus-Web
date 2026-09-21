@@ -1,23 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
-import { useCart } from '@/context/CartContext'
-import { REWARD_FREIGHT } from '@/data/home'
 import wordmarkPreto from '@/assets/brand/wordmark-preto.png'
 import wordmarkMarmore from '@/assets/brand/wordmark-marmore.png'
 
-const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-
 export function Layout() {
-  const { items, count, subtotal, removeItem, clear } = useCart()
-  const [cartOpen, setCartOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { pathname } = useLocation()
   const scrollRef = useRef<HTMLDivElement>(null)
   const isHome = pathname === '/'
-  const remaining = Math.max(0, REWARD_FREIGHT - subtotal)
-  const progress = Math.min(100, (subtotal / REWARD_FREIGHT) * 100)
   const headerOverHero = isHome && !scrolled
-  const hideBottomBar = ['/loja/', '/resultado'].some((p) => pathname.startsWith(p))
 
   useEffect(() => {
     const el = scrollRef.current
@@ -32,8 +23,6 @@ export function Layout() {
     scrollRef.current?.scrollTo(0, 0)
   }, [pathname])
 
-  useEffect(() => setCartOpen(false), [pathname])
-
   return (
     <div
       ref={scrollRef}
@@ -41,27 +30,40 @@ export function Layout() {
       className="relative mx-auto h-svh max-w-md overflow-y-auto overscroll-contain bg-papel pb-24"
     >
       <header
-        className={`sticky top-0 z-20 flex h-12 items-center justify-between border-b px-4 transition-colors ${
+        className={`sticky top-0 z-20 flex h-14 items-center justify-between border-b px-4 transition-[background-color,border-color,backdrop-filter] duration-300 ease-out relative ${
           headerOverHero
             ? 'border-transparent text-papel-inv'
             : 'border-linha bg-papel/90 text-tinta backdrop-blur'
         }`}
       >
+        <div
+          aria-hidden
+          className={`pointer-events-none absolute inset-x-0 top-0 -z-10 h-28 transition-opacity duration-300 ease-out ${
+            headerOverHero ? 'opacity-100' : 'opacity-0'
+          }`}
+          style={{
+            background:
+              'linear-gradient(to bottom, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.25) 45%, rgba(0,0,0,0.08) 75%, rgba(0,0,0,0) 100%)',
+          }}
+        />
         <div className="w-5" aria-hidden />
-        <Link to="/">
+        <Link to="/" className="relative block h-11 w-28">
           <img
-            src={headerOverHero ? wordmarkMarmore : wordmarkPreto}
+            src={wordmarkMarmore}
             alt="Arquetypus"
-            className="h-8 w-auto object-contain pt-1"
+            className={`absolute inset-0 h-full w-full object-contain object-center transition-opacity duration-300 ease-out ${
+              headerOverHero ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
+          <img
+            src={wordmarkPreto}
+            alt="Arquetypus"
+            className={`absolute inset-0 h-full w-full object-contain object-center transition-opacity duration-300 ease-out ${
+              headerOverHero ? 'opacity-0' : 'opacity-100'
+            }`}
           />
         </Link>
-        <button
-          onClick={() => count > 0 && setCartOpen((v) => !v)}
-          className="font-mono text-xs"
-          aria-label={`Sacola: ${count} itens`}
-        >
-          ◎ {count}
-        </button>
+        <div className="w-5" aria-hidden />
       </header>
 
       <main key={pathname} className="page-fade">
@@ -77,70 +79,6 @@ export function Layout() {
         </svg>
       </button>
 
-      {cartOpen && count > 0 && (
-        <div
-          className={`fixed inset-x-0 z-20 mx-auto max-w-md rounded-t-2xl border border-b-0 border-linha bg-papel shadow-xl ${
-            hideBottomBar ? 'bottom-6' : 'bottom-[108px]'
-          }`}
-        >
-          <div className="flex items-center justify-between px-4 pt-3 pb-2">
-            <span className="font-mono text-[10px] tracking-widest text-tinta-3 uppercase">
-              Sua sacola
-            </span>
-            <button
-              onClick={() => {
-                clear()
-                setCartOpen(false)
-              }}
-              className="font-mono text-[10px] tracking-wide text-alerta uppercase"
-            >
-              Limpar tudo
-            </button>
-          </div>
-          <div className="max-h-52 overflow-y-auto px-4 pb-3">
-            {items.map((item) => (
-              <div
-                key={item.key}
-                className="flex items-center gap-3 border-b border-linha py-2.5 last:border-b-0"
-              >
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm">{item.label}</p>
-                  <p className="font-mono text-[9px] text-tinta-3">
-                    {item.qty}× {brl(item.unitPrice)}
-                  </p>
-                </div>
-                <span className="shrink-0 text-sm font-medium">
-                  {brl(item.unitPrice * item.qty)}
-                </span>
-                <button
-                  onClick={() => removeItem(item.key)}
-                  aria-label={`Remover ${item.label}`}
-                  className="shrink-0 text-base text-tinta-3"
-                >
-                  ✕
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {!hideBottomBar && (
-        <div className="fixed inset-x-0 bottom-0 z-20 mx-auto max-w-md border-t border-linha bg-papel">
-          <button
-            onClick={() => count > 0 && setCartOpen((v) => !v)}
-            className="flex w-full items-center justify-between px-4 pt-2 font-mono text-[9px] tracking-wide text-tinta-3 uppercase"
-          >
-            <span>
-              {count === 0 ? 'Sacola vazia' : `${count} ${count === 1 ? 'item' : 'itens'} · ${brl(subtotal)}`}
-            </span>
-            <span>{remaining === 0 ? 'Frete grátis desbloqueado' : `Faltam ${brl(remaining)}`}</span>
-          </button>
-          <div className="mx-4 mt-1.5 mb-3 h-1 rounded-full bg-linha">
-            <div className="h-1 rounded-full bg-latao transition-[width]" style={{ width: `${progress}%` }} />
-          </div>
-        </div>
-      )}
     </div>
   )
 }
