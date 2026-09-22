@@ -5,6 +5,7 @@ import { ECON } from '@/data/economics'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { MediaSlot } from '@/components/ui/MediaSlot'
 import { useCart } from '@/context/CartContext'
+import kit9Minis from '@/assets/mocks/kit-9-minis.png'
 
 const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
@@ -60,6 +61,7 @@ export function KitPage() {
       <MediaSlot
         aspect="4/5"
         bg="#EFEDE8"
+        src={kit9Minis}
         requisito="FOTO · 4:5 · 1600×2000 · OS 9 MINIS ALINHADOS · ESCALA REAL"
         className="rounded-none border-x-0 border-t-0"
       />

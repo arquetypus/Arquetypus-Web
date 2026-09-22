@@ -27,7 +27,19 @@ import frascoGuerreiro from '@/assets/mocks/frasco-guerreiro.png'
 import frascoImperador from '@/assets/mocks/frasco-imperador.png'
 import frascoFenix from '@/assets/mocks/frasco-fenix.png'
 export { default as BODEGON_IMG } from '@/assets/mocks/bodegon-9-frascos.png'
-export { default as UGC_CLEOPATRA_IMG } from '@/assets/mocks/ugc-cleopatra.png'
+import ugcCleopatra from '@/assets/mocks/ugc-cleopatra.png'
+import ugcSereia from '@/assets/mocks/ugc-sereia.png'
+import ugcAfrodite from '@/assets/mocks/ugc-afrodite.png'
+import ugcGuerreiro from '@/assets/mocks/ugc-guerreiro.png'
+import ugcImperatriz from '@/assets/mocks/ugc-imperatriz.png'
+
+export const UGC_IMG: Record<string, string> = {
+  cleopatra: ugcCleopatra,
+  sereia: ugcSereia,
+  afrodite: ugcAfrodite,
+  guerreiro: ugcGuerreiro,
+  imperatriz: ugcImperatriz,
+}
 
 export const PUV =
   'Body splash de perfumaria para quem cansou de cheirar igual a todo mundo e não quer mais escolher fragrância no escuro — nove arquétipos, um teste de 2 minutos e o direito de devolver se não for você.'

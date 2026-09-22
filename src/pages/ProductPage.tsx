@@ -4,9 +4,29 @@ import { getArchetype } from '@/data/archetypes'
 import { useCart } from '@/context/CartContext'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { MediaSlot } from '@/components/ui/MediaSlot'
-import frascoSereia from '@/assets/mocks/frasco-sereia.png'
+import pdpAfrodite from '@/assets/mocks/pdp-afrodite.png'
+import pdpImperatriz from '@/assets/mocks/pdp-imperatriz.png'
+import pdpCleopatra from '@/assets/mocks/pdp-cleopatra.png'
+import pdpFada from '@/assets/mocks/pdp-fada.png'
+import pdpSereia from '@/assets/mocks/pdp-sereia.png'
+import pdpZeus from '@/assets/mocks/pdp-zeus.png'
+import pdpGuerreiro from '@/assets/mocks/pdp-guerreiro.png'
+import pdpImperador from '@/assets/mocks/pdp-imperador.png'
+import pdpFenix from '@/assets/mocks/pdp-fenix.png'
 
 const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+
+const PDP_IMG: Record<string, string> = {
+  afrodite: pdpAfrodite,
+  imperatriz: pdpImperatriz,
+  cleopatra: pdpCleopatra,
+  fada: pdpFada,
+  sereia: pdpSereia,
+  zeus: pdpZeus,
+  guerreiro: pdpGuerreiro,
+  imperador: pdpImperador,
+  fenix: pdpFenix,
+}
 
 const MINI_PRICE = 19.9
 const NECESSAIRE_PRICE = 24.9
@@ -49,7 +69,7 @@ const FAQ = [
     q: 'Como funciona o teste de arquétipo?',
     a: 'São cinco perguntas sobre você — nenhuma sobre notas olfativas. No fim você recebe seu arquétipo dominante e o secundário, com a fragrância correspondente e a sugestão de como combinar os dois.',
   },
-  { q: 'E se eu não gostar do cheiro?', a: 'Você tem 30 dias para devolver, mesmo com o frasco aberto. Sem perguntas.' },
+  { q: 'E se eu não gostar do cheiro?', a: 'Você tem 7 dias para devolver, mesmo com o frasco aberto. Sem perguntas.' },
   {
     q: 'Como funciona a entrega?',
     a: 'Envio em até 24 h úteis após a confirmação do pagamento. Frete grátis acima de R$ 199. O prazo aparece no carrinho ao informar o CEP.',
@@ -137,7 +157,7 @@ export function ProductPage() {
           <MediaSlot
             aspect="1/1"
             bg={a.bg}
-            src={a.id === 'sereia' ? frascoSereia : undefined}
+            src={PDP_IMG[a.id]}
             requisito={`FOTO · 1:1 · 1200×1200 · FRASCO · ${a.nome.toUpperCase()}`}
           />
           {showNotes && (
@@ -235,7 +255,7 @@ export function ProductPage() {
           24 h úteis
         </div>
         <div className="rounded-md border border-linha-2 p-2 font-mono text-[8px] tracking-wide text-tinta-2 uppercase">
-          30 dias de
+          7 dias de
           <br />
           garantia
         </div>

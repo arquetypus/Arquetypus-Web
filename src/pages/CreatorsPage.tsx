@@ -3,6 +3,7 @@ import { ARCHETYPES, getArchetype } from '@/data/archetypes'
 import { ECON } from '@/data/economics'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { MediaSlot } from '@/components/ui/MediaSlot'
+import creatorsHero from '@/assets/mocks/creators-hero.png'
 
 const HOW_IT_WORKS = [
   { n: '01', title: 'Aplique escolhendo um arquétipo', body: 'Um só — é ele que você vai representar, gravar e recomendar.' },
@@ -42,6 +43,7 @@ export function CreatorsPage() {
       <MediaSlot
         aspect="4/5"
         bg="#F0EAE4"
+        src={creatorsHero}
         requisito="FOTO · 4:5 · 1600×2000 · CRIADOR(A) SEGURANDO UM FRASCO · LUZ NATURAL"
         className="rounded-none border-x-0 border-t-0"
       />

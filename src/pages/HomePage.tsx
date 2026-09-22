@@ -13,18 +13,19 @@ import {
   SEALS,
   SEGMENTS,
   STATS,
-  UGC_CLEOPATRA_IMG,
+  UGC_IMG,
   UGC_VIDEOS,
 } from '@/data/home'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { MediaSlot } from '@/components/ui/MediaSlot'
-import { KitBuilder } from '@/components/KitBuilder'
+// import { KitBuilder } from '@/components/KitBuilder' // seção "Monte o seu" desativada
 import { HeroCarousel } from '@/components/HeroCarousel'
 import { Reveal } from '@/components/ui/Reveal'
 import { ScrollProgressBar } from '@/components/ui/ScrollProgressBar'
 import { scrollToId } from '@/lib/scrollToId'
 import { useScrollProgress } from '@/lib/useScrollProgress'
 import { useInfiniteCarousel } from '@/lib/useInfiniteCarousel'
+import bannerKitDescoberta from '@/assets/mocks/home/banner-kit-descoberta.png'
 import florArquetypus from '@/assets/brand/flor-arquetypus.png'
 import ribbonArquetypus from '@/assets/brand/ribbon-arquetypus.png'
 
@@ -565,7 +566,7 @@ export function HomePage() {
 
         {/* H-15 Kit Descoberta */}
         <Reveal as="section" id="kit">
-          <MediaSlot aspect="16/10" bg="#EFEDE8" requisito="FOTO · 16:10 · 1600×1000 · 9 MINIS NA MÃO · ESCALA REAL" className="rounded-none border-x-0" />
+          <MediaSlot aspect="16/10" bg="#EFEDE8" src={bannerKitDescoberta} requisito="FOTO · 16:10 · 1600×1000 · 9 MINIS NA MÃO · ESCALA REAL" className="rounded-none border-x-0" />
           <div className="px-4 py-6">
             <Eyebrow>Antes de escolher</Eyebrow>
             <h2 className="mt-2.5 font-display text-2xl">Kit Descoberta</h2>
@@ -585,7 +586,7 @@ export function HomePage() {
           </div>
         </Reveal>
 
-        {/* H-16 Escada de preço / kit builder */}
+        {/* H-16 Escada de preço / kit builder — desativado a pedido, mantido no código pra reconectar depois
         <Reveal as="section" className="bg-papel-2 px-4 py-8">
           <Eyebrow>Monte o seu</Eyebrow>
           <h2 className="mt-2.5 font-display text-2xl">
@@ -597,6 +598,7 @@ export function HomePage() {
             <KitBuilder />
           </div>
         </Reveal>
+        */}
 
         {/* H-17 Números de percepção */}
         <Reveal as="section" className="px-4 py-8">
@@ -673,7 +675,7 @@ export function HomePage() {
                 <div key={v.creator} className="w-[70%] shrink-0 snap-start">
                   <MediaSlot
                     aspect="9/16"
-                    src={v.creator === '@marianac_' ? UGC_CLEOPATRA_IMG : undefined}
+                    src={UGC_IMG[v.archetypeId]}
                     requisito={`VÍDEO · 9:16 · 1080×1920 · ${v.creator}`}
                     className="rounded-b-none"
                   />
@@ -705,7 +707,7 @@ export function HomePage() {
 
         {/* H-20 Garantia */}
         <Reveal as="section" className="bg-noite px-4 py-12 text-center" animateContent>
-          <div className="font-display text-7xl text-papel-inv/15">30</div>
+          <div className="font-display text-7xl text-papel-inv/15">7</div>
           <p className="mt-1 font-mono text-[10px] tracking-[0.3em] text-latao uppercase">
             Dias de garantia
           </p>
