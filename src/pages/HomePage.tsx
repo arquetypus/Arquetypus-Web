@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { ARCHETYPES, getArchetype } from '@/data/archetypes'
 import {
@@ -24,6 +24,7 @@ import { Reveal } from '@/components/ui/Reveal'
 import { ScrollProgressBar } from '@/components/ui/ScrollProgressBar'
 import { scrollToId } from '@/lib/scrollToId'
 import { useScrollProgress } from '@/lib/useScrollProgress'
+import { useInfiniteCarousel } from '@/lib/useInfiniteCarousel'
 import florArquetypus from '@/assets/brand/flor-arquetypus.png'
 import ribbonArquetypus from '@/assets/brand/ribbon-arquetypus.png'
 
@@ -34,6 +35,13 @@ const SEGMENT_TINT: Record<'F' | 'M' | 'U', string> = {
   M: 'var(--color-guerreiro)',
   U: 'var(--color-zeus)',
 }
+
+const CATALOGO_FILTROS: { key: 'ALL' | 'F' | 'M' | 'U'; label: string }[] = [
+  { key: 'ALL', label: 'Todos' },
+  { key: 'F', label: 'Feminino' },
+  { key: 'M', label: 'Masculino' },
+  { key: 'U', label: 'Compartilhável' },
+]
 
 /** Faixa curta que suaviza a transição de bg-papel para bg-noite. */
 function DarkTransition() {
@@ -79,7 +87,14 @@ export function HomePage() {
   const { hash } = useLocation()
   const familiesScroll = useScrollProgress<HTMLDivElement>()
   const energiesScroll = useScrollProgress<HTMLDivElement>()
-  const catalogoScroll = useScrollProgress<HTMLDivElement>()
+  const [catalogoFiltro, setCatalogoFiltro] = useState<'ALL' | 'F' | 'M' | 'U'>('ALL')
+  const catalogoFiltrado = useMemo(
+    () => (catalogoFiltro === 'ALL' ? ARCHETYPES : ARCHETYPES.filter((a) => a.seg === catalogoFiltro)),
+    [catalogoFiltro],
+  )
+  const catalogoLoop = [...catalogoFiltrado, ...catalogoFiltrado, ...catalogoFiltrado]
+  const catalogoCarrossel = useInfiniteCarousel(catalogoFiltrado.length)
+  const catalogoAtivo = catalogoFiltrado.length > 0 ? catalogoCarrossel.activeIndex % catalogoFiltrado.length : 0
 
   useEffect(() => {
     if (!hash) return
@@ -427,68 +442,122 @@ export function HomePage() {
               <br />
               Um sistema.
             </h2>
-            <p className="mt-3 max-w-[32ch] text-sm text-papel-inv/60">
-              Dois perfumes. Sete body splashes. Nove formas de se expressar.
+            <p className="mt-3 max-w-[34ch] text-sm text-papel-inv/60">
+              Cada fragrância revela uma forma diferente de estar no mundo.
             </p>
           </div>
 
-          <div
-            ref={catalogoScroll.ref}
-            className="scroll-pad no-scrollbar mt-4 flex snap-x gap-4 overflow-x-auto px-5 pb-2"
-          >
-            {ARCHETYPES.map((a) => (
-              <Link
-                key={a.id}
-                to={`/arquetipos/${a.id}`}
-                className="group relative w-[78vw] max-w-[300px] shrink-0 snap-start overflow-hidden rounded-3xl bg-papel text-left"
-                style={{ boxShadow: '0 14px 30px -16px rgba(0,0,0,0.5)' }}
+          <div className="no-scrollbar flex gap-5 overflow-x-auto px-5 pb-1" role="tablist" aria-label="Filtrar catálogo">
+            {CATALOGO_FILTROS.map((f) => (
+              <button
+                key={f.key}
+                type="button"
+                role="tab"
+                aria-selected={catalogoFiltro === f.key}
+                onClick={() => setCatalogoFiltro(f.key)}
+                className={`shrink-0 whitespace-nowrap border-b pb-2 font-mono text-[10.5px] tracking-[0.12em] uppercase transition-colors duration-300 ${
+                  catalogoFiltro === f.key
+                    ? 'border-latao text-latao'
+                    : 'border-transparent text-papel-inv/45'
+                }`}
               >
-                <div
-                  className="relative flex aspect-[4/5] items-center justify-center overflow-hidden"
-                  style={{ background: a.bg }}
-                >
-                  <span
-                    className="pointer-events-none absolute inset-x-0 bottom-2 text-center font-display leading-none tracking-tight opacity-[0.09]"
-                    style={{ color: a.cor, fontSize: '5.5rem' }}
-                  >
-                    {a.nome}
-                  </span>
-                  {FRASCO_IMG[a.id] && (
-                    <img
-                      src={FRASCO_IMG[a.id]}
-                      alt=""
-                      className="relative z-10 h-[85%] w-auto object-contain transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
-                      style={{ willChange: 'transform' }}
-                    />
-                  )}
-                  {a.status === 'wait' && (
-                    <span className="absolute top-3 right-3 z-10 rounded-full bg-papel/85 px-2.5 py-1 font-mono text-[8px] tracking-wide text-alerta uppercase">
-                      Em breve
-                    </span>
-                  )}
-                </div>
-
-                <div className="relative px-5 py-5">
-                  <span className="block font-mono text-[9px] tracking-widest text-tinta-3 uppercase">{a.cod}</span>
-                  <b className="mt-1.5 block font-display text-xl text-tinta">{a.nome}</b>
-                  <span className="mt-1 block text-xs text-tinta-2">{a.fam}</span>
-                  <span className="mt-2 block font-mono text-[9px] tracking-wide text-tinta-3 uppercase">
-                    {a.tipo} · {a.vol}
-                  </span>
-                  <span className="mt-3 block text-base font-medium text-tinta">
-                    {a.status === 'wait' ? 'Avise-me' : brl(a.preco)}
-                  </span>
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute right-5 bottom-5 flex size-8 items-center justify-center rounded-full border border-linha-2 text-tinta-2"
-                  >
-                    →
-                  </span>
-                </div>
-              </Link>
+                {f.label}
+              </button>
             ))}
           </div>
-          <ScrollProgressBar fillPct={catalogoScroll.fillPct} />
+
+          <div
+            ref={catalogoCarrossel.containerRef}
+            className="scroll-pad no-scrollbar mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-[8vw] pb-2"
+          >
+            {catalogoLoop.map((a, i) => {
+              const dist = Math.abs(i - catalogoCarrossel.activeIndex)
+              const isActive = dist === 0
+              return (
+              <div
+                key={`${a.id}-${i}`}
+                ref={catalogoCarrossel.registerItem(i)}
+                className="group relative aspect-[3/4] w-[84vw] max-w-[320px] shrink-0 snap-center overflow-hidden rounded-3xl text-left"
+                style={{
+                  boxShadow: isActive ? '0 20px 40px -16px rgba(0,0,0,0.55)' : '0 10px 22px -14px rgba(0,0,0,0.4)',
+                  transform: `scale(${isActive ? 1 : 0.87})`,
+                  opacity: isActive ? 1 : 0.55,
+                  filter: isActive ? 'blur(0px)' : 'blur(2.5px)',
+                  transition: 'transform 0.5s cubic-bezier(0.16,1,0.3,1), opacity 0.5s ease, filter 0.5s ease',
+                  scrollSnapStop: 'always',
+                }}
+              >
+                <div className="absolute inset-0" style={{ background: a.bg }} />
+
+                {FRASCO_IMG[a.id] && (
+                  <img
+                    src={FRASCO_IMG[a.id]}
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+                    style={{ willChange: 'transform' }}
+                  />
+                )}
+
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute top-4 left-4 z-10 font-display text-[2.75rem] leading-none font-light"
+                  style={{ color: a.cor, opacity: 0.55, textShadow: '0 1px 12px rgba(0,0,0,0.25)' }}
+                >
+                  {a.cod.split('-')[1]}
+                </span>
+                {a.status === 'wait' && (
+                  <span className="absolute top-3 right-3 z-20 rounded-full bg-papel/85 px-2.5 py-1 font-mono text-[8px] tracking-wide text-alerta uppercase">
+                    Em breve
+                  </span>
+                )}
+
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-[58%] backdrop-blur-md"
+                  style={{
+                    background: `linear-gradient(to top, color-mix(in srgb, ${a.cor} 78%, var(--color-noite) 22%) 0%, color-mix(in srgb, ${a.cor} 45%, transparent) 60%, transparent 100%)`,
+                    maskImage: 'linear-gradient(to top, black 45%, transparent 100%)',
+                    WebkitMaskImage: 'linear-gradient(to top, black 45%, transparent 100%)',
+                  }}
+                />
+
+                <div className="absolute inset-x-0 bottom-0 z-10 px-5 pt-5 pb-5">
+                  <span className="block font-mono text-[9px] tracking-widest text-papel-inv/70 uppercase">
+                    {a.cod}
+                  </span>
+                  <b className="mt-1.5 block font-display text-2xl text-papel-inv">{a.nome}</b>
+                  <span className="mt-1 block text-sm text-papel-inv/80">{a.fam}</span>
+                  <span className="mt-3 block font-mono text-[9px] tracking-wide text-papel-inv/60 uppercase">
+                    {a.tipo} · {a.vol}
+                  </span>
+                  <div className="mt-2 flex items-center justify-between gap-3">
+                    <span className="text-sm text-papel-inv/90">
+                      {a.status === 'wait' ? 'Avise-me' : brl(a.preco)}
+                    </span>
+                    <Link
+                      to={`/arquetipos/${a.id}`}
+                      className="relative z-20 inline-flex shrink-0 items-center justify-center rounded-full border border-papel-inv/40 bg-papel-inv/10 px-4 py-2.5 font-mono text-[10px] tracking-[0.12em] text-papel-inv uppercase backdrop-blur-sm transition-colors duration-300 ease-out hover:border-papel-inv/60 hover:bg-papel-inv/20"
+                    >
+                      {a.status === 'wait' ? 'Entrar na lista' : 'Descobrir'}
+                    </Link>
+                  </div>
+                </div>
+              </div>
+              )
+            })}
+          </div>
+          <div className="mt-5 flex items-center justify-center gap-2" aria-hidden>
+            {catalogoFiltrado.map((a, i) => (
+              <span
+                key={a.id}
+                className="h-[3px] w-5 rounded-full transition-colors duration-300"
+                style={{
+                  background:
+                    i === catalogoAtivo ? 'var(--color-latao)' : 'color-mix(in srgb, var(--color-papel-inv) 25%, transparent)',
+                }}
+              />
+            ))}
+          </div>
           <p className="mt-3 px-5 text-center font-mono text-[9.5px] tracking-widest text-papel-inv/40 uppercase">
             Deslize para explorar
           </p>
