@@ -108,8 +108,11 @@ decisão de produto já tomada:
 - **`UGC_VIDEOS` em `data/home.ts` tem depoimentos fictícios/ilustrativos**
   (3 dos 5 criadores e seus textos foram inventados pra dar volume ao
   carrossel — só os 2 primeiros vêm de `TESTIMONIALS`, que já eram
-  ilustrativos). Trocar por depoimentos e criadores reais antes do
-  lançamento.
+  ilustrativos). As fotos de UGC (`ugc-*.jpg`) são geradas por IA com o
+  frasco real como referência — as pessoas não existem, e a seção diz
+  "Pessoas reais". Trocar fotos, @ e depoimentos por criadores reais e
+  autorizados antes do lançamento. O "4,8 · 2.147 avaliações" da
+  comunidade também não tem fonte.
 
 ## Pendências reais (não resolvidas no protótipo, não inventar resposta)
 

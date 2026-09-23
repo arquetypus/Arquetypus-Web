@@ -7,6 +7,7 @@ import {
   DIAGNOSIS,
   ENERGIES,
   FAMILIES,
+  FRASCO_CUT_IMG,
   FRASCO_IMG,
   JOURNAL,
   QUALIFICATION,
@@ -23,10 +24,12 @@ import { MediaSlot } from '@/components/ui/MediaSlot'
 import { HeroCarousel } from '@/components/HeroCarousel'
 import { Reveal } from '@/components/ui/Reveal'
 import { CarouselDots } from '@/components/ui/CarouselDots'
+import { CutFrame } from '@/components/ui/CutFrame'
 import { scrollToId } from '@/lib/scrollToId'
 import { useCarouselIndex } from '@/lib/useCarouselIndex'
 import { useTapGuard } from '@/lib/useTapGuard'
 import { useInfiniteCarousel } from '@/lib/useInfiniteCarousel'
+import { useCoverflow } from '@/lib/useCoverflow'
 import bannerKitDescoberta from '@/assets/mocks/home/banner-kit-descoberta.png'
 import florArquetypus from '@/assets/brand/flor-arquetypus.png'
 import ribbonArquetypus from '@/assets/brand/ribbon-arquetypus.png'
@@ -35,6 +38,9 @@ const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', curren
 
 /** Latão clareado — o --color-latao puro some sobre fundo escuro/bronze. */
 const LATAO_CLARO = 'color-mix(in srgb, var(--color-latao) 60%, var(--color-papel-inv) 40%)'
+
+/** Largura do card de UGC — o carrossel centraliza a partir dela. */
+const UGC_CARD_W = 'min(76vw, 320px)'
 
 const SEGMENT_TINT: Record<'F' | 'M' | 'U', string> = {
   F: 'var(--color-afrodite)',
@@ -86,6 +92,150 @@ function SealIcon({ seal, className }: { seal: string; className?: string }) {
     <svg aria-hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className={className}>
       <path d={d} />
     </svg>
+  )
+}
+
+/**
+ * H-19 Comunidade. Componente próprio de propósito: o índice ativo do carrossel
+ * muda a cada card que passa, e como estado da HomePage re-renderizava a página
+ * inteira no meio do gesto (travadinha ao trocar de card).
+ */
+function CommunitySection() {
+  const ugcScroll = useCarouselIndex<HTMLDivElement>(UGC_VIDEOS.length)
+  useCoverflow(ugcScroll.ref)
+
+  // UGC em moldura recortada + product tag sobreposto
+  return (
+    <Reveal
+      as="section"
+      className="relative overflow-hidden bg-papel pt-14 pb-16"
+      style={{
+        // degrau: sai da "A diferença" (por cima) para uma seção que fica abaixo
+        boxShadow:
+          'inset 0 1px 0 color-mix(in srgb, var(--color-latao) 60%, transparent), inset 0 26px 28px -20px rgba(44,44,41,0.4), inset 0 8px 10px -7px rgba(44,44,41,0.28)',
+      }}
+    >
+      <img
+        src={florArquetypus}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute select-none"
+        style={{
+          top: '-20px',
+          right: '-80px',
+          width: '240px',
+          height: 'auto',
+          opacity: 0.14,
+          transform: 'rotate(20deg)',
+          maskImage: 'radial-gradient(closest-side, black 55%, transparent 100%)',
+          WebkitMaskImage: 'radial-gradient(closest-side, black 55%, transparent 100%)',
+        }}
+      />
+
+      <div className="relative px-5">
+        <div className="flex items-center gap-3">
+          <span aria-hidden className="h-px w-6 bg-latao" />
+          <Eyebrow>A comunidade</Eyebrow>
+        </div>
+        <h2 className="mt-4 font-display text-[32px] leading-[1.1] text-tinta">Quem já despertou</h2>
+        <p className="mt-3 text-sm leading-relaxed text-tinta-2">
+          Pessoas reais.
+          <br />
+          Diferentes formas de viver seus arquétipos.
+        </p>
+      </div>
+
+      <div
+        ref={ugcScroll.ref}
+        className="no-scrollbar relative mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2"
+        // padding lateral = metade da sobra, pra o primeiro e o último card também pararem no centro
+        style={{ paddingInline: `calc((100% - ${UGC_CARD_W}) / 2)` }}
+      >
+        {UGC_VIDEOS.map((v, i) => {
+          const arq = getArchetype(v.archetypeId)
+          if (!arq) return null
+          return (
+            <article
+              key={v.creator}
+              className="shrink-0 snap-center"
+              aria-current={i === ugcScroll.activeIndex ? 'true' : undefined}
+              // escala/opacidade/blur vêm do useCoverflow, contínuos conforme o scroll
+              style={{ width: UGC_CARD_W, willChange: 'transform, opacity' }}
+            >
+              <CutFrame cut={14} innerClassName="relative aspect-[9/16] bg-papel-2">
+                <img
+                  src={UGC_IMG[v.archetypeId]}
+                  alt={`${v.creator} segurando o body splash ${arq.nome}`}
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-0 top-0 h-24"
+                  style={{ background: 'linear-gradient(to bottom, rgba(20,18,15,0.45), transparent)' }}
+                />
+                {/* legenda editorial discreta */}
+                <div className="absolute top-4 left-4 font-mono text-[9px] tracking-widest text-papel-inv/90 uppercase">
+                  <span className="block">
+                    {String(i + 1).padStart(2, '0')} / {String(UGC_VIDEOS.length).padStart(2, '0')}
+                  </span>
+                  <span className="mt-1 block normal-case tracking-wide text-papel-inv/75">
+                    {v.creator} · <span className="uppercase tracking-widest">{arq.nome}</span>
+                  </span>
+                </div>
+              </CutFrame>
+
+              {/* product tag — sobe sobre a base do vídeo; miniatura do frasco à esquerda */}
+              <div className="relative z-10 -mt-12 px-3">
+                <CutFrame cut={10} innerClassName="bg-papel p-3">
+                  <div className="flex gap-3">
+                    {FRASCO_CUT_IMG[arq.id] && (
+                      <div aria-hidden className="relative flex h-[76px] w-[52px] shrink-0 items-end justify-center">
+                        {/* sombra de contato sutil na base do frasco */}
+                        <span
+                          className="absolute bottom-0 h-2 w-9 rounded-[50%]"
+                          style={{ background: 'radial-gradient(closest-side, rgba(44,44,41,0.32), transparent)' }}
+                        />
+                        <img
+                          src={FRASCO_CUT_IMG[arq.id]}
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                          className="relative mb-0.5 h-[72px] w-auto"
+                        />
+                      </div>
+                    )}
+                    <div className="flex min-w-0 flex-1 flex-col justify-center">
+                      <b className="block truncate font-display text-lg leading-tight font-normal text-tinta">{arq.nome}</b>
+                      <span className="block truncate text-xs text-tinta-2">{arq.fam}</span>
+                      <span className="mt-1 block truncate font-mono text-[8.5px] tracking-widest text-tinta-3 uppercase">
+                        {arq.tipo} · {arq.vol}
+                      </span>
+                      <span className="mt-1 block text-sm leading-none text-tinta">{brl(arq.preco)}</span>
+                    </div>
+                  </div>
+                  <Link
+                    to={`/loja/${arq.id}`}
+                    className="mt-3 block w-full rounded-full border border-latao/50 bg-papel/40 py-2.5 text-center text-xs font-medium tracking-wide text-tinta uppercase transition-colors duration-300 ease-out hover:border-latao hover:bg-papel-2/70"
+                  >
+                    Descobrir
+                  </Link>
+                </CutFrame>
+              </div>
+
+              <p className="mt-3 px-3 text-[13px] leading-relaxed text-tinta-2 italic">“{v.testimonial}”</p>
+            </article>
+          )
+        })}
+      </div>
+
+      <CarouselDots count={UGC_VIDEOS.length} active={ugcScroll.activeIndex} className="mt-6" />
+
+      <p className="mt-6 text-center text-xs text-tinta-3">
+        <span className="text-latao">★</span> 4,8 · 2.147 avaliações
+      </p>
+    </Reveal>
   )
 }
 
@@ -893,46 +1043,7 @@ export function HomePage() {
         </Reveal>
 
         {/* H-19 Comunidade */}
-        <Reveal as="section" className="py-8">
-          <div className="px-4">
-            <Eyebrow>A comunidade</Eyebrow>
-            <h2 className="mt-2.5 font-display text-2xl">Quem já despertou</h2>
-          </div>
-          <div className="scroll-pad mt-5 flex snap-x gap-3 overflow-x-auto px-4 pb-2">
-            {UGC_VIDEOS.map((v) => {
-              const arq = getArchetype(v.archetypeId)
-              if (!arq) return null
-              return (
-                <div key={v.creator} className="w-[70%] shrink-0 snap-start">
-                  <MediaSlot
-                    aspect="9/16"
-                    src={UGC_IMG[v.archetypeId]}
-                    requisito={`VÍDEO · 9:16 · 1080×1920 · ${v.creator}`}
-                    className="rounded-b-none"
-                  />
-                  <Link
-                    to={`/loja/${arq.id}`}
-                    className="flex items-center gap-2.5 rounded-b-lg border border-t-0 border-linha-2 bg-papel p-2.5 transition-transform hover:scale-[1.02]"
-                  >
-                    <span className="size-8 shrink-0 rounded-full" style={{ background: arq.bg }} />
-                    <span className="min-w-0">
-                      <span className="flex items-center gap-1.5 font-display text-sm">
-                        <span className="size-2 rounded-full" style={{ background: arq.cor }} />
-                        {arq.nome}
-                      </span>
-                      <span className="block text-xs text-tinta-3">{brl(arq.preco)}</span>
-                    </span>
-                  </Link>
-                  <p className="mt-2 text-xs italic text-tinta-2">“{v.testimonial}”</p>
-                </div>
-              )
-            })}
-          </div>
-          <div className="mt-3 flex items-center gap-2 px-4">
-            <span className="text-latao">★★★★★</span>
-            <span className="text-xs text-tinta-2">4,8 · 2.147 avaliações</span>
-          </div>
-        </Reveal>
+        <CommunitySection />
 
         <DarkTransition />
 

@@ -26,12 +26,17 @@ import frascoZeus from '@/assets/mocks/frasco-zeus.png'
 import frascoGuerreiro from '@/assets/mocks/frasco-guerreiro.png'
 import frascoImperador from '@/assets/mocks/frasco-imperador.png'
 import frascoFenix from '@/assets/mocks/frasco-fenix.png'
+import frascoCutCleopatra from '@/assets/mocks/frasco-cut-cleopatra.png'
+import frascoCutSereia from '@/assets/mocks/frasco-cut-sereia.png'
+import frascoCutAfrodite from '@/assets/mocks/frasco-cut-afrodite.png'
+import frascoCutGuerreiro from '@/assets/mocks/frasco-cut-guerreiro.png'
+import frascoCutImperatriz from '@/assets/mocks/frasco-cut-imperatriz.png'
 export { default as BODEGON_IMG } from '@/assets/mocks/bodegon-9-frascos.png'
-import ugcCleopatra from '@/assets/mocks/ugc-cleopatra.png'
-import ugcSereia from '@/assets/mocks/ugc-sereia.png'
-import ugcAfrodite from '@/assets/mocks/ugc-afrodite.png'
-import ugcGuerreiro from '@/assets/mocks/ugc-guerreiro.png'
-import ugcImperatriz from '@/assets/mocks/ugc-imperatriz.png'
+import ugcCleopatra from '@/assets/mocks/ugc-cleopatra.jpg'
+import ugcSereia from '@/assets/mocks/ugc-sereia.jpg'
+import ugcAfrodite from '@/assets/mocks/ugc-afrodite.jpg'
+import ugcGuerreiro from '@/assets/mocks/ugc-guerreiro.jpg'
+import ugcImperatriz from '@/assets/mocks/ugc-imperatriz.jpg'
 
 export const UGC_IMG: Record<string, string> = {
   cleopatra: ugcCleopatra,
@@ -161,6 +166,18 @@ export const FRASCO_IMG: Record<string, string> = {
   fenix: frascoFenix,
 }
 
+/**
+ * Frasco recortado (fundo transparente, 240px de altura) — miniatura do product tag da comunidade.
+ * Recorte feito no Higgsfield a partir de FRASCO_IMG; só existe para os arquétipos que têm UGC.
+ */
+export const FRASCO_CUT_IMG: Record<string, string> = {
+  cleopatra: frascoCutCleopatra,
+  sereia: frascoCutSereia,
+  afrodite: frascoCutAfrodite,
+  guerreiro: frascoCutGuerreiro,
+  imperatriz: frascoCutImperatriz,
+}
+
 export const QUALIFICATION = [
   {
     title: 'Você cansou de cheirar igual a todo mundo.',
@@ -207,8 +224,10 @@ export const TESTIMONIALS = [
 
 /**
  * Depoimentos fictícios/ilustrativos — placeholders pra carrossel ter
- * scroll real antes de existir conteúdo de criador de verdade. Trocar
- * por depoimentos reais antes do lançamento (ver CLAUDE.md).
+ * scroll real antes de existir conteúdo de criador de verdade. As fotos
+ * (UGC_IMG) são geradas por IA (Higgsfield, com o frasco real como
+ * referência): pessoas NÃO existem. Trocar fotos, @ e depoimentos por
+ * conteúdo real e autorizado antes do lançamento (ver CLAUDE.md).
  */
 export const UGC_VIDEOS = [
   { creator: '@marianac_', archetypeId: 'cleopatra', testimonial: TESTIMONIALS[0] },
