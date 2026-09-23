@@ -82,7 +82,8 @@ export function HeroCarousel() {
       </div>
 
       {/* Navegação — contador + setas com barras */}
-      <div className="relative z-10 px-6 pt-4 pb-36">
+      {/* telas baixas (iPhone 11 e afins): conteúdo desce junto com o card das seções — ver -mt em HomePage */}
+      <div className="relative z-10 px-6 pt-4 pb-36 [@media(max-height:820px)]:pb-24">
         <p className="text-center font-mono text-xs tabular-nums text-papel-inv/50">
           {current + 1}
           <span className="text-papel-inv/25">/</span>

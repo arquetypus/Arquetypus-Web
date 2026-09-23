@@ -248,7 +248,8 @@ export function HomePage() {
       {/* H-03 Hero — carrossel sticky, card sobe por cima */}
       <HeroCarousel />
 
-      <div className="relative z-10 -mt-28 rounded-t-3xl bg-papel">
+      {/* card das seções sobe por cima do hero; em telas baixas sobe menos pra mostrar mais imagem (par do pb do HeroCarousel) */}
+      <div className="relative z-10 -mt-28 rounded-t-3xl bg-papel [@media(max-height:820px)]:-mt-16">
         {/* H-05 Selos — grid 2x2 com ícone, estilo trust badges */}
         <section className="grid grid-cols-2 divide-x divide-y divide-linha overflow-hidden rounded-t-3xl border-b border-linha">
           {SEALS.map((s) => (
