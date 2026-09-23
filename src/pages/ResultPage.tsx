@@ -88,7 +88,7 @@ export function ResultPage() {
 
       {/* Layering */}
       <Reveal as="section" className="bg-papel px-4 py-8">
-        <p className="font-mono text-[10px] tracking-[0.18em] text-latao uppercase">
+        <p className="font-mono text-[10px] tracking-[0.18em] text-latao-texto uppercase">
           Como usar as duas juntas
         </p>
         <p className="mt-3 text-sm leading-relaxed text-tinta-2">{a.layer}</p>
@@ -104,7 +104,7 @@ export function ResultPage() {
               seu resultado.
             </p>
             <Link
-              to={`/arquetipos/${oferta.id}`}
+              to={`/loja/${oferta.id}`}
               className="mt-3 block w-full rounded-lg bg-tinta py-4 text-center text-sm font-medium tracking-wide text-papel uppercase"
             >
               Conhecer {oferta.nome}

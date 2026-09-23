@@ -44,7 +44,7 @@ export function CaptureModal() {
           <p className="py-6 text-center text-sm font-medium">Cupom enviado para seu e-mail!</p>
         ) : (
           <>
-            <p className="font-mono text-[10px] tracking-[0.22em] text-latao uppercase">
+            <p className="font-mono text-[10px] tracking-[0.22em] text-latao-texto uppercase">
               Primeira compra
             </p>
             <h2 className="mt-2 font-display text-2xl">

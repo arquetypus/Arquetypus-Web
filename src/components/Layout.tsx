@@ -5,7 +5,11 @@ import wordmarkMarmore from '@/assets/brand/wordmark-marmore.png'
 
 export function Layout() {
   const [scrolled, setScrolled] = useState(false)
-  const { pathname } = useLocation()
+  const location = useLocation()
+  // com pop-up aberto (state.backgroundLocation), o Layout continua refletindo a página de fundo —
+  // senão a home remontaria e voltaria ao topo ao abrir o pop-up de compra
+  const { pathname } =
+    (location.state as { backgroundLocation?: typeof location } | null)?.backgroundLocation ?? location
   const scrollRef = useRef<HTMLDivElement>(null)
   const isHome = pathname === '/'
   const headerOverHero = isHome && !scrolled
@@ -47,7 +51,18 @@ export function Layout() {
           }}
         />
         <div className="w-5" aria-hidden />
-        <Link to="/" className="relative block h-11 w-28">
+        <Link
+          to="/"
+          aria-label="Arquétypus — voltar ao início"
+          onClick={(e) => {
+            // já na home (sem pop-up aberto): o Link não faria nada — sobe suavemente ao topo
+            if (location.pathname === '/') {
+              e.preventDefault()
+              scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
+            }
+          }}
+          className="relative block h-11 w-28"
+        >
           <img
             src={wordmarkMarmore}
             alt="Arquétypus"

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { HERO_SLIDES } from '@/data/home'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { MediaSlot } from '@/components/ui/MediaSlot'
@@ -8,6 +8,7 @@ import { scrollToId } from '@/lib/scrollToId'
 const AUTOPLAY_MS = 5000
 
 export function HeroCarousel() {
+  const location = useLocation()
   const [current, setCurrent] = useState(0)
   const total = HERO_SLIDES.length
   const slide = HERO_SLIDES[current]
@@ -31,6 +32,8 @@ export function HeroCarousel() {
           requisito={slide.requisito}
           dark
           className="h-full w-full rounded-none border-0"
+          tagClassName="top-16 right-3"
+          tagLabel="9:16 · 1080×1920 · tela cheia"
         />
       </div>
 
@@ -65,6 +68,12 @@ export function HeroCarousel() {
           ) : (
             <Link
               to={slide.cta.to}
+              // /loja/:id e /kit-descoberta abrem o pop-up de compra por cima da home (ver App.tsx)
+              state={
+                slide.cta.to.startsWith('/loja/') || slide.cta.to === '/kit-descoberta'
+                  ? { backgroundLocation: location }
+                  : undefined
+              }
               className="mx-auto mt-5 block w-full max-w-xs rounded-lg border border-papel-inv/30 bg-papel-inv/10 py-4 text-sm font-medium tracking-wide text-papel-inv uppercase backdrop-blur-sm"
             >
               {slide.cta.label}

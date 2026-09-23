@@ -112,7 +112,7 @@ export function CreatorsPage() {
         <div className="mt-5 flex flex-col gap-4">
           {HOW_IT_WORKS.map((s) => (
             <div key={s.n} className="flex gap-3">
-              <span className="font-mono text-xs text-latao">{s.n}</span>
+              <span className="font-mono text-xs text-latao-texto">{s.n}</span>
               <div>
                 <b className="text-sm">{s.title}</b>
                 <p className="mt-0.5 text-sm text-tinta-2">{s.body}</p>
@@ -146,7 +146,7 @@ export function CreatorsPage() {
         <div className="mt-5 grid grid-cols-2 gap-4">
           {RANKING_STATS.map((s) => (
             <div key={s.label}>
-              <span className="block font-display text-2xl text-latao">{s.v}</span>
+              <span className="block font-display text-2xl text-latao-texto">{s.v}</span>
               <span className="mt-1 block text-xs text-tinta-2">{s.label}</span>
             </div>
           ))}
@@ -196,7 +196,7 @@ export function CreatorsPage() {
             </button>
           ))}
         </div>
-        <p className="mt-2.5 font-mono text-[10px] text-latao uppercase">
+        <p className="mt-2.5 font-mono text-[10px] text-latao-texto uppercase">
           {a
             ? `Você vai representar: ${a.nome}${a.status === 'wait' ? ' · em lista de espera junto com o arquétipo' : ''}`
             : 'Nenhum arquétipo selecionado'}

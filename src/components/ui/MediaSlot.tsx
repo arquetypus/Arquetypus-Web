@@ -1,8 +1,11 @@
+import { RatioTag } from '@/components/ui/RatioTag'
+
 /**
  * Placeholder de mídia — mostra o requisito de produção no lugar do
  * asset, como o protótipo v6 faz com `.slot`/`.req`. Quando `src` é
  * passado, mostra uma imagem-base (mock gerado, não é still real da
- * Scentec) com o requisito como legenda por cima — ver CLAUDE.md.
+ * Scentec) com a proporção num selo discreto (RatioTag); o requisito
+ * completo fica no tooltip do selo — ver CLAUDE.md.
  */
 export function MediaSlot({
   aspect = '4/5',
@@ -11,6 +14,8 @@ export function MediaSlot({
   className = '',
   dark = false,
   src,
+  tagClassName,
+  tagLabel,
 }: {
   aspect?: string
   bg?: string
@@ -18,23 +23,17 @@ export function MediaSlot({
   className?: string
   dark?: boolean
   src?: string
+  tagClassName?: string
+  tagLabel?: string
 }) {
   if (src) {
     return (
       <div
-        className={`relative overflow-hidden rounded-lg border border-dashed ${
-          dark ? 'border-papel-inv/15' : 'border-linha-2'
-        } ${className}`}
+        className={`relative overflow-hidden rounded-lg ${className}`}
         style={{ aspectRatio: aspect === 'auto' ? undefined : aspect }}
       >
         <img src={src} alt="" className="absolute inset-0 h-full w-full object-cover" />
-        <p
-          className={`absolute inset-x-0 top-0 z-30 truncate px-2 py-1.5 font-mono text-[9px] font-medium tracking-wide ${
-            dark ? 'bg-noite/75 text-papel-inv' : 'bg-tinta/75 text-papel'
-          }`}
-        >
-          {requisito}
-        </p>
+        <RatioTag className={tagClassName} title={requisito} label={tagLabel} />
       </div>
     )
   }

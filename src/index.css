@@ -14,7 +14,8 @@
   --color-tinta: #2c2c29;
   --color-tinta-2: #6d6c65;
   --color-tinta-3: #98978f;
-  --color-latao: #8c7a4b;
+  --color-latao: #c6a46c; /* dourado do logo (assets/brand/logo-dourado.png) — destaques, linhas, títulos grandes */
+  --color-latao-texto: #8c7a4b; /* latão original: texto (números, rótulos) e ícones sobre fundo claro */
 
   --color-afrodite: #b9697f;
   --color-imperatriz: #8e4566;
@@ -197,4 +198,23 @@ button:active:not(.no-press) {
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+/* Pop-up de compra (ProductSheet): sobe de baixo, fundo escurece */
+@media (prefers-reduced-motion: no-preference) {
+  .sheet-in {
+    animation: sheet-in 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .sheet-backdrop {
+    animation: page-fade 0.3s ease-out;
+  }
+}
+
+@keyframes sheet-in {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }

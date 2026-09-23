@@ -20,11 +20,13 @@ import {
 import { ECON } from '@/data/economics'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { MediaSlot } from '@/components/ui/MediaSlot'
+import { RatioTag } from '@/components/ui/RatioTag'
 // import { KitBuilder } from '@/components/KitBuilder' // seção "Monte o seu" desativada
 import { HeroCarousel } from '@/components/HeroCarousel'
 import { Reveal } from '@/components/ui/Reveal'
 import { CarouselDots } from '@/components/ui/CarouselDots'
 import { CutFrame } from '@/components/ui/CutFrame'
+import { SweepCta } from '@/components/ui/SweepCta'
 import { scrollToId } from '@/lib/scrollToId'
 import { useCarouselIndex } from '@/lib/useCarouselIndex'
 import { useTapGuard } from '@/lib/useTapGuard'
@@ -33,11 +35,12 @@ import { useCoverflow } from '@/lib/useCoverflow'
 import bannerKitDescoberta from '@/assets/mocks/home/banner-kit-descoberta.png'
 import florArquetypus from '@/assets/brand/flor-arquetypus.png'
 import ribbonArquetypus from '@/assets/brand/ribbon-arquetypus.png'
+import logoBranco from '@/assets/brand/logo-branco.png'
 
 const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
-/** Latão clareado — o --color-latao puro some sobre fundo escuro/bronze. */
-const LATAO_CLARO = 'color-mix(in srgb, var(--color-latao) 60%, var(--color-papel-inv) 40%)'
+/** Dourado sobre fundo escuro/bronze. Hoje é o próprio --color-latao (dourado do logo), que já é claro o bastante. */
+const LATAO_CLARO = 'var(--color-latao)'
 
 /** Largura do card de UGC — o carrossel centraliza a partir dela. */
 const UGC_CARD_W = 'min(76vw, 320px)'
@@ -54,29 +57,6 @@ const CATALOGO_FILTROS: { key: 'ALL' | 'F' | 'M' | 'U'; label: string }[] = [
   { key: 'M', label: 'Masculino' },
   { key: 'U', label: 'Compartilhável' },
 ]
-
-/** Faixa curta que suaviza a transição de bg-papel para bg-noite. */
-function DarkTransition() {
-  return (
-    <div className="relative h-28 overflow-hidden" aria-hidden>
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            'linear-gradient(to bottom, var(--color-papel-2) 0%, color-mix(in srgb, var(--color-papel-2) 90%, var(--color-noite) 10%) 15%, color-mix(in srgb, var(--color-papel-2) 68%, var(--color-noite) 32%) 32%, color-mix(in srgb, var(--color-papel-2) 42%, var(--color-noite) 58%) 50%, color-mix(in srgb, var(--color-papel-2) 20%, var(--color-noite) 80%) 68%, color-mix(in srgb, var(--color-papel-2) 6%, var(--color-noite) 94%) 85%, var(--color-noite) 100%)',
-        }}
-      />
-      <div
-        className="absolute inset-x-0 top-1/2 h-20 -translate-y-1/2"
-        style={{
-          background:
-            'radial-gradient(ellipse at center, color-mix(in srgb, var(--color-latao) 30%, transparent) 0%, transparent 70%)',
-          filter: 'blur(32px)',
-        }}
-      />
-    </div>
-  )
-}
 
 const SEAL_ICON_PATHS: Record<string, string> = {
   'Entrega garantida': 'M3 7h11v8H3V7Zm11 3h3.5L20 13v2h-3M6 18a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm10 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z',
@@ -101,6 +81,7 @@ function SealIcon({ seal, className }: { seal: string; className?: string }) {
  * inteira no meio do gesto (travadinha ao trocar de card).
  */
 function CommunitySection() {
+  const location = useLocation()
   const ugcScroll = useCarouselIndex<HTMLDivElement>(UGC_VIDEOS.length)
   useCoverflow(ugcScroll.ref)
 
@@ -170,6 +151,7 @@ function CommunitySection() {
                   decoding="async"
                   className="absolute inset-0 h-full w-full object-cover"
                 />
+                <RatioTag className="top-4 right-4" />
                 <div
                   aria-hidden
                   className="pointer-events-none absolute inset-x-0 top-0 h-24"
@@ -217,6 +199,7 @@ function CommunitySection() {
                   </div>
                   <Link
                     to={`/loja/${arq.id}`}
+                    state={{ backgroundLocation: location }}
                     className="mt-3 block w-full rounded-full border border-latao/50 bg-papel/40 py-2.5 text-center text-xs font-medium tracking-wide text-tinta uppercase transition-colors duration-300 ease-out hover:border-latao hover:bg-papel-2/70"
                   >
                     Descobrir
@@ -233,14 +216,15 @@ function CommunitySection() {
       <CarouselDots count={UGC_VIDEOS.length} active={ugcScroll.activeIndex} className="mt-6" />
 
       <p className="mt-6 text-center text-xs text-tinta-3">
-        <span className="text-latao">★</span> 4,8 · 2.147 avaliações
+        <span className="text-latao-texto">★</span> 4,8 · 2.147 avaliações
       </p>
     </Reveal>
   )
 }
 
 export function HomePage() {
-  const { hash } = useLocation()
+  const location = useLocation()
+  const { hash } = location
   const familiesScroll = useCarouselIndex<HTMLDivElement>(FAMILIES.length)
   const energiesScroll = useCarouselIndex<HTMLDivElement>(ENERGIES.length)
   const tapGuard = useTapGuard()
@@ -269,7 +253,7 @@ export function HomePage() {
         <section className="grid grid-cols-2 divide-x divide-y divide-linha overflow-hidden rounded-t-3xl border-b border-linha">
           {SEALS.map((s) => (
             <div key={s} className="flex flex-col items-center gap-2 px-3 py-5">
-              <SealIcon seal={s} className="size-5 text-latao" />
+              <SealIcon seal={s} className="size-5 text-latao-texto" />
               <span className="text-center font-mono text-[9px] tracking-widest text-tinta-3 uppercase">{s}</span>
             </div>
           ))}
@@ -386,7 +370,7 @@ export function HomePage() {
             <p className="mt-7 text-center font-display text-xl leading-snug text-tinta">
               Não comece pela marca.
               <br />
-              <span className="text-latao">Comece por você.</span>
+              <span className="text-latao-texto">Comece por você.</span>
             </p>
           </div>
         </Reveal>
@@ -420,6 +404,7 @@ export function HomePage() {
                     alt=""
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
                   />
+                  <RatioTag className="top-3 right-3" />
                   <div
                     aria-hidden
                     className="pointer-events-none absolute inset-x-0 bottom-0 h-3/5"
@@ -480,6 +465,7 @@ export function HomePage() {
                   alt=""
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
                 />
+                <RatioTag className="top-3 right-3" />
                 <div
                   aria-hidden
                   className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3"
@@ -581,7 +567,7 @@ export function HomePage() {
             <p className="mt-10 max-w-[26ch] font-display text-xl leading-snug text-tinta">
               Se você se reconheceu,
               <br />
-              a Arquétypus foi pensada <span className="text-latao">para você.</span>
+              a Arquétypus foi pensada <span className="text-latao-texto">para você.</span>
             </p>
           </div>
         </Reveal>
@@ -603,6 +589,7 @@ export function HomePage() {
               alt="Os nove frascos Arquétypus sobre pedras vulcânicas molhadas, uns agrupados e outros sozinhos, com ondas quebrando e o pôr do sol ao fundo"
               className="aspect-[4/5] w-full object-cover"
             />
+            <RatioTag className="top-3 right-3" />
             {/* Filete dourado na borda do degrau */}
             <div
               aria-hidden
@@ -678,6 +665,7 @@ export function HomePage() {
                     style={{ willChange: 'transform' }}
                   />
                 )}
+                <RatioTag className={a.status === 'wait' ? 'top-11 right-3' : 'top-3 right-3'} />
 
                 <span
                   aria-hidden
@@ -716,7 +704,9 @@ export function HomePage() {
                       {a.status === 'wait' ? 'Avise-me' : brl(a.preco)}
                     </span>
                     <Link
-                      to={`/arquetipos/${a.id}`}
+                      // mesmo destino do UGC: pop-up de compra (/loja/:id por cima da home)
+                      to={`/loja/${a.id}`}
+                      state={{ backgroundLocation: location }}
                       className="relative z-20 inline-flex shrink-0 items-center justify-center rounded-full border border-papel-inv/40 bg-papel-inv/10 px-4 py-2.5 font-mono text-[10px] tracking-[0.12em] text-papel-inv uppercase backdrop-blur-sm transition-colors duration-300 ease-out hover:border-papel-inv/60 hover:bg-papel-inv/20"
                     >
                       {a.status === 'wait' ? 'Entrar na lista' : 'Descobrir'}
@@ -754,12 +744,14 @@ export function HomePage() {
               className="col-start-1 row-start-1 h-full w-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
               style={{ aspectRatio: '752 / 1344', willChange: 'transform' }}
             />
+            <RatioTag className="top-4 right-4" />
             <div
               aria-hidden
               className="pointer-events-none col-start-1 row-start-1 self-end h-[70%] backdrop-blur-md"
               style={{
                 background:
-                  'linear-gradient(to top, color-mix(in srgb, var(--color-latao) 38%, var(--color-noite) 62%) 0%, color-mix(in srgb, var(--color-latao) 45%, var(--color-noite) 55%) 45%, color-mix(in srgb, color-mix(in srgb, var(--color-latao) 50%, var(--color-noite) 50%) 70%, transparent) 78%, transparent 100%)',
+                  // degradê preto (noite), sem tinta dourada
+                  'linear-gradient(to top, var(--color-noite) 0%, color-mix(in srgb, var(--color-noite) 94%, transparent) 45%, color-mix(in srgb, var(--color-noite) 70%, transparent) 78%, transparent 100%)',
                 maskImage: 'linear-gradient(to top, black 60%, transparent 100%)',
                 WebkitMaskImage: 'linear-gradient(to top, black 60%, transparent 100%)',
               }}
@@ -809,6 +801,7 @@ export function HomePage() {
 
               <Link
                 to="/kit-descoberta"
+                state={{ backgroundLocation: location }}
                 className="mt-4 block w-full rounded-full border border-papel-inv/40 bg-papel-inv/10 py-3 text-center text-xs font-medium tracking-wide text-papel-inv uppercase backdrop-blur-sm transition-colors duration-300 ease-out hover:border-papel-inv/60 hover:bg-papel-inv/20"
               >
                 Experimentar
@@ -856,25 +849,29 @@ export function HomePage() {
 
           <div className="relative z-10">
             <div className="flex items-center gap-3">
-              <span aria-hidden className="h-px w-6 bg-latao" />
+              <span aria-hidden className="h-px w-6 bg-latao-texto" />
               <Eyebrow>Teste com 120 pessoas · 21 dias</Eyebrow>
             </div>
-            <h2 className="mt-4 font-display text-[30px] leading-[1.15] text-tinta">
+            <h2 className="mt-4 font-display text-[28px] leading-[1.15] text-tinta">
               Depois de
               <br />
               experimentar,
               <br />
-              <span className="text-latao">algo mudou.</span>
+              <span className="text-latao-texto">algo mudou.</span>
             </h2>
 
             <div className="relative mt-12 grid grid-cols-2 gap-y-14">
               <span aria-hidden className="pointer-events-none absolute inset-y-2 left-1/2 w-px bg-linha" />
               {STATS.map((st, i) => (
                 <div key={st.label} className={i % 2 === 0 ? 'pr-5' : 'pl-5'}>
-                  <span className="block font-display text-[56px] leading-none font-light tracking-tight text-latao">
+                  {/* opsz baixo: em 56px a Bodoni usa o desenho de título, com hastes finíssimas que somem em dourado sobre o creme */}
+                  <span
+                    className="block font-display text-[56px] leading-none tracking-tight text-latao-texto"
+                    style={{ fontVariationSettings: "'opsz' 24" }}
+                  >
                     {st.pct}
                   </span>
-                  <span aria-hidden className="mt-5 block h-px w-8 bg-latao/50" />
+                  <span aria-hidden className="mt-5 block h-px w-8 bg-latao-texto/60" />
                   <span className="mt-4 block text-[13px] leading-relaxed text-tinta-2">{st.label}</span>
                 </div>
               ))}
@@ -905,24 +902,9 @@ export function HomePage() {
               <p className="mx-auto max-w-[16ch] font-display text-[26px] leading-[1.25] text-tinta italic">
                 Talvez você não seja apenas um.
               </p>
-              <button
-                type="button"
-                onClick={() => scrollToId('catalogo')}
-                // inline porque o `a, button { transition }` global de index.css (fora de layer) vence as utilities
-                style={{ transition: 'border-color 0.5s ease-out, box-shadow 0.5s ease-out, transform 0.2s ease' }}
-                className="group relative mt-6 inline-block w-full max-w-[280px] overflow-hidden rounded-full border border-latao/50 bg-papel/40 py-3 text-center text-xs font-medium tracking-wide text-tinta uppercase backdrop-blur-sm hover:border-latao hover:shadow-[0_8px_24px_-12px_rgba(140,122,75,0.6)] focus-visible:border-latao focus-visible:outline-none"
-              >
-                {/* Preenchimento latão que varre da esquerda no hover/foco */}
-                <span
-                  aria-hidden
-                  className="absolute inset-0 origin-left scale-x-0 bg-latao transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100 group-focus-visible:scale-x-100"
-                />
-                {/* Brilho discreto que atravessa o botão de tempos em tempos */}
-                <span aria-hidden className="cta-sheen pointer-events-none absolute inset-y-0 -left-1/2 w-1/2" />
-                <span className="relative z-10 inline-block tracking-wide transition-[color,letter-spacing] duration-500 ease-out group-hover:tracking-[0.08em] group-hover:text-papel group-focus-visible:text-papel">
-                  Descubra seus arquétipos
-                </span>
-              </button>
+              <SweepCta onClick={() => scrollToId('catalogo')} className="mt-6">
+                Descubra seus arquétipos
+              </SweepCta>
             </div>
           </div>
         </Reveal>
@@ -1034,6 +1016,7 @@ export function HomePage() {
               </p>
               <Link
                 to="/kit-descoberta"
+                state={{ backgroundLocation: location }}
                 className="mx-auto mt-7 block w-full max-w-[280px] rounded-full border border-papel-inv/40 bg-papel-inv/10 py-3 text-center text-xs font-medium tracking-wide text-papel-inv uppercase backdrop-blur-sm transition-colors duration-300 ease-out hover:border-papel-inv/60 hover:bg-papel-inv/20"
               >
                 Experimentar o kit
@@ -1045,148 +1028,298 @@ export function HomePage() {
         {/* H-19 Comunidade */}
         <CommunitySection />
 
-        <DarkTransition />
+        {/* H-20 Garantia — bloco escuro como pontuação: fica por cima da comunidade (degrau invertido) */}
+        <Reveal
+          as="section"
+          className="relative z-20 overflow-hidden bg-noite px-6 pt-16 pb-16 text-center"
+          animateContent
+          style={{
+            boxShadow: '0 -14px 26px -10px rgba(26,25,23,0.5), 0 -4px 8px -3px rgba(26,25,23,0.35)',
+            borderTop: '1px solid color-mix(in srgb, var(--color-latao) 70%, transparent)',
+          }}
+        >
+          {/* textura mínima: um halo quente quase imperceptível atrás do número */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute top-6 left-1/2 size-72 -translate-x-1/2 rounded-full"
+            style={{
+              background: 'radial-gradient(closest-side, color-mix(in srgb, var(--color-latao) 16%, transparent), transparent)',
+              filter: 'blur(24px)',
+            }}
+          />
 
-        {/* H-20 Garantia */}
-        <Reveal as="section" className="bg-noite px-4 py-12 text-center" animateContent>
-          <div className="font-display text-7xl text-papel-inv/15">7</div>
-          <p className="mt-1 font-mono text-[10px] tracking-[0.3em] text-latao uppercase">
-            Dias de garantia
-          </p>
-          <h2 className="mt-4 font-display text-2xl text-papel-inv">
-            Se não for o seu cheiro,
-            <br />
-            <em>é por nossa conta</em>
-          </h2>
-          <p className="mt-4 text-sm leading-relaxed text-papel-inv/60">
-            Use, cheire, teste na sua pele. Se não for você, devolvemos o valor.
-            <br />Sem perguntas, sem julgamento. Mesmo com o frasco aberto.
-          </p>
-        </Reveal>
+          <div className="relative">
+            <div className="font-display text-[112px] leading-[0.9] font-light tracking-tight" style={{ color: LATAO_CLARO }}>
+              07
+            </div>
+            <div className="mt-4 flex items-center justify-center gap-3">
+              <span aria-hidden className="h-px w-6 bg-papel-inv/20" />
+              <p className="font-mono text-[9.5px] tracking-[0.3em] text-papel-inv/60 uppercase">Dias de garantia</p>
+              <span aria-hidden className="h-px w-6 bg-papel-inv/20" />
+            </div>
 
-        {/* H-21 Seja criador */}
-        <Reveal as="section" className="px-4 py-8">
-          <Eyebrow>Para criadores</Eyebrow>
-          <h2 className="mt-2.5 font-display text-2xl">
-            Ganhe vendendo
-            <br />
-            o seu arquétipo
-          </h2>
-          <div className="mt-5 grid grid-cols-3 gap-2 text-center">
-            <div>
-              <b className="block font-display text-xl">20%</b>
-              <span className="font-mono text-[8px] text-tinta-3 uppercase">
-                de comissão
-                <br />
-                por venda
-              </span>
-            </div>
-            <div>
-              <b className="block font-display text-xl">Grátis</b>
-              <span className="font-mono text-[8px] text-tinta-3 uppercase">
-                amostra para
-                <br />
-                aprovados
-              </span>
-            </div>
-            <div>
-              <b className="block font-display text-xl">D+30</b>
-              <span className="font-mono text-[8px] text-tinta-3 uppercase">
-                pagamento
-                <br />
-                via Pix
-              </span>
-            </div>
+            <h2 className="mt-8 font-display text-[28px] leading-[1.2] text-papel-inv">
+              Se não for o seu cheiro,
+              <br />
+              <em style={{ color: LATAO_CLARO }}>é por nossa conta.</em>
+            </h2>
+
+            <p className="mx-auto mt-6 max-w-[28ch] text-[15px] leading-relaxed text-papel-inv/70">
+              Experimente na pele.
+              <br />
+              Deixe a fragrância se revelar.
+            </p>
+            <p className="mx-auto mt-4 max-w-[28ch] text-[15px] leading-relaxed text-papel-inv/70">
+              Se não for para você,
+              <br />
+              devolvemos o valor.
+            </p>
+
+            <p className="mt-8 font-mono text-[9px] tracking-[0.2em] text-papel-inv/40 uppercase">
+              Sem perguntas · Mesmo com o frasco aberto
+            </p>
           </div>
-          <p className="mt-5 text-sm text-tinta-2">
-            Você recebe o kit, grava do seu jeito e ganha em cada venda pelo seu link. Materiais,
-            ângulos que funcionam e ranking de criadores no painel.
-          </p>
-          <Link
-            to="/criadores"
-            className="mt-4 inline-block rounded-full border border-linha-2 px-6 py-2.5 text-xs font-medium"
-          >
-            Quero ser criador
-          </Link>
         </Reveal>
 
-        <DarkTransition />
+        {/* H-21 Seja criador — volta ao claro, continuação da comunidade */}
+        <Reveal
+          as="section"
+          className="relative overflow-hidden bg-papel px-5 pt-16 pb-16"
+          style={{
+            // degrau: sai do bloco escuro (por cima) para esta seção, abaixo
+            boxShadow:
+              'inset 0 26px 28px -20px rgba(44,44,41,0.4), inset 0 8px 10px -7px rgba(44,44,41,0.28)',
+          }}
+        >
+          <img
+            src={florArquetypus}
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute select-none"
+            style={{
+              bottom: '-50px',
+              left: '-70px',
+              width: '240px',
+              height: 'auto',
+              opacity: 0.14,
+              transform: 'rotate(150deg)',
+              maskImage: 'radial-gradient(closest-side, black 55%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(closest-side, black 55%, transparent 100%)',
+            }}
+          />
 
-        {/* H-22 Diário olfativo */}
-        <Reveal as="section" id="diario" className="bg-noite px-4 py-8" animateContent>
-          <Eyebrow>Entenda</Eyebrow>
-          <h2 className="mt-2.5 font-display text-3xl text-papel-inv">Diário olfativo</h2>
-          <div className="mt-5 flex flex-col gap-4">
-            {JOURNAL.map((j) => (
-              <div key={j.title} className="flex gap-3">
-                <span className="text-latao">→</span>
-                <div>
-                  <b className="text-sm text-papel-inv">{j.title}</b>
-                  <p className="mt-0.5 text-sm text-papel-inv/70">{j.body}</p>
+          <div className="relative">
+            <div className="flex items-center gap-3">
+              <span aria-hidden className="h-px w-6 bg-latao" />
+              <Eyebrow>Para criadores</Eyebrow>
+            </div>
+            <h2 className="mt-4 font-display text-[28px] leading-[1.15] text-tinta">
+              Seu arquétipo também
+              <br />
+              pode <span className="text-latao-texto">despertar alguém.</span>
+            </h2>
+
+            <dl className="mt-10 grid grid-cols-3 border-y border-linha py-6">
+              {[
+                { valor: `${Math.round(ECON.comissaoPct * 100)}%`, label: ['de comissão', 'por venda'] },
+                { valor: 'Grátis', label: ['amostra para', 'aprovados'] },
+                { valor: 'D+30', label: ['pagamento', 'via Pix'] },
+              ].map((ind, i) => (
+                <div key={ind.valor} className={`flex flex-col items-center text-center ${i > 0 ? 'border-l border-linha' : ''}`}>
+                  {/* dt antes de dd no DOM (semântica de <dl>); order-last põe o rótulo embaixo do número */}
+                  <dt className="order-last mt-3 font-mono text-[8.5px] leading-relaxed tracking-[0.16em] text-tinta-3 uppercase">
+                    {ind.label[0]}
+                    <br />
+                    {ind.label[1]}
+                  </dt>
+                  <dd className="font-display text-[28px] leading-none font-light text-tinta">{ind.valor}</dd>
                 </div>
-              </div>
-            ))}
+              ))}
+            </dl>
+
+            <p className="mt-8 max-w-[34ch] text-[15px] leading-relaxed text-tinta-2">
+              Compartilhe suas fragrâncias favoritas e ganhe com cada venda pelo seu link.
+            </p>
+            <p className="mt-3 text-[13px] leading-relaxed text-tinta-3">
+              Você recebe o kit e grava do seu jeito. Materiais, ângulos que funcionam e ranking de criadores no painel.
+            </p>
+
+            <div className="mt-8 text-center">
+              <SweepCta to="/criadores">Quero ser criador</SweepCta>
+            </div>
           </div>
         </Reveal>
 
-        {/* H-23 Captura com cupom */}
-        <Reveal as="section" className="px-4 py-8">
-          <Eyebrow>Primeira compra</Eyebrow>
-          <h2 className="mt-2.5 font-display text-2xl">
-            15% no seu
-            <br />
-            primeiro arquétipo
-          </h2>
-          <p className="mt-2 text-sm text-tinta-2">Cupom no e-mail, lançamentos antes de todo mundo.</p>
-          <form className="mt-4 flex flex-col gap-2.5" onSubmit={(e) => e.preventDefault()}>
-            <input
-              type="email"
-              placeholder="seu@email.com"
-              aria-label="E-mail"
-              className="rounded-md border border-linha-2 bg-papel px-3 py-2.5 text-sm"
-            />
-            <input
-              type="tel"
-              placeholder="WhatsApp (DDD + número)"
-              aria-label="WhatsApp"
-              className="rounded-md border border-linha-2 bg-papel px-3 py-2.5 text-sm"
-            />
-            <button className="rounded-lg bg-tinta py-3.5 text-sm font-medium tracking-wide text-papel uppercase">
-              Quero meu cupom
-            </button>
-          </form>
+        {/* H-22 Diário olfativo — escuro, por cima de Criadores (degrau invertido), lista editorial numerada */}
+        <Reveal
+          as="section"
+          id="diario"
+          className="relative z-20 overflow-hidden bg-noite px-5 pt-14 pb-14"
+          animateContent
+          style={{
+            boxShadow: '0 -14px 26px -10px rgba(26,25,23,0.5), 0 -4px 8px -3px rgba(26,25,23,0.35)',
+            borderTop: '1px solid color-mix(in srgb, var(--color-latao) 70%, transparent)',
+          }}
+        >
+          <div className="flex items-center gap-3">
+            <span aria-hidden className="h-px w-6" style={{ background: LATAO_CLARO }} />
+            <Eyebrow className="" style={{ color: LATAO_CLARO }}>
+              Entenda
+            </Eyebrow>
+          </div>
+          <h2 className="mt-4 font-display text-[32px] leading-[1.1] text-papel-inv">Diário olfativo</h2>
+
+          {/* artigos ainda não existem como página — por isso sem link/seta */}
+          <ol className="mt-8">
+            {JOURNAL.map((j, i) => (
+              <li key={j.title} className="flex gap-4 border-t border-papel-inv/10 py-5 last:border-b">
+                <span
+                  aria-hidden
+                  className="w-5 shrink-0 pt-1 font-mono text-[10px] tracking-widest"
+                  style={{ color: LATAO_CLARO }}
+                >
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div className="min-w-0">
+                  <h3 className="font-display text-[19px] leading-snug text-papel-inv">{j.title}</h3>
+                  <p className="mt-1.5 text-[13px] leading-relaxed text-papel-inv/55">{j.body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </Reveal>
 
-        {/* H-24 Rodapé */}
-        <footer className="bg-noite px-4 py-10">
-          <p className="text-center font-display text-2xl tracking-wide text-papel-inv">
-            ARQUETYPUS
-          </p>
-          <p className="mt-1 text-center font-display text-xs text-papel-inv/40 italic">
-            Perfumaria de arquétipos
-          </p>
+        {/* H-23 Captura com cupom — claro, abaixo do Diário (degrau), card na moldura recortada */}
+        <Reveal
+          as="section"
+          className="relative overflow-hidden bg-papel px-5 pt-16 pb-16"
+          style={{
+            boxShadow:
+              'inset 0 26px 28px -20px rgba(44,44,41,0.4), inset 0 8px 10px -7px rgba(44,44,41,0.28)',
+          }}
+        >
+          <img
+            src={florArquetypus}
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute select-none"
+            style={{
+              top: '-30px',
+              right: '-80px',
+              width: '240px',
+              height: 'auto',
+              opacity: 0.14,
+              transform: 'rotate(30deg)',
+              maskImage: 'radial-gradient(closest-side, black 55%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(closest-side, black 55%, transparent 100%)',
+            }}
+          />
 
-          <nav className="mt-8 grid grid-cols-2 gap-x-6 gap-y-3 text-sm text-papel-inv/60">
-            <Link to="/#catalogo" className="hover:text-papel-inv">Os 9 arquétipos</Link>
-            <Link to="/kit-descoberta" className="hover:text-papel-inv">Kit Descoberta</Link>
-            <Link to="/criadores" className="hover:text-papel-inv">Seja criador</Link>
-            <Link to="/#diario" className="hover:text-papel-inv">Diário olfativo</Link>
-            <span className="text-papel-inv/30">Trocas e devoluções</span>
-            <span className="text-papel-inv/30">Privacidade</span>
-            <span className="text-papel-inv/30">Termos</span>
+          <CutFrame cut={14} className="relative" innerClassName="bg-papel px-6 pt-9 pb-8 text-center">
+            <div className="flex items-center justify-center gap-3">
+              <span aria-hidden className="h-px w-6 bg-latao/60" />
+              <Eyebrow>Primeira compra</Eyebrow>
+              <span aria-hidden className="h-px w-6 bg-latao/60" />
+            </div>
+
+            <div className="mt-5 font-display text-[88px] leading-[0.9] font-light tracking-tight text-latao-texto">15%</div>
+            <h2 className="mt-3 font-display text-[24px] leading-[1.2] text-tinta">
+              no seu primeiro
+              <br />
+              arquétipo.
+            </h2>
+            <p className="mx-auto mt-3 max-w-[30ch] text-[13px] leading-relaxed text-tinta-2">
+              Cupom no e-mail, lançamentos antes de todo mundo.
+            </p>
+
+            {/* sem backend ainda: o submit não envia nada (ver CLAUDE.md) */}
+            <form className="mt-8 flex flex-col gap-5 text-left" onSubmit={(e) => e.preventDefault()}>
+              <label className="block">
+                <span className="font-mono text-[9px] tracking-[0.2em] text-tinta-3 uppercase">E-mail</span>
+                <input
+                  type="email"
+                  name="email"
+                  autoComplete="email"
+                  placeholder="seu@email.com"
+                  className="mt-1.5 block w-full border-b border-linha-2 bg-transparent pb-2.5 text-[15px] text-tinta placeholder:text-tinta-3/70 focus:border-latao focus:outline-none"
+                />
+              </label>
+              <label className="block">
+                <span className="font-mono text-[9px] tracking-[0.2em] text-tinta-3 uppercase">WhatsApp</span>
+                <input
+                  type="tel"
+                  name="whatsapp"
+                  inputMode="tel"
+                  autoComplete="tel-national"
+                  placeholder="DDD + número"
+                  className="mt-1.5 block w-full border-b border-linha-2 bg-transparent pb-2.5 text-[15px] text-tinta placeholder:text-tinta-3/70 focus:border-latao focus:outline-none"
+                />
+              </label>
+              <div className="mt-3 text-center">
+                <SweepCta type="submit">Quero meu cupom</SweepCta>
+              </div>
+            </form>
+          </CutFrame>
+        </Reveal>
+
+        {/* H-24 Rodapé — escuro, por cima do cupom (degrau invertido); -mb-24 cobre o pb-24 do container do Layout */}
+        <footer
+          className="relative z-20 -mb-24 bg-noite px-5 pt-16 pb-[calc(2.5rem+6rem)]"
+          style={{
+            boxShadow: '0 -14px 26px -10px rgba(26,25,23,0.5), 0 -4px 8px -3px rgba(26,25,23,0.35)',
+            borderTop: '1px solid color-mix(in srgb, var(--color-latao) 70%, transparent)',
+          }}
+        >
+          <div className="text-center">
+            <p className="font-display text-[22px] leading-[1.35] text-papel-inv/90 italic">
+              Você não escolhe um perfume.
+              <br />
+              <span style={{ color: LATAO_CLARO }}>Você reconhece o seu.</span>
+            </p>
+            {/* traços alinhados à linha do nome ARQUÉTYPUS (~72% da altura do logo a w-40 = 70px) */}
+            <div className="mt-10 flex items-start justify-center gap-4">
+              <span aria-hidden className="mt-[70px] h-px w-10 bg-papel-inv/15" />
+              <img src={logoBranco} alt="Arquétypus Parfum" loading="lazy" className="h-auto w-40" />
+              <span aria-hidden className="mt-[70px] h-px w-10 bg-papel-inv/15" />
+            </div>
+          </div>
+
+          <nav aria-label="Rodapé" className="mt-12 grid grid-cols-2 gap-x-6 border-t border-papel-inv/10 pt-8">
+            <div>
+              <p className="font-mono text-[9px] tracking-[0.2em] text-papel-inv/35 uppercase">Explorar</p>
+              <ul className="mt-4 flex flex-col gap-3 text-sm text-papel-inv/75">
+                <li><Link to="/#catalogo" className="transition-colors hover:text-papel-inv">Os 9 arquétipos</Link></li>
+                <li>
+                  <Link to="/kit-descoberta" state={{ backgroundLocation: location }} className="transition-colors hover:text-papel-inv">
+                    Kit Descoberta
+                  </Link>
+                </li>
+                <li><Link to="/#diario" className="transition-colors hover:text-papel-inv">Diário olfativo</Link></li>
+                <li><Link to="/criadores" className="transition-colors hover:text-papel-inv">Seja criador</Link></li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-mono text-[9px] tracking-[0.2em] text-papel-inv/35 uppercase">Ajuda</p>
+              {/* sem página ainda — visível, mas não clicável (mesmo critério do Drawer) */}
+              <ul className="mt-4 flex flex-col gap-3 text-sm text-papel-inv/35">
+                {['Trocas e devoluções', 'Privacidade', 'Termos'].map((item) => (
+                  <li key={item} aria-disabled="true">
+                    {item}
+                    <span className="mt-0.5 block font-mono text-[8px] tracking-widest text-papel-inv/25 uppercase">em breve</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </nav>
 
-          <div className="mt-8 flex justify-center gap-5 text-xs text-papel-inv/40">
-            <span>Instagram</span>
-            <span>TikTok</span>
-            <span>Pinterest</span>
-          </div>
+          <p className="mt-10 text-center font-mono text-[9px] tracking-[0.2em] text-papel-inv/45 uppercase">
+            Instagram <span className="mx-2 text-papel-inv/20">·</span> TikTok <span className="mx-2 text-papel-inv/20">·</span> Pinterest
+          </p>
 
-          <div className="mt-6 border-t border-papel-inv/10 pt-4 text-center font-mono text-[8px] tracking-wider text-papel-inv/30 uppercase">
+          <div className="mt-8 border-t border-papel-inv/10 pt-6 text-center font-mono text-[8.5px] leading-relaxed tracking-wider text-papel-inv/30 uppercase">
             <p>Pix · Visa · Master · Elo · Boleto</p>
-            <p className="mt-2">
-              sac@arquetypus.com.br · Saniella Ltda · CNPJ 58.267.823/0001-68 · Caraguatatuba SP
-            </p>
+            <p className="mt-3 normal-case tracking-wide">sac@arquetypus.com.br</p>
+            <p className="mt-1">Saniella Ltda · CNPJ 58.267.823/0001-68 · Caraguatatuba SP</p>
           </div>
         </footer>
       </div>

@@ -42,8 +42,9 @@ src/
 
 Conteúdo (textos, preços, notas olfativas) fica em `data/`, nunca
 hardcoded em componente. Isso é o que o v6 chama de "template
-preenchido por dados" — a PDP e a página de arquétipo são o mesmo
-componente lendo `Archetype` diferente.
+preenchido por dados" — a PDP (`/loja/:id`) e o pop-up de compra usam
+o mesmo `ProductPurchase` lendo `Archetype` diferente. A antiga página de
+arquétipo (`/arquetipos/:id`) foi descartada; a rota só redireciona.
 
 ## Regras que não podem ser violadas
 
@@ -63,7 +64,9 @@ decisão de produto já tomada:
 5. **200 ml feminino, 220 ml masculino/unissex, exceto Imperador** (50
    ml, único perfume — os outros 8 são body splash).
 6. **Cada arquétipo tem URL própria renderizada no servidor:**
-   `/arquetipos/:id`. Nunca só um modal ou tab client-side sem rota.
+   `/loja/:id` (`/arquetipos/:id` redireciona pra ela). Nunca só um
+   modal ou tab client-side sem rota — o pop-up de compra é essa mesma
+   rota aberta por cima da home.
 7. **Preço, parcelamento e Pix sempre visíveis junto ao produto** —
    nunca atrás de accordion ou clique extra.
 8. **Zeus (`status: 'wait'`) nunca vende.** Se o quiz devolve Zeus
@@ -78,6 +81,17 @@ decisão de produto já tomada:
   desabilitados com rótulo "Em breve" em vez de link morto ou rota
   inventada — quando essas páginas existirem, trocar por `Link` de
   verdade em `Drawer.tsx`.
+- **Pop-up de compra = rota.** Links da home (catálogo, comunidade, hero,
+  Kit) vão para `/loja/:id` ou `/kit-descoberta` com
+  `state.backgroundLocation`; `App.tsx` renderiza a home por baixo e
+  `ProductSheet`/`KitSheet` (casca comum em `PurchaseSheet`) por cima.
+  Acesso direto à URL abre a página completa — não trocar por modal sem
+  rota (regra 6). As seções de compra são `ProductPurchase` e
+  `KitPurchase`, compartilhadas entre pop-up e página.
+- **Selos de proporção nas imagens** (`components/ui/RatioTag.tsx`) são
+  apoio ao time de design — mostram a proporção real da caixa na tela.
+  Desligar com `SHOW_RATIO_TAGS = false` antes do lançamento. O
+  requisito de produção do `MediaSlot` fica no tooltip do selo.
 - **PDP existe em `/loja/:id`** (`pages/ProductPage.tsx`), com
   `CartContext` global (`context/CartContext.tsx`) — header, barra de
   frete e `KitBuilder` compartilham a mesma sacola agora.

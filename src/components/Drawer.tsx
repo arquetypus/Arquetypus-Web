@@ -62,7 +62,7 @@ export function Drawer({ open, onClose }: { open: boolean; onClose: () => void }
 
         {GROUPS.map((group) => (
           <div key={group.title}>
-            <p className="mt-6 mb-1 font-mono text-[9.5px] tracking-[0.2em] text-latao uppercase">
+            <p className="mt-6 mb-1 font-mono text-[9.5px] tracking-[0.2em] text-latao-texto uppercase">
               {group.title}
             </p>
             {group.links.map((link) =>

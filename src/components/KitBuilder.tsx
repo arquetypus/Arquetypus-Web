@@ -70,7 +70,7 @@ export function KitBuilder() {
             }`}
           >
             {t.qtd === 3 && (
-              <span className="absolute -top-2 left-1/2 -translate-x-1/2 rounded-full bg-latao px-2 py-0.5 font-mono text-[8px] tracking-wider text-papel">
+              <span className="absolute -top-2 left-1/2 -translate-x-1/2 rounded-full bg-latao-texto px-2 py-0.5 font-mono text-[8px] tracking-wider text-papel">
                 MAIS ESCOLHIDO
               </span>
             )}

@@ -1,6 +1,6 @@
 export function Eyebrow({
   children,
-  className = 'text-latao',
+  className = 'text-latao-texto',
   style,
 }: {
   children: React.ReactNode
