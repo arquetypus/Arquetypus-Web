@@ -6,12 +6,19 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
  * central, dando a sensação de loop sem fim. `activeIndex` é o índice
  * (no array com loops) do item mais próximo do centro do container —
  * use `activeIndex % count` para saber qual item "real" está em foco.
+ *
+ * O posicionamento inicial mede pela tela (getBoundingClientRect) e é
+ * refeito quando o container ganha tamanho de verdade: no primeiro render
+ * a seção ainda está invisível (Reveal) e o celular podia ignorar o
+ * scrollLeft, deixando o carrossel "desativado" (todos os cards borrados)
+ * até o primeiro deslize. O ativo sempre sai do que está visível.
  */
 export function useInfiniteCarousel(count: number) {
   const containerRef = useRef<HTMLDivElement>(null)
   const itemsRef = useRef<(HTMLElement | null)[]>([])
   const [activeIndex, setActiveIndex] = useState(count)
   const settleTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+  const userScrolled = useRef(false)
 
   function registerItem(i: number) {
     return (el: HTMLElement | null) => {
@@ -19,34 +26,65 @@ export function useInfiniteCarousel(count: number) {
     }
   }
 
-  useLayoutEffect(() => {
+  function closestIndex() {
     const el = containerRef.current
-    const target = itemsRef.current[count]
-    if (!el || !target || count === 0) return
-    el.scrollLeft = target.offsetLeft - (parseFloat(getComputedStyle(el).paddingLeft) || 0)
-    setActiveIndex(count)
+    if (!el) return count
+    const box = el.getBoundingClientRect()
+    const center = box.left + box.width / 2
+    let best = count
+    let bestDist = Infinity
+    itemsRef.current.forEach((item, i) => {
+      if (!item) return
+      const r = item.getBoundingClientRect()
+      const dist = Math.abs(r.left + r.width / 2 - center)
+      if (dist < bestDist) {
+        bestDist = dist
+        best = i
+      }
+    })
+    return best
+  }
+
+  function centerOn(i: number) {
+    const el = containerRef.current
+    const item = itemsRef.current[i]
+    if (!el || !item || el.clientWidth === 0) return
+    const box = el.getBoundingClientRect()
+    const r = item.getBoundingClientRect()
+    el.scrollLeft += r.left + r.width / 2 - (box.left + box.width / 2)
+  }
+
+  useLayoutEffect(() => {
+    if (count === 0) return
+    userScrolled.current = false
+    centerOn(count)
+    setActiveIndex(closestIndex())
+    // segunda passada depois do layout assentar (fontes, snap, seção revelada)
+    const raf = requestAnimationFrame(() => {
+      if (userScrolled.current) return
+      centerOn(count)
+      setActiveIndex(closestIndex())
+    })
+    return () => cancelAnimationFrame(raf)
   }, [count])
 
   useEffect(() => {
     const el = containerRef.current
     if (!el || count === 0) return
 
-    function closestIndex() {
-      const el = containerRef.current
-      if (!el) return count
-      const center = el.scrollLeft + el.clientWidth / 2
-      let best = 0
-      let bestDist = Infinity
-      itemsRef.current.forEach((item, i) => {
-        if (!item) return
-        const itemCenter = item.offsetLeft + item.offsetWidth / 2
-        const dist = Math.abs(itemCenter - center)
-        if (dist < bestDist) {
-          bestDist = dist
-          best = i
-        }
-      })
-      return best
+    // container que nasce sem tamanho (ou muda de largura) é recentralizado enquanto ninguém mexeu nele
+    const ro = new ResizeObserver(() => {
+      if (userScrolled.current) {
+        setActiveIndex(closestIndex())
+        return
+      }
+      centerOn(count)
+      setActiveIndex(closestIndex())
+    })
+    ro.observe(el)
+
+    function markUser() {
+      userScrolled.current = true
     }
 
     function onScroll() {
@@ -69,8 +107,15 @@ export function useInfiniteCarousel(count: number) {
     }
 
     el.addEventListener('scroll', onScroll, { passive: true })
+    el.addEventListener('pointerdown', markUser, { passive: true })
+    el.addEventListener('touchstart', markUser, { passive: true })
+    el.addEventListener('wheel', markUser, { passive: true })
     return () => {
+      ro.disconnect()
       el.removeEventListener('scroll', onScroll)
+      el.removeEventListener('pointerdown', markUser)
+      el.removeEventListener('touchstart', markUser)
+      el.removeEventListener('wheel', markUser)
       clearTimeout(settleTimer.current)
     }
   }, [count])

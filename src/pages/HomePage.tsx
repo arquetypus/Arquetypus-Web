@@ -22,9 +22,10 @@ import { MediaSlot } from '@/components/ui/MediaSlot'
 // import { KitBuilder } from '@/components/KitBuilder' // seção "Monte o seu" desativada
 import { HeroCarousel } from '@/components/HeroCarousel'
 import { Reveal } from '@/components/ui/Reveal'
-import { ScrollProgressBar } from '@/components/ui/ScrollProgressBar'
+import { CarouselDots } from '@/components/ui/CarouselDots'
 import { scrollToId } from '@/lib/scrollToId'
-import { useScrollProgress } from '@/lib/useScrollProgress'
+import { useCarouselIndex } from '@/lib/useCarouselIndex'
+import { useTapGuard } from '@/lib/useTapGuard'
 import { useInfiniteCarousel } from '@/lib/useInfiniteCarousel'
 import bannerKitDescoberta from '@/assets/mocks/home/banner-kit-descoberta.png'
 import florArquetypus from '@/assets/brand/flor-arquetypus.png'
@@ -90,8 +91,9 @@ function SealIcon({ seal, className }: { seal: string; className?: string }) {
 
 export function HomePage() {
   const { hash } = useLocation()
-  const familiesScroll = useScrollProgress<HTMLDivElement>()
-  const energiesScroll = useScrollProgress<HTMLDivElement>()
+  const familiesScroll = useCarouselIndex<HTMLDivElement>(FAMILIES.length)
+  const energiesScroll = useCarouselIndex<HTMLDivElement>(ENERGIES.length)
+  const tapGuard = useTapGuard()
   const [catalogoFiltro, setCatalogoFiltro] = useState<'ALL' | 'F' | 'M' | 'U'>('ALL')
   const catalogoFiltrado = useMemo(
     () => (catalogoFiltro === 'ALL' ? ARCHETYPES : ARCHETYPES.filter((a) => a.seg === catalogoFiltro)),
@@ -248,24 +250,25 @@ export function HomePage() {
           </div>
           <div
             ref={familiesScroll.ref}
-            className="scroll-pad no-scrollbar mt-2 flex snap-x gap-4 overflow-x-auto px-4 pb-2"
+            {...tapGuard}
+            className="scroll-pad no-scrollbar mt-2 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2"
           >
             {FAMILIES.map((f) => (
               <div
                 key={f.nome}
                 className="group w-60 shrink-0 snap-start hover:-translate-y-1"
-                style={{ transition: 'transform 500ms cubic-bezier(0.16,1,0.3,1)', willChange: 'transform' }}
+                style={{ transition: 'transform 500ms cubic-bezier(0.16,1,0.3,1)' }}
               >
+                {/* no-press + isolate: sem scale no toque — transform em card com overflow/raio fazia o texto sumir no celular */}
                 <button
                   onClick={() => scrollToId('catalogo')}
-                  className="relative block w-full overflow-hidden rounded-3xl border border-linha-2 text-left"
+                  className="no-press relative isolate block w-full overflow-hidden rounded-3xl border border-linha-2 text-left"
                   style={{ aspectRatio: '4/5', boxShadow: '0 10px 24px -12px rgba(44,44,41,0.28)' }}
                 >
                   <img
                     src={f.img}
                     alt=""
                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]"
-                    style={{ willChange: 'transform' }}
                   />
                   <div
                     aria-hidden
@@ -287,7 +290,7 @@ export function HomePage() {
               </div>
             ))}
           </div>
-          <ScrollProgressBar fillPct={familiesScroll.fillPct} />
+          <CarouselDots count={FAMILIES.length} active={familiesScroll.activeIndex} />
         </Reveal>
 
         {/* H-10 Por energia */}
@@ -312,20 +315,20 @@ export function HomePage() {
           </div>
           <div
             ref={energiesScroll.ref}
-            className="scroll-pad no-scrollbar mt-5 flex snap-x gap-3.5 overflow-x-auto px-4 pt-2 pb-6"
+            {...tapGuard}
+            className="scroll-pad no-scrollbar mt-5 flex snap-x snap-mandatory gap-3.5 overflow-x-auto px-4 pt-2 pb-6"
           >
             {ENERGIES.map((e) => (
               <button
                 key={e.nome}
                 onClick={() => scrollToId('catalogo')}
-                className="group relative w-[80vw] max-w-[320px] shrink-0 snap-start overflow-hidden rounded-3xl text-left"
+                className="no-press group relative isolate w-[80vw] max-w-[320px] shrink-0 snap-start overflow-hidden rounded-3xl text-left"
                 style={{ aspectRatio: '4/5', boxShadow: '0 16px 32px -16px rgba(20,18,15,0.4)' }}
               >
                 <img
                   src={e.img}
                   alt=""
                   className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
-                  style={{ willChange: 'transform' }}
                 />
                 <div
                   aria-hidden
@@ -348,7 +351,7 @@ export function HomePage() {
               </button>
             ))}
           </div>
-          <ScrollProgressBar fillPct={energiesScroll.fillPct} />
+          <CarouselDots count={ENERGIES.length} active={energiesScroll.activeIndex} />
           <p className="mt-3 px-4 text-center font-mono text-[9.5px] tracking-widest text-tinta-3 uppercase">
             Deslize para explorar
           </p>
@@ -574,18 +577,7 @@ export function HomePage() {
               )
             })}
           </div>
-          <div className="mt-5 flex items-center justify-center gap-2" aria-hidden>
-            {catalogoFiltrado.map((a, i) => (
-              <span
-                key={a.id}
-                className="h-[3px] w-5 rounded-full transition-colors duration-300"
-                style={{
-                  background:
-                    i === catalogoAtivo ? 'var(--color-latao)' : 'color-mix(in srgb, var(--color-papel-inv) 25%, transparent)',
-                }}
-              />
-            ))}
-          </div>
+          <CarouselDots count={catalogoFiltrado.length} active={catalogoAtivo} tone="dark" />
           <p className="mt-3 px-5 text-center font-mono text-[9.5px] tracking-widest text-papel-inv/40 uppercase">
             Deslize para explorar
           </p>

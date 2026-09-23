@@ -136,8 +136,9 @@ button {
     opacity 0.2s ease;
 }
 
-a:active,
-button:active {
+/* .no-press: cards grandes com imagem + overflow + raio — o scale no toque fazia o conteúdo sumir no mobile */
+a:active:not(.no-press),
+button:active:not(.no-press) {
   transform: scale(0.98);
 }
 
