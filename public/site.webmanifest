@@ -1,0 +1,14 @@
+{
+  "name": "Arquétypus Parfum",
+  "short_name": "Arquétypus",
+  "description": "Perfumaria de arquétipos — body splash em nove arquétipos.",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1917",
+  "theme_color": "#1a1917",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
