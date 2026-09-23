@@ -124,7 +124,7 @@ export function ProductPage() {
       addItem({
         key: 'necessaire',
         archetypeId: a!.id,
-        label: `Necessaire Arquetypus · ${a!.nome}`,
+        label: `Necessaire Arquétypus · ${a!.nome}`,
         variant: 'Único',
         unitPrice: NECESSAIRE_PRICE,
       })
@@ -286,7 +286,7 @@ export function ProductPage() {
               onChange={(e) => setAddonNecessaire(e.target.checked)}
             />
             <span>
-              Necessaire Arquetypus
+              Necessaire Arquétypus
               <span className="block font-mono text-[9px] text-tinta-3 uppercase">
                 Estojo em lona com o glifo · +{brl(NECESSAIRE_PRICE)}
               </span>

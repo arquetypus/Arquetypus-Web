@@ -16,6 +16,7 @@ import {
   UGC_IMG,
   UGC_VIDEOS,
 } from '@/data/home'
+import { ECON } from '@/data/economics'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { MediaSlot } from '@/components/ui/MediaSlot'
 // import { KitBuilder } from '@/components/KitBuilder' // seção "Monte o seu" desativada
@@ -30,6 +31,9 @@ import florArquetypus from '@/assets/brand/flor-arquetypus.png'
 import ribbonArquetypus from '@/assets/brand/ribbon-arquetypus.png'
 
 const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+
+/** Latão clareado — o --color-latao puro some sobre fundo escuro/bronze. */
+const LATAO_CLARO = 'color-mix(in srgb, var(--color-latao) 60%, var(--color-papel-inv) 40%)'
 
 const SEGMENT_TINT: Record<'F' | 'M' | 'U', string> = {
   F: 'var(--color-afrodite)',
@@ -95,6 +99,7 @@ export function HomePage() {
   )
   const catalogoLoop = [...catalogoFiltrado, ...catalogoFiltrado, ...catalogoFiltrado]
   const catalogoCarrossel = useInfiniteCarousel(catalogoFiltrado.length)
+  const [difModo, setDifModo] = useState<'arquetypus' | 'comum'>('arquetypus')
   const catalogoAtivo = catalogoFiltrado.length > 0 ? catalogoCarrossel.activeIndex % catalogoFiltrado.length : 0
 
   useEffect(() => {
@@ -235,7 +240,7 @@ export function HomePage() {
         </Reveal>
 
         {/* H-09 Por família */}
-        <Reveal as="section" className="pt-9 pb-6">
+        <Reveal as="section" className="pt-9 pb-12">
           <div className="px-4">
             <Eyebrow>Entrada racional</Eyebrow>
             <h2 className="mt-2.5 font-display text-2xl">Descubra por família</h2>
@@ -289,7 +294,12 @@ export function HomePage() {
         <Reveal
           as="section"
           className="relative z-20 py-8"
-          style={{ background: 'color-mix(in srgb, var(--color-papel-2) 100%, var(--color-latao) 6%)' }}
+          style={{
+            background: 'color-mix(in srgb, var(--color-papel-2) 100%, var(--color-latao) 6%)',
+            // sombra interna no topo + filete: a seção parece um degrau abaixo da "Entrada racional"
+            boxShadow:
+              'inset 0 1px 0 color-mix(in srgb, var(--color-linha-2) 80%, transparent), inset 0 18px 22px -16px rgba(44,44,41,0.28), inset 0 6px 8px -6px rgba(44,44,41,0.18)',
+          }}
         >
           <div className="px-4">
             <Eyebrow>Entrada emocional</Eyebrow>
@@ -423,20 +433,37 @@ export function HomePage() {
           </div>
         </Reveal>
 
-        <DarkTransition />
-
         {/* H-13 O catálogo (fundido com H-07 bodegón) */}
-        <Reveal as="section" id="catalogo" className="relative bg-noite pt-10 pb-8" animateContent>
+        <Reveal
+          as="section"
+          id="catalogo"
+          className="relative z-20 bg-noite pb-12"
+          animateContent
+          style={{
+            // Degrau invertido: o catálogo fica POR CIMA e projeta sombra na seção de cima (Reconhecimento)
+            boxShadow: '0 -14px 26px -10px rgba(26,25,23,0.5), 0 -4px 8px -3px rgba(26,25,23,0.35)',
+          }}
+        >
           <div className="relative">
-            <img src={BODEGON_IMG} alt="" className="h-64 w-full object-cover" />
+            <img
+              src={BODEGON_IMG}
+              alt="Os nove frascos Arquétypus sobre pedras vulcânicas molhadas, uns agrupados e outros sozinhos, com ondas quebrando e o pôr do sol ao fundo"
+              className="aspect-[4/5] w-full object-cover"
+            />
+            {/* Filete dourado na borda do degrau */}
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-32"
+              className="pointer-events-none absolute inset-x-0 top-0 h-px"
+              style={{ background: 'color-mix(in srgb, var(--color-latao) 70%, transparent)' }}
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-[24%]"
               style={{ background: 'linear-gradient(to bottom, rgba(26,25,23,0) 0%, var(--color-noite) 100%)' }}
             />
           </div>
 
-          <div className="px-5 pt-3 pb-3">
+          <div className="relative -mt-8 px-5 pt-3 pb-3">
             <Eyebrow className="text-latao">O catálogo</Eyebrow>
             <h2 className="mt-3 font-display text-4xl leading-[1.1] text-papel-inv">
               Nove arquétipos.
@@ -564,25 +591,87 @@ export function HomePage() {
           </p>
         </Reveal>
 
-        {/* H-15 Kit Descoberta */}
-        <Reveal as="section" id="kit">
-          <MediaSlot aspect="16/10" bg="#EFEDE8" src={bannerKitDescoberta} requisito="FOTO · 16:10 · 1600×1000 · 9 MINIS NA MÃO · ESCALA REAL" className="rounded-none border-x-0" />
-          <div className="px-4 py-6">
-            <Eyebrow>Antes de escolher</Eyebrow>
-            <h2 className="mt-2.5 font-display text-2xl">Kit Descoberta</h2>
-            <p className="mt-2 text-sm text-tinta-2">
-              Nove miniaturas de 8 ml. <em className="font-display italic">O valor volta</em> como crédito na compra do tamanho cheio.
-            </p>
-            <div className="mt-4 flex items-baseline gap-3">
-              <span className="font-display text-2xl">R$ 79,90</span>
-              <span className="font-mono text-[10px] text-latao uppercase">Crédito integral</span>
+        {/* H-15 Kit Descoberta — banner editorial: texto dentro da foto, sobre degradê bronze com blur (mesmo tratamento dos cards do catálogo) */}
+        <Reveal
+          as="section"
+          id="kit"
+          className="bg-papel px-4 pt-14 pb-12"
+          style={{
+            // "degrau" como o da Entrada emocional, mais marcado: sombra interna no topo, a seção parece abaixo do catálogo
+            boxShadow:
+              'inset 0 1px 0 color-mix(in srgb, var(--color-latao) 60%, transparent), inset 0 26px 28px -20px rgba(44,44,41,0.4), inset 0 8px 10px -7px rgba(44,44,41,0.28)',
+          }}
+        >
+          <div
+            className="group relative grid overflow-hidden rounded-3xl ring-1 ring-latao/60"
+            style={{ boxShadow: '0 20px 40px -18px rgba(44,44,41,0.45)' }}
+          >
+            <img
+              src={bannerKitDescoberta}
+              alt="Mão segurando três miniaturas do Kit Descoberta, com as outras seis enfileiradas sobre linho claro"
+              className="col-start-1 row-start-1 h-full w-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+              style={{ aspectRatio: '752 / 1344', willChange: 'transform' }}
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none col-start-1 row-start-1 self-end h-[70%] backdrop-blur-md"
+              style={{
+                background:
+                  'linear-gradient(to top, color-mix(in srgb, var(--color-latao) 38%, var(--color-noite) 62%) 0%, color-mix(in srgb, var(--color-latao) 45%, var(--color-noite) 55%) 45%, color-mix(in srgb, color-mix(in srgb, var(--color-latao) 50%, var(--color-noite) 50%) 70%, transparent) 78%, transparent 100%)',
+                maskImage: 'linear-gradient(to top, black 60%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to top, black 60%, transparent 100%)',
+              }}
+            />
+            {/* Moldura interna dourada — filete fino, afastado da borda */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-2.5 rounded-[18px] border"
+              style={{ borderColor: `color-mix(in srgb, ${LATAO_CLARO} 45%, transparent)` }}
+            />
+
+            <div className="relative col-start-1 row-start-1 self-end px-6 pt-[88%] pb-6">
+              <div className="flex items-center gap-3">
+                <span aria-hidden className="h-px w-6" style={{ background: LATAO_CLARO }} />
+                <Eyebrow className="" style={{ color: LATAO_CLARO, textShadow: '0 1px 8px rgba(26,25,23,0.45)' }}>
+                  Antes de escolher
+                </Eyebrow>
+              </div>
+              <h2 className="mt-3 font-display text-4xl leading-[1.1] text-papel-inv">Kit Descoberta</h2>
+              <p className="mt-2 font-display text-lg leading-snug text-papel-inv/85 italic">
+                Nove fragrâncias.
+                <br />
+                Nove possibilidades de <span style={{ color: LATAO_CLARO }}>você.</span>
+              </p>
+
+              <div aria-hidden className="mt-4 flex items-center gap-2">
+                <span className="h-px flex-1" style={{ background: `linear-gradient(to right, ${LATAO_CLARO}, transparent)` }} />
+                <span className="size-1 rotate-45" style={{ background: LATAO_CLARO }} />
+              </div>
+              <div className="mt-3.5 flex items-end justify-between gap-4">
+                <div>
+                  <span className="block font-mono text-[9px] tracking-widest text-papel-inv/60 uppercase">9 × 8 ml</span>
+                  <span className="mt-1.5 block font-display text-3xl leading-none text-papel-inv">{brl(ECON.kitPreco)}</span>
+                </div>
+                <span
+                  className="pb-0.5 text-right font-mono text-[9px] tracking-widest uppercase"
+                  style={{ color: LATAO_CLARO }}
+                >
+                  Crédito
+                  <br />
+                  integral
+                </span>
+              </div>
+              <p className="mt-2.5 max-w-[32ch] text-[13px] leading-relaxed text-papel-inv/75">
+                O valor volta como crédito na compra do tamanho cheio.
+              </p>
+
+              <Link
+                to="/kit-descoberta"
+                className="mt-4 block w-full rounded-full border border-papel-inv/40 bg-papel-inv/10 py-3 text-center text-xs font-medium tracking-wide text-papel-inv uppercase backdrop-blur-sm transition-colors duration-300 ease-out hover:border-papel-inv/60 hover:bg-papel-inv/20"
+              >
+                Experimentar
+              </Link>
             </div>
-            <Link
-              to="/kit-descoberta"
-              className="mt-4 block w-full rounded-lg bg-tinta py-4 text-center text-sm font-medium tracking-wide text-papel uppercase"
-            >
-              Quero experimentar
-            </Link>
           </div>
         </Reveal>
 
@@ -601,64 +690,214 @@ export function HomePage() {
         */}
 
         {/* H-17 Números de percepção */}
-        <Reveal as="section" className="px-4 py-8">
-          <Eyebrow>Teste com 120 pessoas · 21 dias</Eyebrow>
-          <h2 className="mt-2.5 font-display text-2xl">
-            O que elas
-            <br />
-            perceberam
-          </h2>
-          <div className="mt-5 grid grid-cols-2 gap-6">
-            {STATS.map((st) => (
-              <div key={st.label}>
-                <span className="block font-display text-5xl tracking-tight text-latao">{st.pct}</span>
-                <span className="mt-2 block text-sm leading-snug text-tinta-2">{st.label}</span>
-              </div>
-            ))}
+        <Reveal
+          as="section"
+          className="relative overflow-hidden px-5 pt-12"
+          style={{ background: 'linear-gradient(to bottom, var(--color-papel) 0%, var(--color-papel-2) 100%)' }}
+        >
+          <img
+            src={florArquetypus}
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute select-none"
+            style={{
+              top: '-30px',
+              right: '-70px',
+              width: '240px',
+              height: 'auto',
+              opacity: 0.18,
+              transform: 'rotate(40deg)',
+              maskImage: 'radial-gradient(closest-side, black 55%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(closest-side, black 55%, transparent 100%)',
+            }}
+          />
+
+          <div className="relative z-10">
+            <div className="flex items-center gap-3">
+              <span aria-hidden className="h-px w-6 bg-latao" />
+              <Eyebrow>Teste com 120 pessoas · 21 dias</Eyebrow>
+            </div>
+            <h2 className="mt-4 font-display text-[30px] leading-[1.15] text-tinta">
+              Depois de
+              <br />
+              experimentar,
+              <br />
+              <span className="text-latao">algo mudou.</span>
+            </h2>
+
+            <div className="relative mt-12 grid grid-cols-2 gap-y-14">
+              <span aria-hidden className="pointer-events-none absolute inset-y-2 left-1/2 w-px bg-linha" />
+              {STATS.map((st, i) => (
+                <div key={st.label} className={i % 2 === 0 ? 'pr-5' : 'pl-5'}>
+                  <span className="block font-display text-[56px] leading-none font-light tracking-tight text-latao">
+                    {st.pct}
+                  </span>
+                  <span aria-hidden className="mt-5 block h-px w-8 bg-latao/50" />
+                  <span className="mt-4 block text-[13px] leading-relaxed text-tinta-2">{st.label}</span>
+                </div>
+              ))}
+            </div>
+            <p className="mt-12 font-mono text-[8.5px] tracking-wide text-tinta-3">
+              AUTOAVALIAÇÃO · N=120 · JUL/2026 · DADO ILUSTRATIVO NO PROTÓTIPO
+            </p>
           </div>
-          <p className="mt-4 font-mono text-[8.5px] text-tinta-3">
-            AUTOAVALIAÇÃO · N=120 · JUL/2026 · DADO ILUSTRATIVO NO PROTÓTIPO
-          </p>
+
+          {/* Fechamento — ponte pro que vem depois */}
+          <div className="relative -mx-5 mt-14 overflow-hidden border-t border-linha bg-papel-2 px-5 pt-14 pb-12 text-center">
+            <img
+              src={florArquetypus}
+              alt=""
+              aria-hidden="true"
+              className="pointer-events-none absolute left-1/2 select-none"
+              style={{
+                top: '50%',
+                width: '300px',
+                height: 'auto',
+                opacity: 0.12,
+                transform: 'translate(-50%, -50%) rotate(180deg)',
+                maskImage: 'radial-gradient(closest-side, black 45%, transparent 100%)',
+                WebkitMaskImage: 'radial-gradient(closest-side, black 45%, transparent 100%)',
+              }}
+            />
+            <div className="relative z-10">
+              <p className="mx-auto max-w-[16ch] font-display text-[26px] leading-[1.25] text-tinta italic">
+                Talvez você não seja apenas um.
+              </p>
+              <button
+                type="button"
+                onClick={() => scrollToId('catalogo')}
+                // inline porque o `a, button { transition }` global de index.css (fora de layer) vence as utilities
+                style={{ transition: 'border-color 0.5s ease-out, box-shadow 0.5s ease-out, transform 0.2s ease' }}
+                className="group relative mt-6 inline-block w-full max-w-[280px] overflow-hidden rounded-full border border-latao/50 bg-papel/40 py-3 text-center text-xs font-medium tracking-wide text-tinta uppercase backdrop-blur-sm hover:border-latao hover:shadow-[0_8px_24px_-12px_rgba(140,122,75,0.6)] focus-visible:border-latao focus-visible:outline-none"
+              >
+                {/* Preenchimento latão que varre da esquerda no hover/foco */}
+                <span
+                  aria-hidden
+                  className="absolute inset-0 origin-left scale-x-0 bg-latao transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-x-100 group-focus-visible:scale-x-100"
+                />
+                {/* Brilho discreto que atravessa o botão de tempos em tempos */}
+                <span aria-hidden className="cta-sheen pointer-events-none absolute inset-y-0 -left-1/2 w-1/2" />
+                <span className="relative z-10 inline-block tracking-wide transition-[color,letter-spacing] duration-500 ease-out group-hover:tracking-[0.08em] group-hover:text-papel group-focus-visible:text-papel">
+                  Descubra seus arquétipos
+                </span>
+              </button>
+            </div>
+          </div>
         </Reveal>
 
-        <DarkTransition />
+        {/* H-18 Comparativo — lista editorial numerada (mesmo padrão do Diagnóstico), sobre noite */}
+        <Reveal
+          as="section"
+          className="relative z-20 overflow-hidden bg-noite px-5 pt-14 pb-14"
+          animateContent
+          style={{
+            // Degrau invertido, como o do catálogo: a seção fica por cima e projeta sombra na de cima
+            boxShadow: '0 -14px 26px -10px rgba(26,25,23,0.5), 0 -4px 8px -3px rgba(26,25,23,0.35)',
+            // filete dourado como borda: um `absolute` aqui dentro ancoraria no wrapper animado do Reveal (transform)
+            borderTop: '1px solid color-mix(in srgb, var(--color-latao) 70%, transparent)',
+          }}
+        >
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -top-24 -right-24 size-72 rounded-full"
+            style={{
+              background: 'radial-gradient(closest-side, color-mix(in srgb, var(--color-latao) 22%, transparent), transparent)',
+              filter: 'blur(20px)',
+            }}
+          />
 
-        {/* H-18 Comparativo */}
-        <Reveal as="section" className="bg-noite px-4 py-8" animateContent>
-          <Eyebrow>A diferença</Eyebrow>
-          <h2 className="mt-2.5 font-display text-3xl text-papel-inv">
-            Nem todo splash
-            <br />
-            entrega a mesma coisa
-          </h2>
-          <div className="mt-5 grid grid-cols-2 gap-3">
-            <div>
-              <h4 className="font-display text-base text-papel-inv">Arquetypus</h4>
-              <ul className="mt-3 flex flex-col gap-2.5">
-                {COMPARISON.arquetypus.map((c) => (
-                  <li key={c} className="flex gap-2 text-[11px] text-papel-inv/80">
-                    <span className="mt-0.5 text-ok">✓</span>
-                    {c}
-                  </li>
-                ))}
-              </ul>
+          <div className="relative">
+            <div className="flex items-center gap-3">
+              <span aria-hidden className="h-px w-6" style={{ background: LATAO_CLARO }} />
+              <Eyebrow className="" style={{ color: LATAO_CLARO }}>
+                A diferença
+              </Eyebrow>
             </div>
-            <div>
-              <h4 className="font-display text-base text-papel-inv/50">Splash comum</h4>
-              <ul className="mt-3 flex flex-col gap-2.5">
-                {COMPARISON.comum.map((c) => (
-                  <li key={c} className="flex gap-2 text-[11px] text-papel-inv/40">
-                    <span className="mt-0.5 text-alerta/60">✗</span>
-                    {c}
-                  </li>
-                ))}
-              </ul>
+            <h2 className="mt-4 font-display text-[32px] leading-[1.12] text-papel-inv">
+              Tudo o que um
+              <br />
+              splash comum
+              <br />
+              <span style={{ color: LATAO_CLARO }}>não te conta.</span>
+            </h2>
+            {/* Chave em vez de duas colunas: uma frase por linha no mobile, o leitor alterna o lado */}
+            <div
+              role="tablist"
+              aria-label="Comparar"
+              className="relative mt-8 grid grid-cols-2 overflow-hidden rounded-full border border-papel-inv/20 bg-papel-inv/5 p-1 backdrop-blur-sm"
+            >
+              {/* Pílula que desliza entre as opções — overshoot de ~1% (~2px, menor que o p-1) dá o bounce sem passar do contorno */}
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-y-1 left-1 w-[calc(50%-0.25rem)] rounded-full bg-papel-inv/15 transition-transform duration-[550ms] ease-[cubic-bezier(0.34,1.2,0.64,1)] motion-reduce:transition-none"
+                style={{
+                  transform: difModo === 'arquetypus' ? 'translateX(0)' : 'translateX(100%)',
+                  boxShadow: `inset 0 0 0 1px color-mix(in srgb, ${LATAO_CLARO} 55%, transparent), 0 4px 14px -6px rgba(0,0,0,0.5)`,
+                }}
+              />
+              {(
+                [
+                  { key: 'arquetypus', label: 'Arquétypus' },
+                  { key: 'comum', label: 'Splash comum' },
+                ] as const
+              ).map((t) => {
+                const ativo = difModo === t.key
+                return (
+                  <button
+                    key={t.key}
+                    type="button"
+                    role="tab"
+                    aria-selected={ativo}
+                    onClick={() => setDifModo(t.key)}
+                    className={`relative z-10 rounded-full py-2.5 text-xs font-medium tracking-wide uppercase ${
+                      ativo ? 'text-papel-inv' : 'text-papel-inv/45'
+                    }`}
+                    // inline: a regra global `a, button { transition }` de index.css venceria a utility
+                    style={{ transition: 'color 0.35s ease-out, transform 0.2s ease' }}
+                  >
+                    {t.label}
+                  </button>
+                )
+              })}
+            </div>
+
+            <ol key={difModo} role="tabpanel" className="page-fade mt-3">
+              {COMPARISON.map((c, i) => (
+                <li key={c.tema} className="flex items-baseline gap-4 border-b border-papel-inv/10 py-3.5">
+                  <span
+                    aria-hidden
+                    className="w-5 shrink-0 font-mono text-[10px] tracking-widest"
+                    style={{ color: difModo === 'arquetypus' ? LATAO_CLARO : 'rgba(247,246,243,0.3)' }}
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <p
+                    className={`font-display text-[17px] leading-snug ${
+                      difModo === 'arquetypus' ? 'text-papel-inv' : 'text-papel-inv/40'
+                    }`}
+                  >
+                    {difModo === 'arquetypus' ? c.arquetypus : c.comum}
+                  </p>
+                </li>
+              ))}
+            </ol>
+
+            <div className="pt-10 text-center">
+              <p className="font-display text-[26px] leading-[1.25] text-papel-inv italic">
+                Não é apenas um
+                <br />
+                body splash.
+                <br />
+                <span style={{ color: LATAO_CLARO }}>É Arquétypus.</span>
+              </p>
+              <Link
+                to="/kit-descoberta"
+                className="mx-auto mt-7 block w-full max-w-[280px] rounded-full border border-papel-inv/40 bg-papel-inv/10 py-3 text-center text-xs font-medium tracking-wide text-papel-inv uppercase backdrop-blur-sm transition-colors duration-300 ease-out hover:border-papel-inv/60 hover:bg-papel-inv/20"
+              >
+                Experimentar o kit
+              </Link>
             </div>
           </div>
-          <p className="mt-6 text-center font-display text-lg text-papel-inv italic">
-            Não é apenas um body splash.
-            <br />É Arquetypus.
-          </p>
         </Reveal>
 
         {/* H-19 Comunidade */}

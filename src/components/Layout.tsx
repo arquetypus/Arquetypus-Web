@@ -50,14 +50,14 @@ export function Layout() {
         <Link to="/" className="relative block h-11 w-28">
           <img
             src={wordmarkMarmore}
-            alt="Arquetypus"
+            alt="Arquétypus"
             className={`absolute inset-0 h-full w-full object-contain object-center transition-opacity duration-300 ease-out ${
               headerOverHero ? 'opacity-100' : 'opacity-0'
             }`}
           />
           <img
             src={wordmarkPreto}
-            alt="Arquetypus"
+            alt="Arquétypus"
             className={`absolute inset-0 h-full w-full object-contain object-center transition-opacity duration-300 ease-out ${
               headerOverHero ? 'opacity-0' : 'opacity-100'
             }`}

@@ -54,7 +54,7 @@ export function Drawer({ open, onClose }: { open: boolean; onClose: () => void }
       {/* Painel lateral */}
       <nav className="relative z-10 flex h-full w-72 flex-col overflow-y-auto bg-papel p-5 shadow-2xl">
         <div className="flex items-center justify-between">
-          <span className="font-mono text-xs tracking-[0.22em] uppercase">Arquetypus</span>
+          <span className="font-mono text-xs tracking-[0.22em] uppercase">Arquétypus</span>
           <button aria-label="Fechar menu" onClick={onClose} className="text-lg">
             ✕
           </button>

@@ -189,26 +189,16 @@ export const STATS = [
   { pct: '78%', label: 'passaram a usar mais de um arquétipo por semana' },
 ]
 
-export const COMPARISON = {
-  arquetypus: [
-    'Essência importada Scentec',
-    'Conformidade IFRA 51 declarada',
-    'INCI completo publicado',
-    'Teste de arquétipo antes da compra',
-    'Sistema de layering entre os nove',
-    'Fabricação em indústria licenciada',
-    'Kit de amostra com crédito integral',
-  ],
-  comum: [
-    'Essência genérica sem origem',
-    'Sem declaração de conformidade',
-    'Composição só no rótulo',
-    'Escolha no escuro',
-    'SKU solto, sem combinação',
-    'Origem nem sempre informada',
-    'Sem como testar antes',
-  ],
-}
+/** Cada linha pareia o que a Arquétypus declara com o que o splash comum costuma entregar. `tema` é só rótulo de leitura. */
+export const COMPARISON = [
+  { tema: 'Essência', arquetypus: 'Essência importada Scentec', comum: 'Essência genérica sem origem' },
+  { tema: 'Segurança', arquetypus: 'Conformidade IFRA 51 declarada', comum: 'Sem declaração de conformidade' },
+  { tema: 'Transparência', arquetypus: 'INCI completo publicado', comum: 'Composição só no rótulo' },
+  { tema: 'Escolha', arquetypus: 'Teste de arquétipo antes da compra', comum: 'Escolha no escuro' },
+  { tema: 'Sistema', arquetypus: 'Sistema de layering entre os nove', comum: 'SKU solto, sem combinação' },
+  { tema: 'Origem', arquetypus: 'Fabricação em indústria licenciada', comum: 'Origem nem sempre informada' },
+  { tema: 'Experimentar', arquetypus: 'Kit de amostra com crédito integral', comum: 'Sem como testar antes' },
+]
 
 export const TESTIMONIALS = [
   'Fiz o teste achando que era brincadeira. Deu Cleópatra e era exatamente eu.',

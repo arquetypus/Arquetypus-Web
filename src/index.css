@@ -141,6 +141,44 @@ button:active {
   transform: scale(0.98);
 }
 
+/* Brilho dourado que cruza o CTA a cada ~5s. Some no hover (o preenchimento assume) e com reduced-motion. */
+.cta-sheen {
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    color-mix(in srgb, var(--color-latao) 28%, transparent) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cta-sheen {
+    animation: cta-sheen 5s ease-in-out 1.2s infinite;
+  }
+  .group:hover .cta-sheen {
+    animation: none;
+  }
+}
+
+@keyframes cta-sheen {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  32% {
+    transform: translateX(300%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(300%);
+    opacity: 0;
+  }
+}
+
 .scroll-pad {
   scroll-padding-left: 1rem;
 }

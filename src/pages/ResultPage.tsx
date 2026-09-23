@@ -49,7 +49,7 @@ export function ResultPage() {
           style={{ background: a.bg }}
         >
           <p className="font-mono text-[9px] tracking-[0.2em] uppercase" style={{ color: a.cor }}>
-            Arquetypus · {a.cod}
+            Arquétypus · {a.cod}
           </p>
           <p className="mt-2 font-display text-3xl leading-none" style={{ color: a.cor }}>
             {a.nome}
