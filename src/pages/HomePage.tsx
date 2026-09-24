@@ -28,6 +28,7 @@ import { CarouselDots } from '@/components/ui/CarouselDots'
 import { CutFrame } from '@/components/ui/CutFrame'
 import { SweepCta } from '@/components/ui/SweepCta'
 import { scrollToId } from '@/lib/scrollToId'
+import { openCookiePreferences } from '@/lib/consent'
 import { useCarouselIndex } from '@/lib/useCarouselIndex'
 import { useTapGuard } from '@/lib/useTapGuard'
 import { useInfiniteCarousel } from '@/lib/useInfiniteCarousel'
@@ -1305,6 +1306,16 @@ export function HomePage() {
                     <span className="mt-0.5 block font-label text-[8px] tracking-widest text-papel-inv/25 uppercase">em breve</span>
                   </li>
                 ))}
+                {/* LGPD: a pessoa precisa conseguir rever a escolha a qualquer momento */}
+                <li>
+                  <button
+                    type="button"
+                    onClick={openCookiePreferences}
+                    className="text-left text-papel-inv/75 transition-colors hover:text-papel-inv"
+                  >
+                    Gerenciar cookies
+                  </button>
+                </li>
               </ul>
             </div>
           </nav>
