@@ -39,7 +39,7 @@ export function KitPage() {
         <div className="mt-5 flex flex-col gap-4">
           {STEPS.map((s) => (
             <div key={s.n} className="flex gap-3">
-              <span className="font-mono text-xs text-latao-texto">{s.n}</span>
+              <span className="font-label text-xs text-latao-texto">{s.n}</span>
               <div>
                 <b className="text-sm">{s.title}</b>
                 <p className="mt-0.5 text-sm text-tinta-2">{s.body}</p>

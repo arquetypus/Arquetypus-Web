@@ -77,7 +77,7 @@ export function ProductPage() {
         <div className="mt-5 flex flex-col gap-4">
           {BENEFITS.map((b) => (
             <div key={b.n} className="flex gap-3">
-              <span className="font-mono text-xs text-latao-texto">{b.n}</span>
+              <span className="font-label text-xs text-latao-texto">{b.n}</span>
               <div>
                 <b className="text-sm">{b.title}</b>
                 <p className="mt-0.5 text-sm text-tinta-2">{b.body}</p>
@@ -89,7 +89,7 @@ export function ProductPage() {
 
       {/* Pirâmide olfativa */}
       <details className="border-b border-linha px-4 py-5">
-        <summary className="cursor-pointer font-mono text-[10px] tracking-[0.18em] text-latao-texto uppercase">
+        <summary className="cursor-pointer font-label text-[10px] tracking-[0.18em] text-latao-texto uppercase">
           Pirâmide olfativa
         </summary>
         <dl className="mt-3 space-y-2 text-sm">
@@ -110,13 +110,13 @@ export function ProductPage() {
 
       {/* P-13 Como usar */}
       <details className="border-b border-linha bg-papel-2 px-4 py-5">
-        <summary className="cursor-pointer font-mono text-[10px] tracking-[0.18em] text-latao-texto uppercase">
+        <summary className="cursor-pointer font-label text-[10px] tracking-[0.18em] text-latao-texto uppercase">
           Como usar
         </summary>
         <div className="mt-4 grid grid-cols-1 gap-3">
           {HOW_TO.map((h) => (
             <div key={h.step} className="rounded-lg border border-linha-2 p-3">
-              <b className="font-mono text-[9px] tracking-widest text-latao-texto uppercase">{h.step}</b>
+              <b className="font-label text-[9px] tracking-widest text-latao-texto uppercase">{h.step}</b>
               <p className="mt-1 text-sm">{h.text}</p>
             </div>
           ))}
@@ -157,25 +157,25 @@ export function ProductPage() {
 
       {/* P-18 Ficha técnica */}
       <details className="border-b border-linha px-4 py-5">
-        <summary className="cursor-pointer font-mono text-[10px] tracking-[0.18em] text-latao-texto uppercase">
+        <summary className="cursor-pointer font-label text-[10px] tracking-[0.18em] text-latao-texto uppercase">
           Ficha técnica
         </summary>
         <table className="mt-4 w-full text-sm">
           <tbody>
             <tr className="border-b border-linha">
-              <td className="py-2 font-mono text-[10px] text-tinta-3 uppercase">Volume</td>
+              <td className="py-2 font-label text-[10px] text-tinta-3 uppercase">Volume</td>
               <td className="py-2 text-right">{a.vol}</td>
             </tr>
             <tr className="border-b border-linha">
-              <td className="py-2 font-mono text-[10px] text-tinta-3 uppercase">Tipo</td>
+              <td className="py-2 font-label text-[10px] text-tinta-3 uppercase">Tipo</td>
               <td className="py-2 text-right">{a.tipo}</td>
             </tr>
             <tr className="border-b border-linha">
-              <td className="py-2 font-mono text-[10px] text-tinta-3 uppercase">Categoria IFRA</td>
+              <td className="py-2 font-label text-[10px] text-tinta-3 uppercase">Categoria IFRA</td>
               <td className="py-2 text-right">Cat. 5A · conforme Emenda 51</td>
             </tr>
             <tr className="border-b border-linha">
-              <td className="py-2 font-mono text-[10px] text-tinta-3 uppercase">ANVISA</td>
+              <td className="py-2 font-label text-[10px] text-tinta-3 uppercase">ANVISA</td>
               <td className="py-2 text-right">Grau 1 · notificação nº —</td>
             </tr>
           </tbody>
@@ -205,7 +205,7 @@ export function ProductPage() {
             <span className="size-8 rounded-full" style={{ background: par.cor }} />
             <span>
               <b className="block text-sm">{par.nome}</b>
-              <span className="font-mono text-[9px] text-tinta-3 uppercase">
+              <span className="font-label text-[9px] text-tinta-3 uppercase">
                 {par.fam} · {brl(par.preco)}
               </span>
             </span>

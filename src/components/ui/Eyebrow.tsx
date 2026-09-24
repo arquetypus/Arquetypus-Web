@@ -8,7 +8,7 @@ export function Eyebrow({
   style?: React.CSSProperties
 }) {
   return (
-    <p className={`font-mono text-[9.5px] tracking-[0.22em] uppercase ${className}`} style={style}>
+    <p className={`font-label text-[9.5px] tracking-[0.22em] uppercase ${className}`} style={style}>
       {children}
     </p>
   )

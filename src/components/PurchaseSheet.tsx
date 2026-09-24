@@ -53,7 +53,7 @@ export function PurchaseSheet({ label, fullPageTo, children }: { label: string; 
             <Link
               to={fullPageTo}
               replace
-              className="inline-block py-2 font-mono text-[10px] tracking-[0.18em] text-latao-texto uppercase"
+              className="inline-block py-2 font-label text-[10px] tracking-[0.18em] text-latao-texto uppercase"
             >
               <span className="border-b border-latao-texto/40 pb-0.5">Ver página completa</span>
             </Link>

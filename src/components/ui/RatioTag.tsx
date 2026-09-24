@@ -83,7 +83,7 @@ export function RatioTag({
       ref={ref}
       aria-hidden
       title={title}
-      className={`pointer-events-none absolute z-30 rounded-sm bg-noite/30 px-1.5 py-0.5 font-mono text-[8px] leading-none tracking-[0.12em] text-papel-inv/75 backdrop-blur-[2px] select-none ${label ? '' : 'invisible'} ${className}`}
+      className={`pointer-events-none absolute z-30 rounded-sm bg-noite/30 px-1.5 py-0.5 font-label text-[8px] leading-none tracking-[0.12em] text-papel-inv/75 backdrop-blur-[2px] select-none ${label ? '' : 'invisible'} ${className}`}
     >
       {label || '0:0'}
     </span>

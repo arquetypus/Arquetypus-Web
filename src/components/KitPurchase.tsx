@@ -73,11 +73,11 @@ export function KitPurchase() {
               className={`rounded-lg border p-3 text-center ${variante === v.key ? 'border-tinta' : 'border-linha-2'}`}
             >
               <b className="block text-sm">{v.label}</b>
-              <span className="mt-0.5 block font-mono text-[9px] text-tinta-3 uppercase">{v.meta}</span>
+              <span className="mt-0.5 block font-label text-[9px] text-tinta-3 uppercase">{v.meta}</span>
             </button>
           ))}
         </div>
-        <p className="mt-2.5 text-center font-mono text-[10px] text-latao-texto uppercase">
+        <p className="mt-2.5 text-center font-label text-[10px] text-latao-texto uppercase">
           {brl(ECON.kitPreco)} · mesmo preço nas três
         </p>
 
@@ -90,11 +90,11 @@ export function KitPurchase() {
               />
               <span className="flex-1 text-sm">
                 {a.nome}
-                <span className="block font-mono text-[9px] text-tinta-3">
+                <span className="block font-label text-[9px] text-tinta-3">
                   {a.cod} · {a.fam}
                 </span>
               </span>
-              <span className="font-mono text-[9px] text-tinta-3 uppercase">8 ml</span>
+              <span className="font-label text-[9px] text-tinta-3 uppercase">8 ml</span>
             </div>
           ))}
         </div>
@@ -104,7 +104,7 @@ export function KitPurchase() {
       <section className="px-4 pt-6">
         <div className="flex items-baseline gap-3">
           <span className="font-display text-2xl">{brl(ECON.kitPreco)}</span>
-          <span className="font-mono text-[10px] text-latao-texto uppercase">Crédito integral no tamanho cheio</span>
+          <span className="font-label text-[10px] text-latao-texto uppercase">Crédito integral no tamanho cheio</span>
         </div>
         <p className="mt-1 text-xs text-tinta-2">
           {brl(ECON.kitPreco * 0.95)} no Pix · ou 6x de {brl(ECON.kitPreco / 6)} sem juros

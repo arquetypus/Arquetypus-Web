@@ -20,7 +20,7 @@ export function ResultPage() {
         style={{ background: a.bg }}
       >
         <p
-          className="reveal-name font-mono text-[10px] tracking-[0.22em] uppercase"
+          className="reveal-name font-label text-[10px] tracking-[0.22em] uppercase"
           style={{ color: a.cor, animationDelay: '0.2s', opacity: 0 }}
         >
           {a.cod} · Seu arquétipo dominante
@@ -41,14 +41,14 @@ export function ResultPage() {
 
       {/* Card compartilhável */}
       <Reveal as="section" className="bg-papel px-4 py-8">
-        <p className="font-mono text-[10px] tracking-[0.18em] text-tinta-3 uppercase">
+        <p className="font-label text-[10px] tracking-[0.18em] text-tinta-3 uppercase">
           Card para compartilhar
         </p>
         <div
           className="mt-4 flex aspect-[9/16] w-full max-w-52 flex-col justify-end rounded-2xl p-5"
           style={{ background: a.bg }}
         >
-          <p className="font-mono text-[9px] tracking-[0.2em] uppercase" style={{ color: a.cor }}>
+          <p className="font-label text-[9px] tracking-[0.2em] uppercase" style={{ color: a.cor }}>
             Arquétypus · {a.cod}
           </p>
           <p className="mt-2 font-display text-3xl leading-none" style={{ color: a.cor }}>
@@ -88,7 +88,7 @@ export function ResultPage() {
 
       {/* Layering */}
       <Reveal as="section" className="bg-papel px-4 py-8">
-        <p className="font-mono text-[10px] tracking-[0.18em] text-latao-texto uppercase">
+        <p className="font-label text-[10px] tracking-[0.18em] text-latao-texto uppercase">
           Como usar as duas juntas
         </p>
         <p className="mt-3 text-sm leading-relaxed text-tinta-2">{a.layer}</p>

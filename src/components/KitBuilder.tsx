@@ -70,18 +70,18 @@ export function KitBuilder() {
             }`}
           >
             {t.qtd === 3 && (
-              <span className="absolute -top-2 left-1/2 -translate-x-1/2 rounded-full bg-latao-texto px-2 py-0.5 font-mono text-[8px] tracking-wider text-papel">
+              <span className="absolute -top-2 left-1/2 -translate-x-1/2 rounded-full bg-latao-texto px-2 py-0.5 font-label text-[8px] tracking-wider text-papel">
                 MAIS ESCOLHIDO
               </span>
             )}
             <span className="block font-display text-lg">{t.qtd}</span>
             <span className="mt-1 block text-xs font-medium">{t.label}</span>
-            <span className="mt-0.5 block font-mono text-[9px] text-tinta-3 uppercase">
+            <span className="mt-0.5 block font-label text-[9px] text-tinta-3 uppercase">
               {t.meta}
             </span>
             <span className="mt-2 block font-display text-base">{brl(t.unit)}/un</span>
             {t.economia && (
-              <span className="mt-0.5 block font-mono text-[9px] text-ok">
+              <span className="mt-0.5 block font-label text-[9px] text-ok">
                 Economize {brl(t.economia)}
               </span>
             )}
@@ -89,7 +89,7 @@ export function KitBuilder() {
         ))}
       </div>
 
-      <p className="mt-6 font-mono text-[10px] tracking-widest text-tinta-3 uppercase">
+      <p className="mt-6 font-label text-[10px] tracking-widest text-tinta-3 uppercase">
         Escolha os seus
       </p>
       <div className="mt-3 flex flex-col gap-2">
@@ -98,7 +98,7 @@ export function KitBuilder() {
             <span className="size-6 shrink-0 rounded-full" style={{ background: a.cor }} />
             <span className="flex-1 text-sm">
               {a.nome}
-              <span className="block font-mono text-[9px] text-tinta-3">
+              <span className="block font-label text-[9px] text-tinta-3">
                 {a.cod} · {a.vol}
               </span>
             </span>
@@ -132,17 +132,17 @@ export function KitBuilder() {
             style={{ width: `${progress}%` }}
           />
         </div>
-        <div className="mt-1.5 flex justify-between font-mono text-[8.5px] text-tinta-3 uppercase">
+        <div className="mt-1.5 flex justify-between font-label text-[8.5px] text-tinta-3 uppercase">
           <span className={hasMini ? 'text-ok' : ''}>{brl(REWARD_MINI)} · miniatura grátis</span>
           <span className={hasFreight ? 'text-ok' : ''}>{brl(REWARD_FREIGHT)} · frete grátis</span>
         </div>
-        <p className="mt-2 text-center font-mono text-[9.5px] tracking-wide text-tinta-2 uppercase">
+        <p className="mt-2 text-center font-label text-[9.5px] tracking-wide text-tinta-2 uppercase">
           {msg}
         </p>
       </div>
 
       <div className="mt-5 flex items-baseline justify-between border-t border-linha pt-4">
-        <span className="font-mono text-[10px] tracking-widest text-tinta-3 uppercase">
+        <span className="font-label text-[10px] tracking-widest text-tinta-3 uppercase">
           Seu kit: {qtd} {qtd === 1 ? 'arquétipo' : 'arquétipos'}
         </span>
         <span className="font-display text-xl">{qtd > 0 ? brl(total) : '—'}</span>

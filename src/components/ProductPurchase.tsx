@@ -93,7 +93,7 @@ export function ProductPurchase({ a }: { a: Archetype }) {
 
   return (
     <>
-      <p className="px-4 pt-3 font-mono text-[9px] tracking-widest text-tinta-3 uppercase">
+      <p className="px-4 pt-3 font-label text-[9px] tracking-widest text-tinta-3 uppercase">
         {a.energia} / {a.cod} / {a.nome}
       </p>
 
@@ -129,13 +129,13 @@ export function ProductPurchase({ a }: { a: Archetype }) {
         <div className="mt-2 flex gap-2">
           <button
             onClick={() => setShowNotes(false)}
-            className={`rounded-full border px-3 py-1.5 font-mono text-[9px] tracking-wide uppercase ${!showNotes ? 'border-tinta bg-tinta text-papel' : 'border-linha-2'}`}
+            className={`rounded-full border px-3 py-1.5 font-label text-[9px] tracking-wide uppercase ${!showNotes ? 'border-tinta bg-tinta text-papel' : 'border-linha-2'}`}
           >
             Frasco
           </button>
           <button
             onClick={() => setShowNotes(true)}
-            className={`rounded-full border px-3 py-1.5 font-mono text-[9px] tracking-wide uppercase ${showNotes ? 'border-tinta bg-tinta text-papel' : 'border-linha-2'}`}
+            className={`rounded-full border px-3 py-1.5 font-label text-[9px] tracking-wide uppercase ${showNotes ? 'border-tinta bg-tinta text-papel' : 'border-linha-2'}`}
           >
             Notas
           </button>
@@ -157,7 +157,7 @@ export function ProductPurchase({ a }: { a: Archetype }) {
         /* Zeus: lista de espera, nunca venda */
         <section className="mt-5 px-4">
           <p className="rounded-lg border border-linha-2 p-4 text-sm text-tinta-2">
-            <b className="block font-mono text-[10px] tracking-[0.18em] text-alerta uppercase">Em breve</b>
+            <b className="block font-label text-[10px] tracking-[0.18em] text-alerta uppercase">Em breve</b>
             <span className="mt-1.5 block">
               {a.nome} ainda não está à venda. Entre na lista de espera para saber quando chegar.
             </span>
@@ -181,7 +181,7 @@ export function ProductPurchase({ a }: { a: Archetype }) {
                   className={`rounded-lg border p-3 text-center ${variant === v.key ? 'border-tinta' : 'border-linha-2'}`}
                 >
                   <b className="block text-sm">{v.label}</b>
-                  <span className="mt-0.5 block font-mono text-[9px] text-tinta-3 uppercase">
+                  <span className="mt-0.5 block font-label text-[9px] text-tinta-3 uppercase">
                     {v.meta} · {brl(v.price)}
                   </span>
                 </button>
@@ -197,7 +197,7 @@ export function ProductPurchase({ a }: { a: Archetype }) {
             <p className="mt-1 text-xs text-tinta-2">
               {brl(pix)} no Pix · ou 6x de {brl(selected.price / 6)} sem juros
             </p>
-            <p className="mt-1.5 font-mono text-[10px] text-ok uppercase">● Em estoque e pronto para envio</p>
+            <p className="mt-1.5 font-label text-[10px] text-ok uppercase">● Em estoque e pronto para envio</p>
           </section>
 
           {/* P-07 Comprar — sacola desativada, ver CLAUDE.md */}
@@ -215,17 +215,17 @@ export function ProductPurchase({ a }: { a: Archetype }) {
 
       {/* P-08 Selos */}
       <section className="mt-5 grid grid-cols-3 gap-2 px-4 text-center">
-        <div className="rounded-md border border-linha-2 p-2 font-mono text-[8px] tracking-wide text-tinta-2 uppercase">
+        <div className="rounded-md border border-linha-2 p-2 font-label text-[8px] tracking-wide text-tinta-2 uppercase">
           Envio em
           <br />
           24 h úteis
         </div>
-        <div className="rounded-md border border-linha-2 p-2 font-mono text-[8px] tracking-wide text-tinta-2 uppercase">
+        <div className="rounded-md border border-linha-2 p-2 font-label text-[8px] tracking-wide text-tinta-2 uppercase">
           7 dias de
           <br />
           garantia
         </div>
-        <div className="rounded-md border border-linha-2 p-2 font-mono text-[8px] tracking-wide text-tinta-2 uppercase">
+        <div className="rounded-md border border-linha-2 p-2 font-label text-[8px] tracking-wide text-tinta-2 uppercase">
           Pagamento
           <br />
           seguro
@@ -240,7 +240,7 @@ export function ProductPurchase({ a }: { a: Archetype }) {
             <input type="checkbox" checked={addonPar} onChange={(e) => setAddonPar(e.target.checked)} />
             <span>
               {par.nome} {par.vol}
-              <span className="block font-mono text-[9px] text-tinta-3 uppercase">
+              <span className="block font-label text-[9px] text-tinta-3 uppercase">
                 Layering recomendado · +{brl(par.preco)}
               </span>
             </span>
@@ -253,7 +253,7 @@ export function ProductPurchase({ a }: { a: Archetype }) {
             />
             <span>
               Necessaire Arquétypus
-              <span className="block font-mono text-[9px] text-tinta-3 uppercase">
+              <span className="block font-label text-[9px] text-tinta-3 uppercase">
                 Estojo em lona com o glifo · +{brl(NECESSAIRE_PRICE)}
               </span>
             </span>

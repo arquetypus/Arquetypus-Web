@@ -1,9 +1,32 @@
 @import 'tailwindcss';
 
+/* Fontes oficiais do branding (public/fonts). Elegant só tem Regular —
+   itálico e negrito em font-display saem sintetizados pelo navegador. */
+@font-face {
+  font-family: 'Elegant';
+  src: url('/fonts/elegant.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-var.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-var-italic.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 @theme {
-  --font-display: 'Bodoni Moda', serif;
-  --font-sans: 'Jost', system-ui, sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-display: 'Elegant', serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
 
   --color-papel: #f7f6f3;
   --color-papel-2: #efeee9;
@@ -122,10 +145,30 @@ body,
   background-color: var(--color-mesa);
 }
 
+/* Escala de pesos da Inter (branding):
+   300 texto corrido · 500 rótulos, botões e CTAs · 600 títulos em sans e ênfase.
+   Elegant (font-display) só tem 400 — fica fora da regra de ênfase pra não
+   ganhar negrito sintético. */
 body {
   color: var(--color-tinta);
   font-family: var(--font-sans);
   font-weight: 300;
+}
+
+@layer base {
+  b:not(.font-display),
+  strong:not(.font-display) {
+    font-weight: 600;
+  }
+}
+
+/* Rótulo: caixa alta miúda com tracking (eyebrows, selos, legendas, preços
+   auxiliares). Substitui a antiga mono — algarismos tabulares mantêm o
+   alinhamento que a mono dava. */
+@utility font-label {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
 }
 
 a,

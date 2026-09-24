@@ -54,7 +54,7 @@ export function Drawer({ open, onClose }: { open: boolean; onClose: () => void }
       {/* Painel lateral */}
       <nav className="relative z-10 flex h-full w-72 flex-col overflow-y-auto bg-papel p-5 shadow-2xl">
         <div className="flex items-center justify-between">
-          <span className="font-mono text-xs tracking-[0.22em] uppercase">Arquétypus</span>
+          <span className="font-label text-xs tracking-[0.22em] uppercase">Arquétypus</span>
           <button aria-label="Fechar menu" onClick={onClose} className="text-lg">
             ✕
           </button>
@@ -62,7 +62,7 @@ export function Drawer({ open, onClose }: { open: boolean; onClose: () => void }
 
         {GROUPS.map((group) => (
           <div key={group.title}>
-            <p className="mt-6 mb-1 font-mono text-[9.5px] tracking-[0.2em] text-latao-texto uppercase">
+            <p className="mt-6 mb-1 font-label text-[9.5px] tracking-[0.2em] text-latao-texto uppercase">
               {group.title}
             </p>
             {group.links.map((link) =>
@@ -82,7 +82,7 @@ export function Drawer({ open, onClose }: { open: boolean; onClose: () => void }
                   className="block cursor-not-allowed border-b border-linha py-3.5 text-[17px] text-tinta-3"
                 >
                   {link.label}
-                  <span className="ml-2 font-mono text-[9px] tracking-wide uppercase">
+                  <span className="ml-2 font-label text-[9px] tracking-wide uppercase">
                     Em breve
                   </span>
                 </span>

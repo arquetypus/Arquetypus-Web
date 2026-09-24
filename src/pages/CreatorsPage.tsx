@@ -78,7 +78,7 @@ export function CreatorsPage() {
         <div className="mt-5 grid grid-cols-3 gap-2 text-center">
           <div>
             <b className="block font-display text-2xl">{Math.round(ECON.comissaoPct * 100)}%</b>
-            <span className="font-mono text-[8px] text-tinta-3 uppercase">
+            <span className="font-label text-[8px] text-tinta-3 uppercase">
               de comissão
               <br />
               por venda
@@ -86,7 +86,7 @@ export function CreatorsPage() {
           </div>
           <div>
             <b className="block font-display text-2xl">Grátis</b>
-            <span className="font-mono text-[8px] text-tinta-3 uppercase">
+            <span className="font-label text-[8px] text-tinta-3 uppercase">
               amostra do seu
               <br />
               arquétipo
@@ -94,7 +94,7 @@ export function CreatorsPage() {
           </div>
           <div>
             <b className="block font-display text-2xl">D+30</b>
-            <span className="font-mono text-[8px] text-tinta-3 uppercase">
+            <span className="font-label text-[8px] text-tinta-3 uppercase">
               pagamento
               <br />
               via Pix
@@ -112,7 +112,7 @@ export function CreatorsPage() {
         <div className="mt-5 flex flex-col gap-4">
           {HOW_IT_WORKS.map((s) => (
             <div key={s.n} className="flex gap-3">
-              <span className="font-mono text-xs text-latao-texto">{s.n}</span>
+              <span className="font-label text-xs text-latao-texto">{s.n}</span>
               <div>
                 <b className="text-sm">{s.title}</b>
                 <p className="mt-0.5 text-sm text-tinta-2">{s.body}</p>
@@ -151,7 +151,7 @@ export function CreatorsPage() {
             </div>
           ))}
         </div>
-        <p className="mt-4 font-mono text-[8.5px] text-tinta-3">
+        <p className="mt-4 font-label text-[8.5px] text-tinta-3">
           PLANEJAMENTO INTERNO · DADO ILUSTRATIVO
         </p>
       </section>
@@ -196,7 +196,7 @@ export function CreatorsPage() {
             </button>
           ))}
         </div>
-        <p className="mt-2.5 font-mono text-[10px] text-latao-texto uppercase">
+        <p className="mt-2.5 font-label text-[10px] text-latao-texto uppercase">
           {a
             ? `Você vai representar: ${a.nome}${a.status === 'wait' ? ' · em lista de espera junto com o arquétipo' : ''}`
             : 'Nenhum arquétipo selecionado'}

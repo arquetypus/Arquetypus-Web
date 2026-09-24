@@ -53,7 +53,7 @@ export function QuizPage() {
   return (
     <div className="min-h-[calc(100svh-3rem)] bg-noite px-4 py-8 text-papel-inv">
       <div className="flex items-center gap-3">
-        <span className="font-mono text-[10px] text-papel-inv/50">
+        <span className="font-label text-[10px] text-papel-inv/50">
           {step + 1} / {QUIZ_QUESTIONS.length}
         </span>
         <div className="h-1 flex-1 rounded-full bg-papel-inv/10">
@@ -73,7 +73,7 @@ export function QuizPage() {
             onClick={() => pick(i)}
             className="flex items-center gap-3 rounded-xl border border-papel-inv/15 bg-papel-inv/5 p-4 text-left text-sm text-papel-inv/90 transition-colors hover:bg-papel-inv/10"
           >
-            <span className="flex size-8 shrink-0 items-center justify-center rounded-full border border-papel-inv/20 font-mono text-xs text-papel-inv/50">
+            <span className="flex size-8 shrink-0 items-center justify-center rounded-full border border-papel-inv/20 font-label text-xs text-papel-inv/50">
               {String.fromCharCode(65 + i)}
             </span>
             <span>{o.label}</span>
@@ -83,7 +83,7 @@ export function QuizPage() {
 
       {step > 0 && (
         <button
-          className="mt-4 font-mono text-[10px] tracking-widest text-papel-inv/50 uppercase"
+          className="mt-4 font-label text-[10px] tracking-widest text-papel-inv/50 uppercase"
           onClick={() => setStep(step - 1)}
         >
           ← Voltar

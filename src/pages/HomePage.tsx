@@ -158,7 +158,7 @@ function CommunitySection() {
                   style={{ background: 'linear-gradient(to bottom, rgba(20,18,15,0.45), transparent)' }}
                 />
                 {/* legenda editorial discreta */}
-                <div className="absolute top-4 left-4 font-mono text-[9px] tracking-widest text-papel-inv/90 uppercase">
+                <div className="absolute top-4 left-4 font-label text-[9px] tracking-widest text-papel-inv/90 uppercase">
                   <span className="block">
                     {String(i + 1).padStart(2, '0')} / {String(UGC_VIDEOS.length).padStart(2, '0')}
                   </span>
@@ -191,7 +191,7 @@ function CommunitySection() {
                     <div className="flex min-w-0 flex-1 flex-col justify-center">
                       <b className="block truncate font-display text-lg leading-tight font-normal text-tinta">{arq.nome}</b>
                       <span className="block truncate text-xs text-tinta-2">{arq.fam}</span>
-                      <span className="mt-1 block truncate font-mono text-[8.5px] tracking-widest text-tinta-3 uppercase">
+                      <span className="mt-1 block truncate font-label text-[8.5px] tracking-widest text-tinta-3 uppercase">
                         {arq.tipo} · {arq.vol}
                       </span>
                       <span className="mt-1 block text-sm leading-none text-tinta">{brl(arq.preco)}</span>
@@ -255,7 +255,7 @@ export function HomePage() {
           {SEALS.map((s) => (
             <div key={s} className="flex flex-col items-center gap-2 px-3 py-5">
               <SealIcon seal={s} className="size-5 text-latao-texto" />
-              <span className="text-center font-mono text-[9px] tracking-widest text-tinta-3 uppercase">{s}</span>
+              <span className="text-center font-label text-[9px] tracking-widest text-tinta-3 uppercase">{s}</span>
             </div>
           ))}
         </section>
@@ -283,11 +283,11 @@ export function HomePage() {
                 }}
               />
               <div className="absolute inset-x-0 bottom-0 z-10 p-4">
-                <span className="block font-mono text-[9px] tracking-widest text-papel-inv/80 uppercase">
+                <span className="block font-label text-[9px] tracking-widest text-papel-inv/80 uppercase">
                   {seg.label}
                 </span>
                 <span className="mt-1 block font-display text-2xl text-papel-inv">{seg.name}</span>
-                <span className="mt-1 block font-mono text-[9px] text-papel-inv/70">{seg.meta}</span>
+                <span className="mt-1 block font-label text-[9px] text-papel-inv/70">{seg.meta}</span>
                 <span className="mt-3 block w-full rounded-full border border-papel-inv/40 bg-papel-inv/10 py-2.5 text-center text-xs font-medium text-papel-inv backdrop-blur-sm transition-colors duration-300 ease-out group-hover:border-papel-inv/60 group-hover:bg-papel-inv/20">
                   Ver coleção
                 </span>
@@ -360,7 +360,7 @@ export function HomePage() {
                       {d.n}
                     </span>
                     <div className="pt-1.5">
-                      <b className="text-base font-medium text-tinta">{d.title}</b>
+                      <b className="text-base font-semibold text-tinta">{d.title}</b>
                       <p className="mt-1.5 text-sm leading-relaxed text-tinta-2">{d.body}</p>
                     </div>
                   </div>
@@ -489,7 +489,7 @@ export function HomePage() {
             ))}
           </div>
           <CarouselDots count={ENERGIES.length} active={energiesScroll.activeIndex} />
-          <p className="mt-3 px-4 text-center font-mono text-[9.5px] tracking-widest text-tinta-3 uppercase">
+          <p className="mt-3 px-4 text-center font-label text-[9.5px] tracking-widest text-tinta-3 uppercase">
             Deslize para explorar
           </p>
         </Reveal>
@@ -557,7 +557,7 @@ export function HomePage() {
                       </svg>
                     </span>
                     <div>
-                      <b className="block text-base font-medium text-tinta">{q.title}</b>
+                      <b className="block text-base font-semibold text-tinta">{q.title}</b>
                       <p className="mt-1.5 text-sm leading-relaxed text-tinta-2">{q.body}</p>
                     </div>
                   </div>
@@ -624,7 +624,7 @@ export function HomePage() {
                 role="tab"
                 aria-selected={catalogoFiltro === f.key}
                 onClick={() => setCatalogoFiltro(f.key)}
-                className={`shrink-0 whitespace-nowrap border-b pb-2 font-mono text-[10.5px] tracking-[0.12em] uppercase transition-colors duration-300 ${
+                className={`shrink-0 whitespace-nowrap border-b pb-2 font-label text-[10.5px] tracking-[0.12em] uppercase transition-colors duration-300 ${
                   catalogoFiltro === f.key
                     ? 'border-latao text-latao'
                     : 'border-transparent text-papel-inv/45'
@@ -676,7 +676,7 @@ export function HomePage() {
                   {a.cod.split('-')[1]}
                 </span>
                 {a.status === 'wait' && (
-                  <span className="absolute top-3 right-3 z-20 rounded-full bg-papel/85 px-2.5 py-1 font-mono text-[8px] tracking-wide text-alerta uppercase">
+                  <span className="absolute top-3 right-3 z-20 rounded-full bg-papel/85 px-2.5 py-1 font-label text-[8px] tracking-wide text-alerta uppercase">
                     Em breve
                   </span>
                 )}
@@ -692,12 +692,12 @@ export function HomePage() {
                 />
 
                 <div className="absolute inset-x-0 bottom-0 z-10 px-5 pt-5 pb-5">
-                  <span className="block font-mono text-[9px] tracking-widest text-papel-inv/70 uppercase">
+                  <span className="block font-label text-[9px] tracking-widest text-papel-inv/70 uppercase">
                     {a.cod}
                   </span>
                   <b className="mt-1.5 block font-display text-2xl text-papel-inv">{a.nome}</b>
                   <span className="mt-1 block text-sm text-papel-inv/80">{a.fam}</span>
-                  <span className="mt-3 block font-mono text-[9px] tracking-wide text-papel-inv/60 uppercase">
+                  <span className="mt-3 block font-label text-[9px] tracking-wide text-papel-inv/60 uppercase">
                     {a.tipo} · {a.vol}
                   </span>
                   <div className="mt-2 flex items-center justify-between gap-3">
@@ -708,7 +708,7 @@ export function HomePage() {
                       // mesmo destino do UGC: pop-up de compra (/loja/:id por cima da home)
                       to={`/loja/${a.id}`}
                       state={{ backgroundLocation: location }}
-                      className="relative z-20 inline-flex shrink-0 items-center justify-center rounded-full border border-papel-inv/40 bg-papel-inv/10 px-4 py-2.5 font-mono text-[10px] tracking-[0.12em] text-papel-inv uppercase backdrop-blur-sm transition-colors duration-300 ease-out hover:border-papel-inv/60 hover:bg-papel-inv/20"
+                      className="relative z-20 inline-flex shrink-0 items-center justify-center rounded-full border border-papel-inv/40 bg-papel-inv/10 px-4 py-2.5 font-label text-[10px] tracking-[0.12em] text-papel-inv uppercase backdrop-blur-sm transition-colors duration-300 ease-out hover:border-papel-inv/60 hover:bg-papel-inv/20"
                     >
                       {a.status === 'wait' ? 'Entrar na lista' : 'Descobrir'}
                     </Link>
@@ -719,7 +719,7 @@ export function HomePage() {
             })}
           </div>
           <CarouselDots count={catalogoFiltrado.length} active={catalogoAtivo} tone="dark" />
-          <p className="mt-3 px-5 text-center font-mono text-[9.5px] tracking-widest text-papel-inv/40 uppercase">
+          <p className="mt-3 px-5 text-center font-label text-[9.5px] tracking-widest text-papel-inv/40 uppercase">
             Deslize para explorar
           </p>
         </Reveal>
@@ -784,11 +784,11 @@ export function HomePage() {
               </div>
               <div className="mt-3.5 flex items-end justify-between gap-4">
                 <div>
-                  <span className="block font-mono text-[9px] tracking-widest text-papel-inv/60 uppercase">9 × 8 ml</span>
+                  <span className="block font-label text-[9px] tracking-widest text-papel-inv/60 uppercase">9 × 8 ml</span>
                   <span className="mt-1.5 block font-display text-3xl leading-none text-papel-inv">{brl(ECON.kitPreco)}</span>
                 </div>
                 <span
-                  className="pb-0.5 text-right font-mono text-[9px] tracking-widest uppercase"
+                  className="pb-0.5 text-right font-label text-[9px] tracking-widest uppercase"
                   style={{ color: LATAO_CLARO }}
                 >
                   Crédito
@@ -865,11 +865,7 @@ export function HomePage() {
               <span aria-hidden className="pointer-events-none absolute inset-y-2 left-1/2 w-px bg-linha" />
               {STATS.map((st, i) => (
                 <div key={st.label} className={i % 2 === 0 ? 'pr-5' : 'pl-5'}>
-                  {/* opsz baixo: em 56px a Bodoni usa o desenho de título, com hastes finíssimas que somem em dourado sobre o creme */}
-                  <span
-                    className="block font-display text-[56px] leading-none tracking-tight text-latao-texto"
-                    style={{ fontVariationSettings: "'opsz' 24" }}
-                  >
+                  <span className="block font-display text-[56px] leading-none tracking-tight text-latao-texto">
                     {st.pct}
                   </span>
                   <span aria-hidden className="mt-5 block h-px w-8 bg-latao-texto/60" />
@@ -877,7 +873,7 @@ export function HomePage() {
                 </div>
               ))}
             </div>
-            <p className="mt-12 font-mono text-[8.5px] tracking-wide text-tinta-3">
+            <p className="mt-12 font-label text-[8.5px] tracking-wide text-tinta-3">
               AUTOAVALIAÇÃO · N=120 · JUL/2026 · DADO ILUSTRATIVO NO PROTÓTIPO
             </p>
           </div>
@@ -991,7 +987,7 @@ export function HomePage() {
                 <li key={c.tema} className="flex items-baseline gap-4 border-b border-papel-inv/10 py-3.5">
                   <span
                     aria-hidden
-                    className="w-5 shrink-0 font-mono text-[10px] tracking-widest"
+                    className="w-5 shrink-0 font-label text-[10px] tracking-widest"
                     style={{ color: difModo === 'arquetypus' ? LATAO_CLARO : 'rgba(247,246,243,0.3)' }}
                   >
                     {String(i + 1).padStart(2, '0')}
@@ -1055,7 +1051,7 @@ export function HomePage() {
             </div>
             <div className="mt-4 flex items-center justify-center gap-3">
               <span aria-hidden className="h-px w-6 bg-papel-inv/20" />
-              <p className="font-mono text-[9.5px] tracking-[0.3em] text-papel-inv/60 uppercase">Dias de garantia</p>
+              <p className="font-label text-[9.5px] tracking-[0.3em] text-papel-inv/60 uppercase">Dias de garantia</p>
               <span aria-hidden className="h-px w-6 bg-papel-inv/20" />
             </div>
 
@@ -1076,7 +1072,7 @@ export function HomePage() {
               devolvemos o valor.
             </p>
 
-            <p className="mt-8 font-mono text-[9px] tracking-[0.2em] text-papel-inv/40 uppercase">
+            <p className="mt-8 font-label text-[9px] tracking-[0.2em] text-papel-inv/40 uppercase">
               Sem perguntas · Mesmo com o frasco aberto
             </p>
           </div>
@@ -1128,7 +1124,7 @@ export function HomePage() {
               ].map((ind, i) => (
                 <div key={ind.valor} className={`flex flex-col items-center text-center ${i > 0 ? 'border-l border-linha' : ''}`}>
                   {/* dt antes de dd no DOM (semântica de <dl>); order-last põe o rótulo embaixo do número */}
-                  <dt className="order-last mt-3 font-mono text-[8.5px] leading-relaxed tracking-[0.16em] text-tinta-3 uppercase">
+                  <dt className="order-last mt-3 font-label text-[8.5px] leading-relaxed tracking-[0.16em] text-tinta-3 uppercase">
                     {ind.label[0]}
                     <br />
                     {ind.label[1]}
@@ -1176,7 +1172,7 @@ export function HomePage() {
               <li key={j.title} className="flex gap-4 border-t border-papel-inv/10 py-5 last:border-b">
                 <span
                   aria-hidden
-                  className="w-5 shrink-0 pt-1 font-mono text-[10px] tracking-widest"
+                  className="w-5 shrink-0 pt-1 font-label text-[10px] tracking-widest"
                   style={{ color: LATAO_CLARO }}
                 >
                   {String(i + 1).padStart(2, '0')}
@@ -1236,7 +1232,7 @@ export function HomePage() {
             {/* sem backend ainda: o submit não envia nada (ver CLAUDE.md) */}
             <form className="mt-8 flex flex-col gap-5 text-left" onSubmit={(e) => e.preventDefault()}>
               <label className="block">
-                <span className="font-mono text-[9px] tracking-[0.2em] text-tinta-3 uppercase">E-mail</span>
+                <span className="font-label text-[9px] tracking-[0.2em] text-tinta-3 uppercase">E-mail</span>
                 <input
                   type="email"
                   name="email"
@@ -1246,7 +1242,7 @@ export function HomePage() {
                 />
               </label>
               <label className="block">
-                <span className="font-mono text-[9px] tracking-[0.2em] text-tinta-3 uppercase">WhatsApp</span>
+                <span className="font-label text-[9px] tracking-[0.2em] text-tinta-3 uppercase">WhatsApp</span>
                 <input
                   type="tel"
                   name="whatsapp"
@@ -1287,7 +1283,7 @@ export function HomePage() {
 
           <nav aria-label="Rodapé" className="mt-12 grid grid-cols-2 gap-x-6 border-t border-papel-inv/10 pt-8">
             <div>
-              <p className="font-mono text-[9px] tracking-[0.2em] text-papel-inv/35 uppercase">Explorar</p>
+              <p className="font-label text-[9px] tracking-[0.2em] text-papel-inv/35 uppercase">Explorar</p>
               <ul className="mt-4 flex flex-col gap-3 text-sm text-papel-inv/75">
                 <li><Link to="/#catalogo" className="transition-colors hover:text-papel-inv">Os 9 arquétipos</Link></li>
                 <li>
@@ -1300,24 +1296,24 @@ export function HomePage() {
               </ul>
             </div>
             <div>
-              <p className="font-mono text-[9px] tracking-[0.2em] text-papel-inv/35 uppercase">Ajuda</p>
+              <p className="font-label text-[9px] tracking-[0.2em] text-papel-inv/35 uppercase">Ajuda</p>
               {/* sem página ainda — visível, mas não clicável (mesmo critério do Drawer) */}
               <ul className="mt-4 flex flex-col gap-3 text-sm text-papel-inv/35">
                 {['Trocas e devoluções', 'Privacidade', 'Termos'].map((item) => (
                   <li key={item} aria-disabled="true">
                     {item}
-                    <span className="mt-0.5 block font-mono text-[8px] tracking-widest text-papel-inv/25 uppercase">em breve</span>
+                    <span className="mt-0.5 block font-label text-[8px] tracking-widest text-papel-inv/25 uppercase">em breve</span>
                   </li>
                 ))}
               </ul>
             </div>
           </nav>
 
-          <p className="mt-10 text-center font-mono text-[9px] tracking-[0.2em] text-papel-inv/45 uppercase">
+          <p className="mt-10 text-center font-label text-[9px] tracking-[0.2em] text-papel-inv/45 uppercase">
             Instagram <span className="mx-2 text-papel-inv/20">·</span> TikTok <span className="mx-2 text-papel-inv/20">·</span> Pinterest
           </p>
 
-          <div className="mt-8 border-t border-papel-inv/10 pt-6 text-center font-mono text-[8.5px] leading-relaxed tracking-wider text-papel-inv/30 uppercase">
+          <div className="mt-8 border-t border-papel-inv/10 pt-6 text-center font-label text-[8.5px] leading-relaxed tracking-wider text-papel-inv/30 uppercase">
             <p>Pix · Visa · Master · Elo · Boleto</p>
             <p className="mt-3 normal-case tracking-wide">sac@arquetypus.com.br</p>
             <p className="mt-1">Saniella Ltda · CNPJ 58.267.823/0001-68 · Caraguatatuba SP</p>

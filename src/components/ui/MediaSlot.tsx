@@ -40,7 +40,7 @@ export function MediaSlot({
 
   return (
     <div
-      className={`flex items-center justify-center rounded-lg border border-dashed px-4 text-center font-mono text-[10px] leading-relaxed ${
+      className={`flex items-center justify-center rounded-lg border border-dashed px-4 text-center font-label text-[10px] leading-relaxed ${
         dark ? 'border-papel-inv/15 text-papel-inv/30' : 'border-linha-2 text-tinta-3'
       } ${className}`}
       style={{ aspectRatio: aspect === 'auto' ? undefined : aspect, background: bg }}
