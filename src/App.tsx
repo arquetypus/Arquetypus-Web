@@ -10,6 +10,7 @@ import { HomePage } from '@/pages/HomePage'
 import { ProductPage } from '@/pages/ProductPage'
 import { KitPage } from '@/pages/KitPage'
 import { CreatorsPage } from '@/pages/CreatorsPage'
+import { PrivacyPage } from '@/pages/PrivacyPage'
 
 function RedirectToLoja() {
   const { id } = useParams<{ id: string }>()
@@ -35,6 +36,7 @@ export default function App() {
           <Route path="loja/:id" element={<ProductPage />} />
           <Route path="kit-descoberta" element={<KitPage />} />
           <Route path="criadores" element={<CreatorsPage />} />
+          <Route path="privacidade" element={<PrivacyPage />} />
         </Route>
       </Routes>
       {background && (

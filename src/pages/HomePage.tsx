@@ -1298,9 +1298,14 @@ export function HomePage() {
             </div>
             <div>
               <p className="font-label text-[9px] tracking-[0.2em] text-papel-inv/35 uppercase">Ajuda</p>
-              {/* sem página ainda — visível, mas não clicável (mesmo critério do Drawer) */}
+              {/* Trocas e Termos sem página ainda — visíveis, mas não clicáveis (mesmo critério do Drawer) */}
               <ul className="mt-4 flex flex-col gap-3 text-sm text-papel-inv/35">
-                {['Trocas e devoluções', 'Privacidade', 'Termos'].map((item) => (
+                <li>
+                  <Link to="/privacidade" className="text-papel-inv/75 transition-colors hover:text-papel-inv">
+                    Privacidade
+                  </Link>
+                </li>
+                {['Trocas e devoluções', 'Termos'].map((item) => (
                   <li key={item} aria-disabled="true">
                     {item}
                     <span className="mt-0.5 block font-label text-[8px] tracking-widest text-papel-inv/25 uppercase">em breve</span>

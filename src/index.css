@@ -9,6 +9,16 @@
   font-style: normal;
   font-display: swap;
 }
+/* O travessão (U+2014) da Elegant vem desenhado rente à linha de base, fino como
+   sublinhado — some nos títulos. Só esse caractere é emprestado da Inter. */
+@font-face {
+  font-family: 'Elegant';
+  src: url('/fonts/inter-var.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+2014;
+}
 @font-face {
   font-family: 'Inter';
   src: url('/fonts/inter-var.woff2') format('woff2');

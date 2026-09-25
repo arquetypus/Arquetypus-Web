@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom'
 import { onOpenCookiePreferences, readConsent, saveConsent } from '@/lib/consent'
 import { CutFrame } from '@/components/ui/CutFrame'
 
-// Página de privacidade ainda não existe — sem rota, o texto aparece sem link
-// (mesmo critério do Drawer e do rodapé: nada de link morto). Trocar por
-// '/privacidade' (ou a rota real) quando a página existir.
-const PRIVACY_PATH: string | null = null
+// null = página ainda não existe: o texto aparece sem link (nada de link morto)
+const PRIVACY_PATH: string | null = '/privacidade'
 
 // mesmo desenho do "Ver página completa" do PurchaseSheet: rótulo latão com filete embaixo
 const TEXT_ACTION =
