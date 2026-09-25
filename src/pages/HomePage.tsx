@@ -33,7 +33,7 @@ import { useCarouselIndex } from '@/lib/useCarouselIndex'
 import { useTapGuard } from '@/lib/useTapGuard'
 import { useInfiniteCarousel } from '@/lib/useInfiniteCarousel'
 import { useCoverflow } from '@/lib/useCoverflow'
-import bannerKitDescoberta from '@/assets/mocks/home/banner-kit-descoberta.png'
+import featuredFenix from '@/assets/mocks/home/destaque-fenix.jpg'
 import florArquetypus from '@/assets/brand/flor-arquetypus.png'
 import ribbonArquetypus from '@/assets/brand/ribbon-arquetypus.png'
 import logoBranco from '@/assets/brand/logo-branco.png'
@@ -42,6 +42,17 @@ const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', curren
 
 /** Dourado sobre fundo escuro/bronze. Hoje é o próprio --color-latao (dourado do logo), que já é claro o bastante. */
 const LATAO_CLARO = 'var(--color-latao)'
+
+// Copy revisada (set/2026): percentuais de percepção, depoimentos e nota média saem do ar
+// até existir dado real. Ficam no código pra religar trocando pra true com fonte de verdade.
+const SHOW_PROOF_STATS = false
+const SHOW_REVIEWS = false
+
+// Arquétipo em destaque (card editorial da home). Foto gerada por IA (Higgsfield) com o frasco real
+// como referência, no estilo do vídeo do hero — trocar pela foto de campanha antes do lançamento.
+const FEATURED_ID = 'fenix'
+const FEATURED_IMG = featuredFenix
+const featured = getArchetype(FEATURED_ID)!
 
 /** Largura do card de UGC — o carrossel centraliza a partir dela. */
 const UGC_CARD_W = 'min(76vw, 320px)'
@@ -119,11 +130,11 @@ function CommunitySection() {
           <span aria-hidden className="h-px w-6 bg-latao" />
           <Eyebrow>A comunidade</Eyebrow>
         </div>
-        <h2 className="mt-4 font-display text-[32px] leading-[1.1] text-tinta">Quem já despertou</h2>
+        <h2 className="mt-4 font-display text-[32px] leading-[1.1] text-tinta">Experiências Arquétypus</h2>
         <p className="mt-3 text-sm leading-relaxed text-tinta-2">
           Pessoas reais.
           <br />
-          Diferentes formas de viver seus arquétipos.
+          Diferentes fragrâncias, momentos e formas de expressão.
         </p>
       </div>
 
@@ -208,7 +219,9 @@ function CommunitySection() {
                 </CutFrame>
               </div>
 
-              <p className="mt-3 px-3 text-[13px] leading-relaxed text-tinta-2 italic">“{v.testimonial}”</p>
+              {SHOW_REVIEWS && (
+                <p className="mt-3 px-3 text-[13px] leading-relaxed text-tinta-2 italic">“{v.testimonial}”</p>
+              )}
             </article>
           )
         })}
@@ -216,9 +229,11 @@ function CommunitySection() {
 
       <CarouselDots count={UGC_VIDEOS.length} active={ugcScroll.activeIndex} className="mt-6" />
 
-      <p className="mt-6 text-center text-xs text-tinta-3">
-        <span className="text-latao-texto">★</span> 4,8 · 2.147 avaliações
-      </p>
+      {SHOW_REVIEWS && (
+        <p className="mt-6 text-center text-xs text-tinta-3">
+          <span className="text-latao-texto">★</span> 4,8 · 2.147 avaliações
+        </p>
+      )}
     </Reveal>
   )
 }
@@ -341,10 +356,10 @@ export function HomePage() {
           <div className="relative z-10">
             <Eyebrow>O perfume errado</Eyebrow>
             <h2 className="mt-3 max-w-[19ch] font-display text-[28px] leading-[1.2] text-tinta">
-              Você já comprou uma fragrância que não parecia sua?
+              Você já escolheu uma fragrância que não combinava com você?
             </h2>
             <p className="mt-3 text-sm text-tinta-2">
-              Às vezes, o problema não está no perfume. Está na escolha.
+              Às vezes, encontrar o cheiro certo começa por entender o que você procura.
             </p>
 
             <div className="mt-7 flex flex-col">
@@ -370,7 +385,7 @@ export function HomePage() {
             </div>
 
             <p className="mt-7 text-center font-display text-xl leading-snug text-tinta">
-              Não comece pela marca.
+              Não comece pelo nome.
               <br />
               <span className="text-latao-texto">Comece por você.</span>
             </p>
@@ -381,8 +396,8 @@ export function HomePage() {
         <Reveal as="section" className="pt-9 pb-12">
           <div className="px-4">
             <Eyebrow>Entrada racional</Eyebrow>
-            <h2 className="mt-2.5 font-display text-2xl">Descubra por família</h2>
-            <p className="mt-1.5 text-sm text-tinta-2">Encontre a atmosfera que mais combina com você.</p>
+            <h2 className="mt-2.5 font-display text-2xl">Descubra pelo cheiro</h2>
+            <p className="mt-1.5 text-sm text-tinta-2">Explore as famílias olfativas e encontre os cheiros que mais combinam com você.</p>
           </div>
           <div
             ref={familiesScroll.ref}
@@ -444,11 +459,11 @@ export function HomePage() {
           <div className="px-4">
             <Eyebrow>Entrada emocional</Eyebrow>
             <h2 className="mt-2.5 font-display text-2xl">
-              Que energia você
+              Como você quer
               <br />
-              quer despertar?
+              se sentir hoje?
             </h2>
-            <p className="mt-1.5 text-sm text-tinta-2">Escolha pelo que você quer sentir.</p>
+            <p className="mt-1.5 text-sm text-tinta-2">Escolha pela presença que você quer expressar.</p>
           </div>
           <div
             ref={energiesScroll.ref}
@@ -538,10 +553,10 @@ export function HomePage() {
           <div className="relative z-10">
             <Eyebrow>Reconhecimento</Eyebrow>
             <h2 className="mt-3 max-w-[22ch] font-display text-[26px] leading-[1.25] text-tinta">
-              Talvez você não esteja procurando só um perfume.
+              Talvez você esteja procurando mais do que um cheiro.
             </h2>
             <p className="mt-3 max-w-[30ch] text-sm text-tinta-2">
-              Talvez esteja procurando algo que realmente pareça seu.
+              Talvez esteja procurando uma fragrância que acompanhe o seu momento.
             </p>
 
             <div className="mt-10 flex flex-col">
@@ -569,7 +584,7 @@ export function HomePage() {
             <p className="mt-10 max-w-[26ch] font-display text-xl leading-snug text-tinta">
               Se você se reconheceu,
               <br />
-              a Arquétypus foi pensada <span className="text-latao-texto">para você.</span>
+              existe uma Arquétypus <span className="text-latao-texto">para o seu momento.</span>
             </p>
           </div>
         </Reveal>
@@ -608,12 +623,12 @@ export function HomePage() {
           <div className="relative -mt-8 px-5 pt-3 pb-3">
             <Eyebrow className="text-latao">O catálogo</Eyebrow>
             <h2 className="mt-3 font-display text-4xl leading-[1.1] text-papel-inv">
-              Nove arquétipos.
+              Nove fragrâncias.
               <br />
-              Um sistema.
+              Diferentes versões de você.
             </h2>
             <p className="mt-3 max-w-[34ch] text-sm text-papel-inv/60">
-              Cada fragrância revela uma forma diferente de estar no mundo.
+              Cada fragrância traduz uma sensação, uma intenção, uma forma diferente de estar no mundo.
             </p>
           </div>
 
@@ -725,10 +740,11 @@ export function HomePage() {
           </p>
         </Reveal>
 
-        {/* H-15 Kit Descoberta — banner editorial: texto dentro da foto, sobre degradê bronze com blur (mesmo tratamento dos cards do catálogo) */}
+        {/* H-15 Arquétipo em destaque — ocupa o card editorial que era do Kit Descoberta (kit saiu do ar).
+            Trocar o destaque = trocar FEATURED_ID; todo o texto vem de data/archetypes.ts */}
         <Reveal
           as="section"
-          id="kit"
+          id="destaque"
           className="bg-papel px-4 pt-14 pb-12"
           style={{
             // "degrau" como o da Entrada emocional, mais marcado: sombra interna no topo, a seção parece abaixo do catálogo
@@ -741,8 +757,8 @@ export function HomePage() {
             style={{ boxShadow: '0 20px 40px -18px rgba(44,44,41,0.45)' }}
           >
             <img
-              src={bannerKitDescoberta}
-              alt="Mão segurando três miniaturas do Kit Descoberta, com as outras seis enfileiradas sobre linho claro"
+              src={FEATURED_IMG}
+              alt={`Mulher envolta em tecido claro segurando o ${featured.tipo.toLowerCase()} ${featured.nome}`}
               className="col-start-1 row-start-1 h-full w-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
               style={{ aspectRatio: '752 / 1344', willChange: 'transform' }}
             />
@@ -769,15 +785,11 @@ export function HomePage() {
               <div className="flex items-center gap-3">
                 <span aria-hidden className="h-px w-6" style={{ background: LATAO_CLARO }} />
                 <Eyebrow className="" style={{ color: LATAO_CLARO, textShadow: '0 1px 8px rgba(26,25,23,0.45)' }}>
-                  Antes de escolher
+                  Arquétipo em destaque
                 </Eyebrow>
               </div>
-              <h2 className="mt-3 font-display text-4xl leading-[1.1] text-papel-inv">Kit Descoberta</h2>
-              <p className="mt-2 font-display text-lg leading-snug text-papel-inv/85 italic">
-                Nove fragrâncias.
-                <br />
-                Nove possibilidades de <span style={{ color: LATAO_CLARO }}>você.</span>
-              </p>
+              <h2 className="mt-3 font-display text-4xl leading-[1.1] text-papel-inv">{featured.nome}</h2>
+              <p className="mt-2 font-display text-lg leading-snug text-papel-inv/85 italic">{featured.ep}</p>
 
               <div aria-hidden className="mt-4 flex items-center gap-2">
                 <span className="h-px flex-1" style={{ background: `linear-gradient(to right, ${LATAO_CLARO}, transparent)` }} />
@@ -785,28 +797,30 @@ export function HomePage() {
               </div>
               <div className="mt-3.5 flex items-end justify-between gap-4">
                 <div>
-                  <span className="block font-label text-[9px] tracking-widest text-papel-inv/60 uppercase">9 × 8 ml</span>
-                  <span className="mt-1.5 block font-display text-3xl leading-none text-papel-inv">{brl(ECON.kitPreco)}</span>
+                  <span className="block font-label text-[9px] tracking-widest text-papel-inv/60 uppercase">
+                    {featured.tipo} · {featured.vol}
+                  </span>
+                  <span className="mt-1.5 block font-display text-3xl leading-none text-papel-inv">{brl(featured.preco)}</span>
                 </div>
                 <span
-                  className="pb-0.5 text-right font-label text-[9px] tracking-widest uppercase"
+                  className="max-w-[12ch] pb-0.5 text-right font-label text-[9px] tracking-widest uppercase"
                   style={{ color: LATAO_CLARO }}
                 >
-                  Crédito
-                  <br />
-                  integral
+                  {featured.fam}
                 </span>
               </div>
-              <p className="mt-2.5 max-w-[32ch] text-[13px] leading-relaxed text-papel-inv/75">
-                O valor volta como crédito na compra do tamanho cheio.
+              {/* regra 7: Pix e parcelamento junto do preço — mesma conta do ProductPurchase */}
+              <p className="mt-1.5 text-[12px] text-papel-inv/60">
+                {brl(featured.preco * 0.95)} no Pix · ou 6x de {brl(featured.preco / 6)} sem juros
               </p>
+              <p className="mt-2.5 max-w-[32ch] text-[13px] leading-relaxed text-papel-inv/75">{featured.cheiro[1]}</p>
 
               <Link
-                to="/kit-descoberta"
+                to={`/loja/${featured.id}`}
                 state={{ backgroundLocation: location }}
                 className="mt-4 block w-full rounded-full border border-papel-inv/40 bg-papel-inv/10 py-3 text-center text-xs font-medium tracking-wide text-papel-inv uppercase backdrop-blur-sm transition-colors duration-300 ease-out hover:border-papel-inv/60 hover:bg-papel-inv/20"
               >
-                Experimentar
+                Conhecer {featured.nome}
               </Link>
             </div>
           </div>
@@ -826,12 +840,15 @@ export function HomePage() {
         </Reveal>
         */}
 
-        {/* H-17 Números de percepção */}
+        {/* H-17 Números de percepção — percentuais escondidos até existir dado real (SHOW_PROOF_STATS);
+            o fechamento "Talvez você não seja apenas um." fica */}
         <Reveal
           as="section"
-          className="relative overflow-hidden px-5 pt-12"
+          className={`relative overflow-hidden px-5 ${SHOW_PROOF_STATS ? 'pt-12' : ''}`}
           style={{ background: 'linear-gradient(to bottom, var(--color-papel) 0%, var(--color-papel-2) 100%)' }}
         >
+          {SHOW_PROOF_STATS && (
+          <>
           <img
             src={florArquetypus}
             alt=""
@@ -878,9 +895,15 @@ export function HomePage() {
               AUTOAVALIAÇÃO · N=120 · JUL/2026 · DADO ILUSTRATIVO NO PROTÓTIPO
             </p>
           </div>
+          </>
+          )}
 
           {/* Fechamento — ponte pro que vem depois */}
-          <div className="relative -mx-5 mt-14 overflow-hidden border-t border-linha bg-papel-2 px-5 pt-14 pb-12 text-center">
+          <div
+            className={`relative -mx-5 overflow-hidden bg-papel-2 px-5 pt-14 pb-12 text-center ${
+              SHOW_PROOF_STATS ? 'mt-14 border-t border-linha' : ''
+            }`}
+          >
             <img
               src={florArquetypus}
               alt=""
@@ -936,11 +959,9 @@ export function HomePage() {
               </Eyebrow>
             </div>
             <h2 className="mt-4 font-display text-[32px] leading-[1.12] text-papel-inv">
-              Tudo o que um
+              Uma experiência
               <br />
-              splash comum
-              <br />
-              <span style={{ color: LATAO_CLARO }}>não te conta.</span>
+              que vai <span style={{ color: LATAO_CLARO }}>além do cheiro.</span>
             </h2>
             {/* Chave em vez de duas colunas: uma frase por linha no mobile, o leitor alterna o lado */}
             <div
@@ -1006,19 +1027,10 @@ export function HomePage() {
 
             <div className="pt-10 text-center">
               <p className="font-display text-[26px] leading-[1.25] text-papel-inv italic">
-                Não é apenas um
+                Não é apenas sobre cheirar bem.
                 <br />
-                body splash.
-                <br />
-                <span style={{ color: LATAO_CLARO }}>É Arquétypus.</span>
+                <span style={{ color: LATAO_CLARO }}>É sobre como você quer se sentir.</span>
               </p>
-              <Link
-                to="/kit-descoberta"
-                state={{ backgroundLocation: location }}
-                className="mx-auto mt-7 block w-full max-w-[280px] rounded-full border border-papel-inv/40 bg-papel-inv/10 py-3 text-center text-xs font-medium tracking-wide text-papel-inv uppercase backdrop-blur-sm transition-colors duration-300 ease-out hover:border-papel-inv/60 hover:bg-papel-inv/20"
-              >
-                Experimentar o kit
-              </Link>
             </div>
           </div>
         </Reveal>
@@ -1057,14 +1069,12 @@ export function HomePage() {
             </div>
 
             <h2 className="mt-8 font-display text-[28px] leading-[1.2] text-papel-inv">
-              Se não for o seu cheiro,
+              Experimente na pele.
               <br />
-              <em style={{ color: LATAO_CLARO }}>é por nossa conta.</em>
+              <em style={{ color: LATAO_CLARO }}>Descubra se essa fragrância combina com você.</em>
             </h2>
 
             <p className="mx-auto mt-6 max-w-[28ch] text-[15px] leading-relaxed text-papel-inv/70">
-              Experimente na pele.
-              <br />
               Deixe a fragrância se revelar.
             </p>
             <p className="mx-auto mt-4 max-w-[28ch] text-[15px] leading-relaxed text-papel-inv/70">
@@ -1112,9 +1122,9 @@ export function HomePage() {
               <Eyebrow>Para criadores</Eyebrow>
             </div>
             <h2 className="mt-4 font-display text-[28px] leading-[1.15] text-tinta">
-              Seu arquétipo também
+              Sua experiência com Arquétypus
               <br />
-              pode <span className="text-latao-texto">despertar alguém.</span>
+              pode <span className="text-latao-texto">inspirar novas descobertas.</span>
             </h2>
 
             <dl className="mt-10 grid grid-cols-3 border-y border-linha py-6">
@@ -1139,7 +1149,7 @@ export function HomePage() {
               Compartilhe suas fragrâncias favoritas e ganhe com cada venda pelo seu link.
             </p>
             <p className="mt-3 text-[13px] leading-relaxed text-tinta-3">
-              Você recebe o kit e grava do seu jeito. Materiais, ângulos que funcionam e ranking de criadores no painel.
+              Você experimenta, escolhe suas favoritas e compartilha a experiência do seu jeito. Materiais, ângulos que funcionam e ranking de criadores no painel.
             </p>
 
             <div className="mt-8 text-center">
@@ -1162,7 +1172,7 @@ export function HomePage() {
           <div className="flex items-center gap-3">
             <span aria-hidden className="h-px w-6" style={{ background: LATAO_CLARO }} />
             <Eyebrow className="" style={{ color: LATAO_CLARO }}>
-              Entenda
+              Descubra mais sobre perfumaria
             </Eyebrow>
           </div>
           <h2 className="mt-4 font-display text-[32px] leading-[1.1] text-papel-inv">Diário olfativo</h2>
@@ -1222,12 +1232,12 @@ export function HomePage() {
 
             <div className="mt-5 font-display text-[88px] leading-[0.9] font-light tracking-tight text-latao-texto">15%</div>
             <h2 className="mt-3 font-display text-[24px] leading-[1.2] text-tinta">
-              no seu primeiro
+              na sua primeira
               <br />
-              arquétipo.
+              Arquétypus.
             </h2>
             <p className="mx-auto mt-3 max-w-[30ch] text-[13px] leading-relaxed text-tinta-2">
-              Cupom no e-mail, lançamentos antes de todo mundo.
+              Receba seu benefício e descubra primeiro as novidades da Arquétypus.
             </p>
 
             {/* sem backend ainda: o submit não envia nada (ver CLAUDE.md) */}
@@ -1287,11 +1297,6 @@ export function HomePage() {
               <p className="font-label text-[9px] tracking-[0.2em] text-papel-inv/35 uppercase">Explorar</p>
               <ul className="mt-4 flex flex-col gap-3 text-sm text-papel-inv/75">
                 <li><Link to="/#catalogo" className="transition-colors hover:text-papel-inv">Os 9 arquétipos</Link></li>
-                <li>
-                  <Link to="/kit-descoberta" state={{ backgroundLocation: location }} className="transition-colors hover:text-papel-inv">
-                    Kit Descoberta
-                  </Link>
-                </li>
                 <li><Link to="/#diario" className="transition-colors hover:text-papel-inv">Diário olfativo</Link></li>
                 <li><Link to="/criadores" className="transition-colors hover:text-papel-inv">Seja criador</Link></li>
               </ul>

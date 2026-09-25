@@ -100,8 +100,14 @@ decisão de produto já tomada:
   depende de onde o checkout de verdade vai rodar.
 - **"Comprar agora" hoje faz o mesmo que "Adicionar à sacola".** Não
   existe checkout — decidir isso é decisão de produto, não técnica.
-- **`/kit-descoberta` e `/criadores` existem** (`pages/KitPage.tsx`,
-  `pages/CreatorsPage.tsx`). Comissão do afiliado e preço do kit vêm
+- **Kit Descoberta saiu do ar (set/2026).** `/kit-descoberta` redireciona
+  pra home; sem link no hero, drawer, rodapé nem comparativo. `KitPage`,
+  `KitSheet` e `KitPurchase` ficam no repo, desligados, pra religar. O
+  card editorial que era do kit na home virou "Arquétipo em destaque"
+  (`FEATURED_ID` em `HomePage.tsx`, hoje Fênix; texto vem de
+  `data/archetypes.ts`; foto `destaque-fenix.jpg` gerada por IA com o
+  frasco real como referência — trocar pela de campanha antes do lançamento).
+- **`/criadores` existe** (`pages/CreatorsPage.tsx`). Comissão do afiliado e preço do kit vêm
   de `data/economics.ts` (`ECON`), não hard-coded no componente —
   `comissaoPct` é HIPÓTESE (chute do v6, sem CMV real por trás);
   `kitMargemPct` fica `null` de propósito, mesmo motivo.
@@ -125,8 +131,11 @@ decisão de produto já tomada:
   ilustrativos). As fotos de UGC (`ugc-*.jpg`) são geradas por IA com o
   frasco real como referência — as pessoas não existem, e a seção diz
   "Pessoas reais". Trocar fotos, @ e depoimentos por criadores reais e
-  autorizados antes do lançamento. O "4,8 · 2.147 avaliações" da
-  comunidade também não tem fonte.
+  autorizados antes do lançamento. Os textos dos depoimentos e o "4,8 ·
+  2.147 avaliações" estão escondidos (`SHOW_REVIEWS = false` em
+  `HomePage.tsx`), assim como os percentuais de percepção
+  (`SHOW_PROOF_STATS = false`) — copy revisada de set/2026 manda tirar
+  do ar até existir dado real.
 
 ## Pendências reais (não resolvidas no protótipo, não inventar resposta)
 

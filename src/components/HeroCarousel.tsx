@@ -16,10 +16,12 @@ export function HeroCarousel() {
   const next = useCallback(() => setCurrent((c) => (c + 1) % total), [total])
   const prev = useCallback(() => setCurrent((c) => (c - 1 + total) % total), [total])
 
+  const duration = 'durationMs' in slide ? slide.durationMs : AUTOPLAY_MS
+
   useEffect(() => {
-    const timer = setInterval(next, AUTOPLAY_MS)
-    return () => clearInterval(timer)
-  }, [current, next])
+    const timer = setTimeout(next, duration)
+    return () => clearTimeout(timer)
+  }, [current, next, duration])
 
   return (
     <div className="sticky top-0 flex h-svh flex-col overflow-hidden bg-noite">
@@ -35,6 +37,20 @@ export function HeroCarousel() {
           tagClassName="top-16 right-3"
           tagLabel="9:16 · 1080×1920 · tela cheia"
         />
+        {'video' in slide && (
+          // key = slide: ao voltar pro slide, o vídeo recomeça do início junto com a barra
+          <video
+            key={slide.id}
+            src={slide.video}
+            poster={slide.img}
+            autoPlay
+            muted
+            playsInline
+            preload="auto"
+            aria-hidden
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        )}
       </div>
 
       {/* Gradient overlay */}
@@ -108,6 +124,7 @@ export function HeroCarousel() {
                   <div
                     key={`bar-${current}-${i}`}
                     className="hero-timer-bar h-full rounded-full bg-papel-inv"
+                    style={{ animationDuration: `${duration}ms` }}
                   />
                 ) : null}
               </div>

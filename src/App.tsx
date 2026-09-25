@@ -5,10 +5,8 @@ import { Layout } from '@/components/Layout'
 import { RouteTracker } from '@/components/RouteTracker'
 import { CookieBanner } from '@/components/CookieBanner'
 import { ProductSheet } from '@/components/ProductSheet'
-import { KitSheet } from '@/components/KitSheet'
 import { HomePage } from '@/pages/HomePage'
 import { ProductPage } from '@/pages/ProductPage'
-import { KitPage } from '@/pages/KitPage'
 import { CreatorsPage } from '@/pages/CreatorsPage'
 import { PrivacyPage } from '@/pages/PrivacyPage'
 
@@ -19,7 +17,7 @@ function RedirectToLoja() {
 
 export default function App() {
   const location = useLocation()
-  // link com `state.backgroundLocation` abre /loja/:id ou /kit-descoberta como pop-up por cima dessa página;
+  // link com `state.backgroundLocation` abre /loja/:id como pop-up por cima dessa página;
   // sem ele (acesso direto, reload, link compartilhado), a mesma URL é a página completa
   const background = (location.state as { backgroundLocation?: Location } | null)?.backgroundLocation
 
@@ -34,7 +32,8 @@ export default function App() {
           {/* página antiga de arquétipo foi descartada: links antigos caem na PDP */}
           <Route path="arquetipos/:id" element={<RedirectToLoja />} />
           <Route path="loja/:id" element={<ProductPage />} />
-          <Route path="kit-descoberta" element={<KitPage />} />
+          {/* Kit Descoberta saiu do ar (set/2026) — KitPage/KitSheet ficam no repo pra religar */}
+          <Route path="kit-descoberta" element={<Navigate to="/" replace />} />
           <Route path="criadores" element={<CreatorsPage />} />
           <Route path="privacidade" element={<PrivacyPage />} />
         </Route>
@@ -42,7 +41,6 @@ export default function App() {
       {background && (
         <Routes>
           <Route path="loja/:id" element={<ProductSheet />} />
-          <Route path="kit-descoberta" element={<KitSheet />} />
         </Routes>
       )}
     </CartProvider>

@@ -15,7 +15,6 @@ const GROUPS: DrawerGroup[] = [
     title: 'Descobrir',
     links: [
       { label: 'Os 9 arquétipos', to: '/#catalogo' },
-      { label: 'Kit Descoberta', to: '/kit-descoberta' },
     ],
   },
   {
@@ -25,7 +24,6 @@ const GROUPS: DrawerGroup[] = [
       { label: 'Masculino · 220 ml', to: '/#segmentos' },
       { label: 'Unissex', to: '/#segmentos' },
       { label: 'Perfumes', to: '/#catalogo' },
-      { label: 'Kits e combos', to: '/kit-descoberta' },
     ],
   },
   {

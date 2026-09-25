@@ -3,9 +3,10 @@
  * seções H-01 a H-25. Não inventar texto novo aqui sem confirmar —
  * ver CLAUDE.md.
  */
-import heroVideoConcept from '@/assets/mocks/hero-video-concept.png'
+import heroVideo from '@/assets/hero/hero-video.mp4'
+import heroVideoPoster from '@/assets/hero/hero-video-poster.jpg'
 import heroAfrodite from '@/assets/mocks/hero-afrodite.png'
-import heroKit from '@/assets/mocks/hero-kit.png'
+import heroGuerreiro from '@/assets/mocks/hero-guerreiro.jpg'
 import segmentoFeminino from '@/assets/mocks/segmento-feminino.png'
 import segmentoMasculino from '@/assets/mocks/segmento-masculino.png'
 import segmentoUnissex from '@/assets/mocks/segmento-unissex.png'
@@ -53,12 +54,15 @@ export const HERO_SLIDES = [
   {
     id: 'video',
     type: 'video' as const,
-    eyebrow: 'Perfumaria de arquétipos',
+    eyebrow: 'Perfumaria & expressão',
     eyebrowColor: '#c6a46c',
-    heading: 'Qual arquétipo\ndesperta em você?',
-    sub: 'Nove fragrâncias. Uma responde pelo seu nome.',
-    requisito: 'VÍDEO · 9:16 · 1080×1920 · HERO FULLSCREEN · AUTOPLAY MUTED LOOP',
-    img: heroVideoConcept,
+    heading: 'Descubra qual versão\nde você quer\nexpressar hoje.',
+    sub: 'Nove fragrâncias. Diferentes formas de expressão.',
+    requisito: 'VÍDEO · 9:16 · 1080×1920 · HERO FULLSCREEN · AUTOPLAY MUTED',
+    img: heroVideoPoster,
+    video: heroVideo,
+    // o slide dura o vídeo inteiro (11,45 s) em vez dos 5 s padrão
+    durationMs: 11450,
   },
   {
     id: 'afrodite',
@@ -72,15 +76,16 @@ export const HERO_SLIDES = [
     img: heroAfrodite,
   },
   {
-    id: 'kit',
+    // foto gerada por IA (Higgsfield) com o frasco real como referência — trocar pela de campanha
+    id: 'guerreiro',
     type: 'image' as const,
-    eyebrow: 'Kit Descoberta · R$ 79,90',
-    eyebrowColor: '#f7f6f3',
-    heading: 'Nove miniaturas.\nO valor volta.',
-    sub: 'Teste os nove antes de escolher o seu.',
-    cta: { label: 'Quero experimentar', to: '/kit-descoberta' },
-    requisito: 'FOTO · 9:16 · 1080×1920 · 9 MINIS · FLAT LAY OU MÃO SEGURANDO',
-    img: heroKit,
+    eyebrow: 'ARQ-07 · Aromático aquático',
+    eyebrowColor: '#b9c29f',
+    heading: 'Guerreiro',
+    sub: 'Constância é a forma mais rara de coragem.',
+    cta: { label: 'Conhecer Guerreiro', to: '/loja/guerreiro' },
+    requisito: 'FOTO · 9:16 · 1080×1920 · LIFESTYLE · GUERREIRO · MODELO + FRASCO',
+    img: heroGuerreiro,
   },
 ]
 
@@ -89,18 +94,18 @@ export const SEALS = ['Entrega garantida', 'Rápido e seguro', 'Vegano', 'Cruelt
 export const DIAGNOSIS = [
   {
     n: '01',
-    title: 'Escolheu sem sentir na pele',
-    body: 'Nem toda fragrância combina com a sua presença.',
+    title: 'Escolheu sem experimentar',
+    body: 'Cada fragrância desperta uma sensação diferente.',
   },
   {
     n: '02',
-    title: 'Sumiu rápido demais',
-    body: 'Concentração e composição mudam toda a experiência.',
+    title: 'Não entregou a experiência que você esperava',
+    body: 'Composição, intensidade e aplicação transformam a experiência na pele.',
   },
   {
     n: '03',
-    title: 'Parecia o cheiro de todo mundo',
-    body: 'Seu perfume também pode ser parte da sua identidade.',
+    title: 'Faltava algo que parecesse seu',
+    body: 'Uma fragrância também pode expressar como você quer se sentir e ser percebido.',
   },
 ]
 
@@ -180,16 +185,16 @@ export const FRASCO_CUT_IMG: Record<string, string> = {
 
 export const QUALIFICATION = [
   {
-    title: 'Você cansou de cheirar igual a todo mundo.',
-    body: 'Quer uma fragrância com mais identidade e menos obviedade.',
+    title: 'Você quer uma fragrância que tenha mais a ver com você.',
+    body: 'Um cheiro que tenha presença, intenção e personalidade.',
   },
   {
-    title: 'Seu perfume muda com o seu momento.',
+    title: 'Seu perfume pode mudar com o seu momento.',
     body: 'Você não se sente igual todos os dias — seu cheiro também não precisa ser.',
   },
   {
     title: 'Você quer escolher com intenção.',
-    body: 'Entender o que está usando, em vez de confiar apenas no nome ou na embalagem.',
+    body: 'Entender o que uma fragrância transmite antes de escolher.',
   },
 ]
 
@@ -214,7 +219,6 @@ export const COMPARISON = [
   { tema: 'Escolha', arquetypus: 'Teste de arquétipo antes da compra', comum: 'Escolha no escuro' },
   { tema: 'Sistema', arquetypus: 'Sistema de layering entre os nove', comum: 'SKU solto, sem combinação' },
   { tema: 'Origem', arquetypus: 'Fabricação em indústria licenciada', comum: 'Origem nem sempre informada' },
-  { tema: 'Experimentar', arquetypus: 'Kit de amostra com crédito integral', comum: 'Sem como testar antes' },
 ]
 
 export const TESTIMONIALS = [

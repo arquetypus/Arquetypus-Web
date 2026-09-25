@@ -48,11 +48,11 @@ export function CaptureModal() {
               Primeira compra
             </p>
             <h2 className="mt-2 font-display text-2xl">
-              15% no seu
+              15% na sua
               <br />
-              primeiro arquétipo
+              primeira Arquétypus
             </h2>
-            <p className="mt-2 text-sm text-tinta-2">Cupom no e-mail, lançamentos antes de todo mundo.</p>
+            <p className="mt-2 text-sm text-tinta-2">Receba seu benefício e descubra primeiro as novidades da Arquétypus.</p>
             <form
               className="mt-4 flex flex-col gap-2.5"
               onSubmit={(e) => {
