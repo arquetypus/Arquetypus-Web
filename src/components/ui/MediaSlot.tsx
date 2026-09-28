@@ -6,6 +6,9 @@ import { RatioTag } from '@/components/ui/RatioTag'
  * passado, mostra uma imagem-base (mock gerado, não é still real da
  * Scentec) com a proporção num selo discreto (RatioTag); o requisito
  * completo fica no tooltip do selo — ver CLAUDE.md.
+ *
+ * `srcDesktop` é a segunda fonte pra lg+ (quando a proporção vertical do
+ * celular não serve no desktop); sem ela, o desktop usa `src`.
  */
 export function MediaSlot({
   aspect = '4/5',
@@ -14,6 +17,7 @@ export function MediaSlot({
   className = '',
   dark = false,
   src,
+  srcDesktop,
   tagClassName,
   tagLabel,
 }: {
@@ -23,6 +27,7 @@ export function MediaSlot({
   className?: string
   dark?: boolean
   src?: string
+  srcDesktop?: string
   tagClassName?: string
   tagLabel?: string
 }) {
@@ -32,7 +37,10 @@ export function MediaSlot({
         className={`relative overflow-hidden rounded-lg ${className}`}
         style={{ aspectRatio: aspect === 'auto' ? undefined : aspect }}
       >
-        <img src={src} alt="" className="absolute inset-0 h-full w-full object-cover" />
+        <picture>
+          {srcDesktop && <source media="(min-width: 1024px)" srcSet={srcDesktop} />}
+          <img src={src} alt="" className="absolute inset-0 h-full w-full object-cover" />
+        </picture>
         <RatioTag className={tagClassName} title={requisito} label={tagLabel} />
       </div>
     )

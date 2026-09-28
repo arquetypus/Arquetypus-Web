@@ -5,7 +5,8 @@ import { useInView } from '@/lib/useInView'
  * Seção entra com fade + translateY quando cruza a viewport. Respeita
  * prefers-reduced-motion via CSS. `animateContent` mantém o container
  * (bg próprio, ex. seções dark) sempre visível e anima só os filhos —
- * evita o pai "piscar" pra bg-papel enquanto opacity:0.
+ * evita o pai "piscar" pra bg-papel enquanto opacity:0. `contentClassName`
+ * vai nesse wrapper animado (ex.: grade do layout desktop).
  */
 export function Reveal({
   as: Tag = 'div',
@@ -13,6 +14,7 @@ export function Reveal({
   id,
   style,
   animateContent = false,
+  contentClassName = '',
   children,
 }: {
   as?: 'div' | 'section'
@@ -20,6 +22,7 @@ export function Reveal({
   id?: string
   style?: CSSProperties
   animateContent?: boolean
+  contentClassName?: string
   children: ReactNode
 }) {
   const { ref, inView } = useInView<HTMLDivElement>()
@@ -27,7 +30,7 @@ export function Reveal({
   if (animateContent) {
     return (
       <Tag id={id} ref={ref} style={style} className={className}>
-        <div className={`reveal-init ${inView ? 'fade-in-up' : ''}`}>{children}</div>
+        <div className={`${contentClassName} reveal-init ${inView ? 'fade-in-up' : ''}`}>{children}</div>
       </Tag>
     )
   }

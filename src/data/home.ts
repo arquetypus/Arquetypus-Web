@@ -7,6 +7,11 @@ import heroVideo from '@/assets/hero/hero-video.mp4'
 import heroVideoPoster from '@/assets/hero/hero-video-poster.jpg'
 import heroAfrodite from '@/assets/mocks/hero-afrodite.png'
 import heroGuerreiro from '@/assets/mocks/hero-guerreiro.jpg'
+// versões 16:9 pro desktop (lg+) — mockups gerados por IA a partir das fotos 9:16, trocar pelas de campanha.
+// No slide de vídeo o desktop mostra só o still até existir o vídeo 16:9
+import heroVideoDesktop from '@/assets/mocks/hero-video-desktop.jpg'
+import heroAfroditeDesktop from '@/assets/mocks/hero-afrodite-desktop.jpg'
+import heroGuerreiroDesktop from '@/assets/mocks/hero-guerreiro-desktop.jpg'
 import segmentoFeminino from '@/assets/mocks/segmento-feminino.png'
 import segmentoMasculino from '@/assets/mocks/segmento-masculino.png'
 import segmentoUnissex from '@/assets/mocks/segmento-unissex.png'
@@ -60,6 +65,7 @@ export const HERO_SLIDES = [
     sub: 'Nove fragrâncias. Diferentes formas de expressão.',
     requisito: 'VÍDEO · 9:16 · 1080×1920 · HERO FULLSCREEN · AUTOPLAY MUTED',
     img: heroVideoPoster,
+    imgDesktop: heroVideoDesktop,
     video: heroVideo,
     // o slide dura o vídeo inteiro (11,45 s) em vez dos 5 s padrão
     durationMs: 11450,
@@ -74,6 +80,7 @@ export const HERO_SLIDES = [
     cta: { label: 'Conhecer Afrodite', to: '/loja/afrodite' },
     requisito: 'FOTO · 9:16 · 1080×1920 · LIFESTYLE · AFRODITE · MODELO + FRASCO',
     img: heroAfrodite,
+    imgDesktop: heroAfroditeDesktop,
   },
   {
     // foto gerada por IA (Higgsfield) com o frasco real como referência — trocar pela de campanha
@@ -86,6 +93,7 @@ export const HERO_SLIDES = [
     cta: { label: 'Conhecer Guerreiro', to: '/loja/guerreiro' },
     requisito: 'FOTO · 9:16 · 1080×1920 · LIFESTYLE · GUERREIRO · MODELO + FRASCO',
     img: heroGuerreiro,
+    imgDesktop: heroGuerreiroDesktop,
   },
 ]
 
@@ -108,6 +116,9 @@ export const DIAGNOSIS = [
     body: 'Uma fragrância também pode expressar como você quer se sentir e ser percebido.',
   },
 ]
+
+// título da seção de gênero — copy nova aprovada pelo usuário (set/2026), não vem do v6
+export const SEGMENTS_HEADING = { eyebrow: 'Coleções', title: 'Escolha por onde começar' }
 
 export const SEGMENTS = [
   { label: 'Para elas', name: 'Feminino', meta: '200 ml · 5 SKUs', seg: 'F' as const, img: segmentoFeminino },

@@ -7,8 +7,10 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
  * (no array com loops) do item mais próximo do centro do container —
  * use `activeIndex % count` para saber qual item "real" está em foco.
  *
- * O posicionamento inicial mede pela tela (getBoundingClientRect) e é
- * refeito quando o container ganha tamanho de verdade: no primeiro render
+ * As medidas usam a posição de LAYOUT (offsetLeft/offsetWidth), não a da tela:
+ * os cards podem estar escalados (coverflow com transform-origin na lateral),
+ * e a caixa transformada deslocava o centro calculado. O posicionamento
+ * inicial é refeito quando o container ganha tamanho de verdade: no primeiro render
  * a seção ainda está invisível (Reveal) e o celular podia ignorar o
  * scrollLeft, deixando o carrossel "desativado" (todos os cards borrados)
  * até o primeiro deslize. O ativo sempre sai do que está visível.
@@ -26,17 +28,22 @@ export function useInfiniteCarousel(count: number) {
     }
   }
 
+  // centro do item em coordenadas do conteúdo rolável, ignorando transforms
+  function layoutCenter(el: HTMLElement, item: HTMLElement) {
+    const first = itemsRef.current.find(Boolean)!
+    const padLeft = parseFloat(getComputedStyle(el).paddingLeft) || 0
+    return padLeft + (item.offsetLeft - first.offsetLeft) + item.offsetWidth / 2
+  }
+
   function closestIndex() {
     const el = containerRef.current
     if (!el) return count
-    const box = el.getBoundingClientRect()
-    const center = box.left + box.width / 2
+    const center = el.scrollLeft + el.clientWidth / 2
     let best = count
     let bestDist = Infinity
     itemsRef.current.forEach((item, i) => {
       if (!item) return
-      const r = item.getBoundingClientRect()
-      const dist = Math.abs(r.left + r.width / 2 - center)
+      const dist = Math.abs(layoutCenter(el, item) - center)
       if (dist < bestDist) {
         bestDist = dist
         best = i
@@ -49,9 +56,7 @@ export function useInfiniteCarousel(count: number) {
     const el = containerRef.current
     const item = itemsRef.current[i]
     if (!el || !item || el.clientWidth === 0) return
-    const box = el.getBoundingClientRect()
-    const r = item.getBoundingClientRect()
-    el.scrollLeft += r.left + r.width / 2 - (box.left + box.width / 2)
+    el.scrollLeft = layoutCenter(el, item) - el.clientWidth / 2
   }
 
   useLayoutEffect(() => {
@@ -120,5 +125,14 @@ export function useInfiniteCarousel(count: number) {
     }
   }, [count])
 
-  return { containerRef, registerItem, activeIndex }
+  // setas (desktop): centraliza o vizinho com scroll suave; o reposicionamento do loop acontece no onScroll
+  function step(dir: 1 | -1) {
+    const el = containerRef.current
+    const item = itemsRef.current[closestIndex() + dir]
+    if (!el || !item) return
+    userScrolled.current = true
+    el.scrollTo({ left: layoutCenter(el, item) - el.clientWidth / 2, behavior: 'smooth' })
+  }
+
+  return { containerRef, registerItem, activeIndex, step }
 }

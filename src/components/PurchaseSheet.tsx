@@ -35,7 +35,7 @@ export function PurchaseSheet({ label, fullPageTo, children }: { label: string; 
         onClick={close}
         className="sheet-backdrop absolute inset-0 cursor-default bg-noite/55 backdrop-blur-[2px]"
       />
-      <div className="sheet-in relative flex max-h-[90svh] w-full max-w-md flex-col overflow-hidden rounded-t-3xl bg-papel shadow-[0_-20px_40px_-20px_rgba(0,0,0,0.5)]">
+      <div className="sheet-in relative flex max-h-[90svh] w-full max-w-md md:max-w-xl lg:max-h-[85svh] flex-col overflow-hidden rounded-t-3xl bg-papel shadow-[0_-20px_40px_-20px_rgba(0,0,0,0.5)]">
         <div className="relative flex shrink-0 items-center justify-center border-b border-linha py-3">
           <span aria-hidden className="h-1 w-10 rounded-full bg-linha-2" />
           <button

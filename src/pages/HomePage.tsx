@@ -13,6 +13,7 @@ import {
   QUALIFICATION,
   SEALS,
   SEGMENTS,
+  SEGMENTS_HEADING,
   STATS,
   UGC_IMG,
   UGC_VIDEOS,
@@ -54,8 +55,9 @@ const FEATURED_ID = 'fenix'
 const FEATURED_IMG = featuredFenix
 const featured = getArchetype(FEATURED_ID)!
 
-/** Largura do card de UGC — o carrossel centraliza a partir dela. */
-const UGC_CARD_W = 'min(76vw, 320px)'
+/** Largura do card de UGC — o carrossel centraliza a partir dela. Vem da variável
+ * --ugc-card-w, definida no container (320px no celular, 360px no lg+). */
+const UGC_CARD_W = 'var(--ugc-card-w)'
 
 const SEGMENT_TINT: Record<'F' | 'M' | 'U', string> = {
   F: 'var(--color-afrodite)',
@@ -94,14 +96,18 @@ function SealIcon({ seal, className }: { seal: string; className?: string }) {
  */
 function CommunitySection() {
   const location = useLocation()
-  const ugcScroll = useCarouselIndex<HTMLDivElement>(UGC_VIDEOS.length)
-  useCoverflow(ugcScroll.ref)
+  // infinito, como o catálogo: 3 cópias e o hook reposiciona o scroll ao cruzar as bordas
+  const ugcCount = UGC_VIDEOS.length
+  const ugcLoop = [...UGC_VIDEOS, ...UGC_VIDEOS, ...UGC_VIDEOS]
+  const ugcScroll = useInfiniteCarousel(ugcCount)
+  const ugcAtivo = ugcScroll.activeIndex % ugcCount
+  useCoverflow(ugcScroll.containerRef)
 
   // UGC em moldura recortada + product tag sobreposto
   return (
     <Reveal
       as="section"
-      className="relative overflow-hidden bg-papel pt-14 pb-16"
+      className="relative overflow-hidden bg-papel pt-14 pb-16 lg:pt-20 lg:pb-24"
       style={{
         // degrau: sai da "A diferença" (por cima) para uma seção que fica abaixo
         boxShadow:
@@ -125,13 +131,13 @@ function CommunitySection() {
         }}
       />
 
-      <div className="relative px-5">
+      <div className="relative px-5 md:px-10 lg:mx-auto lg:max-w-7xl">
         <div className="flex items-center gap-3">
           <span aria-hidden className="h-px w-6 bg-latao" />
           <Eyebrow>A comunidade</Eyebrow>
         </div>
-        <h2 className="mt-4 font-display text-[32px] leading-[1.1] text-tinta">Experiências Arquétypus</h2>
-        <p className="mt-3 text-sm leading-relaxed text-tinta-2">
+        <h2 className="mt-4 font-display text-[32px] leading-[1.1] text-tinta lg:text-5xl">Experiências Arquétypus</h2>
+        <p className="mt-3 text-sm leading-relaxed text-tinta-2 lg:mt-4 lg:text-base">
           Pessoas reais.
           <br />
           Diferentes fragrâncias, momentos e formas de expressão.
@@ -139,17 +145,18 @@ function CommunitySection() {
       </div>
 
       <div
-        ref={ugcScroll.ref}
-        className="no-scrollbar relative mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2"
+        ref={ugcScroll.containerRef}
+        className="no-scrollbar relative mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-2 [--ugc-card-w:min(76vw,320px)] lg:mt-10 lg:[--ugc-card-w:360px]"
         // padding lateral = metade da sobra, pra o primeiro e o último card também pararem no centro
         style={{ paddingInline: `calc((100% - ${UGC_CARD_W}) / 2)` }}
       >
-        {UGC_VIDEOS.map((v, i) => {
+        {ugcLoop.map((v, i) => {
           const arq = getArchetype(v.archetypeId)
           if (!arq) return null
           return (
             <article
-              key={v.creator}
+              key={`${v.creator}-${i}`}
+              ref={ugcScroll.registerItem(i)}
               className="shrink-0 snap-center"
               aria-current={i === ugcScroll.activeIndex ? 'true' : undefined}
               // escala/opacidade/blur vêm do useCoverflow, contínuos conforme o scroll
@@ -159,7 +166,7 @@ function CommunitySection() {
                 <img
                   src={UGC_IMG[v.archetypeId]}
                   alt={`${v.creator} segurando o body splash ${arq.nome}`}
-                  loading={i === 0 ? 'eager' : 'lazy'}
+                  loading={i === ugcCount ? 'eager' : 'lazy'}
                   decoding="async"
                   className="absolute inset-0 h-full w-full object-cover"
                 />
@@ -172,7 +179,7 @@ function CommunitySection() {
                 {/* legenda editorial discreta */}
                 <div className="absolute top-4 left-4 font-label text-[9px] tracking-widest text-papel-inv/90 uppercase">
                   <span className="block">
-                    {String(i + 1).padStart(2, '0')} / {String(UGC_VIDEOS.length).padStart(2, '0')}
+                    {String((i % ugcCount) + 1).padStart(2, '0')} / {String(ugcCount).padStart(2, '0')}
                   </span>
                   <span className="mt-1 block normal-case tracking-wide text-papel-inv/75">
                     {v.creator} · <span className="uppercase tracking-widest">{arq.nome}</span>
@@ -227,7 +234,25 @@ function CommunitySection() {
         })}
       </div>
 
-      <CarouselDots count={UGC_VIDEOS.length} active={ugcScroll.activeIndex} className="mt-6" />
+      <div className="lg:mt-6 lg:flex lg:items-center lg:justify-center lg:gap-5">
+        <button
+          type="button"
+          onClick={() => ugcScroll.step(-1)}
+          aria-label="Experiência anterior"
+          className="hidden size-9 cursor-pointer items-center justify-center rounded-full border border-linha-2 text-tinta-2 transition-colors duration-300 hover:border-latao hover:text-tinta lg:flex"
+        >
+          ‹
+        </button>
+        <CarouselDots count={ugcCount} active={ugcAtivo} className="mt-6 lg:mt-0" />
+        <button
+          type="button"
+          onClick={() => ugcScroll.step(1)}
+          aria-label="Próxima experiência"
+          className="hidden size-9 cursor-pointer items-center justify-center rounded-full border border-linha-2 text-tinta-2 transition-colors duration-300 hover:border-latao hover:text-tinta lg:flex"
+        >
+          ›
+        </button>
+      </div>
 
       {SHOW_REVIEWS && (
         <p className="mt-6 text-center text-xs text-tinta-3">
@@ -260,7 +285,7 @@ export function HomePage() {
   }, [hash])
 
   return (
-    <div className="relative -mt-14">
+    <div className="relative -mt-14 lg:-mt-16">
       {/* H-03 Hero — carrossel sticky, card sobe por cima */}
       <HeroCarousel />
 
@@ -276,46 +301,53 @@ export function HomePage() {
           ))}
         </section>
 
-        {/* H-08 Segmentação */}
-        <Reveal as="section" id="segmentos" className="flex flex-col items-center gap-5 px-4 py-6">
-          {SEGMENTS.map((seg) => (
-            <button
-              key={seg.name}
-              onClick={() => scrollToId('catalogo')}
-              className="group relative block w-[80%] overflow-hidden rounded-2xl text-left shadow-[0_2px_6px_rgba(0,0,0,0.08)] ring-1 ring-latao/50"
-            >
-              <MediaSlot
-                aspect="4/3"
-                bg="transparent"
-                src={seg.img}
-                requisito={`FOTO · 4:3 · 1600×1200 · LIFESTYLE · ${seg.label.toUpperCase()}`}
-                className="rounded-2xl border-0 [&_img]:will-change-transform [&_img]:transition-transform [&_img]:duration-700 [&_img]:ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:[&_img]:scale-[1.06]"
-              />
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3"
-                style={{
-                  background: `linear-gradient(to top, color-mix(in srgb, ${SEGMENT_TINT[seg.seg]} 65%, transparent) 0%, color-mix(in srgb, ${SEGMENT_TINT[seg.seg]} 30%, transparent) 55%, transparent 100%)`,
-                }}
-              />
-              <div className="absolute inset-x-0 bottom-0 z-10 p-4">
-                <span className="block font-label text-[9px] tracking-widest text-papel-inv/80 uppercase">
-                  {seg.label}
-                </span>
-                <span className="mt-1 block font-display text-2xl text-papel-inv">{seg.name}</span>
-                <span className="mt-1 block font-label text-[9px] text-papel-inv/70">{seg.meta}</span>
-                <span className="mt-3 block w-full rounded-full border border-papel-inv/40 bg-papel-inv/10 py-2.5 text-center text-xs font-medium text-papel-inv backdrop-blur-sm transition-colors duration-300 ease-out group-hover:border-papel-inv/60 group-hover:bg-papel-inv/20">
-                  Ver coleção
-                </span>
-              </div>
-            </button>
-          ))}
+        {/* H-08 Segmentação — pilha no celular, 3 lado a lado a partir do md */}
+        <Reveal as="section" id="segmentos" className="px-4 pt-8 pb-6 md:mx-auto md:max-w-7xl md:px-10 md:pt-14 md:pb-12">
+          <div className="text-center">
+            <Eyebrow>{SEGMENTS_HEADING.eyebrow}</Eyebrow>
+            <h2 className="mt-3 font-display text-[28px] leading-[1.2] text-tinta md:text-4xl">{SEGMENTS_HEADING.title}</h2>
+          </div>
+          <div className="mt-6 flex flex-col items-center gap-5 md:mt-10 md:grid md:grid-cols-3 md:gap-6">
+            {SEGMENTS.map((seg) => (
+              <button
+                key={seg.name}
+                onClick={() => scrollToId('catalogo')}
+                className="group relative block w-[80%] md:w-full overflow-hidden rounded-2xl text-left shadow-[0_2px_6px_rgba(0,0,0,0.08)] ring-1 ring-latao/50"
+              >
+                <MediaSlot
+                  aspect="4/3"
+                  bg="transparent"
+                  src={seg.img}
+                  requisito={`FOTO · 4:3 · 1600×1200 · LIFESTYLE · ${seg.label.toUpperCase()}`}
+                  // 3 colunas (md+): card vertical pro texto não cobrir o frasco — ! vence o aspect inline
+                  className="rounded-2xl border-0 md:aspect-[4/5]! [&_img]:will-change-transform [&_img]:transition-transform [&_img]:duration-700 [&_img]:ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:[&_img]:scale-[1.06]"
+                />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3"
+                  style={{
+                    background: `linear-gradient(to top, color-mix(in srgb, ${SEGMENT_TINT[seg.seg]} 65%, transparent) 0%, color-mix(in srgb, ${SEGMENT_TINT[seg.seg]} 30%, transparent) 55%, transparent 100%)`,
+                  }}
+                />
+                <div className="absolute inset-x-0 bottom-0 z-10 p-4 lg:p-5">
+                  <span className="block font-label text-[9px] tracking-widest text-papel-inv/80 uppercase">
+                    {seg.label}
+                  </span>
+                  <span className="mt-1 block font-display text-2xl text-papel-inv lg:text-3xl">{seg.name}</span>
+                  <span className="mt-1 block font-label text-[9px] text-papel-inv/70">{seg.meta}</span>
+                  <span className="mt-3 block w-full rounded-full border border-papel-inv/40 bg-papel-inv/10 py-2.5 text-center text-xs font-medium text-papel-inv backdrop-blur-sm transition-colors duration-300 ease-out group-hover:border-papel-inv/60 group-hover:bg-papel-inv/20">
+                    Ver coleção
+                  </span>
+                </div>
+              </button>
+            ))}
+          </div>
         </Reveal>
 
-        {/* H-06 Diagnóstico */}
+        {/* H-06 Diagnóstico — celular empilhado; lg: intro + fechamento à esquerda, lista à direita */}
         <Reveal
           as="section"
-          className="relative z-10 px-5 pt-16 pb-16"
+          className="relative z-10 px-5 pt-16 pb-16 md:px-10 lg:py-24"
           style={{
             background:
               'linear-gradient(to bottom, var(--color-papel) 0%, var(--color-papel-2) 10%, var(--color-papel-2) 90%, var(--color-papel) 100%)',
@@ -353,22 +385,24 @@ export function HomePage() {
             }}
           />
 
-          <div className="relative z-10">
-            <Eyebrow>O perfume errado</Eyebrow>
-            <h2 className="mt-3 max-w-[19ch] font-display text-[28px] leading-[1.2] text-tinta">
-              Você já escolheu uma fragrância que não combinava com você?
-            </h2>
-            <p className="mt-3 text-sm text-tinta-2">
-              Às vezes, encontrar o cheiro certo começa por entender o que você procura.
-            </p>
+          <div className="relative z-10 md:mx-auto md:max-w-3xl lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-x-16">
+            <div className="lg:col-span-5 lg:row-start-1">
+              <Eyebrow>O perfume errado</Eyebrow>
+              <h2 className="mt-3 max-w-[19ch] font-display text-[28px] leading-[1.2] text-tinta lg:text-4xl lg:leading-[1.15]">
+                Você já escolheu uma fragrância que não combinava com você?
+              </h2>
+              <p className="mt-3 text-sm text-tinta-2 lg:mt-5 lg:max-w-[40ch] lg:text-base">
+                Às vezes, encontrar o cheiro certo começa por entender o que você procura.
+              </p>
+            </div>
 
-            <div className="mt-7 flex flex-col">
+            <div className="mt-7 flex flex-col lg:col-span-7 lg:col-start-6 lg:row-span-2 lg:row-start-1 lg:mt-0">
               {DIAGNOSIS.map((d, i) => (
                 <div key={d.n}>
                   {i > 0 && <div className="border-t border-linha" />}
-                  <div className="flex gap-4 py-4">
+                  <div className="flex gap-4 py-4 lg:gap-6 lg:py-7">
                     <span
-                      className="font-display text-5xl leading-none font-light"
+                      className="font-display text-5xl leading-none font-light lg:text-6xl"
                       style={{
                         color: 'color-mix(in srgb, var(--color-latao) 32%, var(--color-papel-2) 68%)',
                       }}
@@ -376,15 +410,15 @@ export function HomePage() {
                       {d.n}
                     </span>
                     <div className="pt-1.5">
-                      <b className="text-base font-semibold text-tinta">{d.title}</b>
-                      <p className="mt-1.5 text-sm leading-relaxed text-tinta-2">{d.body}</p>
+                      <b className="text-base font-semibold text-tinta lg:text-lg">{d.title}</b>
+                      <p className="mt-1.5 text-sm leading-relaxed text-tinta-2 lg:text-base">{d.body}</p>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
 
-            <p className="mt-7 text-center font-display text-xl leading-snug text-tinta">
+            <p className="mt-7 text-center font-display text-xl leading-snug text-tinta lg:col-span-5 lg:row-start-2 lg:mt-10 lg:self-start lg:text-left lg:text-2xl">
               Não comece pelo nome.
               <br />
               <span className="text-latao-texto">Comece por você.</span>
@@ -393,21 +427,22 @@ export function HomePage() {
         </Reveal>
 
         {/* H-09 Por família */}
-        <Reveal as="section" className="pt-9 pb-12">
-          <div className="px-4">
+        {/* celular/tablet: carrossel; lg: grade de 4 colunas, sem scroll nem pontinhos */}
+        <Reveal as="section" className="pt-9 pb-12 lg:pt-20 lg:pb-24">
+          <div className="px-4 md:px-10 lg:mx-auto lg:max-w-7xl">
             <Eyebrow>Entrada racional</Eyebrow>
-            <h2 className="mt-2.5 font-display text-2xl">Descubra pelo cheiro</h2>
-            <p className="mt-1.5 text-sm text-tinta-2">Explore as famílias olfativas e encontre os cheiros que mais combinam com você.</p>
+            <h2 className="mt-2.5 font-display text-2xl lg:text-4xl">Descubra pelo cheiro</h2>
+            <p className="mt-1.5 text-sm text-tinta-2 lg:mt-3 lg:text-base">Explore as famílias olfativas e encontre os cheiros que mais combinam com você.</p>
           </div>
           <div
             ref={familiesScroll.ref}
             {...tapGuard}
-            className="scroll-pad no-scrollbar mt-2 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2"
+            className="scroll-pad no-scrollbar mt-2 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 md:px-10 lg:mx-auto lg:mt-8 lg:grid lg:max-w-7xl lg:grid-cols-4 lg:gap-6 lg:overflow-visible lg:pt-2 lg:after:hidden"
           >
             {FAMILIES.map((f) => (
               <div
                 key={f.nome}
-                className="group w-60 shrink-0 snap-start hover:-translate-y-1"
+                className="group w-60 shrink-0 snap-start hover:-translate-y-1 lg:w-auto"
                 style={{ transition: 'transform 500ms cubic-bezier(0.16,1,0.3,1)' }}
               >
                 {/* no-press + isolate: sem scale no toque — transform em card com overflow/raio fazia o texto sumir no celular */}
@@ -428,7 +463,7 @@ export function HomePage() {
                     style={{ background: 'linear-gradient(180deg, rgba(20,18,15,0) 0%, rgba(20,18,15,0.55) 55%, rgba(20,18,15,0.8) 100%)' }}
                   />
                   <div className="absolute inset-x-0 bottom-0 z-10 p-5">
-                    <b className="block font-display text-xl text-papel-inv">{f.nome}</b>
+                    <b className="block font-display text-xl text-papel-inv lg:text-2xl">{f.nome}</b>
                     <p className="mt-1.5 text-xs text-papel-inv/85">{f.desc}</p>
                     <p className="mt-2 text-[9.5px] tracking-wide text-papel-inv/55">{f.attrs.join(' · ')}</p>
                     <span
@@ -442,13 +477,13 @@ export function HomePage() {
               </div>
             ))}
           </div>
-          <CarouselDots count={FAMILIES.length} active={familiesScroll.activeIndex} />
+          <CarouselDots count={FAMILIES.length} active={familiesScroll.activeIndex} className="mt-5 lg:hidden" />
         </Reveal>
 
-        {/* H-10 Por energia */}
+        {/* H-10 Por energia — celular/tablet: carrossel; lg: grade de 4 colunas, sem scroll nem pontinhos */}
         <Reveal
           as="section"
-          className="relative z-20 py-8"
+          className="relative z-20 py-8 lg:pt-20 lg:pb-24"
           style={{
             background: 'color-mix(in srgb, var(--color-papel-2) 100%, var(--color-latao) 6%)',
             // sombra interna no topo + filete: a seção parece um degrau abaixo da "Entrada racional"
@@ -456,25 +491,25 @@ export function HomePage() {
               'inset 0 1px 0 color-mix(in srgb, var(--color-linha-2) 80%, transparent), inset 0 18px 22px -16px rgba(44,44,41,0.28), inset 0 6px 8px -6px rgba(44,44,41,0.18)',
           }}
         >
-          <div className="px-4">
+          <div className="px-4 md:px-10 lg:mx-auto lg:max-w-7xl">
             <Eyebrow>Entrada emocional</Eyebrow>
-            <h2 className="mt-2.5 font-display text-2xl">
+            <h2 className="mt-2.5 font-display text-2xl lg:text-4xl">
               Como você quer
               <br />
               se sentir hoje?
             </h2>
-            <p className="mt-1.5 text-sm text-tinta-2">Escolha pela presença que você quer expressar.</p>
+            <p className="mt-1.5 text-sm text-tinta-2 lg:mt-3 lg:text-base">Escolha pela presença que você quer expressar.</p>
           </div>
           <div
             ref={energiesScroll.ref}
             {...tapGuard}
-            className="scroll-pad no-scrollbar mt-5 flex snap-x snap-mandatory gap-3.5 overflow-x-auto px-4 pt-2 pb-6"
+            className="scroll-pad no-scrollbar mt-5 flex snap-x snap-mandatory gap-3.5 overflow-x-auto px-4 pt-2 pb-6 md:px-10 lg:mx-auto lg:mt-8 lg:grid lg:max-w-7xl lg:grid-cols-4 lg:gap-6 lg:overflow-visible lg:pb-0 lg:after:hidden"
           >
             {ENERGIES.map((e) => (
               <button
                 key={e.nome}
                 onClick={() => scrollToId('catalogo')}
-                className="no-press group relative isolate w-[80vw] max-w-[320px] shrink-0 snap-start overflow-hidden rounded-3xl text-left"
+                className="no-press group relative isolate w-[80vw] max-w-[320px] shrink-0 snap-start overflow-hidden rounded-3xl text-left lg:w-auto lg:max-w-none"
                 style={{ aspectRatio: '4/5', boxShadow: '0 16px 32px -16px rgba(20,18,15,0.4)' }}
               >
                 <img
@@ -504,16 +539,16 @@ export function HomePage() {
               </button>
             ))}
           </div>
-          <CarouselDots count={ENERGIES.length} active={energiesScroll.activeIndex} />
-          <p className="mt-3 px-4 text-center font-label text-[9.5px] tracking-widest text-tinta-3 uppercase">
+          <CarouselDots count={ENERGIES.length} active={energiesScroll.activeIndex} className="mt-5 lg:hidden" />
+          <p className="mt-3 px-4 text-center font-label text-[9.5px] tracking-widest text-tinta-3 uppercase lg:hidden">
             Deslize para explorar
           </p>
         </Reveal>
 
-        {/* H-11 Reconhecimento */}
+        {/* H-11 Reconhecimento — celular empilhado; lg: intro centralizada, 3 itens em colunas, fechamento centralizado */}
         <Reveal
           as="section"
-          className="relative z-10 px-5 pt-16 pb-20"
+          className="relative z-10 px-5 pt-16 pb-20 md:px-10 lg:pt-24 lg:pb-28"
           style={{
             background:
               'linear-gradient(to bottom, color-mix(in srgb, var(--color-papel-2) 100%, var(--color-latao) 6%) 0%, var(--color-papel) 18%, var(--color-papel) 85%, var(--color-papel-2) 100%)',
@@ -550,20 +585,22 @@ export function HomePage() {
             }}
           />
 
-          <div className="relative z-10">
-            <Eyebrow>Reconhecimento</Eyebrow>
-            <h2 className="mt-3 max-w-[22ch] font-display text-[26px] leading-[1.25] text-tinta">
-              Talvez você esteja procurando mais do que um cheiro.
-            </h2>
-            <p className="mt-3 max-w-[30ch] text-sm text-tinta-2">
-              Talvez esteja procurando uma fragrância que acompanhe o seu momento.
-            </p>
+          <div className="relative z-10 md:mx-auto md:max-w-3xl lg:max-w-7xl">
+            <div className="lg:text-center">
+              <Eyebrow>Reconhecimento</Eyebrow>
+              <h2 className="mt-3 max-w-[22ch] font-display text-[26px] leading-[1.25] text-tinta lg:mx-auto lg:max-w-[26ch] lg:text-4xl lg:leading-[1.2]">
+                Talvez você esteja procurando mais do que um cheiro.
+              </h2>
+              <p className="mt-3 max-w-[30ch] text-sm text-tinta-2 lg:mx-auto lg:mt-5 lg:max-w-[40ch] lg:text-base">
+                Talvez esteja procurando uma fragrância que acompanhe o seu momento.
+              </p>
+            </div>
 
-            <div className="mt-10 flex flex-col">
+            <div className="mt-10 flex flex-col lg:mt-16 lg:grid lg:grid-cols-3">
               {QUALIFICATION.map((q, i) => (
-                <div key={q.title}>
-                  {i > 0 && <div className="border-t border-linha" />}
-                  <div className="flex gap-4 py-6">
+                <div key={q.title} className={i > 0 ? 'lg:border-l lg:border-linha lg:pl-10' : ''}>
+                  {i > 0 && <div className="border-t border-linha lg:hidden" />}
+                  <div className="flex gap-4 py-6 lg:flex-col lg:gap-5 lg:py-2 lg:pr-10">
                     <span
                       className="mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full"
                       style={{ border: '1px solid var(--color-latao)' }}
@@ -573,15 +610,15 @@ export function HomePage() {
                       </svg>
                     </span>
                     <div>
-                      <b className="block text-base font-semibold text-tinta">{q.title}</b>
-                      <p className="mt-1.5 text-sm leading-relaxed text-tinta-2">{q.body}</p>
+                      <b className="block text-base font-semibold text-tinta lg:text-lg">{q.title}</b>
+                      <p className="mt-1.5 text-sm leading-relaxed text-tinta-2 lg:mt-2.5 lg:text-base">{q.body}</p>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
 
-            <p className="mt-10 max-w-[26ch] font-display text-xl leading-snug text-tinta">
+            <p className="mt-10 max-w-[26ch] font-display text-xl leading-snug text-tinta lg:mx-auto lg:mt-16 lg:max-w-none lg:text-center lg:text-2xl">
               Se você se reconheceu,
               <br />
               existe uma Arquétypus <span className="text-latao-texto">para o seu momento.</span>
@@ -589,22 +626,23 @@ export function HomePage() {
           </div>
         </Reveal>
 
-        {/* H-13 O catálogo (fundido com H-07 bodegón) */}
+        {/* H-13 O catálogo (fundido com H-07 bodegón) — celular empilhado; lg: bodegón à esquerda, catálogo à direita */}
         <Reveal
           as="section"
           id="catalogo"
-          className="relative z-20 bg-noite pb-12"
+          className="relative z-20 bg-noite pb-12 lg:pb-0"
           animateContent
+          contentClassName="lg:grid lg:grid-cols-2"
           style={{
             // Degrau invertido: o catálogo fica POR CIMA e projeta sombra na seção de cima (Reconhecimento)
             boxShadow: '0 -14px 26px -10px rgba(26,25,23,0.5), 0 -4px 8px -3px rgba(26,25,23,0.35)',
           }}
         >
-          <div className="relative">
+          <div className="relative lg:min-h-full lg:overflow-hidden">
             <img
               src={BODEGON_IMG}
               alt="Os nove frascos Arquétypus sobre pedras vulcânicas molhadas, uns agrupados e outros sozinhos, com ondas quebrando e o pôr do sol ao fundo"
-              className="aspect-[4/5] w-full object-cover"
+              className="aspect-[4/5] w-full object-cover lg:absolute lg:inset-0 lg:aspect-auto lg:h-full"
             />
             <RatioTag className="top-3 right-3" />
             {/* Filete dourado na borda do degrau */}
@@ -615,137 +653,165 @@ export function HomePage() {
             />
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-[24%]"
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-[24%] lg:hidden"
               style={{ background: 'linear-gradient(to bottom, rgba(26,25,23,0) 0%, var(--color-noite) 100%)' }}
+            />
+            {/* desktop: a imagem dissolve pra direita, no fundo noite do catálogo */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/3 lg:block"
+              style={{ background: 'linear-gradient(to right, rgba(26,25,23,0) 0%, var(--color-noite) 100%)' }}
             />
           </div>
 
-          <div className="relative -mt-8 px-5 pt-3 pb-3">
-            <Eyebrow className="text-latao">O catálogo</Eyebrow>
-            <h2 className="mt-3 font-display text-4xl leading-[1.1] text-papel-inv">
-              Nove fragrâncias.
-              <br />
-              Diferentes versões de você.
-            </h2>
-            <p className="mt-3 max-w-[34ch] text-sm text-papel-inv/60">
-              Cada fragrância traduz uma sensação, uma intenção, uma forma diferente de estar no mundo.
-            </p>
-          </div>
+          <div className="lg:flex lg:min-w-0 lg:flex-col lg:justify-center lg:py-20">
+            <div className="relative -mt-8 px-5 pt-3 pb-3 md:px-10 lg:mt-0 xl:px-14">
+              <Eyebrow className="text-latao">O catálogo</Eyebrow>
+              <h2 className="mt-3 font-display text-4xl leading-[1.1] text-papel-inv">
+                Nove fragrâncias.
+                <br />
+                Diferentes versões de você.
+              </h2>
+              <p className="mt-3 max-w-[34ch] text-sm text-papel-inv/60">
+                Cada fragrância traduz uma sensação, uma intenção, uma forma diferente de estar no mundo.
+              </p>
+            </div>
 
-          <div className="no-scrollbar flex gap-5 overflow-x-auto px-5 pb-1" role="tablist" aria-label="Filtrar catálogo">
-            {CATALOGO_FILTROS.map((f) => (
-              <button
-                key={f.key}
-                type="button"
-                role="tab"
-                aria-selected={catalogoFiltro === f.key}
-                onClick={() => setCatalogoFiltro(f.key)}
-                className={`shrink-0 whitespace-nowrap border-b pb-2 font-label text-[10.5px] tracking-[0.12em] uppercase transition-colors duration-300 ${
-                  catalogoFiltro === f.key
-                    ? 'border-latao text-latao'
-                    : 'border-transparent text-papel-inv/45'
-                }`}
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
-
-          <div
-            ref={catalogoCarrossel.containerRef}
-            className="scroll-pad no-scrollbar mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-[8vw] pb-2"
-          >
-            {catalogoLoop.map((a, i) => {
-              const dist = Math.abs(i - catalogoCarrossel.activeIndex)
-              const isActive = dist === 0
-              return (
-              <div
-                key={`${a.id}-${i}`}
-                ref={catalogoCarrossel.registerItem(i)}
-                className="group relative aspect-[3/4] w-[84vw] max-w-[320px] shrink-0 snap-center overflow-hidden rounded-3xl text-left"
-                style={{
-                  boxShadow: isActive ? '0 20px 40px -16px rgba(0,0,0,0.55)' : '0 10px 22px -14px rgba(0,0,0,0.4)',
-                  transform: `scale(${isActive ? 1 : 0.87})`,
-                  opacity: isActive ? 1 : 0.55,
-                  filter: isActive ? 'blur(0px)' : 'blur(2.5px)',
-                  transition: 'transform 0.5s cubic-bezier(0.16,1,0.3,1), opacity 0.5s ease, filter 0.5s ease',
-                  scrollSnapStop: 'always',
-                }}
-              >
-                <div className="absolute inset-0" style={{ background: a.bg }} />
-
-                {FRASCO_IMG[a.id] && (
-                  <img
-                    src={FRASCO_IMG[a.id]}
-                    alt=""
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
-                    style={{ willChange: 'transform' }}
-                  />
-                )}
-                <RatioTag className={a.status === 'wait' ? 'top-11 right-3' : 'top-3 right-3'} />
-
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute top-4 left-4 z-10 font-display text-[2.75rem] leading-none font-light"
-                  style={{ color: a.cor, opacity: 0.55, textShadow: '0 1px 12px rgba(0,0,0,0.25)' }}
+            <div className="no-scrollbar flex gap-5 overflow-x-auto px-5 pb-1 md:px-10 lg:mt-4 xl:px-14" role="tablist" aria-label="Filtrar catálogo">
+              {CATALOGO_FILTROS.map((f) => (
+                <button
+                  key={f.key}
+                  type="button"
+                  role="tab"
+                  aria-selected={catalogoFiltro === f.key}
+                  onClick={() => setCatalogoFiltro(f.key)}
+                  className={`shrink-0 whitespace-nowrap border-b pb-2 font-label text-[10.5px] tracking-[0.12em] uppercase transition-colors duration-300 ${
+                    catalogoFiltro === f.key
+                      ? 'border-latao text-latao'
+                      : 'border-transparent text-papel-inv/45'
+                  }`}
                 >
-                  {a.cod.split('-')[1]}
-                </span>
-                {a.status === 'wait' && (
-                  <span className="absolute top-3 right-3 z-20 rounded-full bg-papel/85 px-2.5 py-1 font-label text-[8px] tracking-wide text-alerta uppercase">
-                    Em breve
-                  </span>
-                )}
+                  {f.label}
+                </button>
+              ))}
+            </div>
 
+            <div
+              ref={catalogoCarrossel.containerRef}
+              className="no-scrollbar mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-[8vw] pb-2 lg:mt-8 lg:px-[calc(50%-10rem)]"
+            >
+              {catalogoLoop.map((a, i) => {
+                const dist = Math.abs(i - catalogoCarrossel.activeIndex)
+                const isActive = dist === 0
+                return (
                 <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-x-0 bottom-0 h-[58%] backdrop-blur-md"
+                  key={`${a.id}-${i}`}
+                  ref={catalogoCarrossel.registerItem(i)}
+                  className="group relative aspect-[3/4] w-[84vw] max-w-[320px] shrink-0 snap-center overflow-hidden rounded-3xl text-left"
                   style={{
-                    background: `linear-gradient(to top, color-mix(in srgb, ${a.cor} 78%, var(--color-noite) 22%) 0%, color-mix(in srgb, ${a.cor} 45%, transparent) 60%, transparent 100%)`,
-                    maskImage: 'linear-gradient(to top, black 45%, transparent 100%)',
-                    WebkitMaskImage: 'linear-gradient(to top, black 45%, transparent 100%)',
+                    boxShadow: isActive ? '0 20px 40px -16px rgba(0,0,0,0.55)' : '0 10px 22px -14px rgba(0,0,0,0.4)',
+                    transform: `scale(${isActive ? 1 : 0.87})`,
+                    opacity: isActive ? 1 : 0.55,
+                    filter: isActive ? 'blur(0px)' : 'blur(2.5px)',
+                    transition: 'transform 0.5s cubic-bezier(0.16,1,0.3,1), opacity 0.5s ease, filter 0.5s ease',
+                    scrollSnapStop: 'always',
                   }}
-                />
+                >
+                  <div className="absolute inset-0" style={{ background: a.bg }} />
 
-                <div className="absolute inset-x-0 bottom-0 z-10 px-5 pt-5 pb-5">
-                  <span className="block font-label text-[9px] tracking-widest text-papel-inv/70 uppercase">
-                    {a.cod}
+                  {FRASCO_IMG[a.id] && (
+                    <img
+                      src={FRASCO_IMG[a.id]}
+                      alt=""
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+                      style={{ willChange: 'transform' }}
+                    />
+                  )}
+                  <RatioTag className={a.status === 'wait' ? 'top-11 right-3' : 'top-3 right-3'} />
+
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute top-4 left-4 z-10 font-display text-[2.75rem] leading-none font-light"
+                    style={{ color: a.cor, opacity: 0.55, textShadow: '0 1px 12px rgba(0,0,0,0.25)' }}
+                  >
+                    {a.cod.split('-')[1]}
                   </span>
-                  <b className="mt-1.5 block font-display text-2xl text-papel-inv">{a.nome}</b>
-                  <span className="mt-1 block text-sm text-papel-inv/80">{a.fam}</span>
-                  <span className="mt-3 block font-label text-[9px] tracking-wide text-papel-inv/60 uppercase">
-                    {a.tipo} · {a.vol}
-                  </span>
-                  <div className="mt-2 flex items-center justify-between gap-3">
-                    <span className="text-sm text-papel-inv/90">
-                      {a.status === 'wait' ? 'Avise-me' : brl(a.preco)}
+                  {a.status === 'wait' && (
+                    <span className="absolute top-3 right-3 z-20 rounded-full bg-papel/85 px-2.5 py-1 font-label text-[8px] tracking-wide text-alerta uppercase">
+                      Em breve
                     </span>
-                    <Link
-                      // mesmo destino do UGC: pop-up de compra (/loja/:id por cima da home)
-                      to={`/loja/${a.id}`}
-                      state={{ backgroundLocation: location }}
-                      className="relative z-20 inline-flex shrink-0 items-center justify-center rounded-full border border-papel-inv/40 bg-papel-inv/10 px-4 py-2.5 font-label text-[10px] tracking-[0.12em] text-papel-inv uppercase backdrop-blur-sm transition-colors duration-300 ease-out hover:border-papel-inv/60 hover:bg-papel-inv/20"
-                    >
-                      {a.status === 'wait' ? 'Entrar na lista' : 'Descobrir'}
-                    </Link>
+                  )}
+
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-[58%] backdrop-blur-md"
+                    style={{
+                      background: `linear-gradient(to top, color-mix(in srgb, ${a.cor} 78%, var(--color-noite) 22%) 0%, color-mix(in srgb, ${a.cor} 45%, transparent) 60%, transparent 100%)`,
+                      maskImage: 'linear-gradient(to top, black 45%, transparent 100%)',
+                      WebkitMaskImage: 'linear-gradient(to top, black 45%, transparent 100%)',
+                    }}
+                  />
+
+                  <div className="absolute inset-x-0 bottom-0 z-10 px-5 pt-5 pb-5">
+                    <span className="block font-label text-[9px] tracking-widest text-papel-inv/70 uppercase">
+                      {a.cod}
+                    </span>
+                    <b className="mt-1.5 block font-display text-2xl text-papel-inv">{a.nome}</b>
+                    <span className="mt-1 block text-sm text-papel-inv/80">{a.fam}</span>
+                    <span className="mt-3 block font-label text-[9px] tracking-wide text-papel-inv/60 uppercase">
+                      {a.tipo} · {a.vol}
+                    </span>
+                    <div className="mt-2 flex items-center justify-between gap-3">
+                      <span className="text-sm text-papel-inv/90">
+                        {a.status === 'wait' ? 'Avise-me' : brl(a.preco)}
+                      </span>
+                      <Link
+                        // mesmo destino do UGC: pop-up de compra (/loja/:id por cima da home)
+                        to={`/loja/${a.id}`}
+                        state={{ backgroundLocation: location }}
+                        className="relative z-20 inline-flex shrink-0 items-center justify-center rounded-full border border-papel-inv/40 bg-papel-inv/10 px-4 py-2.5 font-label text-[10px] tracking-[0.12em] text-papel-inv uppercase backdrop-blur-sm transition-colors duration-300 ease-out hover:border-papel-inv/60 hover:bg-papel-inv/20"
+                      >
+                        {a.status === 'wait' ? 'Entrar na lista' : 'Descobrir'}
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-              )
-            })}
+                )
+              })}
+            </div>
+            {/* desktop: setas em volta dos pontinhos — no mouse não dá pra deslizar */}
+            <div className="lg:mt-5 lg:flex lg:items-center lg:justify-center lg:gap-5">
+              <button
+                type="button"
+                onClick={() => catalogoCarrossel.step(-1)}
+                aria-label="Fragrância anterior"
+                className="hidden size-9 cursor-pointer items-center justify-center rounded-full border border-papel-inv/20 text-papel-inv/70 transition-colors duration-300 hover:border-papel-inv/50 hover:text-papel-inv lg:flex"
+              >
+                ‹
+              </button>
+              <CarouselDots count={catalogoFiltrado.length} active={catalogoAtivo} tone="dark" className="mt-5 lg:mt-0" />
+              <button
+                type="button"
+                onClick={() => catalogoCarrossel.step(1)}
+                aria-label="Próxima fragrância"
+                className="hidden size-9 cursor-pointer items-center justify-center rounded-full border border-papel-inv/20 text-papel-inv/70 transition-colors duration-300 hover:border-papel-inv/50 hover:text-papel-inv lg:flex"
+              >
+                ›
+              </button>
+            </div>
+            <p className="mt-3 px-5 text-center font-label text-[9.5px] tracking-widest text-papel-inv/40 uppercase lg:hidden">
+              Deslize para explorar
+            </p>
           </div>
-          <CarouselDots count={catalogoFiltrado.length} active={catalogoAtivo} tone="dark" />
-          <p className="mt-3 px-5 text-center font-label text-[9.5px] tracking-widest text-papel-inv/40 uppercase">
-            Deslize para explorar
-          </p>
         </Reveal>
 
         {/* H-15 Arquétipo em destaque — ocupa o card editorial que era do Kit Descoberta (kit saiu do ar).
-            Trocar o destaque = trocar FEATURED_ID; todo o texto vem de data/archetypes.ts */}
+            Trocar o destaque = trocar FEATURED_ID; todo o texto vem de data/archetypes.ts.
+            Celular: card vertical com texto sobre a foto; md+: foto à esquerda, texto à direita no fundo noite */}
         <Reveal
           as="section"
           id="destaque"
-          className="bg-papel px-4 pt-14 pb-12"
+          className="bg-papel px-4 pt-14 pb-12 md:px-10 lg:pt-20 lg:pb-24"
           style={{
             // "degrau" como o da Entrada emocional, mais marcado: sombra interna no topo, a seção parece abaixo do catálogo
             boxShadow:
@@ -753,19 +819,27 @@ export function HomePage() {
           }}
         >
           <div
-            className="group relative grid overflow-hidden rounded-3xl ring-1 ring-latao/60"
+            className="group relative grid overflow-hidden rounded-3xl ring-1 ring-latao/60 md:min-h-[32rem] md:grid-cols-2 md:bg-noite lg:mx-auto lg:min-h-[36rem] lg:max-w-7xl"
             style={{ boxShadow: '0 20px 40px -18px rgba(44,44,41,0.45)' }}
           >
             <img
               src={FEATURED_IMG}
               alt={`Mulher envolta em tecido claro segurando o ${featured.tipo.toLowerCase()} ${featured.nome}`}
-              className="col-start-1 row-start-1 h-full w-full object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
-              style={{ aspectRatio: '752 / 1344', willChange: 'transform' }}
+              // md+: altura vem do card (h-0 + min-h-full), não da proporção da foto — ! vence o aspectRatio inline;
+              // recorte centrado no frasco
+              className="col-start-1 row-start-1 h-full w-full object-cover object-top md:aspect-auto! md:h-0 md:min-h-full md:object-[50%_30%]"
+              style={{ aspectRatio: '752 / 1344' }}
             />
-            <RatioTag className="top-4 right-4" />
+            <RatioTag className="top-4 right-4 md:right-[calc(50%+1rem)]" />
+            {/* md+: a foto dissolve pra direita, no painel de texto */}
             <div
               aria-hidden
-              className="pointer-events-none col-start-1 row-start-1 self-end h-[70%] backdrop-blur-md"
+              className="pointer-events-none col-start-1 row-start-1 hidden md:block"
+              style={{ background: 'linear-gradient(to right, transparent 55%, var(--color-noite) 100%)' }}
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none col-start-1 row-start-1 self-end h-[70%] backdrop-blur-md md:hidden"
               style={{
                 background:
                   // degradê preto (noite), sem tinta dourada
@@ -781,15 +855,15 @@ export function HomePage() {
               style={{ borderColor: `color-mix(in srgb, ${LATAO_CLARO} 45%, transparent)` }}
             />
 
-            <div className="relative col-start-1 row-start-1 self-end px-6 pt-[88%] pb-6">
+            <div className="relative col-start-1 row-start-1 self-end px-6 pt-[88%] pb-6 md:col-start-2 md:self-center md:px-8 md:pt-10 md:pb-10 lg:px-14 lg:pt-14 lg:pb-14 xl:px-20">
               <div className="flex items-center gap-3">
                 <span aria-hidden className="h-px w-6" style={{ background: LATAO_CLARO }} />
                 <Eyebrow className="" style={{ color: LATAO_CLARO, textShadow: '0 1px 8px rgba(26,25,23,0.45)' }}>
                   Arquétipo em destaque
                 </Eyebrow>
               </div>
-              <h2 className="mt-3 font-display text-4xl leading-[1.1] text-papel-inv">{featured.nome}</h2>
-              <p className="mt-2 font-display text-lg leading-snug text-papel-inv/85 italic">{featured.ep}</p>
+              <h2 className="mt-3 font-display text-4xl leading-[1.1] text-papel-inv lg:text-5xl">{featured.nome}</h2>
+              <p className="mt-2 font-display text-lg leading-snug text-papel-inv/85 italic lg:mt-3 lg:text-xl">{featured.ep}</p>
 
               <div aria-hidden className="mt-4 flex items-center gap-2">
                 <span className="h-px flex-1" style={{ background: `linear-gradient(to right, ${LATAO_CLARO}, transparent)` }} />
@@ -813,12 +887,12 @@ export function HomePage() {
               <p className="mt-1.5 text-[12px] text-papel-inv/60">
                 {brl(featured.preco * 0.95)} no Pix · ou 6x de {brl(featured.preco / 6)} sem juros
               </p>
-              <p className="mt-2.5 max-w-[32ch] text-[13px] leading-relaxed text-papel-inv/75">{featured.cheiro[1]}</p>
+              <p className="mt-2.5 max-w-[32ch] text-[13px] leading-relaxed text-papel-inv/75 lg:mt-4 lg:max-w-[42ch] lg:text-[15px]">{featured.cheiro[1]}</p>
 
               <Link
                 to={`/loja/${featured.id}`}
                 state={{ backgroundLocation: location }}
-                className="mt-4 block w-full rounded-full border border-papel-inv/40 bg-papel-inv/10 py-3 text-center text-xs font-medium tracking-wide text-papel-inv uppercase backdrop-blur-sm transition-colors duration-300 ease-out hover:border-papel-inv/60 hover:bg-papel-inv/20"
+                className="mt-4 block w-full rounded-full border border-papel-inv/40 lg:mt-8 lg:inline-block lg:w-auto lg:px-10 bg-papel-inv/10 py-3 text-center text-xs font-medium tracking-wide text-papel-inv uppercase backdrop-blur-sm transition-colors duration-300 ease-out hover:border-papel-inv/60 hover:bg-papel-inv/20"
               >
                 Conhecer {featured.nome}
               </Link>
@@ -844,7 +918,7 @@ export function HomePage() {
             o fechamento "Talvez você não seja apenas um." fica */}
         <Reveal
           as="section"
-          className={`relative overflow-hidden px-5 ${SHOW_PROOF_STATS ? 'pt-12' : ''}`}
+          className={`relative overflow-hidden px-5 md:px-10 ${SHOW_PROOF_STATS ? 'pt-12 lg:pt-20' : ''}`}
           style={{ background: 'linear-gradient(to bottom, var(--color-papel) 0%, var(--color-papel-2) 100%)' }}
         >
           {SHOW_PROOF_STATS && (
@@ -866,7 +940,7 @@ export function HomePage() {
             }}
           />
 
-          <div className="relative z-10">
+          <div className="relative z-10 lg:mx-auto lg:max-w-7xl">
             <div className="flex items-center gap-3">
               <span aria-hidden className="h-px w-6 bg-latao-texto" />
               <Eyebrow>Teste com 120 pessoas · 21 dias</Eyebrow>
@@ -879,8 +953,9 @@ export function HomePage() {
               <span className="text-latao-texto">algo mudou.</span>
             </h2>
 
-            <div className="relative mt-12 grid grid-cols-2 gap-y-14">
-              <span aria-hidden className="pointer-events-none absolute inset-y-2 left-1/2 w-px bg-linha" />
+            {/* lg: os 4 números numa linha só */}
+            <div className="relative mt-12 grid grid-cols-2 gap-y-14 lg:grid-cols-4">
+              <span aria-hidden className="pointer-events-none absolute inset-y-2 left-1/2 w-px bg-linha lg:hidden" />
               {STATS.map((st, i) => (
                 <div key={st.label} className={i % 2 === 0 ? 'pr-5' : 'pl-5'}>
                   <span className="block font-display text-[56px] leading-none tracking-tight text-latao-texto">
@@ -900,7 +975,7 @@ export function HomePage() {
 
           {/* Fechamento — ponte pro que vem depois */}
           <div
-            className={`relative -mx-5 overflow-hidden bg-papel-2 px-5 pt-14 pb-12 text-center ${
+            className={`relative -mx-5 overflow-hidden bg-papel-2 px-5 pt-14 pb-12 text-center md:-mx-10 lg:pt-24 lg:pb-24 ${
               SHOW_PROOF_STATS ? 'mt-14 border-t border-linha' : ''
             }`}
           >
@@ -908,7 +983,8 @@ export function HomePage() {
               src={florArquetypus}
               alt=""
               aria-hidden="true"
-              className="pointer-events-none absolute left-1/2 select-none"
+              // lg: flor maior pra acompanhar o texto — ! vence o width inline
+              className="pointer-events-none absolute left-1/2 select-none lg:w-[440px]!"
               style={{
                 top: '50%',
                 width: '300px',
@@ -920,20 +996,21 @@ export function HomePage() {
               }}
             />
             <div className="relative z-10">
-              <p className="mx-auto max-w-[16ch] font-display text-[26px] leading-[1.25] text-tinta italic">
+              <p className="mx-auto max-w-[16ch] font-display text-[26px] leading-[1.25] text-tinta italic lg:text-4xl lg:leading-[1.2]">
                 Talvez você não seja apenas um.
               </p>
-              <SweepCta onClick={() => scrollToId('catalogo')} className="mt-6">
+              <SweepCta onClick={() => scrollToId('catalogo')} className="mt-6 lg:mt-8">
                 Descubra seus arquétipos
               </SweepCta>
             </div>
           </div>
         </Reveal>
 
-        {/* H-18 Comparativo — lista editorial numerada (mesmo padrão do Diagnóstico), sobre noite */}
+        {/* H-18 Comparativo — lista editorial numerada (mesmo padrão do Diagnóstico), sobre noite.
+            Celular/tablet: chave Arquétypus × Splash comum; lg: título à esquerda e as duas colunas lado a lado */}
         <Reveal
           as="section"
-          className="relative z-20 overflow-hidden bg-noite px-5 pt-14 pb-14"
+          className="relative z-20 overflow-hidden bg-noite px-5 pt-14 pb-14 md:px-10 lg:pt-24 lg:pb-24"
           animateContent
           style={{
             // Degrau invertido, como o do catálogo: a seção fica por cima e projeta sombra na de cima
@@ -951,23 +1028,25 @@ export function HomePage() {
             }}
           />
 
-          <div className="relative">
-            <div className="flex items-center gap-3">
-              <span aria-hidden className="h-px w-6" style={{ background: LATAO_CLARO }} />
-              <Eyebrow className="" style={{ color: LATAO_CLARO }}>
-                A diferença
-              </Eyebrow>
+          <div className="relative md:mx-auto md:max-w-3xl lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-x-16">
+            <div className="lg:col-span-4">
+              <div className="flex items-center gap-3">
+                <span aria-hidden className="h-px w-6" style={{ background: LATAO_CLARO }} />
+                <Eyebrow className="" style={{ color: LATAO_CLARO }}>
+                  A diferença
+                </Eyebrow>
+              </div>
+              <h2 className="mt-4 font-display text-[32px] leading-[1.12] text-papel-inv lg:text-5xl lg:leading-[1.1]">
+                Uma experiência
+                <br />
+                que vai <span style={{ color: LATAO_CLARO }}>além do cheiro.</span>
+              </h2>
             </div>
-            <h2 className="mt-4 font-display text-[32px] leading-[1.12] text-papel-inv">
-              Uma experiência
-              <br />
-              que vai <span style={{ color: LATAO_CLARO }}>além do cheiro.</span>
-            </h2>
             {/* Chave em vez de duas colunas: uma frase por linha no mobile, o leitor alterna o lado */}
             <div
               role="tablist"
               aria-label="Comparar"
-              className="relative mt-8 grid grid-cols-2 overflow-hidden rounded-full border border-papel-inv/20 bg-papel-inv/5 p-1 backdrop-blur-sm"
+              className="relative mt-8 grid grid-cols-2 overflow-hidden rounded-full border border-papel-inv/20 bg-papel-inv/5 p-1 backdrop-blur-sm lg:hidden"
             >
               {/* Pílula que desliza entre as opções — overshoot de ~1% (~2px, menor que o p-1) dá o bounce sem passar do contorno */}
               <span
@@ -1004,7 +1083,7 @@ export function HomePage() {
               })}
             </div>
 
-            <ol key={difModo} role="tabpanel" className="page-fade mt-3">
+            <ol key={difModo} role="tabpanel" className="page-fade mt-3 lg:hidden">
               {COMPARISON.map((c, i) => (
                 <li key={c.tema} className="flex items-baseline gap-4 border-b border-papel-inv/10 py-3.5">
                   <span
@@ -1025,8 +1104,28 @@ export function HomePage() {
               ))}
             </ol>
 
-            <div className="pt-10 text-center">
-              <p className="font-display text-[26px] leading-[1.25] text-papel-inv italic">
+            {/* lg: as duas colunas lado a lado, sem chave — cabe na tela, o leitor compara direto */}
+            <div className="hidden lg:col-span-8 lg:block">
+              <div className="grid grid-cols-[3rem_1fr_1fr] gap-x-8 border-b border-papel-inv/20 pb-4 font-label text-[10px] tracking-widest uppercase">
+                <span aria-hidden />
+                <span style={{ color: LATAO_CLARO }}>Arquétypus</span>
+                <span className="text-papel-inv/45">Splash comum</span>
+              </div>
+              <ol>
+                {COMPARISON.map((c, i) => (
+                  <li key={c.tema} className="grid grid-cols-[3rem_1fr_1fr] items-baseline gap-x-8 border-b border-papel-inv/10 py-4">
+                    <span aria-hidden className="font-label text-[10px] tracking-widest" style={{ color: LATAO_CLARO }}>
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <p className="font-display text-lg leading-snug text-papel-inv">{c.arquetypus}</p>
+                    <p className="text-[15px] leading-snug text-papel-inv/40">{c.comum}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            <div className="pt-10 text-center lg:col-span-12 lg:pt-20">
+              <p className="font-display text-[26px] leading-[1.25] text-papel-inv italic lg:text-4xl lg:leading-[1.2]">
                 Não é apenas sobre cheirar bem.
                 <br />
                 <span style={{ color: LATAO_CLARO }}>É sobre como você quer se sentir.</span>

@@ -127,6 +127,25 @@
   }
 }
 
+/* Hero: textos sobem em sequência a cada slide — inspirado no slideshow da referência
+   (o zoom-out da mídia é transition no HeroCarousel) */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-fade-up {
+    animation: hero-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes page-fade {
   from {
     opacity: 0;
@@ -242,6 +261,16 @@ button:active:not(.no-press) {
   content: '';
   flex-shrink: 0;
   width: 1rem;
+}
+
+/* tablet+: carrosséis ganham a mesma margem lateral do conteúdo (md:px-10) */
+@media (min-width: 48rem) {
+  .scroll-pad {
+    scroll-padding-left: 2.5rem;
+  }
+  .scroll-pad::after {
+    width: 2.5rem;
+  }
 }
 
 .no-scrollbar {

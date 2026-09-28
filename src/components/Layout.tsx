@@ -31,18 +31,19 @@ export function Layout() {
     <div
       ref={scrollRef}
       data-scroll-container
-      className="relative mx-auto h-svh max-w-md overflow-x-hidden overflow-y-auto overscroll-contain bg-papel pb-24"
+      className="relative mx-auto h-svh max-w-md md:max-w-none overflow-x-hidden overflow-y-auto overscroll-contain bg-papel pb-24"
     >
       <header
-        className={`sticky top-0 z-20 flex h-14 items-center justify-between border-b px-4 transition-[background-color,border-color,backdrop-filter] duration-300 ease-out relative ${
+        className={`sticky top-0 z-20 flex h-14 items-center justify-between border-b px-4 md:px-10 lg:h-16 transition-[background-color,border-color,backdrop-filter] lg:transition-[background-color,border-color,backdrop-filter,margin,top,border-radius] duration-300 ease-out relative ${
           headerOverHero
-            ? 'border-transparent text-papel-inv'
+            ? // desktop: header flutuante — card arredondado com respiro, que gruda no topo ao rolar
+              'border-transparent text-papel-inv lg:top-6 lg:mx-10 lg:rounded-2xl lg:border lg:border-papel-inv/15 lg:bg-noite/35 lg:backdrop-blur-md'
             : 'border-linha bg-papel/90 text-tinta backdrop-blur'
         }`}
       >
         <div
           aria-hidden
-          className={`pointer-events-none absolute inset-x-0 top-0 -z-10 h-28 transition-opacity duration-300 ease-out ${
+          className={`pointer-events-none absolute inset-x-0 top-0 -z-10 h-28 transition-opacity duration-300 ease-out lg:hidden ${
             headerOverHero ? 'opacity-100' : 'opacity-0'
           }`}
           style={{
@@ -61,7 +62,7 @@ export function Layout() {
               scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
             }
           }}
-          className="relative block h-11 w-28"
+          className="relative block h-11 w-28 lg:h-12 lg:w-32"
         >
           <img
             src={wordmarkMarmore}

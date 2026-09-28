@@ -41,7 +41,7 @@ export function Drawer({ open, onClose }: { open: boolean; onClose: () => void }
   if (!open) return null
 
   return (
-    <div className="fixed inset-0 z-30 mx-auto flex max-w-md">
+    <div className="fixed inset-0 z-30 mx-auto flex max-w-md md:max-w-none">
       {/* Backdrop — cobre tudo, fecha ao clicar */}
       <div
         className="absolute inset-0 bg-tinta/70 backdrop-blur-sm"
@@ -50,7 +50,7 @@ export function Drawer({ open, onClose }: { open: boolean; onClose: () => void }
       />
 
       {/* Painel lateral */}
-      <nav className="relative z-10 flex h-full w-72 flex-col overflow-y-auto bg-papel p-5 shadow-2xl">
+      <nav className="relative z-10 flex h-full w-72 md:w-80 flex-col overflow-y-auto bg-papel p-5 md:p-8 shadow-2xl">
         <div className="flex items-center justify-between">
           <span className="font-label text-xs tracking-[0.22em] uppercase">Arquétypus</span>
           <button aria-label="Fechar menu" onClick={onClose} className="text-lg">
