@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { scrollToId } from '@/lib/scrollToId'
+import { ThemeSwitcher } from '@/components/ThemeSwitcher'
+import { useTheme } from '@/lib/theme'
+import { AnnouncementBar } from '@/components/boutique/BoutiqueMore'
 import wordmarkPreto from '@/assets/brand/wordmark-preto.png'
 import wordmarkMarmore from '@/assets/brand/wordmark-marmore.png'
 
@@ -25,7 +28,9 @@ export function Layout() {
   const scrollRef = useRef<HTMLDivElement>(null)
   const navigate = useNavigate()
   const isHome = pathname === '/'
-  const headerOverHero = isHome && !scrolled
+  // Ateliê e Boutique: o hero é claro, então o header nunca fica transparente por cima dele
+  const theme = useTheme()
+  const headerOverHero = isHome && !scrolled && theme !== 'atelie' && theme !== 'boutique'
 
   useEffect(() => {
     const el = scrollRef.current
@@ -84,6 +89,8 @@ export function Layout() {
       data-scroll-container
       className="relative mx-auto h-svh max-w-md md:max-w-none overflow-x-hidden overflow-y-auto overscroll-contain bg-papel pb-24"
     >
+      {/* Boutique: faixa de avisos (frete, selos) acima do header — rola junto, o header continua grudado */}
+      {theme === 'boutique' && <AnnouncementBar />}
       <header
         className={`sticky top-0 z-20 flex h-14 items-center justify-between border-b lg:grid lg:grid-cols-[1fr_auto_1fr] px-4 md:px-10 lg:h-16 transition-[background-color,border-color,backdrop-filter] lg:transition-[background-color,border-color,backdrop-filter,margin,top,border-radius] duration-300 ease-out relative ${
           headerOverHero
@@ -128,7 +135,8 @@ export function Layout() {
           <img
             src={wordmarkPreto}
             alt="Arquétypus"
-            className={`absolute inset-0 h-full w-full object-contain object-center transition-opacity duration-300 ease-out ${
+            // logo-tinta: na direção "Noite Imperial" (fundo escuro) o CSS inverte pra claro
+            className={`logo-tinta absolute inset-0 h-full w-full object-contain object-center transition-opacity duration-300 ease-out ${
               headerOverHero ? 'opacity-0' : 'opacity-100'
             }`}
           />
@@ -142,6 +150,7 @@ export function Layout() {
       <main key={pathname} className="page-fade">
         <Outlet />
       </main>
+      <ThemeSwitcher />
     </div>
   )
 }

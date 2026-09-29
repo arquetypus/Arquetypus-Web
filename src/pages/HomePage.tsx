@@ -31,6 +31,12 @@ import { SweepCta } from '@/components/ui/SweepCta'
 import { scrollToId } from '@/lib/scrollToId'
 import { GOLD_SHEEN } from '@/lib/goldSheen'
 import { Embers } from '@/components/ui/Embers'
+import { useTheme } from '@/lib/theme'
+import { HeroAtelie } from '@/components/atelie/HeroAtelie'
+import { CatalogIndex } from '@/components/atelie/CatalogIndex'
+import { CommunityAtelie, DiaryAtelie, FeaturedAtelie, FooterAtelie } from '@/components/atelie/AtelieSections'
+import { CatalogGrid, HeroBoutique } from '@/components/boutique/BoutiqueSections'
+import { CommunityBoutique, DiaryBoutique, FeaturedBoutique, FooterBoutique } from '@/components/boutique/BoutiqueMore'
 import { openCookiePreferences } from '@/lib/consent'
 import { useCarouselIndex } from '@/lib/useCarouselIndex'
 import { useTapGuard } from '@/lib/useTapGuard'
@@ -50,7 +56,8 @@ const FOTO_FADE = (dir: string) =>
   `linear-gradient(${dir}, ${Array.from({ length: 11 }, (_, i) => {
     const t = i / 10
     const a = t * t * t * (t * (t * 6 - 15) + 10)
-    return `rgba(37,46,40,${a.toFixed(3)}) ${(t * 96).toFixed(1)}%`
+    // cor via var(--color-noite) pra acompanhar as direções visuais (ThemeSwitcher)
+    return `color-mix(in srgb, var(--color-noite) ${(a * 100).toFixed(1)}%, transparent) ${(t * 96).toFixed(1)}%`
   }).join(', ')}, var(--color-noite) 100%)`
 
 /** Halos dourados do fundo do catálogo: posição/tamanho (classes), intensidade (% do latão) e desfoque. */
@@ -297,6 +304,12 @@ export function HomePage() {
   const catalogoCarrossel = useInfiniteCarousel(catalogoFiltrado.length)
   const [difModo, setDifModo] = useState<'arquetypus' | 'comum'>('arquetypus')
   const catalogoAtivo = catalogoFiltrado.length > 0 ? catalogoCarrossel.activeIndex % catalogoFiltrado.length : 0
+  // direção visual "Ateliê" (ThemeSwitcher): troca a estrutura do hero e do catálogo, não só as cores
+  const theme = useTheme()
+  const isAtelie = theme === 'atelie'
+  // direção "Boutique": hero compacto de loja e catálogo em grade de produtos
+  const isBoutique = theme === 'boutique'
+  const heroClaro = isAtelie || isBoutique
 
   useEffect(() => {
     if (!hash) return
@@ -304,12 +317,12 @@ export function HomePage() {
   }, [hash])
 
   return (
-    <div className="relative -mt-14 lg:-mt-16">
-      {/* H-03 Hero — carrossel sticky, card sobe por cima */}
-      <HeroCarousel />
+    <div className={heroClaro ? 'relative' : 'relative -mt-14 lg:-mt-16'}>
+      {/* H-03 Hero — carrossel sticky, card sobe por cima (Ateliê: capa de revista, sem sobreposição) */}
+      {isAtelie ? <HeroAtelie /> : isBoutique ? <HeroBoutique /> : <HeroCarousel />}
 
       {/* card das seções sobe por cima do hero; em telas baixas sobe menos pra mostrar mais imagem (par do pb do HeroCarousel) */}
-      <div className="relative z-10 -mt-28 rounded-t-3xl bg-papel [@media(max-height:820px)]:-mt-16">
+      <div className={heroClaro ? 'relative z-10 bg-papel' : 'relative z-10 -mt-28 rounded-t-3xl bg-papel [@media(max-height:820px)]:-mt-16'}>
         {/* H-05 Selos — grid 2x2 com ícone, estilo trust badges */}
         <section className="grid grid-cols-2 divide-x divide-y divide-linha overflow-hidden rounded-t-3xl border-b border-linha">
           {SEALS.map((s) => (
@@ -651,6 +664,12 @@ export function HomePage() {
           </div>
         </Reveal>
 
+        {isAtelie ? (
+          <CatalogIndex items={catalogoFiltrado} filtro={catalogoFiltro} setFiltro={setCatalogoFiltro} filtros={CATALOGO_FILTROS} />
+        ) : isBoutique ? (
+          <CatalogGrid items={catalogoFiltrado} filtro={catalogoFiltro} setFiltro={setCatalogoFiltro} filtros={CATALOGO_FILTROS} />
+        ) : (
+        <>
         {/* H-13 O catálogo (fundido com H-07 bodegón) — celular empilhado; lg: bodegón à esquerda, catálogo à direita */}
         <Reveal
           as="section"
@@ -857,7 +876,15 @@ export function HomePage() {
             </p>
           </div>
         </Reveal>
+        </>
+        )}
 
+        {isAtelie ? (
+          <FeaturedAtelie a={featured} img={FEATURED_IMG} />
+        ) : isBoutique ? (
+          <FeaturedBoutique a={featured} img={FEATURED_IMG} />
+        ) : (
+        <>
         {/* H-15 Arquétipo em destaque — ocupa o card editorial que era do Kit Descoberta (kit saiu do ar).
             Trocar o destaque = trocar FEATURED_ID; todo o texto vem de data/archetypes.ts.
             Celular: card vertical com texto sobre a foto; md+: foto à esquerda, texto à direita no fundo burgundy (FEATURED_BG) */}
@@ -872,7 +899,7 @@ export function HomePage() {
           }}
         >
           <div
-            className="group relative grid overflow-hidden rounded-3xl ring-1 ring-latao/60 md:min-h-[32rem] md:grid-cols-2 lg:mx-auto lg:min-h-[36rem] lg:max-w-7xl"
+            className="group relative grid overflow-hidden rounded-3xl ring-1 ring-latao/60 md:min-h-[32rem] md:grid-cols-[5fr_7fr] lg:mx-auto lg:min-h-[36rem] lg:max-w-7xl"
             style={{ boxShadow: '0 20px 40px -18px rgba(40,46,41,0.45)', background: FEATURED_BG }}
           >
             <img
@@ -881,10 +908,10 @@ export function HomePage() {
               // md+: altura vem do card (h-0 + min-h-full), não da proporção da foto — ! vence o aspectRatio inline;
               // recorte centrado no frasco. Celular: foto sobe ~6% da altura (margem negativa, % da largura).
               // Não usar translate aqui: transform tira a foto da ordem de pintura e ela cobre os degradês
-              className="col-start-1 row-start-1 h-full w-full object-cover object-top max-md:-mt-[10.5%] md:aspect-auto! md:h-0 md:min-h-full md:object-[50%_30%]"
+              className="col-start-1 row-start-1 h-full w-full object-cover object-top max-md:-mt-[10.5%] md:aspect-auto! md:h-0 md:min-h-full md:object-[50%_20%]"
               style={{ aspectRatio: '752 / 1344' }}
             />
-            <RatioTag className="top-4 right-4 md:right-[calc(50%+1rem)]" />
+            <RatioTag className="top-4 right-4 md:right-[calc(58.333%+1rem)]" />
             {/* md+: a foto dissolve pra direita, no painel de texto */}
             <div
               aria-hidden
@@ -903,7 +930,7 @@ export function HomePage() {
               }}
             />
             {/* brasas douradas na parte burgundy (celular: faixa do texto embaixo; md+: painel da direita) */}
-            <Embers className="inset-x-0 bottom-0 h-[58%] md:inset-y-0 md:right-0 md:left-1/2 md:h-auto" />
+            <Embers className="inset-x-0 bottom-0 h-[58%] md:inset-y-0 md:right-0 md:left-[41.667%] md:h-auto" />
             {/* Moldura interna dourada — filete fino, afastado da borda */}
             <div
               aria-hidden
@@ -955,6 +982,9 @@ export function HomePage() {
             </div>
           </div>
         </Reveal>
+        </>
+        )}
+
 
         {/* H-16 Escada de preço / kit builder — desativado a pedido, mantido no código pra reconectar depois
         <Reveal as="section" className="bg-papel-2 px-4 py-8">
@@ -1191,7 +1221,7 @@ export function HomePage() {
         </Reveal>
 
         {/* H-19 Comunidade */}
-        <CommunitySection />
+        {isAtelie ? <CommunityAtelie /> : isBoutique ? <CommunityBoutique /> : <CommunitySection />}
 
         {/* H-20 Garantia — bloco escuro como pontuação: fica por cima da comunidade (degrau invertido) */}
         <Reveal
@@ -1336,6 +1366,12 @@ export function HomePage() {
           </div>
         </Reveal>
 
+        {isAtelie ? (
+          <DiaryAtelie />
+        ) : isBoutique ? (
+          <DiaryBoutique />
+        ) : (
+        <>
         {/* H-22 Diário olfativo — escuro, por cima de Criadores (degrau invertido), lista editorial numerada */}
         <Reveal
           as="section"
@@ -1380,6 +1416,9 @@ export function HomePage() {
             </ol>
           </div>
         </Reveal>
+        </>
+        )}
+
 
         {/* H-23 Captura com cupom — claro, abaixo do Diário (degrau), card na moldura recortada */}
         <Reveal
@@ -1464,6 +1503,12 @@ export function HomePage() {
           </CutFrame>
         </Reveal>
 
+        {isAtelie ? (
+          <FooterAtelie />
+        ) : isBoutique ? (
+          <FooterBoutique />
+        ) : (
+        <>
         {/* H-24 Rodapé — escuro, por cima do cupom (degrau invertido); -mb-24 cobre o pb-24 do container do Layout */}
         <footer
           className="relative z-20 -mb-24 bg-noite px-5 pt-16 pb-[calc(2.5rem+6rem)] md:px-10 lg:pt-24"
@@ -1543,6 +1588,9 @@ export function HomePage() {
             </div>
           </div>
         </footer>
+        </>
+        )}
+
       </div>
     </div>
   )

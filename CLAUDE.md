@@ -91,6 +91,26 @@ decisão de produto já tomada:
   Acesso direto à URL abre a página completa — não trocar por modal sem
   rota (regra 6). As seções de compra são `ProductPurchase` e
   `KitPurchase`, compartilhadas entre pop-up e página.
+- **Direções visuais pra discussão** (`components/ThemeSwitcher.tsx`): barra
+  fixa "Escolha a direção visual" com 10 variações (Editorial = padrão, Noite
+  Imperial, Aurora Pop, Âmbar, Esmeralda, Ametista, Safira, Mármore — essas 4
+  saem da paleta de cores de arquétipos da marca —, Ateliê e Boutique), inspiradas nas
+  direções de lab-fabio.vercel.app/arquetypus-lp ("Pulso" foi descartada: não
+  combina com a Arquétypus). Trocam tokens (paleta, `--font-display`,
+  `--radius-*`) e alguns detalhes só de CSS (granulado, destaques em itálico)
+  via `html[data-theme]` em `index.css` — layout e conteúdo são os mesmos.
+  Exceções que mudam estrutura via `useTheme()` (`lib/theme.ts`), com o header
+  sólido sobre o hero:
+  - **Ateliê** (revista impressa): hero, catálogo, destaque, comunidade, diário
+    e rodapé trocados pelos componentes de `components/atelie/`.
+  - **Boutique** (loja): faixa de avisos no topo (frete grátis/selos), hero
+    compacto com CTAs e etiqueta de preço, catálogo em grade de produtos com
+    "Comprar", destaque como banner de produto, comunidade como "compre o
+    look", diário em cards e rodapé de loja (`components/boutique/`). Rótulos
+    de loja novos ("A partir de", "Comprar {nome}") — o resto vem de `data/`. Escolha vai no `?tema=` da URL. Cor nova em componente deve usar
+  token (`var(--color-…)`), senão não acompanha as variações. Desligar com
+  `SHOW_THEME_SWITCHER = false` quando a direção for decidida (e aí promover a
+  escolhida pro `@theme`).
 - **Selos de proporção nas imagens** (`components/ui/RatioTag.tsx`) são
   apoio ao time de design — mostram a proporção real da caixa na tela.
   Desligar com `SHOW_RATIO_TAGS = false` antes do lançamento. O

@@ -72,12 +72,12 @@ export function CreatorsPage() {
           <div
             aria-hidden
             className="pointer-events-none absolute inset-x-0 bottom-0 h-[45%] lg:hidden"
-            style={{ background: 'linear-gradient(to bottom, rgba(37,46,40,0), rgba(37,46,40,0.55) 55%, var(--color-noite))' }}
+            style={{ background: 'linear-gradient(to bottom, transparent, color-mix(in srgb, var(--color-noite) 55%, transparent) 55%, var(--color-noite))' }}
           />
           <div
             aria-hidden
             className="pointer-events-none absolute inset-y-0 left-0 hidden w-[35%] lg:block"
-            style={{ background: 'linear-gradient(to left, rgba(37,46,40,0), rgba(37,46,40,0.55) 60%, var(--color-noite))' }}
+            style={{ background: 'linear-gradient(to left, transparent, color-mix(in srgb, var(--color-noite) 55%, transparent) 60%, var(--color-noite))' }}
           />
         </div>
 

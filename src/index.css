@@ -82,6 +82,303 @@
   --radius-card: 1.5rem;
 }
 
+/* ============================================================================
+   Direções visuais pra discussão (ThemeSwitcher, SHOW_THEME_SWITCHER em components/ThemeSwitcher.tsx).
+   Inspiradas nas 4 direções de lab-fabio.vercel.app/arquetypus-lp. Mesmo layout e conteúdo — só trocam os
+   tokens: paleta, fonte de títulos e arredondamento. "editorial" = o :root acima (sem override).
+   Seletor html[data-theme] vence o :root do @theme por especificidade.
+   ============================================================================ */
+
+/* 02 · Noite Imperial — o site inteiro no escuro: ameixa quase preta + dourado claro */
+html[data-theme='noite'] {
+  --color-papel: #160f1a;
+  --color-papel-2: #1e1523;
+  --color-papel-3: #271c2d;
+  --color-mesa: #2c2132;
+  --color-linha: #3a2d3d;
+  --color-linha-2: #4b3c4c;
+  --color-tinta: #f6eee5;
+  --color-tinta-2: #c3b3c4;
+  --color-tinta-3: #9a8a9c;
+  --color-latao: #dcb980;
+  --color-latao-texto: #dcb980;
+  --color-noite: #241429;
+  --color-noite-2: #2e1a34;
+  --color-papel-inv: #f6eee5;
+  --hero-tint: #160f1a;
+}
+/* wordmark preto do header some no fundo escuro: vira claro */
+html[data-theme='noite'] .logo-tinta {
+  filter: invert(1) brightness(1.05);
+}
+
+/* 03 · Aurora Pop — creme quente, vinho e coral, amarelo como acento; títulos em sans e cantos bem redondos */
+html[data-theme='aurora'] {
+  --font-display: 'Manrope', 'Inter', sans-serif;
+  --color-papel: #fff8ef;
+  --color-papel-2: #fbeee2;
+  --color-papel-3: #f5e1d3;
+  --color-mesa: #efd6c6;
+  --color-linha: #eccfc7;
+  --color-linha-2: #ddb3a9;
+  --color-tinta: #51222e;
+  --color-tinta-2: #825761;
+  --color-tinta-3: #a78088;
+  --color-latao: #ffc94d;
+  --color-latao-texto: #c43e48;
+  --color-noite: #51222e;
+  --color-noite-2: #642c3a;
+  --color-papel-inv: #fff8ef;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.75rem;
+  --radius-3xl: 2.25rem;
+}
+
+html[data-theme='aurora'] .font-display {
+  letter-spacing: -0.02em;
+}
+html[data-theme='aurora'] h1.font-display,
+html[data-theme='aurora'] h2.font-display {
+  font-weight: 600;
+}
+
+/* 04 · Âmbar — a nossa identidade em tons de terra: areia, café e cobre no lugar do verde e do latão */
+html[data-theme='ambar'] {
+  --color-papel: #f4ede3;
+  --color-papel-2: #ebe1d3;
+  --color-papel-3: #e0d3c2;
+  --color-mesa: #d6c7b3;
+  --color-linha: #dacdbc;
+  --color-linha-2: #c4b39d;
+  --color-tinta: #2b1d16;
+  --color-tinta-2: #6e5a4b;
+  --color-tinta-3: #9a8574;
+  --color-latao: #d39a5f;
+  --color-latao-texto: #9a5b2c;
+  --color-noite: #2a1d16;
+  --color-noite-2: #3a2a20;
+  --color-papel-inv: #f4ede3;
+}
+
+/* 05 · Esmeralda — "O Sábio" da paleta de arquétipos: marfim, verde esmeralda profundo e ouro;
+   títulos em Cormorant (serifa clássica) com os destaques em itálico */
+html[data-theme='esmeralda'] {
+  --font-display: 'Cormorant Garamond', 'Elegant', serif;
+  --color-papel: #f6f2e9;
+  --color-papel-2: #eee8da;
+  --color-papel-3: #e2dbc9;
+  --color-mesa: #d8d0bb;
+  --color-linha: #dcd4c2;
+  --color-linha-2: #c5bca6;
+  --color-tinta: #13302a;
+  --color-tinta-2: #536a62;
+  --color-tinta-3: #85968f;
+  --color-latao: #d4b06a;
+  --color-latao-texto: #8a6a2e;
+  --color-noite: #0f3b33;
+  --color-noite-2: #16493f;
+  --color-papel-inv: #f6f2e9;
+}
+
+/* 06 · Ametista — "O Mago": creme lavanda, ametista quase preto e ouro; halos mais presentes e granulado */
+html[data-theme='ametista'] {
+  --color-papel: #f6f1f4;
+  --color-papel-2: #eee5ec;
+  --color-papel-3: #e3d7e1;
+  --color-mesa: #d9cbd6;
+  --color-linha: #e0d3dd;
+  --color-linha-2: #c8b6c5;
+  --color-tinta: #2a1d33;
+  --color-tinta-2: #6c5a74;
+  --color-tinta-3: #9a88a1;
+  --color-latao: #d9b877;
+  --color-latao-texto: #7d4f8f;
+  --color-noite: #2a1638;
+  --color-noite-2: #3a1f4c;
+  --color-papel-inv: #f6f1f4;
+}
+
+/* 07 · Safira — "O Criador": marfim frio, azul safira profundo e champanhe; títulos em Cormorant */
+html[data-theme='safira'] {
+  --font-display: 'Cormorant Garamond', 'Elegant', serif;
+  --color-papel: #f4f2ee;
+  --color-papel-2: #eae7e1;
+  --color-papel-3: #dedad2;
+  --color-mesa: #d3cec4;
+  --color-linha: #d8d4cc;
+  --color-linha-2: #bfbab0;
+  --color-tinta: #0f2238;
+  --color-tinta-2: #4f6076;
+  --color-tinta-3: #8591a1;
+  --color-latao: #d8c08e;
+  --color-latao-texto: #1f5a96;
+  --color-noite: #0b2544;
+  --color-noite-2: #123257;
+  --color-papel-inv: #f4f2ee;
+}
+
+/* 08 · Mármore — alfaiataria monocromática: branco pedra, grafite e ouro velho; títulos em Cormorant leve
+   com caixa espaçada, cantos quase retos */
+html[data-theme='marmore'] {
+  --font-display: 'Cormorant Garamond', 'Elegant', serif;
+  --color-papel: #f7f6f4;
+  --color-papel-2: #eeece8;
+  --color-papel-3: #e3e0da;
+  --color-mesa: #d9d5ce;
+  --color-linha: #dedbd5;
+  --color-linha-2: #c6c2ba;
+  --color-tinta: #1c1c1e;
+  --color-tinta-2: #5f5e5a;
+  --color-tinta-3: #95928b;
+  --color-latao: #b8a27a;
+  --color-latao-texto: #7d6a45;
+  --color-noite: #1f1f22;
+  --color-noite-2: #2a2a2e;
+  --color-papel-inv: #f7f6f4;
+  --radius-md: 0.125rem;
+  --radius-lg: 0.1875rem;
+  --radius-xl: 0.25rem;
+  --radius-2xl: 0.25rem;
+  --radius-3xl: 0.375rem;
+}
+html[data-theme='marmore'] h1.font-display,
+html[data-theme='marmore'] h2.font-display {
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+
+/* Cormorant: leve e maior que a Elegant no mesmo tamanho — sobe um pouco o peso; destaques dos títulos em itálico */
+html[data-theme='esmeralda'] .font-display,
+html[data-theme='safira'] .font-display,
+html[data-theme='marmore'] .font-display {
+  font-weight: 500;
+}
+html[data-theme='esmeralda'] :is(h1, h2) :is(.text-latao, .text-latao-texto),
+html[data-theme='safira'] :is(h1, h2) :is(.text-latao, .text-latao-texto),
+html[data-theme='ametista'] :is(h1, h2) :is(.text-latao, .text-latao-texto) {
+  font-style: italic;
+}
+
+/* Granulado de filme por cima de tudo (bem leve) — Noite Imperial, Âmbar e Ametista, pra dar matéria */
+html:is([data-theme='noite'], [data-theme='ambar'], [data-theme='ametista']) body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Ametista: halos dourados (Glow/CATALOGO_GLOWS) um pouco mais fortes, puxados pro lilás */
+html[data-theme='ametista'] [class*='rounded-full'][style*='radial-gradient'] {
+  filter: blur(30px) hue-rotate(-40deg) saturate(1.6) !important;
+}
+
+/* 09 · Ateliê — muda a ESTRUTURA, não só a pele (lib/theme.ts → useTheme): hero vira capa de revista
+   (components/atelie/HeroAtelie), catálogo vira índice numerado (components/atelie/CatalogIndex).
+   Aqui: papel e preto de gráfica, ouro só em detalhe, Cormorant, cantos quase retos, e o "acabamento de
+   impressão" — seções numeradas (№ 01…), sem halos, flor ou sombras de degrau, divisões em fio fino. */
+html[data-theme='atelie'] {
+  --font-display: 'Cormorant Garamond', 'Elegant', serif;
+  --color-papel: #faf8f4;
+  --color-papel-2: #f2efe9;
+  --color-papel-3: #e8e4dc;
+  --color-mesa: #dcd7cd;
+  --color-linha: #e2ddd4;
+  --color-linha-2: #cfc9bf;
+  --color-tinta: #141414;
+  --color-tinta-2: #5c5a55;
+  --color-tinta-3: #8f8b84;
+  --color-latao: #c6a46c;
+  --color-latao-texto: #8a6a3a;
+  --color-noite: #141414;
+  --color-noite-2: #1f1f1f;
+  --color-papel-inv: #faf8f4;
+  --radius-md: 0.125rem;
+  --radius-lg: 0.125rem;
+  --radius-xl: 0.1875rem;
+  --radius-2xl: 0.25rem;
+  --radius-3xl: 0.25rem;
+}
+html[data-theme='atelie'] .font-display {
+  font-weight: 500;
+}
+/* numeração de seção, como índice de revista */
+html[data-theme='atelie'] main {
+  counter-reset: secao;
+}
+html[data-theme='atelie'] main h2.font-display {
+  counter-increment: secao;
+}
+html[data-theme='atelie'] main h2.font-display::before {
+  content: '№ ' counter(secao, decimal-leading-zero);
+  display: block;
+  margin-bottom: 0.9rem;
+  font: 500 10px/1 'Inter', sans-serif;
+  letter-spacing: 0.3em;
+  color: var(--color-tinta-3);
+  font-style: normal;
+}
+/* acabamento de impressão: sem halos dourados, flor-marca d'água nem sombras de "degrau"; seção separada por fio */
+html[data-theme='atelie'] [class*='rounded-full'][style*='radial-gradient'],
+html[data-theme='atelie'] img[src*='flor-arquetypus'] {
+  display: none !important;
+}
+html[data-theme='atelie'] main section {
+  box-shadow: none !important;
+  border-top: 1px solid var(--color-linha-2) !important;
+}
+
+/* 10 · Boutique — pegada de loja (lib/theme.ts → useTheme): hero compacto com CTAs e etiqueta de preço,
+   catálogo em grade de produtos (components/boutique). Branco limpo, preto nos botões, dourado só em
+   detalhe, títulos em Manrope, cantos generosos; sem halos nem flor — foco total no produto. */
+html[data-theme='boutique'] {
+  --font-display: 'Manrope', 'Inter', sans-serif;
+  --color-papel: #ffffff;
+  --color-papel-2: #f6f5f3;
+  --color-papel-3: #eeece8;
+  --color-mesa: #e6e3dd;
+  --color-linha: #ebe8e3;
+  --color-linha-2: #d8d4cd;
+  --color-tinta: #151515;
+  --color-tinta-2: #5b5b5b;
+  --color-tinta-3: #8c8c8c;
+  --color-latao: #c6a46c;
+  --color-latao-texto: #8a6a3a;
+  --color-noite: #151515;
+  --color-noite-2: #222222;
+  --color-papel-inv: #ffffff;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.5rem;
+}
+html[data-theme='boutique'] .font-display {
+  letter-spacing: -0.02em;
+}
+html[data-theme='boutique'] :is(h1, h2).font-display {
+  font-weight: 600;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .boutique-marquee {
+    animation: boutique-marquee 40s linear infinite;
+  }
+}
+@keyframes boutique-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+html[data-theme='boutique'] [class*='rounded-full'][style*='radial-gradient'],
+html[data-theme='boutique'] img[src*='flor-arquetypus'] {
+  display: none !important;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .reveal-init {
     opacity: 0;
