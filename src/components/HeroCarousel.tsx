@@ -64,7 +64,9 @@ export function HeroCarousel() {
 
   return (
     <div
-      className="sticky top-0 flex h-svh touch-pan-y flex-col overflow-hidden bg-noite"
+      className="hero-tint sticky top-0 flex h-svh touch-pan-y flex-col overflow-hidden bg-noite"
+      // tom do escurecimento atrás do texto acompanha o slide (ver `tint` em HERO_SLIDES); transição em index.css
+      style={{ '--hero-tint': slide.tint } as React.CSSProperties}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
@@ -124,9 +126,9 @@ export function HeroCarousel() {
 
       {/* Gradient overlay */}
       {/* desktop: texto fica à esquerda, então o escurecimento vem da esquerda */}
-      <div className="absolute inset-0 bg-gradient-to-t from-noite via-noite/40 to-noite/20 lg:bg-gradient-to-r lg:from-noite/85 lg:from-10% lg:via-noite/45 lg:via-35% lg:to-transparent lg:to-65%" />
+      <div className="absolute inset-0 bg-gradient-to-t from-(--hero-tint) via-(--hero-tint)/40 to-(--hero-tint)/20 lg:bg-gradient-to-r lg:from-(--hero-tint)/85 lg:from-10% lg:via-(--hero-tint)/45 lg:via-35% lg:to-transparent lg:to-65%" />
       {/* desktop: base levemente escurecida pra separar contador/setas da imagem */}
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 hidden h-1/3 bg-gradient-to-t from-noite/50 to-transparent lg:block" />
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 hidden h-1/3 bg-gradient-to-t from-(--hero-tint)/50 to-transparent lg:block" />
 
       {/* Conteúdo centralizado — key remonta a cada slide pra reiniciar o fade-up */}
       <div key={slide.id} className="relative z-10 mt-auto px-10 text-center text-papel-inv lg:mx-auto lg:my-auto lg:w-full lg:max-w-7xl lg:pt-24 lg:text-left">

@@ -105,8 +105,18 @@ decisão de produto já tomada:
   `KitSheet` e `KitPurchase` ficam no repo, desligados, pra religar. O
   card editorial que era do kit na home virou "Arquétipo em destaque"
   (`FEATURED_ID` em `HomePage.tsx`, hoje Fênix; texto vem de
-  `data/archetypes.ts`; foto `destaque-fenix.jpg` gerada por IA com o
-  frasco real como referência — trocar pela de campanha antes do lançamento).
+  `data/archetypes.ts`; foto em `assets/fotos/destaque-fenix.jpg`).
+- **Fotos da designer (set/2026) em `src/assets/fotos/`** — convertidas de
+  PNG pra JPG. Catálogo da home (`catalogo/`) mostra o frasco; a PDP tem
+  galeria (`components/ProductGallery.tsx`): 1ª foto o frasco
+  (`pdp-frasco/`), 2ª a pessoa com o frasco (`pdp-lifestyle/`), ambas
+  recorte 1:1 das fotos 9:16, lidas por `import.meta.glob` (arquivo = id do
+  arquétipo; pra mais fotos, nova pasta e mais uma entrada em `slides`).
+  `miniaturas/` são recortes do frasco pro product tag da comunidade. As versões desktop do
+  hero de Afrodite/Guerreiro (`hero/*-desktop.jpg`) são a foto da designer
+  expandida pra 16:9 com IA (Higgsfield, FLUX.2 Pro Outpaint) — as laterais
+  foram geradas; o frasco e a pessoa são os pixels originais.
+  O que sobrou em `assets/mocks/` ainda é mock antigo.
 - **`/criadores` existe** (`pages/CreatorsPage.tsx`). Comissão do afiliado e preço do kit vêm
   de `data/economics.ts` (`ECON`), não hard-coded no componente —
   `comissaoPct` é HIPÓTESE (chute do v6, sem CMV real por trás);
@@ -126,12 +136,11 @@ decisão de produto já tomada:
   específicos de cada arquétipo dependem da fórmula real da Scentec —
   não preenchi por arquétipo pelo mesmo motivo das avaliações.
 - **`UGC_VIDEOS` em `data/home.ts` tem depoimentos fictícios/ilustrativos**
-  (3 dos 5 criadores e seus textos foram inventados pra dar volume ao
-  carrossel — só os 2 primeiros vêm de `TESTIMONIALS`, que já eram
-  ilustrativos). As fotos de UGC (`ugc-*.jpg`) são geradas por IA com o
-  frasco real como referência — as pessoas não existem, e a seção diz
-  "Pessoas reais". Trocar fotos, @ e depoimentos por criadores reais e
-  autorizados antes do lançamento. Os textos dos depoimentos e o "4,8 ·
+  (2 dos 4 textos foram inventados pra dar volume ao carrossel — os
+  outros 2 vêm de `TESTIMONIALS`, que já eram ilustrativos). As fotos
+  (`assets/fotos/comunidade/`) e os @ vieram da designer — não está
+  confirmado se são pessoas reais e autorizadas, e a seção diz "Pessoas
+  reais". Confirmar antes do lançamento. Os textos dos depoimentos e o "4,8 ·
   2.147 avaliações" estão escondidos (`SHOW_REVIEWS = false` em
   `HomePage.tsx`), assim como os percentuais de percepção
   (`SHOW_PROOF_STATS = false`) — copy revisada de set/2026 manda tirar

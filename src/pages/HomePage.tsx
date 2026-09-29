@@ -34,7 +34,7 @@ import { useCarouselIndex } from '@/lib/useCarouselIndex'
 import { useTapGuard } from '@/lib/useTapGuard'
 import { useInfiniteCarousel } from '@/lib/useInfiniteCarousel'
 import { useCoverflow } from '@/lib/useCoverflow'
-import featuredFenix from '@/assets/mocks/home/destaque-fenix.jpg'
+import featuredFenix from '@/assets/fotos/destaque-fenix.jpg'
 import florArquetypus from '@/assets/brand/flor-arquetypus.png'
 import ribbonArquetypus from '@/assets/brand/ribbon-arquetypus.png'
 import logoBranco from '@/assets/brand/logo-branco.png'
@@ -49,10 +49,11 @@ const LATAO_CLARO = 'var(--color-latao)'
 const SHOW_PROOF_STATS = false
 const SHOW_REVIEWS = false
 
-// Arquétipo em destaque (card editorial da home). Foto gerada por IA (Higgsfield) com o frasco real
-// como referência, no estilo do vídeo do hero — trocar pela foto de campanha antes do lançamento.
+// Arquétipo em destaque (card editorial da home). Foto escolhida pela designer (set/2026).
 const FEATURED_ID = 'fenix'
 const FEATURED_IMG = featuredFenix
+// Fundo do card: burgundy da paleta da marca, que conversa com o frasco da Fênix. Ao trocar FEATURED_ID, rever a cor
+const FEATURED_BG = 'var(--color-burgundy)'
 const featured = getArchetype(FEATURED_ID)!
 
 /** Largura do card de UGC — o carrossel centraliza a partir dela. Vem da variável
@@ -111,7 +112,7 @@ function CommunitySection() {
       style={{
         // degrau: sai da "A diferença" (por cima) para uma seção que fica abaixo
         boxShadow:
-          'inset 0 1px 0 color-mix(in srgb, var(--color-latao) 60%, transparent), inset 0 26px 28px -20px rgba(44,44,41,0.4), inset 0 8px 10px -7px rgba(44,44,41,0.28)',
+          'inset 0 1px 0 color-mix(in srgb, var(--color-latao) 60%, transparent), inset 0 26px 28px -20px rgba(40,46,41,0.4), inset 0 8px 10px -7px rgba(40,46,41,0.28)',
       }}
     >
       <img
@@ -192,20 +193,15 @@ function CommunitySection() {
                 <CutFrame cut={10} innerClassName="bg-papel p-3">
                   <div className="flex gap-3">
                     {FRASCO_CUT_IMG[arq.id] && (
-                      <div aria-hidden className="relative flex h-[76px] w-[52px] shrink-0 items-end justify-center">
-                        {/* sombra de contato sutil na base do frasco */}
-                        <span
-                          className="absolute bottom-0 h-2 w-9 rounded-[50%]"
-                          style={{ background: 'radial-gradient(closest-side, rgba(44,44,41,0.32), transparent)' }}
-                        />
-                        <img
-                          src={FRASCO_CUT_IMG[arq.id]}
-                          alt=""
-                          loading="lazy"
-                          decoding="async"
-                          className="relative mb-0.5 h-[72px] w-auto"
-                        />
-                      </div>
+                      // miniatura é recorte da foto de produto (com fundo), não frasco recortado — vai como thumb
+                      <img
+                        aria-hidden
+                        src={FRASCO_CUT_IMG[arq.id]}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                        className="h-[76px] w-[52px] shrink-0 rounded-md object-cover"
+                      />
                     )}
                     <div className="flex min-w-0 flex-1 flex-col justify-center">
                       <b className="block truncate font-display text-lg leading-tight font-normal text-tinta">{arq.nome}</b>
@@ -449,7 +445,7 @@ export function HomePage() {
                 <button
                   onClick={() => scrollToId('catalogo')}
                   className="no-press relative isolate block w-full overflow-hidden rounded-3xl border border-linha-2 text-left"
-                  style={{ aspectRatio: '4/5', boxShadow: '0 10px 24px -12px rgba(44,44,41,0.28)' }}
+                  style={{ aspectRatio: '4/5', boxShadow: '0 10px 24px -12px rgba(40,46,41,0.28)' }}
                 >
                   <img
                     src={f.img}
@@ -488,7 +484,7 @@ export function HomePage() {
             background: 'color-mix(in srgb, var(--color-papel-2) 100%, var(--color-latao) 6%)',
             // sombra interna no topo + filete: a seção parece um degrau abaixo da "Entrada racional"
             boxShadow:
-              'inset 0 1px 0 color-mix(in srgb, var(--color-linha-2) 80%, transparent), inset 0 18px 22px -16px rgba(44,44,41,0.28), inset 0 6px 8px -6px rgba(44,44,41,0.18)',
+              'inset 0 1px 0 color-mix(in srgb, var(--color-linha-2) 80%, transparent), inset 0 18px 22px -16px rgba(40,46,41,0.28), inset 0 6px 8px -6px rgba(40,46,41,0.18)',
           }}
         >
           <div className="px-4 md:px-10 lg:mx-auto lg:max-w-7xl">
@@ -532,7 +528,7 @@ export function HomePage() {
                 <span
                   aria-hidden
                   className="pointer-events-none absolute right-4 bottom-4 z-10 flex size-8 items-center justify-center rounded-full text-papel-inv/80"
-                  style={{ border: '1px solid rgba(247,246,243,0.4)' }}
+                  style={{ border: '1px solid rgba(242,234,219,0.4)' }}
                 >
                   →
                 </span>
@@ -635,13 +631,13 @@ export function HomePage() {
           contentClassName="lg:grid lg:grid-cols-2"
           style={{
             // Degrau invertido: o catálogo fica POR CIMA e projeta sombra na seção de cima (Reconhecimento)
-            boxShadow: '0 -14px 26px -10px rgba(26,25,23,0.5), 0 -4px 8px -3px rgba(26,25,23,0.35)',
+            boxShadow: '0 -14px 26px -10px rgba(37,46,40,0.5), 0 -4px 8px -3px rgba(37,46,40,0.35)',
           }}
         >
           <div className="relative lg:min-h-full lg:overflow-hidden">
             <img
               src={BODEGON_IMG}
-              alt="Os nove frascos Arquétypus sobre pedras vulcânicas molhadas, uns agrupados e outros sozinhos, com ondas quebrando e o pôr do sol ao fundo"
+              alt="Os nove frascos Arquétypus sobre uma bandeja de mármore, à luz dourada do fim de tarde"
               className="aspect-[4/5] w-full object-cover lg:absolute lg:inset-0 lg:aspect-auto lg:h-full"
             />
             <RatioTag className="top-3 right-3" />
@@ -654,13 +650,13 @@ export function HomePage() {
             <div
               aria-hidden
               className="pointer-events-none absolute inset-x-0 bottom-0 h-[24%] lg:hidden"
-              style={{ background: 'linear-gradient(to bottom, rgba(26,25,23,0) 0%, var(--color-noite) 100%)' }}
+              style={{ background: 'linear-gradient(to bottom, rgba(37,46,40,0) 0%, var(--color-noite) 100%)' }}
             />
             {/* desktop: a imagem dissolve pra direita, no fundo noite do catálogo */}
             <div
               aria-hidden
               className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/3 lg:block"
-              style={{ background: 'linear-gradient(to right, rgba(26,25,23,0) 0%, var(--color-noite) 100%)' }}
+              style={{ background: 'linear-gradient(to right, rgba(37,46,40,0) 0%, var(--color-noite) 100%)' }}
             />
           </div>
 
@@ -807,7 +803,7 @@ export function HomePage() {
 
         {/* H-15 Arquétipo em destaque — ocupa o card editorial que era do Kit Descoberta (kit saiu do ar).
             Trocar o destaque = trocar FEATURED_ID; todo o texto vem de data/archetypes.ts.
-            Celular: card vertical com texto sobre a foto; md+: foto à esquerda, texto à direita no fundo noite */}
+            Celular: card vertical com texto sobre a foto; md+: foto à esquerda, texto à direita no fundo burgundy (FEATURED_BG) */}
         <Reveal
           as="section"
           id="destaque"
@@ -815,16 +811,16 @@ export function HomePage() {
           style={{
             // "degrau" como o da Entrada emocional, mais marcado: sombra interna no topo, a seção parece abaixo do catálogo
             boxShadow:
-              'inset 0 1px 0 color-mix(in srgb, var(--color-latao) 60%, transparent), inset 0 26px 28px -20px rgba(44,44,41,0.4), inset 0 8px 10px -7px rgba(44,44,41,0.28)',
+              'inset 0 1px 0 color-mix(in srgb, var(--color-latao) 60%, transparent), inset 0 26px 28px -20px rgba(40,46,41,0.4), inset 0 8px 10px -7px rgba(40,46,41,0.28)',
           }}
         >
           <div
-            className="group relative grid overflow-hidden rounded-3xl ring-1 ring-latao/60 md:min-h-[32rem] md:grid-cols-2 md:bg-noite lg:mx-auto lg:min-h-[36rem] lg:max-w-7xl"
-            style={{ boxShadow: '0 20px 40px -18px rgba(44,44,41,0.45)' }}
+            className="group relative grid overflow-hidden rounded-3xl ring-1 ring-latao/60 md:min-h-[32rem] md:grid-cols-2 lg:mx-auto lg:min-h-[36rem] lg:max-w-7xl"
+            style={{ boxShadow: '0 20px 40px -18px rgba(40,46,41,0.45)', background: FEATURED_BG }}
           >
             <img
               src={FEATURED_IMG}
-              alt={`Mulher envolta em tecido claro segurando o ${featured.tipo.toLowerCase()} ${featured.nome}`}
+              alt={`Mão segurando o ${featured.tipo.toLowerCase()} ${featured.nome}`}
               // md+: altura vem do card (h-0 + min-h-full), não da proporção da foto — ! vence o aspectRatio inline;
               // recorte centrado no frasco
               className="col-start-1 row-start-1 h-full w-full object-cover object-top md:aspect-auto! md:h-0 md:min-h-full md:object-[50%_30%]"
@@ -835,15 +831,15 @@ export function HomePage() {
             <div
               aria-hidden
               className="pointer-events-none col-start-1 row-start-1 hidden md:block"
-              style={{ background: 'linear-gradient(to right, transparent 55%, var(--color-noite) 100%)' }}
+              style={{ background: `linear-gradient(to right, transparent 55%, ${FEATURED_BG} 100%)` }}
             />
             <div
               aria-hidden
               className="pointer-events-none col-start-1 row-start-1 self-end h-[70%] backdrop-blur-md md:hidden"
               style={{
                 background:
-                  // degradê preto (noite), sem tinta dourada
-                  'linear-gradient(to top, var(--color-noite) 0%, color-mix(in srgb, var(--color-noite) 94%, transparent) 45%, color-mix(in srgb, var(--color-noite) 70%, transparent) 78%, transparent 100%)',
+                  // degradê na cor do card (FEATURED_BG), sem tinta dourada
+                  `linear-gradient(to top, ${FEATURED_BG} 0%, color-mix(in srgb, ${FEATURED_BG} 94%, transparent) 45%, color-mix(in srgb, ${FEATURED_BG} 70%, transparent) 78%, transparent 100%)`,
                 maskImage: 'linear-gradient(to top, black 60%, transparent 100%)',
                 WebkitMaskImage: 'linear-gradient(to top, black 60%, transparent 100%)',
               }}
@@ -858,7 +854,7 @@ export function HomePage() {
             <div className="relative col-start-1 row-start-1 self-end px-6 pt-[88%] pb-6 md:col-start-2 md:self-center md:px-8 md:pt-10 md:pb-10 lg:px-14 lg:pt-14 lg:pb-14 xl:px-20">
               <div className="flex items-center gap-3">
                 <span aria-hidden className="h-px w-6" style={{ background: LATAO_CLARO }} />
-                <Eyebrow className="" style={{ color: LATAO_CLARO, textShadow: '0 1px 8px rgba(26,25,23,0.45)' }}>
+                <Eyebrow className="" style={{ color: LATAO_CLARO, textShadow: '0 1px 8px rgba(40,0,8,0.45)' }}>
                   Arquétipo em destaque
                 </Eyebrow>
               </div>
@@ -1014,7 +1010,7 @@ export function HomePage() {
           animateContent
           style={{
             // Degrau invertido, como o do catálogo: a seção fica por cima e projeta sombra na de cima
-            boxShadow: '0 -14px 26px -10px rgba(26,25,23,0.5), 0 -4px 8px -3px rgba(26,25,23,0.35)',
+            boxShadow: '0 -14px 26px -10px rgba(37,46,40,0.5), 0 -4px 8px -3px rgba(37,46,40,0.35)',
             // filete dourado como borda: um `absolute` aqui dentro ancoraria no wrapper animado do Reveal (transform)
             borderTop: '1px solid color-mix(in srgb, var(--color-latao) 70%, transparent)',
           }}
@@ -1089,7 +1085,7 @@ export function HomePage() {
                   <span
                     aria-hidden
                     className="w-5 shrink-0 font-label text-[10px] tracking-widest"
-                    style={{ color: difModo === 'arquetypus' ? LATAO_CLARO : 'rgba(247,246,243,0.3)' }}
+                    style={{ color: difModo === 'arquetypus' ? LATAO_CLARO : 'rgba(242,234,219,0.3)' }}
                   >
                     {String(i + 1).padStart(2, '0')}
                   </span>
@@ -1140,69 +1136,85 @@ export function HomePage() {
         {/* H-20 Garantia — bloco escuro como pontuação: fica por cima da comunidade (degrau invertido) */}
         <Reveal
           as="section"
-          className="relative z-20 overflow-hidden bg-noite px-6 pt-16 pb-16 text-center"
+          className="relative z-20 overflow-hidden bg-noite px-6 pt-16 pb-16 text-center md:px-10 lg:pt-24 lg:pb-24"
           animateContent
           style={{
-            boxShadow: '0 -14px 26px -10px rgba(26,25,23,0.5), 0 -4px 8px -3px rgba(26,25,23,0.35)',
+            boxShadow: '0 -14px 26px -10px rgba(37,46,40,0.5), 0 -4px 8px -3px rgba(37,46,40,0.35)',
             borderTop: '1px solid color-mix(in srgb, var(--color-latao) 70%, transparent)',
           }}
         >
-          {/* textura mínima: um halo quente quase imperceptível atrás do número */}
+          {/* textura mínima: um halo quente quase imperceptível atrás do número (lg: vai junto com o número, ver abaixo) */}
           <div
             aria-hidden
-            className="pointer-events-none absolute top-6 left-1/2 size-72 -translate-x-1/2 rounded-full"
+            className="pointer-events-none absolute top-6 left-1/2 size-72 -translate-x-1/2 rounded-full lg:hidden"
             style={{
               background: 'radial-gradient(closest-side, color-mix(in srgb, var(--color-latao) 16%, transparent), transparent)',
               filter: 'blur(24px)',
             }}
           />
 
-          <div className="relative">
-            <div className="font-display text-[112px] leading-[0.9] font-light tracking-tight" style={{ color: LATAO_CLARO }}>
-              07
+          {/* lg: número à esquerda, promessa à direita, separados por um filete — lê como selo + texto */}
+          <div className="relative lg:mx-auto lg:grid lg:max-w-6xl lg:grid-cols-12 lg:items-center lg:gap-x-16">
+            <div className="relative lg:col-span-5">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute top-1/2 left-1/2 hidden size-[26rem] -translate-x-1/2 -translate-y-1/2 rounded-full lg:block"
+                style={{
+                  background: 'radial-gradient(closest-side, color-mix(in srgb, var(--color-latao) 16%, transparent), transparent)',
+                  filter: 'blur(32px)',
+                }}
+              />
+              <div
+                className="relative font-display text-[112px] leading-[0.9] font-light tracking-tight lg:text-[200px] xl:text-[232px]"
+                style={{ color: LATAO_CLARO }}
+              >
+                07
+              </div>
+              <div className="relative mt-4 flex items-center justify-center gap-3 lg:mt-6">
+                <span aria-hidden className="h-px w-6 bg-papel-inv/20 lg:w-10" />
+                <p className="font-label text-[9.5px] tracking-[0.3em] text-papel-inv/60 uppercase lg:text-[11px]">Dias de garantia</p>
+                <span aria-hidden className="h-px w-6 bg-papel-inv/20 lg:w-10" />
+              </div>
             </div>
-            <div className="mt-4 flex items-center justify-center gap-3">
-              <span aria-hidden className="h-px w-6 bg-papel-inv/20" />
-              <p className="font-label text-[9.5px] tracking-[0.3em] text-papel-inv/60 uppercase">Dias de garantia</p>
-              <span aria-hidden className="h-px w-6 bg-papel-inv/20" />
+
+            <div className="lg:col-span-7 lg:border-l lg:border-papel-inv/15 lg:py-6 lg:pl-16 lg:text-left">
+              <h2 className="mt-8 font-display text-[28px] leading-[1.2] text-papel-inv lg:mt-0 lg:text-[44px] lg:leading-[1.12]">
+                Experimente na pele.
+                <br />
+                <em style={{ color: LATAO_CLARO }}>Descubra se essa fragrância combina com você.</em>
+              </h2>
+
+              <p className="mx-auto mt-6 max-w-[28ch] text-[15px] leading-relaxed text-papel-inv/70 lg:mx-0 lg:mt-8 lg:max-w-none lg:text-[17px]">
+                Deixe a fragrância se revelar.
+              </p>
+              <p className="mx-auto mt-4 max-w-[28ch] text-[15px] leading-relaxed text-papel-inv/70 lg:mx-0 lg:mt-2 lg:max-w-none lg:text-[17px]">
+                Se não for para você,
+                <br className="lg:hidden" /> devolvemos o valor.
+              </p>
+
+              <p className="mt-8 font-label text-[9px] tracking-[0.2em] text-papel-inv/40 uppercase lg:mt-10 lg:text-[10px]">
+                Sem perguntas · Mesmo com o frasco aberto
+              </p>
             </div>
-
-            <h2 className="mt-8 font-display text-[28px] leading-[1.2] text-papel-inv">
-              Experimente na pele.
-              <br />
-              <em style={{ color: LATAO_CLARO }}>Descubra se essa fragrância combina com você.</em>
-            </h2>
-
-            <p className="mx-auto mt-6 max-w-[28ch] text-[15px] leading-relaxed text-papel-inv/70">
-              Deixe a fragrância se revelar.
-            </p>
-            <p className="mx-auto mt-4 max-w-[28ch] text-[15px] leading-relaxed text-papel-inv/70">
-              Se não for para você,
-              <br />
-              devolvemos o valor.
-            </p>
-
-            <p className="mt-8 font-label text-[9px] tracking-[0.2em] text-papel-inv/40 uppercase">
-              Sem perguntas · Mesmo com o frasco aberto
-            </p>
           </div>
         </Reveal>
 
         {/* H-21 Seja criador — volta ao claro, continuação da comunidade */}
         <Reveal
           as="section"
-          className="relative overflow-hidden bg-papel px-5 pt-16 pb-16"
+          className="relative overflow-hidden bg-papel px-5 pt-16 pb-16 md:px-10 lg:pt-24 lg:pb-24"
           style={{
             // degrau: sai do bloco escuro (por cima) para esta seção, abaixo
             boxShadow:
-              'inset 0 26px 28px -20px rgba(44,44,41,0.4), inset 0 8px 10px -7px rgba(44,44,41,0.28)',
+              'inset 0 26px 28px -20px rgba(40,46,41,0.4), inset 0 8px 10px -7px rgba(40,46,41,0.28)',
           }}
         >
           <img
             src={florArquetypus}
             alt=""
             aria-hidden="true"
-            className="pointer-events-none absolute select-none"
+            // lg: flor maior, proporcional à seção mais alta
+            className="pointer-events-none absolute select-none lg:!-bottom-24 lg:!-left-28 lg:!w-[420px]"
             style={{
               bottom: '-50px',
               left: '-70px',
@@ -1215,18 +1227,21 @@ export function HomePage() {
             }}
           />
 
-          <div className="relative">
-            <div className="flex items-center gap-3">
-              <span aria-hidden className="h-px w-6 bg-latao" />
-              <Eyebrow>Para criadores</Eyebrow>
+          {/* lg: texto + CTA à esquerda, indicadores à direita ocupando a altura toda da coluna */}
+          <div className="relative md:mx-auto md:max-w-3xl lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-x-16">
+            <div className="lg:col-span-6">
+              <div className="flex items-center gap-3">
+                <span aria-hidden className="h-px w-6 bg-latao" />
+                <Eyebrow>Para criadores</Eyebrow>
+              </div>
+              <h2 className="mt-4 font-display text-[28px] leading-[1.15] text-tinta lg:text-5xl lg:leading-[1.1]">
+                Sua experiência com Arquétypus
+                <br />
+                pode <span className="text-latao-texto">inspirar novas descobertas.</span>
+              </h2>
             </div>
-            <h2 className="mt-4 font-display text-[28px] leading-[1.15] text-tinta">
-              Sua experiência com Arquétypus
-              <br />
-              pode <span className="text-latao-texto">inspirar novas descobertas.</span>
-            </h2>
 
-            <dl className="mt-10 grid grid-cols-3 border-y border-linha py-6">
+            <dl className="mt-10 grid grid-cols-3 border-y border-linha py-6 lg:col-span-5 lg:col-start-8 lg:row-span-3 lg:mt-0 lg:self-center lg:py-12">
               {[
                 { valor: `${Math.round(ECON.comissaoPct * 100)}%`, label: ['de comissão', 'por venda'] },
                 { valor: 'Grátis', label: ['amostra para', 'aprovados'] },
@@ -1234,25 +1249,29 @@ export function HomePage() {
               ].map((ind, i) => (
                 <div key={ind.valor} className={`flex flex-col items-center text-center ${i > 0 ? 'border-l border-linha' : ''}`}>
                   {/* dt antes de dd no DOM (semântica de <dl>); order-last põe o rótulo embaixo do número */}
-                  <dt className="order-last mt-3 font-label text-[8.5px] leading-relaxed tracking-[0.16em] text-tinta-3 uppercase">
+                  <dt className="order-last mt-3 font-label text-[8.5px] leading-relaxed tracking-[0.16em] text-tinta-3 uppercase lg:mt-4 lg:text-[10px]">
                     {ind.label[0]}
                     <br />
                     {ind.label[1]}
                   </dt>
-                  <dd className="font-display text-[28px] leading-none font-light text-tinta">{ind.valor}</dd>
+                  <dd className="font-display text-[28px] leading-none font-light text-tinta lg:text-5xl">{ind.valor}</dd>
                 </div>
               ))}
             </dl>
 
-            <p className="mt-8 max-w-[34ch] text-[15px] leading-relaxed text-tinta-2">
-              Compartilhe suas fragrâncias favoritas e ganhe com cada venda pelo seu link.
-            </p>
-            <p className="mt-3 text-[13px] leading-relaxed text-tinta-3">
-              Você experimenta, escolhe suas favoritas e compartilha a experiência do seu jeito. Materiais, ângulos que funcionam e ranking de criadores no painel.
-            </p>
+            <div className="lg:col-span-6">
+              <p className="mt-8 max-w-[34ch] text-[15px] leading-relaxed text-tinta-2 lg:mt-8 lg:max-w-[40ch] lg:text-[17px]">
+                Compartilhe suas fragrâncias favoritas e ganhe com cada venda pelo seu link.
+              </p>
+              <p className="mt-3 text-[13px] leading-relaxed text-tinta-3 lg:max-w-[52ch] lg:text-[15px]">
+                Você experimenta, escolhe suas favoritas e compartilha a experiência do seu jeito. Materiais, ângulos que funcionam e ranking de criadores no painel.
+              </p>
+            </div>
 
-            <div className="mt-8 text-center">
-              <SweepCta to="/criadores">Quero ser criador</SweepCta>
+            <div className="mt-8 text-center lg:col-span-6 lg:mt-10 lg:text-left">
+              <SweepCta to="/criadores" className="lg:w-auto lg:px-10">
+                Quero ser criador
+              </SweepCta>
             </div>
           </div>
         </Reveal>
@@ -1261,55 +1280,62 @@ export function HomePage() {
         <Reveal
           as="section"
           id="diario"
-          className="relative z-20 overflow-hidden bg-noite px-5 pt-14 pb-14"
+          className="relative z-20 overflow-hidden bg-noite px-5 pt-14 pb-14 md:px-10 lg:pt-24 lg:pb-24"
           animateContent
           style={{
-            boxShadow: '0 -14px 26px -10px rgba(26,25,23,0.5), 0 -4px 8px -3px rgba(26,25,23,0.35)',
+            boxShadow: '0 -14px 26px -10px rgba(37,46,40,0.5), 0 -4px 8px -3px rgba(37,46,40,0.35)',
             borderTop: '1px solid color-mix(in srgb, var(--color-latao) 70%, transparent)',
           }}
         >
-          <div className="flex items-center gap-3">
-            <span aria-hidden className="h-px w-6" style={{ background: LATAO_CLARO }} />
-            <Eyebrow className="" style={{ color: LATAO_CLARO }}>
-              Descubra mais sobre perfumaria
-            </Eyebrow>
-          </div>
-          <h2 className="mt-4 font-display text-[32px] leading-[1.1] text-papel-inv">Diário olfativo</h2>
+          <div className="md:mx-auto md:max-w-3xl lg:max-w-7xl">
+            <div className="flex items-center gap-3">
+              <span aria-hidden className="h-px w-6" style={{ background: LATAO_CLARO }} />
+              <Eyebrow className="" style={{ color: LATAO_CLARO }}>
+                Descubra mais sobre perfumaria
+              </Eyebrow>
+            </div>
+            <h2 className="mt-4 font-display text-[32px] leading-[1.1] text-papel-inv lg:text-5xl">Diário olfativo</h2>
 
-          {/* artigos ainda não existem como página — por isso sem link/seta */}
-          <ol className="mt-8">
-            {JOURNAL.map((j, i) => (
-              <li key={j.title} className="flex gap-4 border-t border-papel-inv/10 py-5 last:border-b">
-                <span
-                  aria-hidden
-                  className="w-5 shrink-0 pt-1 font-label text-[10px] tracking-widest"
-                  style={{ color: LATAO_CLARO }}
+            {/* artigos ainda não existem como página — por isso sem link/seta */}
+            {/* lg: três colunas editoriais, cada uma aberta por um filete, número em cima */}
+            <ol className="mt-8 lg:mt-14 lg:grid lg:grid-cols-3 lg:gap-x-12">
+              {JOURNAL.map((j, i) => (
+                <li
+                  key={j.title}
+                  className="flex gap-4 border-t border-papel-inv/10 py-5 last:border-b lg:flex-col lg:gap-6 lg:border-papel-inv/20 lg:pt-6 lg:pb-0 lg:last:border-b-0"
                 >
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <div className="min-w-0">
-                  <h3 className="font-display text-[19px] leading-snug text-papel-inv">{j.title}</h3>
-                  <p className="mt-1.5 text-[13px] leading-relaxed text-papel-inv/55">{j.body}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
+                  <span
+                    aria-hidden
+                    className="w-5 shrink-0 pt-1 font-label text-[10px] tracking-widest lg:w-auto lg:pt-0 lg:text-[11px]"
+                    style={{ color: LATAO_CLARO }}
+                  >
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div className="min-w-0">
+                    <h3 className="font-display text-[19px] leading-snug text-papel-inv lg:text-2xl lg:leading-[1.25]">{j.title}</h3>
+                    <p className="mt-1.5 text-[13px] leading-relaxed text-papel-inv/55 lg:mt-3 lg:text-[15px]">{j.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
         </Reveal>
 
         {/* H-23 Captura com cupom — claro, abaixo do Diário (degrau), card na moldura recortada */}
         <Reveal
           as="section"
-          className="relative overflow-hidden bg-papel px-5 pt-16 pb-16"
+          className="relative overflow-hidden bg-papel px-5 pt-16 pb-16 md:px-10 lg:pt-24 lg:pb-24"
           style={{
             boxShadow:
-              'inset 0 26px 28px -20px rgba(44,44,41,0.4), inset 0 8px 10px -7px rgba(44,44,41,0.28)',
+              'inset 0 26px 28px -20px rgba(40,46,41,0.4), inset 0 8px 10px -7px rgba(40,46,41,0.28)',
           }}
         >
           <img
             src={florArquetypus}
             alt=""
             aria-hidden="true"
-            className="pointer-events-none absolute select-none"
+            // lg: flor maior, proporcional à seção mais alta
+            className="pointer-events-none absolute select-none lg:!-top-16 lg:!-right-28 lg:!w-[420px]"
             style={{
               top: '-30px',
               right: '-80px',
@@ -1322,25 +1348,34 @@ export function HomePage() {
             }}
           />
 
-          <CutFrame cut={14} className="relative" innerClassName="bg-papel px-6 pt-9 pb-8 text-center">
-            <div className="flex items-center justify-center gap-3">
-              <span aria-hidden className="h-px w-6 bg-latao/60" />
-              <Eyebrow>Primeira compra</Eyebrow>
-              <span aria-hidden className="h-px w-6 bg-latao/60" />
+          {/* lg: oferta à esquerda, formulário à direita, separados por filete — mesma leitura do bloco de garantia */}
+          <CutFrame
+            cut={14}
+            className="relative md:mx-auto md:max-w-xl lg:max-w-5xl"
+            innerClassName="bg-papel px-6 pt-9 pb-8 text-center lg:grid lg:grid-cols-2 lg:items-center lg:px-16 lg:py-16"
+          >
+            <div className="lg:border-r lg:border-linha lg:pr-16">
+              <div className="flex items-center justify-center gap-3">
+                <span aria-hidden className="h-px w-6 bg-latao/60" />
+                <Eyebrow>Primeira compra</Eyebrow>
+                <span aria-hidden className="h-px w-6 bg-latao/60" />
+              </div>
+
+              <div className="mt-5 font-display text-[88px] leading-[0.9] font-light tracking-tight text-latao-texto lg:mt-6 lg:text-[128px]">
+                15%
+              </div>
+              <h2 className="mt-3 font-display text-[24px] leading-[1.2] text-tinta lg:mt-4 lg:text-[32px]">
+                na sua primeira
+                <br />
+                Arquétypus.
+              </h2>
+              <p className="mx-auto mt-3 max-w-[30ch] text-[13px] leading-relaxed text-tinta-2 lg:mt-4 lg:text-[15px]">
+                Receba seu benefício e descubra primeiro as novidades da Arquétypus.
+              </p>
             </div>
 
-            <div className="mt-5 font-display text-[88px] leading-[0.9] font-light tracking-tight text-latao-texto">15%</div>
-            <h2 className="mt-3 font-display text-[24px] leading-[1.2] text-tinta">
-              na sua primeira
-              <br />
-              Arquétypus.
-            </h2>
-            <p className="mx-auto mt-3 max-w-[30ch] text-[13px] leading-relaxed text-tinta-2">
-              Receba seu benefício e descubra primeiro as novidades da Arquétypus.
-            </p>
-
             {/* sem backend ainda: o submit não envia nada (ver CLAUDE.md) */}
-            <form className="mt-8 flex flex-col gap-5 text-left" onSubmit={(e) => e.preventDefault()}>
+            <form className="mt-8 flex flex-col gap-5 text-left lg:mt-0 lg:gap-7 lg:pl-16" onSubmit={(e) => e.preventDefault()}>
               <label className="block">
                 <span className="font-label text-[9px] tracking-[0.2em] text-tinta-3 uppercase">E-mail</span>
                 <input
@@ -1371,72 +1406,81 @@ export function HomePage() {
 
         {/* H-24 Rodapé — escuro, por cima do cupom (degrau invertido); -mb-24 cobre o pb-24 do container do Layout */}
         <footer
-          className="relative z-20 -mb-24 bg-noite px-5 pt-16 pb-[calc(2.5rem+6rem)]"
+          className="relative z-20 -mb-24 bg-noite px-5 pt-16 pb-[calc(2.5rem+6rem)] md:px-10 lg:pt-24"
           style={{
-            boxShadow: '0 -14px 26px -10px rgba(26,25,23,0.5), 0 -4px 8px -3px rgba(26,25,23,0.35)',
+            boxShadow: '0 -14px 26px -10px rgba(37,46,40,0.5), 0 -4px 8px -3px rgba(37,46,40,0.35)',
             borderTop: '1px solid color-mix(in srgb, var(--color-latao) 70%, transparent)',
           }}
         >
-          <div className="text-center">
-            <p className="font-display text-[22px] leading-[1.35] text-papel-inv/90 italic">
-              Você não escolhe um perfume.
-              <br />
-              <span style={{ color: LATAO_CLARO }}>Você reconhece o seu.</span>
-            </p>
-            {/* traços alinhados à linha do nome ARQUÉTYPUS (~72% da altura do logo a w-40 = 70px) */}
-            <div className="mt-10 flex items-start justify-center gap-4">
-              <span aria-hidden className="mt-[70px] h-px w-10 bg-papel-inv/15" />
-              <img src={logoBranco} alt="Arquétypus Parfum" loading="lazy" className="h-auto w-40" />
-              <span aria-hidden className="mt-[70px] h-px w-10 bg-papel-inv/15" />
+          {/* lg: marca à esquerda, links à direita; faixa legal numa linha só embaixo */}
+          <div className="md:mx-auto md:max-w-3xl lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-x-16">
+            <div className="flex flex-col text-center lg:col-span-5 lg:text-left">
+              <p className="font-display text-[22px] leading-[1.35] text-papel-inv/90 italic lg:mt-8 lg:text-[26px]">
+                Você não escolhe um perfume.
+                <br />
+                <span style={{ color: LATAO_CLARO }}>Você reconhece o seu.</span>
+              </p>
+              {/* traços alinhados à linha do nome ARQUÉTYPUS (~72% da altura do logo a w-40 = 70px) */}
+              {/* lg: logo sobe pra cima da frase e perde os traços (alinhado à esquerda, eles ficariam soltos) */}
+              <div className="mt-10 flex items-start justify-center gap-4 lg:order-first lg:mt-0 lg:justify-start">
+                <span aria-hidden className="mt-[70px] h-px w-10 bg-papel-inv/15 lg:hidden" />
+                <img src={logoBranco} alt="Arquétypus Parfum" loading="lazy" className="h-auto w-40" />
+                <span aria-hidden className="mt-[70px] h-px w-10 bg-papel-inv/15 lg:hidden" />
+              </div>
             </div>
-          </div>
-
-          <nav aria-label="Rodapé" className="mt-12 grid grid-cols-2 gap-x-6 border-t border-papel-inv/10 pt-8">
-            <div>
-              <p className="font-label text-[9px] tracking-[0.2em] text-papel-inv/35 uppercase">Explorar</p>
-              <ul className="mt-4 flex flex-col gap-3 text-sm text-papel-inv/75">
-                <li><Link to="/#catalogo" className="transition-colors hover:text-papel-inv">Os 9 arquétipos</Link></li>
-                <li><Link to="/#diario" className="transition-colors hover:text-papel-inv">Diário olfativo</Link></li>
-                <li><Link to="/criadores" className="transition-colors hover:text-papel-inv">Seja criador</Link></li>
-              </ul>
-            </div>
-            <div>
-              <p className="font-label text-[9px] tracking-[0.2em] text-papel-inv/35 uppercase">Ajuda</p>
-              {/* Trocas e Termos sem página ainda — visíveis, mas não clicáveis (mesmo critério do Drawer) */}
-              <ul className="mt-4 flex flex-col gap-3 text-sm text-papel-inv/35">
-                <li>
-                  <Link to="/privacidade" className="text-papel-inv/75 transition-colors hover:text-papel-inv">
-                    Privacidade
-                  </Link>
-                </li>
-                {['Trocas e devoluções', 'Termos'].map((item) => (
-                  <li key={item} aria-disabled="true">
-                    {item}
-                    <span className="mt-0.5 block font-label text-[8px] tracking-widest text-papel-inv/25 uppercase">em breve</span>
+  
+            <nav
+              aria-label="Rodapé"
+              className="mt-12 grid grid-cols-2 gap-x-6 border-t border-papel-inv/10 pt-8 lg:col-span-5 lg:col-start-8 lg:mt-0 lg:gap-x-12 lg:self-center lg:border-t-0 lg:pt-0"
+            >
+              <div>
+                <p className="font-label text-[9px] tracking-[0.2em] text-papel-inv/35 uppercase">Explorar</p>
+                <ul className="mt-4 flex flex-col gap-3 text-sm text-papel-inv/75">
+                  <li><Link to="/#catalogo" className="transition-colors hover:text-papel-inv">Os 9 arquétipos</Link></li>
+                  <li><Link to="/#diario" className="transition-colors hover:text-papel-inv">Diário olfativo</Link></li>
+                  <li><Link to="/criadores" className="transition-colors hover:text-papel-inv">Seja criador</Link></li>
+                </ul>
+              </div>
+              <div>
+                <p className="font-label text-[9px] tracking-[0.2em] text-papel-inv/35 uppercase">Ajuda</p>
+                {/* Trocas e Termos sem página ainda — visíveis, mas não clicáveis (mesmo critério do Drawer) */}
+                <ul className="mt-4 flex flex-col gap-3 text-sm text-papel-inv/35">
+                  <li>
+                    <Link to="/privacidade" className="text-papel-inv/75 transition-colors hover:text-papel-inv">
+                      Privacidade
+                    </Link>
                   </li>
-                ))}
-                {/* LGPD: a pessoa precisa conseguir rever a escolha a qualquer momento */}
-                <li>
-                  <button
-                    type="button"
-                    onClick={openCookiePreferences}
-                    className="text-left text-papel-inv/75 transition-colors hover:text-papel-inv"
-                  >
-                    Gerenciar cookies
-                  </button>
-                </li>
-              </ul>
+                  {['Trocas e devoluções', 'Termos'].map((item) => (
+                    <li key={item} aria-disabled="true">
+                      {item}
+                      <span className="mt-0.5 block font-label text-[8px] tracking-widest text-papel-inv/25 uppercase">em breve</span>
+                    </li>
+                  ))}
+                  {/* LGPD: a pessoa precisa conseguir rever a escolha a qualquer momento */}
+                  <li>
+                    <button
+                      type="button"
+                      onClick={openCookiePreferences}
+                      className="text-left text-papel-inv/75 transition-colors hover:text-papel-inv"
+                    >
+                      Gerenciar cookies
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+  
+            <div className="lg:col-span-12 lg:mt-20 lg:flex lg:items-center lg:justify-between lg:gap-8 lg:border-t lg:border-papel-inv/10 lg:pt-8">
+              <p className="mt-10 text-center font-label text-[9px] tracking-[0.2em] text-papel-inv/45 uppercase lg:order-last lg:mt-0 lg:shrink-0">
+                Instagram <span className="mx-2 text-papel-inv/20">·</span> TikTok <span className="mx-2 text-papel-inv/20">·</span> Pinterest
+              </p>
+  
+              <div className="mt-8 border-t border-papel-inv/10 pt-6 text-center font-label text-[8.5px] leading-relaxed tracking-wider text-papel-inv/30 uppercase lg:mt-0 lg:flex lg:flex-wrap lg:items-center lg:gap-x-6 lg:border-t-0 lg:pt-0 lg:text-left lg:text-[9px]">
+                <p>Pix · Visa · Master · Elo · Boleto</p>
+                <p className="mt-3 normal-case tracking-wide lg:mt-0">sac@arquetypus.com.br</p>
+                <p className="mt-1 lg:mt-0">Saniella Ltda · CNPJ 58.267.823/0001-68 · Caraguatatuba SP</p>
+              </div>
             </div>
-          </nav>
-
-          <p className="mt-10 text-center font-label text-[9px] tracking-[0.2em] text-papel-inv/45 uppercase">
-            Instagram <span className="mx-2 text-papel-inv/20">·</span> TikTok <span className="mx-2 text-papel-inv/20">·</span> Pinterest
-          </p>
-
-          <div className="mt-8 border-t border-papel-inv/10 pt-6 text-center font-label text-[8.5px] leading-relaxed tracking-wider text-papel-inv/30 uppercase">
-            <p>Pix · Visa · Master · Elo · Boleto</p>
-            <p className="mt-3 normal-case tracking-wide">sac@arquetypus.com.br</p>
-            <p className="mt-1">Saniella Ltda · CNPJ 58.267.823/0001-68 · Caraguatatuba SP</p>
           </div>
         </footer>
       </div>

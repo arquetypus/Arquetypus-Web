@@ -38,7 +38,7 @@ export function CookieBanner() {
       className="pointer-events-none fixed inset-x-0 bottom-0 z-[100] mx-auto max-w-md px-3 pb-[calc(env(safe-area-inset-bottom)+0.75rem)]"
     >
       {/* clip-path do CutFrame corta box-shadow — a sombra vai em drop-shadow no wrapper */}
-      <div className="pointer-events-auto drop-shadow-[0_10px_22px_rgba(26,25,23,0.2)] motion-safe:animate-[fade-in-up_0.6s_cubic-bezier(0.16,1,0.3,1)_both]">
+      <div className="pointer-events-auto drop-shadow-[0_10px_22px_rgba(37,46,40,0.2)] motion-safe:animate-[fade-in-up_0.6s_cubic-bezier(0.16,1,0.3,1)_both]">
         <CutFrame cut={10} innerClassName="bg-papel px-4 pt-3.5 pb-2.5">
           <p className="text-[12px] leading-snug text-tinta-2">
             Usamos cookies para entender como o site é usado e para medir nossos anúncios. Detalhes na{' '}

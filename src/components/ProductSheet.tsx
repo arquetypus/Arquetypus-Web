@@ -16,7 +16,7 @@ export function ProductSheet() {
 
   return (
     <PurchaseSheet label={`Comprar ${a.nome}`} fullPageTo={`/loja/${a.id}`}>
-      <ProductPurchase key={a.id} a={a} />
+      <ProductPurchase key={a.id} a={a} fullPageTo={`/loja/${a.id}`} />
     </PurchaseSheet>
   )
 }

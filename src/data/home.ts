@@ -5,16 +5,19 @@
  */
 import heroVideo from '@/assets/hero/hero-video.mp4'
 import heroVideoPoster from '@/assets/hero/hero-video-poster.jpg'
-import heroAfrodite from '@/assets/mocks/hero-afrodite.png'
-import heroGuerreiro from '@/assets/mocks/hero-guerreiro.jpg'
-// versões 16:9 pro desktop (lg+) — mockups gerados por IA a partir das fotos 9:16, trocar pelas de campanha.
-// No slide de vídeo o desktop mostra só o still até existir o vídeo 16:9
-import heroVideoDesktop from '@/assets/mocks/hero-video-desktop.jpg'
-import heroAfroditeDesktop from '@/assets/mocks/hero-afrodite-desktop.jpg'
-import heroGuerreiroDesktop from '@/assets/mocks/hero-guerreiro-desktop.jpg'
-import segmentoFeminino from '@/assets/mocks/segmento-feminino.png'
-import segmentoMasculino from '@/assets/mocks/segmento-masculino.png'
-import segmentoUnissex from '@/assets/mocks/segmento-unissex.png'
+// Fotos em src/assets/fotos/ são as escolhidas pela designer (set/2026), convertidas pra JPG.
+import heroAfrodite from '@/assets/fotos/hero/afrodite.jpg'
+import heroGuerreiro from '@/assets/fotos/hero/guerreiro.jpg'
+// versões 16:9 pro desktop (lg+). Afrodite/Guerreiro: foto 9:16 da designer recortada em 3:4 e expandida
+// pra 16:9 no Higgsfield (FLUX.2 Pro Outpaint), mais espaço à esquerda pro texto — o centro é a foto original.
+// No slide de vídeo o desktop mostra um still (o vídeo é 9:16): frascos reais sobre pedra escura, gerado no
+// Higgsfield (GPT Image 2.5) com as fotos de produto como referência — trocar pela foto de campanha quando houver
+import heroVideoDesktop from '@/assets/fotos/hero/colecao-desktop.jpg'
+import heroAfroditeDesktop from '@/assets/fotos/hero/afrodite-desktop.jpg'
+import heroGuerreiroDesktop from '@/assets/fotos/hero/guerreiro-desktop.jpg'
+import segmentoFeminino from '@/assets/fotos/segmentos/feminino.jpg'
+import segmentoMasculino from '@/assets/fotos/segmentos/masculino.jpg'
+import segmentoUnissex from '@/assets/fotos/segmentos/compartilhavel.jpg'
 import familiaFloral from '@/assets/mocks/familia-floral-bleed.png'
 import familiaAquatico from '@/assets/mocks/familia-aquatico-bleed.png'
 import familiaAmadeirado from '@/assets/mocks/familia-amadeirado-bleed.png'
@@ -23,32 +26,34 @@ import energiaSeducao from '@/assets/mocks/energia-seducao.png'
 import energiaPoder from '@/assets/mocks/energia-poder.png'
 import energiaMisterio from '@/assets/mocks/energia-misterio.png'
 import energiaForca from '@/assets/mocks/energia-forca.png'
-import frascoAfrodite from '@/assets/mocks/frasco-afrodite.png'
-import frascoImperatriz from '@/assets/mocks/frasco-imperatriz.png'
-import frascoCleopatra from '@/assets/mocks/frasco-cleopatra.png'
-import frascoFada from '@/assets/mocks/frasco-fada.png'
-import frascoSereia2 from '@/assets/mocks/frasco-sereia2.png'
-import frascoZeus from '@/assets/mocks/frasco-zeus.png'
-import frascoGuerreiro from '@/assets/mocks/frasco-guerreiro.png'
-import frascoImperador from '@/assets/mocks/frasco-imperador.png'
-import frascoFenix from '@/assets/mocks/frasco-fenix.png'
-import frascoCutCleopatra from '@/assets/mocks/frasco-cut-cleopatra.png'
-import frascoCutSereia from '@/assets/mocks/frasco-cut-sereia.png'
-import frascoCutAfrodite from '@/assets/mocks/frasco-cut-afrodite.png'
-import frascoCutGuerreiro from '@/assets/mocks/frasco-cut-guerreiro.png'
-import frascoCutImperatriz from '@/assets/mocks/frasco-cut-imperatriz.png'
-export { default as BODEGON_IMG } from '@/assets/mocks/bodegon-9-frascos.png'
-import ugcCleopatra from '@/assets/mocks/ugc-cleopatra.jpg'
-import ugcSereia from '@/assets/mocks/ugc-sereia.jpg'
-import ugcAfrodite from '@/assets/mocks/ugc-afrodite.jpg'
-import ugcGuerreiro from '@/assets/mocks/ugc-guerreiro.jpg'
-import ugcImperatriz from '@/assets/mocks/ugc-imperatriz.jpg'
+import frascoAfrodite from '@/assets/fotos/catalogo/afrodite.jpg'
+import frascoImperatriz from '@/assets/fotos/catalogo/imperatriz.jpg'
+import frascoCleopatra from '@/assets/fotos/catalogo/cleopatra.jpg'
+import frascoFada from '@/assets/fotos/catalogo/fada.jpg'
+import frascoSereia from '@/assets/fotos/catalogo/sereia.jpg'
+import frascoZeus from '@/assets/fotos/catalogo/zeus.jpg'
+import frascoGuerreiro from '@/assets/fotos/catalogo/guerreiro.jpg'
+import frascoImperador from '@/assets/fotos/catalogo/imperador.jpg'
+import frascoFenix from '@/assets/fotos/catalogo/fenix.jpg'
+import miniAfrodite from '@/assets/fotos/miniaturas/afrodite.jpg'
+import miniImperatriz from '@/assets/fotos/miniaturas/imperatriz.jpg'
+import miniCleopatra from '@/assets/fotos/miniaturas/cleopatra.jpg'
+import miniFada from '@/assets/fotos/miniaturas/fada.jpg'
+import miniSereia from '@/assets/fotos/miniaturas/sereia.jpg'
+import miniZeus from '@/assets/fotos/miniaturas/zeus.jpg'
+import miniGuerreiro from '@/assets/fotos/miniaturas/guerreiro.jpg'
+import miniImperador from '@/assets/fotos/miniaturas/imperador.jpg'
+import miniFenix from '@/assets/fotos/miniaturas/fenix.jpg'
+export { default as BODEGON_IMG } from '@/assets/fotos/colecao-completa.jpg'
+import ugcCleopatra from '@/assets/fotos/comunidade/cleopatra.jpg'
+import ugcSereia from '@/assets/fotos/comunidade/sereia.jpg'
+import ugcAfrodite from '@/assets/fotos/comunidade/afrodite.jpg'
+import ugcImperatriz from '@/assets/fotos/comunidade/imperatriz.jpg'
 
 export const UGC_IMG: Record<string, string> = {
   cleopatra: ugcCleopatra,
   sereia: ugcSereia,
   afrodite: ugcAfrodite,
-  guerreiro: ugcGuerreiro,
   imperatriz: ugcImperatriz,
 }
 
@@ -67,6 +72,8 @@ export const HERO_SLIDES = [
     img: heroVideoPoster,
     imgDesktop: heroVideoDesktop,
     video: heroVideo,
+    // tom do escurecimento atrás do texto — marrom quase preto, da luz âmbar da foto dos frascos
+    tint: '#150e09',
     // o slide dura o vídeo inteiro (11,45 s) em vez dos 5 s padrão
     durationMs: 11450,
   },
@@ -81,19 +88,21 @@ export const HERO_SLIDES = [
     requisito: 'FOTO · 9:16 · 1080×1920 · LIFESTYLE · AFRODITE · MODELO + FRASCO',
     img: heroAfrodite,
     imgDesktop: heroAfroditeDesktop,
+    tint: '#2e141c', // vinho/rosado bem escuro
   },
   {
     // foto gerada por IA (Higgsfield) com o frasco real como referência — trocar pela de campanha
     id: 'guerreiro',
     type: 'image' as const,
     eyebrow: 'ARQ-07 · Aromático aquático',
-    eyebrowColor: '#b9c29f',
+    eyebrowColor: '#a9bad3',
     heading: 'Guerreiro',
     sub: 'Constância é a forma mais rara de coragem.',
     cta: { label: 'Conhecer Guerreiro', to: '/loja/guerreiro' },
     requisito: 'FOTO · 9:16 · 1080×1920 · LIFESTYLE · GUERREIRO · MODELO + FRASCO',
     img: heroGuerreiro,
     imgDesktop: heroGuerreiroDesktop,
+    tint: '#0e1829', // azul-marinho escuro
   },
 ]
 
@@ -169,13 +178,13 @@ export const ENERGIES = [
   { nome: 'Força', arquetipos: ['guerreiro', 'fenix', 'zeus'], img: energiaForca },
 ]
 
-/** Mock de still-life de frasco por arquétipo — mesmo molde, cor muda por SKU (ver CLAUDE.md). */
+/** Foto do frasco (pasta "bodys" da designer) — card do catálogo "Os 9 arquétipos". A foto com pessoa fica na galeria da PDP. */
 export const FRASCO_IMG: Record<string, string> = {
   afrodite: frascoAfrodite,
   imperatriz: frascoImperatriz,
   cleopatra: frascoCleopatra,
   fada: frascoFada,
-  sereia: frascoSereia2,
+  sereia: frascoSereia,
   zeus: frascoZeus,
   guerreiro: frascoGuerreiro,
   imperador: frascoImperador,
@@ -183,15 +192,19 @@ export const FRASCO_IMG: Record<string, string> = {
 }
 
 /**
- * Frasco recortado (fundo transparente, 240px de altura) — miniatura do product tag da comunidade.
- * Recorte feito no Higgsfield a partir de FRASCO_IMG; só existe para os arquétipos que têm UGC.
+ * Miniatura do frasco (52:76) — product tag da comunidade. Recorte da foto de produto
+ * (pasta "bodys" da designer) centrado no frasco; não é recorte com fundo transparente.
  */
 export const FRASCO_CUT_IMG: Record<string, string> = {
-  cleopatra: frascoCutCleopatra,
-  sereia: frascoCutSereia,
-  afrodite: frascoCutAfrodite,
-  guerreiro: frascoCutGuerreiro,
-  imperatriz: frascoCutImperatriz,
+  afrodite: miniAfrodite,
+  imperatriz: miniImperatriz,
+  cleopatra: miniCleopatra,
+  fada: miniFada,
+  sereia: miniSereia,
+  zeus: miniZeus,
+  guerreiro: miniGuerreiro,
+  imperador: miniImperador,
+  fenix: miniFenix,
 }
 
 export const QUALIFICATION = [
@@ -240,16 +253,15 @@ export const TESTIMONIALS = [
 /**
  * Depoimentos fictícios/ilustrativos — placeholders pra carrossel ter
  * scroll real antes de existir conteúdo de criador de verdade. As fotos
- * (UGC_IMG) são geradas por IA (Higgsfield, com o frasco real como
- * referência): pessoas NÃO existem. Trocar fotos, @ e depoimentos por
+ * (UGC_IMG) são as escolhidas pela designer (set/2026), com os @ tirados
+ * dos nomes dos arquivos dela — confirmar se são pessoas reais e autorizadas. Trocar fotos, @ e depoimentos por
  * conteúdo real e autorizado antes do lançamento (ver CLAUDE.md).
  */
 export const UGC_VIDEOS = [
   { creator: '@marianac_', archetypeId: 'cleopatra', testimonial: TESTIMONIALS[0] },
-  { creator: '@rafa.dias', archetypeId: 'sereia', testimonial: TESTIMONIALS[1] },
+  { creator: '@rafa_dias', archetypeId: 'sereia', testimonial: TESTIMONIALS[1] },
   { creator: '@brunavieira', archetypeId: 'afrodite', testimonial: 'Toda vez que uso Afrodite alguém pergunta o que eu estou usando.' },
-  { creator: '@lucas.arq', archetypeId: 'guerreiro', testimonial: 'Não achava que body splash podia fixar assim. Guerreiro mudou o jogo.' },
-  { creator: '@camis.beauty', archetypeId: 'imperatriz', testimonial: 'Imperatriz é o meu cheiro do inverno. Sério, vicia.' },
+  { creator: '@camila.beauty', archetypeId: 'imperatriz', testimonial: 'Imperatriz é o meu cheiro do inverno. Sério, vicia.' },
 ]
 
 export const JOURNAL = [
