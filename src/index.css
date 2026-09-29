@@ -9,15 +9,16 @@
   font-style: normal;
   font-display: swap;
 }
-/* O travessão (U+2014) da Elegant vem desenhado rente à linha de base, fino como
-   sublinhado — some nos títulos. Só esse caractere é emprestado da Inter. */
+/* O travessão (U+2014) e o "+" (U+002B) da Elegant vêm desenhados como traço/barra
+   fina — somem ou confundem nos títulos ("D+30", "Fênix + Guerreiro"). Só esses
+   caracteres são emprestados da Inter. */
 @font-face {
   font-family: 'Elegant';
   src: url('/fonts/inter-var.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-  unicode-range: U+2014;
+  unicode-range: U+2014, U+002B;
 }
 @font-face {
   font-family: 'Inter';
@@ -335,6 +336,40 @@ button:active:not(.no-press) {
   }
   to {
     transform: translateY(0);
+  }
+}
+
+/* Carrossel infinito: durante o salto silencioso entre blocos de cópias, nada anima (ver useInfiniteCarousel) */
+[data-loop-jump] *,
+[data-loop-jump] *::before,
+[data-loop-jump] *::after {
+  transition: none !important;
+}
+
+/* Brasas (components/ui/Embers): cada ponto sobe devagar, desviando de leve, e se apaga */
+.ember {
+  opacity: var(--o);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ember {
+    opacity: 0;
+    animation: ember-rise linear infinite;
+  }
+}
+@keyframes ember-rise {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  15% {
+    opacity: var(--o);
+  }
+  70% {
+    opacity: calc(var(--o) * 0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--dx), -120px);
   }
 }
 

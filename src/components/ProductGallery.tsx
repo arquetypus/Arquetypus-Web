@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { MediaSlot } from '@/components/ui/MediaSlot'
+import { GOLD_SHEEN } from '@/lib/goldSheen'
 
 type Slide = { src: string; requisito: string }
 
@@ -60,8 +61,7 @@ export function ProductGallery({ nome, bg, slides }: { nome: string; bg: string;
       <div
         className="rounded-[9px] p-px"
         style={{
-          background:
-            'linear-gradient(135deg, #f3e2b8 0%, var(--color-latao) 28%, #8f6e3e 50%, var(--color-latao) 72%, #f3e2b8 100%)',
+          background: GOLD_SHEEN,
           boxShadow: '0 0 0 1px rgba(198,164,108,0.12), 0 6px 22px -10px rgba(198,164,108,0.55)',
         }}
       >

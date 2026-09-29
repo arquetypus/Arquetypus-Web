@@ -29,7 +29,7 @@ const NECESSAIRE_PRICE = 24.9
  * Seção de compra do arquétipo (P-02 a P-09): galeria/notas, identidade,
  * variante, preço, comprar, selos e complementos. Usada na PDP (/loja/:id)
  * e no pop-up de compra aberto a partir da home — mesma fonte, sem duplicar.
- * `status: 'wait'` (Zeus) nunca vende: mostra lista de espera no lugar de
+ * `status: 'wait'` (hoje nenhum; Zeus saiu em set/2026) nunca vende: mostra lista de espera no lugar de
  * variante/preço/comprar (regra 8 do CLAUDE.md).
  */
 /**
@@ -177,7 +177,7 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
         </section>
 
         {isWait ? (
-          /* Zeus: lista de espera, nunca venda */
+          /* status 'wait': lista de espera, nunca venda */
           <section className="mt-5 px-4 lg:mt-4 lg:border-t lg:border-linha lg:px-0 lg:pt-4">
             <p className="rounded-lg border border-linha-2 p-4 text-sm text-tinta-2">
               <b className="block font-label text-[10px] tracking-[0.18em] text-alerta uppercase">Em breve</b>

@@ -61,18 +61,21 @@ decisão de produto já tomada:
    masculino nunca inclui Afrodite).
 4. **Nenhum claim de efeito fisiológico ou terapêutico.** "Despertar"
    é identidade de marca, não promessa de produto.
-5. **200 ml feminino, 220 ml masculino/unissex, exceto Imperador** (50
-   ml, único perfume — os outros 8 são body splash).
+5. **Os 9 são body splash: 200 ml feminino, 220 ml masculino/unissex**
+   (Fênix incluso). O Imperador era perfume 50 ml até set/2026 e foi
+   padronizado; `tipo: 'Perfume'` segue no tipo só pra uso futuro.
 6. **Cada arquétipo tem URL própria renderizada no servidor:**
    `/loja/:id` (`/arquetipos/:id` redireciona pra ela). Nunca só um
    modal ou tab client-side sem rota — o pop-up de compra é essa mesma
    rota aberta por cima da home.
 7. **Preço, parcelamento e Pix sempre visíveis junto ao produto** —
    nunca atrás de accordion ou clique extra.
-8. **Zeus (`status: 'wait'`) nunca vende.** Se o quiz devolve Zeus
-   como dominante, a tela mostra lista de espera e empurra o
+8. **Arquétipo com `status: 'wait'` nunca vende.** Se o quiz devolve
+   um deles como dominante, a tela mostra lista de espera e empurra o
    secundário como oferta — nunca esconde o resultado nem substitui
-   silenciosamente o arquétipo.
+   silenciosamente o arquétipo. (Era o caso do Zeus; desde set/2026 os
+   9 lançam juntos e nenhum está em `wait` — o mecanismo fica pra uso
+   futuro.)
 
 ## Pendências técnicas conhecidas
 

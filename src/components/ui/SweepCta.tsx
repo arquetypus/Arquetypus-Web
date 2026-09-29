@@ -17,12 +17,14 @@ export function SweepCta({
   to,
   onClick,
   type = 'button',
+  disabled = false,
   className = '',
 }: {
   children: ReactNode
   to?: string
   onClick?: () => void
   type?: 'button' | 'submit'
+  disabled?: boolean
   className?: string
 }) {
   const inner = (
@@ -48,7 +50,13 @@ export function SweepCta({
     )
   }
   return (
-    <button type={type} onClick={onClick} style={TRANSITION} className={`${BASE} ${className}`}>
+    <button
+      type={type}
+      onClick={onClick}
+      disabled={disabled}
+      style={TRANSITION}
+      className={`${BASE} disabled:pointer-events-none disabled:opacity-40 ${className}`}
+    >
       {inner}
     </button>
   )

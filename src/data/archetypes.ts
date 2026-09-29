@@ -163,7 +163,8 @@ export const ARCHETYPES: Archetype[] = [
     vol: '220 ml',
     tipo: 'Body splash',
     preco: 94.9,
-    status: 'wait',
+    // saiu da lista de espera (set/2026): os 9 lançam juntos
+    status: 'ok',
     ep: 'A voz que encerra a discussão.',
     card: 'Quando você fala, a sala ajusta o tom.',
     quem: [
@@ -218,9 +219,10 @@ export const ARCHETYPES: Archetype[] = [
     fam: 'Âmbar amadeirado',
     energia: 'Poder',
     seg: 'M',
-    vol: '50 ml',
-    tipo: 'Perfume',
-    preco: 189.9,
+    // era perfume 50 ml a R$ 189,90; desde set/2026 é body splash 220 ml como os outros masculinos
+    vol: '220 ml',
+    tipo: 'Body splash',
+    preco: 94.9,
     status: 'ok',
     ep: 'O poder que não precisa ser exercido.',
     card: 'Você decide pouco e decide certo.',
@@ -229,7 +231,7 @@ export const ARCHETYPES: Archetype[] = [
       'Você não levanta a voz porque nunca precisou testar se isso funcionaria.',
     ],
     cheiro: [
-      'Âmbar e madeiras nobres em concentração de perfume não anunciam: se instalam.',
+      'Âmbar e madeiras nobres não anunciam: se instalam.',
       'Duas borrifadas bastam para o dia inteiro. Três é excesso — e excesso é o oposto de autoridade.',
     ],
     topo: 'Canela, toranja',

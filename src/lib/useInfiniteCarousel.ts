@@ -104,8 +104,25 @@ export function useInfiniteCarousel(count: number) {
           const from = itemsRef.current[idx]
           const to = itemsRef.current[idx < count ? idx + count : idx - count]
           if (from && to) {
+            // O salto troca cada card visível por uma cópia dele em outro bloco. As cópias estavam com o
+            // visual de "longe do centro" (menor, apagada, borrada): animavam até o estado certo (pulo) ou,
+            // sem animação, apareciam 1 frame erradas até o React/coverflow atualizarem (piscada).
+            // Então, antes do salto, cada cópia recebe na hora o estilo inline do card que ela substitui,
+            // e data-loop-jump desliga as transições (index.css) até tudo assentar.
+            const shift = idx < count ? count : -count
+            const items = itemsRef.current
+            const snapshot = items.map((it) => (it ? { css: it.style.cssText, blurred: it.dataset.blurred } : null))
+            el.dataset.loopJump = ''
+            items.forEach((it, t) => {
+              const src = snapshot[t - shift]
+              if (!it || !src) return
+              it.style.cssText = src.css
+              if (src.blurred === undefined) delete it.dataset.blurred
+              else it.dataset.blurred = src.blurred
+            })
             el.scrollLeft += to.offsetLeft - from.offsetLeft
             setActiveIndex(idx < count ? idx + count : idx - count)
+            requestAnimationFrame(() => requestAnimationFrame(() => delete el.dataset.loopJump))
           }
         }
       }, 140)

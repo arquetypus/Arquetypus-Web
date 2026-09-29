@@ -29,6 +29,8 @@ import { CarouselDots } from '@/components/ui/CarouselDots'
 import { CutFrame } from '@/components/ui/CutFrame'
 import { SweepCta } from '@/components/ui/SweepCta'
 import { scrollToId } from '@/lib/scrollToId'
+import { GOLD_SHEEN } from '@/lib/goldSheen'
+import { Embers } from '@/components/ui/Embers'
 import { openCookiePreferences } from '@/lib/consent'
 import { useCarouselIndex } from '@/lib/useCarouselIndex'
 import { useTapGuard } from '@/lib/useTapGuard'
@@ -38,6 +40,25 @@ import featuredFenix from '@/assets/fotos/destaque-fenix.jpg'
 import florArquetypus from '@/assets/brand/flor-arquetypus.png'
 import ribbonArquetypus from '@/assets/brand/ribbon-arquetypus.png'
 import logoBranco from '@/assets/brand/logo-branco.png'
+
+/**
+ * Degradê foto → fundo noite do catálogo. Faixa larga com curva "smootherstep" (plana nas duas pontas):
+ * entra quase imperceptível, escurece no meio e chega na cor cheia só rente à borda (96%) — assim não
+ * sobra a linha marcada onde a foto encontra o fundo liso.
+ */
+const FOTO_FADE = (dir: string) =>
+  `linear-gradient(${dir}, ${Array.from({ length: 11 }, (_, i) => {
+    const t = i / 10
+    const a = t * t * t * (t * (t * 6 - 15) + 10)
+    return `rgba(37,46,40,${a.toFixed(3)}) ${(t * 96).toFixed(1)}%`
+  }).join(', ')}, var(--color-noite) 100%)`
+
+/** Halos dourados do fundo do catálogo: posição/tamanho (classes), intensidade (% do latão) e desfoque. */
+const CATALOGO_GLOWS = [
+  { className: 'top-[4%] -right-24 size-80 lg:size-[26rem]', forca: 18, blur: 30 },
+  { className: 'bottom-[6%] left-[4%] size-56 lg:size-72', forca: 11, blur: 34 },
+  { className: 'top-[42%] right-[18%] size-28 lg:size-40', forca: 14, blur: 22 },
+]
 
 const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
@@ -270,7 +291,9 @@ export function HomePage() {
     () => (catalogoFiltro === 'ALL' ? ARCHETYPES : ARCHETYPES.filter((a) => a.seg === catalogoFiltro)),
     [catalogoFiltro],
   )
-  const catalogoLoop = [...catalogoFiltrado, ...catalogoFiltrado, ...catalogoFiltrado]
+  // um arquétipo só (ex.: Compartilhável): card único parado, sem cópias do loop infinito nem arraste
+  const catalogoUnico = catalogoFiltrado.length === 1
+  const catalogoLoop = catalogoUnico ? catalogoFiltrado : [...catalogoFiltrado, ...catalogoFiltrado, ...catalogoFiltrado]
   const catalogoCarrossel = useInfiniteCarousel(catalogoFiltrado.length)
   const [difModo, setDifModo] = useState<'arquetypus' | 'comum'>('arquetypus')
   const catalogoAtivo = catalogoFiltrado.length > 0 ? catalogoCarrossel.activeIndex % catalogoFiltrado.length : 0
@@ -307,7 +330,13 @@ export function HomePage() {
             {SEGMENTS.map((seg) => (
               <button
                 key={seg.name}
-                onClick={() => scrollToId('catalogo')}
+                // já chega no catálogo filtrado pelo gênero do card (mesmo estado das abas do catálogo)
+                // rola só depois do carrossel se recentralizar com o filtro novo (2 frames): mexer no
+                // scrollLeft dele no meio da rolagem suave da página cancelava a rolagem
+                onClick={() => {
+                  setCatalogoFiltro(seg.seg)
+                  requestAnimationFrame(() => requestAnimationFrame(() => scrollToId('catalogo')))
+                }}
                 className="group relative block w-[80%] md:w-full overflow-hidden rounded-2xl text-left shadow-[0_2px_6px_rgba(0,0,0,0.08)] ring-1 ring-latao/50"
               >
                 <MediaSlot
@@ -647,20 +676,35 @@ export function HomePage() {
               className="pointer-events-none absolute inset-x-0 top-0 h-px"
               style={{ background: 'color-mix(in srgb, var(--color-latao) 70%, transparent)' }}
             />
+            {/* transição foto → fundo noite, bem esfumada (ver FOTO_FADE). Celular: embaixo; desktop: à direita */}
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-[24%] lg:hidden"
-              style={{ background: 'linear-gradient(to bottom, rgba(37,46,40,0) 0%, var(--color-noite) 100%)' }}
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-[26%] lg:hidden"
+              style={{ background: FOTO_FADE('to bottom') }}
             />
-            {/* desktop: a imagem dissolve pra direita, no fundo noite do catálogo */}
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-y-0 right-0 hidden w-1/3 lg:block"
-              style={{ background: 'linear-gradient(to right, rgba(37,46,40,0) 0%, var(--color-noite) 100%)' }}
+              className="pointer-events-none absolute inset-y-0 right-0 hidden w-[28%] lg:block"
+              style={{ background: FOTO_FADE('to right') }}
             />
           </div>
 
-          <div className="lg:flex lg:min-w-0 lg:flex-col lg:justify-center lg:py-20">
+          {/* lg: -ml-0.5 + bg-noite cobre a última meia coluna de pixels da foto (a coluna tem largura
+              fracionada e o anti-aliasing deixava um fio claro na junção com o fundo) */}
+          <div className="relative isolate lg:-ml-0.5 lg:flex lg:min-w-0 lg:flex-col lg:justify-center lg:bg-noite lg:py-20">
+            {/* pontos de luz dourados, desfocados e sutis no fundo verde — mesmo halo da seção "A diferença".
+                isolate + -z-10: ficam atrás do conteúdo mas por cima do bg-noite do painel */}
+            {CATALOGO_GLOWS.map((g) => (
+              <div
+                key={g.className}
+                aria-hidden
+                className={`pointer-events-none absolute -z-10 rounded-full ${g.className}`}
+                style={{
+                  background: `radial-gradient(closest-side, color-mix(in srgb, var(--color-latao) ${g.forca}%, transparent), transparent)`,
+                  filter: `blur(${g.blur}px)`,
+                }}
+              />
+            ))}
             <div className="relative -mt-8 px-5 pt-3 pb-3 md:px-10 lg:mt-0 xl:px-14">
               <Eyebrow className="text-latao">O catálogo</Eyebrow>
               <h2 className="mt-3 font-display text-4xl leading-[1.1] text-papel-inv">
@@ -694,11 +738,13 @@ export function HomePage() {
 
             <div
               ref={catalogoCarrossel.containerRef}
-              className="no-scrollbar mt-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-[8vw] pb-2 lg:mt-8 lg:px-[calc(50%-10rem)]"
+              className={`no-scrollbar mt-4 flex gap-4 px-[8vw] pb-2 lg:mt-8 lg:px-[calc(50%-10rem)] ${
+                catalogoUnico ? 'justify-center overflow-hidden' : 'snap-x snap-mandatory overflow-x-auto'
+              }`}
             >
               {catalogoLoop.map((a, i) => {
                 const dist = Math.abs(i - catalogoCarrossel.activeIndex)
-                const isActive = dist === 0
+                const isActive = catalogoUnico || dist === 0
                 return (
                 <div
                   key={`${a.id}-${i}`}
@@ -714,6 +760,17 @@ export function HomePage() {
                   }}
                 >
                   <div className="absolute inset-0" style={{ background: a.bg }} />
+                  {/* moldura dourada com reflexo — 1px, recortada por máscara pra seguir o arredondado do card */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 z-30 rounded-3xl p-px"
+                    style={{
+                      background: GOLD_SHEEN,
+                      WebkitMask: 'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
+                      WebkitMaskComposite: 'xor',
+                      maskComposite: 'exclude',
+                    }}
+                  />
 
                   {FRASCO_IMG[a.id] && (
                     <img
@@ -776,7 +833,7 @@ export function HomePage() {
               })}
             </div>
             {/* desktop: setas em volta dos pontinhos — no mouse não dá pra deslizar */}
-            <div className="lg:mt-5 lg:flex lg:items-center lg:justify-center lg:gap-5">
+            <div className={`lg:mt-5 lg:flex lg:items-center lg:justify-center lg:gap-5 ${catalogoUnico ? 'invisible' : ''}`}>
               <button
                 type="button"
                 onClick={() => catalogoCarrossel.step(-1)}
@@ -795,7 +852,7 @@ export function HomePage() {
                 ›
               </button>
             </div>
-            <p className="mt-3 px-5 text-center font-label text-[9.5px] tracking-widest text-papel-inv/40 uppercase lg:hidden">
+            <p className={`mt-3 px-5 text-center font-label text-[9.5px] tracking-widest text-papel-inv/40 uppercase lg:hidden ${catalogoUnico ? 'invisible' : ''}`}>
               Deslize para explorar
             </p>
           </div>
@@ -822,8 +879,9 @@ export function HomePage() {
               src={FEATURED_IMG}
               alt={`Mão segurando o ${featured.tipo.toLowerCase()} ${featured.nome}`}
               // md+: altura vem do card (h-0 + min-h-full), não da proporção da foto — ! vence o aspectRatio inline;
-              // recorte centrado no frasco
-              className="col-start-1 row-start-1 h-full w-full object-cover object-top md:aspect-auto! md:h-0 md:min-h-full md:object-[50%_30%]"
+              // recorte centrado no frasco. Celular: foto sobe ~6% da altura (margem negativa, % da largura).
+              // Não usar translate aqui: transform tira a foto da ordem de pintura e ela cobre os degradês
+              className="col-start-1 row-start-1 h-full w-full object-cover object-top max-md:-mt-[10.5%] md:aspect-auto! md:h-0 md:min-h-full md:object-[50%_30%]"
               style={{ aspectRatio: '752 / 1344' }}
             />
             <RatioTag className="top-4 right-4 md:right-[calc(50%+1rem)]" />
@@ -844,6 +902,8 @@ export function HomePage() {
                 WebkitMaskImage: 'linear-gradient(to top, black 60%, transparent 100%)',
               }}
             />
+            {/* brasas douradas na parte burgundy (celular: faixa do texto embaixo; md+: painel da direita) */}
+            <Embers className="inset-x-0 bottom-0 h-[58%] md:inset-y-0 md:right-0 md:left-1/2 md:h-auto" />
             {/* Moldura interna dourada — filete fino, afastado da borda */}
             <div
               aria-hidden
