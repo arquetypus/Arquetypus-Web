@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { scrollToId } from '@/lib/scrollToId'
 import { ThemeSwitcher } from '@/components/ThemeSwitcher'
-import { useTheme } from '@/lib/theme'
+import { isBoutiqueLayout, useThemeState } from '@/lib/theme'
 import { AnnouncementBar } from '@/components/boutique/BoutiqueMore'
 import wordmarkPreto from '@/assets/brand/wordmark-preto.png'
 import wordmarkMarmore from '@/assets/brand/wordmark-marmore.png'
@@ -28,9 +28,10 @@ export function Layout() {
   const scrollRef = useRef<HTMLDivElement>(null)
   const navigate = useNavigate()
   const isHome = pathname === '/'
-  // Ateliê e Boutique: o hero é claro, então o header nunca fica transparente por cima dele
-  const theme = useTheme()
-  const headerOverHero = isHome && !scrolled && theme !== 'atelie' && theme !== 'boutique'
+  // header transparente só sobre hero de foto/vídeo em tela cheia; os outros heros têm fundo próprio
+  const { theme, hero } = useThemeState()
+  const isBoutique = isBoutiqueLayout(theme)
+  const headerOverHero = isHome && !scrolled && (hero === 'padrao' || hero === 'cinema')
 
   useEffect(() => {
     const el = scrollRef.current
@@ -90,9 +91,9 @@ export function Layout() {
       className="relative mx-auto h-svh max-w-md md:max-w-none overflow-x-hidden overflow-y-auto overscroll-contain bg-papel pb-24"
     >
       {/* Boutique: faixa de avisos (frete, selos) acima do header — rola junto, o header continua grudado */}
-      {theme === 'boutique' && <AnnouncementBar />}
+      {isBoutique && <AnnouncementBar />}
       <header
-        className={`sticky top-0 z-20 flex h-14 items-center justify-between border-b lg:grid lg:grid-cols-[1fr_auto_1fr] px-4 md:px-10 lg:h-16 transition-[background-color,border-color,backdrop-filter] lg:transition-[background-color,border-color,backdrop-filter,margin,top,border-radius] duration-300 ease-out relative ${
+        className={`site-header sticky top-0 z-20 flex h-14 items-center justify-between border-b lg:grid lg:grid-cols-[1fr_auto_1fr] px-4 md:px-10 lg:h-16 transition-[background-color,border-color,backdrop-filter] lg:transition-[background-color,border-color,backdrop-filter,margin,top,border-radius] duration-300 ease-out relative ${
           headerOverHero
             ? // desktop: header flutuante — card arredondado com respiro, que gruda no topo ao rolar
               'border-transparent text-papel-inv lg:top-6 lg:mx-10 lg:rounded-2xl lg:border lg:border-papel-inv/15 lg:bg-noite/35 lg:backdrop-blur-md'

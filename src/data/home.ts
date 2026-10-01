@@ -278,3 +278,79 @@ export const KIT_TIERS = [
 
 export const REWARD_MINI = 150
 export const REWARD_FREIGHT = 199
+
+/**
+ * Textos das seções da home que estavam escritos direto no HomePage. As direções com página própria
+ * (components/directions/) leem daqui — mesmo conteúdo, só muda a forma. Não é copy nova: é a mesma do
+ * HomePage (revisão de set/2026).
+ */
+export const HOME_COPY = {
+  segmentos: { cta: 'Ver coleção' },
+  diagnostico: {
+    eyebrow: 'O perfume errado',
+    title: 'Você já escolheu uma fragrância que não combinava com você?',
+    sub: 'Às vezes, encontrar o cheiro certo começa por entender o que você procura.',
+    fecho: ['Não comece pelo nome.', 'Comece por você.'] as const,
+  },
+  familias: {
+    eyebrow: 'Entrada racional',
+    title: 'Descubra pelo cheiro',
+    sub: 'Explore as famílias olfativas e encontre os cheiros que mais combinam com você.',
+  },
+  energias: {
+    eyebrow: 'Entrada emocional',
+    title: 'Como você quer se sentir hoje?',
+    sub: 'Escolha pela presença que você quer expressar.',
+  },
+  reconhecimento: {
+    eyebrow: 'Reconhecimento',
+    title: 'Talvez você esteja procurando mais do que um cheiro.',
+    sub: 'Talvez esteja procurando uma fragrância que acompanhe o seu momento.',
+    fecho: ['Se você se reconheceu,', 'existe uma Arquétypus', 'para o seu momento.'] as const,
+  },
+  catalogo: { eyebrow: 'O catálogo', title: ['Nove fragrâncias.', 'Diferentes versões de você.'] as const },
+  destaque: { eyebrow: 'Arquétipo em destaque', cta: 'Conhecer' },
+  ponte: { text: 'Talvez você não seja apenas um.', cta: 'Descubra seus arquétipos' },
+  diferenca: {
+    eyebrow: 'A diferença',
+    title: ['Uma experiência que vai', 'além do cheiro.'] as const,
+    colunas: ['Arquétypus', 'Splash comum'] as const,
+    fecho: ['Não é apenas sobre cheirar bem.', 'É sobre como você quer se sentir.'] as const,
+  },
+  comunidade: {
+    eyebrow: 'A comunidade',
+    title: 'Experiências Arquétypus',
+    sub: 'Pessoas reais. Diferentes fragrâncias, momentos e formas de expressão.',
+    cta: 'Descobrir',
+  },
+  garantia: {
+    dias: '07',
+    label: 'Dias de garantia',
+    title: ['Experimente na pele.', 'Descubra se essa fragrância combina com você.'] as const,
+    body: ['Deixe a fragrância se revelar.', 'Se não for para você, devolvemos o valor.'] as const,
+    nota: 'Sem perguntas · Mesmo com o frasco aberto',
+  },
+  criadores: {
+    eyebrow: 'Para criadores',
+    title: ['Sua experiência com Arquétypus pode', 'inspirar novas descobertas.'] as const,
+    body: 'Compartilhe suas fragrâncias favoritas e ganhe com cada venda pelo seu link.',
+    body2:
+      'Você experimenta, escolhe suas favoritas e compartilha a experiência do seu jeito. Materiais, ângulos que funcionam e ranking de criadores no painel.',
+    cta: 'Quero ser criador',
+  },
+  diario: { eyebrow: 'Descubra mais sobre perfumaria', title: 'Diário olfativo', breve: 'Em breve' },
+  cupom: {
+    eyebrow: 'Primeira compra',
+    valor: '15%',
+    title: 'na sua primeira Arquétypus.',
+    body: 'Receba seu benefício e descubra primeiro as novidades da Arquétypus.',
+    cta: 'Quero meu cupom',
+  },
+  rodape: {
+    tagline: ['Você não escolhe um perfume.', 'Você reconhece o seu.'] as const,
+    pagamentos: 'Pix · Visa · Master · Elo · Boleto',
+    sac: 'sac@arquetypus.com.br',
+    redes: ['Instagram', 'TikTok', 'Pinterest'] as const,
+    empresa: 'Saniella Ltda · CNPJ 58.267.823/0001-68 · Caraguatatuba SP',
+  },
+}

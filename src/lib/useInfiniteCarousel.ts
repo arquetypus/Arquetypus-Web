@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 /**
  * Carrossel horizontal infinito: renderiza `loops` cópias de `count` itens
@@ -14,9 +14,19 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
  * a seção ainda está invisível (Reveal) e o celular podia ignorar o
  * scrollLeft, deixando o carrossel "desativado" (todos os cards borrados)
  * até o primeiro deslize. O ativo sempre sai do que está visível.
+ *
+ * `containerRef` é ref de callback: o elemento fica em estado e os efeitos dependem dele. O hook pode viver
+ * num componente que continua montado enquanto o carrossel sai e volta do DOM (ex.: trocar estrutura/catálogo
+ * no painel de direção visual) — com ref de objeto e efeito só em [count], os listeners ficavam presos no
+ * elemento antigo e o carrossel novo nascia travado.
  */
 export function useInfiniteCarousel(count: number) {
-  const containerRef = useRef<HTMLDivElement>(null)
+  const elRef = useRef<HTMLDivElement | null>(null)
+  const [container, setContainer] = useState<HTMLDivElement | null>(null)
+  const containerRef = useCallback((node: HTMLDivElement | null) => {
+    elRef.current = node
+    setContainer(node)
+  }, [])
   const itemsRef = useRef<(HTMLElement | null)[]>([])
   const [activeIndex, setActiveIndex] = useState(count)
   const settleTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
@@ -36,7 +46,7 @@ export function useInfiniteCarousel(count: number) {
   }
 
   function closestIndex() {
-    const el = containerRef.current
+    const el = elRef.current
     if (!el) return count
     const center = el.scrollLeft + el.clientWidth / 2
     let best = count
@@ -53,7 +63,7 @@ export function useInfiniteCarousel(count: number) {
   }
 
   function centerOn(i: number) {
-    const el = containerRef.current
+    const el = elRef.current
     const item = itemsRef.current[i]
     if (!el || !item || el.clientWidth === 0) return
     el.scrollLeft = layoutCenter(el, item) - el.clientWidth / 2
@@ -71,10 +81,10 @@ export function useInfiniteCarousel(count: number) {
       setActiveIndex(closestIndex())
     })
     return () => cancelAnimationFrame(raf)
-  }, [count])
+  }, [count, container])
 
   useEffect(() => {
-    const el = containerRef.current
+    const el = container
     if (!el || count === 0) return
 
     // container que nasce sem tamanho (ou muda de largura) é recentralizado enquanto ninguém mexeu nele
@@ -97,7 +107,7 @@ export function useInfiniteCarousel(count: number) {
 
       clearTimeout(settleTimer.current)
       settleTimer.current = setTimeout(() => {
-        const el = containerRef.current
+        const el = elRef.current
         if (!el) return
         const idx = closestIndex()
         if (idx < count || idx >= count * 2) {
@@ -140,16 +150,16 @@ export function useInfiniteCarousel(count: number) {
       el.removeEventListener('wheel', markUser)
       clearTimeout(settleTimer.current)
     }
-  }, [count])
+  }, [count, container])
 
   // setas (desktop): centraliza o vizinho com scroll suave; o reposicionamento do loop acontece no onScroll
   function step(dir: 1 | -1) {
-    const el = containerRef.current
+    const el = elRef.current
     const item = itemsRef.current[closestIndex() + dir]
     if (!el || !item) return
     userScrolled.current = true
     el.scrollTo({ left: layoutCenter(el, item) - el.clientWidth / 2, behavior: 'smooth' })
   }
 
-  return { containerRef, registerItem, activeIndex, step }
+  return { containerRef, container, registerItem, activeIndex, step }
 }

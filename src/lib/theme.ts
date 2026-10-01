@@ -1,74 +1,238 @@
 import { useSyncExternalStore } from 'react'
 
 /**
- * Direção visual ativa (ThemeSwitcher). A maioria das direções é só CSS (tokens em html[data-theme]);
- * as que mudam estrutura (ex.: "atelie") leem daqui pra trocar componentes.
+ * Direção visual ativa (ThemeSwitcher) — cinco parâmetros independentes:
+ * - estrutura: o layout da home (THEMES). Editorial = home padrão; Ateliê/Boutique trocam algumas seções;
+ *   Oráculo, Galeria, Manifesto e Cinema desenham a home inteira (components/directions/).
+ * - paleta: só cores (html[data-paleta] em index.css)
+ * - estilo: fonte dos títulos + cantos (html[data-estilo])
+ * - hero e catálogo: peças trocáveis entre estruturas
+ * Cada estrutura traz os seus padrões; o que a pessoa escolhe em "Misturar" fica fixado (pin) e vale em
+ * qualquer estrutura até ser solto — assim dá pra testar uma paleta em todas as versões, por exemplo.
  */
-export const THEMES = [
-  { id: 'editorial', label: 'Editorial' },
+
+export const PALETAS = [
+  { id: 'editorial', label: 'Editorial · verde e creme' },
   { id: 'noite', label: 'Noite Imperial' },
   { id: 'aurora', label: 'Aurora Pop' },
   { id: 'ambar', label: 'Âmbar' },
+  { id: 'ambar-claro', label: 'Âmbar claro' },
   { id: 'esmeralda', label: 'Esmeralda' },
   { id: 'ametista', label: 'Ametista' },
   { id: 'safira', label: 'Safira' },
   { id: 'marmore', label: 'Mármore' },
-  { id: 'atelie', label: 'Ateliê' },
-  { id: 'boutique', label: 'Boutique' },
+  { id: 'grafica', label: 'Gráfica · do Ateliê' },
+  { id: 'branco', label: 'Branco loja · da Boutique' },
+  { id: 'noite-azul', label: 'Noite azul · do Oráculo' },
+  { id: 'parede', label: 'Parede · da Galeria' },
+  { id: 'ocre', label: 'Ocre · do Manifesto' },
+  { id: 'noir', label: 'Noir burgundy · do Cinema' },
+  { id: 'herbario', label: 'Musgo e ferrugem · do Herbário' },
+  { id: 'laboratorio', label: 'Cobalto · do Laboratório' },
+  { id: 'riviera', label: 'Mar e terracota · da Riviera' },
+  { id: 'washi', label: 'Washi · do Zen' },
 ] as const
 
+export const ESTILOS = [
+  { id: 'elegant', label: 'Elegant · padrão' },
+  { id: 'manrope-redondo', label: 'Manrope arredondado · Aurora' },
+  { id: 'manrope', label: 'Manrope · Boutique' },
+  { id: 'cormorant', label: 'Cormorant · Esmeralda/Safira/Oráculo' },
+  { id: 'cormorant-reto', label: 'Cormorant reto · Ateliê/Cinema' },
+  { id: 'cormorant-fino', label: 'Cormorant fino · Mármore' },
+  { id: 'bodoni', label: 'Bodoni · Galeria' },
+  { id: 'anton', label: 'Anton · Manifesto' },
+  { id: 'garamond', label: 'EB Garamond · Herbário' },
+  { id: 'grotesk', label: 'Space Grotesk · Laboratório' },
+  { id: 'fraunces', label: 'Fraunces arredondado · Riviera' },
+  { id: 'mincho', label: 'Shippori Mincho · Zen' },
+] as const
+
+export const HEROES = [
+  { id: 'padrao', label: 'Carrossel em tela cheia' },
+  { id: 'atelie', label: 'Capa de revista · Ateliê' },
+  { id: 'boutique', label: 'Loja compacta · Boutique' },
+  { id: 'oraculo', label: 'Tiragem de cartas · Oráculo' },
+  { id: 'galeria', label: 'Nome gigante · Galeria' },
+  { id: 'manifesto', label: 'Manchete · Manifesto' },
+  { id: 'cinema', label: 'Tela de cinema · Cinema' },
+  { id: 'herbario', label: 'Prancha de espécime · Herbário' },
+  { id: 'laboratorio', label: 'Ficha técnica · Laboratório' },
+  { id: 'riviera', label: 'Sol e toldo · Riviera' },
+  { id: 'zen', label: 'Vazio e ensō · Zen' },
+] as const
+
+export const CATALOGS = [
+  { id: 'padrao', label: 'Carrossel + bodegón' },
+  { id: 'atelie', label: 'Índice numerado · Ateliê' },
+  { id: 'boutique', label: 'Grade de produtos · Boutique' },
+  { id: 'oraculo', label: 'Cartas de tarô · Oráculo' },
+  { id: 'galeria', label: 'Exposição · Galeria' },
+  { id: 'manifesto', label: 'Lista tipográfica · Manifesto' },
+  { id: 'cinema', label: 'Elenco · Cinema' },
+  { id: 'herbario', label: 'Espécimes · Herbário' },
+  { id: 'laboratorio', label: 'Amostras · Laboratório' },
+  { id: 'riviera', label: 'Cartões-postais · Riviera' },
+  { id: 'zen', label: 'Um por vez · Zen' },
+] as const
+
+export type PaletaId = (typeof PALETAS)[number]['id']
+export type EstiloId = (typeof ESTILOS)[number]['id']
+export type HeroId = (typeof HEROES)[number]['id']
+export type CatalogId = (typeof CATALOGS)[number]['id']
+
+type Pecas = { paleta: PaletaId; estilo: EstiloId; hero: HeroId; catalogo: CatalogId }
+
+/** Estruturas e os padrões de cada uma. */
+export const THEMES = [
+  { id: 'editorial', label: 'Editorial', desc: 'Home padrão: carrossel, bodegón e degraus', paleta: 'editorial', estilo: 'elegant', hero: 'padrao', catalogo: 'padrao' },
+  { id: 'atelie', label: 'Ateliê', desc: 'Revista impressa: capa e índice numerado', paleta: 'grafica', estilo: 'cormorant-reto', hero: 'atelie', catalogo: 'atelie' },
+  { id: 'boutique', label: 'Boutique', desc: 'Loja: avisos, grade de produtos, compre o look', paleta: 'branco', estilo: 'manrope', hero: 'boutique', catalogo: 'boutique' },
+  { id: 'oraculo', label: 'Oráculo', desc: 'Tarô: cartas, arcos e céu estrelado', paleta: 'noite-azul', estilo: 'cormorant', hero: 'oraculo', catalogo: 'oraculo' },
+  { id: 'galeria', label: 'Galeria', desc: 'Museu: salas numeradas, molduras e plaquetas', paleta: 'parede', estilo: 'bodoni', hero: 'galeria', catalogo: 'galeria' },
+  { id: 'manifesto', label: 'Manifesto', desc: 'Cartaz: caixa alta gigante e bordas grossas', paleta: 'ocre', estilo: 'anton', hero: 'manifesto', catalogo: 'manifesto' },
+  { id: 'cinema', label: 'Cinema', desc: 'Filme noir: letterbox, pôsteres e créditos', paleta: 'noir', estilo: 'cormorant-reto', hero: 'cinema', catalogo: 'cinema' },
+  { id: 'herbario', label: 'Herbário', desc: 'Arquivo botânico: espécimes, fita e carimbo', paleta: 'herbario', estilo: 'garamond', hero: 'herbario', catalogo: 'herbario' },
+  { id: 'laboratorio', label: 'Laboratório', desc: 'Ficha técnica: milimetrado e dados em mono', paleta: 'laboratorio', estilo: 'grotesk', hero: 'laboratorio', catalogo: 'laboratorio' },
+  { id: 'riviera', label: 'Riviera', desc: 'Verão: toldo, sol, ondas e postais', paleta: 'riviera', estilo: 'fraunces', hero: 'riviera', catalogo: 'riviera' },
+  { id: 'zen', label: 'Zen', desc: 'Wabi-sabi: vazio, texto vertical e ensō', paleta: 'washi', estilo: 'mincho', hero: 'zen', catalogo: 'zen' },
+] as const satisfies readonly ({ id: string; label: string; desc: string } & Pecas)[]
+
 export type ThemeId = (typeof THEMES)[number]['id']
-const STORAGE_KEY = 'arq-tema'
 
-function isTheme(v: string | null): v is ThemeId {
-  return THEMES.some((t) => t.id === v)
+/** Links antigos (?tema=noite etc., de quando paleta e estrutura eram uma coisa só) continuam abrindo igual. */
+const LEGADO: Record<string, { tema: ThemeId } & Partial<Pecas>> = {
+  noite: { tema: 'editorial', paleta: 'noite' },
+  aurora: { tema: 'editorial', paleta: 'aurora', estilo: 'manrope-redondo' },
+  ambar: { tema: 'editorial', paleta: 'ambar' },
+  esmeralda: { tema: 'editorial', paleta: 'esmeralda', estilo: 'cormorant' },
+  ametista: { tema: 'editorial', paleta: 'ametista' },
+  safira: { tema: 'editorial', paleta: 'safira', estilo: 'cormorant' },
+  marmore: { tema: 'editorial', paleta: 'marmore', estilo: 'cormorant-fino' },
+  'boutique-editorial': { tema: 'boutique', paleta: 'editorial' },
+  'boutique-ambar': { tema: 'boutique', paleta: 'ambar-claro' },
 }
 
-function initialTheme(): ThemeId {
-  const fromUrl = new URLSearchParams(window.location.search).get('tema')
-  if (isTheme(fromUrl)) return fromUrl
-  try {
-    const saved = localStorage.getItem(STORAGE_KEY)
-    if (isTheme(saved)) return saved
-  } catch {
-    /* storage bloqueado: fica no padrão */
+export function isBoutiqueLayout(theme: ThemeId): boolean {
+  return theme === 'boutique'
+}
+
+const is =
+  <T extends string>(list: readonly { id: T }[]) =>
+  (v: unknown): v is T =>
+    typeof v === 'string' && list.some((x) => x.id === v)
+const isTheme = is(THEMES)
+const isPaleta = is(PALETAS)
+const isEstilo = is(ESTILOS)
+const isHero = is(HEROES)
+const isCatalog = is(CATALOGS)
+
+type Pins = Partial<Pecas>
+type Estado = { theme: ThemeId; pins: Pins }
+export type ThemeState = { theme: ThemeId; pins: Pins } & Pecas
+
+const STORAGE_KEY = 'arq-tema-v2'
+const def = (t: ThemeId) => THEMES.find((x) => x.id === t)!
+
+function limparPins(p: Record<string, unknown>): Pins {
+  const out: Pins = {}
+  if (isPaleta(p.paleta)) out.paleta = p.paleta
+  if (isEstilo(p.estilo)) out.estilo = p.estilo
+  if (isHero(p.hero)) out.hero = p.hero
+  if (isCatalog(p.catalogo)) out.catalogo = p.catalogo
+  return out
+}
+
+function inicial(): Estado {
+  const params = new URLSearchParams(window.location.search)
+  const tema = params.get('tema')
+  const daUrl = limparPins(Object.fromEntries(params))
+  if (isTheme(tema)) return { theme: tema, pins: daUrl }
+  if (tema && LEGADO[tema]) {
+    const { tema: t, ...resto } = LEGADO[tema]
+    return { theme: t, pins: { ...resto, ...daUrl } }
   }
-  return 'editorial'
+  if (Object.keys(daUrl).length) return { theme: 'editorial', pins: daUrl }
+  try {
+    const salvo = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? 'null')
+    if (salvo && isTheme(salvo.theme)) return { theme: salvo.theme, pins: limparPins(salvo.pins ?? {}) }
+  } catch {
+    /* storage bloqueado ou inválido: fica no padrão */
+  }
+  return { theme: 'editorial', pins: {} }
 }
 
-let current: ThemeId = initialTheme()
+function resolver(e: Estado): ThemeState {
+  const d = def(e.theme)
+  return {
+    theme: e.theme,
+    pins: e.pins,
+    paleta: e.pins.paleta ?? d.paleta,
+    estilo: e.pins.estilo ?? d.estilo,
+    hero: e.pins.hero ?? d.hero,
+    catalogo: e.pins.catalogo ?? d.catalogo,
+  }
+}
+
+let estado = inicial()
+let atual = resolver(estado)
 const listeners = new Set<() => void>()
 
-function apply(theme: ThemeId) {
+function aplicar() {
   const root = document.documentElement
-  if (theme === 'editorial') delete root.dataset.theme
-  else root.dataset.theme = theme
+  root.dataset.estrutura = atual.theme
+  root.dataset.paleta = atual.paleta
+  root.dataset.estilo = atual.estilo
   try {
-    localStorage.setItem(STORAGE_KEY, theme)
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(estado))
   } catch {
     /* sem storage: vale só nesta visita */
   }
-  // mantém o ?tema= na URL sem navegar (link compartilhável pra discussão)
+  // URL compartilhável: ?tema= + só o que foi fixado
   const url = new URL(window.location.href)
-  if (theme === 'editorial') url.searchParams.delete('tema')
-  else url.searchParams.set('tema', theme)
+  for (const k of ['tema', 'paleta', 'estilo', 'hero', 'catalogo']) url.searchParams.delete(k)
+  if (estado.theme !== 'editorial') url.searchParams.set('tema', estado.theme)
+  for (const [k, v] of Object.entries(estado.pins)) url.searchParams.set(k, v)
   window.history.replaceState(window.history.state, '', url)
 }
 
-apply(current)
+aplicar()
 
-export function setTheme(theme: ThemeId) {
-  current = theme
-  apply(theme)
+function atualizar(e: Estado) {
+  estado = e
+  atual = resolver(e)
+  aplicar()
   listeners.forEach((l) => l())
 }
 
+/** Troca a estrutura; o que estiver fixado em "Misturar" continua. */
+export function setTheme(theme: ThemeId) {
+  atualizar({ ...estado, theme })
+}
+
+/** Fixa (ou solta, com null) uma peça. */
+export function setPin<K extends keyof Pecas>(k: K, v: Pecas[K] | null) {
+  const pins = { ...estado.pins }
+  if (v === null) delete pins[k]
+  else pins[k] = v
+  atualizar({ ...estado, pins })
+}
+
+export function clearPins() {
+  atualizar({ ...estado, pins: {} })
+}
+
+function subscribe(cb: () => void) {
+  listeners.add(cb)
+  return () => {
+    listeners.delete(cb)
+  }
+}
+
+export function useThemeState(): ThemeState {
+  return useSyncExternalStore(subscribe, () => atual)
+}
+
 export function useTheme(): ThemeId {
-  return useSyncExternalStore(
-    (cb) => {
-      listeners.add(cb)
-      return () => listeners.delete(cb)
-    },
-    () => current,
-  )
+  return useThemeState().theme
 }

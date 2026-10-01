@@ -31,12 +31,38 @@ import { SweepCta } from '@/components/ui/SweepCta'
 import { scrollToId } from '@/lib/scrollToId'
 import { GOLD_SHEEN } from '@/lib/goldSheen'
 import { Embers } from '@/components/ui/Embers'
-import { useTheme } from '@/lib/theme'
+import { isBoutiqueLayout, useThemeState } from '@/lib/theme'
 import { HeroAtelie } from '@/components/atelie/HeroAtelie'
 import { CatalogIndex } from '@/components/atelie/CatalogIndex'
 import { CommunityAtelie, DiaryAtelie, FeaturedAtelie, FooterAtelie } from '@/components/atelie/AtelieSections'
 import { CatalogGrid, HeroBoutique } from '@/components/boutique/BoutiqueSections'
 import { CommunityBoutique, DiaryBoutique, FeaturedBoutique, FooterBoutique } from '@/components/boutique/BoutiqueMore'
+import { CatalogOraculo, HeroOraculo } from '@/components/directions/Oraculo'
+import { CatalogGaleria, HeroGaleria } from '@/components/directions/Galeria'
+import { CatalogManifesto, HeroManifesto } from '@/components/directions/Manifesto'
+import { CatalogCinema, HeroCinema } from '@/components/directions/Cinema'
+import { OraculoPage } from '@/components/directions/OraculoPage'
+import { GaleriaPage } from '@/components/directions/GaleriaPage'
+import { ManifestoPage } from '@/components/directions/ManifestoPage'
+import { CinemaPage } from '@/components/directions/CinemaPage'
+import { CatalogHerbario, HerbarioPage, HeroHerbario } from '@/components/directions/Herbario'
+import { CatalogLaboratorio, HeroLaboratorio, LaboratorioPage } from '@/components/directions/Laboratorio'
+import { CatalogRiviera, HeroRiviera, RivieraPage } from '@/components/directions/Riviera'
+import { CatalogZen, HeroZen, ZenPage } from '@/components/directions/Zen'
+import type { DirectionPageProps } from '@/components/directions/shared'
+import type { ThemeId } from '@/lib/theme'
+
+/** Direções que desenham a home inteira (não só hero e catálogo) — ver components/directions/. */
+const DIRECTION_PAGES: Partial<Record<ThemeId, (p: DirectionPageProps) => React.ReactNode>> = {
+  oraculo: OraculoPage,
+  galeria: GaleriaPage,
+  manifesto: ManifestoPage,
+  cinema: CinemaPage,
+  herbario: HerbarioPage,
+  laboratorio: LaboratorioPage,
+  riviera: RivieraPage,
+  zen: ZenPage,
+}
 import { openCookiePreferences } from '@/lib/consent'
 import { useCarouselIndex } from '@/lib/useCarouselIndex'
 import { useTapGuard } from '@/lib/useTapGuard'
@@ -130,7 +156,7 @@ function CommunitySection() {
   const ugcLoop = [...UGC_VIDEOS, ...UGC_VIDEOS, ...UGC_VIDEOS]
   const ugcScroll = useInfiniteCarousel(ugcCount)
   const ugcAtivo = ugcScroll.activeIndex % ugcCount
-  useCoverflow(ugcScroll.containerRef)
+  useCoverflow(ugcScroll.container)
 
   // UGC em moldura recortada + product tag sobreposto
   return (
@@ -304,25 +330,298 @@ export function HomePage() {
   const catalogoCarrossel = useInfiniteCarousel(catalogoFiltrado.length)
   const [difModo, setDifModo] = useState<'arquetypus' | 'comum'>('arquetypus')
   const catalogoAtivo = catalogoFiltrado.length > 0 ? catalogoCarrossel.activeIndex % catalogoFiltrado.length : 0
-  // direção visual "Ateliê" (ThemeSwitcher): troca a estrutura do hero e do catálogo, não só as cores
-  const theme = useTheme()
+  // direções visuais (ThemeSwitcher): hero e catálogo são peças trocáveis (e misturáveis); Ateliê e Boutique
+  // trocam também destaque, comunidade, diário e rodapé
+  const { theme, hero, catalogo } = useThemeState()
   const isAtelie = theme === 'atelie'
-  // direção "Boutique": hero compacto de loja e catálogo em grade de produtos
-  const isBoutique = theme === 'boutique'
-  const heroClaro = isAtelie || isBoutique
+  const isBoutique = isBoutiqueLayout(theme)
+  // hero que fica por baixo do header transparente (foto/vídeo em tela cheia)
+  const heroSobHeader = hero === 'padrao' || hero === 'cinema'
+  const catalogoProps = { items: catalogoFiltrado, filtro: catalogoFiltro, setFiltro: setCatalogoFiltro, filtros: CATALOGO_FILTROS }
+  const DirectionPage = DIRECTION_PAGES[theme]
 
   useEffect(() => {
     if (!hash) return
     scrollToId(hash.slice(1))
   }, [hash])
 
-  return (
-    <div className={heroClaro ? 'relative' : 'relative -mt-14 lg:-mt-16'}>
-      {/* H-03 Hero — carrossel sticky, card sobe por cima (Ateliê: capa de revista, sem sobreposição) */}
-      {isAtelie ? <HeroAtelie /> : isBoutique ? <HeroBoutique /> : <HeroCarousel />}
+  // catálogo como valor: entra na home padrão ou na página de uma direção (e pode vir misturado, ver "Misturar")
+  const catalogNode =
+        catalogo === 'atelie' ? (
+          <CatalogIndex {...catalogoProps} />
+        ) : catalogo === 'boutique' ? (
+          <CatalogGrid {...catalogoProps} />
+        ) : catalogo === 'oraculo' ? (
+          <CatalogOraculo {...catalogoProps} />
+        ) : catalogo === 'galeria' ? (
+          <CatalogGaleria {...catalogoProps} />
+        ) : catalogo === 'manifesto' ? (
+          <CatalogManifesto {...catalogoProps} />
+        ) : catalogo === 'cinema' ? (
+          <CatalogCinema {...catalogoProps} />
+        ) : catalogo === 'herbario' ? (
+          <CatalogHerbario {...catalogoProps} />
+        ) : catalogo === 'laboratorio' ? (
+          <CatalogLaboratorio {...catalogoProps} />
+        ) : catalogo === 'riviera' ? (
+          <CatalogRiviera {...catalogoProps} />
+        ) : catalogo === 'zen' ? (
+          <CatalogZen {...catalogoProps} />
+        ) : (
+        <>
+        {/* H-13 O catálogo (fundido com H-07 bodegón) — celular empilhado; lg: bodegón à esquerda, catálogo à direita */}
+        <Reveal
+          as="section"
+          id="catalogo"
+          className="relative z-20 bg-noite pb-12 lg:pb-0"
+          animateContent
+          contentClassName="lg:grid lg:grid-cols-2"
+          style={{
+            // Degrau invertido: o catálogo fica POR CIMA e projeta sombra na seção de cima (Reconhecimento)
+            boxShadow: '0 -14px 26px -10px rgba(37,46,40,0.5), 0 -4px 8px -3px rgba(37,46,40,0.35)',
+          }}
+        >
+          <div className="relative lg:min-h-full lg:overflow-hidden">
+            <img
+              src={BODEGON_IMG}
+              alt="Os nove frascos Arquétypus sobre uma bandeja de mármore, à luz dourada do fim de tarde"
+              className="aspect-[4/5] w-full object-cover lg:absolute lg:inset-0 lg:aspect-auto lg:h-full"
+            />
+            <RatioTag className="top-3 right-3" />
+            {/* Filete dourado na borda do degrau */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-0 top-0 h-px"
+              style={{ background: 'color-mix(in srgb, var(--color-latao) 70%, transparent)' }}
+            />
+            {/* transição foto → fundo noite, bem esfumada (ver FOTO_FADE). Celular: embaixo; desktop: à direita */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-[26%] lg:hidden"
+              style={{ background: FOTO_FADE('to bottom') }}
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-y-0 right-0 hidden w-[28%] lg:block"
+              style={{ background: FOTO_FADE('to right') }}
+            />
+          </div>
 
-      {/* card das seções sobe por cima do hero; em telas baixas sobe menos pra mostrar mais imagem (par do pb do HeroCarousel) */}
-      <div className={heroClaro ? 'relative z-10 bg-papel' : 'relative z-10 -mt-28 rounded-t-3xl bg-papel [@media(max-height:820px)]:-mt-16'}>
+          {/* lg: -ml-0.5 + bg-noite cobre a última meia coluna de pixels da foto (a coluna tem largura
+              fracionada e o anti-aliasing deixava um fio claro na junção com o fundo) */}
+          <div className="relative isolate lg:-ml-0.5 lg:flex lg:min-w-0 lg:flex-col lg:justify-center lg:bg-noite lg:py-20">
+            {/* pontos de luz dourados, desfocados e sutis no fundo verde — mesmo halo da seção "A diferença".
+                isolate + -z-10: ficam atrás do conteúdo mas por cima do bg-noite do painel */}
+            {CATALOGO_GLOWS.map((g) => (
+              <div
+                key={g.className}
+                aria-hidden
+                className={`pointer-events-none absolute -z-10 rounded-full ${g.className}`}
+                style={{
+                  background: `radial-gradient(closest-side, color-mix(in srgb, var(--color-latao) ${g.forca}%, transparent), transparent)`,
+                  filter: `blur(${g.blur}px)`,
+                }}
+              />
+            ))}
+            <div className="relative -mt-8 px-5 pt-3 pb-3 md:px-10 lg:mt-0 xl:px-14">
+              <Eyebrow className="text-latao">O catálogo</Eyebrow>
+              <h2 className="mt-3 font-display text-4xl leading-[1.1] text-papel-inv">
+                Nove fragrâncias.
+                <br />
+                Diferentes versões de você.
+              </h2>
+              <p className="mt-3 max-w-[34ch] text-sm text-papel-inv/60">
+                Cada fragrância traduz uma sensação, uma intenção, uma forma diferente de estar no mundo.
+              </p>
+            </div>
+
+            <div className="no-scrollbar flex gap-5 overflow-x-auto px-5 pb-1 md:px-10 lg:mt-4 xl:px-14" role="tablist" aria-label="Filtrar catálogo">
+              {CATALOGO_FILTROS.map((f) => (
+                <button
+                  key={f.key}
+                  type="button"
+                  role="tab"
+                  aria-selected={catalogoFiltro === f.key}
+                  onClick={() => setCatalogoFiltro(f.key)}
+                  className={`shrink-0 whitespace-nowrap border-b pb-2 font-label text-[10.5px] tracking-[0.12em] uppercase transition-colors duration-300 ${
+                    catalogoFiltro === f.key
+                      ? 'border-latao text-latao'
+                      : 'border-transparent text-papel-inv/45'
+                  }`}
+                >
+                  {f.label}
+                </button>
+              ))}
+            </div>
+
+            <div
+              ref={catalogoCarrossel.containerRef}
+              className={`no-scrollbar mt-4 flex gap-4 px-[8vw] pb-2 lg:mt-8 lg:px-[calc(50%-10rem)] ${
+                catalogoUnico ? 'justify-center overflow-hidden' : 'snap-x snap-mandatory overflow-x-auto'
+              }`}
+            >
+              {catalogoLoop.map((a, i) => {
+                const dist = Math.abs(i - catalogoCarrossel.activeIndex)
+                const isActive = catalogoUnico || dist === 0
+                return (
+                <div
+                  key={`${a.id}-${i}`}
+                  ref={catalogoCarrossel.registerItem(i)}
+                  className="group relative aspect-[3/4] w-[84vw] max-w-[320px] shrink-0 snap-center overflow-hidden rounded-3xl text-left"
+                  style={{
+                    boxShadow: isActive ? '0 20px 40px -16px rgba(0,0,0,0.55)' : '0 10px 22px -14px rgba(0,0,0,0.4)',
+                    transform: `scale(${isActive ? 1 : 0.87})`,
+                    opacity: isActive ? 1 : 0.55,
+                    filter: isActive ? 'blur(0px)' : 'blur(2.5px)',
+                    transition: 'transform 0.5s cubic-bezier(0.16,1,0.3,1), opacity 0.5s ease, filter 0.5s ease',
+                    scrollSnapStop: 'always',
+                  }}
+                >
+                  <div className="absolute inset-0" style={{ background: a.bg }} />
+                  {/* moldura dourada com reflexo — 1px, recortada por máscara pra seguir o arredondado do card */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 z-30 rounded-3xl p-px"
+                    style={{
+                      background: GOLD_SHEEN,
+                      WebkitMask: 'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
+                      WebkitMaskComposite: 'xor',
+                      maskComposite: 'exclude',
+                    }}
+                  />
+
+                  {FRASCO_IMG[a.id] && (
+                    <img
+                      src={FRASCO_IMG[a.id]}
+                      alt=""
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+                      style={{ willChange: 'transform' }}
+                    />
+                  )}
+                  <RatioTag className={a.status === 'wait' ? 'top-11 right-3' : 'top-3 right-3'} />
+
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute top-4 left-4 z-10 font-display text-[2.75rem] leading-none font-light"
+                    style={{ color: a.cor, opacity: 0.55, textShadow: '0 1px 12px rgba(0,0,0,0.25)' }}
+                  >
+                    {a.cod.split('-')[1]}
+                  </span>
+                  {a.status === 'wait' && (
+                    <span className="absolute top-3 right-3 z-20 rounded-full bg-papel/85 px-2.5 py-1 font-label text-[8px] tracking-wide text-alerta uppercase">
+                      Em breve
+                    </span>
+                  )}
+
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-[58%] backdrop-blur-md"
+                    style={{
+                      background: `linear-gradient(to top, color-mix(in srgb, ${a.cor} 78%, var(--color-noite) 22%) 0%, color-mix(in srgb, ${a.cor} 45%, transparent) 60%, transparent 100%)`,
+                      maskImage: 'linear-gradient(to top, black 45%, transparent 100%)',
+                      WebkitMaskImage: 'linear-gradient(to top, black 45%, transparent 100%)',
+                    }}
+                  />
+
+                  <div className="absolute inset-x-0 bottom-0 z-10 px-5 pt-5 pb-5">
+                    <span className="block font-label text-[9px] tracking-widest text-papel-inv/70 uppercase">
+                      {a.cod}
+                    </span>
+                    <b className="mt-1.5 block font-display text-2xl text-papel-inv">{a.nome}</b>
+                    <span className="mt-1 block text-sm text-papel-inv/80">{a.fam}</span>
+                    <span className="mt-3 block font-label text-[9px] tracking-wide text-papel-inv/60 uppercase">
+                      {a.tipo} · {a.vol}
+                    </span>
+                    <div className="mt-2 flex items-center justify-between gap-3">
+                      <span className="text-sm text-papel-inv/90">
+                        {a.status === 'wait' ? 'Avise-me' : brl(a.preco)}
+                      </span>
+                      <Link
+                        // mesmo destino do UGC: pop-up de compra (/loja/:id por cima da home)
+                        to={`/loja/${a.id}`}
+                        state={{ backgroundLocation: location }}
+                        className="relative z-20 inline-flex shrink-0 items-center justify-center rounded-full border border-papel-inv/40 bg-papel-inv/10 px-4 py-2.5 font-label text-[10px] tracking-[0.12em] text-papel-inv uppercase backdrop-blur-sm transition-colors duration-300 ease-out hover:border-papel-inv/60 hover:bg-papel-inv/20"
+                      >
+                        {a.status === 'wait' ? 'Entrar na lista' : 'Descobrir'}
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+                )
+              })}
+            </div>
+            {/* desktop: setas em volta dos pontinhos — no mouse não dá pra deslizar */}
+            <div className={`lg:mt-5 lg:flex lg:items-center lg:justify-center lg:gap-5 ${catalogoUnico ? 'invisible' : ''}`}>
+              <button
+                type="button"
+                onClick={() => catalogoCarrossel.step(-1)}
+                aria-label="Fragrância anterior"
+                className="hidden size-9 cursor-pointer items-center justify-center rounded-full border border-papel-inv/20 text-papel-inv/70 transition-colors duration-300 hover:border-papel-inv/50 hover:text-papel-inv lg:flex"
+              >
+                ‹
+              </button>
+              <CarouselDots count={catalogoFiltrado.length} active={catalogoAtivo} tone="dark" className="mt-5 lg:mt-0" />
+              <button
+                type="button"
+                onClick={() => catalogoCarrossel.step(1)}
+                aria-label="Próxima fragrância"
+                className="hidden size-9 cursor-pointer items-center justify-center rounded-full border border-papel-inv/20 text-papel-inv/70 transition-colors duration-300 hover:border-papel-inv/50 hover:text-papel-inv lg:flex"
+              >
+                ›
+              </button>
+            </div>
+            <p className={`mt-3 px-5 text-center font-label text-[9.5px] tracking-widest text-papel-inv/40 uppercase lg:hidden ${catalogoUnico ? 'invisible' : ''}`}>
+              Deslize para explorar
+            </p>
+          </div>
+        </Reveal>
+        </>
+        )
+
+  return (
+    <div className={heroSobHeader ? 'relative -mt-14 lg:-mt-16' : 'relative'}>
+      {/* H-03 Hero — carrossel sticky, card sobe por cima (outras direções: hero próprio, sem sobreposição) */}
+      {hero === 'atelie' ? (
+        <HeroAtelie />
+      ) : hero === 'boutique' ? (
+        <HeroBoutique />
+      ) : hero === 'oraculo' ? (
+        <HeroOraculo />
+      ) : hero === 'galeria' ? (
+        <HeroGaleria />
+      ) : hero === 'manifesto' ? (
+        <HeroManifesto />
+      ) : hero === 'cinema' ? (
+        <HeroCinema />
+      ) : hero === 'herbario' ? (
+        <HeroHerbario />
+      ) : hero === 'laboratorio' ? (
+        <HeroLaboratorio />
+      ) : hero === 'riviera' ? (
+        <HeroRiviera />
+      ) : hero === 'zen' ? (
+        <HeroZen />
+      ) : (
+        <HeroCarousel />
+      )}
+
+      {DirectionPage ? (
+        // Oráculo, Galeria, Manifesto, Cinema: a página inteira é da direção; hero e catálogo vêm como peças
+        <div className={hero === 'padrao' ? 'relative z-10 -mt-28 rounded-t-3xl bg-papel [@media(max-height:820px)]:-mt-16' : 'relative z-10 bg-papel'}>
+          <DirectionPage
+            catalog={catalogNode}
+            onSegment={(seg) => {
+              setCatalogoFiltro(seg)
+              requestAnimationFrame(() => requestAnimationFrame(() => scrollToId('catalogo')))
+            }}
+            toCatalog={() => scrollToId('catalogo')}
+            featured={featured}
+            featuredImg={FEATURED_IMG}
+          />
+        </div>
+      ) : (
+      /* card das seções sobe por cima do hero; em telas baixas sobe menos pra mostrar mais imagem (par do pb do HeroCarousel) */
+      <div className={hero === 'padrao' ? 'relative z-10 -mt-28 rounded-t-3xl bg-papel [@media(max-height:820px)]:-mt-16' : 'relative z-10 bg-papel'}>
         {/* H-05 Selos — grid 2x2 com ícone, estilo trust badges */}
         <section className="grid grid-cols-2 divide-x divide-y divide-linha overflow-hidden rounded-t-3xl border-b border-linha">
           {SEALS.map((s) => (
@@ -664,220 +963,7 @@ export function HomePage() {
           </div>
         </Reveal>
 
-        {isAtelie ? (
-          <CatalogIndex items={catalogoFiltrado} filtro={catalogoFiltro} setFiltro={setCatalogoFiltro} filtros={CATALOGO_FILTROS} />
-        ) : isBoutique ? (
-          <CatalogGrid items={catalogoFiltrado} filtro={catalogoFiltro} setFiltro={setCatalogoFiltro} filtros={CATALOGO_FILTROS} />
-        ) : (
-        <>
-        {/* H-13 O catálogo (fundido com H-07 bodegón) — celular empilhado; lg: bodegón à esquerda, catálogo à direita */}
-        <Reveal
-          as="section"
-          id="catalogo"
-          className="relative z-20 bg-noite pb-12 lg:pb-0"
-          animateContent
-          contentClassName="lg:grid lg:grid-cols-2"
-          style={{
-            // Degrau invertido: o catálogo fica POR CIMA e projeta sombra na seção de cima (Reconhecimento)
-            boxShadow: '0 -14px 26px -10px rgba(37,46,40,0.5), 0 -4px 8px -3px rgba(37,46,40,0.35)',
-          }}
-        >
-          <div className="relative lg:min-h-full lg:overflow-hidden">
-            <img
-              src={BODEGON_IMG}
-              alt="Os nove frascos Arquétypus sobre uma bandeja de mármore, à luz dourada do fim de tarde"
-              className="aspect-[4/5] w-full object-cover lg:absolute lg:inset-0 lg:aspect-auto lg:h-full"
-            />
-            <RatioTag className="top-3 right-3" />
-            {/* Filete dourado na borda do degrau */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-x-0 top-0 h-px"
-              style={{ background: 'color-mix(in srgb, var(--color-latao) 70%, transparent)' }}
-            />
-            {/* transição foto → fundo noite, bem esfumada (ver FOTO_FADE). Celular: embaixo; desktop: à direita */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-x-0 bottom-0 h-[26%] lg:hidden"
-              style={{ background: FOTO_FADE('to bottom') }}
-            />
-            <div
-              aria-hidden
-              className="pointer-events-none absolute inset-y-0 right-0 hidden w-[28%] lg:block"
-              style={{ background: FOTO_FADE('to right') }}
-            />
-          </div>
-
-          {/* lg: -ml-0.5 + bg-noite cobre a última meia coluna de pixels da foto (a coluna tem largura
-              fracionada e o anti-aliasing deixava um fio claro na junção com o fundo) */}
-          <div className="relative isolate lg:-ml-0.5 lg:flex lg:min-w-0 lg:flex-col lg:justify-center lg:bg-noite lg:py-20">
-            {/* pontos de luz dourados, desfocados e sutis no fundo verde — mesmo halo da seção "A diferença".
-                isolate + -z-10: ficam atrás do conteúdo mas por cima do bg-noite do painel */}
-            {CATALOGO_GLOWS.map((g) => (
-              <div
-                key={g.className}
-                aria-hidden
-                className={`pointer-events-none absolute -z-10 rounded-full ${g.className}`}
-                style={{
-                  background: `radial-gradient(closest-side, color-mix(in srgb, var(--color-latao) ${g.forca}%, transparent), transparent)`,
-                  filter: `blur(${g.blur}px)`,
-                }}
-              />
-            ))}
-            <div className="relative -mt-8 px-5 pt-3 pb-3 md:px-10 lg:mt-0 xl:px-14">
-              <Eyebrow className="text-latao">O catálogo</Eyebrow>
-              <h2 className="mt-3 font-display text-4xl leading-[1.1] text-papel-inv">
-                Nove fragrâncias.
-                <br />
-                Diferentes versões de você.
-              </h2>
-              <p className="mt-3 max-w-[34ch] text-sm text-papel-inv/60">
-                Cada fragrância traduz uma sensação, uma intenção, uma forma diferente de estar no mundo.
-              </p>
-            </div>
-
-            <div className="no-scrollbar flex gap-5 overflow-x-auto px-5 pb-1 md:px-10 lg:mt-4 xl:px-14" role="tablist" aria-label="Filtrar catálogo">
-              {CATALOGO_FILTROS.map((f) => (
-                <button
-                  key={f.key}
-                  type="button"
-                  role="tab"
-                  aria-selected={catalogoFiltro === f.key}
-                  onClick={() => setCatalogoFiltro(f.key)}
-                  className={`shrink-0 whitespace-nowrap border-b pb-2 font-label text-[10.5px] tracking-[0.12em] uppercase transition-colors duration-300 ${
-                    catalogoFiltro === f.key
-                      ? 'border-latao text-latao'
-                      : 'border-transparent text-papel-inv/45'
-                  }`}
-                >
-                  {f.label}
-                </button>
-              ))}
-            </div>
-
-            <div
-              ref={catalogoCarrossel.containerRef}
-              className={`no-scrollbar mt-4 flex gap-4 px-[8vw] pb-2 lg:mt-8 lg:px-[calc(50%-10rem)] ${
-                catalogoUnico ? 'justify-center overflow-hidden' : 'snap-x snap-mandatory overflow-x-auto'
-              }`}
-            >
-              {catalogoLoop.map((a, i) => {
-                const dist = Math.abs(i - catalogoCarrossel.activeIndex)
-                const isActive = catalogoUnico || dist === 0
-                return (
-                <div
-                  key={`${a.id}-${i}`}
-                  ref={catalogoCarrossel.registerItem(i)}
-                  className="group relative aspect-[3/4] w-[84vw] max-w-[320px] shrink-0 snap-center overflow-hidden rounded-3xl text-left"
-                  style={{
-                    boxShadow: isActive ? '0 20px 40px -16px rgba(0,0,0,0.55)' : '0 10px 22px -14px rgba(0,0,0,0.4)',
-                    transform: `scale(${isActive ? 1 : 0.87})`,
-                    opacity: isActive ? 1 : 0.55,
-                    filter: isActive ? 'blur(0px)' : 'blur(2.5px)',
-                    transition: 'transform 0.5s cubic-bezier(0.16,1,0.3,1), opacity 0.5s ease, filter 0.5s ease',
-                    scrollSnapStop: 'always',
-                  }}
-                >
-                  <div className="absolute inset-0" style={{ background: a.bg }} />
-                  {/* moldura dourada com reflexo — 1px, recortada por máscara pra seguir o arredondado do card */}
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute inset-0 z-30 rounded-3xl p-px"
-                    style={{
-                      background: GOLD_SHEEN,
-                      WebkitMask: 'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
-                      WebkitMaskComposite: 'xor',
-                      maskComposite: 'exclude',
-                    }}
-                  />
-
-                  {FRASCO_IMG[a.id] && (
-                    <img
-                      src={FRASCO_IMG[a.id]}
-                      alt=""
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
-                      style={{ willChange: 'transform' }}
-                    />
-                  )}
-                  <RatioTag className={a.status === 'wait' ? 'top-11 right-3' : 'top-3 right-3'} />
-
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute top-4 left-4 z-10 font-display text-[2.75rem] leading-none font-light"
-                    style={{ color: a.cor, opacity: 0.55, textShadow: '0 1px 12px rgba(0,0,0,0.25)' }}
-                  >
-                    {a.cod.split('-')[1]}
-                  </span>
-                  {a.status === 'wait' && (
-                    <span className="absolute top-3 right-3 z-20 rounded-full bg-papel/85 px-2.5 py-1 font-label text-[8px] tracking-wide text-alerta uppercase">
-                      Em breve
-                    </span>
-                  )}
-
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute inset-x-0 bottom-0 h-[58%] backdrop-blur-md"
-                    style={{
-                      background: `linear-gradient(to top, color-mix(in srgb, ${a.cor} 78%, var(--color-noite) 22%) 0%, color-mix(in srgb, ${a.cor} 45%, transparent) 60%, transparent 100%)`,
-                      maskImage: 'linear-gradient(to top, black 45%, transparent 100%)',
-                      WebkitMaskImage: 'linear-gradient(to top, black 45%, transparent 100%)',
-                    }}
-                  />
-
-                  <div className="absolute inset-x-0 bottom-0 z-10 px-5 pt-5 pb-5">
-                    <span className="block font-label text-[9px] tracking-widest text-papel-inv/70 uppercase">
-                      {a.cod}
-                    </span>
-                    <b className="mt-1.5 block font-display text-2xl text-papel-inv">{a.nome}</b>
-                    <span className="mt-1 block text-sm text-papel-inv/80">{a.fam}</span>
-                    <span className="mt-3 block font-label text-[9px] tracking-wide text-papel-inv/60 uppercase">
-                      {a.tipo} · {a.vol}
-                    </span>
-                    <div className="mt-2 flex items-center justify-between gap-3">
-                      <span className="text-sm text-papel-inv/90">
-                        {a.status === 'wait' ? 'Avise-me' : brl(a.preco)}
-                      </span>
-                      <Link
-                        // mesmo destino do UGC: pop-up de compra (/loja/:id por cima da home)
-                        to={`/loja/${a.id}`}
-                        state={{ backgroundLocation: location }}
-                        className="relative z-20 inline-flex shrink-0 items-center justify-center rounded-full border border-papel-inv/40 bg-papel-inv/10 px-4 py-2.5 font-label text-[10px] tracking-[0.12em] text-papel-inv uppercase backdrop-blur-sm transition-colors duration-300 ease-out hover:border-papel-inv/60 hover:bg-papel-inv/20"
-                      >
-                        {a.status === 'wait' ? 'Entrar na lista' : 'Descobrir'}
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-                )
-              })}
-            </div>
-            {/* desktop: setas em volta dos pontinhos — no mouse não dá pra deslizar */}
-            <div className={`lg:mt-5 lg:flex lg:items-center lg:justify-center lg:gap-5 ${catalogoUnico ? 'invisible' : ''}`}>
-              <button
-                type="button"
-                onClick={() => catalogoCarrossel.step(-1)}
-                aria-label="Fragrância anterior"
-                className="hidden size-9 cursor-pointer items-center justify-center rounded-full border border-papel-inv/20 text-papel-inv/70 transition-colors duration-300 hover:border-papel-inv/50 hover:text-papel-inv lg:flex"
-              >
-                ‹
-              </button>
-              <CarouselDots count={catalogoFiltrado.length} active={catalogoAtivo} tone="dark" className="mt-5 lg:mt-0" />
-              <button
-                type="button"
-                onClick={() => catalogoCarrossel.step(1)}
-                aria-label="Próxima fragrância"
-                className="hidden size-9 cursor-pointer items-center justify-center rounded-full border border-papel-inv/20 text-papel-inv/70 transition-colors duration-300 hover:border-papel-inv/50 hover:text-papel-inv lg:flex"
-              >
-                ›
-              </button>
-            </div>
-            <p className={`mt-3 px-5 text-center font-label text-[9.5px] tracking-widest text-papel-inv/40 uppercase lg:hidden ${catalogoUnico ? 'invisible' : ''}`}>
-              Deslize para explorar
-            </p>
-          </div>
-        </Reveal>
-        </>
-        )}
+        {catalogNode}
 
         {isAtelie ? (
           <FeaturedAtelie a={featured} img={FEATURED_IMG} />
@@ -1592,6 +1678,7 @@ export function HomePage() {
         )}
 
       </div>
+      )}
     </div>
   )
 }

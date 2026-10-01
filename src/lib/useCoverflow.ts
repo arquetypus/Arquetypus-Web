@@ -1,19 +1,18 @@
 import { useEffect } from 'react'
-import type { RefObject } from 'react'
 
 /**
  * Foco contínuo num carrossel horizontal centralizado: a cada frame de scroll,
  * cada filho direto recebe escala/opacidade proporcionais à distância do
  * centro do container (1 card de distância = efeito máximo) — só propriedades
  * de compositor, baratas. O blur é binário (liga passando da metade do caminho).
- * Escreve direto no DOM via rAF, sem re-render do React.
+ * Escreve direto no DOM via rAF, sem re-render do React. Recebe o elemento (não uma ref de objeto), pra
+ * refazer os listeners quando o carrossel é recriado (ver useInfiniteCarousel).
  */
 export function useCoverflow(
-  ref: RefObject<HTMLElement | null>,
+  el: HTMLElement | null,
   { minScale = 0.9, minOpacity = 0.35, maxBlur = 2 }: { minScale?: number; minOpacity?: number; maxBlur?: number } = {},
 ) {
   useEffect(() => {
-    const el = ref.current
     if (!el) return
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     let frame = 0
@@ -54,5 +53,5 @@ export function useCoverflow(
       el.removeEventListener('scroll', schedule)
       ro.disconnect()
     }
-  }, [ref, minScale, minOpacity, maxBlur])
+  }, [el, minScale, minOpacity, maxBlur])
 }

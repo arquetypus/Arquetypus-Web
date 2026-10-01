@@ -1,17 +1,20 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 /**
  * Índice do item "atual" de um carrossel horizontal com snap-start, para
  * alimentar os indicadores em pílula. Usa a fração de scroll (não a posição
  * de cada item) para que o último item acenda no fim, mesmo quando ele não
  * consegue encostar na borda esquerda.
+ *
+ * `ref` é ref de callback (elemento em estado): se o carrossel sai e volta do DOM com o hook montado, os
+ * listeners vão pro elemento novo (ver useInfiniteCarousel).
  */
 export function useCarouselIndex<T extends HTMLElement>(count: number) {
-  const ref = useRef<T>(null)
+  const [el, setEl] = useState<T | null>(null)
+  const ref = useCallback((node: T | null) => setEl(node), [])
   const [activeIndex, setActiveIndex] = useState(0)
 
   useEffect(() => {
-    const el = ref.current
     if (!el || count <= 1) return
 
     function update() {
@@ -29,7 +32,7 @@ export function useCarouselIndex<T extends HTMLElement>(count: number) {
       el.removeEventListener('scroll', update)
       ro.disconnect()
     }
-  }, [count])
+  }, [count, el])
 
   return { ref, activeIndex }
 }

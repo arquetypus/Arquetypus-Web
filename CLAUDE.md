@@ -91,24 +91,38 @@ decisão de produto já tomada:
   Acesso direto à URL abre a página completa — não trocar por modal sem
   rota (regra 6). As seções de compra são `ProductPurchase` e
   `KitPurchase`, compartilhadas entre pop-up e página.
-- **Direções visuais pra discussão** (`components/ThemeSwitcher.tsx`): barra
-  fixa "Escolha a direção visual" com 10 variações (Editorial = padrão, Noite
-  Imperial, Aurora Pop, Âmbar, Esmeralda, Ametista, Safira, Mármore — essas 4
-  saem da paleta de cores de arquétipos da marca —, Ateliê e Boutique), inspiradas nas
+- **Direções visuais pra discussão** (`components/ThemeSwitcher.tsx`,
+  `lib/theme.ts`): botão flutuante que abre uma sidebar à direita com cinco
+  parâmetros independentes (e "Copiar link" da combinação), inspirada nas
   direções de lab-fabio.vercel.app/arquetypus-lp ("Pulso" foi descartada: não
-  combina com a Arquétypus). Trocam tokens (paleta, `--font-display`,
-  `--radius-*`) e alguns detalhes só de CSS (granulado, destaques em itálico)
-  via `html[data-theme]` em `index.css` — layout e conteúdo são os mesmos.
-  Exceções que mudam estrutura via `useTheme()` (`lib/theme.ts`), com o header
-  sólido sobre o hero:
-  - **Ateliê** (revista impressa): hero, catálogo, destaque, comunidade, diário
-    e rodapé trocados pelos componentes de `components/atelie/`.
-  - **Boutique** (loja): faixa de avisos no topo (frete grátis/selos), hero
-    compacto com CTAs e etiqueta de preço, catálogo em grade de produtos com
-    "Comprar", destaque como banner de produto, comunidade como "compre o
-    look", diário em cards e rodapé de loja (`components/boutique/`). Rótulos
-    de loja novos ("A partir de", "Comprar {nome}") — o resto vem de `data/`. Escolha vai no `?tema=` da URL. Cor nova em componente deve usar
-  token (`var(--color-…)`), senão não acompanha as variações. Desligar com
+  combina com a Arquétypus):
+  - **Estrutura** (`THEMES`, `?tema=`): o layout da home.
+    Editorial = home padrão. **Ateliê** (revista) e **Boutique** (loja: faixa de
+    avisos, grade de produtos, rótulos novos "A partir de"/"Comprar {nome}")
+    trocam hero, catálogo, destaque, comunidade, diário e rodapé
+    (`components/atelie/`, `components/boutique/`). **Oráculo, Galeria,
+    Manifesto, Cinema, Herbário, Laboratório, Riviera, Zen** desenham a home
+    inteira (`components/directions/*Page.tsx`,
+    ligadas em `DIRECTION_PAGES` no `HomePage`) — tarô / museu / cartaz / noir / arquivo botânico / ficha técnica / verão
+    mediterrâneo / wabi-sabi,
+    referências da Behance anotadas em cada arquivo. Os textos das seções vêm de
+    `HOME_COPY` em `data/home.ts` (o `HomePage` padrão ainda tem os mesmos
+    textos escritos direto no JSX — ao mudar copy, mudar nos dois).
+  - **Paleta** (`PALETAS`, `html[data-paleta]`): só cores, + granulado e logo
+    claro nas escuras. As 8 originais (Editorial a Mármore — Esmeralda, Ametista,
+    Safira e Mármore saem da paleta de cores de arquétipos da marca) e as peles
+    das outras estruturas.
+  - **Estilo** (`ESTILOS`, `html[data-estilo]`): fonte dos títulos + cantos.
+  - **Hero** e **Catálogo** (`HEROES`/`CATALOGS`): peças trocáveis entre
+    estruturas.
+  Cada estrutura tem padrões pros outros quatro; escolher em "Misturar" fixa a
+  peça (vai pra URL: `?paleta=`, `?estilo=`, `?hero=`, `?catalogo=`) e ela
+  continua valendo ao trocar de estrutura, até "usar padrão" / "Restaurar
+  padrões". `[data-paleta]`/`[data-estilo]` valem em qualquer elemento (não só
+  no `<html>`) — é assim que a sidebar mostra as amostras. Links antigos
+  (`?tema=noite`, `?tema=boutique-ambar`…) são traduzidos em `LEGADO`. CSS
+  de layout fica em `html[data-estrutura]`. Cor nova em componente deve usar
+  token (`var(--color-…)`), senão não acompanha as paletas. Desligar com
   `SHOW_THEME_SWITCHER = false` quando a direção for decidida (e aí promover a
   escolhida pro `@theme`).
 - **Selos de proporção nas imagens** (`components/ui/RatioTag.tsx`) são
