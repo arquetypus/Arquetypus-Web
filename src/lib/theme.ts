@@ -127,8 +127,8 @@ const isEstilo = is(ESTILOS)
 const isHero = is(HEROES)
 const isCatalog = is(CATALOGS)
 
-type Pins = Partial<Pecas>
-type Estado = { theme: ThemeId; pins: Pins }
+export type Pins = Partial<Pecas>
+export type Estado = { theme: ThemeId; pins: Pins }
 export type ThemeState = { theme: ThemeId; pins: Pins } & Pecas
 
 const STORAGE_KEY = 'arq-tema-v2'
@@ -220,6 +220,14 @@ export function setPin<K extends keyof Pecas>(k: K, v: Pecas[K] | null) {
 
 export function clearPins() {
   atualizar({ ...estado, pins: {} })
+}
+
+/** Aplica uma combinação salva (lib/presets.ts). Valida tudo: preset antigo com peça que deixou de existir
+ *  cai no padrão da estrutura em vez de quebrar. Devolve false se a estrutura não existe mais. */
+export function aplicarEstado(e: { theme: unknown; pins: unknown }): boolean {
+  if (!isTheme(e.theme)) return false
+  atualizar({ theme: e.theme, pins: limparPins((e.pins ?? {}) as Record<string, unknown>) })
+  return true
 }
 
 function subscribe(cb: () => void) {

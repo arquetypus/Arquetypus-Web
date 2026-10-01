@@ -93,7 +93,9 @@ decisão de produto já tomada:
   `KitPurchase`, compartilhadas entre pop-up e página.
 - **Direções visuais pra discussão** (`components/ThemeSwitcher.tsx`,
   `lib/theme.ts`): botão flutuante que abre uma sidebar à direita com cinco
-  parâmetros independentes (e "Copiar link" da combinação), inspirada nas
+  parâmetros independentes, "Copiar link" da combinação e **Predefinições**
+  (combinações com nome salvas no localStorage, `lib/presets.ts` — só neste
+  navegador; pra compartilhar, link), inspirada nas
   direções de lab-fabio.vercel.app/arquetypus-lp ("Pulso" foi descartada: não
   combina com a Arquétypus):
   - **Estrutura** (`THEMES`, `?tema=`): o layout da home.

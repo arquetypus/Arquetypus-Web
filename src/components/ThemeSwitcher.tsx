@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react'
-import { CATALOGS, ESTILOS, HEROES, PALETAS, THEMES, clearPins, setPin, setTheme, useThemeState } from '@/lib/theme'
+import { CATALOGS, ESTILOS, HEROES, PALETAS, THEMES, aplicarEstado, clearPins, setPin, setTheme, useThemeState } from '@/lib/theme'
+import type { ThemeState } from '@/lib/theme'
+import { apagarPreset, mesmoEstado, renomearPreset, salvarPreset, sobrescreverPreset, usePresets, type Preset } from '@/lib/presets'
 
 /**
  * Painel "Direção visual" — ferramenta interna pra comparar variações do site (ver lib/theme.ts).
  * Botão flutuante no canto abre uma sidebar à direita com os cinco parâmetros: estrutura, paleta, estilo,
  * hero e catálogo. Paleta/estilo/hero/catálogo seguem o padrão da estrutura até a pessoa escolher outro
  * — aí ficam fixados e valem em qualquer estrutura ("Usar padrão" solta um; "Restaurar padrões" solta
- * todos). "Copiar link" leva a combinação inteira na URL. Esc fecha. Desligar antes do lançamento.
+ * todos). "Copiar link" leva a combinação inteira na URL. "Predefinições" guarda combinações com nome no
+ * localStorage (lib/presets.ts). Esc fecha. Desligar antes do lançamento.
  *
  * Cores fixas (não tokens): a ferramenta fica igual em qualquer direção. As amostras de paleta e estilo
  * usam data-paleta / data-estilo no próprio elemento (index.css aceita os dois fora do <html>).
@@ -39,6 +42,10 @@ const I = {
   reset: 'M3 12a9 9 0 1 0 3-6.7M3 4v5h5',
   check: 'M5 12.5l4.5 4.5L19 7',
   pin: 'M12 17v4M8 3h8l-1 6 3 3H6l3-3-1-6Z',
+  salvar: 'M5 3h11l3 3v15H5zM8 3v5h7V3M8 21v-7h8v7',
+  lapis: 'M4 20h4L19 9l-4-4L4 16v4ZM14 6l4 4',
+  lixo: 'M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13',
+  atualizar: 'M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7',
 }
 
 /** Cabeçalho de seção: título, ajuda e o estado (padrão da estrutura × fixado). */
@@ -87,6 +94,166 @@ function Opcao({ ativo, padrao, onClick, children }: { ativo: boolean; padrao?: 
   )
 }
 
+const pinsLabel = (n: number) => (n === 0 ? 'só a estrutura' : n === 1 ? '1 peça fixada' : `${n} peças fixadas`)
+
+/** Uma predefinição salva: clicar aplica; ações de renomear, regravar com a combinação atual e apagar.
+ *  Regravar e apagar pedem confirmação no próprio botão (sem confirm() do navegador). */
+function ItemPreset({ p, ativo, atual }: { p: Preset; ativo: boolean; atual: ThemeState }) {
+  const [editando, setEditando] = useState(false)
+  const [nome, setNome] = useState(p.nome)
+  const [confirmar, setConfirmar] = useState<null | 'apagar' | 'regravar'>(null)
+  const estrutura = THEMES.find((t) => t.id === p.theme)
+  const paleta = p.pins.paleta ?? estrutura?.paleta ?? 'editorial'
+
+  // confirmação some sozinha se a pessoa não clicar de novo
+  useEffect(() => {
+    if (!confirmar) return
+    const t = setTimeout(() => setConfirmar(null), 3000)
+    return () => clearTimeout(t)
+  }, [confirmar])
+
+  const acao = 'grid size-7 cursor-pointer place-items-center rounded-md text-[#7a7480] hover:bg-[#f1eff3] hover:text-[#1d1b20]'
+
+  return (
+    <li className={`rounded-lg border transition-colors ${ativo ? 'border-[#1d1b20] ring-1 ring-[#1d1b20]' : 'border-[#e7e4ea] hover:border-[#b9b3bf]'}`}>
+      <div className="flex items-center gap-2 p-1.5">
+        <span data-paleta={paleta} aria-hidden className="flex h-9 w-6 shrink-0 flex-col overflow-hidden rounded-md ring-1 ring-black/5">
+          {SWATCH.map((v) => (
+            <span key={v} className="flex-1" style={{ background: `var(${v})` }} />
+          ))}
+        </span>
+        {editando ? (
+          <form
+            className="flex min-w-0 flex-1 gap-1"
+            onSubmit={(e) => {
+              e.preventDefault()
+              renomearPreset(p.id, nome)
+              setEditando(false)
+            }}
+          >
+            <input
+              autoFocus
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Escape') {
+                  e.preventDefault() // o painel ignora Esc já tratado (não fecha junto)
+                  setNome(p.nome)
+                  setEditando(false)
+                }
+              }}
+              aria-label="Novo nome"
+              maxLength={60}
+              className="min-w-0 flex-1 rounded-md border border-[#b9b3bf] px-2 py-1 text-[12px] focus:border-[#1d1b20] focus:outline-none"
+            />
+            <button type="submit" className="cursor-pointer rounded-md bg-[#1d1b20] px-2 text-[11px] text-white">
+              OK
+            </button>
+          </form>
+        ) : (
+          <button
+            type="button"
+            onClick={() => aplicarEstado(p)}
+            disabled={!estrutura}
+            title={estrutura ? 'Aplicar esta predefinição' : 'A estrutura desta predefinição não existe mais'}
+            className="min-w-0 flex-1 cursor-pointer text-left disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            <span className="flex items-center gap-1.5">
+              <span className="truncate text-[12px] font-semibold text-[#1d1b20]">{p.nome}</span>
+              {ativo && <Ico d={I.check} className="size-3.5 shrink-0 text-[#1d1b20]" />}
+            </span>
+            <span className="block truncate text-[10.5px] text-[#7a7480]">
+              {estrutura?.label ?? p.theme} · {pinsLabel(Object.keys(p.pins).length)}
+            </span>
+          </button>
+        )}
+        {!editando && (
+          <span className="flex shrink-0 items-center">
+            {confirmar ? (
+              <button
+                type="button"
+                onClick={() => {
+                  if (confirmar === 'apagar') apagarPreset(p.id)
+                  else sobrescreverPreset(p.id, atual)
+                  setConfirmar(null)
+                }}
+                className={`cursor-pointer rounded-md px-2 py-1 text-[10.5px] font-medium text-white ${confirmar === 'apagar' ? 'bg-[#b3261e]' : 'bg-[#1d1b20]'}`}
+              >
+                {confirmar === 'apagar' ? 'Apagar?' : 'Regravar?'}
+              </button>
+            ) : (
+              <>
+                <button type="button" onClick={() => setEditando(true)} title="Renomear" aria-label={`Renomear ${p.nome}`} className={acao}>
+                  <Ico d={I.lapis} className="size-3.5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setConfirmar('regravar')}
+                  disabled={ativo}
+                  title="Regravar com a combinação atual"
+                  aria-label={`Regravar ${p.nome} com a combinação atual`}
+                  className={`${acao} disabled:cursor-default disabled:opacity-30 disabled:hover:bg-transparent`}
+                >
+                  <Ico d={I.atualizar} className="size-3.5" />
+                </button>
+                <button type="button" onClick={() => setConfirmar('apagar')} title="Apagar" aria-label={`Apagar ${p.nome}`} className={`${acao} hover:text-[#b3261e]`}>
+                  <Ico d={I.lixo} className="size-3.5" />
+                </button>
+              </>
+            )}
+          </span>
+        )}
+      </div>
+    </li>
+  )
+}
+
+function Predefinicoes({ s }: { s: ThemeState }) {
+  const presets = usePresets()
+  const [nome, setNome] = useState('')
+  const estrutura = THEMES.find((t) => t.id === s.theme)!
+  const sugestao = `${estrutura.label} · ${PALETAS.find((p) => p.id === s.paleta)?.label.split(' · ')[0]}`
+  const jaSalva = presets.find((p) => mesmoEstado(p, s))
+
+  return (
+    <section>
+      <Cabeca titulo="Predefinições" ajuda="Guarde combinações com nome. Ficam salvas neste navegador." />
+      <form
+        className="flex gap-2"
+        onSubmit={(e) => {
+          e.preventDefault()
+          salvarPreset(nome || sugestao, s)
+          setNome('')
+        }}
+      >
+        <input
+          value={nome}
+          onChange={(e) => setNome(e.target.value)}
+          placeholder={sugestao}
+          aria-label="Nome da predefinição"
+          maxLength={60}
+          className="min-w-0 flex-1 rounded-lg border border-[#e7e4ea] px-3 py-2 text-[12px] placeholder:text-[#b9b3bf] focus:border-[#1d1b20] focus:outline-none"
+        />
+        <button type="submit" className="flex shrink-0 cursor-pointer items-center gap-1.5 rounded-lg bg-[#1d1b20] px-3 py-2 text-[12px] font-medium text-white hover:bg-[#3b3740]">
+          <Ico d={I.salvar} className="size-3.5" /> Salvar atual
+        </button>
+      </form>
+      {jaSalva && <p className="mt-1.5 text-[10.5px] text-[#7a7480]">A combinação atual já está salva como “{jaSalva.nome}”.</p>}
+      {presets.length === 0 ? (
+        <p className="mt-3 rounded-lg border border-dashed border-[#e7e4ea] px-3 py-4 text-center text-[11px] text-[#9a94a0]">
+          Nenhuma predefinição ainda. Monte uma combinação e salve aqui.
+        </p>
+      ) : (
+        <ul className="mt-3 space-y-1.5">
+          {presets.map((p) => (
+            <ItemPreset key={p.id} p={p} ativo={mesmoEstado(p, s)} atual={s} />
+          ))}
+        </ul>
+      )}
+    </section>
+  )
+}
+
 export function ThemeSwitcher() {
   const s = useThemeState()
   const [aberto, setAberto] = useState(lerAberto)
@@ -101,7 +268,7 @@ export function ThemeSwitcher() {
       /* sem storage */
     }
     if (!aberto) return
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setAberto(false)
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && !e.defaultPrevented && setAberto(false)
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [aberto])
@@ -187,6 +354,8 @@ export function ThemeSwitcher() {
         </header>
 
         <div className="flex-1 space-y-7 overflow-y-auto overscroll-contain px-5 py-5 [scrollbar-width:thin]">
+          <Predefinicoes s={s} />
+
           {/* Estrutura */}
           <section>
             <Cabeca titulo="Estrutura" ajuda="O layout da home. Cada uma traz paleta, estilo, hero e catálogo próprios." />
