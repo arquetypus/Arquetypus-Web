@@ -87,7 +87,9 @@ type Pecas = { paleta: PaletaId; estilo: EstiloId; hero: HeroId; catalogo: Catal
 export const THEMES = [
   { id: 'editorial', label: 'Editorial', desc: 'Home padrão: carrossel, bodegón e degraus', paleta: 'editorial', estilo: 'elegant', hero: 'padrao', catalogo: 'padrao' },
   { id: 'atelie', label: 'Ateliê', desc: 'Revista impressa: capa e índice numerado', paleta: 'grafica', estilo: 'cormorant-reto', hero: 'atelie', catalogo: 'atelie' },
-  { id: 'boutique', label: 'Boutique', desc: 'Loja: avisos, grade de produtos, compre o look', paleta: 'branco', estilo: 'manrope', hero: 'boutique', catalogo: 'boutique' },
+  // direção decidida (out/2026): Boutique com paleta Âmbar, estilo Elegant e hero do Cinema. O visual
+  // original da Boutique (branco, Manrope, hero compacto) continua acessível fixando as peças em "Misturar".
+  { id: 'boutique', label: 'Boutique', desc: 'Direção escolhida: loja com hero de cinema, âmbar', paleta: 'ambar', estilo: 'elegant', hero: 'cinema', catalogo: 'boutique' },
   { id: 'oraculo', label: 'Oráculo', desc: 'Tarô: cartas, arcos e céu estrelado', paleta: 'noite-azul', estilo: 'cormorant', hero: 'oraculo', catalogo: 'oraculo' },
   { id: 'galeria', label: 'Galeria', desc: 'Museu: salas numeradas, molduras e plaquetas', paleta: 'parede', estilo: 'bodoni', hero: 'galeria', catalogo: 'galeria' },
   { id: 'manifesto', label: 'Manifesto', desc: 'Cartaz: caixa alta gigante e bordas grossas', paleta: 'ocre', estilo: 'anton', hero: 'manifesto', catalogo: 'manifesto' },
@@ -99,6 +101,13 @@ export const THEMES = [
 ] as const satisfies readonly ({ id: string; label: string; desc: string } & Pecas)[]
 
 export type ThemeId = (typeof THEMES)[number]['id']
+
+/** Estrutura que abre quando a URL e o storage não dizem nada — a direção decidida. */
+export const PADRAO: ThemeId = 'boutique'
+
+/** Painel de direção visual (ThemeSwitcher). Desligado (out/2026, direção decidida): o site abre sempre no PADRAO
+ *  com os padrões dele — ignora ?tema=/peças na URL e o que ficou salvo no navegador, e não grava nada. */
+export const SHOW_THEME_SWITCHER = false
 
 /** Links antigos (?tema=noite etc., de quando paleta e estrutura eram uma coisa só) continuam abrindo igual. */
 const LEGADO: Record<string, { tema: ThemeId } & Partial<Pecas>> = {
@@ -131,7 +140,8 @@ export type Pins = Partial<Pecas>
 export type Estado = { theme: ThemeId; pins: Pins }
 export type ThemeState = { theme: ThemeId; pins: Pins } & Pecas
 
-const STORAGE_KEY = 'arq-tema-v2'
+// v3: troca de padrão (out/2026) — escolhas salvas antes da decisão não sobrepõem a direção nova
+const STORAGE_KEY = 'arq-tema-v3'
 const def = (t: ThemeId) => THEMES.find((x) => x.id === t)!
 
 function limparPins(p: Record<string, unknown>): Pins {
@@ -144,6 +154,7 @@ function limparPins(p: Record<string, unknown>): Pins {
 }
 
 function inicial(): Estado {
+  if (!SHOW_THEME_SWITCHER) return { theme: PADRAO, pins: {} }
   const params = new URLSearchParams(window.location.search)
   const tema = params.get('tema')
   const daUrl = limparPins(Object.fromEntries(params))
@@ -152,14 +163,14 @@ function inicial(): Estado {
     const { tema: t, ...resto } = LEGADO[tema]
     return { theme: t, pins: { ...resto, ...daUrl } }
   }
-  if (Object.keys(daUrl).length) return { theme: 'editorial', pins: daUrl }
+  if (Object.keys(daUrl).length) return { theme: PADRAO, pins: daUrl }
   try {
     const salvo = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? 'null')
     if (salvo && isTheme(salvo.theme)) return { theme: salvo.theme, pins: limparPins(salvo.pins ?? {}) }
   } catch {
     /* storage bloqueado ou inválido: fica no padrão */
   }
-  return { theme: 'editorial', pins: {} }
+  return { theme: PADRAO, pins: {} }
 }
 
 function resolver(e: Estado): ThemeState {
@@ -183,6 +194,7 @@ function aplicar() {
   root.dataset.estrutura = atual.theme
   root.dataset.paleta = atual.paleta
   root.dataset.estilo = atual.estilo
+  if (!SHOW_THEME_SWITCHER) return
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(estado))
   } catch {
@@ -191,7 +203,7 @@ function aplicar() {
   // URL compartilhável: ?tema= + só o que foi fixado
   const url = new URL(window.location.href)
   for (const k of ['tema', 'paleta', 'estilo', 'hero', 'catalogo']) url.searchParams.delete(k)
-  if (estado.theme !== 'editorial') url.searchParams.set('tema', estado.theme)
+  if (estado.theme !== PADRAO) url.searchParams.set('tema', estado.theme)
   for (const [k, v] of Object.entries(estado.pins)) url.searchParams.set(k, v)
   window.history.replaceState(window.history.state, '', url)
 }

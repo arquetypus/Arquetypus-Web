@@ -66,7 +66,7 @@ export function FeaturedAtelie({ a, img }: { a: Archetype; img: string }) {
 export function CommunityAtelie() {
   const location = useLocation()
   return (
-    <section className="bg-papel px-5 py-14 md:px-10 lg:py-24">
+    <section className="rounded-t-2xl bg-papel px-5 py-14 md:px-10 lg:py-24">
       <div className="mx-auto max-w-7xl">
         <div className="lg:flex lg:items-end lg:justify-between">
           <div>

@@ -14,7 +14,9 @@ import { apagarPreset, mesmoEstado, renomearPreset, salvarPreset, sobrescreverPr
  * Cores fixas (não tokens): a ferramenta fica igual em qualquer direção. As amostras de paleta e estilo
  * usam data-paleta / data-estilo no próprio elemento (index.css aceita os dois fora do <html>).
  */
-export const SHOW_THEME_SWITCHER = true
+// a chave fica em lib/theme.ts: desligada, o tema também ignora URL e storage e abre sempre a direção decidida
+export { SHOW_THEME_SWITCHER } from '@/lib/theme'
+import { SHOW_THEME_SWITCHER } from '@/lib/theme'
 
 const OPEN_KEY = 'arq-painel-aberto'
 

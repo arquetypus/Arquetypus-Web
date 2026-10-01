@@ -79,7 +79,9 @@ decisão de produto já tomada:
 
 ## Pendências técnicas conhecidas
 
-- **Drawer funcional** (`components/Drawer.tsx`, aberto via `Layout`).
+- **Drawer funcional** (`components/Drawer.tsx`, aberto pelo botão de menu do
+  header no celular, em `Layout`). Busca e sacola do header do celular são só
+  visuais (sem busca nem checkout ainda) — ligar quando existirem.
   Itens sem página real (Sobre, Ajuda e trocas) ficam visíveis mas
   desabilitados com rótulo "Em breve" em vez de link morto ou rota
   inventada — quando essas páginas existirem, trocar por `Link` de
@@ -99,8 +101,8 @@ decisão de produto já tomada:
   direções de lab-fabio.vercel.app/arquetypus-lp ("Pulso" foi descartada: não
   combina com a Arquétypus):
   - **Estrutura** (`THEMES`, `?tema=`): o layout da home.
-    Editorial = home padrão. **Ateliê** (revista) e **Boutique** (loja: faixa de
-    avisos, grade de produtos, rótulos novos "A partir de"/"Comprar {nome}")
+    Editorial = home padrão. **Ateliê** (revista) e **Boutique** (loja:
+    grade de produtos, rótulos novos "A partir de"/"Comprar {nome}")
     trocam hero, catálogo, destaque, comunidade, diário e rodapé
     (`components/atelie/`, `components/boutique/`). **Oráculo, Galeria,
     Manifesto, Cinema, Herbário, Laboratório, Riviera, Zen** desenham a home
@@ -117,6 +119,11 @@ decisão de produto já tomada:
   - **Estilo** (`ESTILOS`, `html[data-estilo]`): fonte dos títulos + cantos.
   - **Hero** e **Catálogo** (`HEROES`/`CATALOGS`): peças trocáveis entre
     estruturas.
+  **Direção decidida (out/2026):** Boutique + paleta Âmbar + estilo Elegant +
+  hero do Cinema — viraram os padrões da Boutique em `THEMES`, e `PADRAO` (em
+  `lib/theme.ts`) abre a Boutique quando URL/storage não dizem nada. Do Cinema
+  também ficou o hover dos cards de gênero (apagados que acendem, só `lg:`; no
+  celular sempre acesos).
   Cada estrutura tem padrões pros outros quatro; escolher em "Misturar" fixa a
   peça (vai pra URL: `?paleta=`, `?estilo=`, `?hero=`, `?catalogo=`) e ela
   continua valendo ao trocar de estrutura, até "usar padrão" / "Restaurar
@@ -124,9 +131,10 @@ decisão de produto já tomada:
   no `<html>`) — é assim que a sidebar mostra as amostras. Links antigos
   (`?tema=noite`, `?tema=boutique-ambar`…) são traduzidos em `LEGADO`. CSS
   de layout fica em `html[data-estrutura]`. Cor nova em componente deve usar
-  token (`var(--color-…)`), senão não acompanha as paletas. Desligar com
-  `SHOW_THEME_SWITCHER = false` quando a direção for decidida (e aí promover a
-  escolhida pro `@theme`).
+  token (`var(--color-…)`), senão não acompanha as paletas. **Desligado desde
+  out/2026** (`SHOW_THEME_SWITCHER = false`, agora em `lib/theme.ts`): o site
+  abre sempre na direção decidida e ignora `?tema=`/storage. Pra voltar a
+  discutir, ligar de novo. Falta promover a paleta Âmbar pro `@theme`.
 - **Selos de proporção nas imagens** (`components/ui/RatioTag.tsx`) são
   apoio ao time de design — mostram a proporção real da caixa na tela.
   Desligar com `SHOW_RATIO_TAGS = false` antes do lançamento. O
@@ -156,6 +164,11 @@ decisão de produto já tomada:
   expandida pra 16:9 com IA (Higgsfield, FLUX.2 Pro Outpaint) — as laterais
   foram geradas; o frasco e a pessoa são os pixels originais.
   O que sobrou em `assets/mocks/` ainda é mock antigo.
+- **Quiz ainda não tem rota.** O 1º banner do hero (`HeroCinema`) mostra o CTA
+  "Descubra seus arquétipos" desligado, com "Teste de 2 minutos · em breve"
+  (`QUIZ_CTA` em `data/home.ts`). `pages/QuizPage.tsx`/`ResultPage.tsx` existem
+  mas não estão ligados no `App.tsx` — quando o quiz entrar, trocar o botão por
+  `Link` pra rota.
 - **`/criadores` existe** (`pages/CreatorsPage.tsx`). Comissão do afiliado e preço do kit vêm
   de `data/economics.ts` (`ECON`), não hard-coded no componente —
   `comissaoPct` é HIPÓTESE (chute do v6, sem CMV real por trás);
@@ -197,6 +210,13 @@ decisão de produto já tomada:
   desconto máximo sem confirmar com o usuário primeiro.
 
 ## Convenções de trabalho
+
+- **Nenhuma seção depois do hero pode passar da altura da tela** (decisão de
+  reunião, out/2026) — só o hero da home cobre 100%. Seção com muito conteúdo
+  vira trilho horizontal no celular ou tem altura presa à tela (`svh`).
+- **Cantos: uma escala só.** Usar `rounded-sm…3xl` (tokens `--radius-*`,
+  ajustados no estilo Elegant em `index.css`), nunca raio em px solto;
+  `rounded-full` só pra pílula/círculo.
 
 - Português nas strings de UI e nos dados de conteúdo; inglês em
   nomes de tipo, variável e arquivo — como já está no código.

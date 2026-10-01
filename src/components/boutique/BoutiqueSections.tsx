@@ -81,7 +81,15 @@ export function CatalogGrid({
 }) {
   const location = useLocation()
   return (
-    <section id="catalogo" className="bg-papel-2 px-4 py-14 md:px-10 lg:py-24">
+    <section
+      id="catalogo"
+      className="relative z-20 bg-papel-2 px-4 py-14 md:px-10 lg:py-24"
+      style={{
+        // degrau invertido: o catálogo fica POR CIMA da seção anterior e projeta sombra nela, com filete latão
+        boxShadow: '0 -14px 26px -12px rgba(40,46,41,0.3), 0 -4px 8px -4px rgba(40,46,41,0.2)',
+        borderTop: '1px solid color-mix(in srgb, var(--color-latao) 60%, transparent)',
+      }}
+    >
       <div className="mx-auto max-w-7xl">
         <div className="text-center">
           <p className="font-label text-[10px] tracking-[0.2em] text-tinta-2 uppercase">O catálogo</p>

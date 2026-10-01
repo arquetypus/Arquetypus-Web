@@ -66,7 +66,8 @@ export const HERO_SLIDES = [
     type: 'video' as const,
     eyebrow: 'Perfumaria & expressão',
     eyebrowColor: '#c6a46c',
-    heading: 'Descubra qual versão\nde você quer\nexpressar hoje.',
+    // encurtado (out/2026): sem o "Descubra", que o CTA do quiz já diz logo abaixo
+    heading: 'Qual versão de você\nquer expressar hoje?',
     sub: 'Nove fragrâncias. Diferentes formas de expressão.',
     requisito: 'VÍDEO · 9:16 · 1080×1920 · HERO FULLSCREEN · AUTOPLAY MUTED',
     img: heroVideoPoster,
@@ -105,6 +106,11 @@ export const HERO_SLIDES = [
     tint: '#0e1829', // azul-marinho escuro
   },
 ]
+
+/** CTA do quiz no 1º banner do hero. O quiz ainda não existe: o botão aparece desligado, com o aviso "em
+ *  breve" — quando a rota existir, virar Link pra ela em HeroCinema (components/directions/Cinema.tsx).
+ *  Rótulo reaproveita o CTA da ponte ("Descubra seus arquétipos"); "teste de 2 minutos" vem do texto da marca. */
+export const QUIZ_CTA = { label: 'Descubra seus arquétipos', aviso: 'Teste de 2 minutos · em breve' }
 
 export const SEALS = ['Entrega garantida', 'Rápido e seguro', 'Vegano', 'Cruelty free']
 

@@ -1,14 +1,14 @@
-import { useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { HERO_SLIDES } from '@/data/home'
+import { HERO_SLIDES, QUIZ_CTA } from '@/data/home'
 import { scrollToId } from '@/lib/scrollToId'
 import { brl, FilterTabs, numero, parcela, pix, type CatalogProps } from './shared'
 
 /**
  * Direção "Cinema" (ThemeSwitcher) — campanha de perfume como filme noir. Referências da Behance: "Voléa —
  * Niche Perfume Brand Identity" (vermelho profundo), "NOCTRA", "NOIRÉA — The Art of Scent" e "Trémoille".
- * Preto, burgundy da paleta de arquétipos da marca, serifa em itálico; hero em tela cheia com faixas de
- * cinema e o catálogo como "elenco": fotos das pessoas com o frasco, uma por arquétipo.
+ * Preto, burgundy da paleta de arquétipos da marca, serifa em itálico; hero em tela cheia (carrossel) com
+ * faixas de cinema e o catálogo como "elenco": fotos das pessoas com o frasco, uma por arquétipo.
  */
 
 // foto da pessoa com o frasco (a mesma da 2ª foto da galeria da PDP); arquivo = id do arquétipo
@@ -18,60 +18,201 @@ const LIFESTYLE: Record<string, string> = Object.fromEntries(
   ),
 )
 
+const AUTOPLAY_MS = 5000
+// arrasto mínimo (px) pra trocar de slide no gesto de deslizar
+const SWIPE_PX = 50
+
+/** Hero em tela cheia como carrossel (mesmos slides do HeroCarousel: vídeo + Afrodite + Guerreiro), com as
+ *  faixas de cinema, vinheta e véu na cor de cada banner. Troca em fade; barras de progresso no rodapé. */
 export function HeroCinema() {
-  const slide = HERO_SLIDES[0]
-  const video = 'video' in slide ? slide.video : undefined
+  const location = useLocation()
+  const [current, setCurrent] = useState(0)
+  const total = HERO_SLIDES.length
+  const slide = HERO_SLIDES[current]
+  const duration = 'durationMs' in slide ? slide.durationMs : AUTOPLAY_MS
+
+  const next = useCallback(() => setCurrent((c) => (c + 1) % total), [total])
+  const prev = useCallback(() => setCurrent((c) => (c - 1 + total) % total), [total])
+
+  useEffect(() => {
+    const timer = setTimeout(next, duration)
+    return () => clearTimeout(timer)
+  }, [current, next, duration])
+
+  // deslizar com o dedo (só toque/caneta; touch-pan-y deixa o scroll vertical com o navegador)
+  const dragStart = useRef<number | null>(null)
+  const onPointerDown = (e: React.PointerEvent) => {
+    if (e.pointerType !== 'mouse') dragStart.current = e.clientX
+  }
+  const onPointerUp = (e: React.PointerEvent) => {
+    if (dragStart.current === null) return
+    const dx = e.clientX - dragStart.current
+    dragStart.current = null
+    if (dx <= -SWIPE_PX) next()
+    else if (dx >= SWIPE_PX) prev()
+  }
+
+  const barras = (
+    <div className="flex w-48 items-center gap-1.5 lg:w-72">
+      {HERO_SLIDES.map((s, i) => (
+        <button
+          key={s.id}
+          type="button"
+          onClick={() => setCurrent(i)}
+          aria-label={`Ir para o slide ${i + 1}`}
+          aria-current={i === current}
+          className="flex h-4 flex-1 cursor-pointer items-center"
+        >
+          <span className="block h-px w-full overflow-hidden bg-papel-inv/25">
+            {i < current ? (
+              <span className="block h-full w-full bg-latao" />
+            ) : i === current ? (
+              <span key={`bar-${current}`} className="hero-timer-bar block h-full bg-latao" style={{ animationDuration: `${duration}ms` }} />
+            ) : null}
+          </span>
+        </button>
+      ))}
+    </div>
+  )
+
+  const botao =
+    'hero-fade-up mt-5 inline-block cursor-pointer border border-papel-inv/50 px-6 py-3 font-label text-[10px] tracking-[0.3em] uppercase lg:mt-6 lg:px-8 lg:py-3.5 lg:text-[11px] transition-colors hover:border-latao hover:bg-latao hover:text-black'
+
   return (
-    <section className="relative h-svh min-h-[560px] overflow-hidden bg-black text-papel-inv">
-      <picture>
-        <source media="(min-width: 1024px)" srcSet={slide.imgDesktop} />
-        <img src={slide.img} alt="" className="absolute inset-0 h-full w-full object-cover" />
-      </picture>
-      {video && (
-        <video
-          src={video}
-          poster={slide.img}
-          autoPlay
-          muted
-          loop
-          playsInline
-          aria-hidden
-          className="absolute inset-0 h-full w-full object-cover lg:hidden"
-        />
-      )}
-      {/* vinheta + véu burgundy */}
+    <section
+      className="hero-tint sticky top-0 h-svh min-h-[680px] touch-pan-y overflow-hidden bg-black text-papel-inv"
+      // sticky: o banner fica parado e as seções sobem por cima dele (como o carrossel do Editorial).
+      // Tela cheia; quem sinaliza que a página continua é o "Role" no rodapé do banner
+      // cor do degradê atrás do texto acompanha o banner (`tint` em HERO_SLIDES); transição em index.css
+      style={{ '--hero-tint': slide.tint } as React.CSSProperties}
+      onPointerDown={onPointerDown}
+      onPointerUp={onPointerUp}
+      onPointerCancel={() => (dragStart.current = null)}
+    >
+      {HERO_SLIDES.map((s, i) => (
+        <div
+          key={s.id}
+          aria-hidden={i !== current}
+          className={`absolute inset-0 transition-opacity duration-[1200ms] ease-out motion-reduce:transition-none ${i === current ? 'opacity-100' : 'opacity-0'}`}
+        >
+          <picture>
+            <source media="(min-width: 1024px)" srcSet={s.imgDesktop} />
+            <img
+              src={s.img}
+              alt=""
+              className={`absolute inset-0 h-full w-full object-cover transition-transform ease-out motion-reduce:scale-100 motion-reduce:transition-none ${
+                i === current ? 'scale-100 duration-[6000ms]' : 'scale-[1.08] delay-[1200ms] duration-0'
+              }`}
+            />
+          </picture>
+          {'video' in s && i === current && (
+            // monta só no slide ativo: ao voltar pro slide, o vídeo recomeça junto com a barra
+            <video
+              src={s.video}
+              poster={s.img}
+              autoPlay
+              muted
+              playsInline
+              preload="auto"
+              aria-hidden
+              // desktop mostra o still 16:9 (imgDesktop) até existir o vídeo 16:9
+              className="absolute inset-0 h-full w-full object-cover lg:hidden"
+            />
+          )}
+        </div>
+      ))}
+      {/* vinheta suave nas bordas */}
+      <div aria-hidden className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,0.55) 100%)' }} />
+      {/* véu na cor do banner (`tint` em HERO_SLIDES), como no carrossel do Editorial. Celular: cobre a foto toda,
+          cheio até onde a seção de baixo começa (--hero-sobe) e cada vez mais leve pra cima. Desktop: só na base */}
       <div
         aria-hidden
-        className="absolute inset-0"
+        className="absolute inset-0 lg:hidden"
         style={{
           background:
-            'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.75) 100%), linear-gradient(to top, color-mix(in srgb, var(--color-burgundy) 70%, transparent), transparent 55%)',
+            'linear-gradient(to top, var(--hero-tint) 0, var(--hero-tint) var(--hero-sobe), color-mix(in srgb, var(--hero-tint) 45%, transparent) 55%, color-mix(in srgb, var(--hero-tint) 20%, transparent) 100%)',
         }}
       />
+      <div
+        aria-hidden
+        className="absolute inset-0 hidden lg:block"
+        style={{ background: 'linear-gradient(to top, color-mix(in srgb, var(--hero-tint) 75%, transparent), transparent 55%)' }}
+      />
       {/* desktop: a foto dos frascos ocupa a direita — escurece a esquerda, onde fica o texto */}
-      <div aria-hidden className="absolute inset-0 hidden bg-gradient-to-r from-black/85 via-black/40 to-transparent lg:block" />
-      {/* faixas de cinema (letterbox) */}
-      <div aria-hidden className="absolute inset-x-0 top-0 h-[7svh] bg-black" />
-      <div aria-hidden className="absolute inset-x-0 bottom-0 h-[7svh] bg-black" />
+      <div aria-hidden className="absolute inset-0 hidden bg-gradient-to-r from-(--hero-tint)/85 via-(--hero-tint)/40 to-transparent lg:block" />
+      {/* faixa de cinema só em cima e só no celular, com a altura do header (h-14), que fica sobre ela e funciona
+          como a própria faixa. Embaixo a foto vai até a seção que sobe por cima (out/2026) */}
+      <div aria-hidden className="absolute inset-x-0 top-0 h-14 bg-black lg:hidden" />
 
-      <div className="absolute inset-x-0 bottom-[11svh] px-5 text-center lg:right-auto lg:bottom-[16svh] lg:left-16 lg:max-w-2xl lg:px-0 lg:text-left">
-        <p className="font-label text-[10px] tracking-[0.5em] text-latao uppercase">{slide.eyebrow}</p>
-        <h1 className="mx-auto mt-5 max-w-[15ch] font-display text-[42px] lg:mx-0 leading-[1] text-balance italic md:text-6xl lg:text-7xl">
+      {/* parte visível do banner: a 1ª seção sobe por cima dele (--hero-sobe em index.css), então texto, barras e "Role" ficam presos a esta área, acima da ponta da seção */}
+      <div className="absolute inset-x-0 top-0 bottom-(--hero-sobe)">
+
+      {/* key remonta a cada slide pra reiniciar o fade-up */}
+      <div
+        key={slide.id}
+        // celular: texto encostado embaixo, logo acima das barras (que ficam nos últimos 56px)
+        className="absolute inset-x-0 bottom-14 px-5 text-center lg:right-auto lg:bottom-[6svh] lg:left-16 lg:max-w-2xl lg:px-0 lg:text-left"
+      >
+        <p className="hero-fade-up font-label text-[9px] tracking-[0.45em] uppercase lg:text-[10px] lg:tracking-[0.5em]" style={{ color: slide.eyebrowColor, animationDelay: '100ms' }}>
+          {slide.eyebrow}
+        </p>
+        <h1
+          className="hero-fade-up mx-auto mt-2.5 max-w-[15ch] font-display text-[34px] leading-[1.02] lg:mt-3 lg:leading-[1] text-balance italic md:text-6xl lg:mx-0 lg:text-[min(4.5rem,7.5svh)]"
+          style={{ animationDelay: '200ms' }}
+        >
           {slide.heading.replace(/\n/g, ' ')}
         </h1>
-        <p className="mx-auto mt-5 max-w-[40ch] text-sm text-papel-inv/75 lg:mx-0 lg:text-base">{slide.sub}</p>
-        <button
-          type="button"
-          onClick={() => scrollToId('catalogo')}
-          className="mt-8 cursor-pointer border border-papel-inv/50 px-8 py-3.5 font-label text-[11px] tracking-[0.3em] uppercase transition-colors hover:border-latao hover:bg-latao hover:text-black"
+        {/* subtítulo do 1º banner só no desktop: no celular o título + CTA do quiz já bastam (out/2026) */}
+        <p
+          className={`hero-fade-up mx-auto mt-2.5 max-w-[40ch] text-[13px] text-papel-inv/75 lg:mx-0 lg:mt-3 lg:text-base ${slide.id === 'video' ? 'hidden lg:block' : ''}`}
+          style={{ animationDelay: '250ms' }}
         >
-          Ver os 9 arquétipos
-        </button>
+          {slide.sub}
+        </p>
+        {'cta' in slide && slide.cta ? (
+          // /loja/:id abre o pop-up de compra por cima da home (ver App.tsx)
+          <Link to={slide.cta.to} state={{ backgroundLocation: location }} className={botao} style={{ animationDelay: '300ms' }}>
+            {slide.cta.label}
+          </Link>
+        ) : (
+          // 1º banner: CTA do quiz, desligado até o quiz existir (ver QUIZ_CTA)
+          <span className="hero-fade-up flex flex-col items-center lg:items-start" style={{ animationDelay: '300ms' }}>
+            <button type="button" disabled aria-describedby="quiz-aviso" className={`${botao} cursor-default! opacity-80 hover:border-papel-inv/50! hover:bg-transparent! hover:text-papel-inv!`}>
+              {QUIZ_CTA.label}
+            </button>
+            <span id="quiz-aviso" className="mt-2 font-label text-[8.5px] lg:mt-2.5 lg:text-[9px] tracking-[0.35em] text-papel-inv/60 uppercase">
+              {QUIZ_CTA.aviso}
+            </span>
+          </span>
+        )}
+        {/* desktop: barras de progresso logo abaixo do CTA, no fluxo do texto (não sobrepõem em tela baixa) */}
+        <div className="mt-7 hidden items-center gap-4 lg:flex">
+          <button type="button" onClick={prev} aria-label="Slide anterior" className="cursor-pointer text-sm text-papel-inv/60 hover:text-latao">
+            ←
+          </button>
+          {barras}
+          <button type="button" onClick={next} aria-label="Próximo slide" className="cursor-pointer text-sm text-papel-inv/60 hover:text-latao">
+            →
+          </button>
+        </div>
       </div>
-      {/* "legenda" de filme na faixa de baixo */}
-      <p className="absolute inset-x-0 bottom-0 flex h-[7svh] items-center justify-center font-label text-[9px] tracking-[0.4em] text-papel-inv/50 uppercase">
-        Arquétypus — Nove fragrâncias
-      </p>
+
+      {/* celular: barras de progresso (clicáveis) centradas no rodapé da parte visível */}
+      <div className="absolute inset-x-0 bottom-0 flex h-14 items-center justify-center px-5 lg:hidden">
+        {barras}
+      </div>
+
+      {/* indicação de scroll (só celular): fio que escorre no canto do rodapé. No desktop a ponta da seção
+          de baixo já aparece e faz esse papel. Leva pra primeira seção */}
+      <button
+        type="button"
+        onClick={() => scrollToId('comunidade')}
+        aria-label="Rolar para a próxima seção"
+        className="group absolute right-5 bottom-0 flex h-14 cursor-pointer items-center lg:hidden"
+      >
+        <span aria-hidden className="scroll-cue relative block h-6 w-px overflow-hidden bg-papel-inv/20" />
+      </button>
+      </div>
     </section>
   )
 }

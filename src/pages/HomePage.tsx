@@ -5,13 +5,11 @@ import {
   BODEGON_IMG,
   COMPARISON,
   DIAGNOSIS,
-  ENERGIES,
   FAMILIES,
   FRASCO_CUT_IMG,
   FRASCO_IMG,
   JOURNAL,
   QUALIFICATION,
-  SEALS,
   SEGMENTS,
   SEGMENTS_HEADING,
   STATS,
@@ -127,23 +125,6 @@ const CATALOGO_FILTROS: { key: 'ALL' | 'F' | 'M' | 'U'; label: string }[] = [
   { key: 'U', label: 'Compartilhável' },
 ]
 
-const SEAL_ICON_PATHS: Record<string, string> = {
-  'Entrega garantida': 'M3 7h11v8H3V7Zm11 3h3.5L20 13v2h-3M6 18a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm10 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z',
-  'Rápido e seguro': 'M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Zm-3 8.5 2 2 4-4.5',
-  Vegano: 'M12 21c-4-1-7-4.5-7-10 5 0 8 2 9 6 1-4 4-6 9-6 0 5.5-3 9-7 10a4 4 0 0 1-4 0Z',
-  'Cruelty free': 'M12 20s-7-4.35-7-9.5A4 4 0 0 1 12 8a4 4 0 0 1 7 2.5C19 15.65 12 20 12 20Z',
-}
-
-function SealIcon({ seal, className }: { seal: string; className?: string }) {
-  const d = SEAL_ICON_PATHS[seal]
-  if (!d) return null
-  return (
-    <svg aria-hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className={className}>
-      <path d={d} />
-    </svg>
-  )
-}
-
 /**
  * H-19 Comunidade. Componente próprio de propósito: o índice ativo do carrossel
  * muda a cada card que passa, e como estado da HomePage re-renderizava a página
@@ -162,7 +143,7 @@ function CommunitySection() {
   return (
     <Reveal
       as="section"
-      className="relative overflow-hidden bg-papel pt-14 pb-16 lg:pt-20 lg:pb-24"
+      className="relative overflow-hidden rounded-t-2xl bg-papel pt-14 pb-16 lg:pt-20 lg:pb-24"
       style={{
         // degrau: sai da "A diferença" (por cima) para uma seção que fica abaixo
         boxShadow:
@@ -317,7 +298,6 @@ export function HomePage() {
   const location = useLocation()
   const { hash } = location
   const familiesScroll = useCarouselIndex<HTMLDivElement>(FAMILIES.length)
-  const energiesScroll = useCarouselIndex<HTMLDivElement>(ENERGIES.length)
   const tapGuard = useTapGuard()
   const [catalogoFiltro, setCatalogoFiltro] = useState<'ALL' | 'F' | 'M' | 'U'>('ALL')
   const catalogoFiltrado = useMemo(
@@ -339,6 +319,14 @@ export function HomePage() {
   const heroSobHeader = hero === 'padrao' || hero === 'cinema'
   const catalogoProps = { items: catalogoFiltrado, filtro: catalogoFiltro, setFiltro: setCatalogoFiltro, filtros: CATALOGO_FILTROS }
   const DirectionPage = DIRECTION_PAGES[theme]
+  // card das seções: sobe arredondado por cima do hero (padrão e Cinema)
+  const cardClass =
+    hero === 'padrao'
+      ? 'relative z-10 -mt-28 rounded-t-2xl bg-papel [@media(max-height:820px)]:-mt-16'
+      : hero === 'cinema'
+        ? // sobe por cima do hero pra mostrar a ponta da 1ª seção (--hero-sobe em index.css)
+          'relative z-10 -mt-(--hero-sobe) rounded-t-2xl bg-papel'
+        : 'relative z-10 bg-papel'
 
   useEffect(() => {
     if (!hash) return
@@ -579,7 +567,7 @@ export function HomePage() {
         )
 
   return (
-    <div className={heroSobHeader ? 'relative -mt-14 lg:-mt-16' : 'relative'}>
+    <div className={heroSobHeader ? 'relative -mt-14 lg:-mt-20' : 'relative'}>
       {/* H-03 Hero — carrossel sticky, card sobe por cima (outras direções: hero próprio, sem sobreposição) */}
       {hero === 'atelie' ? (
         <HeroAtelie />
@@ -607,7 +595,7 @@ export function HomePage() {
 
       {DirectionPage ? (
         // Oráculo, Galeria, Manifesto, Cinema: a página inteira é da direção; hero e catálogo vêm como peças
-        <div className={hero === 'padrao' ? 'relative z-10 -mt-28 rounded-t-3xl bg-papel [@media(max-height:820px)]:-mt-16' : 'relative z-10 bg-papel'}>
+        <div className={cardClass}>
           <DirectionPage
             catalog={catalogNode}
             onSegment={(seg) => {
@@ -621,24 +609,19 @@ export function HomePage() {
         </div>
       ) : (
       /* card das seções sobe por cima do hero; em telas baixas sobe menos pra mostrar mais imagem (par do pb do HeroCarousel) */
-      <div className={hero === 'padrao' ? 'relative z-10 -mt-28 rounded-t-3xl bg-papel [@media(max-height:820px)]:-mt-16' : 'relative z-10 bg-papel'}>
-        {/* H-05 Selos — grid 2x2 com ícone, estilo trust badges */}
-        <section className="grid grid-cols-2 divide-x divide-y divide-linha overflow-hidden rounded-t-3xl border-b border-linha">
-          {SEALS.map((s) => (
-            <div key={s} className="flex flex-col items-center gap-2 px-3 py-5">
-              <SealIcon seal={s} className="size-5 text-latao-texto" />
-              <span className="text-center font-label text-[9px] tracking-widest text-tinta-3 uppercase">{s}</span>
-            </div>
-          ))}
-        </section>
+      <div className={cardClass}>
+        {/* H-19 Comunidade — primeira seção depois do hero (out/2026): quem rola já vê gente de verdade usando */}
+        {isAtelie ? <CommunityAtelie /> : isBoutique ? <CommunityBoutique /> : <CommunitySection />}
 
-        {/* H-08 Segmentação — pilha no celular, 3 lado a lado a partir do md */}
-        <Reveal as="section" id="segmentos" className="px-4 pt-8 pb-6 md:mx-auto md:max-w-7xl md:px-10 md:pt-14 md:pb-12">
-          <div className="text-center">
+        {/* H-08 Segmentação — pôsteres na estética do Cinema: texto de apoio em cima, nome e CTA embaixo, tudo
+            centrado. Celular: trilho horizontal (a seção não pode passar da altura da tela — decisão de out/2026);
+            md+: 3 lado a lado, altura presa à tela pelo mesmo motivo */}
+        <Reveal as="section" id="segmentos" className="pt-12 pb-8 md:mx-auto md:max-w-7xl md:px-10 md:pt-14 md:pb-12">
+          <div className="px-4 text-center md:px-0">
             <Eyebrow>{SEGMENTS_HEADING.eyebrow}</Eyebrow>
             <h2 className="mt-3 font-display text-[28px] leading-[1.2] text-tinta md:text-4xl">{SEGMENTS_HEADING.title}</h2>
           </div>
-          <div className="mt-6 flex flex-col items-center gap-5 md:mt-10 md:grid md:grid-cols-3 md:gap-6">
+          <div className="no-scrollbar scroll-pad mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 md:mt-10 md:grid md:after:hidden md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0">
             {SEGMENTS.map((seg) => (
               <button
                 key={seg.name}
@@ -649,33 +632,36 @@ export function HomePage() {
                   setCatalogoFiltro(seg.seg)
                   requestAnimationFrame(() => requestAnimationFrame(() => scrollToId('catalogo')))
                 }}
-                className="group relative block w-[80%] md:w-full overflow-hidden rounded-2xl text-left shadow-[0_2px_6px_rgba(0,0,0,0.08)] ring-1 ring-latao/50"
+                className="segmento group relative block h-[min(24rem,52svh)] w-[64%] shrink-0 cursor-pointer snap-start overflow-hidden rounded-2xl bg-noite text-center ring-1 ring-latao/40 md:h-[min(36rem,62svh)] md:w-full"
               >
                 <MediaSlot
-                  aspect="4/3"
+                  aspect="auto"
                   bg="transparent"
                   src={seg.img}
                   requisito={`FOTO · 4:3 · 1600×1200 · LIFESTYLE · ${seg.label.toUpperCase()}`}
-                  // 3 colunas (md+): card vertical pro texto não cobrir o frasco — ! vence o aspect inline
-                  className="rounded-2xl border-0 md:aspect-[4/5]! [&_img]:will-change-transform [&_img]:transition-transform [&_img]:duration-700 [&_img]:ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:[&_img]:scale-[1.06]"
+                  className="segmento-foto absolute! inset-0 h-full w-full rounded-none border-0"
                 />
+                {/* topo escurecido pro texto de apoio + base na cor do gênero */}
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3"
+                  className="pointer-events-none absolute inset-0"
                   style={{
-                    background: `linear-gradient(to top, color-mix(in srgb, ${SEGMENT_TINT[seg.seg]} 65%, transparent) 0%, color-mix(in srgb, ${SEGMENT_TINT[seg.seg]} 30%, transparent) 55%, transparent 100%)`,
+                    background: `linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, transparent 22%), linear-gradient(to top, color-mix(in srgb, ${SEGMENT_TINT[seg.seg]} 85%, transparent) 0%, color-mix(in srgb, ${SEGMENT_TINT[seg.seg]} 35%, transparent) 40%, transparent 65%)`,
                   }}
                 />
-                <div className="absolute inset-x-0 bottom-0 z-10 p-4 lg:p-5">
-                  <span className="block font-label text-[9px] tracking-widest text-papel-inv/80 uppercase">
-                    {seg.label}
-                  </span>
-                  <span className="mt-1 block font-display text-2xl text-papel-inv lg:text-3xl">{seg.name}</span>
-                  <span className="mt-1 block font-label text-[9px] text-papel-inv/70">{seg.meta}</span>
-                  <span className="mt-3 block w-full rounded-full border border-papel-inv/40 bg-papel-inv/10 py-2.5 text-center text-xs font-medium text-papel-inv backdrop-blur-sm transition-colors duration-300 ease-out group-hover:border-papel-inv/60 group-hover:bg-papel-inv/20">
+                {/* filete dourado interno — acende no hover (desktop); no celular fica sempre discreto */}
+                <span aria-hidden className="segmento-moldura pointer-events-none absolute inset-2.5 rounded-[calc(var(--radius-2xl)-0.5rem)] border border-latao/35" />
+                <span className="absolute inset-x-0 top-6 font-label text-[9px] tracking-[0.5em] text-papel-inv/80 uppercase lg:top-8">
+                  {seg.label}
+                </span>
+                <span className="segmento-texto absolute inset-x-0 bottom-7 px-5 text-papel-inv lg:bottom-10">
+                  <b className="block font-display text-4xl leading-none font-normal lg:text-5xl">{seg.name}</b>
+                  <span className="mt-3 block font-label text-[9px] tracking-[0.4em] text-papel-inv/70 uppercase">{seg.meta}</span>
+                  <span className="mt-5 inline-flex flex-col items-center gap-1.5 font-label text-[10px] tracking-[0.35em] uppercase">
                     Ver coleção
+                    <span aria-hidden className="segmento-linha block h-px w-full bg-latao" />
                   </span>
-                </div>
+                </span>
               </button>
             ))}
           </div>
@@ -817,78 +803,17 @@ export function HomePage() {
           <CarouselDots count={FAMILIES.length} active={familiesScroll.activeIndex} className="mt-5 lg:hidden" />
         </Reveal>
 
-        {/* H-10 Por energia — celular/tablet: carrossel; lg: grade de 4 colunas, sem scroll nem pontinhos */}
-        <Reveal
-          as="section"
-          className="relative z-20 py-8 lg:pt-20 lg:pb-24"
-          style={{
-            background: 'color-mix(in srgb, var(--color-papel-2) 100%, var(--color-latao) 6%)',
-            // sombra interna no topo + filete: a seção parece um degrau abaixo da "Entrada racional"
-            boxShadow:
-              'inset 0 1px 0 color-mix(in srgb, var(--color-linha-2) 80%, transparent), inset 0 18px 22px -16px rgba(40,46,41,0.28), inset 0 6px 8px -6px rgba(40,46,41,0.18)',
-          }}
-        >
-          <div className="px-4 md:px-10 lg:mx-auto lg:max-w-7xl">
-            <Eyebrow>Entrada emocional</Eyebrow>
-            <h2 className="mt-2.5 font-display text-2xl lg:text-4xl">
-              Como você quer
-              <br />
-              se sentir hoje?
-            </h2>
-            <p className="mt-1.5 text-sm text-tinta-2 lg:mt-3 lg:text-base">Escolha pela presença que você quer expressar.</p>
-          </div>
-          <div
-            ref={energiesScroll.ref}
-            {...tapGuard}
-            className="scroll-pad no-scrollbar mt-5 flex snap-x snap-mandatory gap-3.5 overflow-x-auto px-4 pt-2 pb-6 md:px-10 lg:mx-auto lg:mt-8 lg:grid lg:max-w-7xl lg:grid-cols-4 lg:gap-6 lg:overflow-visible lg:pb-0 lg:after:hidden"
-          >
-            {ENERGIES.map((e) => (
-              <button
-                key={e.nome}
-                onClick={() => scrollToId('catalogo')}
-                className="no-press group relative isolate w-[80vw] max-w-[320px] shrink-0 snap-start overflow-hidden rounded-3xl text-left lg:w-auto lg:max-w-none"
-                style={{ aspectRatio: '4/5', boxShadow: '0 16px 32px -16px rgba(20,18,15,0.4)' }}
-              >
-                <img
-                  src={e.img}
-                  alt=""
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
-                />
-                <RatioTag className="top-3 right-3" />
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3"
-                  style={{ background: 'linear-gradient(180deg, rgba(10,9,8,0) 0%, rgba(10,9,8,0.55) 55%, rgba(10,9,8,0.85) 100%)' }}
-                />
-                <div className="absolute inset-x-0 bottom-0 z-10 p-5">
-                  <b className="block font-display text-2xl text-papel-inv">{e.nome}</b>
-                  <span className="mt-1 block text-xs tracking-wide text-papel-inv/70">
-                    {e.arquetipos.map((id) => getArchetype(id)?.nome).join(' · ')}
-                  </span>
-                </div>
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute right-4 bottom-4 z-10 flex size-8 items-center justify-center rounded-full text-papel-inv/80"
-                  style={{ border: '1px solid rgba(242,234,219,0.4)' }}
-                >
-                  →
-                </span>
-              </button>
-            ))}
-          </div>
-          <CarouselDots count={ENERGIES.length} active={energiesScroll.activeIndex} className="mt-5 lg:hidden" />
-          <p className="mt-3 px-4 text-center font-label text-[9.5px] tracking-widest text-tinta-3 uppercase lg:hidden">
-            Deslize para explorar
-          </p>
-        </Reveal>
-
         {/* H-11 Reconhecimento — celular empilhado; lg: intro centralizada, 3 itens em colunas, fechamento centralizado */}
         <Reveal
           as="section"
           className="relative z-10 px-5 pt-16 pb-20 md:px-10 lg:pt-24 lg:pb-28"
           style={{
+            // degrau: sombra interna no topo + filete, a seção parece um degrau abaixo da "Entrada racional"
+            // (era o topo da "Entrada emocional", que saiu); o tom latão do topo se dissolve no papel
             background:
               'linear-gradient(to bottom, color-mix(in srgb, var(--color-papel-2) 100%, var(--color-latao) 6%) 0%, var(--color-papel) 18%, var(--color-papel) 85%, var(--color-papel-2) 100%)',
+            boxShadow:
+              'inset 0 1px 0 color-mix(in srgb, var(--color-linha-2) 80%, transparent), inset 0 18px 22px -16px rgba(40,46,41,0.28), inset 0 6px 8px -6px rgba(40,46,41,0.18)',
           }}
         >
           <img
@@ -1020,7 +945,7 @@ export function HomePage() {
             {/* Moldura interna dourada — filete fino, afastado da borda */}
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-2.5 rounded-[18px] border"
+              className="pointer-events-none absolute inset-2.5 rounded-[calc(var(--radius-3xl)-0.625rem)] border"
               style={{ borderColor: `color-mix(in srgb, ${LATAO_CLARO} 45%, transparent)` }}
             />
 
@@ -1306,10 +1231,7 @@ export function HomePage() {
           </div>
         </Reveal>
 
-        {/* H-19 Comunidade */}
-        {isAtelie ? <CommunityAtelie /> : isBoutique ? <CommunityBoutique /> : <CommunitySection />}
-
-        {/* H-20 Garantia — bloco escuro como pontuação: fica por cima da comunidade (degrau invertido) */}
+        {/* H-20 Garantia — bloco escuro como pontuação: fica por cima da seção anterior (degrau invertido) */}
         <Reveal
           as="section"
           className="relative z-20 overflow-hidden bg-noite px-6 pt-16 pb-16 text-center md:px-10 lg:pt-24 lg:pb-24"

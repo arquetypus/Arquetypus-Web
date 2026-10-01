@@ -1,12 +1,15 @@
 import { Link, useLocation } from 'react-router-dom'
 import type { Archetype } from '@/types/archetype'
 import { getArchetype } from '@/data/archetypes'
-import { FRASCO_CUT_IMG, JOURNAL, REWARD_FREIGHT, SEALS, UGC_IMG, UGC_VIDEOS } from '@/data/home'
+import { FRASCO_CUT_IMG, JOURNAL, REWARD_FREIGHT, UGC_IMG, UGC_VIDEOS } from '@/data/home'
 import { openCookiePreferences } from '@/lib/consent'
+import { useInfiniteCarousel } from '@/lib/useInfiniteCarousel'
+import { useCoverflow } from '@/lib/useCoverflow'
+import { CarouselDots } from '@/components/ui/CarouselDots'
 
 /**
  * Mais seções da direção "Boutique" (ThemeSwitcher): destaque como banner de produto, comunidade como
- * "compre o look", diário como grade de artigos, rodapé de loja e a barra de avisos no topo.
+ * "compre o look", diário como grade de artigos, e rodapé de loja.
  * Texto de produto vem de data/; os rótulos de loja novos estão comentados onde aparecem.
  */
 
@@ -17,25 +20,6 @@ function SectionHead({ kicker, title, center = false }: { kicker: string; title:
     <div className={center ? 'text-center' : ''}>
       <p className="font-label text-[10px] tracking-[0.2em] text-tinta-2 uppercase">{kicker}</p>
       <h2 className="mt-3 font-display text-[30px] leading-[1.1] text-tinta lg:text-5xl">{title}</h2>
-    </div>
-  )
-}
-
-/** Faixa preta fina acima do header, com frete grátis e selos passando em loop (pausa com movimento reduzido). */
-export function AnnouncementBar() {
-  // "Frete grátis acima de R$ 199" já é copy do FAQ da PDP; o valor vem de REWARD_FREIGHT
-  const items = [`Frete grátis acima de ${brl(REWARD_FREIGHT)}`, 'Envio em 24 h úteis', '7 dias de garantia', ...SEALS]
-  const row = [...items, ...items]
-  return (
-    <div className="overflow-hidden bg-tinta text-papel" aria-label="Avisos da loja">
-      <div className="boutique-marquee flex w-max gap-10 py-2 font-label text-[10px] tracking-[0.18em] whitespace-nowrap uppercase">
-        {row.map((t, i) => (
-          <span key={i} className="flex items-center gap-10" aria-hidden={i >= items.length}>
-            {t}
-            <span aria-hidden className="opacity-40">✦</span>
-          </span>
-        ))}
-      </div>
     </div>
   )
 }
@@ -81,37 +65,149 @@ export function FeaturedBoutique({ a, img }: { a: Archetype; img: string }) {
   )
 }
 
-/** Comunidade como "compre o look": foto do criador + etiqueta do produto com preço e botão. */
+/** Comunidade: carrossel de "vídeos" com o cartão do produto sobreposto à base de cada um. */
 export function CommunityBoutique() {
   const location = useLocation()
+  // carrossel infinito com o card do centro em foco (mesmo esquema da comunidade do Editorial): 3 cópias, e o hook
+  // reposiciona o scroll ao cruzar as bordas
+  const total = UGC_VIDEOS.length
+  const loop = [...UGC_VIDEOS, ...UGC_VIDEOS, ...UGC_VIDEOS]
+  const trilho = useInfiniteCarousel(total)
+  // cards de trás bem apagados: o do centro é o protagonista
+  useCoverflow(trilho.container, { minOpacity: 0.15 })
+
+  // 1ª seção depois do hero (sobe por cima dele). Cada experiência é um "vídeo" (2:3, mais largo que o 9:16 pra caber na altura da tela) com o produto num cartão
+  // à parte, sobreposto à base do vídeo (metade dentro, metade fora) — o vídeo é a prova, o cartão é a compra.
+  // Tamanho do card = o que sobra da altura da tela (94svh) tirando título, cartão, pontinhos e texto (~23–24rem),
+  // em 2:3 — o maior possível sem a seção passar da altura da tela (regra de out/2026). Teto: 34rem de altura no desktop.
+  // Hoje são fotos (UGC_IMG); quando os vídeos chegarem, trocar o <img> por <video> mudo em loop.
   return (
-    <section className="bg-papel px-4 py-14 md:px-10 lg:py-24">
-      <div className="mx-auto max-w-7xl">
-        <SectionHead kicker="A comunidade" title="Experiências Arquétypus" center />
-        <p className="mt-3 text-center text-sm text-tinta-2">Pessoas reais. Diferentes fragrâncias, momentos e formas de expressão.</p>
-        <ul className="mt-8 grid grid-cols-2 gap-3 lg:mt-12 lg:grid-cols-4 lg:gap-6">
-          {UGC_VIDEOS.map((v) => {
-            const arq = getArchetype(v.archetypeId)
-            if (!arq) return null
-            return (
-              <li key={v.creator} className="overflow-hidden rounded-2xl bg-papel-2 ring-1 ring-linha">
-                <div className="relative aspect-[3/4]">
-                  <img src={UGC_IMG[v.archetypeId]} alt={`${v.creator} segurando o body splash ${arq.nome}`} loading="lazy" className="h-full w-full object-cover" />
-                  <span className="absolute top-3 left-3 rounded-full bg-papel/90 px-2.5 py-1 text-[11px] text-tinta backdrop-blur">{v.creator}</span>
-                </div>
-                {/* etiqueta "compre o look" */}
-                <Link to={`/loja/${arq.id}`} state={{ backgroundLocation: location }} className="flex items-center gap-3 p-3 transition-colors hover:bg-papel-3">
-                  {FRASCO_CUT_IMG[arq.id] && <img src={FRASCO_CUT_IMG[arq.id]} alt="" className="hidden h-12 w-9 shrink-0 rounded-md object-cover sm:block" />}
+    <section
+      id="comunidade"
+      className="relative z-20 rounded-t-2xl bg-papel pt-8 pb-10 [--ugc-w:min(66vw,calc((94svh-22rem)*2/3),270px)] lg:pt-9 lg:pb-12 lg:[--ugc-w:calc(min(34rem,94svh-23rem)*2/3)]"
+      style={{
+        // degrau no fim: esta seção fica por cima da seguinte e projeta sombra nela, com filete latão na borda
+        boxShadow: '0 14px 26px -12px rgba(40,46,41,0.3), 0 4px 8px -4px rgba(40,46,41,0.2)',
+        borderBottom: '1px solid color-mix(in srgb, var(--color-latao) 60%, transparent)',
+      }}
+    >
+      {/* filete dourado contornando o começo da seção (topo + cantos arredondados), na linha do header: cheio no
+          topo e sumindo pelas laterais */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-28 rounded-t-2xl border border-b-0 border-latao"
+        style={{
+          maskImage: 'linear-gradient(to bottom, black 0, black 18%, transparent 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, black 0, black 18%, transparent 100%)',
+        }}
+      />
+      <h2 className="px-4 text-center font-display text-[30px] leading-[1.1] text-tinta md:px-10 lg:text-4xl">Coleção Arquétypus</h2>
+      <div
+        ref={trilho.containerRef}
+        className="no-scrollbar relative mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-9 lg:mt-7 lg:gap-5"
+        // padding lateral = metade da sobra, pra o primeiro e o último card também pararem no centro.
+        // pb-9: o overflow do scroll corta tudo que passa da caixa — a folga embaixo deixa a sombra dos cartões inteira
+        style={{ paddingInline: 'calc((100% - var(--ugc-w)) / 2)' }}
+      >
+        {loop.map((v, i) => {
+          const arq = getArchetype(v.archetypeId)
+          if (!arq) return null
+          const ativo = i === trilho.activeIndex
+          return (
+            <article
+              key={`${v.creator}-${i}`}
+              ref={trilho.registerItem(i)}
+              aria-current={ativo ? 'true' : undefined}
+              // escala/opacidade/blur vêm do useCoverflow, contínuos conforme o scroll
+              className="ugc group relative shrink-0 snap-center"
+              style={{ width: 'var(--ugc-w)', willChange: 'transform, opacity' }}
+            >
+              {/* o vídeo */}
+              <div className="relative aspect-[2/3] overflow-hidden rounded-2xl bg-noite ring-1 ring-latao/30">
+                <img
+                  src={UGC_IMG[v.archetypeId]}
+                  alt={`${v.creator} segurando o body splash ${arq.nome}`}
+                  loading={i === total ? 'eager' : 'lazy'}
+                  decoding="async"
+                  className="ugc-midia h-full w-full object-cover"
+                />
+                {/* topo e base escurecidos: legibilidade do @ e apoio pro cartão sobreposto */}
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0"
+                  style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 22%, transparent 62%, rgba(0,0,0,0.45) 100%)' }}
+                />
+                <span className="absolute inset-x-0 top-3.5 px-3.5 font-label text-[9px] tracking-[0.25em] text-papel-inv/90 uppercase">
+                  {v.creator}
+                </span>
+              </div>
+
+              {/* o produto: cartão à parte, sobreposto à base do vídeo — metade dentro, metade fora (ideia do
+                  product tag da comunidade do Editorial) */}
+              <div className="ugc-pop relative z-10 mx-1.5 -mt-10 rounded-xl bg-papel p-2 ring-1 ring-latao/45">
+                <div className="flex items-center gap-2.5">
+                  {FRASCO_CUT_IMG[arq.id] && (
+                    <img src={FRASCO_CUT_IMG[arq.id]} alt="" className="h-16 w-12 shrink-0 rounded-md object-cover lg:h-20 lg:w-14" />
+                  )}
                   <span className="min-w-0 flex-1">
-                    <b className="block truncate text-sm font-semibold text-tinta">{arq.nome}</b>
-                    <span className="block text-xs text-tinta-2">{brl(arq.preco)}</span>
+                    <b className="block truncate font-display text-[17px] leading-tight font-normal text-tinta lg:text-lg">{arq.nome}</b>
+                    <span className="block truncate text-[11px] text-tinta-2 lg:text-xs">{arq.fam}</span>
+                    {/* quebra em 2 linhas no card estreito em vez de cortar */}
+                    <span className="block font-label text-[8.5px] leading-snug tracking-[0.15em] text-tinta-3 uppercase">
+                      {arq.tipo} · {arq.vol}
+                    </span>
+                    <span className="mt-1 block text-[13px] leading-none text-tinta">{brl(arq.preco)}</span>
                   </span>
-                  <span aria-hidden className="grid size-8 shrink-0 place-items-center rounded-full bg-tinta text-sm text-papel">→</span>
+                </div>
+                <Link
+                  to={`/loja/${arq.id}`}
+                  state={{ backgroundLocation: location }}
+                  tabIndex={ativo ? 0 : -1}
+                  aria-label={`Descobrir ${arq.nome}`}
+                  className="mt-2 block w-full rounded-full border border-latao/50 py-2 text-center font-label text-[10px] tracking-[0.2em] text-tinta uppercase transition-colors duration-300 hover:border-latao hover:bg-latao hover:text-papel"
+                >
+                  Descobrir
                 </Link>
-              </li>
-            )
-          })}
-        </ul>
+              </div>
+            </article>
+          )
+        })}
+      </div>
+
+      {/* setas sem moldura, na mesma linha dos pontinhos — visíveis também no celular (além do deslizar) */}
+      <div className="flex items-center justify-center gap-3 lg:gap-5">
+        <button
+          type="button"
+          onClick={() => trilho.step(-1)}
+          aria-label="Experiência anterior"
+          className="-my-2 flex size-10 cursor-pointer items-center justify-center text-tinta-2 transition-[color,transform] duration-300 hover:text-latao-texto active:scale-90"
+        >
+          <svg aria-hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="size-6">
+            <path d="M15 5l-7 7 7 7" />
+          </svg>
+        </button>
+        <CarouselDots count={total} active={trilho.activeIndex % total} className="h-6" />
+        <button
+          type="button"
+          onClick={() => trilho.step(1)}
+          aria-label="Próxima experiência"
+          className="-my-2 flex size-10 cursor-pointer items-center justify-center text-tinta-2 transition-[color,transform] duration-300 hover:text-latao-texto active:scale-90"
+        >
+          <svg aria-hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="size-6">
+            <path d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+
+      {/* texto de apoio embaixo, em destaque (out/2026): "Pessoas reais." como assinatura, entre filetes dourados.
+          O título fica sozinho em cima, pra caber na ponta da seção que aparece no hero */}
+      <div className="mt-5 px-4 text-center md:px-10 lg:mt-7">
+        <p className="flex items-center justify-center gap-3 font-display text-[22px] leading-none text-tinta italic lg:text-[28px]">
+          <span aria-hidden className="h-px w-8 bg-gradient-to-r from-transparent to-latao lg:w-12" />
+          Pessoas reais.
+          <span aria-hidden className="h-px w-8 bg-gradient-to-l from-transparent to-latao lg:w-12" />
+        </p>
+        <p className="mt-2 text-[13px] text-tinta-2 lg:mt-3 lg:text-sm">Diferentes fragrâncias, momentos e formas de expressão.</p>
       </div>
     </section>
   )

@@ -59,7 +59,7 @@ export function ProductGallery({ nome, bg, slides }: { nome: string; bg: string;
     <div className="group/gallery relative min-w-0 lg:flex-1">
       {/* moldura de 1px em dourado com reflexo (degradê claro/escuro do latão) + brilho quente bem leve em volta */}
       <div
-        className="rounded-[9px] p-px"
+        className="rounded-[calc(var(--radius-lg)+1px)] p-px"
         style={{
           background: GOLD_SHEEN,
           boxShadow: '0 0 0 1px rgba(198,164,108,0.12), 0 6px 22px -10px rgba(198,164,108,0.55)',
