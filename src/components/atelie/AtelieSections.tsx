@@ -180,7 +180,7 @@ export function FooterAtelie() {
           <div className="col-span-2 text-xs leading-relaxed text-tinta-2 lg:col-span-1">
             <p className="font-label text-[9px] tracking-[0.2em] text-tinta-3 uppercase">Expediente</p>
             <p className="mt-4">Pix · Visa · Master · Elo · Boleto</p>
-            <p className="mt-1">sac@arquetypus.com.br</p>
+            <p className="mt-1">contato@arquetypus.com.br</p>
             <p className="mt-1">Saniella Ltda · CNPJ 58.267.823/0001-68 · Caraguatatuba SP</p>
           </div>
         </div>

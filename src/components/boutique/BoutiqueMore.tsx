@@ -3,6 +3,7 @@ import type { Archetype } from '@/types/archetype'
 import { getArchetype } from '@/data/archetypes'
 import { FRASCO_CUT_IMG, JOURNAL, UGC_IMG, UGC_VIDEOS } from '@/data/home'
 import { openCookiePreferences } from '@/lib/consent'
+import logoDourado from '@/assets/brand/logo-dourado.png'
 import { useInfiniteCarousel } from '@/lib/useInfiniteCarousel'
 import { useCoverflow } from '@/lib/useCoverflow'
 import { CarouselDots } from '@/components/ui/CarouselDots'
@@ -272,47 +273,116 @@ export function DiaryBoutique() {
 
 /** Rodapé de loja: colunas de links e dados da empresa. Os cartões de benefício (envio, garantia, pagamento)
  * saíram a pedido (out/2026). */
+/** Selos das formas de pagamento: monocromáticos, glifo em tinta escura sobre bege mais escuro da paleta (mesa),
+ *  pra conversar com o rodapé escuro sem as cores das bandeiras. Desenhos simplificados (não são os arquivos
+ *  oficiais das marcas). Confirmar as bandeiras quando o checkout existir. */
+const PAGAMENTOS: { nome: string; glifo: React.ReactNode }[] = [
+  {
+    nome: 'Pix',
+    glifo: (
+      <span className="flex items-center gap-1">
+        <svg aria-hidden viewBox="0 0 16 16" className="size-3" fill="currentColor">
+          <path d="M8 1.2l2.6 2.6L8 6.4 5.4 3.8zM12.2 5.4L14.8 8l-2.6 2.6L9.6 8zM8 9.6l2.6 2.6L8 14.8l-2.6-2.6zM3.8 5.4L6.4 8l-2.6 2.6L1.2 8z" />
+        </svg>
+        <span className="text-[11px] font-bold tracking-tight lowercase">pix</span>
+      </span>
+    ),
+  },
+  { nome: 'Visa', glifo: <span className="text-[12px] font-black tracking-tight italic">VISA</span> },
+  {
+    nome: 'Mastercard',
+    glifo: (
+      <svg aria-hidden viewBox="0 0 30 18" className="h-3.5">
+        <circle cx="11" cy="9" r="7.5" fill="currentColor" />
+        <circle cx="19" cy="9" r="7.5" fill="currentColor" fillOpacity="0.55" />
+      </svg>
+    ),
+  },
+  { nome: 'Elo', glifo: <span className="text-[13px] font-black tracking-tight lowercase">elo</span> },
+  { nome: 'American Express', glifo: <span className="text-[10px] font-black tracking-wide">AMEX</span> },
+  { nome: 'Hipercard', glifo: <span className="text-[9.5px] font-bold tracking-tight">Hipercard</span> },
+]
+
+/**
+ * Rodapé da home Boutique — escuro (noite), fechando a página como as seções escuras de cima. Logo oficial completa
+ * (símbolo + ARQUÉTYPUS + PARFUM, versão dourada), colunas de links com título em dourado, atendimento, selos de
+ * pagamento em bege escuro e a faixa legal. -mb-24 cobre o pb-24 do container do Layout.
+ */
 export function FooterBoutique() {
+  const titulo = 'font-label text-[10px] tracking-[0.3em] text-latao uppercase'
+  const lista = 'mt-4 flex flex-col gap-2.5 text-sm text-papel-inv/60'
+  const link = 'transition-colors hover:text-papel-inv'
   return (
-    <footer className="-mb-24 bg-papel-2 px-4 pt-12 pb-[calc(2.5rem+6rem)] text-tinta md:px-10 lg:pt-16">
+    <footer
+      className="relative z-20 -mb-24 bg-noite px-5 pt-16 pb-[calc(2.5rem+6rem)] text-papel-inv md:px-10 lg:pt-24"
+      style={{
+        // degrau invertido, como as seções escuras: o rodapé fica por cima do cupom, com filete dourado
+        boxShadow: '0 -14px 26px -10px rgba(37,46,40,0.5), 0 -4px 8px -3px rgba(37,46,40,0.35)',
+        borderTop: '1px solid color-mix(in srgb, var(--color-latao) 70%, transparent)',
+      }}
+    >
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
-          <div className="col-span-2 lg:col-span-1">
-            <p className="font-display text-2xl font-semibold">Arquétypus</p>
-            <p className="mt-2 text-sm text-tinta-2">Você não escolhe um perfume. Você reconhece o seu.</p>
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-12 lg:gap-x-12">
+          <div className="col-span-2 flex flex-col items-center text-center lg:col-span-4 lg:items-start lg:text-left">
+            <img src={logoDourado} alt="Arquétypus Parfum" className="h-auto w-44 lg:w-52" />
+            <p className="mt-5 max-w-[30ch] font-display text-lg leading-snug text-papel-inv/80 italic">
+              Você não escolhe um perfume. Você reconhece o seu.
+            </p>
           </div>
-          <div>
-            <p className="text-xs font-semibold tracking-wide uppercase">Loja</p>
-            <ul className="mt-3 flex flex-col gap-2 text-sm text-tinta-2">
-              <li><Link to="/#catalogo" className="hover:text-tinta">Os 9 arquétipos</Link></li>
-              <li><Link to="/#segmentos" className="hover:text-tinta">Coleções</Link></li>
-              <li><Link to="/criadores" className="hover:text-tinta">Seja criador</Link></li>
+
+          <div className="lg:col-span-2 lg:col-start-6">
+            <p className={titulo}>Loja</p>
+            <ul className={lista}>
+              <li><Link to="/#catalogo" className={link}>Os 9 arquétipos</Link></li>
+              <li><Link to="/#segmentos" className={link}>Coleções</Link></li>
+              <li><Link to="/criadores" className={link}>Seja criador</Link></li>
             </ul>
           </div>
-          <div>
-            <p className="text-xs font-semibold tracking-wide uppercase">Ajuda</p>
-            <ul className="mt-3 flex flex-col gap-2 text-sm text-tinta-2">
-              <li><Link to="/privacidade" className="hover:text-tinta">Privacidade</Link></li>
-              <li className="text-tinta-3" aria-disabled="true">Trocas e devoluções · em breve</li>
-              <li className="text-tinta-3" aria-disabled="true">Termos · em breve</li>
+          <div className="lg:col-span-2">
+            <p className={titulo}>Ajuda</p>
+            <ul className={lista}>
+              <li><Link to="/privacidade" className={link}>Privacidade</Link></li>
+              <li className="text-papel-inv/35" aria-disabled="true">Trocas e devoluções · em breve</li>
+              <li className="text-papel-inv/35" aria-disabled="true">Termos · em breve</li>
               <li>
-                <button type="button" onClick={openCookiePreferences} className="text-left hover:text-tinta">
+                <button type="button" onClick={openCookiePreferences} className={`text-left ${link}`}>
                   Gerenciar cookies
                 </button>
               </li>
             </ul>
           </div>
-          <div>
-            <p className="text-xs font-semibold tracking-wide uppercase">Atendimento</p>
-            <ul className="mt-3 flex flex-col gap-2 text-sm text-tinta-2">
-              <li>sac@arquetypus.com.br</li>
+          <div className="col-span-2 lg:col-span-3">
+            <p className={titulo}>Atendimento</p>
+            <ul className={lista}>
+              <li>
+                <a href="mailto:contato@arquetypus.com.br" className={link}>contato@arquetypus.com.br</a>
+              </li>
               <li>Instagram · TikTok · Pinterest</li>
             </ul>
           </div>
         </div>
-        <p className="mt-10 border-t border-linha-2 pt-6 text-xs text-tinta-3">
-          Saniella Ltda · CNPJ 58.267.823/0001-68 · Caraguatatuba SP
-        </p>
+
+        {/* formas de pagamento */}
+        <div className="mt-12 flex flex-col items-center gap-4 border-t border-papel-inv/10 pt-8 lg:flex-row lg:justify-between">
+          <p className={titulo}>Formas de pagamento</p>
+          <ul className="flex flex-wrap justify-center gap-2" aria-label="Formas de pagamento aceitas">
+            {PAGAMENTOS.map((p) => (
+              <li
+                key={p.nome}
+                title={p.nome}
+                className="flex h-7 w-12 items-center justify-center rounded-md bg-mesa text-noite ring-1 ring-black/5"
+              >
+                <span className="sr-only">{p.nome}</span>
+                <span aria-hidden className="flex items-center">{p.glifo}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="mt-8 flex flex-col items-center gap-1.5 border-t border-papel-inv/10 pt-6 text-center text-[11px] text-papel-inv/40 lg:flex-row lg:justify-between lg:text-left">
+          <p>© 2026 Arquétypus Parfum. Todos os direitos reservados.</p>
+          <p>Saniella Ltda · CNPJ 58.267.823/0001-68 · Caraguatatuba SP</p>
+        </div>
       </div>
     </footer>
   )

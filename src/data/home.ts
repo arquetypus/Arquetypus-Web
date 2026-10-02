@@ -18,10 +18,6 @@ import heroGuerreiroDesktop from '@/assets/fotos/hero/guerreiro-desktop.jpg'
 import segmentoFeminino from '@/assets/fotos/segmentos/feminino.jpg'
 import segmentoMasculino from '@/assets/fotos/segmentos/masculino.jpg'
 import segmentoUnissex from '@/assets/fotos/segmentos/compartilhavel.jpg'
-import familiaFloral from '@/assets/mocks/familia-floral-bleed.png'
-import familiaAquatico from '@/assets/mocks/familia-aquatico-bleed.png'
-import familiaAmadeirado from '@/assets/mocks/familia-amadeirado-bleed.png'
-import familiaOriental from '@/assets/mocks/familia-oriental-bleed.png'
 import energiaSeducao from '@/assets/mocks/energia-seducao.png'
 import energiaPoder from '@/assets/mocks/energia-poder.png'
 import energiaMisterio from '@/assets/mocks/energia-misterio.png'
@@ -49,12 +45,23 @@ import ugcCleopatra from '@/assets/fotos/comunidade/cleopatra.jpg'
 import ugcSereia from '@/assets/fotos/comunidade/sereia.jpg'
 import ugcAfrodite from '@/assets/fotos/comunidade/afrodite.jpg'
 import ugcImperatriz from '@/assets/fotos/comunidade/imperatriz.jpg'
+// geradas por IA (Higgsfield, GPT Image 2.5, out/2026) a partir das fotos de frasco da PDP — placeholders, ver UGC_VIDEOS
+import ugcFada from '@/assets/fotos/comunidade/fada.jpg'
+import ugcFenix from '@/assets/fotos/comunidade/fenix.jpg'
+import ugcGuerreiro from '@/assets/fotos/comunidade/guerreiro.jpg'
+import ugcImperador from '@/assets/fotos/comunidade/imperador.jpg'
+import ugcZeus from '@/assets/fotos/comunidade/zeus.jpg'
 
 export const UGC_IMG: Record<string, string> = {
   cleopatra: ugcCleopatra,
   sereia: ugcSereia,
   afrodite: ugcAfrodite,
   imperatriz: ugcImperatriz,
+  fada: ugcFada,
+  fenix: ugcFenix,
+  guerreiro: ugcGuerreiro,
+  imperador: ugcImperador,
+  zeus: ugcZeus,
 }
 
 export const PUV =
@@ -114,6 +121,17 @@ export const QUIZ_CTA = { label: 'Descubra seus arquétipos', aviso: 'Teste de 2
 
 export const SEALS = ['Entrega garantida', 'Rápido e seguro', 'Vegano', 'Cruelty free']
 
+/** Faixa de benefícios da home (marquee no lugar do bloco de garantia, out/2026). Textos que já existem no site:
+ *  selos da PDP (envio, garantia, pagamento) e as condições de preço (6x sem juros, 5% no Pix = preço × 0,95).
+ *  `icon`: path SVG de traço, viewBox 24. */
+export const BENEFITS = [
+  { label: '7 dias de garantia', icon: 'M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6zM9 12l2 2 4-4' },
+  { label: 'Envio em 24 h úteis', icon: 'M3 7h11v9H3zM14 10h4l3 3v3h-7M7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z' },
+  { label: 'Pagamento seguro', icon: 'M6 11h12v9H6zM8.5 11V8a3.5 3.5 0 0 1 7 0v3' },
+  { label: '6x sem juros', icon: 'M3 6h18v12H3zM3 10h18M7 15h4' },
+  { label: '5% off no Pix', icon: 'M3 12V4h8l10 10-8 8zM7.5 7.5h.01' },
+]
+
 export const DIAGNOSIS = [
   {
     n: '01',
@@ -146,32 +164,46 @@ export const SEGMENTS = [
  * diretamente pelo usuário para os cards de família. Revisar se já
  * existir equivalente oficial.
  */
+// Fotos das famílias olfativas: 3 opções por família geradas no Higgsfield (GPT Image 2.5, out/2026) —
+// a) still life escuro com luz âmbar (linha do hero), b) editorial quente em linho/travertino, c) macro
+// abstrato. Arquivo = {família}-{opção}.jpg. Padrão c (escolhida em out/2026); ?familias=a|b na home troca.
+const FAMILY_PHOTOS = import.meta.glob<string>('@/assets/fotos/familias/*.jpg', { eager: true, import: 'default' })
+export const FAMILY_IMG_OPTIONS = ['a', 'b', 'c'] as const
+export type FamilyImgOption = (typeof FAMILY_IMG_OPTIONS)[number]
+export const FAMILY_IMG_DEFAULT: FamilyImgOption = 'c'
+export const familyImg = (slug: string, opcao: FamilyImgOption = FAMILY_IMG_DEFAULT) =>
+  FAMILY_PHOTOS[`/src/assets/fotos/familias/${slug}-${opcao}.jpg`]
+
 export const FAMILIES = [
   {
     nome: 'Floral',
     arquetipos: ['afrodite', 'fada'],
-    img: familiaFloral,
+    slug: 'floral',
+    img: familyImg('floral'),
     desc: 'Sedutor e envolvente.',
     attrs: ['Floral', 'Sedutor', 'Leve'],
   },
   {
     nome: 'Aquático',
     arquetipos: ['sereia', 'guerreiro'],
-    img: familiaAquatico,
+    slug: 'aquatico',
+    img: familyImg('aquatico'),
     desc: 'Fresco e discreto.',
     attrs: ['Aquático', 'Fresco', 'Discreto'],
   },
   {
     nome: 'Amadeirado',
     arquetipos: ['imperador', 'fenix'],
-    img: familiaAmadeirado,
+    slug: 'amadeirado',
+    img: familyImg('amadeirado'),
     desc: 'Quente e marcante.',
     attrs: ['Amadeirado', 'Intenso', 'Elegante'],
   },
   {
     nome: 'Oriental doce',
     arquetipos: ['cleopatra', 'imperatriz'],
-    img: familiaOriental,
+    slug: 'oriental',
+    img: familyImg('oriental'),
     desc: 'Quente e viciante.',
     attrs: ['Oriental', 'Doce', 'Envolvente'],
   },
@@ -262,12 +294,21 @@ export const TESTIMONIALS = [
  * (UGC_IMG) são as escolhidas pela designer (set/2026), com os @ tirados
  * dos nomes dos arquivos dela — confirmar se são pessoas reais e autorizadas. Trocar fotos, @ e depoimentos por
  * conteúdo real e autorizado antes do lançamento (ver CLAUDE.md).
+ *
+ * Os outros 5 (Fada, Fênix, Guerreiro, Imperador, Zeus — out/2026) são pessoas GERADAS POR IA, com @ inventados
+ * e sem depoimento: só pra seção ter os 9 arquétipos. Trocar tudo antes do lançamento. Ordem intercalada pra
+ * alternar gênero/perfil no carrossel.
  */
-export const UGC_VIDEOS = [
+export const UGC_VIDEOS: { creator: string; archetypeId: string; testimonial?: string }[] = [
   { creator: '@marianac_', archetypeId: 'cleopatra', testimonial: TESTIMONIALS[0] },
+  { creator: '@diego.treino', archetypeId: 'guerreiro' },
   { creator: '@rafa_dias', archetypeId: 'sereia', testimonial: TESTIMONIALS[1] },
+  { creator: '@theo.kai', archetypeId: 'fenix' },
   { creator: '@brunavieira', archetypeId: 'afrodite', testimonial: 'Toda vez que uso Afrodite alguém pergunta o que eu estou usando.' },
+  { creator: '@ricardo.m', archetypeId: 'imperador' },
   { creator: '@camila.beauty', archetypeId: 'imperatriz', testimonial: 'Imperatriz é o meu cheiro do inverno. Sério, vicia.' },
+  { creator: '@raoni_', archetypeId: 'zeus' },
+  { creator: '@aline.cachos', archetypeId: 'fada' },
 ]
 
 export const JOURNAL = [
@@ -299,7 +340,7 @@ export const HOME_COPY = {
     fecho: ['Não comece pelo nome.', 'Comece por você.'] as const,
   },
   familias: {
-    eyebrow: 'Entrada racional',
+    eyebrow: 'Famílias olfativas',
     title: 'Descubra pelo cheiro',
     sub: 'Explore as famílias olfativas e encontre os cheiros que mais combinam com você.',
   },
@@ -355,7 +396,7 @@ export const HOME_COPY = {
   rodape: {
     tagline: ['Você não escolhe um perfume.', 'Você reconhece o seu.'] as const,
     pagamentos: 'Pix · Visa · Master · Elo · Boleto',
-    sac: 'sac@arquetypus.com.br',
+    sac: 'contato@arquetypus.com.br',
     redes: ['Instagram', 'TikTok', 'Pinterest'] as const,
     empresa: 'Saniella Ltda · CNPJ 58.267.823/0001-68 · Caraguatatuba SP',
   },

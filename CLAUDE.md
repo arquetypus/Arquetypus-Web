@@ -123,7 +123,8 @@ decisão de produto já tomada:
   hero do Cinema — viraram os padrões da Boutique em `THEMES`, e `PADRAO` (em
   `lib/theme.ts`) abre a Boutique quando URL/storage não dizem nada. Do Cinema
   também ficou o hover dos cards de gênero (apagados que acendem, só `lg:`; no
-  celular sempre acesos).
+  celular sempre acesos). O card "Arquétipo em destaque" usa o da Editorial também na
+  Boutique (out/2026); `FeaturedBoutique` fica no repo sem uso.
   Cada estrutura tem padrões pros outros quatro; escolher em "Misturar" fixa a
   peça (vai pra URL: `?paleta=`, `?estilo=`, `?hero=`, `?catalogo=`) e ela
   continua valendo ao trocar de estrutura, até "usar padrão" / "Restaurar
@@ -150,9 +151,18 @@ decisão de produto já tomada:
 - **Kit Descoberta saiu do ar (set/2026).** `/kit-descoberta` redireciona
   pra home; sem link no hero, drawer, rodapé nem comparativo. `KitPage`,
   `KitSheet` e `KitPurchase` ficam no repo, desligados, pra religar. O
-  card editorial que era do kit na home virou "Arquétipo em destaque"
-  (`FEATURED_ID` em `HomePage.tsx`, hoje Fênix; texto vem de
-  `data/archetypes.ts`; foto em `assets/fotos/destaque-fenix.jpg`).
+  card editorial que era do kit na home virou "Arquétipo em destaque" —
+  desde out/2026 banner rotativo Fênix → Sereia → Zeus, 5 s cada
+  (`components/FeaturedCarousel.tsx`, `SLIDES`; texto vem de
+  `data/archetypes.ts`; fotos `assets/fotos/destaque-*.jpg` — Sereia e Zeus
+  geradas por IA no Higgsfield, naturezas-mortas de alta perfumaria — Sereia em
+  pedestal de madrepérola na água, Zeus em travertino diante de estátua grega;
+  trocar pelas de campanha). No desktop (lg+) usa `destaque-*-desktop.jpg`: a
+  foto expandida nas laterais com IA (FLUX.2 Pro Outpaint) pra não cortar demais.
+  Cor do card por banner em `SLIDES[].bg`, animada via `@property --destaque-bg`
+  (index.css). Sem partículas (testadas e tiradas a pedido, out/2026) — só o
+  degradê. `FEATURED_ID` em
+  `HomePage.tsx` só vale pro Ateliê/direções.
 - **Fotos da designer (set/2026) em `src/assets/fotos/`** — convertidas de
   PNG pra JPG. Catálogo da home (`catalogo/`) mostra o frasco; a PDP tem
   galeria (`components/ProductGallery.tsx`): 1ª foto o frasco
@@ -164,13 +174,46 @@ decisão de produto já tomada:
   expandida pra 16:9 com IA (Higgsfield, FLUX.2 Pro Outpaint) — as laterais
   foram geradas; o frasco e a pessoa são os pixels originais.
   O que sobrou em `assets/mocks/` ainda é mock antigo.
+- **Fotos das famílias olfativas** (`assets/fotos/familias/{família}-{a|b|c}.jpg`,
+  out/2026): geradas por IA no Higgsfield (GPT Image 2.5), 896×1120 — a) still
+  life escuro com luz âmbar, b) editorial quente em linho, c) macro abstrato.
+  Padrão c (`FAMILY_IMG_DEFAULT` em `data/home.ts`); `?familias=a`/`?familias=b`
+  na home troca, pra comparação. Trocar por foto de campanha ou regerar em 2k
+  antes do lançamento.
+- **"A diferença" (out/2026)** é `components/DifferenceSection.tsx`: duas
+  colunas Arquétypus × Splash comum, sempre visíveis (sem chave no celular), cada
+  uma com foto no topo (`assets/fotos/diferenca/`): `arquetypus.jpg` gerada
+  por IA (Higgsfield, frascos reais de referência) e `splash-comum.jpg`, frasco
+  genérico sem marca enviado pelo usuário. Texto em `COMPARISON`.
+- **Benefícios (out/2026)**: o bloco "07 dias de garantia" virou faixa corrida
+  (`components/BenefitsMarquee.tsx`, textos em `BENEFITS` em `data/home.ts`):
+  garantia, envio 24 h, pagamento seguro, 6x sem juros, 5% no Pix.
+- **Rodapé Boutique (out/2026)** (`FooterBoutique` em `boutique/BoutiqueMore.tsx`):
+  escuro, logo dourada completa (`assets/brand/logo-dourado.png`), email
+  `contato@arquetypus.com.br` (era sac@, trocado em todos os rodapés) e selos de
+  pagamento (`PAGAMENTOS`: Pix, Visa, Master, Elo, Amex, Hipercard — desenhos
+  simplificados em bege `mesa`). As bandeiras são suposição: confirmar com o
+  gateway quando o checkout existir.
+- **Filtro do catálogo por família (out/2026):** clicar num card de "Descubra pelo
+  cheiro" filtra o catálogo pelos arquétipos da família (`FAMILIES[].arquetipos`)
+  e rola até ele, como os cards de gênero. Estado `catalogoFamilia` em
+  `HomePage.tsx`; o `CatalogGrid` (Boutique) mostra um chip "Família: X ✕".
+  Trocar o gênero nas abas tira a família. Zeus não está em nenhuma família.
+- **Pop-up de compra enxuto (out/2026):** no pop-up (`ProductPurchase` com
+  `fullPageTo`, modo compacto) o botão de comprar aparece sem rolar — sem selos
+  de envio/garantia/pagamento e sem "Complete o ritual"; no celular a foto vai na
+  largura toda e preço + botão ficam numa barra presa no pé do pop-up. A variante
+  mini (8 ml) saiu de vez, também da PDP. A PDP (`/loja/:id` direto) mantém selos e ritual e
+  ganhou o convite "Descubra {o/a} {energia}" (a etiqueta de energia saiu dos
+  cards do catálogo). `PurchaseSheet` fecha com saída animada pelo ✕, fundo, Esc,
+  arrastando o puxador ou o conteúdo já no topo (celular).
 - **Seções da home desligadas (out/2026):** "O perfume errado", "Reconhecimento",
   "Para criadores" e "Diário olfativo" — flags `SHOW_DIAGNOSIS`/`SHOW_RECOGNITION`/
   `SHOW_CREATORS`/`SHOW_DIARY` em `HomePage.tsx`. `/criadores` segue no ar; o
   Diário virou "Em breve" no Drawer e saiu dos rodapés. Os cartões de benefício
   do rodapé Boutique (envio, garantia, pagamento) foram removidos. Ordem da
   home: hero → comunidade → coleções por gênero → catálogo → famílias →
-  destaque → diferença → garantia → cupom → rodapé. O fechamento "Talvez você
+  destaque → diferença → benefícios (marquee) → cupom → rodapé. O fechamento "Talvez você
   não seja apenas um." está desligado (`SHOW_CLOSING`).
 - **Quiz ainda não tem rota.** O 1º banner do hero (`HeroCinema`) mostra o CTA
   "Descubra seus arquétipos" desligado, com "Teste de 2 minutos · em breve"
@@ -200,7 +243,12 @@ decisão de produto já tomada:
   outros 2 vêm de `TESTIMONIALS`, que já eram ilustrativos). As fotos
   (`assets/fotos/comunidade/`) e os @ vieram da designer — não está
   confirmado se são pessoas reais e autorizadas, e a seção diz "Pessoas
-  reais". Confirmar antes do lançamento. Os textos dos depoimentos e o "4,8 ·
+  reais". Confirmar antes do lançamento. **Desde out/2026 são 9 cards:** os 5
+  novos (Fada, Fênix, Guerreiro, Imperador, Zeus) têm pessoas GERADAS POR IA
+  (Higgsfield, GPT Image 2.5, com a foto do frasco da PDP como referência), @
+  inventados e sem depoimento. O usuário decidiu manter "Pessoas reais." e os @
+  sem selo por enquanto (protótipo interno) — trocar tudo por conteúdo real e
+  autorizado antes de ir ao ar. Os textos dos depoimentos e o "4,8 ·
   2.147 avaliações" estão escondidos (`SHOW_REVIEWS = false` em
   `HomePage.tsx`), assim como os percentuais de percepção
   (`SHOW_PROOF_STATS = false`) — copy revisada de set/2026 manda tirar

@@ -534,6 +534,16 @@ html[data-estrutura='boutique']:not([data-paleta='editorial']) img[src*='flor-ar
   }
 }
 
+/* Faixa de benefícios da home (BenefitsMarquee): mesma ideia, mais rápida, e para quando o mouse passa */
+@media (prefers-reduced-motion: no-preference) {
+  .beneficios-marquee {
+    animation: boutique-marquee 44s linear infinite;
+  }
+  .group:hover .beneficios-marquee {
+    animation-play-state: paused;
+  }
+}
+
 /* Header por estrutura (Layout.tsx, .site-header) — só quando sólido; sobre o hero de foto continua transparente */
 html[data-estrutura='oraculo'] .site-header:not(.border-transparent) {
   border-bottom-color: color-mix(in srgb, var(--color-latao) 35%, transparent);
@@ -920,6 +930,20 @@ button:active:not(.no-press) {
   }
 }
 
+/* Banner do "Arquétipo em destaque" (FeaturedCarousel): a cor do card é propriedade registrada, então o fundo e
+   os degradês que usam ela (foto dissolvendo no painel) mudam juntos e contínuos — sem a cor nova entrar chapada
+   antes do degradê. */
+@property --destaque-bg {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #540010;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .destaque-tint {
+    transition: --destaque-bg 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+}
+
 /* Cards de gênero da home (H-08). Celular: sempre acesos. Desktop com mouse: foto apagada (escura, meio
    sem cor) que acende devagar no hover/foco — zoom lento, filete dourado interno que aparece, texto que sobe
    um pouco e o traço do "Ver coleção" que se abre a partir do centro. */
@@ -1035,26 +1059,24 @@ button:active:not(.no-press) {
   }
 }
 
-/* Indicação de scroll do hero (HeroCinema): um trecho claro escorre pelo fio, em loop */
-.scroll-cue::after {
-  content: '';
-  position: absolute;
-  inset-inline: 0;
-  top: 0;
-  height: 40%;
-  background: var(--color-latao);
-}
+/* Indicação de scroll do hero (HeroCinema): a flechinha sobe devagar e se apaga, em loop fluido */
 @media (prefers-reduced-motion: no-preference) {
-  .scroll-cue::after {
+  .scroll-cue {
     animation: scroll-cue 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   }
 }
 @keyframes scroll-cue {
-  from {
-    transform: translateY(-100%);
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
   }
-  to {
-    transform: translateY(250%);
+  35%,
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-8px);
   }
 }
 

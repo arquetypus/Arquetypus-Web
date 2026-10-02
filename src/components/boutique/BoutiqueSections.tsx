@@ -73,17 +73,22 @@ export function CatalogGrid({
   filtro,
   setFiltro,
   filtros,
+  familia = null,
+  limparFamilia,
 }: {
   items: Archetype[]
   filtro: Filtro
   setFiltro: (f: Filtro) => void
   filtros: { key: Filtro; label: string }[]
+  /** família olfativa escolhida em "Descubra pelo cheiro" (filtra junto com o gênero) */
+  familia?: string | null
+  limparFamilia?: () => void
 }) {
   const location = useLocation()
   return (
     <section
       id="catalogo"
-      className="relative z-20 bg-papel-2 px-4 py-14 md:px-10 lg:py-24"
+      className="relative z-20 bg-papel-2 px-4 py-20 md:px-10 lg:py-32"
       style={{
         // degrau invertido: o catálogo fica POR CIMA da seção anterior e projeta sombra nela, com filete latão
         boxShadow: '0 -14px 26px -12px rgba(40,46,41,0.3), 0 -4px 8px -4px rgba(40,46,41,0.2)',
@@ -94,7 +99,7 @@ export function CatalogGrid({
         <div className="text-center">
           <p className="font-label text-[10px] tracking-[0.2em] text-tinta-2 uppercase">O catálogo</p>
           <h2 className="mt-3 font-display text-[30px] leading-[1.1] text-tinta lg:text-5xl">
-            Nove fragrâncias. <span className="text-latao-texto">Diferentes versões de você.</span>
+            Nove fragrâncias. <span className="text-latao-texto max-lg:block">Diferentes versões de você.</span>
           </h2>
           <div className="no-scrollbar mt-6 flex justify-start gap-2 overflow-x-auto sm:justify-center" role="tablist" aria-label="Filtrar catálogo">
             {filtros.map((f) => (
@@ -112,6 +117,18 @@ export function CatalogGrid({
               </button>
             ))}
           </div>
+          {/* filtro de família ativo (vindo dos cards de família): chip pra tirar */}
+          {familia && (
+            <button
+              type="button"
+              onClick={limparFamilia}
+              className="mt-3 inline-flex items-center gap-2 rounded-full border border-latao/60 bg-papel px-4 py-1.5 text-xs text-tinta"
+            >
+              <span className="text-tinta-2">Família:</span> {familia}
+              <span aria-hidden className="text-tinta-3">✕</span>
+              <span className="sr-only">Remover filtro de família</span>
+            </button>
+          )}
         </div>
 
         <ul className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 lg:mt-12 lg:gap-6">
@@ -126,9 +143,6 @@ export function CatalogGrid({
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                   />
                 </div>
-                <span className="absolute top-3 left-3 rounded-full bg-papel/90 px-2.5 py-1 font-label text-[8.5px] tracking-[0.14em] text-tinta-2 uppercase backdrop-blur">
-                  {a.energia}
-                </span>
               </Link>
               <div className="flex flex-1 flex-col p-3 lg:p-5">
                 <div className="flex items-center gap-2">

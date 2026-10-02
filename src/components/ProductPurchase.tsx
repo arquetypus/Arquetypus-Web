@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { Archetype } from '@/types/archetype'
 import { getArchetype } from '@/data/archetypes'
@@ -22,8 +22,10 @@ const TRUST = [
   { label: ['Pagamento', 'seguro'], icon: 'M6 11h12v9H6zM8.5 11V8a3.5 3.5 0 0 1 7 0v3' },
 ]
 
-const MINI_PRICE = 19.9
 const NECESSAIRE_PRICE = 24.9
+
+/** Artigo de cada energia, pro convite da PDP ("Descubra o Poder", "Descubra a Sedução") */
+const ARTIGO_ENERGIA: Record<string, string> = { Sedução: 'a', Força: 'a', Poder: 'o', Mistério: 'o' }
 
 /**
  * Seção de compra do arquétipo (P-02 a P-09): galeria/notas, identidade,
@@ -33,30 +35,29 @@ const NECESSAIRE_PRICE = 24.9
  * variante/preço/comprar (regra 8 do CLAUDE.md).
  */
 /**
- * `fullPageTo`: só no pop-up — no desktop o link "Ver página completa" fica na coluna da galeria,
- * encostado no rodapé do pop-up (no celular ele continua no fim do PurchaseSheet).
+ * `fullPageTo`: só no pop-up — no desktop o link "Ver página completa" fica na coluna da galeria
+ * (no celular ele continua no fim do PurchaseSheet).
+ * Pop-up (compacto, out/2026): o botão de comprar aparece sem rolar — saem os selos de envio/garantia/pagamento e o
+ * "Complete o ritual" (continuam na página completa) e, no celular, preço + botão ficam numa barra presa no pé do
+ * pop-up, com a foto na largura toda. A variante mini saiu de vez (out/2026): um tamanho só, sem seletor.
+ * Página completa: convite "Descubra {o/a} {energia}" acima do nome.
+ * lg+: duas colunas, cada uma um bloco centralizado na altura — galeria (7) e compra (5).
  */
 export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: string }) {
   const par = getArchetype(a.par)
   const { addItem } = useCart()
   const isPerfume = a.tipo === 'Perfume'
   const isWait = a.status === 'wait'
+  const compact = !!fullPageTo
 
-  const variants = useMemo(() => {
-    if (isPerfume) return [{ key: 'full', label: a.vol, meta: 'Perfume', price: a.preco }]
-    return [
-      { key: 'mini', label: '8 ml', meta: 'Mini', price: MINI_PRICE },
-      { key: 'full', label: a.vol, meta: 'Splash', price: a.preco },
-    ]
-  }, [a, isPerfume])
+  // tamanho único (a variante mini saiu em out/2026)
+  const selected = { key: 'full', label: a.vol, meta: isPerfume ? 'Perfume' : 'Splash', price: a.preco }
 
-  const [variant, setVariant] = useState(variants[variants.length - 1]?.key ?? 'full')
   const [showNotes, setShowNotes] = useState(false)
   const [addonPar, setAddonPar] = useState(false)
   const [addonNecessaire, setAddonNecessaire] = useState(false)
   const [added, setAdded] = useState(false)
 
-  const selected = variants.find((v) => v.key === variant) ?? variants[0]
   const pix = selected.price * 0.95
 
   function addToCart() {
@@ -96,17 +97,13 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
   ]
 
   return (
-    // Grade de 12 colunas no lg+: galeria em 7 (fixa enquanto a compra rola), compra em 5.
-    // Celular: uma coluna, na ordem breadcrumb → galeria → compra. Vale pro pop-up e pra PDP
-    <div className="lg:grid lg:grid-cols-12 lg:gap-x-12 lg:px-12 lg:pt-8 lg:pb-6 xl:gap-x-16">
-      <p className="px-4 pt-3 font-label text-[9px] tracking-widest text-tinta-3 uppercase lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:px-0 lg:pt-0">
-        {a.energia} / {a.cod} / {a.nome}
-      </p>
-
-      {/* P-02 Galeria + notas (botões Fotos/Notas embaixo). lg+: bloco centralizado na coluna e na altura do pop-up */}
-      <section className="mt-2 px-4 lg:col-span-7 lg:row-span-2 lg:row-start-1 lg:mt-0 lg:flex lg:flex-col lg:self-stretch lg:px-0">
-        {/* largura limitada também pela altura da tela, pra caber sem rolagem em monitores baixos */}
-        <div className="lg:mx-auto lg:my-auto lg:w-full lg:max-w-[min(36rem,calc(88svh-8rem))]">
+    // Grade de 12 colunas no lg+: galeria em 7, compra em 5, os dois blocos centralizados na altura (sem texto
+    // solto no topo). Celular: uma coluna, galeria → compra. Vale pro pop-up e pra PDP
+    <div className="lg:grid lg:grid-cols-12 lg:items-center lg:gap-x-12 lg:px-12 lg:py-10 xl:gap-x-16">
+      {/* P-02 Galeria + notas (botões Fotos/Notas embaixo). Celular: largura toda, só a margem lateral */}
+      <section className="px-4 pt-3 lg:col-span-7 lg:px-0 lg:pt-0">
+        {/* lg: largura limitada também pela altura da tela, pra caber sem rolagem em monitores baixos */}
+        <div className="lg:mx-auto lg:w-full lg:max-w-[min(36rem,calc(88svh-10rem))]">
         <div className="relative">
           <ProductGallery
             key={a.id}
@@ -133,7 +130,7 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
           )}
         </div>
         {/* lg: pl = largura da coluna de miniaturas + gap, pra centralizar os botões sob a foto principal */}
-        <div className="mt-2 flex gap-2 lg:mt-3 lg:justify-center lg:pl-[5.25rem]">
+        <div className="mt-3 flex justify-center gap-2 lg:pl-[5.25rem]">
           <button
             onClick={() => setShowNotes(false)}
             className={`rounded-full border px-3 py-1.5 font-label text-[9px] tracking-wide uppercase ${!showNotes ? 'border-tinta bg-tinta text-papel' : 'border-linha-2'}`}
@@ -161,24 +158,31 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
         )}
       </section>
 
-      <div className="lg:col-span-5 lg:col-start-8 lg:row-start-2">
-        {/* P-03/04 Identidade + frase */}
-        <section className="px-4 pt-5 lg:px-0 lg:pt-3">
+      <div className="lg:col-span-5">
+        {/* P-03/04 Identidade + frase. Hierarquia: (convite) → código/energia → nome → frase → tipo/família */}
+        <section className="px-4 pt-5 lg:px-0 lg:pt-0">
+          {/* página completa: convite pela energia, que saiu da etiqueta dos cards do catálogo */}
+          {!compact && (
+            <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-latao/50 px-3 py-1 font-label text-[9px] tracking-[0.2em] text-latao-texto uppercase">
+              <span aria-hidden className="size-1 rotate-45 bg-latao" />
+              Descubra {ARTIGO_ENERGIA[a.energia] ?? ''} {a.energia}
+            </p>
+          )}
           <Eyebrow>
             {a.cod} · Energia {a.energia}
           </Eyebrow>
-          <h1 className="mt-1.5 font-display text-3xl lg:mt-1.5 lg:text-[40px] lg:leading-[1.05]" style={{ color: a.cor }}>
+          <h1 className="mt-2 font-display text-3xl leading-[1.05] lg:text-[44px]" style={{ color: a.cor }}>
             {a.nome}
           </h1>
-          <p className="mt-3 font-display text-lg italic lg:mt-2 lg:text-lg lg:leading-snug">{a.card}</p>
-          <p className="mt-3 font-label text-[9px] tracking-[0.18em] text-tinta-3 uppercase lg:mt-2">
+          <p className="mt-2.5 font-display text-lg leading-snug italic lg:mt-3 lg:text-xl">{a.card}</p>
+          <p className="mt-3 font-label text-[9px] tracking-[0.18em] text-tinta-3 uppercase lg:mt-4">
             {a.tipo} · {a.vol} · {a.fam}
           </p>
         </section>
 
         {isWait ? (
           /* status 'wait': lista de espera, nunca venda */
-          <section className="mt-5 px-4 lg:mt-4 lg:border-t lg:border-linha lg:px-0 lg:pt-4">
+          <section className="mt-5 px-4 lg:mt-6 lg:border-t lg:border-linha lg:px-0 lg:pt-6">
             <p className="rounded-lg border border-linha-2 p-4 text-sm text-tinta-2">
               <b className="block font-label text-[10px] tracking-[0.18em] text-alerta uppercase">Em breve</b>
               <span className="mt-1.5 block">
@@ -194,49 +198,38 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
           </section>
         ) : (
           <>
-            {/* P-06 Preço — regra 7: Pix e parcelamento sempre junto do preço */}
-            <section className="mt-5 px-4 lg:mt-4 lg:border-t lg:border-linha lg:px-0 lg:pt-4">
-              <span className="font-display text-2xl lg:text-[28px] lg:leading-none">{brl(selected.price)}</span>
-              <p className="mt-1 text-xs text-tinta-2 lg:mt-1.5 lg:text-[13px]">
-                {brl(pix)} no Pix · ou 6x de {brl(selected.price / 6)} sem juros
-              </p>
-              <p className="mt-1.5 font-label text-[10px] text-ok uppercase">● Em estoque e pronto para envio</p>
-            </section>
-
-            {/* P-05 Variante */}
-            <section className="mt-4 px-4 lg:mt-4 lg:px-0">
-              <p className="mb-1.5 hidden font-label text-[9px] tracking-[0.18em] text-tinta-3 uppercase lg:block">Tamanho</p>
-              <div className="grid gap-2" style={{ gridTemplateColumns: `repeat(${variants.length}, 1fr)` }}>
-                {variants.map((v) => (
-                  <button
-                    key={v.key}
-                    onClick={() => setVariant(v.key)}
-                    className={`rounded-lg border p-3 text-center transition-colors lg:py-2.5 ${variant === v.key ? 'border-tinta bg-papel-2/60' : 'border-linha-2 hover:border-tinta-3'}`}
-                  >
-                    <b className="block text-sm">{v.label}</b>
-                    <span className="mt-0.5 block font-label text-[9px] text-tinta-3 uppercase">
-                      {v.meta} · {brl(v.price)}
-                    </span>
-                  </button>
-                ))}
+            {/* P-06 Preço + P-07 Comprar — regra 7: Pix e parcelamento sempre junto do preço. No pop-up do celular
+                o bloco fica preso no pé do pop-up (sticky), então o botão aparece sem rolar */}
+            <div
+              className={`mt-5 px-4 lg:mt-6 lg:border-t lg:border-linha lg:px-0 lg:pt-6 ${
+                compact
+                  ? 'max-lg:sticky max-lg:bottom-0 max-lg:z-10 max-lg:border-t max-lg:border-linha max-lg:bg-papel max-lg:pt-3 max-lg:pb-3 max-lg:shadow-[0_-12px_20px_-14px_rgba(40,46,41,0.35)]'
+                  : ''
+              }`}
+            >
+              <div className={compact ? 'max-lg:flex max-lg:items-end max-lg:justify-between max-lg:gap-3' : ''}>
+                <span className="font-display text-2xl lg:text-[30px] lg:leading-none">{brl(selected.price)}</span>
+                <p className={`mt-1 text-xs text-tinta-2 lg:mt-2 lg:text-[13px] ${compact ? 'max-lg:mt-0 max-lg:pb-1 max-lg:text-right max-lg:text-[11px]' : ''}`}>
+                  {brl(pix)} no Pix · ou 6x de {brl(selected.price / 6)} sem juros
+                </p>
               </div>
-            </section>
+              <p className={`mt-1.5 font-label text-[10px] text-ok uppercase ${compact ? 'max-lg:hidden' : ''}`}>● Em estoque e pronto para envio</p>
 
-            {/* P-07 Comprar — sacola desativada, ver CLAUDE.md */}
-            <section className="mt-4 px-4 lg:mt-3 lg:px-0">
+              {/* sacola desativada, ver CLAUDE.md */}
               <button
                 disabled
                 onClick={addToCart}
-                className="w-full rounded-lg bg-tinta py-4 lg:py-3.5 text-sm font-medium tracking-wide text-papel uppercase opacity-40"
+                className="mt-3 w-full rounded-lg bg-tinta py-4 text-sm font-medium tracking-wide text-papel uppercase opacity-40 lg:mt-5 lg:py-3.5"
               >
                 {added ? 'Adicionado ✓' : 'Em breve'}
               </button>
-            </section>
+            </div>
           </>
         )}
 
-        {/* P-08 Selos — faixa única dividida, ícone + texto */}
-        <section className="mt-5 px-4 lg:mt-4 lg:px-0">
+        {/* P-08 Selos — faixa única dividida, ícone + texto (só na página completa) */}
+        {!compact && (
+        <section className="mt-5 px-4 lg:mt-5 lg:px-0">
           <ul className="grid grid-cols-3 divide-x divide-linha border-y border-linha">
             {TRUST.map((t) => (
               <li key={t.icon} className="flex flex-col items-center gap-1.5 px-2 py-3 text-center lg:gap-1 lg:py-2.5">
@@ -252,9 +245,10 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
             ))}
           </ul>
         </section>
+        )}
 
-        {/* P-09 Complete sua rotina */}
-        {par && !isPerfume && !isWait && (
+        {/* P-09 Complete sua rotina (só na página completa) */}
+        {par && !isPerfume && !isWait && !compact && (
           <section className="mt-6 px-4 lg:mt-5 lg:px-0">
             <Eyebrow>Complete o ritual</Eyebrow>
             <label className="mt-3 flex cursor-pointer items-center gap-3 rounded-lg border border-linha-2 p-3 text-sm transition-colors hover:border-tinta-3 lg:py-2.5">

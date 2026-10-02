@@ -47,3 +47,4 @@ export function Embers({ className = '' }: { className?: string }) {
     </div>
   )
 }
+

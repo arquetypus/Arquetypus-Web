@@ -202,15 +202,27 @@ export function HeroCinema() {
         {barras}
       </div>
 
-      {/* indicação de scroll (só celular): fio que escorre no canto do rodapé. No desktop a ponta da seção
-          de baixo já aparece e faz esse papel. Leva pra primeira seção */}
+      {/* indicação de scroll: flechinha discreta que sobe e se apaga em loop (animação em index.css, .scroll-cue).
+          Celular: canto inferior direito, na altura das barras; desktop: centro do rodapé da parte visível.
+          Leva pra primeira seção */}
       <button
         type="button"
         onClick={() => scrollToId('comunidade')}
         aria-label="Rolar para a próxima seção"
-        className="group absolute right-5 bottom-0 flex h-14 cursor-pointer items-center lg:hidden"
+        className="group absolute right-5 bottom-0 flex h-14 cursor-pointer items-center lg:right-auto lg:left-1/2 lg:h-16 lg:-translate-x-1/2"
       >
-        <span aria-hidden className="scroll-cue relative block h-6 w-px overflow-hidden bg-papel-inv/20" />
+        <svg
+          aria-hidden
+          viewBox="0 0 16 16"
+          className="scroll-cue size-4 text-papel-inv/45 transition-colors group-hover:text-papel-inv/80 lg:size-5"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M8 13V3M4 7l4-4 4 4" />
+        </svg>
       </button>
       </div>
     </section>
