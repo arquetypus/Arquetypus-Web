@@ -101,6 +101,15 @@ const LATAO_CLARO = 'var(--color-latao)'
 const SHOW_PROOF_STATS = false
 const SHOW_REVIEWS = false
 
+// Seções desligadas a pedido (out/2026): "O perfume errado" (diagnóstico), "Reconhecimento", "Para criadores" e
+// "Diário olfativo". Código fica pra religar trocando pra true. A página /criadores continua no ar.
+const SHOW_DIAGNOSIS = false
+const SHOW_RECOGNITION = false
+const SHOW_CREATORS = false
+const SHOW_DIARY = false
+// fechamento "Talvez você não seja apenas um." (H-17) ficou fora da ordem nova de out/2026
+const SHOW_CLOSING = false
+
 // Arquétipo em destaque (card editorial da home). Foto escolhida pela designer (set/2026).
 const FEATURED_ID = 'fenix'
 const FEATURED_IMG = featuredFenix
@@ -616,7 +625,7 @@ export function HomePage() {
         {/* H-08 Segmentação — pôsteres na estética do Cinema: texto de apoio em cima, nome e CTA embaixo, tudo
             centrado. Celular: trilho horizontal (a seção não pode passar da altura da tela — decisão de out/2026);
             md+: 3 lado a lado, altura presa à tela pelo mesmo motivo */}
-        <Reveal as="section" id="segmentos" className="pt-12 pb-8 md:mx-auto md:max-w-7xl md:px-10 md:pt-14 md:pb-12">
+        <Reveal as="section" id="segmentos" className="pt-16 pb-12 md:mx-auto md:max-w-7xl md:px-10 md:pt-20 md:pb-16">
           <div className="px-4 text-center md:px-0">
             <Eyebrow>{SEGMENTS_HEADING.eyebrow}</Eyebrow>
             <h2 className="mt-3 font-display text-[28px] leading-[1.2] text-tinta md:text-4xl">{SEGMENTS_HEADING.title}</h2>
@@ -667,7 +676,11 @@ export function HomePage() {
           </div>
         </Reveal>
 
+        {/* catálogo logo depois das coleções por gênero, antes das famílias (ordem de out/2026) */}
+        {catalogNode}
+
         {/* H-06 Diagnóstico — celular empilhado; lg: intro + fechamento à esquerda, lista à direita */}
+        {SHOW_DIAGNOSIS && (
         <Reveal
           as="section"
           className="relative z-10 px-5 pt-16 pb-16 md:px-10 lg:py-24"
@@ -748,6 +761,7 @@ export function HomePage() {
             </p>
           </div>
         </Reveal>
+        )}
 
         {/* H-09 Por família */}
         {/* celular/tablet: carrossel; lg: grade de 4 colunas, sem scroll nem pontinhos */}
@@ -804,6 +818,7 @@ export function HomePage() {
         </Reveal>
 
         {/* H-11 Reconhecimento — celular empilhado; lg: intro centralizada, 3 itens em colunas, fechamento centralizado */}
+        {SHOW_RECOGNITION && (
         <Reveal
           as="section"
           className="relative z-10 px-5 pt-16 pb-20 md:px-10 lg:pt-24 lg:pb-28"
@@ -887,8 +902,7 @@ export function HomePage() {
             </p>
           </div>
         </Reveal>
-
-        {catalogNode}
+        )}
 
         {isAtelie ? (
           <FeaturedAtelie a={featured} img={FEATURED_IMG} />
@@ -1012,7 +1026,8 @@ export function HomePage() {
         */}
 
         {/* H-17 Números de percepção — percentuais escondidos até existir dado real (SHOW_PROOF_STATS);
-            o fechamento "Talvez você não seja apenas um." fica */}
+            o fechamento "Talvez você não seja apenas um." fica (desligado por SHOW_CLOSING) */}
+        {(SHOW_PROOF_STATS || SHOW_CLOSING) && (
         <Reveal
           as="section"
           className={`relative overflow-hidden px-5 md:px-10 ${SHOW_PROOF_STATS ? 'pt-12 lg:pt-20' : ''}`}
@@ -1071,6 +1086,7 @@ export function HomePage() {
           )}
 
           {/* Fechamento — ponte pro que vem depois */}
+          {SHOW_CLOSING && (
           <div
             className={`relative -mx-5 overflow-hidden bg-papel-2 px-5 pt-14 pb-12 text-center md:-mx-10 lg:pt-24 lg:pb-24 ${
               SHOW_PROOF_STATS ? 'mt-14 border-t border-linha' : ''
@@ -1101,7 +1117,9 @@ export function HomePage() {
               </SweepCta>
             </div>
           </div>
+          )}
         </Reveal>
+        )}
 
         {/* H-18 Comparativo — lista editorial numerada (mesmo padrão do Diagnóstico), sobre noite.
             Celular/tablet: chave Arquétypus × Splash comum; lg: título à esquerda e as duas colunas lado a lado */}
@@ -1298,6 +1316,7 @@ export function HomePage() {
         </Reveal>
 
         {/* H-21 Seja criador — volta ao claro, continuação da comunidade */}
+        {SHOW_CREATORS && (
         <Reveal
           as="section"
           className="relative overflow-hidden bg-papel px-5 pt-16 pb-16 md:px-10 lg:pt-24 lg:pb-24"
@@ -1373,8 +1392,9 @@ export function HomePage() {
             </div>
           </div>
         </Reveal>
+        )}
 
-        {isAtelie ? (
+        {!SHOW_DIARY ? null : isAtelie ? (
           <DiaryAtelie />
         ) : isBoutique ? (
           <DiaryBoutique />
@@ -1550,7 +1570,6 @@ export function HomePage() {
                 <p className="font-label text-[9px] tracking-[0.2em] text-papel-inv/35 uppercase">Explorar</p>
                 <ul className="mt-4 flex flex-col gap-3 text-sm text-papel-inv/75">
                   <li><Link to="/#catalogo" className="transition-colors hover:text-papel-inv">Os 9 arquétipos</Link></li>
-                  <li><Link to="/#diario" className="transition-colors hover:text-papel-inv">Diário olfativo</Link></li>
                   <li><Link to="/criadores" className="transition-colors hover:text-papel-inv">Seja criador</Link></li>
                 </ul>
               </div>

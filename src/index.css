@@ -1012,19 +1012,26 @@ button:active:not(.no-press) {
 }
 
 /* Quanto a 1ª seção da home sobe por cima do hero do Cinema — o bastante pra mostrar o título e a ponta dos
-   cards, sinalizando que a página continua. HeroCinema sobe o próprio conteúdo na mesma medida. */
+   cards, sinalizando que a página continua. HeroCinema sobe o próprio conteúdo na mesma medida.
+   Out/2026: celular mostra só uma bordinha da seção (hero em destaque); desktop sobe um pouco menos que antes. */
 :root {
-  --hero-sobe: 8.5rem;
+  --hero-sobe: 1.25rem;
+}
+/* celular baixo (proporção de iPhone SE): a bordinha some perto da barra do navegador — sobe um pouco mais */
+@media (max-width: 1023px) and (max-height: 700px) {
+  :root {
+    --hero-sobe: 2.25rem;
+  }
 }
 @media (min-width: 1024px) {
   :root {
-    --hero-sobe: 9rem;
+    --hero-sobe: 6rem;
   }
 }
 /* notebook de tela baixa: sobe menos, senão o texto do banner não cabe na parte visível */
 @media (min-width: 1024px) and (max-height: 820px) {
   :root {
-    --hero-sobe: 8rem;
+    --hero-sobe: 5rem;
   }
 }
 
@@ -1093,6 +1100,20 @@ button:active:not(.no-press) {
 [data-loop-jump] *::before,
 [data-loop-jump] *::after {
   transition: none !important;
+}
+
+/* Arraste com o mouse (useInfiniteCarousel com mouseDrag): o snap brigaria com o scrollLeft movido na mão */
+[data-drag-scroll] {
+  cursor: grab;
+}
+[data-dragging] {
+  scroll-snap-type: none !important;
+  scroll-behavior: auto !important;
+  cursor: grabbing;
+  user-select: none;
+}
+[data-drag-scroll] img {
+  -webkit-user-drag: none;
 }
 
 /* Brasas (components/ui/Embers): cada ponto sobe devagar, desviando de leve, e se apaga */

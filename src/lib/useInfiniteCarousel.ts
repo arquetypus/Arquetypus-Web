@@ -19,8 +19,12 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react
  * num componente que continua montado enquanto o carrossel sai e volta do DOM (ex.: trocar estrutura/catálogo
  * no painel de direção visual) — com ref de objeto e efeito só em [count], os listeners ficavam presos no
  * elemento antigo e o carrossel novo nascia travado.
+ *
+ * `mouseDrag`: arrastar com o mouse (desktop). Toque e trackpad seguem com o scroll nativo; o mouse não rola na
+ * horizontal sozinho, então o arraste move o scrollLeft na mão (snap desligado via data-dragging, ver index.css),
+ * centraliza o card mais próximo ao soltar e engole o clique que viria no fim do arraste (não abre o link).
  */
-export function useInfiniteCarousel(count: number) {
+export function useInfiniteCarousel(count: number, { mouseDrag = false }: { mouseDrag?: boolean } = {}) {
   const elRef = useRef<HTMLDivElement | null>(null)
   const [container, setContainer] = useState<HTMLDivElement | null>(null)
   const containerRef = useCallback((node: HTMLDivElement | null) => {
@@ -138,11 +142,68 @@ export function useInfiniteCarousel(count: number) {
       }, 140)
     }
 
+    let drag: { x: number; left: number; moved: boolean; id: number } | null = null
+    let swallowClick = false
+    let dragEndTimer: ReturnType<typeof setTimeout> | undefined
+
+    function onDragStart(e: PointerEvent) {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return
+      // sem isso o navegador começa a arrastar a imagem/selecionar texto em vez do carrossel
+      e.preventDefault()
+      clearTimeout(dragEndTimer)
+      drag = { x: e.clientX, left: el!.scrollLeft, moved: false, id: e.pointerId }
+    }
+
+    function onDragMove(e: PointerEvent) {
+      if (!drag) return
+      const dx = e.clientX - drag.x
+      if (!drag.moved) {
+        // folga de 5px: clique com a mão tremendo ainda é clique
+        if (Math.abs(dx) < 5) return
+        drag.moved = true
+        el!.setPointerCapture(drag.id)
+        el!.dataset.dragging = ''
+      }
+      el!.scrollLeft = drag.left - dx
+    }
+
+    function onDragEnd() {
+      if (!drag) return
+      const moved = drag.moved
+      drag = null
+      if (!moved) return
+      swallowClick = true
+      setTimeout(() => (swallowClick = false), 0)
+      const item = itemsRef.current[closestIndex()]
+      if (item) el!.scrollTo({ left: layoutCenter(el!, item) - el!.clientWidth / 2, behavior: 'smooth' })
+      // o snap só volta depois da rolagem suave assentar — religado antes, o navegador pula pro ponto de snap
+      dragEndTimer = setTimeout(() => delete el!.dataset.dragging, 450)
+    }
+
+    function onClickCapture(e: MouseEvent) {
+      if (!swallowClick) return
+      e.preventDefault()
+      e.stopPropagation()
+    }
+
     el.addEventListener('scroll', onScroll, { passive: true })
     el.addEventListener('pointerdown', markUser, { passive: true })
     el.addEventListener('touchstart', markUser, { passive: true })
     el.addEventListener('wheel', markUser, { passive: true })
+    if (mouseDrag) {
+      el.addEventListener('pointerdown', onDragStart)
+      el.addEventListener('pointermove', onDragMove)
+      el.addEventListener('pointerup', onDragEnd)
+      el.addEventListener('pointercancel', onDragEnd)
+      el.addEventListener('click', onClickCapture, true)
+    }
     return () => {
+      el.removeEventListener('pointerdown', onDragStart)
+      el.removeEventListener('pointermove', onDragMove)
+      el.removeEventListener('pointerup', onDragEnd)
+      el.removeEventListener('pointercancel', onDragEnd)
+      el.removeEventListener('click', onClickCapture, true)
+      clearTimeout(dragEndTimer)
       ro.disconnect()
       el.removeEventListener('scroll', onScroll)
       el.removeEventListener('pointerdown', markUser)
@@ -150,7 +211,7 @@ export function useInfiniteCarousel(count: number) {
       el.removeEventListener('wheel', markUser)
       clearTimeout(settleTimer.current)
     }
-  }, [count, container])
+  }, [count, container, mouseDrag])
 
   // setas (desktop): centraliza o vizinho com scroll suave; o reposicionamento do loop acontece no onScroll
   function step(dir: 1 | -1) {

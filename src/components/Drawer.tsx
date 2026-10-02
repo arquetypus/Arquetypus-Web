@@ -31,7 +31,8 @@ const GROUPS: DrawerGroup[] = [
   {
     title: 'A marca',
     links: [
-      { label: 'Diário olfativo', to: '/#diario' },
+      // seção do Diário saiu da home (out/2026): fica "Em breve" até voltar
+      { label: 'Diário olfativo' },
       { label: 'Seja criador', to: '/criadores' },
       { label: 'Sobre' },
       { label: 'Ajuda e trocas' },

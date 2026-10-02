@@ -164,6 +164,14 @@ decisão de produto já tomada:
   expandida pra 16:9 com IA (Higgsfield, FLUX.2 Pro Outpaint) — as laterais
   foram geradas; o frasco e a pessoa são os pixels originais.
   O que sobrou em `assets/mocks/` ainda é mock antigo.
+- **Seções da home desligadas (out/2026):** "O perfume errado", "Reconhecimento",
+  "Para criadores" e "Diário olfativo" — flags `SHOW_DIAGNOSIS`/`SHOW_RECOGNITION`/
+  `SHOW_CREATORS`/`SHOW_DIARY` em `HomePage.tsx`. `/criadores` segue no ar; o
+  Diário virou "Em breve" no Drawer e saiu dos rodapés. Os cartões de benefício
+  do rodapé Boutique (envio, garantia, pagamento) foram removidos. Ordem da
+  home: hero → comunidade → coleções por gênero → catálogo → famílias →
+  destaque → diferença → garantia → cupom → rodapé. O fechamento "Talvez você
+  não seja apenas um." está desligado (`SHOW_CLOSING`).
 - **Quiz ainda não tem rota.** O 1º banner do hero (`HeroCinema`) mostra o CTA
   "Descubra seus arquétipos" desligado, com "Teste de 2 minutos · em breve"
   (`QUIZ_CTA` em `data/home.ts`). `pages/QuizPage.tsx`/`ResultPage.tsx` existem
@@ -214,6 +222,8 @@ decisão de produto já tomada:
 - **Nenhuma seção depois do hero pode passar da altura da tela** (decisão de
   reunião, out/2026) — só o hero da home cobre 100%. Seção com muito conteúdo
   vira trilho horizontal no celular ou tem altura presa à tela (`svh`).
+  Exceção: comunidade/UGC no celular — cards grandes pela largura mesmo que a
+  seção passe da tela em celular baixo (pedido de out/2026).
 - **Cantos: uma escala só.** Usar `rounded-sm…3xl` (tokens `--radius-*`,
   ajustados no estilo Elegant em `index.css`), nunca raio em px solto;
   `rounded-full` só pra pílula/círculo.

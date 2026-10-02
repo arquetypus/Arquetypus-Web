@@ -1,11 +1,12 @@
 import { Link, useLocation } from 'react-router-dom'
 import type { Archetype } from '@/types/archetype'
 import { getArchetype } from '@/data/archetypes'
-import { FRASCO_CUT_IMG, JOURNAL, REWARD_FREIGHT, UGC_IMG, UGC_VIDEOS } from '@/data/home'
+import { FRASCO_CUT_IMG, JOURNAL, UGC_IMG, UGC_VIDEOS } from '@/data/home'
 import { openCookiePreferences } from '@/lib/consent'
 import { useInfiniteCarousel } from '@/lib/useInfiniteCarousel'
 import { useCoverflow } from '@/lib/useCoverflow'
 import { CarouselDots } from '@/components/ui/CarouselDots'
+import { Eyebrow } from '@/components/ui/Eyebrow'
 
 /**
  * Mais seções da direção "Boutique" (ThemeSwitcher): destaque como banner de produto, comunidade como
@@ -72,19 +73,22 @@ export function CommunityBoutique() {
   // reposiciona o scroll ao cruzar as bordas
   const total = UGC_VIDEOS.length
   const loop = [...UGC_VIDEOS, ...UGC_VIDEOS, ...UGC_VIDEOS]
-  const trilho = useInfiniteCarousel(total)
+  // mouseDrag: no desktop dá pra arrastar os cards com o mouse (out/2026)
+  const trilho = useInfiniteCarousel(total, { mouseDrag: true })
   // cards de trás bem apagados: o do centro é o protagonista
   useCoverflow(trilho.container, { minOpacity: 0.15 })
 
   // 1ª seção depois do hero (sobe por cima dele). Cada experiência é um "vídeo" (2:3, mais largo que o 9:16 pra caber na altura da tela) com o produto num cartão
   // à parte, sobreposto à base do vídeo (metade dentro, metade fora) — o vídeo é a prova, o cartão é a compra.
-  // Tamanho do card = o que sobra da altura da tela (94svh) tirando título, cartão, pontinhos e texto (~23–24rem),
+  // Tamanho do card = o que sobra da altura da tela (94svh) tirando eyebrow, título, cartão, pontinhos e texto (~23,5–24,5rem),
   // em 2:3 — o maior possível sem a seção passar da altura da tela (regra de out/2026). Teto: 34rem de altura no desktop.
+  // Celular: só a largura manda — min(66vw, 270px) × --ugc-escala (1.155, out/2026). Exceção pedida (out/2026) à
+  // regra da altura: em celular baixo o card continua grande e proporcional, mesmo que a seção passe da tela.
   // Hoje são fotos (UGC_IMG); quando os vídeos chegarem, trocar o <img> por <video> mudo em loop.
   return (
     <section
       id="comunidade"
-      className="relative z-20 rounded-t-2xl bg-papel pt-8 pb-10 [--ugc-w:min(66vw,calc((94svh-22rem)*2/3),270px)] lg:pt-9 lg:pb-12 lg:[--ugc-w:calc(min(34rem,94svh-23rem)*2/3)]"
+      className="relative z-20 rounded-t-2xl bg-papel pt-8 pb-10 [--ugc-w:min(66vw*var(--ugc-escala),270px*var(--ugc-escala))] [--ugc-escala:1.155] lg:pt-9 lg:pb-12 lg:[--ugc-w:calc(min(34rem,94svh-24.5rem)*2/3)]"
       style={{
         // degrau no fim: esta seção fica por cima da seguinte e projeta sombra nela, com filete latão na borda
         boxShadow: '0 14px 26px -12px rgba(40,46,41,0.3), 0 4px 8px -4px rgba(40,46,41,0.2)',
@@ -101,10 +105,34 @@ export function CommunityBoutique() {
           WebkitMaskImage: 'linear-gradient(to bottom, black 0, black 18%, transparent 100%)',
         }}
       />
-      <h2 className="px-4 text-center font-display text-[30px] leading-[1.1] text-tinta md:px-10 lg:text-4xl">Coleção Arquétypus</h2>
+      {/* eyebrow + título, mesmo cabeçalho das outras seções da home (Eyebrow latão, título mt-3) */}
+      <div className="px-4 text-center md:px-10">
+        <Eyebrow>A comunidade</Eyebrow>
+        <h2 className="mt-3 font-display text-[30px] leading-[1.1] text-tinta lg:text-4xl">Coleção Arquétypus</h2>
+      </div>
+      <div className="relative mt-6 lg:mt-7">
+      {/* desktop: setas grandes ao lado do card do centro, na altura do meio do vídeo (2:3 → metade = 0,75 × largura) */}
+      {([-1, 1] as const).map((dir) => (
+        <button
+          key={dir}
+          type="button"
+          onClick={() => trilho.step(dir)}
+          aria-label={dir < 0 ? 'Experiência anterior' : 'Próxima experiência'}
+          className="absolute z-30 hidden size-12 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-papel text-tinta shadow-[0_10px_24px_-10px_rgba(40,46,41,0.45)] ring-1 ring-latao/60 transition-[background-color,color,box-shadow,scale] duration-300 hover:bg-latao hover:text-papel hover:shadow-[0_14px_30px_-10px_rgba(40,46,41,0.55)] hover:ring-latao active:scale-90 lg:flex"
+          style={{
+            top: 'calc(var(--ugc-w) * 0.75)',
+            [dir < 0 ? 'left' : 'right']: 'calc(50% - var(--ugc-w) / 2 - 5rem)',
+          }}
+        >
+          <svg aria-hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className="size-6">
+            <path d={dir < 0 ? 'M15 5l-7 7 7 7' : 'M9 5l7 7-7 7'} />
+          </svg>
+        </button>
+      ))}
       <div
         ref={trilho.containerRef}
-        className="no-scrollbar relative mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-9 lg:mt-7 lg:gap-5"
+        data-drag-scroll
+        className="no-scrollbar relative flex snap-x snap-mandatory gap-3 overflow-x-auto pb-9 lg:gap-5"
         // padding lateral = metade da sobra, pra o primeiro e o último card também pararem no centro.
         // pb-9: o overflow do scroll corta tudo que passa da caixa — a folga embaixo deixa a sombra dos cartões inteira
         style={{ paddingInline: 'calc((100% - var(--ugc-w)) / 2)' }}
@@ -144,19 +172,24 @@ export function CommunityBoutique() {
 
               {/* o produto: cartão à parte, sobreposto à base do vídeo — metade dentro, metade fora (ideia do
                   product tag da comunidade do Editorial) */}
+              {/* TESTE out/2026 — celular: preço na linha do nome e botão mais fino; miniatura do frasco
+                  maior (68px, mais destaque pro produto — o cartão cresce um pouco na vertical); lg: layout de antes */}
               <div className="ugc-pop relative z-10 mx-1.5 -mt-10 rounded-xl bg-papel p-2 ring-1 ring-latao/45">
                 <div className="flex items-center gap-2.5">
                   {FRASCO_CUT_IMG[arq.id] && (
-                    <img src={FRASCO_CUT_IMG[arq.id]} alt="" className="h-16 w-12 shrink-0 rounded-md object-cover lg:h-20 lg:w-14" />
+                    <img src={FRASCO_CUT_IMG[arq.id]} alt="" className="h-[68px] w-[51px] shrink-0 rounded-md object-cover lg:h-20 lg:w-14" />
                   )}
                   <span className="min-w-0 flex-1">
-                    <b className="block truncate font-display text-[17px] leading-tight font-normal text-tinta lg:text-lg">{arq.nome}</b>
+                    <span className="flex items-baseline justify-between gap-2">
+                      <b className="block truncate font-display text-[17px] leading-tight font-normal text-tinta lg:text-lg">{arq.nome}</b>
+                      <span className="shrink-0 text-[13px] leading-none text-tinta lg:hidden">{brl(arq.preco)}</span>
+                    </span>
                     <span className="block truncate text-[11px] text-tinta-2 lg:text-xs">{arq.fam}</span>
                     {/* quebra em 2 linhas no card estreito em vez de cortar */}
                     <span className="block font-label text-[8.5px] leading-snug tracking-[0.15em] text-tinta-3 uppercase">
                       {arq.tipo} · {arq.vol}
                     </span>
-                    <span className="mt-1 block text-[13px] leading-none text-tinta">{brl(arq.preco)}</span>
+                    <span className="mt-1 hidden text-[13px] leading-none text-tinta lg:block">{brl(arq.preco)}</span>
                   </span>
                 </div>
                 <Link
@@ -164,7 +197,7 @@ export function CommunityBoutique() {
                   state={{ backgroundLocation: location }}
                   tabIndex={ativo ? 0 : -1}
                   aria-label={`Descobrir ${arq.nome}`}
-                  className="mt-2 block w-full rounded-full border border-latao/50 py-2 text-center font-label text-[10px] tracking-[0.2em] text-tinta uppercase transition-colors duration-300 hover:border-latao hover:bg-latao hover:text-papel"
+                  className="mt-1.5 block w-full rounded-full border border-latao/50 py-1.5 text-center lg:mt-2 lg:py-2 font-label text-[10px] tracking-[0.2em] text-tinta uppercase transition-colors duration-300 hover:border-latao hover:bg-latao hover:text-papel"
                 >
                   Descobrir
                 </Link>
@@ -173,14 +206,16 @@ export function CommunityBoutique() {
           )
         })}
       </div>
+      </div>
 
-      {/* setas sem moldura, na mesma linha dos pontinhos — visíveis também no celular (além do deslizar) */}
-      <div className="flex items-center justify-center gap-3 lg:gap-5">
+      {/* celular: setas sem moldura, na mesma linha dos pontinhos (além do deslizar). Desktop: só os pontinhos — as
+          setas ficam ao lado dos cards (acima) */}
+      <div className="flex items-center justify-center gap-3">
         <button
           type="button"
           onClick={() => trilho.step(-1)}
           aria-label="Experiência anterior"
-          className="-my-2 flex size-10 cursor-pointer items-center justify-center text-tinta-2 transition-[color,transform] duration-300 hover:text-latao-texto active:scale-90"
+          className="-my-2 flex size-10 lg:hidden cursor-pointer items-center justify-center text-tinta-2 transition-[color,transform] duration-300 hover:text-latao-texto active:scale-90"
         >
           <svg aria-hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="size-6">
             <path d="M15 5l-7 7 7 7" />
@@ -191,7 +226,7 @@ export function CommunityBoutique() {
           type="button"
           onClick={() => trilho.step(1)}
           aria-label="Próxima experiência"
-          className="-my-2 flex size-10 cursor-pointer items-center justify-center text-tinta-2 transition-[color,transform] duration-300 hover:text-latao-texto active:scale-90"
+          className="-my-2 flex size-10 lg:hidden cursor-pointer items-center justify-center text-tinta-2 transition-[color,transform] duration-300 hover:text-latao-texto active:scale-90"
         >
           <svg aria-hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="size-6">
             <path d="M9 5l7 7-7 7" />
@@ -235,25 +270,13 @@ export function DiaryBoutique() {
   )
 }
 
-/** Rodapé de loja: benefícios em destaque, colunas de links, pagamentos e dados da empresa. */
+/** Rodapé de loja: colunas de links e dados da empresa. Os cartões de benefício (envio, garantia, pagamento)
+ * saíram a pedido (out/2026). */
 export function FooterBoutique() {
-  const beneficios = [
-    { t: 'Envio em 24 h úteis', d: `Frete grátis acima de ${brl(REWARD_FREIGHT)}` },
-    { t: '7 dias de garantia', d: 'Mesmo com o frasco aberto' },
-    { t: 'Pagamento seguro', d: 'Pix · Visa · Master · Elo · Boleto' },
-  ]
   return (
     <footer className="-mb-24 bg-papel-2 px-4 pt-12 pb-[calc(2.5rem+6rem)] text-tinta md:px-10 lg:pt-16">
       <div className="mx-auto max-w-7xl">
-        <ul className="grid gap-3 md:grid-cols-3">
-          {beneficios.map((b) => (
-            <li key={b.t} className="rounded-2xl bg-papel p-5 ring-1 ring-linha">
-              <b className="block text-sm font-semibold">{b.t}</b>
-              <span className="text-xs text-tinta-2">{b.d}</span>
-            </li>
-          ))}
-        </ul>
-        <div className="mt-10 grid grid-cols-2 gap-8 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
           <div className="col-span-2 lg:col-span-1">
             <p className="font-display text-2xl font-semibold">Arquétypus</p>
             <p className="mt-2 text-sm text-tinta-2">Você não escolhe um perfume. Você reconhece o seu.</p>
@@ -263,7 +286,6 @@ export function FooterBoutique() {
             <ul className="mt-3 flex flex-col gap-2 text-sm text-tinta-2">
               <li><Link to="/#catalogo" className="hover:text-tinta">Os 9 arquétipos</Link></li>
               <li><Link to="/#segmentos" className="hover:text-tinta">Coleções</Link></li>
-              <li><Link to="/#diario" className="hover:text-tinta">Diário olfativo</Link></li>
               <li><Link to="/criadores" className="hover:text-tinta">Seja criador</Link></li>
             </ul>
           </div>
