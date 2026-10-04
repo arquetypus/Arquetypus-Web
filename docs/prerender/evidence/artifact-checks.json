@@ -1,0 +1,9 @@
+﻿{
+    "routes":  18,
+    "httpCases":  24,
+    "httpErrors":  0,
+    "identicalPublicAssets":  2,
+    "clientMetadata":  18,
+    "lighthouseRuns":  6,
+    "screenshots":  10
+}

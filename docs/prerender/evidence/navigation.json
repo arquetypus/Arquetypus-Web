@@ -1,0 +1,301 @@
+[
+  {
+    "step": "catalogo-abre-modal",
+    "at": "2026-10-04T23:03:23.675Z",
+    "canonical": "https://arquetypus.com.br/",
+    "dialogs": [],
+    "headings": [
+      "Qual versão de você quer expressar hoje?"
+    ],
+    "homeMounted": true,
+    "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+    "url": "http://127.0.0.1:4173/loja/zeus"
+  },
+  {
+    "step": "modal-estavel",
+    "at": "2026-10-04T23:03:32.641Z",
+    "canonical": "https://arquetypus.com.br/",
+    "dialogs": [
+      {
+        "headings": [
+          "ZeusStormbreak"
+        ],
+        "label": "Comprar Zeus"
+      }
+    ],
+    "headings": [
+      "Qual versão de você quer expressar hoje?",
+      "ZeusStormbreak"
+    ],
+    "homeMounted": true,
+    "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+    "url": "http://127.0.0.1:4173/loja/zeus"
+  },
+  {
+    "step": "reload-preserva-modal",
+    "at": "2026-10-04T23:03:45.661Z",
+    "canonical": "https://arquetypus.com.br/",
+    "dialogs": [
+      {
+        "headings": [
+          "ZeusStormbreak"
+        ],
+        "label": "Comprar Zeus"
+      }
+    ],
+    "headings": [
+      "Afrodite",
+      "ZeusStormbreak"
+    ],
+    "homeMounted": true,
+    "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+    "url": "http://127.0.0.1:4173/loja/zeus"
+  },
+  {
+    "step": "back-retorna-home",
+    "at": "2026-10-04T23:03:45.902Z",
+    "canonical": "https://arquetypus.com.br/",
+    "dialogs": [],
+    "headings": [
+      "Afrodite"
+    ],
+    "homeMounted": true,
+    "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+    "url": "http://127.0.0.1:4173/"
+  },
+  {
+    "step": "forward-restaura-modal",
+    "at": "2026-10-04T23:03:46.161Z",
+    "canonical": "https://arquetypus.com.br/",
+    "dialogs": [
+      {
+        "headings": [
+          "ZeusStormbreak"
+        ],
+        "label": "Comprar Zeus"
+      }
+    ],
+    "headings": [
+      "Afrodite",
+      "ZeusStormbreak"
+    ],
+    "homeMounted": true,
+    "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+    "url": "http://127.0.0.1:4173/loja/zeus"
+  },
+  {
+    "step": "estado-apos-fechar",
+    "at": "2026-10-04T23:03:56.167Z",
+    "canonical": "https://arquetypus.com.br/",
+    "dialogs": [
+      {
+        "headings": [
+          "ZeusStormbreak"
+        ],
+        "label": "Comprar Zeus"
+      }
+    ],
+    "headings": [
+      "Qual versão de você quer expressar hoje?",
+      "ZeusStormbreak"
+    ],
+    "homeMounted": true,
+    "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+    "url": "http://127.0.0.1:4173/loja/zeus"
+  },
+  {
+    "step": "escape-fecha-modal",
+    "at": "2026-10-04T23:04:43.909Z",
+    "canonical": "https://arquetypus.com.br/",
+    "dialogs": [],
+    "headings": [
+      "Afrodite"
+    ],
+    "homeMounted": true,
+    "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+    "url": "http://127.0.0.1:4173/"
+  },
+  {
+    "step": "produto-invalido",
+    "at": "2026-10-04T23:05:16.183Z",
+    "canonical": "https://arquetypus.com.br/",
+    "dialogs": [],
+    "headings": [
+      "Qual versão de você quer expressar hoje?"
+    ],
+    "homeMounted": true,
+    "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+    "url": "http://127.0.0.1:4173/"
+  },
+  {
+    "step": "url-antiga",
+    "at": "2026-10-04T23:05:16.555Z",
+    "canonical": "https://arquetypus.com.br/loja/zeus",
+    "dialogs": [],
+    "headings": [
+      "ZeusStormbreak"
+    ],
+    "homeMounted": false,
+    "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+    "url": "http://127.0.0.1:4173/loja/zeus"
+  },
+  {
+    "step": "kit-desligado",
+    "at": "2026-10-04T23:05:17.236Z",
+    "canonical": "https://arquetypus.com.br/",
+    "dialogs": [],
+    "headings": [
+      "Qual versão de você quer expressar hoje?"
+    ],
+    "homeMounted": true,
+    "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+    "url": "http://127.0.0.1:4173/"
+  },
+  {
+    "step": "404-geral",
+    "at": "2026-10-04T23:05:17.485Z",
+    "canonical": "https://arquetypus.com.br/qualquer-coisa",
+    "dialogs": [],
+    "headings": [
+      "Página não encontrada"
+    ],
+    "homeMounted": false,
+    "robots": "noindex",
+    "title": "Página não encontrada | Arquétypus Parfum",
+    "url": "http://127.0.0.1:4173/qualquer-coisa"
+  },
+  {
+    "step": "alias-trocas-inexistente",
+    "at": "2026-10-04T23:05:17.732Z",
+    "canonical": "https://arquetypus.com.br/trocas",
+    "dialogs": [],
+    "headings": [
+      "Página não encontrada"
+    ],
+    "homeMounted": false,
+    "robots": "noindex",
+    "title": "Página não encontrada | Arquétypus Parfum",
+    "url": "http://127.0.0.1:4173/trocas"
+  },
+  {
+    "step": "alias-termos-inexistente",
+    "at": "2026-10-04T23:05:17.972Z",
+    "canonical": "https://arquetypus.com.br/termos",
+    "dialogs": [],
+    "headings": [
+      "Página não encontrada"
+    ],
+    "homeMounted": false,
+    "robots": "noindex",
+    "title": "Página não encontrada | Arquétypus Parfum",
+    "url": "http://127.0.0.1:4173/termos"
+  },
+  {
+    "step": "fechar-x-modal-fresco",
+    "at": "2026-10-04T23:06:39.138Z",
+    "canonical": "https://arquetypus.com.br/",
+    "dialogs": [],
+    "headings": [
+      "Qual versão de você quer expressar hoje?"
+    ],
+    "homeMounted": true,
+    "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+    "url": "http://127.0.0.1:4173/"
+  },
+  {
+    "step": "link-pagina-completa",
+    "at": "2026-10-04T23:06:41.228Z",
+    "canonical": "https://arquetypus.com.br/loja/zeus",
+    "dialogs": [],
+    "headings": [
+      "ZeusStormbreak"
+    ],
+    "homeMounted": false,
+    "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+    "url": "http://127.0.0.1:4173/loja/zeus"
+  },
+  {
+    "step": "reload-pdp-completa",
+    "at": "2026-10-04T23:06:41.520Z",
+    "canonical": "https://arquetypus.com.br/loja/zeus",
+    "dialogs": [],
+    "headings": [
+      "ZeusStormbreak"
+    ],
+    "homeMounted": false,
+    "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+    "url": "http://127.0.0.1:4173/loja/zeus"
+  },
+  {
+    "step": "mobile-abre-modal",
+    "at": "2026-10-04T23:07:42.269Z",
+    "canonical": "https://arquetypus.com.br/",
+    "dialogs": [
+      {
+        "headings": [
+          "ZeusStormbreak"
+        ],
+        "label": "Comprar Zeus"
+      }
+    ],
+    "headings": [
+      "Guerreiro",
+      "ZeusStormbreak"
+    ],
+    "homeMounted": true,
+    "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+    "url": "http://127.0.0.1:4173/loja/zeus"
+  },
+  {
+    "step": "mobile-reload-preserva-modal",
+    "at": "2026-10-04T23:07:44.683Z",
+    "canonical": "https://arquetypus.com.br/",
+    "dialogs": [
+      {
+        "headings": [
+          "ZeusStormbreak"
+        ],
+        "label": "Comprar Zeus"
+      }
+    ],
+    "headings": [
+      "Qual versão de você quer expressar hoje?",
+      "ZeusStormbreak"
+    ],
+    "homeMounted": true,
+    "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+    "url": "http://127.0.0.1:4173/loja/zeus"
+  },
+  {
+    "step": "mobile-back-home",
+    "at": "2026-10-04T23:07:45.137Z",
+    "canonical": "https://arquetypus.com.br/",
+    "dialogs": [],
+    "headings": [
+      "Qual versão de você quer expressar hoje?"
+    ],
+    "homeMounted": true,
+    "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+    "url": "http://127.0.0.1:4173/"
+  },
+  {
+    "step": "mobile-forward-modal",
+    "at": "2026-10-04T23:07:45.477Z",
+    "canonical": "https://arquetypus.com.br/",
+    "dialogs": [
+      {
+        "headings": [
+          "ZeusStormbreak"
+        ],
+        "label": "Comprar Zeus"
+      }
+    ],
+    "headings": [
+      "Qual versão de você quer expressar hoje?",
+      "ZeusStormbreak"
+    ],
+    "homeMounted": true,
+    "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+    "url": "http://127.0.0.1:4173/loja/zeus"
+  }
+]

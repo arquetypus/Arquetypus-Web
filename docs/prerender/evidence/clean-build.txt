@@ -1,0 +1,104 @@
+npm.cmd : npm notice run app@0.0.0 build
+No linha:2 caractere:433
++ ... n -LiteralPath $baselineClean; try { & npm.cmd run build 2>&1 | Tee-O ...
++                                          ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (npm notice run app@0.0.0 build:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+npm notice run tsc -b && vite build
+vite v8.2.1 building client environment for production...
+[2K
+transforming...✓ 178 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                       5.33 kB │ gzip:   2.16 kB
+dist/assets/fada-BcYvZE2P.jpg                         8.60 kB
+dist/assets/afrodite-DVF-Wqlu.jpg                     8.61 kB
+dist/assets/cleopatra-vBb_yrcd.jpg                    9.56 kB
+dist/assets/zeus-ByZH3hi4.jpg                         9.58 kB
+dist/assets/fenix-D2gHIR71.jpg                        9.82 kB
+dist/assets/sereia-C7NIY0eS.jpg                       9.88 kB
+dist/assets/guerreiro-B-htc0v_.jpg                   10.23 kB
+dist/assets/imperador-DzfD99gB.jpg                   10.47 kB
+dist/assets/imperatriz-C0z8_uLt.jpg                  10.52 kB
+dist/assets/splash-comum-D6smjJu4.jpg                22.57 kB
+dist/assets/logo-branco-BDDmtqMW.png                 24.53 kB
+dist/assets/logo-dourado-BkuS44dK.png                40.61 kB
+dist/assets/hero-video-poster-BZSZW7gT.jpg           45.84 kB
+dist/assets/compartilhavel-sdgMfCjh.jpg              77.48 kB
+dist/assets/afrodite-B05JoXeN.jpg                    81.38 kB
+dist/assets/fada-Bn1LJZub.jpg                        86.20 kB
+dist/assets/wordmark-preto-BefuJb9g.png              87.55 kB
+dist/assets/wordmark-marmore-_FVJxRZ6.png            89.01 kB
+dist/assets/cleopatra-zF7WXxBj.jpg                  102.11 kB
+dist/assets/guerreiro-0wca7BDJ.jpg                  105.99 kB
+dist/assets/sereia-CYMB6lTe.jpg                     106.36 kB
+dist/assets/fenix-9ugHzzJn.jpg                      106.67 kB
+dist/assets/zeus-BSVowwxX.jpg                       107.28 kB
+dist/assets/fada-D6N5CPL0.jpg                       110.57 kB
+dist/assets/imperador-DaPOk4AV.jpg                  113.10 kB
+dist/assets/cleopatra-Dkqrl1GK.jpg                  114.10 kB
+dist/assets/imperador-BvRHgmpJ.jpg                  114.67 kB
+dist/assets/guerreiro-B6Tw63gs.jpg                  114.70 kB
+dist/assets/fenix-C9E5TLhz.jpg                      114.88 kB
+dist/assets/arquetypus-BVgblDH-.jpg                 115.28 kB
+dist/assets/imperatriz-Dn8gcEzw.jpg                 115.56 kB
+dist/assets/afrodite-B6GNBj6I.jpg                   115.59 kB
+dist/assets/cleopatra-BZdVdx6Q.jpg                  116.36 kB
+dist/assets/imperatriz-qEHRqtRT.jpg                 117.52 kB
+dist/assets/afrodite-DSxSPTn3.jpg                   119.31 kB
+dist/assets/masculino-BUtAdhYX.jpg                  122.82 kB
+dist/assets/zeus-adIUQC4G.jpg                       124.31 kB
+dist/assets/fada--tqA5GVs.jpg                       125.11 kB
+dist/assets/zeus-Bk4k23TW.jpg                       126.14 kB
+dist/assets/imperatriz-BuMKC5nt.jpg                 128.93 kB
+dist/assets/sereia-DMQ0hll0.jpg                     130.56 kB
+dist/assets/destaque-fenix-Ok4KUYFV.jpg             131.33 kB
+dist/assets/afrodite-3me8ajmF.jpg                   133.92 kB
+dist/assets/cleopatra-Bl8vga44.jpg                  135.07 kB
+dist/assets/ambarados-adocicados-B5C3mvbW.jpg       138.76 kB
+dist/assets/fenix-DvTwejAx.jpg                      140.03 kB
+dist/assets/zeus-GmMKqwvR.jpg                       145.05 kB
+dist/assets/imperador-BzmM6CjY.jpg                  146.38 kB
+dist/assets/amadeirados-especiados-B267512W.jpg     146.43 kB
+dist/assets/destaque-fenix-desktop-CVj4Qd3r.jpg     147.00 kB
+dist/assets/fenix-BUDNXOxD.jpg                      147.37 kB
+dist/assets/sereia-CmMHd5E9.jpg                     148.29 kB
+dist/assets/florais-elegantes-gFNKx20V.jpg          148.86 kB
+dist/assets/guerreiro-DRTVWBu0.jpg                  153.31 kB
+dist/assets/afrodite-desktop-B7HpEMIW.jpg           155.96 kB
+dist/assets/afrodite-Dk0tYPJ7.jpg                   156.19 kB
+dist/assets/destaque-sereia-desktop-BYPOaLQs.jpg    157.93 kB
+dist/assets/imperatriz-BRD48Xtr.jpg                 159.70 kB
+dist/assets/imperador-CUVygshf.jpg                  166.07 kB
+dist/assets/guerreiro-9WjdvcUx.jpg                  167.14 kB
+dist/assets/fada-skWWuu9m.jpg                       167.54 kB
+dist/assets/sereia-Od4PiDXc.jpg                     169.77 kB
+dist/assets/feminino-Bag6AX96.jpg                   190.64 kB
+dist/assets/destaque-zeus-desktop-BQgVxW1K.jpg      191.57 kB
+dist/assets/destaque-sereia-DF4lkBtE.jpg            192.17 kB
+dist/assets/frutados-citricos-BHSVN3QN.jpg          204.51 kB
+dist/assets/frescos-luminosos-BAvS1EQ-.jpg          208.77 kB
+dist/assets/ribbon-arquetypus-O8PVxe-F.png          222.08 kB
+dist/assets/guerreiro-desktop-CLkBxrUW.jpg          224.16 kB
+dist/assets/destaque-zeus-DSf4AtfR.jpg              229.60 kB
+dist/assets/criadores-hero-CxQZOKK7.jpg             247.09 kB
+dist/assets/colecao-completa-DFK73sws.jpg           248.45 kB
+dist/assets/guerreiro-BTw7xVzI.jpg                  270.67 kB
+dist/assets/colecao-desktop-9TO7ZM9U.jpg            324.91 kB
+dist/assets/flor-arquetypus-CKSiaCgq.png          1,502.00 kB
+dist/assets/energia-seducao-GcdPeK9M.png          1,779.73 kB
+dist/assets/energia-misterio-DHubcL27.png         1,815.03 kB
+dist/assets/energia-poder-DJu8VmH5.png            1,843.35 kB
+dist/assets/hero-video-DYdAfdYa.mp4               2,171.51 kB
+dist/assets/energia-forca-v_xxbPT8.png            2,732.83 kB
+dist/assets/index-C9zeGloN.css                      159.72 kB │ gzip:  26.68 kB
+dist/assets/index-CEBNf12q.js                       628.63 kB │ gzip: 158.64 kB
+
+✓ built in 2.95s
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: 
+https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
