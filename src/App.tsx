@@ -15,6 +15,7 @@ import { RegrasPage } from '@/pages/RegrasPage'
 import { TermosPage } from '@/pages/TermosPage'
 import { SobrePage } from '@/pages/SobrePage'
 import { FaqPage } from '@/pages/FaqPage'
+import { NotFoundPage } from '@/pages/NotFoundPage'
 
 function RedirectToLoja() {
   const { id } = useParams<{ id: string }>()
@@ -48,6 +49,8 @@ export default function App() {
           <Route path="termos-de-uso" element={<TermosPage />} />
           <Route path="sobre" element={<SobrePage />} />
           <Route path="perguntas-frequentes" element={<FaqPage />} />
+          {/* qualquer outro endereço: página 404 com link pra home */}
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
       {background && (

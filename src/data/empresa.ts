@@ -28,3 +28,6 @@ export const OPERACAO = {
   email: 'Google (Google Workspace)',
   anuncios: 'Google Ads, Meta (Facebook e Instagram) e TikTok',
 } as const
+
+/** Frete grátis a partir deste valor (R$) — home, Entrega e Frete, FAQ e llms.txt leem daqui */
+export const FRETE_GRATIS_ACIMA = 199

@@ -1,14 +1,59 @@
-import { defineConfig } from 'vite'
+import { defineConfig, createServer, type Plugin, type ViteDevServer } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import path from 'node:path'
+import { writeFile } from 'node:fs/promises'
+
+const alias = { '@': path.resolve(import.meta.dirname, './src') }
+const GERADOR = '/src/lib/arquivosSeo.ts'
+type Gerador = { arquivosSeo: () => Record<string, string> }
+
+/**
+ * robots.txt, sitemap.xml e llms.txt (out/2026). O conteúdo sai de src/lib/arquivosSeo.ts, com os mesmos dados do
+ * site; aqui só se grava na raiz do build (e responde em `npm run dev`). O módulo é carregado pelo próprio Vite
+ * (ssrLoadModule) pra resolver o alias "@" sem misturar o código do site no tsconfig da config.
+ */
+function arquivosSeo(): Plugin {
+  let outDir = 'dist'
+  return {
+    name: 'arquivos-seo',
+    configResolved(c) {
+      outDir = path.resolve(c.root, c.build.outDir)
+    },
+    configureServer(server: ViteDevServer) {
+      server.middlewares.use(async (req, res, next) => {
+        const nome = req.url?.slice(1)
+        if (nome !== 'robots.txt' && nome !== 'sitemap.xml' && nome !== 'llms.txt') return next()
+        const mod = (await server.ssrLoadModule(GERADOR)) as Gerador
+        res.setHeader('Content-Type', nome.endsWith('.xml') ? 'application/xml; charset=utf-8' : 'text/plain; charset=utf-8')
+        res.end(mod.arquivosSeo()[nome])
+      })
+    },
+    async closeBundle() {
+      if (process.env.ARQUIVOS_SEO_RODANDO) return
+      process.env.ARQUIVOS_SEO_RODANDO = '1'
+      const server = await createServer({
+        configFile: false,
+        resolve: { alias },
+        server: { middlewareMode: true },
+        appType: 'custom',
+        logLevel: 'silent',
+      })
+      try {
+        const mod = (await server.ssrLoadModule(GERADOR)) as Gerador
+        for (const [nome, conteudo] of Object.entries(mod.arquivosSeo())) {
+          await writeFile(path.join(outDir, nome), conteudo, 'utf8')
+        }
+      } finally {
+        await server.close()
+        delete process.env.ARQUIVOS_SEO_RODANDO
+      }
+    },
+  }
+}
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
-  resolve: {
-    alias: {
-      '@': path.resolve(import.meta.dirname, './src'),
-    },
-  },
+  plugins: [react(), tailwindcss(), arquivosSeo()],
+  resolve: { alias },
 })

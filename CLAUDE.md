@@ -264,6 +264,16 @@ decisão de produto já tomada:
   após receber e avaliar; estorno do cartão no prazo da operadora; cupom 15% uma vez por CPF, acumula com outras
   promoções e com o Pix; sem promessa de duração na pele (só "10% de essência"). Retenção GA4 no texto = 14 meses
   (o usuário pediu 12, que o GA4 não oferece) — configurar igual. Revisão jurídica recomendada antes de publicar.
+- **Hospedagem na Vercel:** `vercel.json` na raiz reescreve toda rota para `/index.html` (SPA) —
+  sem ele, abrir ou recarregar `/loja/zeus`, `/criadores` etc. direto dá 404. Arquivos estáticos
+  (`/assets`, ícones) continuam servidos antes da regra. Não remover. Endereço que não existe cai na
+  rota `*` → `NotFoundPage` (404 com header, rodapé e botão pra home); como a Vercel responde 200 pra
+  tudo, a página põe `robots: noindex` enquanto está aberta. Produto inexistente (`/loja/xyz`) volta pra home.
+- **robots.txt, sitemap.xml e llms.txt (out/2026)** são gerados no build (plugin `arquivosSeo` no
+  `vite.config.ts`, conteúdo em `src/lib/arquivosSeo.ts`) a partir dos dados do site — produtos e preços
+  de `ARCHETYPES`, empresa de `data/empresa.ts`, páginas de `data/rotas.ts` (`PAGINAS_PUBLICAS`: ao criar
+  ou remover página em `App.tsx`, atualizar lá também). Não criar esses arquivos à mão em `public/`. Também
+  respondem em `npm run dev`. Frete grátis agora vem de `FRETE_GRATIS_ACIMA` (`data/empresa.ts`).
 - **Header e rodapé iguais em todas as páginas (out/2026):** o header é do `Layout`; o
   `FooterBoutique` é montado pela home (por direção visual) e pelo `Layout` em todas as outras rotas
   (`!isHome` — com pop-up aberto o `Layout` olha a página de fundo, então não duplica).
@@ -325,6 +335,19 @@ decisão de produto já tomada:
   valores (preço cheio riscado via `Preco`). `KIT_TIERS` em `data/home.ts` (escada antiga
   89,90/84,90/79,90 do `KitBuilder`) e `ECON.kitPreco` (Kit Descoberta, 79,90) estão
   desatualizados — revisar ao religar.
+- **Pré-renderização adiada pelo usuário (out/2026).** Hoje o site é SPA: o servidor entrega o mesmo
+  HTML pra toda rota e o JS monta a página — viola a regra 6 ("renderizada no servidor") e faz a prévia
+  de link no WhatsApp/Instagram mostrar a home em vez do produto. Plano combinado: script próprio de
+  pré-renderização no build (React `renderToString` + React Router, sem lib nova — não usar
+  `vite-plugin-prerender` nem `vite-ssg`) pra `/`, `/loja/<9 ids>`, `/criadores` e as 7 institucionais,
+  com título/descrição saindo de `lib/seo.ts`; validar com `curl` sem JS. Fazer antes de divulgar links
+  de produto.
+- **Metadados por página, ajustes adiados pelo usuário (out/2026):** título do produto com volume
+  ("Zeus Stormbreak — Body Splash Premium 220 ml | Arquetypus" — decidir o padrão de marca nos títulos),
+  descrição do produto com família + 3 notas + 10% de essência (≤155 caracteres), og:image 1200×630 por
+  produto (só faz efeito com a pré-renderização) e H1 fixo na home ("Body Splash Premium com 10% de
+  essência" — hoje o H1 é o texto do slide e muda a cada 4 s; decidir se visível ou só pra leitor).
+  Não usar `react-helmet-async`: `lib/seo.ts` já faz título, descrição, canonical e og por rota.
 - CMV/CAC não existem — não construir lógica de ponto de equilíbrio ou
   desconto máximo sem confirmar com o usuário primeiro.
 

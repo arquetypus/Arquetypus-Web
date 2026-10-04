@@ -5,7 +5,7 @@
  */
 import { ARCHETYPES, getArchetype } from '@/data/archetypes'
 import { FAMILIAS } from '@/data/families'
-import { EMPRESA, EMPRESA_LINHA } from '@/data/empresa'
+import { EMPRESA, EMPRESA_LINHA, FRETE_GRATIS_ACIMA } from '@/data/empresa'
 import heroVideo from '@/assets/hero/hero-video.mp4'
 import heroVideoPoster from '@/assets/hero/hero-video-poster.jpg'
 // Fotos em src/assets/fotos/ são as escolhidas pela designer (set/2026), convertidas pra JPG.
@@ -300,7 +300,7 @@ export const KIT_TIERS = [
 ]
 
 export const REWARD_MINI = 150
-export const REWARD_FREIGHT = 199
+export const REWARD_FREIGHT = FRETE_GRATIS_ACIMA
 
 /**
  * Textos das seções da home que estavam escritos direto no HomePage. As direções com página própria
