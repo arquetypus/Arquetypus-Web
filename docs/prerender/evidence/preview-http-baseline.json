@@ -1,0 +1,647 @@
+{
+  "collectedAt": "2026-10-04T23:28:51.438Z",
+  "origin": "https://arquetypus-parfum-git-prerender-saniella.vercel.app",
+  "routes": [
+    "/",
+    "/criadores",
+    "/sobre",
+    "/perguntas-frequentes",
+    "/entrega-e-frete",
+    "/trocas-e-devolucoes",
+    "/regras-do-site",
+    "/privacidade",
+    "/termos-de-uso",
+    "/loja/afrodite",
+    "/loja/imperatriz",
+    "/loja/cleopatra",
+    "/loja/fada",
+    "/loja/sereia",
+    "/loja/zeus",
+    "/loja/guerreiro",
+    "/loja/imperador",
+    "/loja/fenix"
+  ],
+  "localHtmlSha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+  "responses": [
+    {
+      "route": "/",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1:gru1:gru1::brwc4-1791156531546-82cc51aaae4f"
+          }
+        }
+      ],
+      "bytes": 5403,
+      "sha256": "76fdac871eefa37f303982c02b7efd9782088ac8a99adc588c69285972db78f5",
+      "sameAsLocalHtml": false,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    },
+    {
+      "route": "/criadores",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/criadores",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "MISS",
+            "x-vercel-id": "gru1::lcmpc-1791156531645-3f8203e40686"
+          }
+        }
+      ],
+      "bytes": 5240,
+      "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+      "sameAsLocalHtml": true,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    },
+    {
+      "route": "/sobre",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/sobre",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::gq5cb-1791156531862-02b3fe242d71"
+          }
+        }
+      ],
+      "bytes": 5240,
+      "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+      "sameAsLocalHtml": true,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    },
+    {
+      "route": "/perguntas-frequentes",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/perguntas-frequentes",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::gq5cb-1791156531897-adfce7e02315"
+          }
+        }
+      ],
+      "bytes": 5240,
+      "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+      "sameAsLocalHtml": true,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    },
+    {
+      "route": "/entrega-e-frete",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/entrega-e-frete",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::z5xpv-1791156531941-b36de0303751"
+          }
+        }
+      ],
+      "bytes": 5240,
+      "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+      "sameAsLocalHtml": true,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    },
+    {
+      "route": "/trocas-e-devolucoes",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/trocas-e-devolucoes",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::vp7xn-1791156531978-f6edb79e1c16"
+          }
+        }
+      ],
+      "bytes": 5240,
+      "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+      "sameAsLocalHtml": true,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    },
+    {
+      "route": "/regras-do-site",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/regras-do-site",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::vp7xn-1791156532013-26b964a3e7a6"
+          }
+        }
+      ],
+      "bytes": 5240,
+      "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+      "sameAsLocalHtml": true,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    },
+    {
+      "route": "/privacidade",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/privacidade",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::hf8fz-1791156532059-3ca1ca95b8c3"
+          }
+        }
+      ],
+      "bytes": 5240,
+      "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+      "sameAsLocalHtml": true,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    },
+    {
+      "route": "/termos-de-uso",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/termos-de-uso",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::jkx58-1791156532099-5b0d3b2c57cd"
+          }
+        }
+      ],
+      "bytes": 5240,
+      "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+      "sameAsLocalHtml": true,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    },
+    {
+      "route": "/loja/afrodite",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/loja/afrodite",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::jkx58-1791156532142-86b13b954ad1"
+          }
+        }
+      ],
+      "bytes": 5240,
+      "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+      "sameAsLocalHtml": true,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    },
+    {
+      "route": "/loja/imperatriz",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/loja/imperatriz",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::z5xpv-1791156532178-c0a9fb2a599e"
+          }
+        }
+      ],
+      "bytes": 5240,
+      "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+      "sameAsLocalHtml": true,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    },
+    {
+      "route": "/loja/cleopatra",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/loja/cleopatra",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::z5xpv-1791156532219-69022519377a"
+          }
+        }
+      ],
+      "bytes": 5240,
+      "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+      "sameAsLocalHtml": true,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    },
+    {
+      "route": "/loja/fada",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/loja/fada",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::jkx58-1791156532262-a47d8bc02be6"
+          }
+        }
+      ],
+      "bytes": 5240,
+      "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+      "sameAsLocalHtml": true,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    },
+    {
+      "route": "/loja/sereia",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/loja/sereia",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::vp7xn-1791156532299-e9b5fdd54581"
+          }
+        }
+      ],
+      "bytes": 5240,
+      "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+      "sameAsLocalHtml": true,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    },
+    {
+      "route": "/loja/zeus",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/loja/zeus",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::gq5cb-1791156532338-e627799f904f"
+          }
+        }
+      ],
+      "bytes": 5240,
+      "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+      "sameAsLocalHtml": true,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    },
+    {
+      "route": "/loja/guerreiro",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/loja/guerreiro",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::gq5cb-1791156532381-5ab007189a58"
+          }
+        }
+      ],
+      "bytes": 5240,
+      "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+      "sameAsLocalHtml": true,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    },
+    {
+      "route": "/loja/imperador",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/loja/imperador",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::dl4wz-1791156532439-332dcb6c17cf"
+          }
+        }
+      ],
+      "bytes": 5240,
+      "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+      "sameAsLocalHtml": true,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    },
+    {
+      "route": "/loja/fenix",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/loja/fenix",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::brwc4-1791156532493-e1cd99460ce2"
+          }
+        }
+      ],
+      "bytes": 5240,
+      "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+      "sameAsLocalHtml": true,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    },
+    {
+      "route": "/qualquer-coisa",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/qualquer-coisa",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::8bbmx-1791156532539-88ba365822d2"
+          }
+        }
+      ],
+      "bytes": 5240,
+      "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+      "sameAsLocalHtml": true,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    },
+    {
+      "route": "/loja/nao-existe",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/loja/nao-existe",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::jkx58-1791156532578-3c1f6374d395"
+          }
+        }
+      ],
+      "bytes": 5240,
+      "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+      "sameAsLocalHtml": true,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    },
+    {
+      "route": "/arquetipos/zeus",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/arquetipos/zeus",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::lcmpc-1791156532618-dab02d445010"
+          }
+        }
+      ],
+      "bytes": 5240,
+      "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+      "sameAsLocalHtml": true,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    },
+    {
+      "route": "/kit-descoberta",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/kit-descoberta",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::lcmpc-1791156532658-cacaeb81170d"
+          }
+        }
+      ],
+      "bytes": 5240,
+      "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+      "sameAsLocalHtml": true,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    },
+    {
+      "route": "/trocas",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/trocas",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::lcmpc-1791156532701-7c6cb6a0c192"
+          }
+        }
+      ],
+      "bytes": 5240,
+      "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+      "sameAsLocalHtml": true,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    },
+    {
+      "route": "/termos",
+      "chain": [
+        {
+          "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/termos",
+          "status": 200,
+          "headers": {
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-type": "text/html; charset=utf-8",
+            "etag": "W/\"cc79c2c5e1679c9130002e2e3ae4ce10\"",
+            "server": "Vercel",
+            "x-robots-tag": "noindex",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::lcmpc-1791156532738-99e4ba9930ab"
+          }
+        }
+      ],
+      "bytes": 5240,
+      "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a",
+      "sameAsLocalHtml": true,
+      "rawTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "rawCanonical": "https://arquetypus.com.br/",
+      "rootEmpty": true,
+      "rawH1Count": 0
+    }
+  ],
+  "assets": [
+    {
+      "asset": "/assets/index-CEBNf12q.js",
+      "status": 200,
+      "remoteBytes": 628636,
+      "localBytes": 628636,
+      "remoteSha256": "8dd28071ec6d13cef6a12f9c2165a39222d353541ca851b4ab840cd1a99ff5e7",
+      "localSha256": "8dd28071ec6d13cef6a12f9c2165a39222d353541ca851b4ab840cd1a99ff5e7",
+      "identical": true
+    },
+    {
+      "asset": "/assets/index-C9zeGloN.css",
+      "status": 200,
+      "remoteBytes": 159720,
+      "localBytes": 159720,
+      "remoteSha256": "b4d18dd42e53e96610a5ee60c688a94f7e6fb38e4bca08412c13317de05583af",
+      "localSha256": "b4d18dd42e53e96610a5ee60c688a94f7e6fb38e4bca08412c13317de05583af",
+      "identical": true
+    }
+  ]
+}

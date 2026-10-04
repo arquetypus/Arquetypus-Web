@@ -1,0 +1,148 @@
+{
+  "collectedAt": "2026-10-04T23:37:00.072Z",
+  "checks": [
+    {
+      "step": "Zeus direct refresh",
+      "dialogs": [],
+      "h1": [
+        "ZeusStormbreak"
+      ],
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/loja/zeus"
+    },
+    {
+      "step": "Home catalog opens modal",
+      "dialogs": [
+        {
+          "label": "Comprar Zeus",
+          "text": "✕‹›FotosNotasVer página completaEnergia ForçaZeusStormbreakQuando você fala, a sala ajusta o tom.Body Splash Premium · 220 ml · Amadeirados & EspeciadosDe R$ 99,90por R$ 79,90R$ 75,91 no Pix · ou 6x de R$ 13,32 sem juros● Em estoque e pronto para envioEm breveVer página completa"
+        }
+      ],
+      "h1": [
+        "Qual versão de você quer expressar hoje?",
+        "ZeusStormbreak"
+      ],
+      "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/loja/zeus"
+    },
+    {
+      "step": "Modal persists on reload",
+      "dialogs": [
+        {
+          "label": "Comprar Zeus",
+          "text": "✕‹›FotosNotasVer página completaEnergia ForçaZeusStormbreakQuando você fala, a sala ajusta o tom.Body Splash Premium · 220 ml · Amadeirados & EspeciadosDe R$ 99,90por R$ 79,90R$ 75,91 no Pix · ou 6x de R$ 13,32 sem juros● Em estoque e pronto para envioEm breveVer página completa"
+        }
+      ],
+      "h1": [
+        "Qual versão de você quer expressar hoje?",
+        "ZeusStormbreak"
+      ],
+      "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/loja/zeus"
+    },
+    {
+      "step": "Back returns home",
+      "dialogs": [],
+      "h1": [
+        "Qual versão de você quer expressar hoje?"
+      ],
+      "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/"
+    },
+    {
+      "step": "Forward restores modal",
+      "dialogs": [
+        {
+          "label": "Comprar Zeus",
+          "text": "✕‹›FotosNotasVer página completaEnergia ForçaZeusStormbreakQuando você fala, a sala ajusta o tom.Body Splash Premium · 220 ml · Amadeirados & EspeciadosDe R$ 99,90por R$ 79,90R$ 75,91 no Pix · ou 6x de R$ 13,32 sem juros● Em estoque e pronto para envioEm breveVer página completa"
+        }
+      ],
+      "h1": [
+        "Qual versão de você quer expressar hoje?",
+        "ZeusStormbreak"
+      ],
+      "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/loja/zeus"
+    },
+    {
+      "step": "Full page link removes modal",
+      "dialogs": [],
+      "h1": [
+        "ZeusStormbreak"
+      ],
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/loja/zeus"
+    },
+    {
+      "step": "Mobile drawer navigates to FAQ",
+      "dialogs": [],
+      "h1": [
+        "Perguntas frequentes"
+      ],
+      "title": "Perguntas Frequentes | Arquétypus Parfum",
+      "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/perguntas-frequentes"
+    },
+    {
+      "step": "FAQ disclosure clicked",
+      "dialogs": [],
+      "h1": [
+        "Perguntas frequentes"
+      ],
+      "title": "Perguntas Frequentes | Arquétypus Parfum",
+      "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/perguntas-frequentes"
+    },
+    {
+      "step": "Unknown path renders 404 UI",
+      "dialogs": [],
+      "h1": [
+        "Página não encontrada"
+      ],
+      "title": "Página não encontrada | Arquétypus Parfum",
+      "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/rota-inexistente"
+    },
+    {
+      "step": "X closes modal to home",
+      "dialogs": [],
+      "h1": [
+        "Guerreiro"
+      ],
+      "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/"
+    },
+    {
+      "step": "Mobile product sheet open (Fenix)",
+      "dialogs": [
+        {
+          "label": "Comprar Fênix",
+          "text": "✕‹›FotosNotasVer página completaEnergia ForçaFênixAmber BurnVocê já recomeçou. E não fala disso como perda.Body Splash Premium · 220 ml · Ambarados & AdocicadosDe R$ 99,90por R$ 79,90R$ 75,91 no Pix · ou 6x de R$ 13,32 sem juros● Em estoque e pronto para envioEm breveVer página completa"
+        }
+      ],
+      "h1": [
+        "Qual versão de você quer expressar hoje?",
+        "FênixAmber Burn"
+      ],
+      "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/loja/fenix"
+    },
+    {
+      "step": "Mobile X closes sheet",
+      "dialogs": [],
+      "h1": [
+        "Qual versão de você quer expressar hoje?"
+      ],
+      "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/"
+    },
+    {
+      "step": "Unknown product redirects home on client",
+      "dialogs": [],
+      "h1": [
+        "Qual versão de você quer expressar hoje?"
+      ],
+      "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/"
+    }
+  ],
+  "faqOpenDetailsObserved": 1,
+  "logs": []
+}

@@ -1,0 +1,22 @@
+﻿{
+    "checkedAt":  "2026-10-04T23:21:05.8721151Z",
+    "checks":  [
+                   {
+                       "url":  "https://arquetypus-parfum-git-prerender-saniella.vercel.app/",
+                       "httpStatus":  "302",
+                       "curlExit":  0
+                   },
+                   {
+                       "url":  "https://arquetypus-parfum-git-prerender-saniella.vercel.app/loja/zeus",
+                       "httpStatus":  "302",
+                       "curlExit":  0
+                   },
+                   {
+                       "url":  "https://arquetypus-parfum-git-prerender-saniella.vercel.app/robots.txt",
+                       "httpStatus":  "302",
+                       "curlExit":  0
+                   }
+               ],
+    "browserResult":  "Redirect to Vercel login",
+    "validation":  "Pending deployment sharing link; application not validated"
+}

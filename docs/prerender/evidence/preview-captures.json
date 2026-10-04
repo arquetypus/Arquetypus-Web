@@ -1,0 +1,52 @@
+[
+  {
+    "name": "home-1440x900",
+    "path": "C:/ws/lab/Arquetypus-Web/Arquetypus-Web/docs/prerender/screenshots/preview-home-1440x900.jpg",
+    "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/"
+  },
+  {
+    "name": "zeus-1440x900",
+    "path": "C:/ws/lab/Arquetypus-Web/Arquetypus-Web/docs/prerender/screenshots/preview-zeus-1440x900.jpg",
+    "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/loja/zeus"
+  },
+  {
+    "name": "modal-1440x900",
+    "path": "C:/ws/lab/Arquetypus-Web/Arquetypus-Web/docs/prerender/screenshots/preview-modal-1440x900.jpg",
+    "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/loja/zeus"
+  },
+  {
+    "name": "zeus-390x844",
+    "path": "C:/ws/lab/Arquetypus-Web/Arquetypus-Web/docs/prerender/screenshots/preview-zeus-390x844.jpg",
+    "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/loja/zeus"
+  },
+  {
+    "name": "home-390x844",
+    "path": "C:/ws/lab/Arquetypus-Web/Arquetypus-Web/docs/prerender/screenshots/preview-home-390x844.jpg",
+    "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/"
+  },
+  {
+    "name": "faq-390x844",
+    "path": "C:/ws/lab/Arquetypus-Web/Arquetypus-Web/docs/prerender/screenshots/preview-faq-390x844.jpg",
+    "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/perguntas-frequentes"
+  },
+  {
+    "name": "404-390x844",
+    "path": "C:/ws/lab/Arquetypus-Web/Arquetypus-Web/docs/prerender/screenshots/preview-404-390x844.jpg",
+    "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/rota-inexistente"
+  },
+  {
+    "name": "404-1440x900",
+    "path": "C:/ws/lab/Arquetypus-Web/Arquetypus-Web/docs/prerender/screenshots/preview-404-1440x900.jpg",
+    "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/rota-inexistente"
+  },
+  {
+    "name": "faq-1440x900",
+    "path": "C:/ws/lab/Arquetypus-Web/Arquetypus-Web/docs/prerender/screenshots/preview-faq-1440x900.jpg",
+    "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/perguntas-frequentes"
+  },
+  {
+    "name": "modal-390x844",
+    "path": "C:/ws/lab/Arquetypus-Web/Arquetypus-Web/docs/prerender/screenshots/preview-modal-390x844.jpg",
+    "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/loja/fenix"
+  }
+]

@@ -1,7 +1,8 @@
 # Baseline — Etapa 0 da pré-renderização
 
-Coleta em 04/10/2026. **Baseline local concluído; confirmação administrativa de produção pendente.**
-Nenhuma implementação de SSR/SSG, alteração do site, dependência do projeto ou publicação.
+Coleta em 04/10/2026. **Baseline local e preview da branch validados; confirmação administrativa de produção pendente.**
+Nenhuma implementação de SSR/SSG, alteração do aplicativo ou dependência do projeto.
+Documentação enviada na branch `prerender`; preview informado pelo usuário validado posteriormente.
 
 ## Origem e ambiente
 
@@ -76,6 +77,23 @@ essas pendências. `x-vercel-id` nas respostas identifica requisição, não dep
 
 Ver [status, redirects, headers e hashes por rota](evidence/http-baseline.json) e
 [HTML bruto público](evidence/production-index.html).
+
+### Acesso ao preview da branch
+
+Preview informado pelo usuário:
+<https://arquetypus-parfum-git-prerender-saniella.vercel.app/>.
+Inicialmente, home, `/loja/zeus` e `/robots.txt` responderam HTTP 302 para login Vercel.
+Após o usuário reenviar a URL, acesso público respondeu 200 e validação foi concluída.
+Nenhuma proteção foi alterada pelo agente. [Registro inicial preservado](evidence/preview-access.json).
+
+As 18 rotas, nove produtos, metadados cliente e navegação examinada correspondem ao baseline.
+JS/CSS, robots, sitemap e llms são idênticos aos artefatos locais. Todas as 24 respostas HTML
+testadas têm `X-Robots-Tag: noindex`. A home tem acréscimo diagnosticado do feedback Vercel;
+restante do documento é idêntico. HTML continua SPA com root vazio, conforme esperado na Etapa 0.
+
+Ver [relatório do preview](preview.md), [resumo objetivo](evidence/preview-validation.json),
+[HTTP por rota](evidence/preview-http-baseline.json) e [metadados comparados](evidence/preview-metadata-client.json).
+Isso não aprova a migração nem resolve identificação administrativa de produção/rollback.
 
 ## Inventário das 18 rotas e conteúdo cliente
 

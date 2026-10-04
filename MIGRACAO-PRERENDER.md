@@ -15,8 +15,9 @@ resultados da SPA com validação de SSR/SSG ainda não implementado.
 A migração ainda não foi implementada. Hidratação, paridade visual e roteamento na Vercel
 só poderão ser aprovados depois dos testes das etapas correspondentes.
 
-**Etapa 0 executada em 04/10/2026:** baseline local concluído, checks e reprodução limpa
-aprovados; HTML/JS/CSS públicos correspondem aos locais. Confirmar ID/SHA do deployment,
+**Etapa 0 executada em 04/10/2026:** baseline local e preview da branch validados; checks e reprodução limpa
+aprovados; artefatos públicos correspondem aos locais, com acréscimo de feedback Vercel no HTML da home do preview.
+Confirmar ID/SHA do deployment de produção,
 Node na Vercel e rollback antes da publicação. Evidências em [baseline](docs/prerender/baseline.md).
 
 ## 1. Necessidade, benefícios e limites
@@ -638,7 +639,7 @@ Preencher a cada etapa; evidência ausente significa **pendente**, nunca “apro
 | Revisão inicial Sol High | Concluída; tsc/build da SPA passaram nessa revisão | Base `8a02e4a` | Inspeção local e fontes oficiais; sem implementação |
 | Segunda revisão independente | Aprovado com ajustes | Mesma base inspecionada | Riscos de formulário, mídia, slugs, recursos e contrato HTTP incorporados |
 | Consolidação documental | Concluída; somente este plano alterado | Sem implementação | Ajustes obrigatórios/opcionais e critérios por rota integrados; build não reexecutado |
-| 0 — Baseline | Local concluído; confirmação administrativa de produção pendente | Branch `prerender`, código-base `8a02e4a`; sem deploy | [Baseline e evidências](docs/prerender/baseline.md); 18 rotas, capturas, 6 auditorias; Node/deployment/rollback Vercel pendentes |
+| 0 — Baseline | Local e preview validados; confirmação administrativa de produção pendente | Branch `prerender`, código-base `8a02e4a`; documentação enviada em `db5790e`; preview informado pelo usuário | [Baseline](docs/prerender/baseline.md) e [preview](docs/prerender/preview.md); 18 rotas, capturas, 6 auditorias locais; Node/deployment/rollback de produção pendentes |
 | 1 — Segurança SSR | Pendente | — | — |
 | 2 — SEO compartilhado | Pendente | — | — |
 | 3 — Ensaio SSR | Pendente | — | — |
