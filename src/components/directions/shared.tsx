@@ -1,4 +1,4 @@
-import { ECON } from '@/data/economics'
+import { comissaoTexto } from '@/data/economics'
 import type { Archetype } from '@/types/archetype'
 
 /**
@@ -90,7 +90,7 @@ export function SealIcon({ seal, className }: { seal: string; className?: string
 
 /** Indicadores da seção de criadores — comissão vem de ECON (hipótese, ver CLAUDE.md). */
 export const CREATOR_STATS = [
-  { valor: `${Math.round(ECON.comissaoPct * 100)}%`, label: 'de comissão por venda' },
+  { valor: comissaoTexto, label: 'de comissão por venda' },
   { valor: 'Grátis', label: 'amostra para aprovados' },
   { valor: 'D+30', label: 'pagamento via Pix' },
 ]

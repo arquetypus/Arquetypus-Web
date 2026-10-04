@@ -33,6 +33,8 @@ export interface Archetype {
   seg: Segmento
   vol: string
   tipo: 'Body Splash Premium' | 'Perfume'
+  /** número do processo de notificação do produto na Anvisa (confirmado pelo usuário, out/2026) */
+  anvisa: string
   /** preço de venda (com desconto) — é o que vai pra sacola e base de Pix/parcelas */
   preco: number
   /** preço cheio, mostrado riscado ao lado do `preco` (componente Preco) */

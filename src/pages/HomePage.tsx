@@ -16,7 +16,7 @@ import {
   UGC_IMG,
   UGC_VIDEOS,
 } from '@/data/home'
-import { ECON } from '@/data/economics'
+import { comissaoTexto } from '@/data/economics'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { MediaSlot } from '@/components/ui/MediaSlot'
 import { RatioTag } from '@/components/ui/RatioTag'
@@ -27,6 +27,7 @@ import { CarouselDots } from '@/components/ui/CarouselDots'
 import { CutFrame } from '@/components/ui/CutFrame'
 import { SweepCta } from '@/components/ui/SweepCta'
 import { scrollToId } from '@/lib/scrollToId'
+import { EMPRESA_LINHA } from '@/data/empresa'
 import { GOLD_SHEEN } from '@/lib/goldSheen'
 import { FeaturedCarousel } from '@/components/FeaturedCarousel'
 import { DifferenceSection } from '@/components/DifferenceSection'
@@ -74,6 +75,7 @@ import ribbonArquetypus from '@/assets/brand/ribbon-arquetypus.png'
 import logoBranco from '@/assets/brand/logo-branco.png'
 import { Sobrenome } from '@/components/ui/Sobrenome'
 import { Preco } from '@/components/ui/Preco'
+import { SEO_HOME, useSeo } from '@/lib/seo'
 
 /**
  * Degradê foto → fundo noite do catálogo. Faixa larga com curva "smootherstep" (plana nas duas pontas):
@@ -309,6 +311,7 @@ function CommunitySection() {
 }
 
 export function HomePage() {
+  useSeo({ ...SEO_HOME, path: '/' })
   const location = useLocation()
   const { hash } = location
   const familiesScroll = useCarouselIndex<HTMLDivElement>(FAMILIES.length)
@@ -1111,7 +1114,7 @@ export function HomePage() {
 
             <dl className="mt-10 grid grid-cols-3 border-y border-linha py-6 lg:col-span-5 lg:col-start-8 lg:row-span-3 lg:mt-0 lg:self-center lg:py-12">
               {[
-                { valor: `${Math.round(ECON.comissaoPct * 100)}%`, label: ['de comissão', 'por venda'] },
+                { valor: comissaoTexto, label: ['de comissão', 'por venda'] },
                 { valor: 'Grátis', label: ['amostra para', 'aprovados'] },
                 { valor: 'D+30', label: ['pagamento', 'via Pix'] },
               ].map((ind, i) => (
@@ -1279,6 +1282,13 @@ export function HomePage() {
               <div className="mt-3 text-center">
                 <SweepCta type="submit">Quero meu cupom</SweepCta>
               </div>
+              {/* LGPD: o cadastro é a base do consentimento pra novidades (ver /privacidade, seção 3) */}
+              <p className="text-center text-[11px] leading-relaxed text-tinta-3">
+                Ao se cadastrar, você aceita receber o cupom e as novidades da Arquétypus. Cancele quando quiser.{' '}
+                <Link to="/privacidade" className="border-b border-tinta-3/50 hover:text-tinta">
+                  Política de Privacidade
+                </Link>
+              </p>
             </form>
           </CutFrame>
         </Reveal>
@@ -1356,13 +1366,13 @@ export function HomePage() {
   
             <div className="lg:col-span-12 lg:mt-20 lg:flex lg:items-center lg:justify-between lg:gap-8 lg:border-t lg:border-papel-inv/10 lg:pt-8">
               <p className="mt-10 text-center font-label text-[9px] tracking-[0.2em] text-papel-inv/45 uppercase lg:order-last lg:mt-0 lg:shrink-0">
-                Instagram <span className="mx-2 text-papel-inv/20">·</span> TikTok <span className="mx-2 text-papel-inv/20">·</span> Pinterest
+                Instagram <span className="mx-2 text-papel-inv/20">·</span> TikTok
               </p>
   
               <div className="mt-8 border-t border-papel-inv/10 pt-6 text-center font-label text-[8.5px] leading-relaxed tracking-wider text-papel-inv/30 uppercase lg:mt-0 lg:flex lg:flex-wrap lg:items-center lg:gap-x-6 lg:border-t-0 lg:pt-0 lg:text-left lg:text-[9px]">
-                <p>Pix · Visa · Master · Elo · Boleto</p>
+                <p>Pix · Visa · Master · Elo · Amex · Hipercard</p>
                 <p className="mt-3 normal-case tracking-wide lg:mt-0">contato@arquetypus.com.br</p>
-                <p className="mt-1 lg:mt-0">Saniella Ltda · CNPJ 58.267.823/0001-68 · Caraguatatuba SP</p>
+                <p className="mt-1 lg:mt-0">{EMPRESA_LINHA}</p>
               </div>
             </div>
           </div>

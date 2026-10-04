@@ -84,7 +84,7 @@ decisão de produto já tomada:
 - **Drawer funcional** (`components/Drawer.tsx`, aberto pelo botão de menu do
   header no celular, em `Layout`). Busca e sacola do header do celular são só
   visuais (sem busca nem checkout ainda) — ligar quando existirem.
-  Itens sem página real (Sobre, Ajuda e trocas) ficam visíveis mas
+  Itens sem página real (Diário olfativo) ficam visíveis mas
   desabilitados com rótulo "Em breve" em vez de link morto ou rota
   inventada — quando essas páginas existirem, trocar por `Link` de
   verdade em `Drawer.tsx`.
@@ -208,7 +208,9 @@ decisão de produto já tomada:
   original: itálico, ícone de traço pequeno, 44 s por volta).
 - **Rodapé Boutique (out/2026)** (`FooterBoutique` em `boutique/BoutiqueMore.tsx`):
   escuro, logo dourada completa (`assets/brand/logo-dourado.png`), email
-  `contato@arquetypus.com.br` (era sac@, trocado em todos os rodapés) e selos de
+  `contato@arquetypus.com.br` (era sac@, trocado em todos os rodapés), canais oficiais com
+  só ícones lado a lado em "Nossas redes" (`CONTATOS` em `data/home.ts`: Instagram @arquetypus, TikTok
+  @arquetypusparfum, WhatsApp (12) 99206-7178, e-mail — Pinterest saiu de todos os rodapés) e selos de
   pagamento (`PAGAMENTOS`: Pix, Visa, Master, Elo, Amex, Hipercard — desenhos
   simplificados em bege `mesa`). As bandeiras são suposição: confirmar com o
   gateway quando o checkout existir.
@@ -246,22 +248,52 @@ decisão de produto já tomada:
   `Link` pra rota.
 - **`/criadores` existe** (`pages/CreatorsPage.tsx`). Comissão do afiliado e preço do kit vêm
   de `data/economics.ts` (`ECON`), não hard-coded no componente —
-  `comissaoPct` é HIPÓTESE (chute do v6, sem CMV real por trás);
+  comissão confirmada pelo usuário como faixa de 10% a 20% (`comissaoMinPct`/`comissaoMaxPct`,
+  exibida por `comissaoTexto`);
   `kitMargemPct` fica `null` de propósito, mesmo motivo.
 - **Formulário de criador e "adicionar kit à sacola" não persistem de
   verdade** — submit só muda estado local (`submitted`/`added`), sem
   request nenhuma. Precisa de backend antes de ir pra produção.
-- **FAQ e legal ainda não existem como página própria** — o FAQ
-  genérico já está portado dentro da PDP, mas não isolado com
-  schema.org/FAQPage.
+- **Páginas institucionais (vigência 01/10/2026)**, no rodapé em 4 colunas no padrão de loja — Loja · Institucional · Ajuda · Políticas, com "Nossas redes" junto da marca — e nos mesmos grupos no menu do celular:
+  `/perguntas-frequentes` (`FAQ_LOJA` + `FAQ_PRODUTO` em `data/faq.ts`, o mesmo da PDP; publica
+  schema.org/FAQPage), `/entrega-e-frete`, `/trocas-e-devolucoes`, `/privacidade`, `/termos-de-uso`,
+  `/regras-do-site`, `/sobre`. Casca em `components/ui/Legal.tsx`. Dados da empresa e fornecedores num lugar só:
+  `data/empresa.ts` (`EMPRESA`, `EMPRESA_LINHA` no rodapé com endereço completo, `OPERACAO`: Mercado Pago,
+  Melhor Envio + Correios/Jadlog/J&T, Vercel, Google Workspace, Google Ads/Meta/TikTok). Regras confirmadas pelo
+  usuário: desistência em 7 dias **com produto lacrado e sem uso**; defeito 30 dias; reembolso Pix em até 3 dias
+  após receber e avaliar; estorno do cartão no prazo da operadora; cupom 15% uma vez por CPF, acumula com outras
+  promoções e com o Pix; sem promessa de duração na pele (só "10% de essência"). Retenção GA4 no texto = 14 meses
+  (o usuário pediu 12, que o GA4 não oferece) — configurar igual. Revisão jurídica recomendada antes de publicar.
+- **Header e rodapé iguais em todas as páginas (out/2026):** o header é do `Layout`; o
+  `FooterBoutique` é montado pela home (por direção visual) e pelo `Layout` em todas as outras rotas
+  (`!isHome` — com pop-up aberto o `Layout` olha a página de fundo, então não duplica).
+- **SEO por página (out/2026):** `lib/seo.ts` (`useSeo`) troca título, descrição, canonical e
+  og:title/description/url a cada rota — antes toda página herdava o canonical da home. Títulos
+  "palavra-chave | Arquétypus Parfum"; home em `SEO_HOME` (igual ao `index.html`); PDP monta com nome,
+  sobrenome, frase, família e preço; páginas institucionais via `seoTitle`/`description` do `LegalPage`.
+- **Favicon (out/2026):** emblema dourado com fundo transparente (`favicon.ico` 16/32/48, `favicon-32.png`);
+  ícones de iPhone/app (`apple-touch-icon`, `icon-192/512`) com fundo branco — iOS não aceita transparência.
+- **Revisão de textos (out/2026):** escondida a seção "Quem já vende" de `/criadores` (números de
+  planejamento, `SHOW_RANKING = false`); menu do celular sem volumes nem "Perfumes"; ficha técnica da PDP
+  sem nota interna, sem IFRA não confirmado e com "Anvisa: produto regularizado"; aviso de consentimento
+  (LGPD) no formulário do cupom. Estojo de lona saiu da PDP (não existe). "7 dias de garantia" fica (decisão
+  do usuário). Ficha técnica mostra o nº de notificação na Anvisa de cada arquétipo (`anvisa` em
+  `data/archetypes.ts`); o INCI e os alérgenos ficam só na embalagem, conforme a Anvisa (decisão do usuário) —
+  o site só avisa isso. Pendentes: "D+30" de pagamento a criadores, avaliações e pessoas da comunidade.
+- **Estrelas de avaliação (out/2026, pedido do usuário, estilo Judge.me):**
+  `★★★★★ 4,8 (260)` abaixo do nome nos cards do catálogo, da comunidade e do
+  destaque (`components/ui/Avaliacao.tsx`, meia estrela suportada). Dados em
+  `data/reviews.json` por arquétipo (`rating`, `count`, `items`), atualizados à mão;
+  `lib/reviews.ts` é a única camada de leitura — trocar por API real só ali.
+  `SHOW_RATINGS` (em `lib/reviews.ts`) desliga tudo. **Atenção:** os números foram
+  passados pelo usuário com o produto ainda sem venda; confirmar que são avaliações
+  reais de cliente antes de ir ao ar (mesma regra das linhas abaixo) — senão desligar.
 - **Avaliações na PDP são propositalmente genéricas** — o v6 tinha
   depoimentos e contagem reais só pra Sereia (208 avaliações, nomes de
   clientes). Não estendi isso pros outros 8 porque seria inventar
   review — ver regra de copy abaixo.
-- **INCI na ficha técnica é o esqueleto comum a todo body splash**
-  (álcool, água, parfum, glicerina). Os alérgenos de fragrância
-  específicos de cada arquétipo dependem da fórmula real da Scentec —
-  não preenchi por arquétipo pelo mesmo motivo das avaliações.
+- **INCI fica na embalagem** (decisão do usuário, out/2026): a ficha técnica da PDP não lista
+  composição — só informa que o INCI completo, com alérgenos, está na caixa, conforme a Anvisa.
 - **`UGC_VIDEOS` em `data/home.ts` tem depoimentos fictícios/ilustrativos**
   (2 dos 4 textos foram inventados pra dar volume ao carrossel — os
   outros 2 vêm de `TESTIMONIALS`, que já eram ilustrativos). As fotos

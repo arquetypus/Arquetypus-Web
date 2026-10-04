@@ -24,7 +24,6 @@ const TRUST = [
   { label: ['Pagamento', 'seguro'], icon: 'M6 11h12v9H6zM8.5 11V8a3.5 3.5 0 0 1 7 0v3' },
 ]
 
-const NECESSAIRE_PRICE = 24.9
 
 /** Artigo de cada energia, pro convite da PDP ("Descubra o Poder", "Descubra a Sedução") */
 const ARTIGO_ENERGIA: Record<string, string> = { Sedução: 'a', Força: 'a', Poder: 'o', Mistério: 'o' }
@@ -57,7 +56,6 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
 
   const [showNotes, setShowNotes] = useState(false)
   const [addonPar, setAddonPar] = useState(false)
-  const [addonNecessaire, setAddonNecessaire] = useState(false)
   const [added, setAdded] = useState(false)
 
   const pix = selected.price * 0.95
@@ -77,15 +75,6 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
         label: `${par.nome} · ${par.vol}`,
         variant: par.vol,
         unitPrice: par.preco,
-      })
-    }
-    if (addonNecessaire) {
-      addItem({
-        key: 'necessaire',
-        archetypeId: a.id,
-        label: `Necessaire Arquétypus · ${a.nome}`,
-        variant: 'Único',
-        unitPrice: NECESSAIRE_PRICE,
       })
     }
     setAdded(true)
@@ -263,19 +252,6 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
                 {par.nome} {par.vol}
                 <span className="block font-label text-[9px] text-tinta-3 uppercase">
                   Layering recomendado · + <Preco a={par} />
-                </span>
-              </span>
-            </label>
-            <label className="mt-2 flex cursor-pointer items-center gap-3 rounded-lg border border-linha-2 p-3 text-sm transition-colors hover:border-tinta-3 lg:py-2.5">
-              <input
-                type="checkbox"
-                checked={addonNecessaire}
-                onChange={(e) => setAddonNecessaire(e.target.checked)}
-              />
-              <span>
-                Necessaire Arquétypus
-                <span className="block font-label text-[9px] text-tinta-3 uppercase">
-                  Estojo em lona com o glifo · +{brl(NECESSAIRE_PRICE)}
                 </span>
               </span>
             </label>

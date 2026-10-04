@@ -3,6 +3,7 @@ import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { scrollToId } from '@/lib/scrollToId'
 import { ThemeSwitcher } from '@/components/ThemeSwitcher'
 import { Drawer } from '@/components/Drawer'
+import { FooterBoutique } from '@/components/boutique/BoutiqueMore'
 import { useThemeState } from '@/lib/theme'
 import wordmarkPreto from '@/assets/brand/wordmark-preto.png'
 import wordmarkMarmore from '@/assets/brand/wordmark-marmore.png'
@@ -203,6 +204,8 @@ export function Layout() {
       <main key={pathname} className="page-fade">
         <Outlet />
       </main>
+      {/* mesmo rodapé da home em todas as outras páginas (a home monta o dela, por direção visual) */}
+      {!isHome && <FooterBoutique />}
       <ThemeSwitcher />
     </div>
   )

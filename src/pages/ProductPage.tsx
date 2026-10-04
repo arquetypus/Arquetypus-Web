@@ -1,5 +1,6 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { getArchetype, NOTAS_LEGENDA } from '@/data/archetypes'
+import { FAQ_PRODUTO as FAQ } from '@/data/faq'
 import { FRASCO_CUT_IMG } from '@/data/home'
 import { useCart } from '@/context/CartContext'
 import { Eyebrow } from '@/components/ui/Eyebrow'
@@ -9,9 +10,10 @@ import { DEGRAU_CLARO, DEGRAU_ESCURO, Flor, Glow, Ornament, SectionEyebrow } fro
 import { ProductPurchase } from '@/components/ProductPurchase'
 import { Sobrenome } from '@/components/ui/Sobrenome'
 import { Preco } from '@/components/ui/Preco'
+import { comMarca, useSeo } from '@/lib/seo'
 
 const BENEFITS = [
-  { n: '01', title: 'Fixação de verdade', body: 'Concentração de 10% com fixador — some do ar, não da pele. Dura o expediente inteiro.' },
+  { n: '01', title: '10% de essência', body: 'Mais intensidade e presença do que um body splash tradicional, que costuma ter cerca de 4%.' },
   { n: '02', title: 'Leve o bastante para reaplicar', body: 'Não satura. Pode voltar a usar depois da academia, antes do jantar, quando quiser.' },
   { n: '03', title: 'Combina em vez de brigar', body: 'Construído para sobrepor com os outros oito. Camada, não substituição.' },
 ]
@@ -22,38 +24,6 @@ const HOW_TO = [
   { step: 'Passo 3', text: 'Reaplique quando quiser. É splash, não perfume.' },
 ]
 
-const FAQ = [
-  {
-    q: 'Qual a diferença entre Body Splash Premium e perfume?',
-    a: 'O Body Splash Premium tem concentração menor de essência — no nosso caso 10% — e é feito para o corpo todo, com sensação de frescor e reaplicação livre. O perfume concentra mais e é aplicado em pontos específicos. Um não substitui o outro; muita gente usa os dois em camada.',
-  },
-  {
-    q: 'Quanto tempo dura na pele?',
-    a: 'Em média de 4 a 6 horas, variando com o tipo de pele e o clima. Pele hidratada segura mais. Se quiser mais fixação, aplique logo após o banho, com a pele ainda úmida.',
-  },
-  { q: 'Posso usar todos os dias?', a: 'Sim. É um desodorante corporal de uso diário. Reaplique quando quiser.' },
-  {
-    q: 'Pode manchar a roupa?',
-    a: 'Aplique na pele, não sobre o tecido, e espere secar antes de vestir. Como qualquer produto com álcool e essência, o contato direto com tecidos claros ou delicados pode marcar.',
-  },
-  {
-    q: 'Gestantes e lactantes podem usar?',
-    a: 'Recomendamos consultar seu médico antes de usar qualquer cosmético com fragrância durante a gestação e a amamentação.',
-  },
-  {
-    q: 'Tenho pele sensível ou alergia. E agora?',
-    a: 'Publicamos o INCI completo na ficha técnica de cada produto, incluindo os alérgenos de fragrância de declaração obrigatória assim que a formulação for confirmada. Faça teste no antebraço 24 h antes do primeiro uso.',
-  },
-  {
-    q: 'Como funciona o teste de arquétipo?',
-    a: 'São cinco perguntas sobre você — nenhuma sobre notas olfativas. No fim você recebe seu arquétipo dominante e o secundário, com a fragrância correspondente e a sugestão de como combinar os dois.',
-  },
-  { q: 'E se eu não gostar do cheiro?', a: 'Você tem 7 dias para devolver, mesmo com o frasco aberto. Sem perguntas.' },
-  {
-    q: 'Como funciona a entrega?',
-    a: 'Envio em até 24 h úteis após a confirmação do pagamento. Frete grátis acima de R$ 199. O prazo aparece no carrinho ao informar o CEP.',
-  },
-]
 
 /** Acordeão no estilo editorial: linha fina, título em fonte de display, "+" que vira "−" ao abrir. */
 function Accordion({ title, children, dark = false }: { title: string; children: React.ReactNode; dark?: boolean }) {
@@ -71,11 +41,21 @@ function Accordion({ title, children, dark = false }: { title: string; children:
   )
 }
 
+const brlSeo = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+
 export function ProductPage() {
   const { id } = useParams<{ id: string }>()
   const a = id ? getArchetype(id) : undefined
   const par = a ? getArchetype(a.par) : undefined
   const { addItem } = useCart()
+  // SEO da página do produto (acesso direto / Google): nome completo + tipo no título; frase, família e preço na descrição
+  useSeo({
+    title: comMarca(a ? `${a.nome} ${a.sobrenome ?? ''} – ${a.tipo}`.replace(/\s+–/, ' –') : 'Body Splash Premium'),
+    description: a
+      ? `${a.nome} ${a.sobrenome ?? ''}: ${a.ep} ${a.tipo} ${a.vol} com 10% de essência, família ${a.fam}. ${brlSeo(a.preco)} em até 6x sem juros.`
+      : '',
+    path: `/loja/${id ?? ''}`,
+  })
 
   if (!a) return <Navigate to="/" replace />
 
@@ -241,8 +221,8 @@ export function ProductPage() {
                     {[
                       ['Volume', a.vol],
                       ['Tipo', a.tipo],
-                      ['Categoria IFRA', 'Cat. 5A · conforme Emenda 51'],
-                      ['ANVISA', 'Grau 1 · notificação nº —'],
+                      ['Concentração', '10% de essência'],
+                      ['Notificação Anvisa', a.anvisa],
                     ].map(([k, v]) => (
                       <div key={k} className="col-span-2 grid grid-cols-subgrid border-b border-linha py-2.5">
                         <dt className="font-label text-[10px] tracking-[0.14em] text-tinta-3 uppercase">{k}</dt>
@@ -250,12 +230,10 @@ export function ProductPage() {
                       </div>
                     ))}
                   </dl>
+                  {/* INCI e alérgenos ficam na embalagem, conforme a regulamentação da Anvisa (decisão do usuário, out/2026) */}
                   <p className="mt-4 text-xs leading-relaxed text-tinta-2">
-                    Composição (INCI): Alcohol Denat., Aqua, Parfum (Fragrance), Glycerin, Propylene Glycol.
-                  </p>
-                  <p className="mt-2 text-xs text-alerta">
-                    Os alérgenos de fragrância de declaração obrigatória entram aqui assim que a ficha
-                    técnica da Scentec for confirmada — ver CLAUDE.md.
+                    A composição completa (INCI), com os alérgenos de declaração obrigatória, está na embalagem do
+                    produto, conforme a regulamentação da Anvisa.
                   </p>
                   <div className="mt-4 rounded-lg bg-papel p-4 text-xs leading-relaxed text-tinta-2">
                     <b className="text-tinta">Antes do primeiro uso:</b> faça teste de sensibilidade no

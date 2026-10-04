@@ -9,6 +9,12 @@ import { HomePage } from '@/pages/HomePage'
 import { ProductPage } from '@/pages/ProductPage'
 import { CreatorsPage } from '@/pages/CreatorsPage'
 import { PrivacyPage } from '@/pages/PrivacyPage'
+import { ShippingPage } from '@/pages/ShippingPage'
+import { TrocasPage } from '@/pages/TrocasPage'
+import { RegrasPage } from '@/pages/RegrasPage'
+import { TermosPage } from '@/pages/TermosPage'
+import { SobrePage } from '@/pages/SobrePage'
+import { FaqPage } from '@/pages/FaqPage'
 
 function RedirectToLoja() {
   const { id } = useParams<{ id: string }>()
@@ -36,6 +42,12 @@ export default function App() {
           <Route path="kit-descoberta" element={<Navigate to="/" replace />} />
           <Route path="criadores" element={<CreatorsPage />} />
           <Route path="privacidade" element={<PrivacyPage />} />
+          <Route path="entrega-e-frete" element={<ShippingPage />} />
+          <Route path="trocas-e-devolucoes" element={<TrocasPage />} />
+          <Route path="regras-do-site" element={<RegrasPage />} />
+          <Route path="termos-de-uso" element={<TermosPage />} />
+          <Route path="sobre" element={<SobrePage />} />
+          <Route path="perguntas-frequentes" element={<FaqPage />} />
         </Route>
       </Routes>
       {background && (

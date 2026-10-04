@@ -5,6 +5,7 @@
  */
 import { ARCHETYPES, getArchetype } from '@/data/archetypes'
 import { FAMILIAS } from '@/data/families'
+import { EMPRESA, EMPRESA_LINHA } from '@/data/empresa'
 import heroVideo from '@/assets/hero/hero-video.mp4'
 import heroVideoPoster from '@/assets/hero/hero-video-poster.jpg'
 // Fotos em src/assets/fotos/ são as escolhidas pela designer (set/2026), convertidas pra JPG.
@@ -67,7 +68,7 @@ export const UGC_IMG: Record<string, string> = {
 }
 
 export const PUV =
-  'Body Splash Premium de perfumaria para quem cansou de cheirar igual a todo mundo e não quer mais escolher fragrância no escuro — nove arquétipos, um teste de 2 minutos e o direito de devolver se não for você.'
+  'Body Splash Premium de perfumaria para quem cansou de cheirar igual a todo mundo e não quer mais escolher fragrância no escuro — nove arquétipos, um teste de 2 minutos e 7 dias de garantia.'
 
 export const HERO_SLIDES = [
   {
@@ -350,7 +351,7 @@ export const HOME_COPY = {
     label: 'Dias de garantia',
     title: ['Experimente na pele.', 'Descubra se essa fragrância combina com você.'] as const,
     body: ['Deixe a fragrância se revelar.', 'Se não for para você, devolvemos o valor.'] as const,
-    nota: 'Sem perguntas · Mesmo com o frasco aberto',
+    nota: '7 dias para desistir da compra · Produto lacrado e sem uso',
   },
   criadores: {
     eyebrow: 'Para criadores',
@@ -370,9 +371,20 @@ export const HOME_COPY = {
   },
   rodape: {
     tagline: ['Você não escolhe um perfume.', 'Você reconhece o seu.'] as const,
-    pagamentos: 'Pix · Visa · Master · Elo · Boleto',
-    sac: 'contato@arquetypus.com.br',
-    redes: ['Instagram', 'TikTok', 'Pinterest'] as const,
-    empresa: 'Saniella Ltda · CNPJ 58.267.823/0001-68 · Caraguatatuba SP',
+    pagamentos: 'Pix · Visa · Master · Elo · Amex · Hipercard',
+    sac: EMPRESA.email,
+    redes: ['Instagram', 'TikTok'] as const,
+    empresa: EMPRESA_LINHA,
   },
 }
+
+/**
+ * Canais oficiais da Arquétypus (out/2026) — rodapé com ícone e link. `rotulo` é o que aparece; `aria` o nome
+ * lido por leitor de tela. Ícones em FooterBoutique (boutique/BoutiqueMore.tsx), pela `rede`.
+ */
+export const CONTATOS = [
+  { rede: 'instagram', rotulo: '@arquetypus', aria: 'Instagram da Arquétypus', href: 'https://www.instagram.com/arquetypus' },
+  { rede: 'tiktok', rotulo: '@arquetypusparfum', aria: 'TikTok da Arquétypus', href: 'https://www.tiktok.com/@arquetypusparfum' },
+  { rede: 'whatsapp', rotulo: '(12) 99206-7178', aria: 'WhatsApp da Arquétypus', href: 'https://wa.me/5512992067178' },
+  { rede: 'email', rotulo: 'contato@arquetypus.com.br', aria: 'E-mail da Arquétypus', href: 'mailto:contato@arquetypus.com.br' },
+] as const

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { ARCHETYPES, getArchetype } from '@/data/archetypes'
-import { ECON } from '@/data/economics'
+import { comissaoTexto } from '@/data/economics'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { MediaSlot } from '@/components/ui/MediaSlot'
 import { Reveal } from '@/components/ui/Reveal'
@@ -10,6 +10,7 @@ import { DEGRAU_CLARO, DEGRAU_ESCURO, Flor, Glow, SectionEyebrow } from '@/compo
 // gerada no Higgsfield (GPT Image 2.5) com as fotos de produto como referência — pessoa não existe; trocar por criador(a) real
 import creatorsHero from '@/assets/fotos/criadores-hero.jpg'
 import { Sobrenome } from '@/components/ui/Sobrenome'
+import { comMarca, useSeo } from '@/lib/seo'
 
 const HOW_IT_WORKS = [
   { n: '01', title: 'Aplique escolhendo um arquétipo', body: 'Um só — é ele que você vai representar, gravar e recomendar.' },
@@ -26,7 +27,9 @@ const MATERIALS = [
   'Painel com ranking e status de pagamento',
 ]
 
-// Ilustrativo — mesmo padrão do H-17 da home. Não é medição real.
+// Ilustrativo — mesmo padrão do H-17 da home. Não é medição real: a seção "Quem já vende" fica escondida
+// (SHOW_RANKING) até existir programa rodando com números reais.
+const SHOW_RANKING = false
 const RANKING_STATS = [
   { v: '42', label: 'criadoras ativas na categoria feminina' },
   { v: '31', label: 'criadores ativos na categoria masculina' },
@@ -35,12 +38,18 @@ const RANKING_STATS = [
 ]
 
 const GAINS = [
-  { v: `${Math.round(ECON.comissaoPct * 100)}%`, label: ['de comissão', 'por venda'] },
+  { v: comissaoTexto, label: ['de comissão', 'por venda'] },
   { v: 'Grátis', label: ['amostra do seu', 'arquétipo'] },
   { v: 'D+30', label: ['pagamento', 'via Pix'] },
 ]
 
 export function CreatorsPage() {
+  useSeo({
+    title: comMarca('Programa de Criadores'),
+    description:
+      'Faça parte do programa de criadores da Arquétypus: indique nossos Body Splash Premium para a sua comunidade e ganhe comissão por venda. Candidate-se.',
+    path: '/criadores',
+  })
   const [picked, setPicked] = useState<string | null>(null)
   const [submitted, setSubmitted] = useState(false)
   const a = picked ? getArchetype(picked) : undefined
@@ -183,7 +192,8 @@ export function CreatorsPage() {
         </div>
       </Reveal>
 
-      {/* Quem já vende — escuro, números grandes em latão */}
+      {/* Quem já vende — escuro, números grandes em latão (escondido: dado ilustrativo, ver SHOW_RANKING) */}
+      {SHOW_RANKING && (
       <Reveal as="section" className="relative z-10 overflow-hidden bg-noite px-5 pt-14 pb-14 text-papel-inv md:px-10 lg:pt-24 lg:pb-24" style={DEGRAU_ESCURO} animateContent>
         <Glow className="bottom-0 -left-20 size-72 lg:size-96" forca={14} />
         <div className="relative md:mx-auto md:max-w-3xl lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-x-16">
@@ -208,6 +218,7 @@ export function CreatorsPage() {
           </div>
         </div>
       </Reveal>
+      )}
 
       {/* O que você recebe — claro, lista com losango latão */}
       <Reveal as="section" className="relative overflow-hidden bg-papel px-5 pt-14 pb-14 md:px-10 lg:pt-24 lg:pb-24" style={DEGRAU_CLARO}>

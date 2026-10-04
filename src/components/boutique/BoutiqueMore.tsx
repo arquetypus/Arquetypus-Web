@@ -1,7 +1,8 @@
 import { Link, useLocation } from 'react-router-dom'
 import type { Archetype } from '@/types/archetype'
 import { getArchetype } from '@/data/archetypes'
-import { FRASCO_CUT_IMG, JOURNAL, UGC_IMG, UGC_VIDEOS } from '@/data/home'
+import { FRASCO_CUT_IMG, JOURNAL, UGC_IMG, UGC_VIDEOS, CONTATOS } from '@/data/home'
+import { EMPRESA_LINHA } from '@/data/empresa'
 import { openCookiePreferences } from '@/lib/consent'
 import logoDourado from '@/assets/brand/logo-dourado.png'
 import { useInfiniteCarousel } from '@/lib/useInfiniteCarousel'
@@ -10,6 +11,7 @@ import { CarouselDots } from '@/components/ui/CarouselDots'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { Sobrenome } from '@/components/ui/Sobrenome'
 import { Preco } from '@/components/ui/Preco'
+import { Avaliacao } from '@/components/ui/Avaliacao'
 
 /**
  * Mais seções da direção "Boutique" (ThemeSwitcher): destaque como banner de produto, comunidade como
@@ -193,6 +195,7 @@ export function CommunityBoutique() {
                       </b>
                       <Preco a={arq} className="shrink-0 flex-col items-end gap-y-0.5 text-[15px] leading-none" />
                     </span>
+                    <Avaliacao id={arq.id} className="mt-0.5 mb-0.5 text-[10px] lg:text-[11px]" />
                     <span className="block truncate text-[13px] text-tinta-2 lg:text-sm">{arq.fam}</span>
                     {/* só o tipo, sem o volume (out/2026): "BODY SPLASH PREMIUM" cabe numa linha também no card estreito do desktop */}
                     <span className="block font-label text-[9.5px] leading-snug tracking-[0.1em] whitespace-nowrap text-tinta-3 uppercase">
@@ -315,6 +318,41 @@ const PAGAMENTOS: { nome: string; glifo: React.ReactNode }[] = [
  * (símbolo + ARQUÉTYPUS + PARFUM, versão dourada), colunas de links com título em dourado, atendimento, selos de
  * pagamento em bege escuro e a faixa legal. -mb-24 cobre o pb-24 do container do Layout.
  */
+/** Ícones de traço dos canais do rodapé, em latão (marcas simplificadas, 24×24) */
+function IconeContato({ rede }: { rede: (typeof CONTATOS)[number]['rede'] }) {
+  const props = { viewBox: '0 0 24 24', className: 'size-[18px]', fill: 'none', stroke: 'var(--color-latao)', strokeWidth: 1.5, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true } as const
+  if (rede === 'instagram')
+    return (
+      <svg {...props}>
+        <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.2" cy="6.8" r="0.6" fill="var(--color-latao)" />
+      </svg>
+    )
+  if (rede === 'tiktok')
+    return (
+      <svg {...props}>
+        <path d="M14 3.5v11.2a3.8 3.8 0 1 1-3.8-3.8" />
+        <path d="M14 3.5c.4 2.6 2.2 4.4 4.8 4.7" />
+      </svg>
+    )
+  if (rede === 'whatsapp')
+    return (
+      <svg {...props}>
+        <path d="M4.2 20l1.2-4.1A8.3 8.3 0 1 1 8.6 19z" />
+        <path d="M9.3 8.6c.2-.5.6-.5.9-.5.3 0 .5.4.8 1.2.2.5-.4.9-.5 1.1.4 1 1.3 1.9 2.4 2.4.2-.2.6-.8 1.1-.6.8.4 1.2.6 1.2.9 0 .4-.1.8-.5 1.1-.5.4-1.4.5-2.6 0a7.6 7.6 0 0 1-3.6-3.6c-.4-1-.4-1.8-.2-2z" />
+      </svg>
+    )
+  return (
+    <svg {...props}>
+      <rect x="3.5" y="5.5" width="17" height="13" rx="2" />
+      <path d="M4 7l8 6 8-6" />
+    </svg>
+  )
+}
+
+const WHATSAPP = CONTATOS.find((c) => c.rede === 'whatsapp')!
+
 export function FooterBoutique() {
   const titulo = 'font-label text-[10px] tracking-[0.3em] text-latao uppercase'
   const lista = 'mt-4 flex flex-col gap-2.5 text-sm text-papel-inv/60'
@@ -331,43 +369,73 @@ export function FooterBoutique() {
     >
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-12 lg:gap-x-12">
+          {/* marca: logo, assinatura e redes (padrão de loja: redes junto da marca, links em colunas por assunto) */}
           <div className="col-span-2 flex flex-col items-center text-center lg:col-span-4 lg:items-start lg:text-left">
             <img src={logoDourado} alt="Arquétypus Parfum" className="h-auto w-44 lg:w-52" />
             <p className="mt-5 max-w-[30ch] font-display text-lg leading-snug text-papel-inv/80 italic">
               Você não escolhe um perfume. Você reconhece o seu.
             </p>
+            <p className={`mt-7 ${titulo}`}>Nossas redes</p>
+            {/* só os ícones, lado a lado; o usuário/número aparece no title e é lido pelo aria-label */}
+            <ul className="mt-4 flex flex-wrap justify-center gap-3 lg:justify-start">
+              {CONTATOS.map((c) => (
+                <li key={c.rede}>
+                  <a
+                    href={c.href}
+                    aria-label={c.aria}
+                    title={c.rotulo}
+                    {...(c.rede === 'email' ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
+                    className="grid size-10 place-items-center rounded-full ring-1 ring-latao/40 transition-colors hover:bg-latao/15 hover:ring-latao"
+                  >
+                    <IconeContato rede={c.rede} />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <div className="lg:col-span-2 lg:col-start-6">
+          {/* links em 4 colunas (2×2 no celular): Loja, Institucional, Ajuda, Políticas */}
+          <nav aria-label="Loja" className="lg:col-span-2">
             <p className={titulo}>Loja</p>
             <ul className={lista}>
               <li><Link to="/#catalogo" className={link}>Os 9 arquétipos</Link></li>
               <li><Link to="/#segmentos" className={link}>Coleções</Link></li>
+              <li><Link to="/#familias" className={link}>Famílias olfativas</Link></li>
+            </ul>
+          </nav>
+          <nav aria-label="Institucional" className="lg:col-span-2">
+            <p className={titulo}>Institucional</p>
+            <ul className={lista}>
+              <li><Link to="/sobre" className={link}>Sobre nós</Link></li>
               <li><Link to="/criadores" className={link}>Seja criador</Link></li>
             </ul>
-          </div>
-          <div className="lg:col-span-2">
+          </nav>
+          <nav aria-label="Ajuda" className="lg:col-span-2">
             <p className={titulo}>Ajuda</p>
             <ul className={lista}>
+              <li><Link to="/perguntas-frequentes" className={link}>Perguntas frequentes</Link></li>
+              <li><Link to="/entrega-e-frete" className={link}>Entrega e frete</Link></li>
+              <li><Link to="/trocas-e-devolucoes" className={link}>Trocas e devoluções</Link></li>
+              <li>
+                <a href={WHATSAPP.href} target="_blank" rel="noopener noreferrer" className={link}>
+                  Fale conosco
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <nav aria-label="Políticas" className="lg:col-span-2">
+            <p className={titulo}>Políticas</p>
+            <ul className={lista}>
               <li><Link to="/privacidade" className={link}>Privacidade</Link></li>
-              <li className="text-papel-inv/35" aria-disabled="true">Trocas e devoluções · em breve</li>
-              <li className="text-papel-inv/35" aria-disabled="true">Termos · em breve</li>
+              <li><Link to="/termos-de-uso" className={link}>Termos de uso</Link></li>
+              <li><Link to="/regras-do-site" className={link}>Regras do site</Link></li>
               <li>
                 <button type="button" onClick={openCookiePreferences} className={`text-left ${link}`}>
                   Gerenciar cookies
                 </button>
               </li>
             </ul>
-          </div>
-          <div className="col-span-2 lg:col-span-3">
-            <p className={titulo}>Atendimento</p>
-            <ul className={lista}>
-              <li>
-                <a href="mailto:contato@arquetypus.com.br" className={link}>contato@arquetypus.com.br</a>
-              </li>
-              <li>Instagram · TikTok · Pinterest</li>
-            </ul>
-          </div>
+          </nav>
         </div>
 
         {/* formas de pagamento */}
@@ -389,7 +457,7 @@ export function FooterBoutique() {
 
         <div className="mt-8 flex flex-col items-center gap-1.5 border-t border-papel-inv/10 pt-6 text-center text-[11px] text-papel-inv/40 lg:flex-row lg:justify-between lg:text-left">
           <p>© 2026 Arquétypus Parfum. Todos os direitos reservados.</p>
-          <p>Saniella Ltda · CNPJ 58.267.823/0001-68 · Caraguatatuba SP</p>
+          <p>{EMPRESA_LINHA}</p>
         </div>
       </div>
     </footer>

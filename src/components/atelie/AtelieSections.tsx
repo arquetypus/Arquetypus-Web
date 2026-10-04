@@ -174,7 +174,6 @@ export function FooterAtelie() {
             <ul className="mt-4 flex flex-col gap-2.5 text-sm">
               <li>Instagram</li>
               <li>TikTok</li>
-              <li>Pinterest</li>
             </ul>
           </div>
           <div className="col-span-2 text-xs leading-relaxed text-tinta-2 lg:col-span-1">

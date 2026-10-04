@@ -6,6 +6,7 @@ import { scrollToId } from '@/lib/scrollToId'
 import heroColecao from '@/assets/fotos/hero/colecao-desktop.jpg'
 import { Sobrenome } from '@/components/ui/Sobrenome'
 import { Preco } from '@/components/ui/Preco'
+import { Avaliacao } from '@/components/ui/Avaliacao'
 
 /**
  * Direção "Boutique" (ThemeSwitcher) — pegada de loja: tudo a um clique da compra. Hero compacto com os
@@ -148,19 +149,27 @@ export function CatalogGrid({
                 </div>
               </Link>
               <div className="flex flex-1 flex-col p-3 lg:p-5">
-                <b className="font-display text-lg leading-tight font-semibold text-tinta lg:text-xl">
-                  {a.nome}
-                  <Sobrenome a={a} size="text-[0.78em]" />
-                </b>
-                {/* família numa linha própria; tipo do produto em rótulo, sem o volume (out/2026) */}
-                <span className="mt-2 text-[11px] leading-snug text-tinta-2 lg:text-xs">{a.fam}</span>
-                <span className="mt-1 font-label text-[9px] tracking-[0.14em] text-tinta-3 uppercase">
-                  {a.tipo}
-                </span>
-                {/* regra 7: preço e parcelas sempre à vista no card. O Pix saiu do card a pedido do usuário
-                    (out/2026) e segue no pop-up/PDP */}
-                <Preco a={a} className="mt-3 text-base lg:text-lg" />
-                <span className="mt-0.5 text-[11px] text-tinta-2 lg:text-xs">6x {brl(a.preco / 6)} sem juros</span>
+                {/* celular: tudo empilhado; lg: informações à esquerda e preço à direita (out/2026) */}
+                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between lg:gap-4">
+                  <div className="flex min-w-0 flex-col">
+                    <b className="font-display text-lg leading-tight font-semibold text-tinta lg:text-xl">
+                      {a.nome}
+                      <Sobrenome a={a} size="text-[0.78em]" />
+                    </b>
+                    <Avaliacao id={a.id} className="mt-1.5 text-[11px] lg:text-xs" />
+                    {/* família numa linha própria; tipo do produto em rótulo, sem o volume (out/2026) */}
+                    <span className="mt-2 text-[11px] leading-snug text-tinta-2 lg:text-xs">{a.fam}</span>
+                    <span className="mt-1 font-label text-[9px] tracking-[0.14em] text-tinta-3 uppercase">
+                      {a.tipo}
+                    </span>
+                  </div>
+                  {/* regra 7: preço e parcelas sempre à vista no card. O Pix saiu do card a pedido do usuário
+                      (out/2026) e segue no pop-up/PDP */}
+                  <div className="mt-3 flex flex-col lg:mt-0.5 lg:shrink-0 lg:items-end lg:text-right">
+                    <Preco a={a} className="text-base lg:flex-col lg:items-end lg:gap-y-0.5 lg:text-xl" />
+                    <span className="mt-0.5 text-[11px] text-tinta-2 lg:mt-1 lg:text-xs">6x {brl(a.preco / 6)} sem juros</span>
+                  </div>
+                </div>
                 <div className="mt-auto pt-3.5">
                   <Link
                     to={`/loja/${a.id}`}

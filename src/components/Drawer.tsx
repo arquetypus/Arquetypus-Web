@@ -22,20 +22,36 @@ const GROUPS: DrawerGroup[] = [
   {
     title: 'Comprar',
     links: [
-      { label: 'Feminino · 200 ml', to: '/#segmentos' },
-      { label: 'Masculino · 220 ml', to: '/#segmentos' },
-      { label: 'Unissex', to: '/#segmentos' },
-      { label: 'Perfumes', to: '/#catalogo' },
+      { label: 'Feminino', to: '/#segmentos' },
+      { label: 'Masculino', to: '/#segmentos' },
+      { label: 'Compartilhável', to: '/#segmentos' },
+      { label: 'Famílias olfativas', to: '/#familias' },
     ],
   },
   {
-    title: 'A marca',
+    // mesmos grupos do rodapé (Institucional, Ajuda, Políticas), out/2026
+    title: 'Institucional',
     links: [
+      { label: 'Sobre nós', to: '/sobre' },
+      { label: 'Seja criador', to: '/criadores' },
       // seção do Diário saiu da home (out/2026): fica "Em breve" até voltar
       { label: 'Diário olfativo' },
-      { label: 'Seja criador', to: '/criadores' },
-      { label: 'Sobre' },
-      { label: 'Ajuda e trocas' },
+    ],
+  },
+  {
+    title: 'Ajuda',
+    links: [
+      { label: 'Perguntas frequentes', to: '/perguntas-frequentes' },
+      { label: 'Entrega e frete', to: '/entrega-e-frete' },
+      { label: 'Trocas e devoluções', to: '/trocas-e-devolucoes' },
+    ],
+  },
+  {
+    title: 'Políticas',
+    links: [
+      { label: 'Privacidade', to: '/privacidade' },
+      { label: 'Termos de uso', to: '/termos-de-uso' },
+      { label: 'Regras do site', to: '/regras-do-site' },
     ],
   },
 ]
