@@ -9,7 +9,6 @@ import {
   FilterTabs,
   FOOTER_EXPLORE,
   FOOTER_SOON,
-  numero,
   parcela,
   pix,
   preventSubmit,
@@ -123,8 +122,6 @@ export function CatalogRiviera({ items, filtro, setFiltro, filtros }: CatalogPro
                 {/* carimbo postal com a energia */}
                 <span className="absolute top-3 right-3 grid size-20 rotate-12 place-items-center rounded-full border-2 border-dashed border-papel/90 text-center font-label text-[9px] leading-tight tracking-[0.15em] text-papel uppercase">
                   {a.energia}
-                  <br />
-                  Nº {numero(a.cod)}
                 </span>
               </Link>
               {/* verso do postal: nome e linhas de endereço com o preço (regra 7) */}
@@ -314,7 +311,7 @@ export function RivieraPage({ catalog, onSegment, toCatalog, featured, featuredI
           <div className="relative flex flex-col justify-center p-6 md:p-10 lg:p-14">
             <SeloPostal src={FRASCO_IMG[featured.id]} className="absolute top-6 right-6 w-16 rotate-6 lg:w-20" />
             <p className="font-label text-[11px] tracking-[0.2em] text-tinta-3 uppercase">
-              {featured.cod} · {featured.fam}
+              {featured.fam}
             </p>
             <h2 className="mt-3 font-display text-6xl leading-none text-tinta lg:text-8xl">{featured.nome}</h2>
             <p className="mt-4 font-display text-xl text-tinta-2 italic">{featured.ep}</p>

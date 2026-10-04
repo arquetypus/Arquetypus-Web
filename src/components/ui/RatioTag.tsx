@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
  * Liga/desliga todas as tags de proporção do site (apoio ao time de design).
  * Desligar antes do lançamento.
  */
-export const SHOW_RATIO_TAGS = true
+export const SHOW_RATIO_TAGS = false
 
 const COMMON: [number, number][] = [
   [1, 1], [4, 5], [5, 4], [3, 4], [4, 3], [2, 3], [3, 2],

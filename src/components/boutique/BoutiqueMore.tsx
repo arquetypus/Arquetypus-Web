@@ -8,6 +8,7 @@ import { useInfiniteCarousel } from '@/lib/useInfiniteCarousel'
 import { useCoverflow } from '@/lib/useCoverflow'
 import { CarouselDots } from '@/components/ui/CarouselDots'
 import { Eyebrow } from '@/components/ui/Eyebrow'
+import { Sobrenome } from '@/components/ui/Sobrenome'
 
 /**
  * Mais seções da direção "Boutique" (ThemeSwitcher): destaque como banner de produto, comunidade como
@@ -42,10 +43,13 @@ export function FeaturedBoutique({ a, img }: { a: Archetype; img: string }) {
           <div className="flex items-center gap-2">
             <span aria-hidden className="size-3 rounded-full" style={{ background: a.cor }} />
             <span className="font-label text-[10px] tracking-[0.16em] text-tinta-2 uppercase">
-              {a.cod} · {a.energia} · {a.fam}
+              {a.energia} · {a.fam}
             </span>
           </div>
-          <h2 className="mt-4 font-display text-5xl leading-none text-tinta lg:text-7xl">{a.nome}</h2>
+          <h2 className="mt-4 font-display text-5xl leading-none text-tinta lg:text-7xl">
+            {a.nome}
+            <Sobrenome a={a} />
+          </h2>
           <p className="mt-4 text-lg text-tinta-2">{a.ep}</p>
           <p className="mt-3 text-sm leading-relaxed text-tinta-2">{a.cheiro[1]}</p>
           <div className="mt-6 rounded-2xl bg-papel p-4">
@@ -173,8 +177,8 @@ export function CommunityBoutique() {
 
               {/* o produto: cartão à parte, sobreposto à base do vídeo — metade dentro, metade fora (ideia do
                   product tag da comunidade do Editorial) */}
-              {/* TESTE out/2026 — celular: preço na linha do nome e botão mais fino; miniatura do frasco
-                  maior (68px, mais destaque pro produto — o cartão cresce um pouco na vertical); lg: layout de antes */}
+              {/* TESTE out/2026 — preço na linha do nome (celular e desktop) e botão mais fino; miniatura do frasco
+                  maior (68px, mais destaque pro produto — o cartão cresce um pouco na vertical) */}
               <div className="ugc-pop relative z-10 mx-1.5 -mt-10 rounded-xl bg-papel p-2 ring-1 ring-latao/45">
                 <div className="flex items-center gap-2.5">
                   {FRASCO_CUT_IMG[arq.id] && (
@@ -182,15 +186,17 @@ export function CommunityBoutique() {
                   )}
                   <span className="min-w-0 flex-1">
                     <span className="flex items-baseline justify-between gap-2">
-                      <b className="block truncate font-display text-[17px] leading-tight font-normal text-tinta lg:text-lg">{arq.nome}</b>
-                      <span className="shrink-0 text-[13px] leading-none text-tinta lg:hidden">{brl(arq.preco)}</span>
+                      <b className="block truncate font-display text-[19px] leading-tight font-normal text-tinta lg:text-xl">
+                        {arq.nome}
+                        <Sobrenome a={arq} size="text-[0.7em]" />
+                      </b>
+                      <span className="shrink-0 text-[15px] leading-none text-tinta">{brl(arq.preco)}</span>
                     </span>
-                    <span className="block truncate text-[11px] text-tinta-2 lg:text-xs">{arq.fam}</span>
+                    <span className="block truncate text-[13px] text-tinta-2 lg:text-sm">{arq.fam}</span>
                     {/* quebra em 2 linhas no card estreito em vez de cortar */}
-                    <span className="block font-label text-[8.5px] leading-snug tracking-[0.15em] text-tinta-3 uppercase">
+                    <span className="block font-label text-[10px] leading-snug tracking-[0.15em] text-tinta-3 uppercase">
                       {arq.tipo} · {arq.vol}
                     </span>
-                    <span className="mt-1 hidden text-[13px] leading-none text-tinta lg:block">{brl(arq.preco)}</span>
                   </span>
                 </div>
                 <Link
@@ -198,7 +204,7 @@ export function CommunityBoutique() {
                   state={{ backgroundLocation: location }}
                   tabIndex={ativo ? 0 : -1}
                   aria-label={`Descobrir ${arq.nome}`}
-                  className="mt-1.5 block w-full rounded-full border border-latao/50 py-1.5 text-center lg:mt-2 lg:py-2 font-label text-[10px] tracking-[0.2em] text-tinta uppercase transition-colors duration-300 hover:border-latao hover:bg-latao hover:text-papel"
+                  className="mt-1.5 block w-full rounded-full border border-latao bg-latao py-1.5 text-center lg:mt-2 lg:py-2 font-label text-[10px] tracking-[0.2em] text-papel uppercase transition-colors duration-300 hover:border-tinta hover:bg-tinta"
                 >
                   Descobrir
                 </Link>
@@ -314,6 +320,7 @@ export function FooterBoutique() {
   const link = 'transition-colors hover:text-papel-inv'
   return (
     <footer
+      id="rodape"
       className="relative z-20 -mb-24 bg-noite px-5 pt-16 pb-[calc(2.5rem+6rem)] text-papel-inv md:px-10 lg:pt-24"
       style={{
         // degrau invertido, como as seções escuras: o rodapé fica por cima do cupom, com filete dourado

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { HERO_SLIDES, QUIZ_CTA } from '@/data/home'
 import { scrollToId } from '@/lib/scrollToId'
-import { brl, FilterTabs, numero, parcela, pix, type CatalogProps } from './shared'
+import { brl, FilterTabs, parcela, pix, type CatalogProps } from './shared'
 
 /**
  * Direção "Cinema" (ThemeSwitcher) — campanha de perfume como filme noir. Referências da Behance: "Voléa —
@@ -18,7 +18,7 @@ const LIFESTYLE: Record<string, string> = Object.fromEntries(
   ),
 )
 
-const AUTOPLAY_MS = 5000
+const AUTOPLAY_MS = 4000
 // arrasto mínimo (px) pra trocar de slide no gesto de deslizar
 const SWIPE_PX = 50
 
@@ -80,6 +80,7 @@ export function HeroCinema() {
 
   return (
     <section
+      id="inicio"
       className="hero-tint sticky top-0 h-svh min-h-[680px] touch-pan-y overflow-hidden bg-black text-papel-inv"
       // sticky: o banner fica parado e as seções sobem por cima dele (como o carrossel do Editorial).
       // Tela cheia; quem sinaliza que a página continua é o "Role" no rodapé do banner
@@ -282,7 +283,7 @@ export function CatalogCinema({ items, filtro, setFiltro, filtros }: CatalogProp
               />
               <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
               <span className="absolute top-4 left-4 font-label text-[9px] tracking-[0.3em] text-papel-inv/70 uppercase">
-                Nº {numero(a.cod)} · {a.energia}
+                {a.energia}
               </span>
               <div className="absolute inset-x-0 bottom-0 p-5 text-papel-inv">
                 <b className="block font-display text-4xl leading-none font-normal italic lg:text-5xl">{a.nome}</b>

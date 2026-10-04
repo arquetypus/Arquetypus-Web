@@ -9,6 +9,7 @@ import { SweepCta } from '@/components/ui/SweepCta'
 import { DEGRAU_CLARO, DEGRAU_ESCURO, Flor, Glow, SectionEyebrow } from '@/components/ui/Editorial'
 // gerada no Higgsfield (GPT Image 2.5) com as fotos de produto como referência — pessoa não existe; trocar por criador(a) real
 import creatorsHero from '@/assets/fotos/criadores-hero.jpg'
+import { Sobrenome } from '@/components/ui/Sobrenome'
 
 const HOW_IT_WORKS = [
   { n: '01', title: 'Aplique escolhendo um arquétipo', body: 'Um só — é ele que você vai representar, gravar e recomendar.' },
@@ -263,7 +264,10 @@ export function CreatorsPage() {
                         className="mx-auto mb-2 block size-5 rounded-full lg:size-6"
                         style={{ background: arq.cor, opacity: arq.status === 'wait' ? 0.4 : 1 }}
                       />
-                      <b className="font-display text-[15px] font-normal lg:text-base">{arq.nome}</b>
+                      <b className="font-display text-[15px] font-normal lg:text-base">
+                        {arq.nome}
+                        <Sobrenome a={arq} />
+                      </b>
                     </button>
                   )
                 })}

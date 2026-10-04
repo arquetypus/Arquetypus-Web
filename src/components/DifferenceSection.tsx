@@ -37,6 +37,7 @@ export function DifferenceSection() {
 
   return (
     <Reveal
+      id="diferenca"
       as="section"
       className="relative z-20 bg-noite px-4 pt-14 pb-14 md:px-10 lg:pt-24 lg:pb-24"
       animateContent

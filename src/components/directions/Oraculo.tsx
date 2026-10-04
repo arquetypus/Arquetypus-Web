@@ -3,12 +3,12 @@ import type { Archetype } from '@/types/archetype'
 import { getArchetype } from '@/data/archetypes'
 import { FRASCO_IMG, HERO_SLIDES } from '@/data/home'
 import { scrollToId } from '@/lib/scrollToId'
-import { brl, FilterTabs, parcela, pix, romano, type CatalogProps } from './shared'
+import { brl, FilterTabs, parcela, pix, type CatalogProps } from './shared'
 
 /**
  * Direção "Oráculo" (ThemeSwitcher) — os 9 arquétipos como arcanos de tarô. Referências: identidades de
  * tarô na Behance ("Archetype Tarot Cards", "Louis Vuitton: Gemstone Tarot", "ÂM HÌNH TAROT") — moldura
- * dupla em ouro fino, numeral romano, janela em arco, nome em caixa alta espaçada. O site inteiro fica
+ * dupla em ouro fino, energia no topo, janela em arco, nome em caixa alta espaçada. O site inteiro fica
  * na noite azul (tokens em index.css). Puxa o conceito de "reconhecer" o seu: você não escolhe, tira a carta.
  */
 
@@ -20,7 +20,7 @@ export function TarotCard({ a, className = '' }: { a: Archetype; className?: str
       <div className="flex h-full flex-col rounded-lg border border-latao/40 px-2.5 pt-2.5 pb-3">
         <div className="flex items-center justify-center gap-2 font-display text-sm tracking-[0.2em] text-latao">
           <span aria-hidden className="h-px w-4 bg-latao/50" />
-          {romano(a.cod)}
+          {a.energia}
           <span aria-hidden className="h-px w-4 bg-latao/50" />
         </div>
         <div className="relative mt-2 flex-1 overflow-hidden rounded-t-full border border-latao/40" style={{ background: a.bg }}>

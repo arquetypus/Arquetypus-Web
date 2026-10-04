@@ -67,13 +67,11 @@ export function CatalogIndex({
                   state={{ backgroundLocation: location }}
                   className="group grid grid-cols-[3.5rem_1fr_auto] items-center gap-4 border-b border-linha-2 py-4 transition-colors hover:bg-papel-2 lg:grid-cols-[5rem_1fr_auto_auto] lg:gap-8 lg:px-2 lg:py-6"
                 >
-                  {/* celular: miniatura; desktop: número grande */}
+                  {/* celular: miniatura; desktop: bolinha de cor */}
                   {FRASCO_CUT_IMG[a.id] && (
                     <img src={FRASCO_CUT_IMG[a.id]} alt="" className="h-16 w-12 object-cover lg:hidden" />
                   )}
-                  <span aria-hidden className="hidden font-display text-5xl leading-none font-light lg:block" style={{ color: a.cor }}>
-                    {a.cod.split('-')[1]}
-                  </span>
+                  <span aria-hidden className="hidden size-3 rounded-full lg:block" style={{ background: a.cor }} />
                   <span className="min-w-0">
                     <b className="block font-display text-2xl leading-tight font-normal text-tinta lg:text-3xl">{a.nome}</b>
                     <span className="mt-1 block truncate font-label text-[9px] tracking-[0.16em] text-tinta-3 uppercase">
@@ -106,7 +104,7 @@ export function CatalogIndex({
               {preview && (
                 <p className="mt-3 flex justify-between font-label text-[9px] tracking-[0.2em] text-tinta-3 uppercase">
                   <span>
-                    {preview.cod} · {preview.nome}
+                    {preview.nome}
                   </span>
                   <span>{brl(preview.preco)}</span>
                 </p>

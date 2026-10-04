@@ -964,7 +964,9 @@ button:active:not(.no-press) {
 }
 @media (min-width: 1024px) and (hover: hover) {
   .segmento-foto img {
-    filter: brightness(0.72) grayscale(0.4);
+    /* abordagem sutil (out/2026): 90% de brilho e de cor — o hover marca mais pelo zoom e pela
+       moldura. Antes brightness(0.72) grayscale(0.4) (apagado demais) e depois brightness(0.88) saturate(0.75) */
+    filter: brightness(0.9) saturate(0.9);
   }
   .segmento-moldura {
     opacity: 0;

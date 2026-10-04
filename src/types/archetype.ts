@@ -1,12 +1,33 @@
 export type Segmento = 'F' | 'M' | 'U'
 export type StatusCatalogo = 'ok' | 'wait'
 
+/** As 5 famílias olfativas (out/2026) — ordem de exibição em data/families.ts */
+export type FamiliaSlug =
+  | 'florais-elegantes'
+  | 'frutados-citricos'
+  | 'frescos-luminosos'
+  | 'ambarados-adocicados'
+  | 'amadeirados-especiados'
+
+export interface Familia {
+  slug: FamiliaSlug
+  nome: string
+  desc: string
+  /** três palavras que resumem os produtos da família — linha pequena no card */
+  attrs: [string, string, string]
+}
+
 export interface Archetype {
   id: string
   cod: string
   nome: string
+  /** Sobrenome do body splash (ex.: Fada → "First Kiss"), linha menor abaixo do nome */
+  sobrenome?: string
   cor: string
   bg: string
+  /** [principal, secundária] — o produto aparece no filtro das duas */
+  familias: [FamiliaSlug, FamiliaSlug]
+  /** derivado de `familias` em data/archetypes.ts: "Principal · Secundária", pra exibir */
   fam: string
   energia: string
   seg: Segmento

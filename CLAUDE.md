@@ -122,7 +122,7 @@ decisão de produto já tomada:
   **Direção decidida (out/2026):** Boutique + paleta Âmbar + estilo Elegant +
   hero do Cinema — viraram os padrões da Boutique em `THEMES`, e `PADRAO` (em
   `lib/theme.ts`) abre a Boutique quando URL/storage não dizem nada. Do Cinema
-  também ficou o hover dos cards de gênero (apagados que acendem, só `lg:`; no
+  também ficou o hover dos cards de gênero (desde out/2026 versão sutil: 90% de brilho e de cor parado, hover com zoom e moldura — também nas famílias; só `lg:`; no
   celular sempre acesos). O card "Arquétipo em destaque" usa o da Editorial também na
   Boutique (out/2026); `FeaturedBoutique` fica no repo sem uso.
   Cada estrutura tem padrões pros outros quatro; escolher em "Misturar" fixa a
@@ -138,7 +138,7 @@ decisão de produto já tomada:
   discutir, ligar de novo. Falta promover a paleta Âmbar pro `@theme`.
 - **Selos de proporção nas imagens** (`components/ui/RatioTag.tsx`) são
   apoio ao time de design — mostram a proporção real da caixa na tela.
-  Desligar com `SHOW_RATIO_TAGS = false` antes do lançamento. O
+  Desligados desde out/2026 (`SHOW_RATIO_TAGS = false`) — o usuário pode pedir pra religar. O
   requisito de produção do `MediaSlot` fica no tooltip do selo.
 - **PDP existe em `/loja/:id`** (`pages/ProductPage.tsx`), com
   `CartContext` global (`context/CartContext.tsx`) — header, barra de
@@ -152,7 +152,7 @@ decisão de produto já tomada:
   pra home; sem link no hero, drawer, rodapé nem comparativo. `KitPage`,
   `KitSheet` e `KitPurchase` ficam no repo, desligados, pra religar. O
   card editorial que era do kit na home virou "Arquétipo em destaque" —
-  desde out/2026 banner rotativo Fênix → Sereia → Zeus, 5 s cada
+  desde out/2026 banner rotativo Fênix → Sereia → Zeus, 4 s cada
   (`components/FeaturedCarousel.tsx`, `SLIDES`; texto vem de
   `data/archetypes.ts`; fotos `assets/fotos/destaque-*.jpg` — Sereia e Zeus
   geradas por IA no Higgsfield, naturezas-mortas de alta perfumaria — Sereia em
@@ -174,12 +174,23 @@ decisão de produto já tomada:
   expandida pra 16:9 com IA (Higgsfield, FLUX.2 Pro Outpaint) — as laterais
   foram geradas; o frasco e a pessoa são os pixels originais.
   O que sobrou em `assets/mocks/` ainda é mock antigo.
-- **Fotos das famílias olfativas** (`assets/fotos/familias/{família}-{a|b|c}.jpg`,
-  out/2026): geradas por IA no Higgsfield (GPT Image 2.5), 896×1120 — a) still
-  life escuro com luz âmbar, b) editorial quente em linho, c) macro abstrato.
-  Padrão c (`FAMILY_IMG_DEFAULT` em `data/home.ts`); `?familias=a`/`?familias=b`
-  na home troca, pra comparação. Trocar por foto de campanha ou regerar em 2k
-  antes do lançamento.
+- **Famílias olfativas (out/2026): 5, em `data/families.ts`** — Florais & Elegantes,
+  Frutados & Cítricos, Frescos & Luminosos, Ambarados & Adocicados, Amadeirados &
+  Especiados (substituíram Floral/Aquático/Amadeirado/Oriental, que não podem voltar).
+  Cada arquétipo tem `familias: [principal, secundária]` em `data/archetypes.ts` e
+  aparece no filtro das duas; `fam` ("Principal · Secundária") é derivado, não
+  escrever à mão. `FAMILIES` (home.ts) monta a lista de arquétipos de cada família.
+  Regras da marca: nunca "Oriental" nem "Aquático", sem emoji, nenhum perfume ou
+  marca de terceiros como referência. Os nomes comerciais de ingredientes da
+  fórmula (Cashmeran, Ambroxan…) ficam, por decisão do usuário. Famílias não têm URL
+  própria (o filtro é estado da home), então não há redirecionamento.
+- **Fotos das famílias olfativas** (`assets/fotos/familias/{slug}.jpg`, out/2026):
+  geradas por IA no Higgsfield (GPT Image 2.5), 896×1120, estilo editorial quente
+  em linho/travertino com luz de fim de tarde (a "opção b", escolhida pelo usuário;
+  as outras opções foram apagadas), exceto Frescos & Luminosos: fonte de jardim em
+  travertino com maçã verde, limão, bambu, zimbro e gengibre (escolhida out/2026).
+  Pra testar alternativa, salvar como `{slug}-opcao-N.jpg` na mesma pasta — fica fora
+  do build (glob em `data/home.ts`); ao escolher, renomear pra `{slug}.jpg`. Trocar por foto de campanha ou regerar em 2k antes do lançamento.
 - **"A diferença" (out/2026)** é `components/DifferenceSection.tsx`: duas
   colunas Arquétypus × Splash comum, sempre visíveis (sem chave no celular), cada
   uma com foto no topo (`assets/fotos/diferenca/`): `arquetypus.jpg` gerada
@@ -198,7 +209,7 @@ decisão de produto já tomada:
   cheiro" filtra o catálogo pelos arquétipos da família (`FAMILIES[].arquetipos`)
   e rola até ele, como os cards de gênero. Estado `catalogoFamilia` em
   `HomePage.tsx`; o `CatalogGrid` (Boutique) mostra um chip "Família: X ✕".
-  Trocar o gênero nas abas tira a família. Zeus não está em nenhuma família.
+  Trocar o gênero nas abas tira a família.
 - **Pop-up de compra enxuto (out/2026):** no pop-up (`ProductPurchase` com
   `fullPageTo`, modo compacto) o botão de comprar aparece sem rolar — sem selos
   de envio/garantia/pagamento e sem "Complete o ritual"; no celular a foto vai na
@@ -215,6 +226,12 @@ decisão de produto já tomada:
   home: hero → comunidade → coleções por gênero → catálogo → famílias →
   destaque → diferença → benefícios (marquee) → cupom → rodapé. O fechamento "Talvez você
   não seja apenas um." está desligado (`SHOW_CLOSING`).
+- **Sobrenome dos body splash (out/2026):** cada arquétipo tem `sobrenome`
+  (Afrodite First Kiss, Fada Pure Light…) em `data/archetypes.ts`, mostrado
+  numa linha menor e mais apagada abaixo do nome por `components/ui/Sobrenome.tsx`
+  (tamanho em `em`, relativo ao nome). Ligado nas telas no ar: catálogo, comunidade,
+  destaque, pop-up/PDP, layering e `/criadores`. As direções desligadas
+  (`directions/`, `atelie/`), quiz e kit ainda não mostram.
 - **Quiz ainda não tem rota.** O 1º banner do hero (`HeroCinema`) mostra o CTA
   "Descubra seus arquétipos" desligado, com "Teste de 2 minutos · em breve"
   (`QUIZ_CTA` em `data/home.ts`). `pages/QuizPage.tsx`/`ResultPage.tsx` existem
@@ -256,12 +273,13 @@ decisão de produto já tomada:
 
 ## Pendências reais (não resolvidas no protótipo, não inventar resposta)
 
-- Pirâmides olfativas em `data/archetypes.ts` são proposta funcional.
-  A ficha técnica da Scentec manda quando chegar — não alterar sem a
-  fonte.
-- Preço do splash masculino (`imperador`/`fenix`/`zeus`/`guerreiro`
-  hoje R$ 94,90) ainda não foi decidido se unifica com o feminino (R$
-  89,90) pra escada de preço fechar. Ver v6, "Três decisões".
+- Pirâmides olfativas em `data/archetypes.ts` são a fórmula da Scentec
+  (out/2026) — não alterar sem nova ficha. Os textos "o que isso tem a
+  ver com cheiro" (`cheiro`) e de layering foram reescritos a partir dela.
+- Preço unificado (out/2026): os 9 body splash custam R$ 79,90 (antes
+  R$ 89,90 feminino / R$ 94,90 masculino). `KIT_TIERS` em `data/home.ts`
+  (escada 89,90/84,90/79,90 do `KitBuilder`) não foi refeita — ficou sem
+  desconto real; decidir antes de religar.
 - CMV/CAC não existem — não construir lógica de ponto de equilíbrio ou
   desconto máximo sem confirmar com o usuário primeiro.
 
@@ -276,6 +294,13 @@ decisão de produto já tomada:
   ajustados no estilo Elegant em `index.css`), nunca raio em px solto;
   `rounded-full` só pra pílula/círculo.
 
+- **Âncoras da home (out/2026)** pra mandar link direto: `#inicio`, `#comunidade`,
+  `#segmentos`, `#catalogo`, `#familias`, `#destaque`, `#diferenca`, `#beneficios`,
+  `#cupom`, `#rodape`, e cada produto do catálogo pelo id (`#afrodite`, `#fenix`…).
+  Seção nova na home ganha `id` também; não renomear os existentes (links já enviados).
+- **Código do arquétipo (`cod`, "ARQ-01"…) é referência interna** (out/2026):
+  fica em `data/archetypes.ts`, mas nunca aparece no site — nem "ARQ-07", nem
+  "Nº 07", nem numeral romano derivado dele.
 - Português nas strings de UI e nos dados de conteúdo; inglês em
   nomes de tipo, variável e arquivo — como já está no código.
 - Não inventar copy novo pros 9 arquétipos. Se uma seção nova precisa

@@ -9,7 +9,6 @@ import {
   FilterTabs,
   FOOTER_EXPLORE,
   FOOTER_SOON,
-  numero,
   parcela,
   pix,
   preventSubmit,
@@ -94,7 +93,7 @@ export function HeroZen() {
         <div className="relative lg:col-span-6 lg:col-start-7">
           <Enso className="absolute -top-16 -right-6 w-48 lg:-top-24 lg:right-0 lg:w-72" />
           <img src={FRASCO_IMG[HERO_ID]} alt={`Body splash ${heroArq.nome}`} className="relative ml-auto w-[70%] object-cover lg:w-[62%]" style={{ aspectRatio: '3/4' }} />
-          <p className="mt-4 ml-auto w-[70%] text-[11px] tracking-[0.2em] text-tinta-3 uppercase lg:w-[62%]">Nº {numero(heroArq.cod)} — {heroArq.nome}</p>
+          <p className="mt-4 ml-auto w-[70%] text-[11px] tracking-[0.2em] text-tinta-3 uppercase lg:w-[62%]">{heroArq.nome}</p>
         </div>
       </div>
     </section>
@@ -126,7 +125,6 @@ export function CatalogZen({ items, filtro, setFiltro, filtros }: CatalogProps) 
                 </Vertical>
               </Link>
               <div className="md:flex-1">
-                <span className="text-[11px] tracking-[0.3em] text-tinta-3">{numero(a.cod)}</span>
                 <b className="mt-3 block font-display text-4xl font-normal text-tinta lg:text-6xl">{a.nome}</b>
                 <p className="mt-4 text-sm leading-loose text-tinta-2">{a.ep}</p>
                 {/* regra 7 */}
@@ -257,7 +255,6 @@ export function ZenPage({ catalog, onSegment, toCatalog, featured, featuredImg }
         <div className="grid items-end gap-14 lg:grid-cols-12">
           <img src={featuredImg} alt={`Mão segurando o ${featured.tipo.toLowerCase()} ${featured.nome}`} className="w-[80%] object-cover object-[50%_20%] lg:col-span-5 lg:w-full" style={{ aspectRatio: '3/4' }} />
           <div className="lg:col-span-6 lg:col-start-7">
-            <span className="text-[11px] tracking-[0.3em] text-tinta-3">{numero(featured.cod)}</span>
             <h2 className="mt-4 font-display text-6xl leading-none text-tinta lg:text-8xl">{featured.nome}</h2>
             <p className="mt-8 font-display text-xl leading-relaxed text-tinta-2">{featured.ep}</p>
             <p className="mt-6 text-sm leading-loose text-tinta-2">{featured.cheiro[1]}</p>

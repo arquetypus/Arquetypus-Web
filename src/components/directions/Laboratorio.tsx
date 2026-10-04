@@ -131,7 +131,7 @@ export function CatalogLaboratorio({ items, filtro, setFiltro, filtros }: Catalo
           {items.map((a) => (
             <li key={a.id} className="flex flex-col bg-papel p-4 lg:p-5">
               <div className="flex items-center justify-between text-[10px] uppercase" style={MONO}>
-                <span className="text-tinta">Amostra {a.cod}</span>
+                <span className="text-tinta">{a.energia}</span>
                 <span className="flex items-center gap-1.5 text-tinta-3">
                   <span aria-hidden className="size-2.5 rounded-full" style={{ background: a.cor }} />
                   {a.energia}
@@ -347,7 +347,6 @@ export function LaboratorioPage({ catalog, onSegment, toCatalog, featured, featu
             <p className="text-base leading-relaxed text-tinta-2">{featured.cheiro[0]}</p>
             <p className="mt-3 text-base leading-relaxed text-tinta-2">{featured.cheiro[1]}</p>
             <dl className="mt-6">
-              <Linha k="Código" v={featured.cod} />
               <Linha k="Família" v={featured.fam} />
               <Linha k="Energia" v={featured.energia} />
               <Linha k="Topo" v={featured.topo} />
@@ -421,7 +420,6 @@ export function LaboratorioPage({ catalog, onSegment, toCatalog, featured, featu
                 <Link to={`/loja/${arq.id}`} state={{ backgroundLocation: location }} className="no-press block">
                   <span className="flex justify-between border-b border-tinta px-3 py-1.5 text-[10px] uppercase" style={MONO}>
                     <span>REG-{String(i + 1).padStart(3, '0')}</span>
-                    <span className="text-tinta-3">{arq.cod}</span>
                   </span>
                   <img src={UGC_IMG[v.archetypeId]} alt={`${v.creator} segurando o body splash ${arq.nome}`} loading="lazy" className="aspect-[3/4] w-full object-cover" />
                   <span className="flex items-center justify-between border-t border-tinta px-3 py-2 text-[11px]" style={MONO}>

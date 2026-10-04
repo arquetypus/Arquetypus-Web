@@ -27,7 +27,7 @@ export function FeaturedAtelie({ a, img }: { a: Archetype; img: string }) {
             <img src={img} alt={`Mão segurando o ${a.tipo.toLowerCase()} ${a.nome}`} className="h-full w-full object-cover object-[50%_20%]" />
           </div>
           <figcaption className="mt-3 flex justify-between font-label text-[9px] tracking-[0.2em] text-tinta-3 uppercase">
-            <span>{a.cod} · {a.energia}</span>
+            <span>{a.energia}</span>
             <span>{a.fam}</span>
           </figcaption>
         </figure>

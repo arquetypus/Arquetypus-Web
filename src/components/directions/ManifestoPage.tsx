@@ -211,7 +211,7 @@ export function ManifestoPage({ catalog, onSegment, toCatalog, featured, feature
         </div>
         <div className="flex flex-col justify-center bg-latao p-6 text-tinta md:p-10 lg:p-16">
           <span className="font-label text-[10px] tracking-[0.18em] uppercase">
-            {featured.cod} · {featured.energia} · {featured.fam}
+            {featured.energia} · {featured.fam}
           </span>
           <h2 className="mt-3 pt-[0.08em] font-display text-7xl leading-[1.02] uppercase lg:text-[160px]">{featured.nome}</h2>
           <p className="mt-4 text-xl font-semibold">{featured.ep}</p>

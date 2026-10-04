@@ -1,5 +1,5 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
-import { getArchetype } from '@/data/archetypes'
+import { getArchetype, NOTAS_LEGENDA } from '@/data/archetypes'
 import { FRASCO_CUT_IMG } from '@/data/home'
 import { useCart } from '@/context/CartContext'
 import { Eyebrow } from '@/components/ui/Eyebrow'
@@ -7,6 +7,7 @@ import { Reveal } from '@/components/ui/Reveal'
 import { CutFrame } from '@/components/ui/CutFrame'
 import { DEGRAU_CLARO, DEGRAU_ESCURO, Flor, Glow, Ornament, SectionEyebrow } from '@/components/ui/Editorial'
 import { ProductPurchase, brl } from '@/components/ProductPurchase'
+import { Sobrenome } from '@/components/ui/Sobrenome'
 
 const BENEFITS = [
   { n: '01', title: 'Fixação de verdade', body: 'Concentração de 5% com fixador — some do ar, não da pele. Dura o expediente inteiro.' },
@@ -87,9 +88,9 @@ export function ProductPage() {
 
   // pirâmide: topo mais estreito, base mais larga (só no desenho — o conteúdo vem de data/archetypes.ts)
   const piramide = [
-    { label: 'Topo', value: a.topo, note: 'a primeira impressão', w: 'lg:w-[62%]' },
-    { label: 'Coração', value: a.coracao, note: 'o que fica depois de minutos', w: 'lg:w-[81%]' },
-    { label: 'Base', value: a.fundo, note: 'o rastro de horas', w: 'lg:w-full' },
+    { label: 'Topo', value: a.topo, note: NOTAS_LEGENDA.topo, w: 'lg:w-[62%]' },
+    { label: 'Coração', value: a.coracao, note: NOTAS_LEGENDA.coracao, w: 'lg:w-[81%]' },
+    { label: 'Base', value: a.fundo, note: NOTAS_LEGENDA.fundo, w: 'lg:w-full' },
   ]
 
   return (
@@ -128,7 +129,7 @@ export function ProductPage() {
         <Flor style={{ bottom: '-70px', right: '-90px', width: '260px', transform: 'rotate(-30deg)' }} />
         <div className="relative md:mx-auto md:max-w-3xl lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-x-16">
           <div className="lg:col-span-7">
-            <SectionEyebrow>Pirâmide olfativa · {a.cod}</SectionEyebrow>
+            <SectionEyebrow>Pirâmide olfativa</SectionEyebrow>
             <h2 className="mt-4 font-display text-[30px] leading-[1.12] text-tinta lg:text-5xl">
               Como {a.nome} <span className="text-latao-texto">se revela</span>
             </h2>
@@ -193,6 +194,7 @@ export function ProductPage() {
                     <figcaption className="mt-4">
                       <b className="block font-display text-xl font-normal" style={{ color: 'var(--color-papel-inv)' }}>
                         {x.nome}
+                        <Sobrenome a={x} />
                       </b>
                       <span className="mt-1 block font-label text-[9px] tracking-[0.18em] text-papel-inv/50 uppercase">{x.fam}</span>
                     </figcaption>
@@ -281,9 +283,9 @@ export function ProductPage() {
                   <img src={FRASCO_CUT_IMG[par.id]} alt="" aria-hidden className="h-24 w-auto shrink-0 rounded-md" />
                 )}
                 <span className="min-w-0 flex-1">
-                  <span className="font-label text-[9px] tracking-[0.2em] text-tinta-3 uppercase">{par.cod}</span>
-                  <b className="mt-1 block font-display text-2xl font-normal" style={{ color: par.cor }}>
+                  <b className="block font-display text-2xl font-normal" style={{ color: par.cor }}>
                     {par.nome}
+                    <Sobrenome a={par} />
                   </b>
                   <span className="mt-1 block text-sm text-tinta-2">{par.fam}</span>
                   <span className="mt-2 block text-sm text-tinta">{par.status === 'wait' ? 'Em breve' : brl(par.preco)}</span>

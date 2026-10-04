@@ -5,8 +5,6 @@ import {
   BODEGON_IMG,
   DIAGNOSIS,
   FAMILIES,
-  FAMILY_IMG_DEFAULT,
-  FAMILY_IMG_OPTIONS,
   familyImg,
   FRASCO_CUT_IMG,
   FRASCO_IMG,
@@ -74,6 +72,7 @@ import featuredFenix from '@/assets/fotos/destaque-fenix.jpg'
 import florArquetypus from '@/assets/brand/flor-arquetypus.png'
 import ribbonArquetypus from '@/assets/brand/ribbon-arquetypus.png'
 import logoBranco from '@/assets/brand/logo-branco.png'
+import { Sobrenome } from '@/components/ui/Sobrenome'
 
 /**
  * Degradê foto → fundo noite do catálogo. Faixa larga com curva "smootherstep" (plana nas duas pontas):
@@ -251,7 +250,10 @@ function CommunitySection() {
                       />
                     )}
                     <div className="flex min-w-0 flex-1 flex-col justify-center">
-                      <b className="block truncate font-display text-lg leading-tight font-normal text-tinta">{arq.nome}</b>
+                      <b className="block truncate font-display text-lg leading-tight font-normal text-tinta">
+                        {arq.nome}
+                        <Sobrenome a={arq} />
+                      </b>
                       <span className="block truncate text-xs text-tinta-2">{arq.fam}</span>
                       <span className="mt-1 block truncate font-label text-[8.5px] tracking-widest text-tinta-3 uppercase">
                         {arq.tipo} · {arq.vol}
@@ -310,9 +312,6 @@ export function HomePage() {
   const location = useLocation()
   const { hash } = location
   const familiesScroll = useCarouselIndex<HTMLDivElement>(FAMILIES.length)
-  // ?familias=a|b troca a foto das famílias olfativas (padrão c — ver data/home.ts)
-  const familiasParam = new URLSearchParams(location.search).get('familias')
-  const familiasOpcao = FAMILY_IMG_OPTIONS.find((o) => o === familiasParam) ?? FAMILY_IMG_DEFAULT
   const tapGuard = useTapGuard()
   const [catalogoFiltro, setCatalogoFiltroGenero] = useState<'ALL' | 'F' | 'M' | 'U'>('ALL')
   // família olfativa escolhida nos cards de "Descubra pelo cheiro" — sai ao trocar o gênero no catálogo
@@ -510,13 +509,6 @@ export function HomePage() {
                   )}
                   <RatioTag className={a.status === 'wait' ? 'top-11 right-3' : 'top-3 right-3'} />
 
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute top-4 left-4 z-10 font-display text-[2.75rem] leading-none font-light"
-                    style={{ color: a.cor, opacity: 0.55, textShadow: '0 1px 12px rgba(0,0,0,0.25)' }}
-                  >
-                    {a.cod.split('-')[1]}
-                  </span>
                   {a.status === 'wait' && (
                     <span className="absolute top-3 right-3 z-20 rounded-full bg-papel/85 px-2.5 py-1 font-label text-[8px] tracking-wide text-alerta uppercase">
                       Em breve
@@ -534,10 +526,10 @@ export function HomePage() {
                   />
 
                   <div className="absolute inset-x-0 bottom-0 z-10 px-5 pt-5 pb-5">
-                    <span className="block font-label text-[9px] tracking-widest text-papel-inv/70 uppercase">
-                      {a.cod}
-                    </span>
-                    <b className="mt-1.5 block font-display text-2xl text-papel-inv">{a.nome}</b>
+                    <b className="block font-display text-2xl text-papel-inv">
+                      {a.nome}
+                      <Sobrenome a={a} />
+                    </b>
                     <span className="mt-1 block text-sm text-papel-inv/80">{a.fam}</span>
                     <span className="mt-3 block font-label text-[9px] tracking-wide text-papel-inv/60 uppercase">
                       {a.tipo} · {a.vol}
@@ -778,9 +770,10 @@ export function HomePage() {
         )}
 
         {/* H-09 Por família */}
-        {/* celular/tablet: carrossel; lg: grade de 4 colunas, sem scroll nem pontinhos */}
+        {/* celular/tablet: carrossel; lg: grade de 5 colunas, sem scroll nem pontinhos */}
         <Reveal
           as="section"
+          id="familias"
           className="relative z-20 bg-papel pt-16 pb-16 lg:pt-28 lg:pb-32"
           style={{
             // degrau invertido (o mesmo do catálogo Boutique): a seção fica POR CIMA do catálogo e projeta sombra
@@ -798,10 +791,11 @@ export function HomePage() {
           <div
             ref={familiesScroll.ref}
             {...tapGuard}
-            className="scroll-pad no-scrollbar mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 md:px-10 lg:mx-auto lg:mt-12 lg:grid lg:max-w-[88rem] lg:grid-cols-4 lg:gap-6 lg:overflow-visible lg:pt-2 lg:after:hidden"
+            className="scroll-pad no-scrollbar mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 md:px-10 lg:mx-auto lg:mt-12 lg:grid lg:max-w-[88rem] lg:grid-cols-5 lg:gap-5 lg:overflow-visible lg:pt-2 lg:after:hidden"
           >
             {/* mesma linguagem dos pôsteres de Coleções (classes .segmento-*): fundo noite, aro latão, filete
-                interno, texto centrado — no topo os arquétipos da família, embaixo nome, mood e CTA */}
+                interno. Texto alinhado à esquerda: no topo as três palavras da família; embaixo nome,
+                descrição e CTA (out/2026 — os nomes dos arquétipos saíram do card) */}
             {FAMILIES.map((f) => (
               <button
                 key={f.nome}
@@ -812,31 +806,32 @@ export function HomePage() {
                   setCatalogoFamilia(f.nome)
                   requestAnimationFrame(() => requestAnimationFrame(() => scrollToId('catalogo')))
                 }}
-                className="segmento no-press relative isolate block aspect-[4/5] w-[80%] shrink-0 cursor-pointer snap-start overflow-hidden rounded-2xl bg-noite text-center ring-1 ring-latao/40 sm:w-[46%] lg:w-auto"
+                className="segmento no-press relative isolate block aspect-[3/4] w-[74%] shrink-0 cursor-pointer snap-start overflow-hidden rounded-2xl bg-noite text-left ring-1 ring-latao/40 sm:w-[44%] lg:w-auto"
               >
                 <div className="segmento-foto absolute inset-0">
-                  <img src={familyImg(f.slug, familiasOpcao)} alt="" className="h-full w-full object-cover" />
+                  <img src={familyImg(f.slug)} alt="" className="h-full w-full object-cover" />
                 </div>
-                <RatioTag className="right-3 bottom-3" />
+                <RatioTag className="top-3 right-3" />
                 <div
                   aria-hidden
                   className="pointer-events-none absolute inset-0"
                   style={{
                     background:
-                      'linear-gradient(to bottom, rgba(0,0,0,0.45) 0%, transparent 24%), linear-gradient(to top, color-mix(in srgb, var(--color-noite) 92%, transparent) 0%, color-mix(in srgb, var(--color-noite) 45%, transparent) 42%, transparent 68%)',
+                      'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, transparent 20%), linear-gradient(to top, color-mix(in srgb, var(--color-noite) 92%, transparent) 0%, color-mix(in srgb, var(--color-noite) 45%, transparent) 36%, transparent 58%)',
                   }}
                 />
                 <span aria-hidden className="segmento-moldura pointer-events-none absolute inset-2.5 rounded-[calc(var(--radius-2xl)-0.5rem)] border border-latao/35" />
-                <span className="absolute inset-x-0 top-6 px-4 font-label text-[9px] tracking-[0.4em] text-papel-inv/80 uppercase">
-                  {f.arquetipos.map((id) => getArchetype(id)?.nome).join(' · ')}
+                <span className="absolute inset-x-0 top-5 px-5 font-label text-[9px] tracking-[0.22em] text-balance text-papel-inv/75 uppercase">
+                  {f.attrs.join(' · ')}
                 </span>
-                <span className="segmento-texto absolute inset-x-0 bottom-6 px-5 text-papel-inv lg:bottom-8">
-                  <b className="block font-display text-3xl leading-none font-normal lg:text-4xl">{f.nome}</b>
-                  <span className="mt-2.5 block text-xs text-papel-inv/80">{f.desc}</span>
-                  <span className="mt-2 block font-label text-[9px] tracking-[0.25em] text-balance text-papel-inv/60 lg:whitespace-nowrap uppercase">{f.attrs.join(' · ')}</span>
-                  <span className="mt-4 inline-flex flex-col items-center gap-1.5 font-label text-[10px] tracking-[0.35em] uppercase">
-                    Ver coleção
-                    <span aria-hidden className="segmento-linha block h-px w-full bg-latao" />
+                <span className="segmento-texto absolute inset-x-0 bottom-5 px-5 text-papel-inv lg:bottom-6">
+                  <b className="block font-display text-[28px] leading-[1.05] font-normal text-balance lg:text-[26px] xl:text-[28px]">{f.nome}</b>
+                  <span className="mt-2 block text-[13px] leading-snug text-papel-inv/80 lg:text-xs xl:text-[13px]">{f.desc}</span>
+                  <span className="mt-4 inline-flex flex-col gap-1.5 font-label text-[10px] tracking-[0.3em] uppercase">
+                    <span>
+                      Ver coleção <span aria-hidden>→</span>
+                    </span>
+                    <span aria-hidden className="segmento-linha block h-px w-full origin-left bg-latao" />
                   </span>
                 </span>
               </button>
@@ -1207,6 +1202,7 @@ export function HomePage() {
         {/* H-23 Captura com cupom — claro, abaixo do Diário (degrau), card na moldura recortada */}
         <Reveal
           as="section"
+          id="cupom"
           className="relative overflow-hidden bg-papel px-5 pt-20 pb-20 md:px-10 lg:pt-32 lg:pb-32"
           style={{
             boxShadow:

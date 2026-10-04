@@ -11,7 +11,6 @@ import {
   FilterTabs,
   FOOTER_EXPLORE,
   FOOTER_SOON,
-  numero,
   parcela,
   pix,
   preventSubmit,
@@ -110,7 +109,7 @@ export function HeroHerbario() {
           </div>
           <Etiqueta className="relative -mt-10 ml-auto w-[78%] rotate-[1.5deg] shadow-md">
             <p className="flex justify-between">
-              <span>Espécime Nº {numero(a.cod)}</span>
+              <span>Espécime</span>
               <span>{a.vol}</span>
             </p>
             <p className="mt-1 font-display text-2xl text-tinta" style={{ fontFamily: 'var(--font-display)' }}>
@@ -160,7 +159,6 @@ export function CatalogHerbario({ items, filtro, setFiltro, filtros }: CatalogPr
               </Link>
               <Etiqueta className="mt-4">
                 <p className="flex justify-between text-tinta-3">
-                  <span>Nº {numero(a.cod)}</span>
                   <span>
                     {a.energia} · {a.vol}
                   </span>
@@ -356,7 +354,7 @@ export function HerbarioPage({ catalog, onSegment, toCatalog, featured, featured
           <Presa src={featuredImg} alt={`Mão segurando o ${featured.tipo.toLowerCase()} ${featured.nome}`} aspect="aspect-[4/5]" className="rotate-[-2deg]" />
           <div>
             <p className="text-xs tracking-[0.2em] text-latao-texto uppercase" style={MAQ}>
-              {C.destaque.eyebrow} · Espécime Nº {numero(featured.cod)}
+              {C.destaque.eyebrow}
             </p>
             <h2 className="mt-3 font-display text-6xl leading-none text-tinta lg:text-8xl">{featured.nome}</h2>
             <p className="mt-4 font-display text-xl text-tinta-2 italic">{featured.ep}</p>

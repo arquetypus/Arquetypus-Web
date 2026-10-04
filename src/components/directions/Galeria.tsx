@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { ARCHETYPES } from '@/data/archetypes'
 import { FRASCO_IMG, HERO_SLIDES } from '@/data/home'
 import { scrollToId } from '@/lib/scrollToId'
-import { brl, FilterTabs, numero, parcela, pix, type CatalogProps } from './shared'
+import { brl, FilterTabs, parcela, pix, type CatalogProps } from './shared'
 
 /**
  * Direção "Galeria" (ThemeSwitcher) — a coleção como exposição de museu. Referências da Behance: "ATELIER
@@ -50,7 +50,7 @@ export function HeroGaleria() {
           {/* legenda de obra */}
           <figcaption className="mt-3 flex items-baseline justify-between gap-3 font-label text-[9px] tracking-[0.2em] text-tinta-3 uppercase">
             <span>
-              Nº {numero(a.cod)} — {a.nome}
+              {a.nome}
             </span>
             <span>{a.fam}</span>
           </figcaption>
@@ -120,7 +120,7 @@ export function CatalogGaleria({ items, filtro, setFiltro, filtros }: CatalogPro
               </Link>
               {/* plaqueta de museu — regra 7: preço, Pix e parcelas à vista */}
               <div className="mt-4 grid grid-cols-[auto_1fr] gap-x-3 border-l border-tinta pl-3 lg:mt-6 lg:pl-4">
-                <span className="row-span-4 font-label text-[10px] tracking-[0.15em] text-tinta-3 tabular-nums">Nº {numero(a.cod)}</span>
+                <span className="row-span-4 font-label text-[10px] tracking-[0.15em] text-tinta-3 tabular-nums" aria-hidden />
                 <b className="font-display text-xl leading-tight font-normal text-tinta lg:text-3xl">{a.nome}</b>
                 <span className="text-[11px] text-tinta-3 italic">
                   {a.fam}, {a.vol}

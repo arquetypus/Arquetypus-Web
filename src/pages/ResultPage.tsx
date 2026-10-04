@@ -23,7 +23,7 @@ export function ResultPage() {
           className="reveal-name font-label text-[10px] tracking-[0.22em] uppercase"
           style={{ color: a.cor, animationDelay: '0.2s', opacity: 0 }}
         >
-          {a.cod} · Seu arquétipo dominante
+          Seu arquétipo dominante
         </p>
         <h1
           className="reveal-name mt-3 font-display text-6xl leading-[0.95]"
@@ -49,7 +49,7 @@ export function ResultPage() {
           style={{ background: a.bg }}
         >
           <p className="font-label text-[9px] tracking-[0.2em] uppercase" style={{ color: a.cor }}>
-            Arquétypus · {a.cod}
+            Arquétypus
           </p>
           <p className="mt-2 font-display text-3xl leading-none" style={{ color: a.cor }}>
             {a.nome}

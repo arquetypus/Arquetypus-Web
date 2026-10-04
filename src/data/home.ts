@@ -3,6 +3,8 @@
  * seções H-01 a H-25. Não inventar texto novo aqui sem confirmar —
  * ver CLAUDE.md.
  */
+import { ARCHETYPES, getArchetype } from '@/data/archetypes'
+import { FAMILIAS } from '@/data/families'
 import heroVideo from '@/assets/hero/hero-video.mp4'
 import heroVideoPoster from '@/assets/hero/hero-video-poster.jpg'
 // Fotos em src/assets/fotos/ são as escolhidas pela designer (set/2026), convertidas pra JPG.
@@ -82,13 +84,13 @@ export const HERO_SLIDES = [
     video: heroVideo,
     // tom do escurecimento atrás do texto — marrom quase preto, da luz âmbar da foto dos frascos
     tint: '#150e09',
-    // o slide dura o vídeo inteiro (11,45 s) em vez dos 5 s padrão
+    // o slide dura o vídeo inteiro (11,45 s) em vez dos 4 s padrão
     durationMs: 11450,
   },
   {
     id: 'afrodite',
     type: 'image' as const,
-    eyebrow: 'ARQ-01 · Floral fresco',
+    eyebrow: getArchetype('afrodite')?.fam ?? '',
     eyebrowColor: '#e8a9b8',
     heading: 'Afrodite',
     sub: 'O floral que não pede licença.',
@@ -102,7 +104,7 @@ export const HERO_SLIDES = [
     // foto gerada por IA (Higgsfield) com o frasco real como referência — trocar pela de campanha
     id: 'guerreiro',
     type: 'image' as const,
-    eyebrow: 'ARQ-07 · Aromático aquático',
+    eyebrow: getArchetype('guerreiro')?.fam ?? '',
     eyebrowColor: '#a9bad3',
     heading: 'Guerreiro',
     sub: 'Constância é a forma mais rara de coragem.',
@@ -159,55 +161,25 @@ export const SEGMENTS = [
   { label: 'Para todos', name: 'Compartilhável', meta: '220 ml · 1 SKU', seg: 'U' as const, img: segmentoUnissex },
 ]
 
-/**
- * desc/attrs são copy nova (mood curto), não vem do v6 — texto pedido
- * diretamente pelo usuário para os cards de família. Revisar se já
- * existir equivalente oficial.
- */
-// Fotos das famílias olfativas: 3 opções por família geradas no Higgsfield (GPT Image 2.5, out/2026) —
-// a) still life escuro com luz âmbar (linha do hero), b) editorial quente em linho/travertino, c) macro
-// abstrato. Arquivo = {família}-{opção}.jpg. Padrão c (escolhida em out/2026); ?familias=a|b na home troca.
-const FAMILY_PHOTOS = import.meta.glob<string>('@/assets/fotos/familias/*.jpg', { eager: true, import: 'default' })
-export const FAMILY_IMG_OPTIONS = ['a', 'b', 'c'] as const
-export type FamilyImgOption = (typeof FAMILY_IMG_OPTIONS)[number]
-export const FAMILY_IMG_DEFAULT: FamilyImgOption = 'c'
-export const familyImg = (slug: string, opcao: FamilyImgOption = FAMILY_IMG_DEFAULT) =>
-  FAMILY_PHOTOS[`/src/assets/fotos/familias/${slug}-${opcao}.jpg`]
+// Fotos das famílias olfativas, geradas no Higgsfield (GPT Image 2.5, out/2026) no estilo editorial quente
+// em linho/travertino (a "opção b", escolhida em out/2026). Arquivo = {slug}.jpg. Arquivos *-opcao-*.jpg na
+// mesma pasta são alternativas em avaliação: ficam fora do build até alguém escolher.
+const FAMILY_PHOTOS = import.meta.glob<string>(['@/assets/fotos/familias/*.jpg', '!**/*-opcao-*.jpg'], {
+  eager: true,
+  import: 'default',
+})
+export const familyImg = (slug: string) => FAMILY_PHOTOS[`/src/assets/fotos/familias/${slug}.jpg`]
 
-export const FAMILIES = [
-  {
-    nome: 'Floral',
-    arquetipos: ['afrodite', 'fada'],
-    slug: 'floral',
-    img: familyImg('floral'),
-    desc: 'Sedutor e envolvente.',
-    attrs: ['Floral', 'Sedutor', 'Leve'],
-  },
-  {
-    nome: 'Aquático',
-    arquetipos: ['sereia', 'guerreiro'],
-    slug: 'aquatico',
-    img: familyImg('aquatico'),
-    desc: 'Fresco e discreto.',
-    attrs: ['Aquático', 'Fresco', 'Discreto'],
-  },
-  {
-    nome: 'Amadeirado',
-    arquetipos: ['imperador', 'fenix'],
-    slug: 'amadeirado',
-    img: familyImg('amadeirado'),
-    desc: 'Quente e marcante.',
-    attrs: ['Amadeirado', 'Intenso', 'Elegante'],
-  },
-  {
-    nome: 'Oriental doce',
-    arquetipos: ['cleopatra', 'imperatriz'],
-    slug: 'oriental',
-    img: familyImg('oriental'),
-    desc: 'Quente e viciante.',
-    attrs: ['Oriental', 'Doce', 'Envolvente'],
-  },
-]
+/**
+ * As 5 famílias (data/families.ts) com os arquétipos de cada uma, montados a partir de
+ * `familias` em data/archetypes.ts: primeiro os que a têm como principal, depois como secundária,
+ * na ordem do catálogo.
+ */
+export const FAMILIES = FAMILIAS.map((f) => ({
+  ...f,
+  arquetipos: [0, 1].flatMap((i) => ARCHETYPES.filter((a) => a.familias[i] === f.slug).map((a) => a.id)),
+  img: familyImg(f.slug),
+}))
 
 export const ENERGIES = [
   { nome: 'Sedução', arquetipos: ['afrodite', 'cleopatra'], img: energiaSeducao },

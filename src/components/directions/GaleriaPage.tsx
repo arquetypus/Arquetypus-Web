@@ -7,7 +7,6 @@ import {
   CREATOR_STATS,
   FOOTER_EXPLORE,
   FOOTER_SOON,
-  numero,
   parcela,
   pix,
   preventSubmit,
@@ -193,7 +192,6 @@ export function GaleriaPage({ catalog, onSegment, toCatalog, featured, featuredI
             </span>
           </div>
           <div className="lg:col-span-5">
-            <span className="font-label text-[10px] tracking-[0.2em] text-tinta-3">Nº {numero(featured.cod)}</span>
             <h2 className="mt-2 font-display text-6xl leading-none text-tinta lg:text-8xl">{featured.nome}</h2>
             <p className="mt-4 font-display text-xl text-tinta-2 italic">{featured.ep}</p>
             <p className="mt-4 text-sm leading-relaxed text-tinta-2">{featured.cheiro[1]}</p>

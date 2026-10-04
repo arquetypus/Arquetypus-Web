@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { Archetype } from '@/types/archetype'
-import { getArchetype } from '@/data/archetypes'
+import { getArchetype, NOTAS_LEGENDA } from '@/data/archetypes'
 import { useCart } from '@/context/CartContext'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { ProductGallery } from '@/components/ProductGallery'
+import { Sobrenome } from '@/components/ui/Sobrenome'
 
 export const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
@@ -91,9 +92,9 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
   }
 
   const notes = [
-    { label: 'Topo', value: a.topo },
-    { label: 'Coração', value: a.coracao },
-    { label: 'Base', value: a.fundo },
+    { label: 'Topo', value: a.topo, note: NOTAS_LEGENDA.topo },
+    { label: 'Coração', value: a.coracao, note: NOTAS_LEGENDA.coracao },
+    { label: 'Base', value: a.fundo, note: NOTAS_LEGENDA.fundo },
   ]
 
   return (
@@ -117,11 +118,14 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
           {showNotes && (
             // lg: começa depois da coluna de miniaturas — cobre só a foto principal
             <div className="absolute inset-0 flex flex-col justify-center rounded-lg bg-papel/95 p-5 lg:left-[5.25rem] lg:p-10">
-              <Eyebrow>Notas olfativas · {a.cod}</Eyebrow>
+              <Eyebrow>Notas olfativas</Eyebrow>
               <div className="mt-3 space-y-2 text-sm lg:mt-5 lg:space-y-3 lg:text-base">
                 {notes.map((n) => (
                   <div key={n.label} className="flex justify-between gap-3">
-                    <b>{n.label}</b>
+                    <span>
+                      <b className="block">{n.label}</b>
+                      <span className="block text-[11px] leading-tight text-tinta-3 lg:text-xs">{n.note}</span>
+                    </span>
                     <span className="text-right text-tinta-2">{n.value}</span>
                   </div>
                 ))}
@@ -169,10 +173,11 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
             </p>
           )}
           <Eyebrow>
-            {a.cod} · Energia {a.energia}
+            Energia {a.energia}
           </Eyebrow>
           <h1 className="mt-2 font-display text-3xl leading-[1.05] lg:text-[44px]" style={{ color: a.cor }}>
             {a.nome}
+            <Sobrenome a={a} />
           </h1>
           <p className="mt-2.5 font-display text-lg leading-snug italic lg:mt-3 lg:text-xl">{a.card}</p>
           <p className="mt-3 font-label text-[9px] tracking-[0.18em] text-tinta-3 uppercase lg:mt-4">

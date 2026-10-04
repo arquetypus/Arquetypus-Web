@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { ARCHETYPES } from '@/data/archetypes'
 import { FRASCO_IMG, HERO_SLIDES, UGC_IMG } from '@/data/home'
 import { scrollToId } from '@/lib/scrollToId'
-import { brl, FilterTabs, numero, parcela, pix, type CatalogProps } from './shared'
+import { brl, FilterTabs, parcela, pix, type CatalogProps } from './shared'
 
 /**
  * Direção "Manifesto" (ThemeSwitcher) — tipografia como imagem. Referências da Behance: "Fragra Elixirs |
@@ -99,7 +99,6 @@ export function CatalogManifesto({ items, filtro, setFiltro, filtros }: CatalogP
                 state={{ backgroundLocation: location }}
                 className="no-press group grid grid-cols-[auto_1fr_auto] items-center gap-x-3 py-4 transition-colors duration-300 hover:bg-tinta hover:text-papel md:gap-x-6 lg:grid-cols-[4rem_auto_1fr_auto_auto] lg:px-4 lg:py-5"
               >
-                <span className="hidden font-label text-xs tabular-nums lg:block">{numero(a.cod)}</span>
                 {/* miniatura: sempre no celular; no desktop abre no hover */}
                 <span className="row-span-2 block h-20 w-14 overflow-hidden lg:row-span-1 lg:h-28 lg:w-0 lg:transition-[width] lg:duration-500 lg:ease-out lg:group-hover:w-20">
                   <img src={FRASCO_IMG[a.id]} alt="" loading="lazy" className="h-full w-full object-cover" />

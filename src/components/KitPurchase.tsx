@@ -91,7 +91,7 @@ export function KitPurchase() {
               <span className="flex-1 text-sm">
                 {a.nome}
                 <span className="block font-label text-[9px] text-tinta-3">
-                  {a.cod} · {a.fam}
+                  {a.fam}
                 </span>
               </span>
               <span className="font-label text-[9px] text-tinta-3 uppercase">8 ml</span>

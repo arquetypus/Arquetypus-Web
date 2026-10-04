@@ -73,10 +73,11 @@ Tall clear glass cylindrical body-splash bottle, rounded clear acrylic overcap, 
 | ✅ | `segmento-feminino.png` | 4:3 · 1600×1200 | Home › Segmentação — Para elas |
 | ✅ | `segmento-masculino.png` | 4:3 · 1600×1200 | Home › Segmentação — Para eles |
 | ✅ | `segmento-unissex.png` | 4:3 · 1600×1200 | Home › Segmentação — Para todos |
-| ✅ | `familia-floral-bleed.png` | 4:5 · sem produto | Home › Descubra por família — Floral |
-| ✅ | `familia-aquatico-bleed.png` | 4:5 · sem produto | Home › Descubra por família — Aquático |
-| ✅ | `familia-amadeirado-bleed.png` | 4:5 · sem produto | Home › Descubra por família — Amadeirado |
-| ✅ | `familia-oriental-bleed.png` | 4:5 · sem produto | Home › Descubra por família — Oriental |
+| ✅ | `fotos/familias/florais-elegantes-{a,b,c,d}.jpg` | 4:5 · 896×1120 · sem produto | Home › Descubra pelo cheiro — Florais & Elegantes |
+| ✅ | `fotos/familias/frutados-citricos-{a,b,c,d}.jpg` | 4:5 · 896×1120 · sem produto | Home › Descubra pelo cheiro — Frutados & Cítricos |
+| ✅ | `fotos/familias/frescos-luminosos-{a,b,c,d}.jpg` | 4:5 · 896×1120 · sem produto | Home › Descubra pelo cheiro — Frescos & Luminosos |
+| ✅ | `fotos/familias/ambarados-adocicados-{a,b,c,d}.jpg` | 4:5 · 896×1120 · sem produto | Home › Descubra pelo cheiro — Ambarados & Adocicados |
+| ✅ | `fotos/familias/amadeirados-especiados-{a,b,c,d}.jpg` | 4:5 · 896×1120 · sem produto | Home › Descubra pelo cheiro — Amadeirados & Especiados |
 | ✅ | `energia-seducao.png` | 4:5 | Home › Que energia você quer despertar — Sedução |
 | ✅ | `energia-poder.png` | 4:5 | Home › Que energia — Poder |
 | ✅ | `energia-misterio.png` | 4:5 | Home › Que energia — Mistério |
@@ -100,7 +101,7 @@ Tall clear glass cylindrical body-splash bottle, rounded clear acrylic overcap, 
 higgsfield product-photoshoot create --mode product_shot \
   --image src/assets/reference-lab-fabio/afrodite-frente.jpg \
   --prompt "Tall clear glass cylindrical body-splash bottle, rounded clear acrylic overcap, rose-gold metallic spray pump, lower two-thirds wrapped in a #B9697F dusty rose pink label with a sunburst-A logo and ARQUÊTYPUS PARFUM wordmark at the top, archetype name set in large vertical serif type along the left edge. Match bottle shape, cap and label composition EXACTLY to the reference image (img2img), recolor label/liquid to #B9697F. Product fills most of the frame, bottom third left emptier for UI text overlay, seamless pastel #F1E8EA background. Editorial luxury niche perfumery photography, photorealistic, cinematic, minimalist, silent, soft directional studio light, shallow depth of field, ultra-detailed glass reflections, no text, no watermark. No marketplace/stock-photo look, no harsh flash, no pure-white infinite background." \
-  --aspect_ratio 3:4 --count 2 --product_context "Afrodite — Floral sedutor, energia Sedução. Epíteto: O floral que não pede licença." \
+  --aspect_ratio 3:4 --count 2 --product_context "Afrodite — Florais & Elegantes / Frutados & Cítricos, energia Sedução. Epíteto: O floral que não pede licença." \
   --wait
 ```
 
@@ -109,7 +110,7 @@ higgsfield product-photoshoot create --mode product_shot \
 higgsfield product-photoshoot create --mode product_shot \
   --image src/assets/reference-lab-fabio/imperatriz-frente.jpg \
   --prompt "Tall clear glass cylindrical body-splash bottle, rounded clear acrylic overcap, dark bronze metallic spray pump, lower two-thirds wrapped in a #8E4566 deep berry-wine label with a sunburst-A logo and ARQUÊTYPUS PARFUM wordmark at the top, archetype name set in large vertical serif type along the left edge. Match bottle shape, cap and label composition EXACTLY to the reference image (img2img), recolor label/liquid to #8E4566. Product fills most of the frame, bottom third left emptier for UI text overlay, seamless pastel #F0E6EB background. Editorial luxury niche perfumery photography, photorealistic, cinematic, minimalist, silent, soft directional studio light, shallow depth of field, ultra-detailed glass reflections, no text, no watermark. No marketplace/stock-photo look, no harsh flash, no pure-white infinite background." \
-  --aspect_ratio 3:4 --count 2 --product_context "Imperatriz — Oriental âmbar, energia Poder. Epíteto: Não herda o trono. Toma." \
+  --aspect_ratio 3:4 --count 2 --product_context "Imperatriz — Florais & Elegantes / Ambarados & Adocicados, energia Poder. Epíteto: Não herda o trono. Toma." \
   --wait
 ```
 
@@ -118,7 +119,7 @@ higgsfield product-photoshoot create --mode product_shot \
 higgsfield product-photoshoot create --mode product_shot \
   --image src/assets/reference-lab-fabio/cleopatra-frente.jpg \
   --prompt "Tall clear glass cylindrical body-splash bottle, rounded clear acrylic overcap, antique-gold metallic spray pump, lower two-thirds wrapped in a #A08148 warm amber-gold label with a sunburst-A logo and ARQUÊTYPUS PARFUM wordmark at the top, archetype name set in large vertical serif type along the left edge. Match bottle shape, cap and label composition EXACTLY to the reference image (img2img), recolor label/liquid to #A08148. Product fills most of the frame, bottom third left emptier for UI text overlay, seamless pastel #F1ECE1 background. Editorial luxury niche perfumery photography, photorealistic, cinematic, minimalist, silent, soft directional studio light, shallow depth of field, ultra-detailed glass reflections, no text, no watermark. No marketplace/stock-photo look, no harsh flash, no pure-white infinite background." \
-  --aspect_ratio 3:4 --count 2 --product_context "Cleópatra — Oriental especiado, energia Sedução. Epíteto: Sedução é estratégia, não acaso." \
+  --aspect_ratio 3:4 --count 2 --product_context "Cleópatra — Florais & Elegantes / Frutados & Cítricos, energia Sedução. Epíteto: Sedução é estratégia, não acaso." \
   --wait
 ```
 
@@ -127,7 +128,7 @@ higgsfield product-photoshoot create --mode product_shot \
 higgsfield product-photoshoot create --mode product_shot \
   --image src/assets/reference-lab-fabio/fada-frente.jpg \
   --prompt "Tall clear glass cylindrical body-splash bottle, rounded clear acrylic overcap, brushed silver metallic spray pump, lower two-thirds wrapped in a #8FA3B8 soft powder-blue label with a sunburst-A logo and ARQUÊTYPUS PARFUM wordmark at the top, archetype name set in large vertical serif type along the left edge. Match bottle shape, cap and label composition EXACTLY to the reference image (img2img), recolor label/liquid to #8FA3B8. Product fills most of the frame, bottom third left emptier for UI text overlay, seamless pastel #E9EEF3 background. Editorial luxury niche perfumery photography, photorealistic, cinematic, minimalist, silent, soft directional studio light, shallow depth of field, ultra-detailed glass reflections, no text, no watermark. No marketplace/stock-photo look, no harsh flash, no pure-white infinite background." \
-  --aspect_ratio 3:4 --count 2 --product_context "Fada — Floral fresco, energia Mistério. Epíteto: Leve não é frágil." \
+  --aspect_ratio 3:4 --count 2 --product_context "Fada — Frescos & Luminosos / Florais & Elegantes, energia Mistério. Epíteto: Leve não é frágil." \
   --wait
 ```
 
@@ -136,7 +137,7 @@ higgsfield product-photoshoot create --mode product_shot \
 higgsfield product-photoshoot create --mode product_shot \
   --image src/assets/reference-lab-fabio/sereia-frente.jpg \
   --prompt "Tall clear glass cylindrical body-splash bottle, rounded clear acrylic overcap, brushed silver metallic spray pump, lower two-thirds wrapped in a #3C7484 deep teal label with a sunburst-A logo and ARQUÊTYPUS PARFUM wordmark at the top, archetype name set in large vertical serif type along the left edge. Match bottle shape, cap and label composition EXACTLY to the reference image (img2img), recolor label/liquid to #3C7484. Product fills most of the frame, bottom third left emptier for UI text overlay, seamless pastel #E8EFF1 background. Editorial luxury niche perfumery photography, photorealistic, cinematic, minimalist, silent, soft directional studio light, shallow depth of field, ultra-detailed glass reflections, no text, no watermark. No marketplace/stock-photo look, no harsh flash, no pure-white infinite background." \
-  --aspect_ratio 3:4 --count 2 --product_context "Sereia — Aquático doce, energia Mistério. Epíteto: Encanta sem levantar a voz." \
+  --aspect_ratio 3:4 --count 2 --product_context "Sereia — Frescos & Luminosos / Frutados & Cítricos, energia Mistério. Epíteto: Encanta sem levantar a voz." \
   --wait
 ```
 
@@ -145,7 +146,7 @@ higgsfield product-photoshoot create --mode product_shot \
 higgsfield product-photoshoot create --mode product_shot \
   --image src/assets/reference-lab-fabio/zeus-frente.jpg \
   --prompt "Tall clear glass cylindrical body-splash bottle, rounded clear acrylic overcap, gunmetal metallic spray pump, lower two-thirds wrapped in a #63748C slate blue-grey label with a sunburst-A logo and ARQUÊTYPUS PARFUM wordmark at the top, archetype name set in large vertical serif type along the left edge. Match bottle shape, cap and label composition EXACTLY to the reference image (img2img), recolor label/liquid to #63748C. Product fills most of the frame, bottom third left emptier for UI text overlay, seamless pastel #E9EBEF background. Editorial luxury niche perfumery photography, photorealistic, cinematic, minimalist, silent, soft directional studio light, shallow depth of field, ultra-detailed glass reflections, no text, no watermark. No marketplace/stock-photo look, no harsh flash, no pure-white infinite background." \
-  --aspect_ratio 3:4 --count 2 --product_context "Zeus — Aromático mineral, energia Força. Epíteto: A voz que encerra a discussão. Status: lista de espera, nunca vende." \
+  --aspect_ratio 3:4 --count 2 --product_context "Zeus — Amadeirados & Especiados / Ambarados & Adocicados, energia Força. Epíteto: A voz que encerra a discussão. Status: lista de espera, nunca vende." \
   --wait
 ```
 
@@ -154,7 +155,7 @@ higgsfield product-photoshoot create --mode product_shot \
 higgsfield product-photoshoot create --mode product_shot \
   --image src/assets/reference-lab-fabio/guerreiro-frente.jpg \
   --prompt "Tall clear glass cylindrical body-splash bottle, rounded clear acrylic overcap, matte-black metallic spray pump, lower two-thirds wrapped in a #5F6B4C olive moss-green label with a sunburst-A logo and ARQUÊTYPUS PARFUM wordmark at the top, archetype name set in large vertical serif type along the left edge. Match bottle shape, cap and label composition EXACTLY to the reference image (img2img), recolor label/liquid to #5F6B4C. Product fills most of the frame, bottom third left emptier for UI text overlay, seamless pastel #EDEFE7 background. Editorial luxury niche perfumery photography, photorealistic, cinematic, minimalist, silent, soft directional studio light, shallow depth of field, ultra-detailed glass reflections, no text, no watermark. No marketplace/stock-photo look, no harsh flash, no pure-white infinite background." \
-  --aspect_ratio 3:4 --count 2 --product_context "Guerreiro — Aromático aquático, energia Força. Epíteto: Constância é a forma mais rara de coragem." \
+  --aspect_ratio 3:4 --count 2 --product_context "Guerreiro — Frescos & Luminosos / Amadeirados & Especiados, energia Força. Epíteto: Constância é a forma mais rara de coragem." \
   --wait
 ```
 
@@ -163,7 +164,7 @@ higgsfield product-photoshoot create --mode product_shot \
 higgsfield product-photoshoot create --mode product_shot \
   --image src/assets/reference-lab-fabio/imperador-frente.jpg \
   --prompt "Tall clear glass cylindrical body-splash bottle, rounded clear acrylic overcap, polished dark bronze metallic spray pump, lower two-thirds wrapped in a #7C5236 rich amber-brown label with a sunburst-A logo and ARQUÊTYPUS PARFUM wordmark at the top, archetype name set in large vertical serif type along the left edge. Match bottle shape, cap and label composition EXACTLY to the reference image (img2img), recolor label/liquid to #7C5236. Product fills most of the frame, bottom third left emptier for UI text overlay, seamless pastel #F0EAE4 background. Editorial luxury niche perfumery photography, photorealistic, cinematic, minimalist, silent, soft directional studio light, shallow depth of field, ultra-detailed glass reflections, no text, no watermark. No marketplace/stock-photo look, no harsh flash, no pure-white infinite background." \
-  --aspect_ratio 3:4 --count 2 --product_context "Imperador — Âmbar amadeirado, energia Poder. Epíteto: O poder que não precisa ser exercido. 220ml, mesma forma dos outros 8 (decisão 2026-09-22)." \
+  --aspect_ratio 3:4 --count 2 --product_context "Imperador — Amadeirados & Especiados / Ambarados & Adocicados, energia Poder. Epíteto: O poder que não precisa ser exercido. 220ml, mesma forma dos outros 8 (decisão 2026-09-22)." \
   --wait
 ```
 
@@ -172,7 +173,7 @@ higgsfield product-photoshoot create --mode product_shot \
 higgsfield product-photoshoot create --mode product_shot \
   --image src/assets/reference-lab-fabio/fenix-frente.jpg \
   --prompt "Tall clear glass cylindrical body-splash bottle, rounded clear acrylic overcap, brushed copper metallic spray pump, lower two-thirds wrapped in a #B0563C burnt terracotta-orange label with a sunburst-A logo and ARQUÊTYPUS PARFUM wordmark at the top, archetype name set in large vertical serif type along the left edge. Match bottle shape, cap and label composition EXACTLY to the reference image (img2img), recolor label/liquid to #B0563C. Product fills most of the frame, bottom third left emptier for UI text overlay, seamless pastel #F2EAE7 background. Editorial luxury niche perfumery photography, photorealistic, cinematic, minimalist, silent, soft directional studio light, shallow depth of field, ultra-detailed glass reflections, no text, no watermark. No marketplace/stock-photo look, no harsh flash, no pure-white infinite background." \
-  --aspect_ratio 3:4 --count 2 --product_context "Fênix — Amadeirado defumado, energia Força. Epíteto: Você já foi outra pessoa. E deu certo." \
+  --aspect_ratio 3:4 --count 2 --product_context "Fênix — Ambarados & Adocicados / Amadeirados & Especiados, energia Força. Epíteto: Você já foi outra pessoa. E deu certo." \
   --wait
 ```
 
@@ -322,37 +323,30 @@ higgsfield product-photoshoot create --mode lifestyle_scene \
 
 ### Famílias olfativas (4:5, sem produto)
 
-**✅ `familia-floral-bleed.png`** — 4:5 · Home › Descubra por família — Floral (Afrodite, Fada)
-```bash
-higgsfield product-photoshoot create --mode conceptual_product \
-  --prompt "Vertical macro photo, no bottle, no product: a single blush-pink peony and white rose petals floating in mid-air against a soft powder-pink gradient, blurred petals in foreground. Editorial luxury niche perfumery photography, photorealistic, cinematic, minimalist, soft directional natural light, shallow depth of field, no text, no watermark." \
-  --aspect_ratio 4:5 --count 2 --brand_context "Arquetypus Parfum — família Floral: sedutor e envolvente" \
-  --wait
-```
+Cinco famílias desde out/2026 (substituíram as quatro antigas). Fotos em `src/assets/fotos/familias/{slug}-{opção}.jpg`,
+geradas no GPT Image 2.5 (`gpt_image_2_5 --aspect_ratio 4:5 --quality high`), reduzidas pra 896×1120 JPG. Opções: a) still
+life escuro com luz âmbar, b) editorial quente em linho/travertino, c) macro abstrato, d) ingredientes da família
+sobre pedestais de travertino e pedra com luz pontual. As a/b/c de Florais, Frescos, Ambarados e Amadeirados
+são as fotos das famílias antigas reaproveitadas; Frutados & Cítricos ganhou a/b/c novas.
 
-**✅ `familia-aquatico-bleed.png`** — 4:5 · Home › Descubra por família — Aquático (Sereia, Guerreiro)
-```bash
-higgsfield product-photoshoot create --mode conceptual_product \
-  --prompt "Vertical macro photo, no bottle, no product: sicilian lemon slices and sea salt crystals splashing into crystal-clear turquoise water with bubbles, bright and cool. Editorial luxury niche perfumery photography, photorealistic, cinematic, minimalist, soft directional natural light, shallow depth of field, no text, no watermark." \
-  --aspect_ratio 4:5 --count 2 --brand_context "Arquetypus Parfum — família Aquático: fresco e discreto" \
-  --wait
-```
+Rodada d (sufixo comum: `arranged on stacked travertine and dark stone plinths, single warm spotlight from upper
+left, deep olive-black background, soft haze, generous negative space, lower third in deep shadow, editorial
+perfumery photography, no text, no bottle, no people`):
 
-**✅ `familia-amadeirado-bleed.png`** — 4:5 · Home › Descubra por família — Amadeirado (Imperador, Fênix)
-```bash
-higgsfield product-photoshoot create --mode conceptual_product \
-  --prompt "Vertical macro photo, no bottle, no product: dark sandalwood sticks, cedar shavings and a thin trail of smoke on a charcoal slate surface, moody low-key light. Editorial luxury niche perfumery photography, photorealistic, cinematic, minimalist, soft directional natural light, shallow depth of field, no text, no watermark." \
-  --aspect_ratio 4:5 --count 2 --brand_context "Arquetypus Parfum — família Amadeirado: quente e marcante" \
-  --wait
-```
+- **florais-elegantes-d** — full blooming roses, jasmine sprigs and orange blossom branches
+- **frutados-citricos-d** — lychees, blackcurrant clusters, a ripe plum and halved citrus fruits
+- **frescos-luminosos-d** — lily of the valley stems, a white peach, thin bergamot slices and a fresh bamboo stalk
+  with clear water droplets (variação clara: pale travertine, bright soft morning light, pale stone and soft sage background)
+- **ambarados-adocicados-d** — glowing amber resin chunks, vanilla pods, benzoin tears and scattered sugar crystals
+- **amadeirados-especiados-d** — split cedar wood blocks, sandalwood shavings, cinnamon sticks, cardamom pods,
+  black peppercorns and saffron threads
 
-**✅ `familia-oriental-bleed.png`** — 4:5 · Home › Descubra por família — Oriental (Cleópatra, Imperatriz)
-```bash
-higgsfield product-photoshoot create --mode conceptual_product \
-  --prompt "Vertical macro photo, no bottle, no product: glowing amber resin pieces and vanilla pods suspended in warm golden smoke on a dark amber background. Editorial luxury niche perfumery photography, photorealistic, cinematic, minimalist, soft directional natural light, shallow depth of field, no text, no watermark." \
-  --aspect_ratio 4:5 --count 2 --brand_context "Arquetypus Parfum — família Oriental: quente e viciante" \
-  --wait
-```
+Frutados & Cítricos a/b/c:
+- **a** — lychees, blackcurrant clusters, ripe plums, apricots, a halved blood orange and lemon on wet dark volcanic
+  stone, warm amber side light, golden smoke, deep black background
+- **b** — sliced lemon, mandarin, blood orange, apricots, melon slices and blackcurrants on raw cream linen over a
+  travertine block, late afternoon sun with leaf shadows on a plaster wall
+- **c** — extreme macro of a sliced blood orange and a mandarin segment, backlit with warm golden light, dark vignette
 
 ### Energias (4:5)
 

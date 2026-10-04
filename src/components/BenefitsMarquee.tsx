@@ -44,6 +44,7 @@ function Itens({ hidden = false }: { hidden?: boolean }) {
 export function BenefitsMarquee() {
   return (
     <section
+      id="beneficios"
       aria-label="Benefícios"
       className="group relative z-20 overflow-hidden bg-noite py-4 lg:py-5"
       style={{

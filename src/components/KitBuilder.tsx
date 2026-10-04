@@ -99,7 +99,7 @@ export function KitBuilder() {
             <span className="flex-1 text-sm">
               {a.nome}
               <span className="block font-label text-[9px] text-tinta-3">
-                {a.cod} · {a.vol}
+                {a.vol}
               </span>
             </span>
             {counts[a.id] > 0 && (

@@ -15,6 +15,7 @@ import featuredZeus from '@/assets/fotos/destaque-zeus.jpg'
 import featuredFenixDesktop from '@/assets/fotos/destaque-fenix-desktop.jpg'
 import featuredSereiaDesktop from '@/assets/fotos/destaque-sereia-desktop.jpg'
 import featuredZeusDesktop from '@/assets/fotos/destaque-zeus-desktop.jpg'
+import { Sobrenome } from '@/components/ui/Sobrenome'
 
 /** Banners do "Arquétipo em destaque", na ordem. `bg` é o fundo do card, na cor da foto: burgundy da marca
  *  (Fênix), azul-petróleo do mar (Sereia) e bege escurecido de céu nublado (Zeus). Hex, não var(): a cor anima
@@ -27,7 +28,7 @@ const SLIDES = [
   { id: 'zeus', img: featuredZeus, imgDesktop: featuredZeusDesktop, bg: '#4f483e', pos: '50% 12%', sobe: '10.5%' },
 ] as const
 
-const AUTOPLAY_MS = 5000
+const AUTOPLAY_MS = 4000
 const SWIPE_PX = 50
 
 /** Dourado sobre o fundo escuro do card */
@@ -35,7 +36,7 @@ const LATAO_CLARO = 'var(--color-latao)'
 
 const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
-/** H-15 Arquétipo em destaque — banner rotativo (Fênix → Sereia → Zeus, 5 s cada) com o card editorial.
+/** H-15 Arquétipo em destaque — banner rotativo (Fênix → Sereia → Zeus, 4 s cada) com o card editorial.
  *  Os slides ficam empilhados na mesma célula do grid e trocam em fade, então a altura do card é a do maior
  *  texto e não pula. Barras de progresso como as do hero, sem as setas; no celular dá pra deslizar.
  *  Celular: card vertical com texto sobre a foto; md+: foto à esquerda, texto à direita na cor do banner. */
@@ -168,7 +169,10 @@ export function FeaturedCarousel() {
                     Arquétipo em destaque
                   </Eyebrow>
                 </div>
-                <h2 className="mt-3 font-display text-4xl leading-[1.1] text-papel-inv lg:text-5xl">{a.nome}</h2>
+                <h2 className="mt-3 font-display text-4xl leading-[1.1] text-papel-inv lg:text-5xl">
+                  {a.nome}
+                  <Sobrenome a={a} />
+                </h2>
                 <p className="mt-2 font-display text-lg leading-snug text-papel-inv/85 italic lg:mt-3 lg:text-xl">{a.ep}</p>
 
                 <div aria-hidden className="mt-4 flex items-center gap-2">

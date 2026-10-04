@@ -4,6 +4,7 @@ import { ARCHETYPES } from '@/data/archetypes'
 import { FRASCO_IMG, HERO_SLIDES, SEALS } from '@/data/home'
 import { scrollToId } from '@/lib/scrollToId'
 import heroColecao from '@/assets/fotos/hero/colecao-desktop.jpg'
+import { Sobrenome } from '@/components/ui/Sobrenome'
 
 /**
  * Direção "Boutique" (ThemeSwitcher) — pegada de loja: tudo a um clique da compra. Hero compacto com os
@@ -133,7 +134,7 @@ export function CatalogGrid({
 
         <ul className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 lg:mt-12 lg:gap-6">
           {items.map((a) => (
-            <li key={a.id} className="flex flex-col overflow-hidden rounded-2xl bg-papel ring-1 ring-linha">
+            <li key={a.id} id={a.id} className="flex flex-col overflow-hidden rounded-2xl bg-papel ring-1 ring-linha">
               <Link to={`/loja/${a.id}`} state={{ backgroundLocation: location }} className="group relative block">
                 <div className="aspect-[4/5] overflow-hidden" style={{ background: a.bg }}>
                   <img
@@ -145,9 +146,12 @@ export function CatalogGrid({
                 </div>
               </Link>
               <div className="flex flex-1 flex-col p-3 lg:p-5">
-                <div className="flex items-center gap-2">
-                  <span aria-hidden className="size-2.5 shrink-0 rounded-full" style={{ background: a.cor }} />
-                  <b className="font-display text-lg leading-tight font-semibold text-tinta lg:text-xl">{a.nome}</b>
+                <div className="flex items-start gap-2">
+                  <span aria-hidden className="mt-[0.45em] size-2.5 shrink-0 rounded-full" style={{ background: a.cor }} />
+                  <b className="font-display text-lg leading-tight font-semibold text-tinta lg:text-xl">
+                    {a.nome}
+                    <Sobrenome a={a} />
+                  </b>
                 </div>
                 <span className="mt-1 text-xs text-tinta-3">
                   {a.fam} · {a.vol}
@@ -161,7 +165,7 @@ export function CatalogGrid({
                   <Link
                     to={`/loja/${a.id}`}
                     state={{ backgroundLocation: location }}
-                    className="block rounded-full bg-tinta py-2.5 text-center text-xs font-medium text-papel transition-opacity hover:opacity-90 lg:py-3"
+                    className="block rounded-full bg-tinta py-2.5 text-center text-xs font-medium text-papel uppercase transition-opacity hover:opacity-90 lg:py-3"
                   >
                     Comprar
                   </Link>
