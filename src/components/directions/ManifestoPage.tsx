@@ -276,7 +276,7 @@ export function ManifestoPage({ catalog, onSegment, toCatalog, featured, feature
             return (
               <li key={v.creator} className={i % 2 === 0 ? 'lg:rotate-[-1.5deg]' : 'lg:translate-y-6 lg:rotate-[1.5deg]'}>
                 <Link to={`/loja/${arq.id}`} state={{ backgroundLocation: location }} className="no-press group relative block border-2 border-tinta bg-papel">
-                  <img src={UGC_IMG[v.archetypeId]} alt={`${v.creator} segurando o body splash ${arq.nome}`} loading="lazy" className="aspect-[3/4] w-full object-cover" />
+                  <img src={UGC_IMG[v.archetypeId]} alt={`${v.creator} segurando o Body Splash Premium ${arq.nome}`} loading="lazy" className="aspect-[3/4] w-full object-cover" />
                   <span className="absolute top-3 left-3 -rotate-2 bg-latao px-2 py-1 font-label text-[10px] tracking-[0.1em]">{v.creator}</span>
                   <span className="flex items-center justify-between border-t-2 border-tinta p-3 transition-colors group-hover:bg-tinta group-hover:text-papel">
                     <b className="font-display text-2xl font-normal uppercase">{arq.nome}</b>

@@ -9,6 +9,7 @@ import { useCoverflow } from '@/lib/useCoverflow'
 import { CarouselDots } from '@/components/ui/CarouselDots'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { Sobrenome } from '@/components/ui/Sobrenome'
+import { Preco } from '@/components/ui/Preco'
 
 /**
  * Mais seções da direção "Boutique" (ThemeSwitcher): destaque como banner de produto, comunidade como
@@ -53,7 +54,7 @@ export function FeaturedBoutique({ a, img }: { a: Archetype; img: string }) {
           <p className="mt-4 text-lg text-tinta-2">{a.ep}</p>
           <p className="mt-3 text-sm leading-relaxed text-tinta-2">{a.cheiro[1]}</p>
           <div className="mt-6 rounded-2xl bg-papel p-4">
-            <span className="block text-2xl font-semibold text-tinta">{brl(a.preco)}</span>
+            <Preco a={a} className="text-2xl" />
             <span className="text-xs text-tinta-2">
               {brl(a.preco * 0.95)} no Pix · ou 6x de {brl(a.preco / 6)} sem juros · {a.tipo} {a.vol}
             </span>
@@ -93,7 +94,7 @@ export function CommunityBoutique() {
   return (
     <section
       id="comunidade"
-      className="relative z-20 rounded-t-2xl bg-papel pt-8 pb-10 [--ugc-w:min(66vw*var(--ugc-escala),270px*var(--ugc-escala))] [--ugc-escala:1.155] lg:pt-9 lg:pb-12 lg:[--ugc-w:calc(min(34rem,94svh-24.5rem)*2/3)]"
+      className="relative z-20 rounded-t-2xl bg-papel pt-4 pb-5 [--ugc-w:min(66vw*var(--ugc-escala),270px*var(--ugc-escala))] [--ugc-escala:1.155] lg:pt-4.5 lg:pb-6 lg:[--ugc-w:calc(min(34rem,94svh-24.5rem)*2/3)]"
       style={{
         // degrau no fim: esta seção fica por cima da seguinte e projeta sombra nela, com filete latão na borda
         boxShadow: '0 14px 26px -12px rgba(40,46,41,0.3), 0 4px 8px -4px rgba(40,46,41,0.2)',
@@ -159,7 +160,7 @@ export function CommunityBoutique() {
               <div className="relative aspect-[2/3] overflow-hidden rounded-2xl bg-noite ring-1 ring-latao/30">
                 <img
                   src={UGC_IMG[v.archetypeId]}
-                  alt={`${v.creator} segurando o body splash ${arq.nome}`}
+                  alt={`${v.creator} segurando o Body Splash Premium ${arq.nome}`}
                   loading={i === total ? 'eager' : 'lazy'}
                   decoding="async"
                   className="ugc-midia h-full w-full object-cover"
@@ -190,12 +191,12 @@ export function CommunityBoutique() {
                         {arq.nome}
                         <Sobrenome a={arq} size="text-[0.7em]" />
                       </b>
-                      <span className="shrink-0 text-[15px] leading-none text-tinta">{brl(arq.preco)}</span>
+                      <Preco a={arq} className="shrink-0 flex-col items-end gap-y-0.5 text-[15px] leading-none" />
                     </span>
                     <span className="block truncate text-[13px] text-tinta-2 lg:text-sm">{arq.fam}</span>
-                    {/* quebra em 2 linhas no card estreito em vez de cortar */}
-                    <span className="block font-label text-[10px] leading-snug tracking-[0.15em] text-tinta-3 uppercase">
-                      {arq.tipo} · {arq.vol}
+                    {/* só o tipo, sem o volume (out/2026): "BODY SPLASH PREMIUM" cabe numa linha também no card estreito do desktop */}
+                    <span className="block font-label text-[9.5px] leading-snug tracking-[0.1em] whitespace-nowrap text-tinta-3 uppercase">
+                      {arq.tipo}
                     </span>
                   </span>
                 </div>
@@ -321,7 +322,7 @@ export function FooterBoutique() {
   return (
     <footer
       id="rodape"
-      className="relative z-20 -mb-24 bg-noite px-5 pt-16 pb-[calc(2.5rem+6rem)] text-papel-inv md:px-10 lg:pt-24"
+      className="relative z-20 -mb-24 bg-noite px-5 pt-8 pb-[calc(1.25rem+6rem)] text-papel-inv md:px-10 lg:pt-12"
       style={{
         // degrau invertido, como as seções escuras: o rodapé fica por cima do cupom, com filete dourado
         boxShadow: '0 -14px 26px -10px rgba(37,46,40,0.5), 0 -4px 8px -3px rgba(37,46,40,0.35)',

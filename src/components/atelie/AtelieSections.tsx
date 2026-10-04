@@ -87,7 +87,7 @@ export function CommunityAtelie() {
                 <div className="aspect-[3/4] overflow-hidden bg-papel-3">
                   <img
                     src={UGC_IMG[v.archetypeId]}
-                    alt={`${v.creator} segurando o body splash ${arq.nome}`}
+                    alt={`${v.creator} segurando o Body Splash Premium ${arq.nome}`}
                     loading="lazy"
                     className="h-full w-full object-cover grayscale-[35%] transition duration-700 group-hover:scale-[1.03] group-hover:grayscale-0"
                   />

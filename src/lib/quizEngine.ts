@@ -6,7 +6,7 @@ export type Segmento = 'F' | 'M' | 'todos'
 
 /**
  * O passo de segmentação filtra o pool ANTES de pontuar, então o teste
- * nunca devolve um SKU que a pessoa não compraria (ver v6, "Como o quiz
+ * nunca devolve uma fragrância que a pessoa não compraria (ver v6, "Como o quiz
  * pontua"). As respostas ficam fora do pool e não contam pontos.
  */
 export function computeResult(

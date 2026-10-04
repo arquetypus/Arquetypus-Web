@@ -7,7 +7,7 @@ const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', curren
 
 // Só body splash em estoque entra no kit (hoje os 9 são body splash);
 // arquétipo em lista de espera (`status: 'wait'`) também fica de fora (ver CLAUDE.md, regra 8).
-const PICKABLE = ARCHETYPES.filter((a) => a.tipo === 'Body splash' && a.status === 'ok')
+const PICKABLE = ARCHETYPES.filter((a) => a.tipo === 'Body Splash Premium' && a.status === 'ok')
 
 function tierFor(qtd: number) {
   if (qtd <= 0) return null

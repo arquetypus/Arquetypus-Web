@@ -73,6 +73,7 @@ import florArquetypus from '@/assets/brand/flor-arquetypus.png'
 import ribbonArquetypus from '@/assets/brand/ribbon-arquetypus.png'
 import logoBranco from '@/assets/brand/logo-branco.png'
 import { Sobrenome } from '@/components/ui/Sobrenome'
+import { Preco } from '@/components/ui/Preco'
 
 /**
  * Degradê foto → fundo noite do catálogo. Faixa larga com curva "smootherstep" (plana nas duas pontas):
@@ -94,7 +95,6 @@ const CATALOGO_GLOWS = [
   { className: 'top-[42%] right-[18%] size-28 lg:size-40', forca: 14, blur: 22 },
 ]
 
-const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
 /** Dourado sobre fundo escuro/bronze. Hoje é o próprio --color-latao (dourado do logo), que já é claro o bastante. */
 const LATAO_CLARO = 'var(--color-latao)'
@@ -212,7 +212,7 @@ function CommunitySection() {
               <CutFrame cut={14} innerClassName="relative aspect-[9/16] bg-papel-2">
                 <img
                   src={UGC_IMG[v.archetypeId]}
-                  alt={`${v.creator} segurando o body splash ${arq.nome}`}
+                  alt={`${v.creator} segurando o Body Splash Premium ${arq.nome}`}
                   loading={i === ugcCount ? 'eager' : 'lazy'}
                   decoding="async"
                   className="absolute inset-0 h-full w-full object-cover"
@@ -258,7 +258,7 @@ function CommunitySection() {
                       <span className="mt-1 block truncate font-label text-[8.5px] tracking-widest text-tinta-3 uppercase">
                         {arq.tipo} · {arq.vol}
                       </span>
-                      <span className="mt-1 block text-sm leading-none text-tinta">{brl(arq.preco)}</span>
+                      <Preco a={arq} className="mt-1 text-sm leading-none" />
                     </div>
                   </div>
                   <Link
@@ -536,7 +536,7 @@ export function HomePage() {
                     </span>
                     <div className="mt-2 flex items-center justify-between gap-3">
                       <span className="text-sm text-papel-inv/90">
-                        {a.status === 'wait' ? 'Avise-me' : brl(a.preco)}
+                        {a.status === 'wait' ? 'Avise-me' : <Preco a={a} tom="escuro" />}
                       </span>
                       <Link
                         // mesmo destino do UGC: pop-up de compra (/loja/:id por cima da home)
@@ -630,7 +630,7 @@ export function HomePage() {
         {/* H-08 Segmentação — pôsteres na estética do Cinema: texto de apoio em cima, nome e CTA embaixo, tudo
             centrado. Celular: trilho horizontal (a seção não pode passar da altura da tela — decisão de out/2026);
             md+: 3 lado a lado, altura presa à tela pelo mesmo motivo (100svh menos cabeçalho e paddings da seção) */}
-        <Reveal as="section" id="segmentos" className="pt-16 pb-20 md:mx-auto md:max-w-[88rem] md:px-10 md:pt-20 md:pb-24">
+        <Reveal as="section" id="segmentos" className="pt-8 pb-10 md:mx-auto md:max-w-[88rem] md:px-10 md:pt-10 md:pb-12">
           <div className="px-4 text-center md:px-0">
             <Eyebrow>{SEGMENTS_HEADING.eyebrow}</Eyebrow>
             <h2 className="mt-3 font-display text-[28px] leading-[1.2] text-tinta md:text-4xl">{SEGMENTS_HEADING.title}</h2>
@@ -774,7 +774,7 @@ export function HomePage() {
         <Reveal
           as="section"
           id="familias"
-          className="relative z-20 bg-papel pt-16 pb-16 lg:pt-28 lg:pb-32"
+          className="relative z-20 bg-papel pt-8 pb-8 lg:pt-14 lg:pb-16"
           style={{
             // degrau invertido (o mesmo do catálogo Boutique): a seção fica POR CIMA do catálogo e projeta sombra
             // nele, com filete latão na borda de cima
@@ -937,7 +937,7 @@ export function HomePage() {
         <Reveal
           as="section"
           id="destaque"
-          className="bg-papel px-4 pt-20 pb-20 md:px-10 md:pt-24 md:pb-24 lg:pt-28 lg:pb-32"
+          className="bg-papel px-4 pt-10 pb-10 md:px-10 md:pt-12 md:pb-12 lg:pt-14 lg:pb-16"
           style={{
             // "degrau" como o da Entrada emocional, mais marcado: sombra interna no topo, a seção parece abaixo do catálogo
             boxShadow:
@@ -1203,7 +1203,7 @@ export function HomePage() {
         <Reveal
           as="section"
           id="cupom"
-          className="relative overflow-hidden bg-papel px-5 pt-20 pb-20 md:px-10 lg:pt-32 lg:pb-32"
+          className="relative overflow-hidden bg-papel px-5 pt-10 pb-10 md:px-10 lg:pt-16 lg:pb-16"
           style={{
             boxShadow:
               'inset 0 26px 28px -20px rgba(40,46,41,0.4), inset 0 8px 10px -7px rgba(40,46,41,0.28)',

@@ -6,11 +6,12 @@ import { Eyebrow } from '@/components/ui/Eyebrow'
 import { Reveal } from '@/components/ui/Reveal'
 import { CutFrame } from '@/components/ui/CutFrame'
 import { DEGRAU_CLARO, DEGRAU_ESCURO, Flor, Glow, Ornament, SectionEyebrow } from '@/components/ui/Editorial'
-import { ProductPurchase, brl } from '@/components/ProductPurchase'
+import { ProductPurchase } from '@/components/ProductPurchase'
 import { Sobrenome } from '@/components/ui/Sobrenome'
+import { Preco } from '@/components/ui/Preco'
 
 const BENEFITS = [
-  { n: '01', title: 'Fixação de verdade', body: 'Concentração de 5% com fixador — some do ar, não da pele. Dura o expediente inteiro.' },
+  { n: '01', title: 'Fixação de verdade', body: 'Concentração de 10% com fixador — some do ar, não da pele. Dura o expediente inteiro.' },
   { n: '02', title: 'Leve o bastante para reaplicar', body: 'Não satura. Pode voltar a usar depois da academia, antes do jantar, quando quiser.' },
   { n: '03', title: 'Combina em vez de brigar', body: 'Construído para sobrepor com os outros oito. Camada, não substituição.' },
 ]
@@ -23,8 +24,8 @@ const HOW_TO = [
 
 const FAQ = [
   {
-    q: 'Qual a diferença entre body splash e perfume?',
-    a: 'O body splash tem concentração menor de essência — no nosso caso 5% — e é feito para o corpo todo, com sensação de frescor e reaplicação livre. O perfume concentra mais e é aplicado em pontos específicos. Um não substitui o outro; muita gente usa os dois em camada.',
+    q: 'Qual a diferença entre Body Splash Premium e perfume?',
+    a: 'O Body Splash Premium tem concentração menor de essência — no nosso caso 10% — e é feito para o corpo todo, com sensação de frescor e reaplicação livre. O perfume concentra mais e é aplicado em pontos específicos. Um não substitui o outro; muita gente usa os dois em camada.',
   },
   {
     q: 'Quanto tempo dura na pele?',
@@ -288,7 +289,7 @@ export function ProductPage() {
                     <Sobrenome a={par} />
                   </b>
                   <span className="mt-1 block text-sm text-tinta-2">{par.fam}</span>
-                  <span className="mt-2 block text-sm text-tinta">{par.status === 'wait' ? 'Em breve' : brl(par.preco)}</span>
+                  <span className="mt-2 block text-sm text-tinta">{par.status === 'wait' ? 'Em breve' : <Preco a={par} />}</span>
                 </span>
                 <span aria-hidden className="text-xl text-latao-texto transition-transform duration-300 group-hover:translate-x-1">
                   →

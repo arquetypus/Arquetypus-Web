@@ -270,7 +270,7 @@ export function OraculoPage({ catalog, onSegment, toCatalog, featured, featuredI
               <li key={v.creator} className="text-center">
                 <span className="block rounded-t-full border border-latao/40 p-1.5">
                   <span className="block aspect-[3/4] overflow-hidden rounded-t-full">
-                    <img src={UGC_IMG[v.archetypeId]} alt={`${v.creator} segurando o body splash ${arq.nome}`} loading="lazy" className="h-full w-full object-cover" />
+                    <img src={UGC_IMG[v.archetypeId]} alt={`${v.creator} segurando o Body Splash Premium ${arq.nome}`} loading="lazy" className="h-full w-full object-cover" />
                   </span>
                 </span>
                 <p className="mt-4 font-label text-[10px] tracking-[0.2em] text-tinta-3">{v.creator}</p>

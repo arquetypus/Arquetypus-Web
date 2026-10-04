@@ -67,7 +67,7 @@ export const UGC_IMG: Record<string, string> = {
 }
 
 export const PUV =
-  'Body splash de perfumaria para quem cansou de cheirar igual a todo mundo e não quer mais escolher fragrância no escuro — nove arquétipos, um teste de 2 minutos e o direito de devolver se não for você.'
+  'Body Splash Premium de perfumaria para quem cansou de cheirar igual a todo mundo e não quer mais escolher fragrância no escuro — nove arquétipos, um teste de 2 minutos e o direito de devolver se não for você.'
 
 export const HERO_SLIDES = [
   {
@@ -156,9 +156,9 @@ export const DIAGNOSIS = [
 export const SEGMENTS_HEADING = { eyebrow: 'Coleções', title: 'Escolha por onde começar' }
 
 export const SEGMENTS = [
-  { label: 'Para elas', name: 'Feminino', meta: '200 ml · 5 SKUs', seg: 'F' as const, img: segmentoFeminino },
-  { label: 'Para eles', name: 'Masculino', meta: '220 ml · 3 SKUs', seg: 'M' as const, img: segmentoMasculino },
-  { label: 'Para todos', name: 'Compartilhável', meta: '220 ml · 1 SKU', seg: 'U' as const, img: segmentoUnissex },
+  { label: 'Para elas', name: 'Feminino', meta: '5 fragrâncias', seg: 'F' as const, img: segmentoFeminino },
+  { label: 'Para eles', name: 'Masculino', meta: '3 fragrâncias', seg: 'M' as const, img: segmentoMasculino },
+  { label: 'Para todos', name: 'Compartilhável', meta: '1 fragrância', seg: 'U' as const, img: segmentoUnissex },
 ]
 
 // Fotos das famílias olfativas, geradas no Higgsfield (GPT Image 2.5, out/2026) no estilo editorial quente
@@ -245,14 +245,17 @@ export const STATS = [
   { pct: '78%', label: 'passaram a usar mais de um arquétipo por semana' },
 ]
 
-/** Cada linha pareia o que a Arquétypus declara com o que o splash comum costuma entregar. `tema` é só rótulo de leitura. */
+/**
+ * "A diferença" (out/2026, texto do usuário): cada linha pareia a Arquétypus com o body splash tradicional, na
+ * mesma ordem nas duas colunas — título (`arquetypus`/`comum`) e descrição (`…Desc`). `tema` é só rótulo de
+ * leitura (e key do React).
+ */
 export const COMPARISON = [
-  { tema: 'Essência', arquetypus: 'Essência importada Scentec', comum: 'Essência genérica sem origem' },
-  { tema: 'Segurança', arquetypus: 'Conformidade IFRA 51 declarada', comum: 'Sem declaração de conformidade' },
-  { tema: 'Transparência', arquetypus: 'INCI completo publicado', comum: 'Composição só no rótulo' },
-  { tema: 'Escolha', arquetypus: 'Teste de arquétipo antes da compra', comum: 'Escolha no escuro' },
-  { tema: 'Sistema', arquetypus: 'Sistema de layering entre os nove', comum: 'SKU solto, sem combinação' },
-  { tema: 'Origem', arquetypus: 'Fabricação em indústria licenciada', comum: 'Origem nem sempre informada' },
+  { tema: 'Concentração', arquetypus: '10% de essência', arquetypusDesc: 'Mais intensidade e presença', comum: 'Menor concentração', comumDesc: 'Experiência mais leve' },
+  { tema: 'Fragrância', arquetypus: 'Perfumaria premium', arquetypusDesc: 'Fragrâncias sofisticadas', comum: 'Proposta casual', comumDesc: 'Para o cotidiano' },
+  { tema: 'Identidade', arquetypus: '9 arquétipos', arquetypusDesc: 'Uma identidade para despertar', comum: 'Escolha pelo aroma', comumDesc: 'Uma fragrância para usar' },
+  { tema: 'Combinação', arquetypus: 'Criados para layering', arquetypusDesc: 'Crie sua assinatura olfativa', comum: 'Uso individual', comumDesc: 'Fragrâncias independentes' },
+  { tema: 'Experiência', arquetypus: 'Experiência completa', arquetypusDesc: 'Do perfume à embalagem, cada detalhe importa.', comum: 'Apresentação tradicional', comumDesc: 'Fragrância para o dia a dia' },
 ]
 
 export const TESTIMONIALS = [
@@ -284,7 +287,7 @@ export const UGC_VIDEOS: { creator: string; archetypeId: string; testimonial?: s
 ]
 
 export const JOURNAL = [
-  { title: 'Body splash ou perfume: a diferença real', body: 'Concentração, fixação e quando cada um faz sentido.' },
+  { title: 'Body Splash Premium ou perfume: a diferença real', body: 'Concentração, fixação e quando cada um faz sentido.' },
   { title: 'Como fazer o cheiro durar o dia inteiro', body: 'Pele hidratada, pontos de pulso e reaplicação.' },
   { title: 'Layering: como combinar dois arquétipos', body: 'Qual entra primeiro e por quê.' },
 ]

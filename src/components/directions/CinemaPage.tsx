@@ -239,7 +239,7 @@ export function CinemaPage({ catalog, onSegment, toCatalog, featured, featuredIm
               return (
                 <li key={v.creator} className="w-[62%] shrink-0 snap-center sm:w-[38%] lg:w-[22%]">
                   <Link to={`/loja/${arq.id}`} state={{ backgroundLocation: location }} className="no-press group relative block aspect-[3/4] overflow-hidden">
-                    <img src={UGC_IMG[v.archetypeId]} alt={`${v.creator} segurando o body splash ${arq.nome}`} loading="lazy" className="h-full w-full object-cover sepia-[25%] transition-[filter] duration-700 group-hover:sepia-0" />
+                    <img src={UGC_IMG[v.archetypeId]} alt={`${v.creator} segurando o Body Splash Premium ${arq.nome}`} loading="lazy" className="h-full w-full object-cover sepia-[25%] transition-[filter] duration-700 group-hover:sepia-0" />
                     <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                     <span className="absolute inset-x-0 bottom-0 p-4 text-papel-inv">
                       <span className="block font-label text-[9px] tracking-[0.25em] text-papel-inv/60">{v.creator}</span>

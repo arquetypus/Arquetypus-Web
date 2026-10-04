@@ -91,8 +91,8 @@ export function HeroRiviera() {
           <span aria-hidden className="absolute inset-x-[6%] bottom-[6%] h-1/2 overflow-hidden rounded-b-full">
             <span className="absolute inset-0" style={{ background: 'repeating-linear-gradient(to bottom, var(--color-noite) 0 10px, transparent 10px 22px)', opacity: 0.85 }} />
           </span>
-          <img src={FRASCO_IMG.afrodite} alt="Body splash Afrodite" className="absolute top-[12%] left-[10%] w-[40%] rotate-[-8deg] rounded-[2rem] border-4 border-papel object-cover shadow-xl" style={{ aspectRatio: '3/4' }} />
-          <img src={FRASCO_IMG.sereia} alt="Body splash Sereia" className="absolute top-[22%] right-[8%] w-[42%] rotate-[7deg] rounded-[2rem] border-4 border-papel object-cover shadow-xl" style={{ aspectRatio: '3/4' }} />
+          <img src={FRASCO_IMG.afrodite} alt="Body Splash Premium Afrodite" className="absolute top-[12%] left-[10%] w-[40%] rotate-[-8deg] rounded-[2rem] border-4 border-papel object-cover shadow-xl" style={{ aspectRatio: '3/4' }} />
+          <img src={FRASCO_IMG.sereia} alt="Body Splash Premium Sereia" className="absolute top-[22%] right-[8%] w-[42%] rotate-[7deg] rounded-[2rem] border-4 border-papel object-cover shadow-xl" style={{ aspectRatio: '3/4' }} />
           <Adesivo className="absolute bottom-[4%] left-[38%] rotate-[-12deg]">Nove fragrâncias</Adesivo>
         </div>
       </div>
@@ -381,7 +381,7 @@ export function RivieraPage({ catalog, onSegment, toCatalog, featured, featuredI
             return (
               <li key={v.creator} className={i % 2 ? 'rotate-2' : '-rotate-2'}>
                 <Link to={`/loja/${arq.id}`} state={{ backgroundLocation: location }} className="no-press block rounded-[1.25rem] bg-papel p-2.5 shadow-[0_14px_30px_-18px_rgba(0,0,0,0.4)]">
-                  <img src={UGC_IMG[v.archetypeId]} alt={`${v.creator} segurando o body splash ${arq.nome}`} loading="lazy" className="aspect-[3/4] w-full rounded-[0.9rem] object-cover" />
+                  <img src={UGC_IMG[v.archetypeId]} alt={`${v.creator} segurando o Body Splash Premium ${arq.nome}`} loading="lazy" className="aspect-[3/4] w-full rounded-[0.9rem] object-cover" />
                   <span className="flex items-center justify-between px-1 pt-2.5 text-sm">
                     <span className="font-display text-lg text-tinta">{arq.nome}</span>
                     <span className="text-xs text-tinta-3">{v.creator}</span>

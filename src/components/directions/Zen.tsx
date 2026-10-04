@@ -92,7 +92,7 @@ export function HeroZen() {
         </div>
         <div className="relative lg:col-span-6 lg:col-start-7">
           <Enso className="absolute -top-16 -right-6 w-48 lg:-top-24 lg:right-0 lg:w-72" />
-          <img src={FRASCO_IMG[HERO_ID]} alt={`Body splash ${heroArq.nome}`} className="relative ml-auto w-[70%] object-cover lg:w-[62%]" style={{ aspectRatio: '3/4' }} />
+          <img src={FRASCO_IMG[HERO_ID]} alt={`Body Splash Premium ${heroArq.nome}`} className="relative ml-auto w-[70%] object-cover lg:w-[62%]" style={{ aspectRatio: '3/4' }} />
           <p className="mt-4 ml-auto w-[70%] text-[11px] tracking-[0.2em] text-tinta-3 uppercase lg:w-[62%]">{heroArq.nome}</p>
         </div>
       </div>
@@ -313,7 +313,7 @@ export function ZenPage({ catalog, onSegment, toCatalog, featured, featuredImg }
             return (
               <li key={v.creator} className={i % 2 ? 'lg:mt-16' : ''}>
                 <Link to={`/loja/${arq.id}`} state={{ backgroundLocation: location }} className="no-press group block">
-                  <img src={UGC_IMG[v.archetypeId]} alt={`${v.creator} segurando o body splash ${arq.nome}`} loading="lazy" className="aspect-[3/4] w-full object-cover transition-opacity duration-700 group-hover:opacity-85" />
+                  <img src={UGC_IMG[v.archetypeId]} alt={`${v.creator} segurando o Body Splash Premium ${arq.nome}`} loading="lazy" className="aspect-[3/4] w-full object-cover transition-opacity duration-700 group-hover:opacity-85" />
                   <span className="mt-4 block font-display text-lg text-tinta">{arq.nome}</span>
                   <span className="text-xs text-tinta-3">
                     {v.creator} · {brl(arq.preco)}

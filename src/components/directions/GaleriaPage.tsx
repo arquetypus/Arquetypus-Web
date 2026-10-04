@@ -265,7 +265,7 @@ export function GaleriaPage({ catalog, onSegment, toCatalog, featured, featuredI
             return (
               <li key={v.creator}>
                 <Link to={`/loja/${arq.id}`} state={{ backgroundLocation: location }} className="no-press group block">
-                  <Obra src={UGC_IMG[v.archetypeId]} aspect="aspect-[3/4]" alt={`${v.creator} segurando o body splash ${arq.nome}`} />
+                  <Obra src={UGC_IMG[v.archetypeId]} aspect="aspect-[3/4]" alt={`${v.creator} segurando o Body Splash Premium ${arq.nome}`} />
                   <Plaqueta n={v.creator} title={arq.nome}>
                     <span className="block text-xs text-tinta-3 italic">
                       {arq.fam}, {brl(arq.preco)}

@@ -21,19 +21,22 @@ export interface Archetype {
   id: string
   cod: string
   nome: string
-  /** Sobrenome do body splash (ex.: Fada → "First Kiss"), linha menor abaixo do nome */
+  /** Sobrenome do body splash (ex.: Afrodite → "First Kiss"), linha menor abaixo do nome */
   sobrenome?: string
   cor: string
   bg: string
   /** [principal, secundária] — o produto aparece no filtro das duas */
   familias: [FamiliaSlug, FamiliaSlug]
-  /** derivado de `familias` em data/archetypes.ts: "Principal · Secundária", pra exibir */
+  /** derivado de `familias` em data/archetypes.ts: nome da família principal, pra exibir (a secundária só entra nos filtros) */
   fam: string
   energia: string
   seg: Segmento
   vol: string
-  tipo: 'Body splash' | 'Perfume'
+  tipo: 'Body Splash Premium' | 'Perfume'
+  /** preço de venda (com desconto) — é o que vai pra sacola e base de Pix/parcelas */
   preco: number
+  /** preço cheio, mostrado riscado ao lado do `preco` (componente Preco) */
+  precoCheio: number
   status: StatusCatalogo
   /** Epíteto — linha de assinatura abaixo do nome */
   ep: string

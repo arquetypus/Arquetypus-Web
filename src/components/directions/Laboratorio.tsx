@@ -94,11 +94,11 @@ export function HeroLaboratorio() {
           </div>
           <div className="lg:col-span-5">
             <Mira>
-              <img src={FRASCO_IMG.sereia} alt="Body splash Sereia" className="aspect-[4/3] w-full object-cover" />
+              <img src={FRASCO_IMG.sereia} alt="Body Splash Premium Sereia" className="aspect-[4/3] w-full object-cover" />
             </Mira>
             {/* ficha técnica — só dado que já existe em data/ */}
             <dl className="mt-4 bg-papel/90 p-4 ring-1 ring-tinta">
-              <Linha k="Formato" v="Body splash" />
+              <Linha k="Formato" v="Body Splash Premium" />
               <Linha k="Volume" v="200 ml / 220 ml" />
               <Linha k="Arquétipos" v={String(ARCHETYPES.length).padStart(2, '0')} />
               <Linha k="Famílias" v={FAMILIES.map((f) => f.nome).join(' · ')} />
@@ -421,7 +421,7 @@ export function LaboratorioPage({ catalog, onSegment, toCatalog, featured, featu
                   <span className="flex justify-between border-b border-tinta px-3 py-1.5 text-[10px] uppercase" style={MONO}>
                     <span>REG-{String(i + 1).padStart(3, '0')}</span>
                   </span>
-                  <img src={UGC_IMG[v.archetypeId]} alt={`${v.creator} segurando o body splash ${arq.nome}`} loading="lazy" className="aspect-[3/4] w-full object-cover" />
+                  <img src={UGC_IMG[v.archetypeId]} alt={`${v.creator} segurando o Body Splash Premium ${arq.nome}`} loading="lazy" className="aspect-[3/4] w-full object-cover" />
                   <span className="flex items-center justify-between border-t border-tinta px-3 py-2 text-[11px]" style={MONO}>
                     <span>{v.creator}</span>
                     <span className="text-tinta-2">{brl(arq.preco)}</span>

@@ -1,7 +1,7 @@
 import type { Archetype } from '@/types/archetype'
 
 /**
- * Sobrenome do body splash (ex.: Fada → "First Kiss"), na linha abaixo do nome.
+ * Sobrenome do body splash (ex.: Afrodite → "First Kiss"), na linha abaixo do nome.
  * Vai dentro do elemento do nome: o tamanho é relativo a ele (em), herda cor e
  * fonte, e fica com menos peso e opacidade. Sem sobrenome no dado, não aparece.
  */

@@ -420,7 +420,7 @@ export function HerbarioPage({ catalog, onSegment, toCatalog, featured, featured
             return (
               <li key={v.creator} className={i % 2 ? 'rotate-[2deg]' : 'rotate-[-2deg]'}>
                 <Link to={`/loja/${arq.id}`} state={{ backgroundLocation: location }} className="no-press block">
-                  <Presa src={UGC_IMG[v.archetypeId]} alt={`${v.creator} segurando o body splash ${arq.nome}`} aspect="aspect-[3/4]" />
+                  <Presa src={UGC_IMG[v.archetypeId]} alt={`${v.creator} segurando o Body Splash Premium ${arq.nome}`} aspect="aspect-[3/4]" />
                   <p className="mt-3 text-center text-[11px] text-tinta-2" style={MAQ}>
                     {v.creator} · {arq.nome} · {brl(arq.preco)}
                   </p>

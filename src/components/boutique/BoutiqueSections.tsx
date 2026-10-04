@@ -5,6 +5,7 @@ import { FRASCO_IMG, HERO_SLIDES, SEALS } from '@/data/home'
 import { scrollToId } from '@/lib/scrollToId'
 import heroColecao from '@/assets/fotos/hero/colecao-desktop.jpg'
 import { Sobrenome } from '@/components/ui/Sobrenome'
+import { Preco } from '@/components/ui/Preco'
 
 /**
  * Direção "Boutique" (ThemeSwitcher) — pegada de loja: tudo a um clique da compra. Hero compacto com os
@@ -14,7 +15,8 @@ import { Sobrenome } from '@/components/ui/Sobrenome'
 
 type Filtro = 'ALL' | 'F' | 'M' | 'U'
 const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-const PRECO_MIN = Math.min(...ARCHETYPES.map((a) => a.preco))
+const MAIS_BARATO = ARCHETYPES.reduce((m, a) => (a.preco < m.preco ? a : m))
+const PRECO_MIN = MAIS_BARATO.preco
 
 export function HeroBoutique() {
   const slide = HERO_SLIDES[0]
@@ -60,7 +62,7 @@ export function HeroBoutique() {
           {/* etiqueta de preço sobre a foto */}
           <div className="absolute bottom-4 left-4 rounded-2xl bg-papel/95 px-4 py-3 shadow-lg backdrop-blur">
             <span className="block font-label text-[9px] tracking-[0.16em] text-tinta-3 uppercase">A partir de</span>
-            <span className="block font-display text-2xl leading-tight text-tinta">{brl(PRECO_MIN)}</span>
+            <Preco a={MAIS_BARATO} className="font-display text-2xl leading-tight" />
             <span className="block text-[11px] text-tinta-2">ou {brl(PRECO_MIN * 0.95)} no Pix</span>
           </div>
         </div>
@@ -89,7 +91,7 @@ export function CatalogGrid({
   return (
     <section
       id="catalogo"
-      className="relative z-20 bg-papel-2 px-4 py-20 md:px-10 lg:py-32"
+      className="relative z-20 bg-papel-2 px-4 py-10 md:px-10 lg:py-16"
       style={{
         // degrau invertido: o catálogo fica POR CIMA da seção anterior e projeta sombra nela, com filete latão
         boxShadow: '0 -14px 26px -12px rgba(40,46,41,0.3), 0 -4px 8px -4px rgba(40,46,41,0.2)',
@@ -146,21 +148,19 @@ export function CatalogGrid({
                 </div>
               </Link>
               <div className="flex flex-1 flex-col p-3 lg:p-5">
-                <div className="flex items-start gap-2">
-                  <span aria-hidden className="mt-[0.45em] size-2.5 shrink-0 rounded-full" style={{ background: a.cor }} />
-                  <b className="font-display text-lg leading-tight font-semibold text-tinta lg:text-xl">
-                    {a.nome}
-                    <Sobrenome a={a} />
-                  </b>
-                </div>
-                <span className="mt-1 text-xs text-tinta-3">
-                  {a.fam} · {a.vol}
+                <b className="font-display text-lg leading-tight font-semibold text-tinta lg:text-xl">
+                  {a.nome}
+                  <Sobrenome a={a} size="text-[0.78em]" />
+                </b>
+                {/* família numa linha própria; tipo do produto em rótulo, sem o volume (out/2026) */}
+                <span className="mt-2 text-[11px] leading-snug text-tinta-2 lg:text-xs">{a.fam}</span>
+                <span className="mt-1 font-label text-[9px] tracking-[0.14em] text-tinta-3 uppercase">
+                  {a.tipo}
                 </span>
-                {/* regra 7: preço, Pix e parcelas sempre à vista no card */}
-                <span className="mt-3 text-base font-semibold text-tinta lg:text-lg">{brl(a.preco)}</span>
-                <span className="text-[11px] text-tinta-2">
-                  {brl(a.preco * 0.95)} no Pix · 6x de {brl(a.preco / 6)}
-                </span>
+                {/* regra 7: preço e parcelas sempre à vista no card. O Pix saiu do card a pedido do usuário
+                    (out/2026) e segue no pop-up/PDP */}
+                <Preco a={a} className="mt-3 text-base lg:text-lg" />
+                <span className="mt-0.5 text-[11px] text-tinta-2 lg:text-xs">6x {brl(a.preco / 6)} sem juros</span>
                 <div className="mt-auto pt-3.5">
                   <Link
                     to={`/loja/${a.id}`}

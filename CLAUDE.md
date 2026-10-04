@@ -1,6 +1,6 @@
 # ARQUETYPUS — e-commerce D2C
 
-Perfumaria de arquétipos, 9 SKUs, Brasil, mobile-first. Conceito: "Você
+Perfumaria de arquétipos, 9 fragrâncias, Brasil, mobile-first. Conceito: "Você
 não escolhe um perfume. Você reconhece o seu." Quiz determina o
 arquétipo dominante e secundário do cliente entre os 9; cada um tem
 página própria de conteúdo (não é vitrine).
@@ -57,7 +57,7 @@ decisão de produto já tomada:
 2. **Nenhuma pergunta do quiz menciona nota olfativa.** O teste é
    sobre identidade, não sobre preferência de cheiro.
 3. **O passo de segmentação filtra o pool antes de pontuar.** O teste
-   nunca pode devolver um SKU que a pessoa não compraria (ex.: pool
+   nunca pode devolver uma fragrância que a pessoa não compraria (ex.: pool
    masculino nunca inclui Afrodite).
 4. **Nenhum claim de efeito fisiológico ou terapêutico.** "Despertar"
    é identidade de marca, não promessa de produto.
@@ -69,7 +69,9 @@ decisão de produto já tomada:
    modal ou tab client-side sem rota — o pop-up de compra é essa mesma
    rota aberta por cima da home.
 7. **Preço, parcelamento e Pix sempre visíveis junto ao produto** —
-   nunca atrás de accordion ou clique extra.
+   nunca atrás de accordion ou clique extra. Exceção decidida pelo usuário
+   (out/2026): o card do catálogo da home mostra só preço e "6x … sem juros",
+   sem o Pix; o Pix segue no pop-up de compra e na PDP.
 8. **Arquétipo com `status: 'wait'` nunca vende.** Se o quiz devolve
    um deles como dominante, a tela mostra lista de espera e empurra o
    secundário como oferta — nunca esconde o resultado nem substitui
@@ -178,7 +180,7 @@ decisão de produto já tomada:
   Frutados & Cítricos, Frescos & Luminosos, Ambarados & Adocicados, Amadeirados &
   Especiados (substituíram Floral/Aquático/Amadeirado/Oriental, que não podem voltar).
   Cada arquétipo tem `familias: [principal, secundária]` em `data/archetypes.ts` e
-  aparece no filtro das duas; `fam` ("Principal · Secundária") é derivado, não
+  aparece no filtro das duas; `fam` (só o nome da principal — a secundária não aparece no site, só no filtro) é derivado, não
   escrever à mão. `FAMILIES` (home.ts) monta a lista de arquétipos de cada família.
   Regras da marca: nunca "Oriental" nem "Aquático", sem emoji, nenhum perfume ou
   marca de terceiros como referência. Os nomes comerciais de ingredientes da
@@ -192,13 +194,18 @@ decisão de produto já tomada:
   Pra testar alternativa, salvar como `{slug}-opcao-N.jpg` na mesma pasta — fica fora
   do build (glob em `data/home.ts`); ao escolher, renomear pra `{slug}.jpg`. Trocar por foto de campanha ou regerar em 2k antes do lançamento.
 - **"A diferença" (out/2026)** é `components/DifferenceSection.tsx`: duas
-  colunas Arquétypus × Splash comum, sempre visíveis (sem chave no celular), cada
+  colunas "Arquétypus" (mais larga e em destaque: aro dourado, brilho, texto maior) × "Marcas tradicionais", sempre visíveis (sem chave nem abas no celular), cada
   uma com foto no topo (`assets/fotos/diferenca/`): `arquetypus.jpg` gerada
   por IA (Higgsfield, frascos reais de referência) e `splash-comum.jpg`, frasco
-  genérico sem marca enviado pelo usuário. Texto em `COMPARISON`.
+  genérico sem marca enviado pelo usuário. Título "O que torna Arquétypus diferente?". Texto em
+  `COMPARISON`: 5 linhas pareadas, cada uma com título e descrição, escritas pelo usuário (out/2026); sem animação de entrada (aparece na hora).
+  Concentração de essência é **10%** em todo o site (confirmado pelo usuário, out/2026;
+  antes a PDP dizia 5%).
 - **Benefícios (out/2026)**: o bloco "07 dias de garantia" virou faixa corrida
   (`components/BenefitsMarquee.tsx`, textos em `BENEFITS` em `data/home.ts`):
-  garantia, envio 24 h, pagamento seguro, 6x sem juros, 5% no Pix.
+  garantia, envio 24 h, pagamento seguro, 6x sem juros, 5% no Pix
+  (ajustes de caixa alta/ícone testados e revertidos a pedido, out/2026 — fica o
+  original: itálico, ícone de traço pequeno, 44 s por volta).
 - **Rodapé Boutique (out/2026)** (`FooterBoutique` em `boutique/BoutiqueMore.tsx`):
   escuro, logo dourada completa (`assets/brand/logo-dourado.png`), email
   `contato@arquetypus.com.br` (era sac@, trocado em todos os rodapés) e selos de
@@ -277,9 +284,15 @@ decisão de produto já tomada:
   (out/2026) — não alterar sem nova ficha. Os textos "o que isso tem a
   ver com cheiro" (`cheiro`) e de layering foram reescritos a partir dela.
 - Preço unificado (out/2026): os 9 body splash custam R$ 79,90 (antes
-  R$ 89,90 feminino / R$ 94,90 masculino). `KIT_TIERS` em `data/home.ts`
-  (escada 89,90/84,90/79,90 do `KitBuilder`) não foi refeita — ficou sem
-  desconto real; decidir antes de religar.
+  R$ 89,90 feminino / R$ 94,90 masculino), com preço cheio R$ 99,90
+  (`precoCheio`) sempre mostrado riscado ao lado — usar o componente
+  `components/ui/Preco.tsx` em todo preço de produto, nunca `brl(a.preco)` solto.
+  Pix (5%) e parcelas continuam calculados sobre o `preco` com desconto. As
+  direções desligadas e o Ateliê ainda mostram só o preço com desconto. Kit (out/2026, decisão do usuário):
+  **de R$ 199,90 por R$ 149,90** — o site ainda não vende kit; quando entrar, usar esses
+  valores (preço cheio riscado via `Preco`). `KIT_TIERS` em `data/home.ts` (escada antiga
+  89,90/84,90/79,90 do `KitBuilder`) e `ECON.kitPreco` (Kit Descoberta, 79,90) estão
+  desatualizados — revisar ao religar.
 - CMV/CAC não existem — não construir lógica de ponto de equilíbrio ou
   desconto máximo sem confirmar com o usuário primeiro.
 
@@ -298,6 +311,9 @@ decisão de produto já tomada:
   `#segmentos`, `#catalogo`, `#familias`, `#destaque`, `#diferenca`, `#beneficios`,
   `#cupom`, `#rodape`, e cada produto do catálogo pelo id (`#afrodite`, `#fenix`…).
   Seção nova na home ganha `id` também; não renomear os existentes (links já enviados).
+- **Nome do produto no site: "Body Splash Premium"** (out/2026), nunca só "body
+  splash" — está em `tipo` (`data/archetypes.ts`), FAQ, alts e textos. "Splash
+  comum" (concorrente genérico em "A diferença") continua como está.
 - **Código do arquétipo (`cod`, "ARQ-01"…) é referência interna** (out/2026):
   fica em `data/archetypes.ts`, mas nunca aparece no site — nem "ARQ-07", nem
   "Nº 07", nem numeral romano derivado dele.

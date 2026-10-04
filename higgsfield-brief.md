@@ -299,7 +299,7 @@ higgsfield product-photoshoot create --mode lifestyle_scene \
 higgsfield product-photoshoot create --mode lifestyle_scene \
   --image src/assets/reference-lab-fabio/afrodite-frente.jpg \
   --prompt "Horizontal lifestyle photo, soft feminine mood: a woman's hands near her collarbone holding an Arquetypus body-splash bottle, warm blush-toned light, minimal styling, editorial and quiet, not overtly posed for an ad. Editorial luxury niche perfumery photography, photorealistic, cinematic, minimalist, soft directional natural light, shallow depth of field, no text, no watermark." \
-  --aspect_ratio 4:3 --count 2 --brand_context "Arquetypus Parfum — segmentação Para elas / Feminino, 5 SKUs" \
+  --aspect_ratio 4:3 --count 2 --brand_context "Arquetypus Parfum — segmentação Para elas / Feminino, 5 fragrâncias" \
   --wait
 ```
 
@@ -308,7 +308,7 @@ higgsfield product-photoshoot create --mode lifestyle_scene \
 higgsfield product-photoshoot create --mode lifestyle_scene \
   --image src/assets/reference-lab-fabio/guerreiro-frente.jpg \
   --prompt "Horizontal lifestyle photo, quiet masculine mood: a man's hand holding an Arquetypus body-splash bottle at chest height, cool neutral light, minimal styling, editorial. Editorial luxury niche perfumery photography, photorealistic, cinematic, minimalist, soft directional natural light, shallow depth of field, no text, no watermark." \
-  --aspect_ratio 4:3 --count 2 --brand_context "Arquetypus Parfum — segmentação Para eles / Masculino, 3 SKUs" \
+  --aspect_ratio 4:3 --count 2 --brand_context "Arquetypus Parfum — segmentação Para eles / Masculino, 3 fragrâncias" \
   --wait
 ```
 
@@ -317,7 +317,7 @@ higgsfield product-photoshoot create --mode lifestyle_scene \
 higgsfield product-photoshoot create --mode lifestyle_scene \
   --image src/assets/reference-lab-fabio/zeus-frente.jpg \
   --prompt "Horizontal lifestyle photo, neutral/shared mood: two hands (one visibly feminine, one visibly masculine) each reaching for the same Arquetypus body-splash bottle on a neutral surface, soft even light, editorial. Editorial luxury niche perfumery photography, photorealistic, cinematic, minimalist, soft directional natural light, shallow depth of field, no text, no watermark." \
-  --aspect_ratio 4:3 --count 2 --brand_context "Arquetypus Parfum — segmentação Para todos / Compartilhável, 1 SKU (Zeus)" \
+  --aspect_ratio 4:3 --count 2 --brand_context "Arquetypus Parfum — segmentação Para todos / Compartilhável, 1 fragrância (Fênix)" \
   --wait
 ```
 

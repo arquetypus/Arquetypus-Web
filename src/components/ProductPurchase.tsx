@@ -6,6 +6,7 @@ import { useCart } from '@/context/CartContext'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { ProductGallery } from '@/components/ProductGallery'
 import { Sobrenome } from '@/components/ui/Sobrenome'
+import { Preco } from '@/components/ui/Preco'
 
 export const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
@@ -213,7 +214,7 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
               }`}
             >
               <div className={compact ? 'max-lg:flex max-lg:items-end max-lg:justify-between max-lg:gap-3' : ''}>
-                <span className="font-display text-2xl lg:text-[30px] lg:leading-none">{brl(selected.price)}</span>
+                <Preco a={a} className="font-display text-2xl lg:text-[30px] lg:leading-none" />
                 <p className={`mt-1 text-xs text-tinta-2 lg:mt-2 lg:text-[13px] ${compact ? 'max-lg:mt-0 max-lg:pb-1 max-lg:text-right max-lg:text-[11px]' : ''}`}>
                   {brl(pix)} no Pix · ou 6x de {brl(selected.price / 6)} sem juros
                 </p>
@@ -261,7 +262,7 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
               <span>
                 {par.nome} {par.vol}
                 <span className="block font-label text-[9px] text-tinta-3 uppercase">
-                  Layering recomendado · +{brl(par.preco)}
+                  Layering recomendado · + <Preco a={par} />
                 </span>
               </span>
             </label>

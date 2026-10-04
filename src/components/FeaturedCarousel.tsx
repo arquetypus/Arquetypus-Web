@@ -16,6 +16,7 @@ import featuredFenixDesktop from '@/assets/fotos/destaque-fenix-desktop.jpg'
 import featuredSereiaDesktop from '@/assets/fotos/destaque-sereia-desktop.jpg'
 import featuredZeusDesktop from '@/assets/fotos/destaque-zeus-desktop.jpg'
 import { Sobrenome } from '@/components/ui/Sobrenome'
+import { Preco } from '@/components/ui/Preco'
 
 /** Banners do "Arquétipo em destaque", na ordem. `bg` é o fundo do card, na cor da foto: burgundy da marca
  *  (Fênix), azul-petróleo do mar (Sereia) e bege escurecido de céu nublado (Zeus). Hex, não var(): a cor anima
@@ -184,7 +185,7 @@ export function FeaturedCarousel() {
                     <span className="block font-label text-[9px] tracking-widest text-papel-inv/60 uppercase">
                       {a.tipo} · {a.vol}
                     </span>
-                    <span className="mt-1.5 block font-display text-3xl leading-none text-papel-inv">{brl(a.preco)}</span>
+                    <Preco a={a} tom="escuro" className="mt-1.5 font-display text-3xl leading-none" />
                   </div>
                   <span className="max-w-[12ch] pb-0.5 text-right font-label text-[9px] tracking-widest uppercase" style={{ color: LATAO_CLARO }}>
                     {a.fam}
