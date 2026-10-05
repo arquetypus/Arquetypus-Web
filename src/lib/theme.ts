@@ -109,6 +109,11 @@ export const PADRAO: ThemeId = 'boutique'
  *  com os padrões dele — ignora ?tema=/peças na URL e o que ficou salvo no navegador, e não grava nada. */
 export const SHOW_THEME_SWITCHER = false
 
+/** Famílias do Google Fonts usadas só pelos estilos alternativos e pelas direções desligadas. Saíram do
+ *  index.html (out/2026: travavam a primeira exibição de toda página); o ThemeSwitcher injeta quando ligado. */
+export const FONTES_DIRECOES =
+  'https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap'
+
 /** Links antigos (?tema=noite etc., de quando paleta e estrutura eram uma coisa só) continuam abrindo igual. */
 const LEGADO: Record<string, { tema: ThemeId } & Partial<Pecas>> = {
   noite: { tema: 'editorial', paleta: 'noite' },

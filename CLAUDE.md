@@ -139,7 +139,9 @@ decisão de produto já tomada:
   token (`var(--color-…)`), senão não acompanha as paletas. **Desligado desde
   out/2026** (`SHOW_THEME_SWITCHER = false`, agora em `lib/theme.ts`): o site
   abre sempre na direção decidida e ignora `?tema=`/storage. Pra voltar a
-  discutir, ligar de novo. Falta promover a paleta Âmbar pro `@theme`.
+  discutir, ligar de novo. Falta promover a paleta Âmbar pro `@theme`. As fontes do Google dos estilos
+  alternativos (`FONTES_DIRECOES`) saíram do `index.html` (out/2026, travavam a 1ª exibição); o ThemeSwitcher
+  as injeta quando ligado. O site no ar usa só Elegant + Inter, servidas de `public/fonts/`.
 - **Selos de proporção nas imagens** (`components/ui/RatioTag.tsx`) são
   apoio ao time de design — mostram a proporção real da caixa na tela.
   Desligados desde out/2026 (`SHOW_RATIO_TAGS = false`) — o usuário pode pedir pra religar. O

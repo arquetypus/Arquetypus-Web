@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { CATALOGS, ESTILOS, HEROES, PALETAS, THEMES, aplicarEstado, clearPins, setPin, setTheme, useThemeState } from '@/lib/theme'
+import { CATALOGS, ESTILOS, FONTES_DIRECOES, HEROES, PALETAS, THEMES, aplicarEstado, clearPins, setPin, setTheme, useThemeState } from '@/lib/theme'
 import type { ThemeState } from '@/lib/theme'
 import { apagarPreset, mesmoEstado, renomearPreset, salvarPreset, sobrescreverPreset, usePresets, type Preset } from '@/lib/presets'
 
@@ -274,6 +274,13 @@ export function ThemeSwitcher() {
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [aberto])
+
+  // fontes das direções alternativas: só baixadas com o painel ligado (fora do index.html, ver FONTES_DIRECOES)
+  useEffect(() => {
+    if (!SHOW_THEME_SWITCHER || document.querySelector(`link[href="${FONTES_DIRECOES}"]`)) return
+    const link = Object.assign(document.createElement('link'), { rel: 'stylesheet', href: FONTES_DIRECOES })
+    document.head.append(link)
+  }, [])
 
   if (!SHOW_THEME_SWITCHER) return null
 
