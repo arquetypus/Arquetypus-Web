@@ -86,17 +86,18 @@ export function CommunityBoutique() {
   // cards de trás bem apagados: o do centro é o protagonista
   useCoverflow(trilho.container, { minOpacity: 0.15 })
 
-  // 1ª seção depois do hero (sobe por cima dele). Cada experiência é um "vídeo" (2:3, mais largo que o 9:16 pra caber na altura da tela) com o produto num cartão
+  // 1ª seção depois do hero (sobe por cima dele). Cada experiência é um "vídeo" (2:3 no celular) com o produto num cartão
   // à parte, sobreposto à base do vídeo (metade dentro, metade fora) — o vídeo é a prova, o cartão é a compra.
-  // Tamanho do card = o que sobra da altura da tela (94svh) tirando eyebrow, título, cartão, pontinhos e texto (~23,5–24,5rem),
-  // em 2:3 — o maior possível sem a seção passar da altura da tela (regra de out/2026). Teto: 34rem de altura no desktop.
+  // Desktop: a foto acompanha a altura disponível, com teto de 34rem. A largura tem piso de 300px:
+  // em notebooks baixos, reduzir as duas medidas em 2:3 cortava nomes e comprimia o preço contra a miniatura.
+  // Abaixo desse piso, só a foto muda de proporção; os dados do produto conservam espaço para leitura.
   // Celular: só a largura manda — min(66vw, 270px) × --ugc-escala (1.155, out/2026). Exceção pedida (out/2026) à
   // regra da altura: em celular baixo o card continua grande e proporcional, mesmo que a seção passe da tela.
   // Hoje são fotos (UGC_IMG); quando os vídeos chegarem, trocar o <img> por <video> mudo em loop.
   return (
     <section
       id="comunidade"
-      className="relative z-20 rounded-t-2xl bg-papel pt-4 pb-5 [--ugc-w:min(66vw*var(--ugc-escala),270px*var(--ugc-escala))] [--ugc-escala:1.155] lg:pt-4.5 lg:pb-6 lg:[--ugc-w:calc(min(34rem,94svh-24.5rem)*2/3)]"
+      className="relative z-20 rounded-t-2xl bg-papel pt-4 pb-5 [--ugc-w:min(66vw*var(--ugc-escala),270px*var(--ugc-escala))] [--ugc-escala:1.155] lg:pt-4.5 lg:pb-5 lg:[--ugc-h:clamp(13rem,94svh-25.5rem,34rem)] lg:[--ugc-w:max(300px,var(--ugc-h)*2/3)]"
       style={{
         // degrau no fim: esta seção fica por cima da seguinte e projeta sombra nela, com filete latão na borda
         boxShadow: '0 14px 26px -12px rgba(40,46,41,0.3), 0 4px 8px -4px rgba(40,46,41,0.2)',
@@ -118,8 +119,8 @@ export function CommunityBoutique() {
         <Eyebrow>A comunidade</Eyebrow>
         <h2 className="mt-3 font-display text-[30px] leading-[1.1] text-tinta lg:text-4xl">Coleção Arquétypus</h2>
       </div>
-      <div className="relative mt-6 lg:mt-7">
-      {/* desktop: setas grandes ao lado do card do centro, na altura do meio do vídeo (2:3 → metade = 0,75 × largura) */}
+      <div className="relative mt-6 lg:mt-5">
+      {/* Desktop: setas ao lado do card central, no meio da foto. */}
       {([-1, 1] as const).map((dir) => (
         <button
           key={dir}
@@ -128,7 +129,7 @@ export function CommunityBoutique() {
           aria-label={dir < 0 ? 'Experiência anterior' : 'Próxima experiência'}
           className="absolute z-30 hidden size-12 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-papel text-tinta shadow-[0_10px_24px_-10px_rgba(40,46,41,0.45)] ring-1 ring-latao/60 transition-[background-color,color,box-shadow,scale] duration-300 hover:bg-latao hover:text-papel hover:shadow-[0_14px_30px_-10px_rgba(40,46,41,0.55)] hover:ring-latao active:scale-90 lg:flex"
           style={{
-            top: 'calc(var(--ugc-w) * 0.75)',
+            top: 'calc(var(--ugc-h) / 2)',
             [dir < 0 ? 'left' : 'right']: 'calc(50% - var(--ugc-w) / 2 - 5rem)',
           }}
         >
@@ -140,7 +141,7 @@ export function CommunityBoutique() {
       <div
         ref={trilho.containerRef}
         data-drag-scroll
-        className="no-scrollbar relative flex snap-x snap-mandatory gap-3 overflow-x-auto pb-9 lg:gap-5"
+        className="no-scrollbar relative flex snap-x snap-mandatory gap-3 overflow-x-auto pb-9 lg:gap-5 lg:pb-7"
         // padding lateral = metade da sobra, pra o primeiro e o último card também pararem no centro.
         // pb-9: o overflow do scroll corta tudo que passa da caixa — a folga embaixo deixa a sombra dos cartões inteira
         style={{ paddingInline: 'calc((100% - var(--ugc-w)) / 2)' }}
@@ -159,13 +160,13 @@ export function CommunityBoutique() {
               style={{ width: 'var(--ugc-w)', willChange: 'transform, opacity' }}
             >
               {/* o vídeo */}
-              <div className="relative aspect-[2/3] overflow-hidden rounded-2xl bg-noite ring-1 ring-latao/30">
+              <div className="relative aspect-[2/3] overflow-hidden rounded-2xl bg-noite ring-1 ring-latao/30 lg:aspect-auto lg:h-(--ugc-h)">
                 <img
                   src={UGC_IMG[v.archetypeId]}
                   alt={`${v.creator} segurando o Body Splash Premium ${arq.nome}`}
                   loading={i === total ? 'eager' : 'lazy'}
                   decoding="async"
-                  className="ugc-midia h-full w-full object-cover"
+                  className="ugc-midia h-full w-full object-cover lg:object-[50%_25%]"
                 />
                 {/* topo e base escurecidos: legibilidade do @ e apoio pro cartão sobreposto */}
                 <span
@@ -247,7 +248,7 @@ export function CommunityBoutique() {
 
       {/* texto de apoio embaixo, em destaque (out/2026): "Pessoas reais." como assinatura, entre filetes dourados.
           O título fica sozinho em cima, pra caber na ponta da seção que aparece no hero */}
-      <div className="mt-5 px-4 text-center md:px-10 lg:mt-7">
+      <div className="mt-5 px-4 text-center md:px-10 lg:mt-4">
         <p className="flex items-center justify-center gap-3 font-display text-[22px] leading-none text-tinta italic lg:text-[28px]">
           <span aria-hidden className="h-px w-8 bg-gradient-to-r from-transparent to-latao lg:w-12" />
           Pessoas reais.
