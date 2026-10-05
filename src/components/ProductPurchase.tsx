@@ -7,15 +7,9 @@ import { Eyebrow } from '@/components/ui/Eyebrow'
 import { ProductGallery } from '@/components/ProductGallery'
 import { Sobrenome } from '@/components/ui/Sobrenome'
 import { Preco } from '@/components/ui/Preco'
+import { PDP_FRASCO, PDP_LIFESTYLE } from '@/data/productMedia'
 
 export const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-
-// Fotos da galeria, por arquétipo (nome do arquivo = id). Ordem: frasco primeiro, depois a foto com pessoa.
-// Recortes 1:1 das fotos 9:16 da designer (set/2026) — ver CLAUDE.md.
-const byId = (files: Record<string, string>) =>
-  Object.fromEntries(Object.entries(files).map(([path, url]) => [path.split('/').pop()!.replace('.jpg', ''), url]))
-const PDP_FRASCO = byId(import.meta.glob<string>('@/assets/fotos/pdp-frasco/*.jpg', { eager: true, import: 'default' }))
-const PDP_LIFESTYLE = byId(import.meta.glob<string>('@/assets/fotos/pdp-lifestyle/*.jpg', { eager: true, import: 'default' }))
 
 // Selos de confiança (P-08) — ícones de traço, mesmo estilo dos selos da home
 const TRUST = [

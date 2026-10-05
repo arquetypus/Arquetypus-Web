@@ -3,6 +3,7 @@ import type { Location } from 'react-router-dom'
 import { CartProvider } from '@/context/CartContext'
 import { Layout } from '@/components/Layout'
 import { RouteTracker } from '@/components/RouteTracker'
+import { RouteSeo } from '@/components/RouteSeo'
 import { CookieBanner } from '@/components/CookieBanner'
 import { ProductSheet } from '@/components/ProductSheet'
 import { HomePage } from '@/pages/HomePage'
@@ -31,6 +32,7 @@ export default function App() {
   return (
     <CartProvider>
       {/* fora do <Routes>: valem pra página e pro pop-up de compra (que fica fora do Layout) */}
+      <RouteSeo />
       <RouteTracker />
       <CookieBanner />
       <Routes location={background ?? location}>

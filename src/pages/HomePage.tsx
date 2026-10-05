@@ -75,7 +75,6 @@ import ribbonArquetypus from '@/assets/brand/ribbon-arquetypus.png'
 import logoBranco from '@/assets/brand/logo-branco.png'
 import { Sobrenome } from '@/components/ui/Sobrenome'
 import { Preco } from '@/components/ui/Preco'
-import { SEO_HOME, useSeo } from '@/lib/seo'
 
 /**
  * Degradê foto → fundo noite do catálogo. Faixa larga com curva "smootherstep" (plana nas duas pontas):
@@ -313,7 +312,6 @@ function CommunitySection() {
 export function HomePage() {
   const [hydrated, setHydrated] = useState(false)
   useEffect(() => setHydrated(true), [])
-  useSeo({ ...SEO_HOME, path: '/' })
   const location = useLocation()
   const { hash } = location
   const familiesScroll = useCarouselIndex<HTMLDivElement>(FAMILIES.length)

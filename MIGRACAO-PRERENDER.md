@@ -643,7 +643,7 @@ Preencher a cada etapa; evidência ausente significa **pendente**, nunca “apro
 | Consolidação documental | Concluída; somente este plano alterado | Sem implementação | Ajustes obrigatórios/opcionais e critérios por rota integrados; build não reexecutado |
 | 0 — Baseline | Local e preview validados; produção identificada; disponibilidade de rollback pendente | Branch `prerender`, código-base/produção `8a02e4a`; documentação enviada em `db5790e` e `e0e829f` | [Baseline](docs/prerender/baseline.md) e [preview](docs/prerender/preview.md); 18 rotas, capturas, 6 auditorias locais; Node configurado `24.x` informado; prints de produção registrados; confirmar rollback antes de publicação final |
 | 1 — Segurança SSR | Concluída; build, contratos locais e preview aprovados | Código `6422a93` na branch `prerender`; check Vercel success; preview publicado | [Etapa 1](docs/prerender/etapa1.md); oito hidratações isoladas, três cenários estáticos/falha, 18 rotas/SEO/preços, navegação e capturas desktop/móvel; arquivos SEO cliente/dev preservados |
-| 2 — SEO compartilhado | Pendente | — | — |
+| 2 — SEO compartilhado | Implementação e aceite local aprovados; preview pendente | Branch `prerender`; aguardando commit/push | [Etapa 2](docs/prerender/etapa2.md); 18 descritores, nove Products/Breadcrumbs, FAQ exata, 27 passos/26 page_view e hidratação sem erros |
 | 3 — Ensaio SSR | Pendente | — | — |
 | 4 — SSG e hidratação | Pendente | — | — |
 | 5 — QA local | Pendente | — | — |

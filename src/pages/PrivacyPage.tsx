@@ -15,7 +15,6 @@ export function PrivacyPage() {
   return (
     <LegalPage
       title="Política de Privacidade"
-      description="Como a Arquétypus coleta, usa e protege seus dados pessoais, de acordo com a LGPD: cookies, compras, cadastro, seus direitos e como falar com a gente."
     >
       <Section title="1. Quem cuida dos seus dados">
         <p>

@@ -18,8 +18,6 @@ export function SobrePage() {
     <LegalPage
       eyebrow="A marca"
       title="Sobre a Arquétypus"
-      seoTitle="Sobre Nós: Perfumaria de Arquétipos"
-      description="Conheça a Arquétypus: nove fragrâncias Body Splash Premium com 10% de essência, uma para cada arquétipo. Você não escolhe um perfume. Você reconhece o seu."
       atualizacao={false}
     >
       <p className="font-display text-2xl leading-snug text-tinta italic lg:text-[28px]">

@@ -9,7 +9,6 @@ export function TermosPage() {
   return (
     <LegalPage
       title="Termos de Uso"
-      description="Termos de uso do site da Arquétypus Parfum: quem pode comprar, uso do conteúdo, propriedade intelectual, responsabilidade e foro."
     >
       <Section title="1. Sobre estes termos">
         <p>

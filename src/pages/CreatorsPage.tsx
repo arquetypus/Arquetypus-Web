@@ -10,7 +10,6 @@ import { DEGRAU_CLARO, DEGRAU_ESCURO, Flor, Glow, SectionEyebrow } from '@/compo
 // gerada no Higgsfield (GPT Image 2.5) com as fotos de produto como referência — pessoa não existe; trocar por criador(a) real
 import creatorsHero from '@/assets/fotos/criadores-hero.jpg'
 import { Sobrenome } from '@/components/ui/Sobrenome'
-import { comMarca, useSeo } from '@/lib/seo'
 
 const HOW_IT_WORKS = [
   { n: '01', title: 'Aplique escolhendo um arquétipo', body: 'Um só — é ele que você vai representar, gravar e recomendar.' },
@@ -44,12 +43,6 @@ const GAINS = [
 ]
 
 export function CreatorsPage() {
-  useSeo({
-    title: comMarca('Programa de Criadores'),
-    description:
-      'Faça parte do programa de criadores da Arquétypus: indique nossos Body Splash Premium para a sua comunidade e ganhe comissão por venda. Candidate-se.',
-    path: '/criadores',
-  })
   const [picked, setPicked] = useState<string | null>(null)
   const [submitted, setSubmitted] = useState(false)
   const a = picked ? getArchetype(picked) : undefined

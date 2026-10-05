@@ -10,8 +10,6 @@ export function RegrasPage() {
   return (
     <LegalPage
       title="Regras do Site"
-      seoTitle="Regras de Compra"
-      description="Preços, cupom de 15% na primeira compra, formas de pagamento (Pix com 5% off e 6x sem juros), confirmação, cancelamento e estoque."
     >
       <Section title="1. Preços">
         <p>

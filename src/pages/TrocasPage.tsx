@@ -10,8 +10,6 @@ export function TrocasPage() {
   return (
     <LegalPage
       title="Política de Trocas e Devoluções"
-      seoTitle="Trocas e Devoluções"
-      description="Desistência em até 7 dias com o produto lacrado, 30 dias para defeito e frete de devolução por nossa conta. Veja como pedir troca ou reembolso."
     >
       <Section title="1. Em resumo">
         <ul className="list-inside list-disc space-y-1.5">

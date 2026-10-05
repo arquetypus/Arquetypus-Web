@@ -1,28 +1,12 @@
-import { useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Eyebrow } from '@/components/ui/Eyebrow'
-import { comMarca, useSeo } from '@/lib/seo'
 
 /**
  * Página não encontrada (rota "*", out/2026). Com o vercel.json mandando toda rota pro index.html, a Vercel
- * responde 200 até pra endereço inexistente — por isso a página marca `robots: noindex` enquanto está aberta,
+ * responde 200 até pra endereço inexistente — por isso RouteSeo marca `robots: noindex` enquanto está aberta,
  * pro Google não indexar URL quebrada.
  */
 export function NotFoundPage() {
-  const { pathname } = useLocation()
-  useSeo({
-    title: comMarca('Página não encontrada'),
-    description: 'A página que você procurou não existe ou mudou de endereço.',
-    path: pathname,
-  })
-  useEffect(() => {
-    const m = document.createElement('meta')
-    m.name = 'robots'
-    m.content = 'noindex'
-    document.head.appendChild(m)
-    return () => m.remove()
-  }, [])
-
   return (
     <section className="mx-auto flex min-h-[60svh] max-w-xl flex-col items-center justify-center px-5 py-16 text-center lg:py-24">
       <Eyebrow>Erro 404</Eyebrow>

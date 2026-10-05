@@ -10,7 +10,6 @@ import { DEGRAU_CLARO, DEGRAU_ESCURO, Flor, Glow, Ornament, SectionEyebrow } fro
 import { ProductPurchase } from '@/components/ProductPurchase'
 import { Sobrenome } from '@/components/ui/Sobrenome'
 import { Preco } from '@/components/ui/Preco'
-import { comMarca, useSeo } from '@/lib/seo'
 
 const BENEFITS = [
   { n: '01', title: '10% de essência', body: 'Mais intensidade e presença do que um body splash tradicional, que costuma ter cerca de 4%.' },
@@ -41,21 +40,12 @@ function Accordion({ title, children, dark = false }: { title: string; children:
   )
 }
 
-const brlSeo = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
 export function ProductPage() {
   const { id } = useParams<{ id: string }>()
   const a = id ? getArchetype(id) : undefined
   const par = a ? getArchetype(a.par) : undefined
   const { addItem } = useCart()
-  // SEO da página do produto (acesso direto / Google): nome completo + tipo no título; frase, família e preço na descrição
-  useSeo({
-    title: comMarca(a ? `${a.nome} ${a.sobrenome ?? ''} – ${a.tipo}`.replace(/\s+–/, ' –') : 'Body Splash Premium'),
-    description: a
-      ? `${a.nome} ${a.sobrenome ?? ''}: ${a.ep} ${a.tipo} ${a.vol} com 10% de essência, família ${a.fam}. ${brlSeo(a.preco)} em até 6x sem juros.`
-      : '',
-    path: `/loja/${id ?? ''}`,
-  })
 
   if (!a) return <Navigate to="/" replace />
 

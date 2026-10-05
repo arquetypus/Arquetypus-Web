@@ -1,29 +1,29 @@
-import { useEffect } from 'react'
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { Contato, LegalPage } from '@/components/ui/Legal'
 import { FAQ_LOJA, FAQ_PRODUTO } from '@/data/faq'
 import type { Pergunta } from '@/data/faq'
 import { CONTATOS } from '@/data/home'
+import { FAQ_TOKEN_TEXT } from '@/data/faqText'
 
 const LINK = 'border-b border-latao-texto/40 text-tinta hover:border-latao-texto'
 const contato = (rede: string) => CONTATOS.find((c) => c.rede === rede)!
 
 /** {{token}} das respostas em data/faq.ts → link (na página) ou texto puro (no schema.org) */
 const TOKENS: Record<string, { texto: string; no: ReactNode }> = {
-  entrega: { texto: 'Política de Entrega e Frete', no: <Link to="/entrega-e-frete" className={LINK}>Política de Entrega e Frete</Link> },
-  trocas: { texto: 'Política de Trocas e Devoluções', no: <Link to="/trocas-e-devolucoes" className={LINK}>Política de Trocas e Devoluções</Link> },
-  regras: { texto: 'Regras do Site', no: <Link to="/regras-do-site" className={LINK}>Regras do Site</Link> },
-  criadores: { texto: 'arquetypus.com.br/criadores', no: <Link to="/criadores" className={LINK}>Seja criador</Link> },
+  entrega: { texto: FAQ_TOKEN_TEXT.entrega, no: <Link to="/entrega-e-frete" className={LINK}>{FAQ_TOKEN_TEXT.entrega}</Link> },
+  trocas: { texto: FAQ_TOKEN_TEXT.trocas, no: <Link to="/trocas-e-devolucoes" className={LINK}>{FAQ_TOKEN_TEXT.trocas}</Link> },
+  regras: { texto: FAQ_TOKEN_TEXT.regras, no: <Link to="/regras-do-site" className={LINK}>{FAQ_TOKEN_TEXT.regras}</Link> },
+  criadores: { texto: FAQ_TOKEN_TEXT.criadores, no: <Link to="/criadores" className={LINK}>Seja criador</Link> },
   instagram: {
-    texto: contato('instagram').rotulo,
+    texto: FAQ_TOKEN_TEXT.instagram,
     no: <a href={contato('instagram').href} target="_blank" rel="noopener noreferrer" className={LINK}>{contato('instagram').rotulo}</a>,
   },
   whatsapp: {
-    texto: contato('whatsapp').rotulo,
+    texto: FAQ_TOKEN_TEXT.whatsapp,
     no: <a href={contato('whatsapp').href} target="_blank" rel="noopener noreferrer" className={LINK}>{contato('whatsapp').rotulo}</a>,
   },
-  email: { texto: contato('email').rotulo, no: <a href={contato('email').href} className={LINK}>{contato('email').rotulo}</a> },
+  email: { texto: FAQ_TOKEN_TEXT.email, no: <a href={contato('email').href} className={LINK}>{contato('email').rotulo}</a> },
 }
 
 function resposta(a: string): ReactNode[] {
@@ -32,7 +32,6 @@ function resposta(a: string): ReactNode[] {
     return m && TOKENS[m[1]] ? <span key={i}>{TOKENS[m[1]].no}</span> : parte
   })
 }
-const respostaTexto = (a: string) => a.replace(/\{\{(\w+)\}\}/g, (_, k) => TOKENS[k]?.texto ?? '')
 
 function Grupo({ titulo, perguntas }: { titulo: string; perguntas: Pergunta[] }) {
   return (
@@ -60,31 +59,14 @@ function Grupo({ titulo, perguntas }: { titulo: string; perguntas: Pergunta[] })
 
 /**
  * Perguntas frequentes (revisadas out/2026): loja (FAQ_LOJA) + produto (FAQ_PRODUTO, o mesmo da PDP).
- * Publica o schema.org/FAQPage em JSON-LD enquanto a página está aberta.
+ * RouteSeo publica o schema.org/FAQPage enquanto a URL corresponde à FAQ.
  */
 export function FaqPage() {
-  useEffect(() => {
-    const s = document.createElement('script')
-    s.type = 'application/ld+json'
-    s.text = JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: [...FAQ_LOJA, ...FAQ_PRODUTO].map((p) => ({
-        '@type': 'Question',
-        name: p.q,
-        acceptedAnswer: { '@type': 'Answer', text: respostaTexto(p.a) },
-      })),
-    })
-    document.head.appendChild(s)
-    return () => s.remove()
-  }, [])
 
   return (
     <LegalPage
       eyebrow="Ajuda"
       title="Perguntas frequentes"
-      seoTitle="Perguntas Frequentes"
-      description="Tire suas dúvidas sobre os Body Splash Premium Arquétypus: entrega, pagamento, cupom, trocas, concentração de 10% de essência e como usar."
       atualizacao={false}
     >
       <div className="space-y-10">

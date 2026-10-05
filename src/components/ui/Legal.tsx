@@ -1,34 +1,26 @@
 import type { ReactNode } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { CONTATOS } from '@/data/home'
 import { EMPRESA_LINHA, POLITICAS_ATUALIZADAS } from '@/data/empresa'
-import { comMarca, useSeo } from '@/lib/seo'
 
 const LINK = 'border-b border-latao-texto/40 text-tinta hover:border-latao-texto'
 
 /**
  * Casca das páginas institucionais (out/2026): coluna central de leitura, eyebrow, título, data de atualização
- * (opcional) e título da aba. Usada por Entrega e Frete, Trocas, Termos, Regras, Sobre e Perguntas frequentes.
+ * (opcional). RouteSeo controla o head. Usada por Entrega e Frete, Trocas, Termos, Regras, Sobre e FAQ.
  */
 export function LegalPage({
   eyebrow = 'Documento legal',
   title,
-  seoTitle,
-  description,
   atualizacao = true,
   children,
 }: {
   eyebrow?: string
   title: string
-  /** título da aba e do Google, se diferente do H1 (mais curto, palavra-chave primeiro) */
-  seoTitle?: string
-  /** descrição para o Google (até ~155 caracteres) */
-  description: string
   atualizacao?: boolean
   children: ReactNode
 }) {
-  useSeo({ title: comMarca(seoTitle ?? title), description, path: useLocation().pathname })
   return (
     <article className="mx-auto max-w-3xl px-5 pt-10 pb-16 lg:pt-16 lg:pb-24">
       <Eyebrow>{eyebrow}</Eyebrow>

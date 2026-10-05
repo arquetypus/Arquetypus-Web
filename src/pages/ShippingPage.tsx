@@ -13,8 +13,6 @@ export function ShippingPage() {
   return (
     <LegalPage
       title="Política de Entrega e Frete"
-      seoTitle="Entrega e Frete"
-      description="Envio em até 24 horas úteis para todo o Brasil, frete grátis acima de R$ 199 e rastreio por e-mail. Veja prazos, transportadoras e como acompanhar seu pedido."
     >
       <Section title="1. Quando seu pedido é enviado">
         <p>

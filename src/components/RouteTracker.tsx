@@ -14,7 +14,7 @@ export function RouteTracker() {
     const path = pathname + search
     if (lastPath.current === path) return
 
-    // setTimeout: deixa a página nova definir o document.title antes do envio.
+    // RouteSeo aplica o head da URL real; este envio assíncrono lê o título já atualizado.
     // lastPath só é gravado dentro do timeout, então o StrictMode (dev) não duplica nem perde o evento.
     const id = window.setTimeout(() => {
       lastPath.current = path

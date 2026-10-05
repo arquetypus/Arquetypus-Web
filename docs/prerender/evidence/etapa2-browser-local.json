@@ -1,0 +1,518 @@
+{
+  "collectedAt": "2026-10-05T01:42:24.545Z",
+  "errors": [],
+  "checks": [
+    "18 rotas, FAQ→PDP→home, 404→home e pop-up: head exato sem resíduos; tracking único e título correto antes do envio",
+    "Adoção de script SSR por ID; identidade estável; 404 genérica sem URL fictícia; scripts/robots externos preservados"
+  ],
+  "events": [
+    {
+      "event": "page_view",
+      "page_path": "/",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "headTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "canonical": "https://arquetypus.com.br/",
+      "scripts": [
+        "arq-seo-organization",
+        "arq-seo-website"
+      ]
+    },
+    {
+      "event": "page_view",
+      "page_path": "/criadores",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Programa de Criadores | Arquétypus Parfum",
+      "headTitle": "Programa de Criadores | Arquétypus Parfum",
+      "canonical": "https://arquetypus.com.br/criadores",
+      "scripts": []
+    },
+    {
+      "event": "page_view",
+      "page_path": "/sobre",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Sobre Nós: Perfumaria de Arquétipos | Arquétypus Parfum",
+      "headTitle": "Sobre Nós: Perfumaria de Arquétipos | Arquétypus Parfum",
+      "canonical": "https://arquetypus.com.br/sobre",
+      "scripts": []
+    },
+    {
+      "event": "page_view",
+      "page_path": "/perguntas-frequentes",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Perguntas Frequentes | Arquétypus Parfum",
+      "headTitle": "Perguntas Frequentes | Arquétypus Parfum",
+      "canonical": "https://arquetypus.com.br/perguntas-frequentes",
+      "scripts": [
+        "arq-seo-faq"
+      ]
+    },
+    {
+      "event": "page_view",
+      "page_path": "/entrega-e-frete",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Entrega e Frete | Arquétypus Parfum",
+      "headTitle": "Entrega e Frete | Arquétypus Parfum",
+      "canonical": "https://arquetypus.com.br/entrega-e-frete",
+      "scripts": []
+    },
+    {
+      "event": "page_view",
+      "page_path": "/trocas-e-devolucoes",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Trocas e Devoluções | Arquétypus Parfum",
+      "headTitle": "Trocas e Devoluções | Arquétypus Parfum",
+      "canonical": "https://arquetypus.com.br/trocas-e-devolucoes",
+      "scripts": []
+    },
+    {
+      "event": "page_view",
+      "page_path": "/regras-do-site",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Regras de Compra | Arquétypus Parfum",
+      "headTitle": "Regras de Compra | Arquétypus Parfum",
+      "canonical": "https://arquetypus.com.br/regras-do-site",
+      "scripts": []
+    },
+    {
+      "event": "page_view",
+      "page_path": "/privacidade",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Política de Privacidade | Arquétypus Parfum",
+      "headTitle": "Política de Privacidade | Arquétypus Parfum",
+      "canonical": "https://arquetypus.com.br/privacidade",
+      "scripts": []
+    },
+    {
+      "event": "page_view",
+      "page_path": "/termos-de-uso",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Termos de Uso | Arquétypus Parfum",
+      "headTitle": "Termos de Uso | Arquétypus Parfum",
+      "canonical": "https://arquetypus.com.br/termos-de-uso",
+      "scripts": []
+    },
+    {
+      "event": "page_view",
+      "page_path": "/loja/afrodite",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum",
+      "headTitle": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum",
+      "canonical": "https://arquetypus.com.br/loja/afrodite",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ]
+    },
+    {
+      "event": "page_view",
+      "page_path": "/loja/imperatriz",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Imperatriz Velvet Dynasty – Body Splash Premium | Arquétypus Parfum",
+      "headTitle": "Imperatriz Velvet Dynasty – Body Splash Premium | Arquétypus Parfum",
+      "canonical": "https://arquetypus.com.br/loja/imperatriz",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ]
+    },
+    {
+      "event": "page_view",
+      "page_path": "/loja/cleopatra",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum",
+      "headTitle": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum",
+      "canonical": "https://arquetypus.com.br/loja/cleopatra",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ]
+    },
+    {
+      "event": "page_view",
+      "page_path": "/loja/fada",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Fada Pure Light – Body Splash Premium | Arquétypus Parfum",
+      "headTitle": "Fada Pure Light – Body Splash Premium | Arquétypus Parfum",
+      "canonical": "https://arquetypus.com.br/loja/fada",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ]
+    },
+    {
+      "event": "page_view",
+      "page_path": "/loja/sereia",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Sereia Ocean Breeze – Body Splash Premium | Arquétypus Parfum",
+      "headTitle": "Sereia Ocean Breeze – Body Splash Premium | Arquétypus Parfum",
+      "canonical": "https://arquetypus.com.br/loja/sereia",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ]
+    },
+    {
+      "event": "page_view",
+      "page_path": "/loja/zeus",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "headTitle": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "canonical": "https://arquetypus.com.br/loja/zeus",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ]
+    },
+    {
+      "event": "page_view",
+      "page_path": "/loja/guerreiro",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Guerreiro Steel Blue – Body Splash Premium | Arquétypus Parfum",
+      "headTitle": "Guerreiro Steel Blue – Body Splash Premium | Arquétypus Parfum",
+      "canonical": "https://arquetypus.com.br/loja/guerreiro",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ]
+    },
+    {
+      "event": "page_view",
+      "page_path": "/loja/imperador",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Imperador Red Empire – Body Splash Premium | Arquétypus Parfum",
+      "headTitle": "Imperador Red Empire – Body Splash Premium | Arquétypus Parfum",
+      "canonical": "https://arquetypus.com.br/loja/imperador",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ]
+    },
+    {
+      "event": "page_view",
+      "page_path": "/loja/fenix",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Fênix Amber Burn – Body Splash Premium | Arquétypus Parfum",
+      "headTitle": "Fênix Amber Burn – Body Splash Premium | Arquétypus Parfum",
+      "canonical": "https://arquetypus.com.br/loja/fenix",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ]
+    },
+    {
+      "event": "page_view",
+      "page_path": "/perguntas-frequentes",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Perguntas Frequentes | Arquétypus Parfum",
+      "headTitle": "Perguntas Frequentes | Arquétypus Parfum",
+      "canonical": "https://arquetypus.com.br/perguntas-frequentes",
+      "scripts": [
+        "arq-seo-faq"
+      ]
+    },
+    {
+      "event": "page_view",
+      "page_path": "/loja/zeus",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "headTitle": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "canonical": "https://arquetypus.com.br/loja/zeus",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ]
+    },
+    {
+      "event": "page_view",
+      "page_path": "/",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "headTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "canonical": "https://arquetypus.com.br/",
+      "scripts": [
+        "arq-seo-organization",
+        "arq-seo-website"
+      ]
+    },
+    {
+      "event": "page_view",
+      "page_path": "/404-qa",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Página não encontrada | Arquétypus Parfum",
+      "headTitle": "Página não encontrada | Arquétypus Parfum",
+      "canonical": "https://arquetypus.com.br/404-qa",
+      "scripts": []
+    },
+    {
+      "event": "page_view",
+      "page_path": "/",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "headTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "canonical": "https://arquetypus.com.br/",
+      "scripts": [
+        "arq-seo-organization",
+        "arq-seo-website"
+      ]
+    },
+    {
+      "event": "page_view",
+      "page_path": "/loja/zeus",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "headTitle": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "canonical": "https://arquetypus.com.br/loja/zeus",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ]
+    },
+    {
+      "event": "page_view",
+      "page_path": "/",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "headTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "canonical": "https://arquetypus.com.br/",
+      "scripts": [
+        "arq-seo-organization",
+        "arq-seo-website"
+      ]
+    },
+    {
+      "event": "page_view",
+      "page_path": "/loja/fenix?utm_source=qa",
+      "page_location": "http://127.0.0.1:4174/qa-etapa2",
+      "page_title": "Fênix Amber Burn – Body Splash Premium | Arquétypus Parfum",
+      "headTitle": "Fênix Amber Burn – Body Splash Premium | Arquétypus Parfum",
+      "canonical": "https://arquetypus.com.br/loja/fenix",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "path": "/",
+      "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "scripts": [
+        "arq-seo-organization",
+        "arq-seo-website"
+      ],
+      "noindex": false
+    },
+    {
+      "path": "/criadores",
+      "title": "Programa de Criadores | Arquétypus Parfum",
+      "scripts": [],
+      "noindex": false
+    },
+    {
+      "path": "/sobre",
+      "title": "Sobre Nós: Perfumaria de Arquétipos | Arquétypus Parfum",
+      "scripts": [],
+      "noindex": false
+    },
+    {
+      "path": "/perguntas-frequentes",
+      "title": "Perguntas Frequentes | Arquétypus Parfum",
+      "scripts": [
+        "arq-seo-faq"
+      ],
+      "noindex": false
+    },
+    {
+      "path": "/entrega-e-frete",
+      "title": "Entrega e Frete | Arquétypus Parfum",
+      "scripts": [],
+      "noindex": false
+    },
+    {
+      "path": "/trocas-e-devolucoes",
+      "title": "Trocas e Devoluções | Arquétypus Parfum",
+      "scripts": [],
+      "noindex": false
+    },
+    {
+      "path": "/regras-do-site",
+      "title": "Regras de Compra | Arquétypus Parfum",
+      "scripts": [],
+      "noindex": false
+    },
+    {
+      "path": "/privacidade",
+      "title": "Política de Privacidade | Arquétypus Parfum",
+      "scripts": [],
+      "noindex": false
+    },
+    {
+      "path": "/termos-de-uso",
+      "title": "Termos de Uso | Arquétypus Parfum",
+      "scripts": [],
+      "noindex": false
+    },
+    {
+      "path": "/loja/afrodite",
+      "title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ],
+      "noindex": false
+    },
+    {
+      "path": "/loja/imperatriz",
+      "title": "Imperatriz Velvet Dynasty – Body Splash Premium | Arquétypus Parfum",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ],
+      "noindex": false
+    },
+    {
+      "path": "/loja/cleopatra",
+      "title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ],
+      "noindex": false
+    },
+    {
+      "path": "/loja/fada",
+      "title": "Fada Pure Light – Body Splash Premium | Arquétypus Parfum",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ],
+      "noindex": false
+    },
+    {
+      "path": "/loja/sereia",
+      "title": "Sereia Ocean Breeze – Body Splash Premium | Arquétypus Parfum",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ],
+      "noindex": false
+    },
+    {
+      "path": "/loja/zeus",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ],
+      "noindex": false
+    },
+    {
+      "path": "/loja/guerreiro",
+      "title": "Guerreiro Steel Blue – Body Splash Premium | Arquétypus Parfum",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ],
+      "noindex": false
+    },
+    {
+      "path": "/loja/imperador",
+      "title": "Imperador Red Empire – Body Splash Premium | Arquétypus Parfum",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ],
+      "noindex": false
+    },
+    {
+      "path": "/loja/fenix",
+      "title": "Fênix Amber Burn – Body Splash Premium | Arquétypus Parfum",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ],
+      "noindex": false
+    },
+    {
+      "path": "/perguntas-frequentes",
+      "title": "Perguntas Frequentes | Arquétypus Parfum",
+      "scripts": [
+        "arq-seo-faq"
+      ],
+      "noindex": false
+    },
+    {
+      "path": "/loja/zeus",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ],
+      "noindex": false
+    },
+    {
+      "path": "/",
+      "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "scripts": [
+        "arq-seo-organization",
+        "arq-seo-website"
+      ],
+      "noindex": false
+    },
+    {
+      "path": "/404-qa",
+      "title": "Página não encontrada | Arquétypus Parfum",
+      "scripts": [],
+      "noindex": true
+    },
+    {
+      "path": "/",
+      "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "scripts": [
+        "arq-seo-organization",
+        "arq-seo-website"
+      ],
+      "noindex": false
+    },
+    {
+      "path": "/loja/zeus",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ],
+      "noindex": false
+    },
+    {
+      "path": "/",
+      "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "scripts": [
+        "arq-seo-organization",
+        "arq-seo-website"
+      ],
+      "noindex": false
+    },
+    {
+      "path": "/loja/fenix?utm_source=qa",
+      "title": "Fênix Amber Burn – Body Splash Premium | Arquétypus Parfum",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ],
+      "noindex": false
+    },
+    {
+      "path": "/loja/fenix?utm_source=qa#ficha",
+      "title": "Fênix Amber Burn – Body Splash Premium | Arquétypus Parfum",
+      "scripts": [
+        "arq-seo-product",
+        "arq-seo-breadcrumb"
+      ],
+      "noindex": false
+    }
+  ],
+  "done": true,
+  "hydration": [],
+  "console": []
+}
