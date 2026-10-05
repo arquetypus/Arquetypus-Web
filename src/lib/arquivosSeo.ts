@@ -1,5 +1,5 @@
 import { ARCHETYPES, productPath } from '@/data/archetypes'
-import { CONDICOES, EMPRESA, FRETE_GRATIS_ACIMA, OPERACAO } from '@/data/empresa'
+import { CONDICOES, EMPRESA, FRETE_GRATIS_ACIMA, OPERACAO, SITE } from '@/data/empresa'
 import { porExtenso } from '@/lib/extenso'
 import { PAGINAS_PUBLICAS } from '@/data/rotas'
 
@@ -8,7 +8,7 @@ import { PAGINAS_PUBLICAS } from '@/data/rotas'
  * saem dos mesmos dados do site (produtos, preços, empresa, rotas), então nunca ficam desatualizados.
  * Em `npm run dev` os três também respondem, pra conferir.
  */
-export const SITE = 'https://arquetypus.com.br'
+export { SITE }
 
 const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 const xml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')

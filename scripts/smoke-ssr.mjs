@@ -17,7 +17,7 @@ const text = html => html.replace(/<[^>]*>/g, '').replace(/&#(\d+);/g, (_, n) =>
 const references = new Set();
 const resource = value => {
   if (/^(?:data:|https?:|\/\/|#)/.test(value)) return;
-  const pathname = new URL(value, 'https://arquetypus.com.br').pathname;
+  const pathname = new URL(value, 'https://www.arquetypus.com.br').pathname;
   assert.ok(pathname.startsWith('/assets/') || value.startsWith('/'), 'Recurso relativo inesperado: ' + value);
   references.add(pathname);
 };
@@ -79,7 +79,7 @@ try {
     // Não tratar url(%23n) interno de SVG data: como arquivo externo do CSS.
     const content = (await readFile(path.join(root, 'dist', css), 'utf8')).replace(/url\((["'])data:[\s\S]*?\1\)/g, '');
     for (const m of content.matchAll(/url\(["']?([^)'"\s]+)["']?\)/g)) {
-      if (!/^(?:data:|#|https?:|\/\/)/.test(m[1])) resource(new URL(m[1], 'https://arquetypus.com.br/' + css).pathname);
+      if (!/^(?:data:|#|https?:|\/\/)/.test(m[1])) resource(new URL(m[1], 'https://www.arquetypus.com.br/' + css).pathname);
     }
   }
   for (const attr of Object.entries(DEFAULT_HTML_ATTRIBUTES)) assert.ok(template.includes(`${attr[0]}="${attr[1]}"`));
@@ -112,7 +112,7 @@ try {
         assert.ok(html.includes('/' + expected.file), 'Glob no HTML: ' + folder + '/' + id);
       }
       const data = JSON.parse(head.scripts.find(s => s.id === 'arq-seo-product').json);
-      assert.equal(data.image, 'https://arquetypus.com.br/' + manifest[`src/assets/fotos/pdp-frasco/${id}.jpg`].file);
+      assert.equal(data.image, 'https://www.arquetypus.com.br/' + manifest[`src/assets/fotos/pdp-frasco/${id}.jpg`].file);
       const price = head.description.match(/R\$\s*[\d.,]+/)[0];
       assert.ok(text(main).replaceAll(/\s/g, '').includes(price.replaceAll(/\s/g, '')), 'Preço: ' + route);
     }
@@ -167,7 +167,7 @@ try {
       // Endereços antigos: no cliente redirecionam (Navigate) pra URL definitiva, com o head dela.
       for (const prefix of ['/loja/', '/arquetipos/']) {
         const result = render(prefix + product.id);
-        assert.equal(result.head.canonical, 'https://arquetypus.com.br' + productPath(product), prefix + product.id);
+        assert.equal(result.head.canonical, 'https://www.arquetypus.com.br' + productPath(product), prefix + product.id);
         assert.ok(!result.html.includes('Pirâmide olfativa'), prefix + product.id);
         slugs.push({ id: prefix + product.id, redirect: productPath(product) });
       }
@@ -177,7 +177,7 @@ try {
       const prefixes = getArchetype(id) ? ['/body-splash/'] : ['/body-splash/', '/loja/', '/arquetipos/'];
       for (const prefix of prefixes) {
         const result = render(prefix + id);
-        assert.equal(result.head.canonical, 'https://arquetypus.com.br/');
+        assert.equal(result.head.canonical, 'https://www.arquetypus.com.br/');
         assert.ok(!result.html.includes('Pirâmide olfativa'), prefix + id);
         slugs.push({ id: prefix + id, rejected: true });
       }

@@ -2,6 +2,13 @@
  * Dados oficiais da empresa (confirmados pelo usuário, out/2026) — rodapés, páginas institucionais e FAQ leem
  * daqui. O Decreto 7.962/2013 (comércio eletrônico) pede razão social, CNPJ, endereço e contato visíveis no site.
  */
+/**
+ * Endereço oficial do site (out/2026): com www, como a Vercel serve — arquetypus.com.br redireciona (308) pra cá.
+ * Canonical, og:url/og:image, sitemap, robots e llms.txt saem daqui; se o domínio principal mudar no painel da
+ * Vercel, mudar só aqui (e os scripts de verificação do build).
+ */
+export const SITE = 'https://www.arquetypus.com.br'
+
 export const EMPRESA = {
   marca: 'Arquétypus Parfum',
   razao: 'Saniella Ltda',

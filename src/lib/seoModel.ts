@@ -1,5 +1,5 @@
 import { getArchetype, getArchetypeBySlug, productPath } from '@/data/archetypes'
-import { CONDICOES, EMPRESA } from '@/data/empresa'
+import { CONDICOES, EMPRESA, SITE } from '@/data/empresa'
 import { CONTATOS } from '@/data/home'
 import { FAQ_LOJA, FAQ_PRODUTO } from '@/data/faq'
 import { respostaTexto } from '@/data/faqText'
@@ -8,7 +8,7 @@ import { PDP_FRASCO } from '@/data/productMedia'
 import logo from '@/assets/brand/logo-dourado.png'
 import type { Archetype } from '@/types/archetype'
 
-export const SITE = 'https://arquetypus.com.br'
+export { SITE }
 export const comMarca = (t: string) => `${t} | ${EMPRESA.marca}`
 export { SEO_HOME }
 

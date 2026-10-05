@@ -296,7 +296,8 @@ decisão de produto já tomada:
 - **SEO por página (out/2026):** modelo compartilhado em `lib/seoModel.ts`; `RouteSeo` e
   `lib/seo.ts` aplicam metadados na navegação cliente, renderer injeta o mesmo head no HTML bruto.
   Títulos, descrição, canonical e OG são próprios de cada rota; canonical sempre oficial,
-  sem hostname de preview. PDP usa nome, sobrenome, frase, família e preço. Não duplicar regras
+  sem hostname de preview. Domínio oficial: `https://www.arquetypus.com.br` (`SITE` em `data/empresa.ts`),
+  porque a Vercel serve o www e redireciona o domínio sem www pra ele (decisão do usuário, out/2026). PDP usa nome, sobrenome, frase, família e preço. Não duplicar regras
   SEO nas páginas ou publicar Offer/avaliações não confirmados.
 - **Favicon (out/2026):** emblema dourado com fundo transparente (`favicon.ico` 16/32/48, `favicon-32.png`);
   ícones de iPhone/app (`apple-touch-icon`, `icon-192/512`) com fundo branco — iOS não aceita transparência.

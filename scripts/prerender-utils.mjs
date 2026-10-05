@@ -74,8 +74,8 @@ export async function verifyDocuments(pages, renderer, dist) {
   function addResource(raw, base = '/') {
     const value = decodeHtml(raw);
     if (/^(?:data:|#)/i.test(value)) return;
-    const url = new URL(value, 'https://arquetypus.com.br' + base);
-    if (url.origin !== 'https://arquetypus.com.br') return;
+    const url = new URL(value, 'https://www.arquetypus.com.br' + base);
+    if (url.origin !== 'https://www.arquetypus.com.br') return;
     assert.ok(!/^\/(?:src|dist-server)\//.test(url.pathname), value);
     const file = path.resolve(dist, '.' + decodeURIComponent(url.pathname));
     assert.ok(file.startsWith(path.resolve(dist) + path.sep), value);
