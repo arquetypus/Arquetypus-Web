@@ -42,7 +42,6 @@ try {
   assert.equal(new Set(routes).size, routes.length);
   const manifest = JSON.parse(await readFile(path.join(root, 'dist/.vite/manifest.json'), 'utf8'));
   assert.ok(manifest['index.html'].isEntry);
-  const baseline = JSON.parse(await readFile(path.join(root, 'docs/prerender/evidence/etapa2-preview-metadata.json'), 'utf8'));
   const bundle = await readFile(path.join(root, 'dist-server/entry-server.js'), 'utf8');
   // Auditoria do formato não minificado emitido pelo Vite/Rolldown instalado.
   // Caminho original identifica asset; basename sozinho nunca decide associação.
@@ -95,13 +94,7 @@ try {
     assert.ok(!html.includes('aria-label="Cookies neste site"'), route);
     assert.ok(!/ARQ-\d+/.test(html), route);
     const h1 = [...html.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/g)].map(m => text(m[1]));
-    const previous = baseline.rows.find(row => row.route === route);
-    if (previous) {
-      assert.equal(head.title, previous.title, route);
-      assert.equal(head.description, previous.description, route);
-      assert.equal(head.canonical, previous.canonical, route);
-      assert.deepEqual(h1, previous.h1.map(text), 'H1: ' + route);
-    }
+    assert.equal(h1.length, 1, 'H1 único: ' + route);
     const main = html.match(/<main\b[^>]*>([\s\S]*?)<\/main>/)?.[1];
     assert.ok(text(main ?? '').length > 100, 'Conteúdo principal: ' + route);
     scanMarkup(html);
@@ -139,7 +132,26 @@ try {
   try {
     const { ARCHETYPES, getArchetype } = await server.ssrLoadModule('/src/data/archetypes.ts');
     const { PAGINAS_PUBLICAS } = await server.ssrLoadModule('/src/data/rotas.ts');
+    const { resolveSeo, serializeJsonLd } = await server.ssrLoadModule('/src/lib/seoModel.ts');
     assert.deepEqual(routes, [...PAGINAS_PUBLICAS.map(p => p.path), ...ARCHETYPES.map(a => '/loja/' + a.id)]);
+    // Contrato permanente: validar dados atuais, sem depender de snapshots da migração.
+    for (const row of rows) {
+      const expected = resolveSeo(row.route);
+      // Imports do módulo fonte usam /src; no bundle, conferir URL emitida pelo manifest.
+      expected.scripts = expected.scripts.map(script => {
+        const data = JSON.parse(script.json);
+        for (const field of ['image', 'logo']) if (data[field]) {
+          const url = new URL(data[field]);
+          if (url.pathname.startsWith('/src/assets/')) {
+            const asset = manifest[url.pathname.slice(1)];
+            assert.ok(asset, 'Asset do head no manifest: ' + url.pathname);
+            data[field] = new URL('/' + asset.file, url.origin).href;
+          }
+        }
+        return { ...script, json: serializeJsonLd(data) };
+      });
+      assert.deepEqual(row.head, expected, 'Head fonte/bundle: ' + row.route);
+    }
     for (const product of ARCHETYPES) assert.equal(getArchetype(product.id), product);
     for (const id of ['constructor', 'toString', '__proto__', 'nao-existe', 'ZEUS']) {
       assert.equal(getArchetype(id), undefined, id);
@@ -175,7 +187,7 @@ try {
     theme: DEFAULT_HTML_ATTRIBUTES, routes: rows, assets, duplicateBasenames, resources, publicFiles, slugs, warnings, redirectWarnings,
     checks: ['18 rotas + 404 com H1 e conteúdo; preço/fotos nas nove PDPs', 'Tema igual ao template cliente',
       'URLs e bytes por caminho original iguais ao manifest cliente', 'Globs, basenames duplicados, src/srcset/poster/preloads/CSS/public verificados',
-      'Head e HTML da primeira rota iguais após renderizar outra rota', 'Lookup real rejeita propriedades herdadas', 'Sem DOM ou warnings; modo production', 'Template cliente íntegro antes da geração estática'] };
+      'Head fonte/bundle iguais; H1 único em cada documento', 'Head e HTML da primeira rota iguais após renderizar outra rota', 'Lookup real rejeita propriedades herdadas', 'Sem DOM ou warnings; modo production', 'Template cliente íntegro antes da geração estática'] };
   await writeFile(path.join(root, 'dist-server/smoke-ssr.json'), JSON.stringify(report, null, 2) + '\n');
   console.log(`PASS SSR: 18 rotas + 404; ${assets.length} assets por origem; ${resources.length} recursos; ${duplicateBasenames.length} basenames repetidos; slugs seguros; sem DOM/warnings nas rotas publicáveis. ${redirectWarnings.length} avisos esperados de Navigate nos testes negativos.`);
 } finally {

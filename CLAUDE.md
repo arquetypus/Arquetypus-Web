@@ -339,12 +339,13 @@ decisão de produto já tomada:
   valores (preço cheio riscado via `Preco`). `KIT_TIERS` em `data/home.ts` (escada antiga
   89,90/84,90/79,90 do `KitBuilder`) e `ECON.kitPreco` (Kit Descoberta, 79,90) estão
   desatualizados — revisar ao religar.
-- **Pré-renderização implementada na branch `prerender` (out/2026):** React `renderToString` +
+- **Pré-renderização estática (out/2026):** React `renderToString` +
   `StaticRouter`, mesma árvore React, hidratação do documento compatível e fallback cliente
   quando URL/histórico exigem outra árvore. Pipeline gera 18 páginas públicas + 404 em `dist`;
   renderer/template/evidências privadas em `dist-server` nunca são publicados. Sem framework
-  novo ou plugin SSG. `build:client` isolado não serve como build de deploy. Validar HTML bruto,
-  recursos, roteamento real e paridade antes da Etapa 7; acompanhar plano `MIGRACAO-PRERENDER.md`.
+  novo ou plugin SSG. `build:client` isolado não serve como build de deploy. Os scripts em
+  `scripts/` são parte permanente do pipeline; não removê-los junto de documentação temporária.
+  Validar HTML bruto, recursos, roteamento real e paridade antes de publicar; operação em `README.md`.
 - **Metadados por página, ajustes adiados pelo usuário (out/2026):** título do produto com volume
   ("Zeus Stormbreak — Body Splash Premium 220 ml | Arquetypus" — decidir o padrão de marca nos títulos),
   descrição do produto com família + 3 notas + 10% de essência (≤155 caracteres), og:image 1200×630 por
@@ -375,6 +376,9 @@ decisão de produto já tomada:
 - **Código do arquétipo (`cod`, "ARQ-01"…) é referência interna** (out/2026):
   fica em `data/archetypes.ts`, mas nunca aparece no site — nem "ARQ-07", nem
   "Nº 07", nem numeral romano derivado dele.
+- **Nome cadastrado no GTIN (`nomeOficial`) não é nome comercial do site.** Usar somente
+  para identificação estruturada em SEO/integrações; componentes, H1, cards e sacola
+  continuam usando `nome`/`sobrenome`. `gtin13` é texto e pertence ao Product no JSON-LD.
 - Português nas strings de UI e nos dados de conteúdo; inglês em
   nomes de tipo, variável e arquivo — como já está no código.
 - Não inventar copy novo pros 9 arquétipos. Se uma seção nova precisa

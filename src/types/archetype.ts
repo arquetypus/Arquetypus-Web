@@ -21,6 +21,10 @@ export interface Archetype {
   id: string
   cod: string
   nome: string
+  /** Nome cadastrado no GTIN, informado pelo usuário; uso em SEO/integrações, não na apresentação comercial. */
+  nomeOficial: string
+  /** GTIN-13 informado pelo usuário; texto para preservar todos os dígitos. */
+  gtin13: string
   /** Sobrenome do body splash (ex.: Afrodite → "First Kiss"), linha menor abaixo do nome */
   sobrenome?: string
   cor: string

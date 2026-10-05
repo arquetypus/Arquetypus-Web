@@ -1,8 +1,0 @@
-﻿{
-    "cleanNormalizedLength":  5215,
-    "localNormalizedLength":  5214,
-    "firstDifference":  5195,
-    "cleanTail":  "    \u003cdiv id=\"root\"\u003e\u003c/div\u003e\r\n  \u003c/body\u003e\n\u003c/html\u003e\n",
-    "localTail":  "    \u003cdiv id=\"root\"\u003e\u003c/div\u003e\n  \u003c/body\u003e\n\u003c/html\u003e\n",
-    "equalWithoutFinalWhitespace":  false
-}

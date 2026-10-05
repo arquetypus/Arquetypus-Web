@@ -48,11 +48,20 @@ canonical oficial e cache padrão. `vite preview` não certifica redirects ou he
 
 ## Validação e publicação
 
-Plano e registros: [MIGRACAO-PRERENDER.md](MIGRACAO-PRERENDER.md) e
-[docs/prerender](docs/prerender). Ferramentas e evidências de QA ficam fora de `dist`.
-Preview da branch `prerender` é isolado da produção; header Vercel `noindex` deve
-proteger preview sem contaminar HTMLs válidos destinados à produção.
+`npm run build` executa os gates permanentes de SSR, HTML, head, recursos e roteamento.
+Relatórios locais ficam em `dist-server`, fora da saída publicada. Planos, capturas e
+ferramentas temporárias da migração foram removidos; versões anteriores permanecem no Git.
 
-Publicação em `main` pertence à Etapa 7, após aceite do preview, autorização e
-confirmação do deployment estável/permissão de rollback. Configuração nesta branch
-não implica produção migrada. Não ativar compra, kit, quiz ou persistência durante SSG.
+Nomes comerciais visíveis vêm de `nome` e `sobrenome`. `nomeOficial` contém o nome
+cadastrado no GTIN, reservado para identificação estruturada em SEO/integrações.
+`Product.name` e `Product.gtin13` são gerados pelo modelo compartilhado. O build valida
+formato, dígito verificador, unicidade e correspondência com o produto. Google Shopping
+exige integração própria; o cadastro desses campos não publica um feed.
+Fonte e regras do cadastro: [Identidade dos produtos](docs/produtos.md).
+
+Antes de publicar, validar preview e confirmar deployment de retorno disponível.
+Push em `main` aciona a integração Git existente; conferir HTML bruto e navegação no
+domínio principal após o deploy. Acesso administrativo à Vercel é manual pelo usuário.
+Testes funcionais usam Google Chrome como navegador principal, conforme `AGENTS.md`.
+Preservar proteção `noindex` do preview sem contaminar páginas válidas em produção.
+Conferir recebimento externo de analytics e acompanhar erros após a publicação.

@@ -56,9 +56,9 @@ export function productSchema(a: Archetype) {
   const url = `${SITE}/loja/${a.id}`
   return {
     '@context': 'https://schema.org', '@type': 'Product', '@id': `${url}#product`, url,
-    name: `${a.nome} ${a.sobrenome ?? ''}`.trim(), description: productMetadata(a).description,
+    name: a.nomeOficial, description: productMetadata(a).description,
     image: absolute(PDP_FRASCO[a.id]), brand: { '@type': 'Brand', name: EMPRESA.marca },
-    category: a.tipo, sku: a.id,
+    category: a.tipo, sku: a.id, gtin13: a.gtin13,
     // Compra desativada: não publicar Offer, disponibilidade ou avaliações não confirmadas.
   }
 }

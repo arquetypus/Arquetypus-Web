@@ -1,8 +1,0 @@
-npx.cmd : npm notice run app@0.0.0 npx
-No linha:2 caractere:43
-+ ... nv:Path = "$env:NVM_SYMLINK;$env:Path"; & npx.cmd tsc -b 2>&1 | Tee-O ...
-+                                             ~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (npm notice run app@0.0.0 npx:String) [], RemoteException
-    + FullyQualifiedErrorId : NativeCommandError
- 
-npm notice run tsc -b

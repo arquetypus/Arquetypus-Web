@@ -10,6 +10,8 @@ import { FAMILIAS_BY_SLUG } from '@/data/families'
 const RAW: Omit<Archetype, 'fam'>[] = [
   {
     id: 'afrodite',
+    nomeOficial: 'BODY SPLASH AFRODITE FIRST KISS 200 ML',
+    gtin13: '7898745336491',
     cod: 'ARQ-01',
     nome: 'Afrodite',
     sobrenome: 'First Kiss',
@@ -42,6 +44,8 @@ const RAW: Omit<Archetype, 'fam'>[] = [
   },
   {
     id: 'imperatriz',
+    nomeOficial: 'BODY SPLASH IMPERATRIZ VELVET DYNASTY 200 ML',
+    gtin13: '7898745336507',
     cod: 'ARQ-02',
     nome: 'Imperatriz',
     sobrenome: 'Velvet Dynasty',
@@ -74,6 +78,8 @@ const RAW: Omit<Archetype, 'fam'>[] = [
   },
   {
     id: 'cleopatra',
+    nomeOficial: 'BODY SPLASH CLEÓPATRA NILE ROSE 200 ML',
+    gtin13: '7898745336484',
     cod: 'ARQ-03',
     nome: 'Cleópatra',
     sobrenome: 'Nile Rose',
@@ -106,6 +112,8 @@ const RAW: Omit<Archetype, 'fam'>[] = [
   },
   {
     id: 'fada',
+    nomeOficial: 'BODY SPLASH FADA PURE LIGHT 200 ML',
+    gtin13: '7898745336514',
     cod: 'ARQ-04',
     nome: 'Fada',
     sobrenome: 'Pure Light',
@@ -138,6 +146,8 @@ const RAW: Omit<Archetype, 'fam'>[] = [
   },
   {
     id: 'sereia',
+    nomeOficial: 'BODY SPLASH SEREIA OCEAN BREEZE 200 ML',
+    gtin13: '7898745336477',
     cod: 'ARQ-05',
     nome: 'Sereia',
     sobrenome: 'Ocean Breeze',
@@ -170,6 +180,8 @@ const RAW: Omit<Archetype, 'fam'>[] = [
   },
   {
     id: 'zeus',
+    nomeOficial: 'BODY SPLASH ZEUS STORMBREAK 220 ML',
+    gtin13: '7898745336460',
     cod: 'ARQ-06',
     nome: 'Zeus',
     sobrenome: 'Stormbreak',
@@ -203,6 +215,8 @@ const RAW: Omit<Archetype, 'fam'>[] = [
   },
   {
     id: 'guerreiro',
+    nomeOficial: 'BODY SPLASH GUERREIRO STEEL BLUE 220 ML',
+    gtin13: '7898745336521',
     cod: 'ARQ-07',
     nome: 'Guerreiro',
     sobrenome: 'Steel Blue',
@@ -235,6 +249,8 @@ const RAW: Omit<Archetype, 'fam'>[] = [
   },
   {
     id: 'imperador',
+    nomeOficial: 'BODY SPLASH IMPERADOR RED EMPIRE 220 ML',
+    gtin13: '7898745336538',
     cod: 'ARQ-08',
     nome: 'Imperador',
     sobrenome: 'Red Empire',
@@ -268,6 +284,8 @@ const RAW: Omit<Archetype, 'fam'>[] = [
   },
   {
     id: 'fenix',
+    nomeOficial: 'BODY SPLASH FÊNIX AMBER BURN 220 ML',
+    gtin13: '7898745336545',
     cod: 'ARQ-09',
     nome: 'Fênix',
     sobrenome: 'Amber Burn',

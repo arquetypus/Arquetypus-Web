@@ -59,6 +59,16 @@ export async function verifyDocuments(pages, renderer, dist) {
   const { routes, render, DEFAULT_HTML_ATTRIBUTES } = renderer;
   const expectedFiles = validateRoutes(routes, dist);
   assert.deepEqual(pages.map(p => p.file).sort(), expectedFiles, 'Inventário HTML');
+  const gtins = new Set();
+  for (const product of renderer.products) {
+    assert.equal(typeof product.gtin13, 'string', 'GTIN deve ser texto: ' + product.id);
+    assert.match(product.gtin13, /^\d{13}$/, 'Formato GTIN-13: ' + product.id);
+    const sum = [...product.gtin13.slice(0, 12)].reduce((total, digit, index) => total + Number(digit) * (index % 2 ? 3 : 1), 0);
+    assert.equal(Number(product.gtin13[12]), (10 - sum % 10) % 10, 'Dígito verificador GTIN-13: ' + product.id);
+    assert.ok(!gtins.has(product.gtin13), 'GTIN duplicado: ' + product.id);
+    gtins.add(product.gtin13);
+    assert.equal(product.nomeOficial, `BODY SPLASH ${product.nome} ${product.sobrenome} ${product.vol}`.toUpperCase(), 'Identidade/volume do catálogo: ' + product.id);
+  }
   const manifest = JSON.parse(await readFile(path.join(dist, '.vite/manifest.json'), 'utf8'));
   const resources = new Set();
   function addResource(raw, base = '/') {
@@ -119,8 +129,11 @@ export async function verifyDocuments(pages, renderer, dist) {
       const purchase = main.slice(identityStart, nextSection);
       assert.ok(purchase && compact(purchase).includes(compact(price)), 'Preço na compra: ' + page.file);
       assert.ok(compact(purchase).includes(compact(product.card)), 'Descrição na compra: ' + page.file);
-      const schema = JSON.parse(expected.head.scripts.find(script => script.id === 'arq-seo-product').json);
-      assert.equal(schema.name, `${product.nome} ${product.sobrenome ?? ''}`.trim());
+      const rawProduct = head.match(/<script\b[^>]*id="arq-seo-product"[^>]*>([\s\S]*?)<\/script>/)?.[1];
+      assert.ok(rawProduct, 'Product no HTML bruto: ' + page.file);
+      const schema = JSON.parse(rawProduct);
+      assert.equal(schema.name, product.nomeOficial);
+      assert.equal(schema.gtin13, product.gtin13);
       assert.ok(!('offers' in schema) && !('aggregateRating' in schema) && !('review' in schema), page.file);
       assert.equal(schema.sku, product.id);
       addResource(schema.image);
