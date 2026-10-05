@@ -69,8 +69,10 @@ try {
   const duplicateBasenames = Object.entries(Object.groupBy(assets, a => path.basename(a.source)))
     .filter(([, group]) => group.length > 1).map(([basename, group]) => ({ basename, sources: group.map(a => a.source), urls: group.map(a => a.url) }));
   assert.ok(duplicateBasenames.length >= 9);
-  const template = await readFile(path.join(root, 'dist/index.html'), 'utf8');
-  assert.match(template, /<div id="root"><\/div>/);
+  const publicIndex = await readFile(path.join(root, 'dist/index.html'), 'utf8');
+  const template = publicIndex.includes('<html data-rota=')
+    ? await readFile(path.join(root, 'dist-server/client-template.html'), 'utf8') : publicIndex;
+  assert.match(template, /<div id="root">(?:<!--arq-root-->)?<\/div>/);
   assert.ok(!template.includes('<h1'));
   scanMarkup(template);
   for (const css of manifest['index.html'].css ?? []) {
@@ -173,7 +175,7 @@ try {
     theme: DEFAULT_HTML_ATTRIBUTES, routes: rows, assets, duplicateBasenames, resources, publicFiles, slugs, warnings, redirectWarnings,
     checks: ['18 rotas + 404 com H1 e conteúdo; preço/fotos nas nove PDPs', 'Tema igual ao template cliente',
       'URLs e bytes por caminho original iguais ao manifest cliente', 'Globs, basenames duplicados, src/srcset/poster/preloads/CSS/public verificados',
-      'Head e HTML da primeira rota iguais após renderizar outra rota', 'Lookup real rejeita propriedades herdadas', 'Sem DOM ou warnings; modo production', 'Saída pública continua SPA'] };
+      'Head e HTML da primeira rota iguais após renderizar outra rota', 'Lookup real rejeita propriedades herdadas', 'Sem DOM ou warnings; modo production', 'Template cliente íntegro antes da geração estática'] };
   await writeFile(path.join(root, 'dist-server/smoke-ssr.json'), JSON.stringify(report, null, 2) + '\n');
   console.log(`PASS SSR: 18 rotas + 404; ${assets.length} assets por origem; ${resources.length} recursos; ${duplicateBasenames.length} basenames repetidos; slugs seguros; sem DOM/warnings nas rotas publicáveis. ${redirectWarnings.length} avisos esperados de Navigate nos testes negativos.`);
 } finally {

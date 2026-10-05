@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && npm run build:client && npm run build:server && npm run verify:ssr",
+    "build": "tsc -b && npm run build:client && npm run build:server && npm run verify:ssr && npm run prerender && npm run verify:prerender",
     "build:client": "vite build --manifest",
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist-server",
     "verify:ssr": "node scripts/smoke-ssr.mjs",
+    "prerender": "node scripts/prerender.mjs",
+    "verify:prerender": "node scripts/verify-prerender.mjs",
     "lint": "oxlint",
     "preview": "vite preview"
   },

@@ -19,9 +19,10 @@ function temaInicial(): Plugin {
       })
       try {
         const mod = await server.ssrLoadModule('/src/lib/theme.ts')
+        const bootstrap = await server.ssrLoadModule('/src/lib/publicRoutes.ts')
         const attributes = Object.entries(mod.DEFAULT_HTML_ATTRIBUTES as Record<string, string>)
           .map(([name, value]) => `${name}="${value}"`).join(' ')
-        return html.replace('<html ', `<html ${attributes} `)
+        return html.replace('<html ', `<html ${attributes} `).replace('<!--arq-initial-render-->', () => bootstrap.initialRenderBootstrap())
       } finally {
         if (!ctx.server) await server.close()
       }

@@ -1,0 +1,203 @@
+{
+  "collectedAt": "2026-10-05T04:18:28.825Z",
+  "node": "v24.19.0",
+  "pages": [
+    {
+      "file": "index.html",
+      "sha256": "ae0ba9d99ec5ebd9b6f7693f96574d3b7d313bdbdc0fecb41d8786bec1ae360f"
+    },
+    {
+      "file": "criadores.html",
+      "sha256": "503c97cddbf7ee3bae56debfd501537b9ebb4b0ce8773afb33c8c3a97834fa83"
+    },
+    {
+      "file": "sobre.html",
+      "sha256": "3e3299c4ff72a496a3e3864debdd7f50d894e2dc1caac01b1a11ddbceaa5ee8c"
+    },
+    {
+      "file": "perguntas-frequentes.html",
+      "sha256": "ef940b2cb18e67f453a47519c0c0edb798b31603f79e9f59f3443e422f4dc2c8"
+    },
+    {
+      "file": "entrega-e-frete.html",
+      "sha256": "720c6aaabf34a54a5aca56fa5be184a2e73e0fa4bfbbf243fb35d9d5e6ea0506"
+    },
+    {
+      "file": "trocas-e-devolucoes.html",
+      "sha256": "0215815a33afcf1ad597243f9ff260a82b806d2e501b6d968085add6aca5da7d"
+    },
+    {
+      "file": "regras-do-site.html",
+      "sha256": "37f858766f29f777062d564b51fe58a1a24065b0e9a7a16411dd5d92aba5153c"
+    },
+    {
+      "file": "privacidade.html",
+      "sha256": "3b3225f3600e8c5b82feeba2469a89243e7b44e2f9bf2bcccf55a8bd855758e6"
+    },
+    {
+      "file": "termos-de-uso.html",
+      "sha256": "13284b33c658adc07e483285b4402151f9ddfaa4d41ad53a71d4d924cbd36557"
+    },
+    {
+      "file": "loja/afrodite.html",
+      "sha256": "46751aed9b0a6a239011fe4a8a2b57dc8181fa5c67defbb325178794bdb28491"
+    },
+    {
+      "file": "loja/imperatriz.html",
+      "sha256": "078c8d29c0d94730a2a59c95d7f5ed990c149110d50df543833223c391f9a28e"
+    },
+    {
+      "file": "loja/cleopatra.html",
+      "sha256": "ed743a3dc4d7042df6d7ee1b0129e0ba016c55126dd7b13fb0bff43a0cb93e05"
+    },
+    {
+      "file": "loja/fada.html",
+      "sha256": "86262f1841456c33478f42a5f54e2bce88b4220919b9cf014756961fd5e9f313"
+    },
+    {
+      "file": "loja/sereia.html",
+      "sha256": "d0c811a0a22061f56e7c5da5bc01abc10cb75f04435ca08b5dd22dea4e6d68f3"
+    },
+    {
+      "file": "loja/zeus.html",
+      "sha256": "671de2ee8d44a455cc1ce969ab0b87a16825f682aceaa34a4461448ba7e697db"
+    },
+    {
+      "file": "loja/guerreiro.html",
+      "sha256": "403b9f5d3a5bfbfe2340f5b1eb0ad41af1e3c2a5366a8ff1519f1a121b13313f"
+    },
+    {
+      "file": "loja/imperador.html",
+      "sha256": "3b3ddf42d089f5a75e31111eab44363238f0e1416777380bfa64d304919e2629"
+    },
+    {
+      "file": "loja/fenix.html",
+      "sha256": "fdddbe8675567feb3c3101230bcd98908c09462535da0782384343d7ebb7ef6b"
+    },
+    {
+      "file": "404.html",
+      "sha256": "d9d289a7ca4d51ac3424249e33741fc37818094b7a69eebf7f8b4e3f0e274220"
+    }
+  ],
+  "inventory": [
+    ".vite/manifest.json",
+    "404.html",
+    "apple-touch-icon.png",
+    "assets/afrodite-3me8ajmF.jpg",
+    "assets/afrodite-B05JoXeN.jpg",
+    "assets/afrodite-B6GNBj6I.jpg",
+    "assets/afrodite-DSxSPTn3.jpg",
+    "assets/afrodite-DVF-Wqlu.jpg",
+    "assets/afrodite-Dk0tYPJ7.jpg",
+    "assets/afrodite-desktop-B7HpEMIW.jpg",
+    "assets/amadeirados-especiados-B267512W.jpg",
+    "assets/ambarados-adocicados-B5C3mvbW.jpg",
+    "assets/arquetypus-BVgblDH-.jpg",
+    "assets/cleopatra-BZdVdx6Q.jpg",
+    "assets/cleopatra-Bl8vga44.jpg",
+    "assets/cleopatra-Dkqrl1GK.jpg",
+    "assets/cleopatra-vBb_yrcd.jpg",
+    "assets/cleopatra-zF7WXxBj.jpg",
+    "assets/colecao-completa-DFK73sws.jpg",
+    "assets/colecao-desktop-9TO7ZM9U.jpg",
+    "assets/compartilhavel-sdgMfCjh.jpg",
+    "assets/criadores-hero-CxQZOKK7.jpg",
+    "assets/destaque-fenix-Ok4KUYFV.jpg",
+    "assets/destaque-fenix-desktop-CVj4Qd3r.jpg",
+    "assets/destaque-sereia-DF4lkBtE.jpg",
+    "assets/destaque-sereia-desktop-BYPOaLQs.jpg",
+    "assets/destaque-zeus-DSf4AtfR.jpg",
+    "assets/destaque-zeus-desktop-BQgVxW1K.jpg",
+    "assets/energia-forca-v_xxbPT8.png",
+    "assets/energia-misterio-DHubcL27.png",
+    "assets/energia-poder-DJu8VmH5.png",
+    "assets/energia-seducao-GcdPeK9M.png",
+    "assets/fada--tqA5GVs.jpg",
+    "assets/fada-BcYvZE2P.jpg",
+    "assets/fada-Bn1LJZub.jpg",
+    "assets/fada-D6N5CPL0.jpg",
+    "assets/fada-skWWuu9m.jpg",
+    "assets/feminino-Bag6AX96.jpg",
+    "assets/fenix-9ugHzzJn.jpg",
+    "assets/fenix-BUDNXOxD.jpg",
+    "assets/fenix-C9E5TLhz.jpg",
+    "assets/fenix-D2gHIR71.jpg",
+    "assets/fenix-DvTwejAx.jpg",
+    "assets/flor-arquetypus-CKSiaCgq.png",
+    "assets/florais-elegantes-gFNKx20V.jpg",
+    "assets/frescos-luminosos-BAvS1EQ-.jpg",
+    "assets/frutados-citricos-BHSVN3QN.jpg",
+    "assets/guerreiro-0wca7BDJ.jpg",
+    "assets/guerreiro-9WjdvcUx.jpg",
+    "assets/guerreiro-B-htc0v_.jpg",
+    "assets/guerreiro-B6Tw63gs.jpg",
+    "assets/guerreiro-BTw7xVzI.jpg",
+    "assets/guerreiro-DRTVWBu0.jpg",
+    "assets/guerreiro-desktop-CLkBxrUW.jpg",
+    "assets/hero-video-DYdAfdYa.mp4",
+    "assets/hero-video-poster-BZSZW7gT.jpg",
+    "assets/imperador-BvRHgmpJ.jpg",
+    "assets/imperador-BzmM6CjY.jpg",
+    "assets/imperador-CUVygshf.jpg",
+    "assets/imperador-DaPOk4AV.jpg",
+    "assets/imperador-DzfD99gB.jpg",
+    "assets/imperatriz-BRD48Xtr.jpg",
+    "assets/imperatriz-BuMKC5nt.jpg",
+    "assets/imperatriz-C0z8_uLt.jpg",
+    "assets/imperatriz-Dn8gcEzw.jpg",
+    "assets/imperatriz-qEHRqtRT.jpg",
+    "assets/index-DKt_0S1i.js",
+    "assets/index-DuMrFA1J.css",
+    "assets/logo-branco-BDDmtqMW.png",
+    "assets/logo-dourado-BkuS44dK.png",
+    "assets/masculino-BUtAdhYX.jpg",
+    "assets/ribbon-arquetypus-O8PVxe-F.png",
+    "assets/sereia-C7NIY0eS.jpg",
+    "assets/sereia-CYMB6lTe.jpg",
+    "assets/sereia-CmMHd5E9.jpg",
+    "assets/sereia-DMQ0hll0.jpg",
+    "assets/sereia-Od4PiDXc.jpg",
+    "assets/splash-comum-D6smjJu4.jpg",
+    "assets/wordmark-marmore-_FVJxRZ6.png",
+    "assets/wordmark-preto-BefuJb9g.png",
+    "assets/zeus-BSVowwxX.jpg",
+    "assets/zeus-Bk4k23TW.jpg",
+    "assets/zeus-ByZH3hi4.jpg",
+    "assets/zeus-GmMKqwvR.jpg",
+    "assets/zeus-adIUQC4G.jpg",
+    "criadores.html",
+    "entrega-e-frete.html",
+    "favicon-32.png",
+    "favicon.ico",
+    "fonts/Inter-OFL.txt",
+    "fonts/elegant.woff2",
+    "fonts/inter-var-italic.woff2",
+    "fonts/inter-var.woff2",
+    "icon-192.png",
+    "icon-512.png",
+    "index.html",
+    "llms.txt",
+    "loja/afrodite.html",
+    "loja/cleopatra.html",
+    "loja/fada.html",
+    "loja/fenix.html",
+    "loja/guerreiro.html",
+    "loja/imperador.html",
+    "loja/imperatriz.html",
+    "loja/sereia.html",
+    "loja/zeus.html",
+    "og-image.jpg",
+    "perguntas-frequentes.html",
+    "privacidade.html",
+    "regras-do-site.html",
+    "robots.txt",
+    "site.webmanifest",
+    "sitemap.xml",
+    "sobre.html",
+    "termos-de-uso.html",
+    "trocas-e-devolucoes.html"
+  ],
+  "semanticReportIdentical": true,
+  "obsoleteHtmlRemoved": true,
+  "lastmodNote": "Sitemap lastmod vem da data corrente; canonicals comparados semanticamente, sem exigir hash entre dias."
+}

@@ -1,0 +1,80 @@
+{
+  "collectedAt": "2026-10-05T04:34:44.219Z",
+  "metadata": {
+    "brokenVisibleImages": [],
+    "canonical": "https://arquetypus.com.br/loja/zeus",
+    "clientScripts": [
+      "/@vite/client",
+      "/src/main.tsx"
+    ],
+    "counts": {
+      "link[rel=\"canonical\"]": 1,
+      "meta[name=\"description\"]": 1,
+      "meta[property=\"og:description\"]": 1,
+      "meta[property=\"og:title\"]": 1,
+      "meta[property=\"og:type\"]": 1,
+      "meta[property=\"og:url\"]": 1,
+      "title": 1
+    },
+    "description": "Zeus Stormbreak: A voz que encerra a discussão. Body Splash Premium 220 ml com 10% de essência, família Amadeirados & Especiados. R$ 79,90 em até 6x sem juros.",
+    "dialogs": 0,
+    "h1": [
+      "ZeusStormbreak"
+    ],
+    "jsonLd": [
+      {
+        "data": {
+          "@context": "https://schema.org",
+          "@id": "https://arquetypus.com.br/loja/zeus#product",
+          "@type": "Product",
+          "brand": {
+            "@type": "Brand",
+            "name": "Arquétypus Parfum"
+          },
+          "category": "Body Splash Premium",
+          "description": "Zeus Stormbreak: A voz que encerra a discussão. Body Splash Premium 220 ml com 10% de essência, família Amadeirados & Especiados. R$ 79,90 em até 6x sem juros.",
+          "image": "https://arquetypus.com.br/src/assets/fotos/pdp-frasco/zeus.jpg",
+          "name": "Zeus Stormbreak",
+          "sku": "zeus",
+          "url": "https://arquetypus.com.br/loja/zeus"
+        },
+        "id": "arq-seo-product"
+      },
+      {
+        "data": {
+          "@context": "https://schema.org",
+          "@id": "https://arquetypus.com.br/loja/zeus#breadcrumb",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "item": "https://arquetypus.com.br/",
+              "name": "Home",
+              "position": 1
+            },
+            {
+              "@type": "ListItem",
+              "item": "https://arquetypus.com.br/loja/zeus",
+              "name": "Zeus Stormbreak",
+              "position": 2
+            }
+          ]
+        },
+        "id": "arq-seo-breadcrumb"
+      }
+    ],
+    "mainExcerpt": "‹›FotosNotasDescubra a ForçaEnergia ForçaZeusStormbreakQuando você fala, a sala ajusta o tom.Body Splash Premium · 220 ml · Amadeirados & EspeciadosDe R$ 99,90por R$ 79,90R$ 75,91 no Pix · ou 6x de R$ 13,32 sem juros● Em estoque e pronto para envioEm breveEnvio em24 h úteis7 dias degarantiaPagamentoseguroComplete o ritualGuerreiro 220 mlLayering recomendado · + De R$ 99,90por R$ 79,90BenefíciosO que Zeus faz por você0110% de essênciaMais intensidade e presença do que um body splash tradicional, que costuma ter cerca de 4%.02Leve o bastante para reaplicarNão satura. Pode voltar a usar depois da academia, antes do jantar, quando quiser.03Combina em vez de brigarConstruído para sobrepor com os outros oito. Camada, não substituição.Pirâmide olfativaComo Zeus se revelaTopo · O primeiro impactoBergamota, mandarina, maçã, lavandaCoração · A essência da fragrânciaCardamomo, pimenta-preta, violeta, gerânio, jasmimBase · O rastro que permanecePatchouli, sândalo, gaiaco, fava tonka, baunilhaComo usarTrês gestos, todo dia1Passo 1Aplique após o banho, com a pele ainda úmida.2Passo 2Pescoço, pulsos e atrás dos joelhos.3Passo 3Reaplique quando quiser. É splash, não perfume.Combina comZeus + GuerreiroZeusStormbreakAmadeirados & Especiados+GuerreiroSteel BlueFrescos & LuminososZeus à noite, Guerr",
+    "ogType": "product",
+    "primaryImage": "http://127.0.0.1:4176/src/assets/fotos/pdp-frasco/zeus.jpg",
+    "robots": null,
+    "theme": {
+      "data-estilo": "elegant",
+      "data-estrutura": "boutique",
+      "data-paleta": "ambar"
+    },
+    "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum"
+  },
+  "marker": null,
+  "logs": [],
+  "interactive": true
+}
