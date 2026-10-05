@@ -112,8 +112,9 @@ export function resolveSeo(url: string, { genericNotFound = false } = {}): SeoHe
     robots: notFound ? 'noindex' : undefined,
     og: {
       type: product ? 'product' : 'website', locale: 'pt_BR', siteName: EMPRESA.marca,
-      image: `${SITE}/og-image.jpg`, width: '1200', height: '630',
-      alt: 'Logo Arquétypus Parfum e os nove frascos sobre pedras à beira-mar ao pôr do sol',
+      // foto do 1º banner da home (colecao-desktop.jpg), recortada em 1200×630 com os frascos no centro
+      image: `${SITE}/og-banner.jpg`, width: '1200', height: '630',
+      alt: 'Frascos Arquétypus Body Splash Premium Cleópatra, Afrodite, Fênix, Guerreiro e Sereia sobre pedra escura com especiarias',
     }, scripts,
   }
 }
