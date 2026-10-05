@@ -311,7 +311,7 @@ export const ARCHETYPES_BY_ID: Record<string, Archetype> = Object.fromEntries(
 )
 
 export function getArchetype(id: string): Archetype | undefined {
-  return ARCHETYPES_BY_ID[id]
+  return Object.hasOwn(ARCHETYPES_BY_ID, id) ? ARCHETYPES_BY_ID[id] : undefined
 }
 
 export function segmentPool(seg: 'F' | 'M' | 'todos'): Archetype[] {

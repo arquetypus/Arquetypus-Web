@@ -5,7 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && npm run build:client && npm run build:server && npm run verify:ssr",
+    "build:client": "vite build --manifest",
+    "build:server": "vite build --ssr src/entry-server.tsx --outDir dist-server",
+    "verify:ssr": "node scripts/smoke-ssr.mjs",
     "lint": "oxlint",
     "preview": "vite preview"
   },
