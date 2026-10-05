@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { MediaSlot } from '@/components/ui/MediaSlot'
 import { GOLD_SHEEN } from '@/lib/goldSheen'
 
@@ -14,7 +14,10 @@ export function ProductGallery({ nome, bg, slides }: { nome: string; bg: string;
   const [current, setCurrent] = useState(0)
   // dica de arrasto: as fotos avançam um pouco (mostra a borda da próxima) e voltam, toda vez que a galeria abre.
   // Desliga ao primeiro toque pra não brigar com o gesto
-  const [hint, setHint] = useState(slides.length > 1)
+  const [hint, setHint] = useState(false)
+
+  // O listener de animationend já existe quando a animação começa.
+  useEffect(() => setHint(slides.length > 1), [slides.length])
 
   if (slides.length === 0) {
     return <MediaSlot aspect="1/1" bg={bg} requisito={`FOTO · 1:1 · 1200×1200 · FRASCO · ${nome.toUpperCase()}`} />

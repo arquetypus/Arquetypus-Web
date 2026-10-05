@@ -100,8 +100,10 @@ foram substituídas e dimensões finais verificadas. A home usa container própr
   não comprova ausência futura de hydration mismatch.
 - Lighthouse não foi repetido no preview; as seis auditorias locais permanecem referência,
   sem alegar ganho de performance ou igualdade de métricas entre ambientes.
-- Node Vercel, ID/SHA e URL imutável do deployment ativo de produção, deployment anterior
-  e acesso a rollback continuam pendentes antes da publicação em produção.
+- Após a coleta, usuário informou Node configurado `24.x` e enviou prints identificando
+  produção atual `8a02e4a` e anterior `3833162`. URL e identificador exibido foram registrados
+  na [baseline](baseline.md). Ambiente efetivo do build da migração e disponibilidade/permissão
+  de rollback continuam sujeitos a confirmação antes da publicação, que ocorrerá só ao final.
 
 Etapa 1 permanece **pendente**, aguardando pedido explícito para executá-la.
 Evidências desta validação integram a documentação da branch `prerender`.

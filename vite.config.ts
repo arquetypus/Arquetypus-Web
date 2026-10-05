@@ -8,6 +8,27 @@ const alias = { '@': path.resolve(import.meta.dirname, './src') }
 const GERADOR = '/src/lib/arquivosSeo.ts'
 type Gerador = { arquivosSeo: () => Record<string, string> }
 
+/** Atributos de HTML vêm da mesma resolução usada pelo snapshot React. */
+function temaInicial(): Plugin {
+  return {
+    name: 'tema-inicial',
+    async transformIndexHtml(html, ctx) {
+      const server = ctx.server ?? await createServer({
+        configFile: false, resolve: { alias }, server: { middlewareMode: true },
+        appType: 'custom', logLevel: 'silent',
+      })
+      try {
+        const mod = await server.ssrLoadModule('/src/lib/theme.ts')
+        const attributes = Object.entries(mod.DEFAULT_HTML_ATTRIBUTES as Record<string, string>)
+          .map(([name, value]) => `${name}="${value}"`).join(' ')
+        return html.replace('<html ', `<html ${attributes} `)
+      } finally {
+        if (!ctx.server) await server.close()
+      }
+    },
+  }
+}
+
 /**
  * robots.txt, sitemap.xml e llms.txt (out/2026). O conteúdo sai de src/lib/arquivosSeo.ts, com os mesmos dados do
  * site; aqui só se grava na raiz do build (e responde em `npm run dev`). O módulo é carregado pelo próprio Vite
@@ -15,10 +36,12 @@ type Gerador = { arquivosSeo: () => Record<string, string> }
  */
 function arquivosSeo(): Plugin {
   let outDir = 'dist'
+  let ssr = false
   return {
     name: 'arquivos-seo',
     configResolved(c) {
       outDir = path.resolve(c.root, c.build.outDir)
+      ssr = !!c.build.ssr
     },
     configureServer(server: ViteDevServer) {
       server.middlewares.use(async (req, res, next) => {
@@ -30,7 +53,7 @@ function arquivosSeo(): Plugin {
       })
     },
     async closeBundle() {
-      if (process.env.ARQUIVOS_SEO_RODANDO) return
+      if (ssr || process.env.ARQUIVOS_SEO_RODANDO) return
       process.env.ARQUIVOS_SEO_RODANDO = '1'
       const server = await createServer({
         configFile: false,
@@ -54,6 +77,6 @@ function arquivosSeo(): Plugin {
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss(), arquivosSeo()],
+  plugins: [react(), tailwindcss(), temaInicial(), arquivosSeo()],
   resolve: { alias },
 })

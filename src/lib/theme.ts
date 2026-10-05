@@ -154,7 +154,7 @@ function limparPins(p: Record<string, unknown>): Pins {
 }
 
 function inicial(): Estado {
-  if (!SHOW_THEME_SWITCHER) return { theme: PADRAO, pins: {} }
+  if (!SHOW_THEME_SWITCHER || typeof window === 'undefined') return { theme: PADRAO, pins: {} }
   const params = new URLSearchParams(window.location.search)
   const tema = params.get('tema')
   const daUrl = limparPins(Object.fromEntries(params))
@@ -185,16 +185,25 @@ function resolver(e: Estado): ThemeState {
   }
 }
 
+// O servidor e a primeira hidratação usam o mesmo objeto, sem recalcular snapshots.
+export const DEFAULT_THEME_STATE: ThemeState = resolver({ theme: PADRAO, pins: {} })
+export const DEFAULT_HTML_ATTRIBUTES = {
+  'data-estrutura': DEFAULT_THEME_STATE.theme,
+  'data-paleta': DEFAULT_THEME_STATE.paleta,
+  'data-estilo': DEFAULT_THEME_STATE.estilo,
+} as const
+
 let estado = inicial()
-let atual = resolver(estado)
+let atual = !SHOW_THEME_SWITCHER || typeof window === 'undefined' ? DEFAULT_THEME_STATE : resolver(estado)
 const listeners = new Set<() => void>()
 
 function aplicar() {
+  if (typeof document === 'undefined') return
   const root = document.documentElement
   root.dataset.estrutura = atual.theme
   root.dataset.paleta = atual.paleta
   root.dataset.estilo = atual.estilo
-  if (!SHOW_THEME_SWITCHER) return
+  if (!SHOW_THEME_SWITCHER || typeof window === 'undefined') return
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(estado))
   } catch {
@@ -250,7 +259,7 @@ function subscribe(cb: () => void) {
 }
 
 export function useThemeState(): ThemeState {
-  return useSyncExternalStore(subscribe, () => atual)
+  return useSyncExternalStore(subscribe, () => atual, () => DEFAULT_THEME_STATE)
 }
 
 export function useTheme(): ThemeId {

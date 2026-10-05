@@ -1,0 +1,576 @@
+{
+  "collectedAt": "2026-10-05T00:48:25.895Z",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "hydration": [
+    {
+      "case": "normal",
+      "beforeHydration": {
+        "cookieAbsent": true,
+        "formDisabled": true,
+        "videoAutoplay": false,
+        "heroStarted": "false",
+        "galleryHint": false,
+        "barAnimation": "none",
+        "nativeClickSubmits": 0
+      },
+      "mediaStarts": [
+        {
+          "time": 1558.5,
+          "heroStarted": "true",
+          "barAnimation": "hero-timer",
+          "barTime": null
+        },
+        {
+          "time": 21037.59999999404,
+          "heroStarted": "true",
+          "barAnimation": "hero-timer",
+          "barTime": null
+        },
+        {
+          "time": 40516.59999999404,
+          "heroStarted": "true",
+          "barAnimation": "hero-timer",
+          "barTime": null
+        }
+      ],
+      "heroTimers": [
+        {
+          "time": 1561.300000011921,
+          "duration": 11450
+        },
+        {
+          "time": 21040,
+          "duration": 11450
+        },
+        {
+          "time": 40518.70000001788,
+          "duration": 11450
+        }
+      ],
+      "afterHydration": {
+        "elapsedMs": 715,
+        "state": "ready",
+        "heroStarted": "true",
+        "heroAnimate": "true",
+        "barAnimation": "hero-timer",
+        "barDuration": "11.45s",
+        "formEnabled": true,
+        "galleryHint": true,
+        "galleryAnimation": "gallery-hint",
+        "mobileMedia": true,
+        "reducedMedia": false,
+        "theme": "{\"theme\":\"boutique\",\"pins\":{},\"paleta\":\"ambar\",\"estilo\":\"elegant\",\"hero\":\"cinema\",\"catalogo\":\"boutique\"}",
+        "cookieVisible": true
+      },
+      "submitPrevented": true,
+      "acceptCloses": true,
+      "reopenWorks": true,
+      "refuseCloses": true,
+      "savedRefusal": true,
+      "galleryHintFinished": true,
+      "revealOpacity": "1",
+      "errors": [],
+      "status": "DONE"
+    },
+    {
+      "case": "slow",
+      "beforeHydration": {
+        "cookieAbsent": true,
+        "formDisabled": true,
+        "videoAutoplay": false,
+        "heroStarted": "false",
+        "galleryHint": false,
+        "barAnimation": "none",
+        "nativeClickSubmits": 0
+      },
+      "mediaStarts": [
+        {
+          "time": 3952,
+          "heroStarted": "true",
+          "barAnimation": "hero-timer",
+          "barTime": null
+        },
+        {
+          "time": 23432.5,
+          "heroStarted": "true",
+          "barAnimation": "hero-timer",
+          "barTime": null
+        },
+        {
+          "time": 42904.5,
+          "heroStarted": "true",
+          "barAnimation": "hero-timer",
+          "barTime": null
+        },
+        {
+          "time": 62383.59999999404,
+          "heroStarted": "true",
+          "barAnimation": "hero-timer",
+          "barTime": null
+        },
+        {
+          "time": 81881.09999999404,
+          "heroStarted": "true",
+          "barAnimation": "hero-timer",
+          "barTime": null
+        }
+      ],
+      "heroTimers": [
+        {
+          "time": 3954.800000011921,
+          "duration": 11450
+        },
+        {
+          "time": 23433.80000001192,
+          "duration": 11450
+        },
+        {
+          "time": 42905.69999998808,
+          "duration": 11450
+        },
+        {
+          "time": 62385.90000000596,
+          "duration": 11450
+        },
+        {
+          "time": 81882.80000001192,
+          "duration": 11450
+        }
+      ],
+      "beforeLateHydration": {
+        "state": "released",
+        "revealOpacity": "1",
+        "heroOpacity": "1",
+        "formDisabled": true
+      },
+      "afterHydration": {
+        "elapsedMs": 467,
+        "state": "released",
+        "heroStarted": "true",
+        "heroAnimate": "false",
+        "barAnimation": "hero-timer",
+        "barDuration": "11.45s",
+        "formEnabled": true,
+        "galleryHint": true,
+        "galleryAnimation": "gallery-hint",
+        "mobileMedia": true,
+        "reducedMedia": false,
+        "theme": "{\"theme\":\"boutique\",\"pins\":{},\"paleta\":\"ambar\",\"estilo\":\"elegant\",\"hero\":\"cinema\",\"catalogo\":\"boutique\"}",
+        "cookieVisible": true
+      },
+      "submitPrevented": true,
+      "acceptCloses": true,
+      "reopenWorks": true,
+      "refuseCloses": true,
+      "savedRefusal": true,
+      "galleryHintFinished": true,
+      "revealOpacity": "1",
+      "errors": [],
+      "status": "DONE"
+    },
+    {
+      "case": "blocked",
+      "beforeHydration": {
+        "cookieAbsent": true,
+        "formDisabled": true,
+        "videoAutoplay": false,
+        "heroStarted": "false",
+        "galleryHint": false,
+        "barAnimation": "none",
+        "nativeClickSubmits": 0
+      },
+      "mediaStarts": [
+        {
+          "time": 1365.9000000059605,
+          "heroStarted": "true",
+          "barAnimation": "hero-timer",
+          "barTime": null
+        }
+      ],
+      "heroTimers": [
+        {
+          "time": 1369.0999999940395,
+          "duration": 11450
+        }
+      ],
+      "afterHydration": {
+        "elapsedMs": 589,
+        "state": "ready",
+        "heroStarted": "true",
+        "heroAnimate": "true",
+        "barAnimation": "hero-timer",
+        "barDuration": "11.45s",
+        "formEnabled": true,
+        "galleryHint": true,
+        "galleryAnimation": "gallery-hint",
+        "mobileMedia": true,
+        "reducedMedia": false,
+        "theme": "{\"theme\":\"boutique\",\"pins\":{},\"paleta\":\"ambar\",\"estilo\":\"elegant\",\"hero\":\"cinema\",\"catalogo\":\"boutique\"}",
+        "cookieVisible": true
+      },
+      "submitPrevented": true,
+      "acceptCloses": true,
+      "reopenWorks": true,
+      "refuseCloses": true,
+      "galleryHintFinished": true,
+      "revealOpacity": "1",
+      "errors": [],
+      "status": "DONE"
+    },
+    {
+      "case": "accepted",
+      "beforeHydration": {
+        "cookieAbsent": true,
+        "formDisabled": true,
+        "videoAutoplay": false,
+        "heroStarted": "false",
+        "galleryHint": false,
+        "barAnimation": "none",
+        "nativeClickSubmits": 0
+      },
+      "mediaStarts": [
+        {
+          "time": 1510.199999988079,
+          "heroStarted": "true",
+          "barAnimation": "hero-timer",
+          "barTime": null
+        },
+        {
+          "time": 20993.5,
+          "heroStarted": "true",
+          "barAnimation": "hero-timer",
+          "barTime": null
+        }
+      ],
+      "heroTimers": [
+        {
+          "time": 1511.8999999761581,
+          "duration": 11450
+        },
+        {
+          "time": 20995.09999999404,
+          "duration": 11450
+        }
+      ],
+      "afterHydration": {
+        "elapsedMs": 560,
+        "state": "ready",
+        "heroStarted": "true",
+        "heroAnimate": "true",
+        "barAnimation": "hero-timer",
+        "barDuration": "11.45s",
+        "formEnabled": true,
+        "galleryHint": true,
+        "galleryAnimation": "gallery-hint",
+        "mobileMedia": true,
+        "reducedMedia": false,
+        "theme": "{\"theme\":\"boutique\",\"pins\":{},\"paleta\":\"ambar\",\"estilo\":\"elegant\",\"hero\":\"cinema\",\"catalogo\":\"boutique\"}",
+        "cookieVisible": false
+      },
+      "submitPrevented": true,
+      "reopenWorks": true,
+      "refuseCloses": true,
+      "savedRefusal": true,
+      "galleryHintFinished": true,
+      "revealOpacity": "1",
+      "errors": [],
+      "status": "DONE"
+    },
+    {
+      "case": "refused",
+      "beforeHydration": {
+        "cookieAbsent": true,
+        "formDisabled": true,
+        "videoAutoplay": false,
+        "heroStarted": "false",
+        "galleryHint": false,
+        "barAnimation": "none",
+        "nativeClickSubmits": 0
+      },
+      "mediaStarts": [
+        {
+          "time": 2199.0999999940395,
+          "heroStarted": "true",
+          "barAnimation": "hero-timer",
+          "barTime": null
+        }
+      ],
+      "heroTimers": [
+        {
+          "time": 2201.4000000059605,
+          "duration": 11450
+        }
+      ],
+      "afterHydration": {
+        "elapsedMs": 714,
+        "state": "ready",
+        "heroStarted": "true",
+        "heroAnimate": "true",
+        "barAnimation": "hero-timer",
+        "barDuration": "11.45s",
+        "formEnabled": true,
+        "galleryHint": true,
+        "galleryAnimation": "gallery-hint",
+        "mobileMedia": true,
+        "reducedMedia": false,
+        "theme": "{\"theme\":\"boutique\",\"pins\":{},\"paleta\":\"ambar\",\"estilo\":\"elegant\",\"hero\":\"cinema\",\"catalogo\":\"boutique\"}",
+        "cookieVisible": false
+      },
+      "submitPrevented": true,
+      "reopenWorks": true,
+      "refuseCloses": true,
+      "savedRefusal": true,
+      "galleryHintFinished": true,
+      "revealOpacity": "1",
+      "errors": [],
+      "status": "DONE"
+    },
+    {
+      "case": "missing-io",
+      "beforeHydration": {
+        "cookieAbsent": true,
+        "formDisabled": true,
+        "videoAutoplay": false,
+        "heroStarted": "false",
+        "galleryHint": false,
+        "barAnimation": "none",
+        "nativeClickSubmits": 0
+      },
+      "mediaStarts": [
+        {
+          "time": 1395.0999999940395,
+          "heroStarted": "true",
+          "barAnimation": "hero-timer",
+          "barTime": null
+        },
+        {
+          "time": 20930,
+          "heroStarted": "true",
+          "barAnimation": "hero-timer",
+          "barTime": null
+        }
+      ],
+      "heroTimers": [
+        {
+          "time": 1397.5,
+          "duration": 11450
+        },
+        {
+          "time": 20931.69999998808,
+          "duration": 11450
+        }
+      ],
+      "afterHydration": {
+        "elapsedMs": 676,
+        "state": "released",
+        "heroStarted": "true",
+        "heroAnimate": "false",
+        "barAnimation": "hero-timer",
+        "barDuration": "11.45s",
+        "formEnabled": true,
+        "galleryHint": true,
+        "galleryAnimation": "gallery-hint",
+        "mobileMedia": true,
+        "reducedMedia": false,
+        "theme": "{\"theme\":\"boutique\",\"pins\":{},\"paleta\":\"ambar\",\"estilo\":\"elegant\",\"hero\":\"cinema\",\"catalogo\":\"boutique\"}",
+        "cookieVisible": true
+      },
+      "submitPrevented": true,
+      "acceptCloses": true,
+      "reopenWorks": true,
+      "refuseCloses": true,
+      "savedRefusal": true,
+      "galleryHintFinished": true,
+      "revealOpacity": "1",
+      "errors": [],
+      "status": "DONE"
+    },
+    {
+      "case": "throwing-io",
+      "beforeHydration": {
+        "cookieAbsent": true,
+        "formDisabled": true,
+        "videoAutoplay": false,
+        "heroStarted": "false",
+        "galleryHint": false,
+        "barAnimation": "none",
+        "nativeClickSubmits": 0
+      },
+      "mediaStarts": [
+        {
+          "time": 1637.5999999940395,
+          "heroStarted": "true",
+          "barAnimation": "hero-timer",
+          "barTime": null
+        },
+        {
+          "time": 21138,
+          "heroStarted": "true",
+          "barAnimation": "hero-timer",
+          "barTime": null
+        },
+        {
+          "time": 40621.39999997616,
+          "heroStarted": "true",
+          "barAnimation": "hero-timer",
+          "barTime": null
+        }
+      ],
+      "heroTimers": [
+        {
+          "time": 1641.8999999761581,
+          "duration": 11450
+        },
+        {
+          "time": 21140.29999998212,
+          "duration": 11450
+        },
+        {
+          "time": 40622.89999997616,
+          "duration": 11450
+        }
+      ],
+      "afterHydration": {
+        "elapsedMs": 556,
+        "state": "released",
+        "heroStarted": "true",
+        "heroAnimate": "true",
+        "barAnimation": "hero-timer",
+        "barDuration": "11.45s",
+        "formEnabled": true,
+        "galleryHint": true,
+        "galleryAnimation": "gallery-hint",
+        "mobileMedia": true,
+        "reducedMedia": false,
+        "theme": "{\"theme\":\"boutique\",\"pins\":{},\"paleta\":\"ambar\",\"estilo\":\"elegant\",\"hero\":\"cinema\",\"catalogo\":\"boutique\"}",
+        "cookieVisible": true
+      },
+      "submitPrevented": true,
+      "acceptCloses": true,
+      "reopenWorks": true,
+      "refuseCloses": true,
+      "savedRefusal": true,
+      "galleryHintFinished": true,
+      "revealOpacity": "1",
+      "errors": [],
+      "status": "DONE"
+    },
+    {
+      "case": "reduced",
+      "beforeHydration": {
+        "cookieAbsent": true,
+        "formDisabled": true,
+        "videoAutoplay": false,
+        "heroStarted": "false",
+        "galleryHint": false,
+        "barAnimation": "none",
+        "nativeClickSubmits": 0
+      },
+      "mediaStarts": [
+        {
+          "time": 1639.699999988079,
+          "heroStarted": "true",
+          "barAnimation": "none",
+          "barTime": null
+        },
+        {
+          "time": 21142.19999998808,
+          "heroStarted": "true",
+          "barAnimation": "none",
+          "barTime": null
+        }
+      ],
+      "heroTimers": [
+        {
+          "time": 1642.199999988079,
+          "duration": 11450
+        },
+        {
+          "time": 21143.5,
+          "duration": 11450
+        }
+      ],
+      "afterHydration": {
+        "elapsedMs": 499,
+        "heroStarted": "true",
+        "heroAnimate": "false",
+        "barAnimation": "none",
+        "barDuration": "11.45s",
+        "formEnabled": true,
+        "galleryHint": true,
+        "galleryAnimation": "none",
+        "mobileMedia": true,
+        "reducedMedia": true,
+        "theme": "{\"theme\":\"boutique\",\"pins\":{},\"paleta\":\"ambar\",\"estilo\":\"elegant\",\"hero\":\"cinema\",\"catalogo\":\"boutique\"}",
+        "cookieVisible": true
+      },
+      "submitPrevented": true,
+      "acceptCloses": true,
+      "reopenWorks": true,
+      "refuseCloses": true,
+      "savedRefusal": true,
+      "galleryHintFinished": false,
+      "reducedAnimations": true,
+      "revealOpacity": "1",
+      "errors": [],
+      "status": "DONE"
+    }
+  ],
+  "static": [
+    {
+      "barAnimation": "none",
+      "case": "no-scripts",
+      "clickAndEnterPreserveUrl": true,
+      "disabled": true,
+      "heroOpacity": "1",
+      "opacity": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "scriptCount": 0,
+      "url": "http://127.0.0.1:4174/qa?case=no-scripts",
+      "videoAutoplay": false
+    },
+    {
+      "case": "bundle-failed",
+      "disabled": true,
+      "heroOpacity": "1",
+      "heroStarted": "false",
+      "opacity": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "state": "released"
+    },
+    {
+      "case": "no-app",
+      "disabled": true,
+      "heroOpacity": "1",
+      "heroStarted": "false",
+      "opacity": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "state": "released"
+    }
+  ],
+  "reducedMotion": "simulated media conditions in QA fixture",
+  "nativeEnterAfterHydration": {
+    "case": "native-enter-after-hydration",
+    "emailInUrl": false,
+    "formEnabled": true,
+    "url": "http://127.0.0.1:4174/qa?case=normal"
+  }
+}

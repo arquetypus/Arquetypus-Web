@@ -711,11 +711,11 @@ html:is([data-estrutura='laboratorio'], [data-estrutura='zen'], [data-estrutura=
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .reveal-init {
+  html:is([data-reveal='pending'], [data-reveal='ready']) .reveal-init {
     opacity: 0;
     transform: translateY(20px);
   }
-  .reveal-init.fade-in-up {
+  html[data-reveal='ready'] .reveal-init.fade-in-up {
     animation: fade-in-up 0.5s ease-out forwards;
   }
 }
@@ -745,6 +745,22 @@ html:is([data-estrutura='laboratorio'], [data-estrutura='zen'], [data-estrutura=
 
 .hero-timer-bar {
   width: 100%;
+}
+
+/* HTML inicial é estático. Vídeo, barra e timer começam no commit do cliente. */
+[data-hero-started='false'] .hero-timer-bar {
+  width: 0;
+  animation: none;
+}
+
+[data-hero-animate='false'] .hero-fade-up {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html[data-reveal='pending'] [data-hero-started='false'] .hero-fade-up {
+    opacity: 0;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {

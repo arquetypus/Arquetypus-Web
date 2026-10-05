@@ -17,8 +17,10 @@ só poderão ser aprovados depois dos testes das etapas correspondentes.
 
 **Etapa 0 executada em 04/10/2026:** baseline local e preview da branch validados; checks e reprodução limpa
 aprovados; artefatos públicos correspondem aos locais, com acréscimo de feedback Vercel no HTML da home do preview.
-Confirmar ID/SHA do deployment de produção,
-Node na Vercel e rollback antes da publicação. Evidências em [baseline](docs/prerender/baseline.md).
+Usuário informou Node Vercel `24.x` e forneceu prints da produção atual `8a02e4a`, URL específica
+e histórico anterior `3833162`. Disponibilidade/permissão de rollback ainda não comprovada pelos prints;
+confirmar junto do ambiente efetivo do build antes da publicação. **Produção somente ao final do plano,
+conforme determinação do usuário.** Evidências em [baseline](docs/prerender/baseline.md).
 
 ## 1. Necessidade, benefícios e limites
 
@@ -639,8 +641,8 @@ Preencher a cada etapa; evidência ausente significa **pendente**, nunca “apro
 | Revisão inicial Sol High | Concluída; tsc/build da SPA passaram nessa revisão | Base `8a02e4a` | Inspeção local e fontes oficiais; sem implementação |
 | Segunda revisão independente | Aprovado com ajustes | Mesma base inspecionada | Riscos de formulário, mídia, slugs, recursos e contrato HTTP incorporados |
 | Consolidação documental | Concluída; somente este plano alterado | Sem implementação | Ajustes obrigatórios/opcionais e critérios por rota integrados; build não reexecutado |
-| 0 — Baseline | Local e preview validados; confirmação administrativa de produção pendente | Branch `prerender`, código-base `8a02e4a`; documentação enviada em `db5790e`; preview informado pelo usuário | [Baseline](docs/prerender/baseline.md) e [preview](docs/prerender/preview.md); 18 rotas, capturas, 6 auditorias locais; Node/deployment/rollback de produção pendentes |
-| 1 — Segurança SSR | Pendente | — | — |
+| 0 — Baseline | Local e preview validados; produção identificada; disponibilidade de rollback pendente | Branch `prerender`, código-base/produção `8a02e4a`; documentação enviada em `db5790e` e `e0e829f` | [Baseline](docs/prerender/baseline.md) e [preview](docs/prerender/preview.md); 18 rotas, capturas, 6 auditorias locais; Node configurado `24.x` informado; prints de produção registrados; confirmar rollback antes de publicação final |
+| 1 — Segurança SSR | Implementada; contratos locais validados; validação do novo preview pendente | Branch `prerender`, sobre `e0e829f`; commit de implementação a registrar | [Etapa 1](docs/prerender/etapa1.md); build/TypeScript, contratos SSR e ensaios de apresentação inicial |
 | 2 — SEO compartilhado | Pendente | — | — |
 | 3 — Ensaio SSR | Pendente | — | — |
 | 4 — SSG e hidratação | Pendente | — | — |

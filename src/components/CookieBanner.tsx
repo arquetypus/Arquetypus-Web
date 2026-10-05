@@ -19,9 +19,12 @@ const PILL =
  * sem tela de personalização. "Gerenciar cookies" no rodapé reabre esta mesma barra.
  */
 export function CookieBanner() {
-  const [visible, setVisible] = useState(() => readConsent() === null)
+  const [visible, setVisible] = useState(false)
 
-  useEffect(() => onOpenCookiePreferences(() => setVisible(true)), [])
+  useEffect(() => {
+    setVisible(readConsent() === null)
+    return onOpenCookiePreferences(() => setVisible(true))
+  }, [])
 
   if (!visible) return null
 

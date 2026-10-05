@@ -4,6 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
+    <!-- Reserva a entrada animada antes da pintura; falhas e espera longa liberam o conteúdo.
+         O limite de 2 s é um teto de ocultação, não atraso de autoplay nem duração de animação. -->
+    <script id="reveal-bootstrap">
+      (function () {
+        var root = document.documentElement;
+        if (!('IntersectionObserver' in window) ||
+            !window.matchMedia || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        root.dataset.reveal = 'pending';
+        function cleanup() {
+          clearTimeout(timer);
+          window.removeEventListener('arq:reveal-ready', ready);
+          window.removeEventListener('arq:reveal-release', release);
+          window.removeEventListener('error', failed, true);
+        }
+        function release() {
+          root.dataset.reveal = 'released';
+          cleanup();
+        }
+        function ready() {
+          if (root.dataset.reveal === 'pending') root.dataset.reveal = 'ready';
+          cleanup();
+        }
+        function failed(event) {
+          if (event.target && event.target.tagName === 'SCRIPT' && event.target.type === 'module') release();
+        }
+        var timer = setTimeout(release, 2000);
+        window.addEventListener('arq:reveal-ready', ready);
+        window.addEventListener('arq:reveal-release', release);
+        window.addEventListener('error', failed, true);
+      })();
+    </script>
+
     <!-- Consent Mode v2: tudo negado por padrão; se a pessoa já escolheu numa visita
          anterior, a escolha é reaplicada aqui, antes do GTM. Precisa vir ANTES do snippet do GTM. -->
     <script>

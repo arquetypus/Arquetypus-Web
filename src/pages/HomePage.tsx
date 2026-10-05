@@ -311,6 +311,8 @@ function CommunitySection() {
 }
 
 export function HomePage() {
+  const [hydrated, setHydrated] = useState(false)
+  useEffect(() => setHydrated(true), [])
   useSeo({ ...SEO_HOME, path: '/' })
   const location = useLocation()
   const { hash } = location
@@ -1263,6 +1265,7 @@ export function HomePage() {
                 <input
                   type="email"
                   name="email"
+                  disabled={!hydrated}
                   autoComplete="email"
                   placeholder="seu@email.com"
                   className="mt-1.5 block w-full border-b border-linha-2 bg-transparent pb-2.5 text-[15px] text-tinta placeholder:text-tinta-3/70 focus:border-latao focus:outline-none"
@@ -1273,6 +1276,7 @@ export function HomePage() {
                 <input
                   type="tel"
                   name="whatsapp"
+                  disabled={!hydrated}
                   inputMode="tel"
                   autoComplete="tel-national"
                   placeholder="DDD + número"
@@ -1280,7 +1284,7 @@ export function HomePage() {
                 />
               </label>
               <div className="mt-3 text-center">
-                <SweepCta type="submit">Quero meu cupom</SweepCta>
+                <SweepCta type="submit" disabled={!hydrated}>Quero meu cupom</SweepCta>
               </div>
               {/* LGPD: o cadastro é a base do consentimento pra novidades (ver /privacidade, seção 3) */}
               <p className="text-center text-[11px] leading-relaxed text-tinta-3">

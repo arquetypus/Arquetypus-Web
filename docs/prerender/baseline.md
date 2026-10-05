@@ -1,6 +1,6 @@
 # Baseline — Etapa 0 da pré-renderização
 
-Coleta em 04/10/2026. **Baseline local e preview da branch validados; confirmação administrativa de produção pendente.**
+Coleta em 04/10/2026. **Baseline local e preview validados; produção identificada por prints do usuário; disponibilidade de rollback pendente.**
 Nenhuma implementação de SSR/SSG, alteração do aplicativo ou dependência do projeto.
 Documentação enviada na branch `prerender`; preview informado pelo usuário validado posteriormente.
 
@@ -18,7 +18,8 @@ Documentação enviada na branch `prerender`; preview informado pelo usuário va
 | Vite / TypeScript / Tailwind | 8.2.1 / 6.0.3 / 4.3.3 |
 | Node requerido por Vite | `^20.19.0 || >=22.12.0`; Node local atende |
 | Lockfile SHA-256 | `2d8e945866d6a4594de425084a6d54eec73ad93d35ac69f7b9f623fd3b9352d6` |
-| Node efetivo na Vercel | Pendente; dashboard exigiu login |
+| Node configurado na Vercel | `24.x`, informado pelo usuário; compatível com Vite instalado |
+| Node exato no build histórico de produção | Patch não confirmado; Build Logs não fornecidos |
 | Build local servido | `http://127.0.0.1:4173/`, Vite preview do build de produção |
 
 Regras de `AGENTS.md` e `CLAUDE.md` lidas. Adiamento histórico de pré-renderização em
@@ -65,15 +66,33 @@ Comparação pública versus build do workspace:
 | `/assets/index-CEBNf12q.js` | 200; 628.636 bytes; SHA-256 `8dd28071ec6d13cef6a12f9c2165a39222d353541ca851b4ab840cd1a99ff5e7` |
 | `/assets/index-C9zeGloN.css` | 200; 159.720 bytes; SHA-256 `b4d18dd42e53e96610a5ee60c688a94f7e6fb38e4bca08412c13317de05583af` |
 
-**Isso comprova equivalência desses artefatos, não identidade do deployment, seu SHA ou
-configuração de build.** ID/URL imutável do deployment ativo, SHA administrativo,
-Node configurado e deployment anterior para rollback continuam pendentes.
-`https://vercel.com/dashboard` redirecionou para login; não havia sessão autenticada.
-Informações solicitadas ao usuário durante a coleta, sem impedir verificações locais.
+**A comparação HTTP comprova equivalência dos artefatos.** Inicialmente, dashboard exigiu
+login e identificação administrativa ficou pendente. Posteriormente, usuário forneceu
+Node configurado `24.x` e prints com a produção atual e histórico de deployments.
 
-O endpoint público respondeu, mas nenhum rollback foi testado, nenhum deployment foi
-promovido e nenhum acesso administrativo foi confirmado. Publicação futura exige resolver
-essas pendências. `x-vercel-id` nas respostas identifica requisição, não deployment.
+| Informação dos prints | Evidência registrada |
+|---|---|
+| Projeto | `arquetypus-parfum` |
+| Produção atual | `Production / Current`, `Ready`, branch `main` |
+| Commit em Source | `8a02e4a`; corresponde no Git local a `8a02e4a2135d407c61315e1ec039c3d28ac9b3f2` |
+| Identificador exibido no painel | `4yrXKF69r`; não tratado como ID interno `dpl_…` |
+| URL específica de produção | `https://arquetypus-parfum-b6orb7kc1-saniella.vercel.app` |
+| Domínio associado | `www.arquetypus.com.br` |
+| Produção anterior listada | `3833162`, branch `main`, `Ready`; SHA correspondente no Git local `38331626b73af61f83d5c3a252237e65238aee8a` |
+| Preview mais recente listado | `e0e829f`, branch `prerender`, `Ready`; status fornecido por print, sem nova auditoria funcional |
+
+A URL específica de produção respondeu HEAD 302 para autenticação Vercel; não houve
+bypass. Domínio oficial já foi validado publicamente nesta baseline. Prints são evidência
+fornecida pelo usuário, não sessão administrativa operada pelo agente. Versão exata do Node
+no build histórico não está exposta nos prints. Nenhum rollback ou deployment foi executado.
+
+Histórico com deployment anterior `Ready` não comprova elegibilidade nem permissão de
+Instant Rollback, nem valida funcionalmente essa versão anterior. Disponibilidade de rollback
+continua pendente antes da publicação. Confirmar sem executar rollback. Produção atual
+registrada é também referência a preservar para retorno após a futura migração.
+**Usuário determinou publicação em produção somente ao final do plano.**
+Ver [confirmações e limites por campo](evidence/vercel-user-confirmation.json).
+`x-vercel-id` nas respostas identifica requisição, não deployment.
 
 Ver [status, redirects, headers e hashes por rota](evidence/http-baseline.json) e
 [HTML bruto público](evidence/production-index.html).
@@ -93,7 +112,7 @@ restante do documento é idêntico. HTML continua SPA com root vazio, conforme e
 
 Ver [relatório do preview](preview.md), [resumo objetivo](evidence/preview-validation.json),
 [HTTP por rota](evidence/preview-http-baseline.json) e [metadados comparados](evidence/preview-metadata-client.json).
-Isso não aprova a migração nem resolve identificação administrativa de produção/rollback.
+Isso não aprova a migração nem comprova disponibilidade de rollback.
 
 ## Inventário das 18 rotas e conteúdo cliente
 
@@ -228,5 +247,6 @@ coleta está em [registro local](evidence/clean-install-path.txt); `node_modules
 não foi substituído. Não usar esse caminho temporário como artefato de publicação.
 
 **Gate local:** aprovado para preparação da Etapa 1 quando solicitada explicitamente.
-**Gate de publicação:** pendente de ID/URL e SHA do deployment ativo, Node Vercel e
-deployment anterior/permissão de rollback. Nenhuma etapa posterior foi executada.
+**Gate de publicação:** produção atual identificada e Node configurado informado como `24.x`;
+confirmar ambiente efetivo no build da migração e disponibilidade/permissão de rollback antes
+de publicar. Produção somente ao final do plano. Nenhuma etapa posterior foi executada.

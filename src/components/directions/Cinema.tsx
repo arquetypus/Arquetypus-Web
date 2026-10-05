@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { HERO_SLIDES, QUIZ_CTA } from '@/data/home'
 import { scrollToId } from '@/lib/scrollToId'
@@ -27,17 +27,39 @@ const SWIPE_PX = 50
 export function HeroCinema() {
   const location = useLocation()
   const [current, setCurrent] = useState(0)
+  const [startup, setStartup] = useState({ started: false, animate: false })
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [advanced, setAdvanced] = useState(false)
   const total = HERO_SLIDES.length
   const slide = HERO_SLIDES[current]
   const duration = 'durationMs' in slide ? slide.durationMs : AUTOPLAY_MS
 
-  const next = useCallback(() => setCurrent((c) => (c + 1) % total), [total])
-  const prev = useCallback(() => setCurrent((c) => (c - 1 + total) % total), [total])
+  const next = useCallback(() => {
+    setAdvanced(true)
+    setCurrent((c) => (c + 1) % total)
+  }, [total])
+  const prev = useCallback(() => {
+    setAdvanced(true)
+    setCurrent((c) => (c - 1 + total) % total)
+  }, [total])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    const state = document.documentElement.dataset.reveal
+    setStartup({ started: true, animate: state === 'pending' || state === 'ready' })
+  }, [])
+
+  useLayoutEffect(() => {
+    if (!startup.started) return
+    // Mesmo commit: CSS é habilitado, playback é solicitado e o relógio começa.
+    // Falha de autoplay mantém o poster, sem interromper a navegação do carrossel.
+    const video = videoRef.current
+    void video?.play().catch(() => {})
     const timer = setTimeout(next, duration)
-    return () => clearTimeout(timer)
-  }, [current, next, duration])
+    return () => {
+      clearTimeout(timer)
+      video?.pause()
+    }
+  }, [current, next, duration, startup.started])
 
   // deslizar com o dedo (só toque/caneta; touch-pan-y deixa o scroll vertical com o navegador)
   const dragStart = useRef<number | null>(null)
@@ -58,7 +80,10 @@ export function HeroCinema() {
         <button
           key={s.id}
           type="button"
-          onClick={() => setCurrent(i)}
+          onClick={() => {
+            setAdvanced(true)
+            setCurrent(i)
+          }}
           aria-label={`Ir para o slide ${i + 1}`}
           aria-current={i === current}
           className="flex h-4 flex-1 cursor-pointer items-center"
@@ -81,6 +106,8 @@ export function HeroCinema() {
   return (
     <section
       id="inicio"
+      data-hero-started={startup.started}
+      data-hero-animate={startup.started && (startup.animate || advanced)}
       className="hero-tint sticky top-0 h-svh min-h-[680px] touch-pan-y overflow-hidden bg-black text-papel-inv"
       // sticky: o banner fica parado e as seções sobem por cima dele (como o carrossel do Editorial).
       // Tela cheia; quem sinaliza que a página continua é o "Role" no rodapé do banner
@@ -109,9 +136,9 @@ export function HeroCinema() {
           {'video' in s && i === current && (
             // monta só no slide ativo: ao voltar pro slide, o vídeo recomeça junto com a barra
             <video
+              ref={videoRef}
               src={s.video}
               poster={s.img}
-              autoPlay
               muted
               playsInline
               preload="auto"

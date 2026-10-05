@@ -1,0 +1,14 @@
+{
+  "collectedAt": "2026-10-05T00:49:15.311Z",
+  "checks": [
+    "IO ausente/movimento reduzido: sem ocultação ou watchdog",
+    "Prontidão cancela watchdog e listeners",
+    "Prazo excedido: conteúdo liberado, JS tardio não rearma",
+    "Falha de download de módulo libera conteúdo",
+    "Tema importa sem DOM; atributos derivados do snapshot",
+    "Render repetível: cookies ausentes, cupom desabilitado, mídia/galeria sem autoplay",
+    "Build cliente possui atributos e três arquivos SEO",
+    "Build SSR do gerador não grava arquivos SEO",
+    "Evidência browser: oito hidratações e três falhas/HTML estático aprovados"
+  ]
+}
