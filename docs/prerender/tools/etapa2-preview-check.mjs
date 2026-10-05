@@ -75,7 +75,9 @@ for (const row of metadata.rows) {
     if (actual['@type'] === 'Product') {
       const imagePath = new URL(actual.image).pathname;
       assert.match(imagePath, /^\/assets\/[^/]+\.jpg$/);
-      assert.equal(imagePath, new URL(row.primaryImage).pathname, row.route);
+      assert.equal(imagePath, new URL(row.primaryImage, origin).pathname, row.route);
+      const price = expected.description.match(/R\$\s*[\d.,]+/)[0];
+      assert.ok(row.mainExcerpt.replaceAll(/\s/g, '').includes(price.replaceAll(/\s/g, '')), 'preço ' + row.route);
       const remote = await fetchBytes(imagePath);
       const local = await readFile(path.join(root, 'dist', imagePath));
       assert.equal(remote.status, 200); assert.ok(remote.bytes.equals(local));
