@@ -391,6 +391,12 @@ decisão de produto já tomada:
   `#segmentos`, `#catalogo`, `#familias`, `#destaque`, `#diferenca`, `#beneficios`,
   `#cupom`, `#rodape`, e cada produto do catálogo pelo id (`#afrodite`, `#fenix`…).
   Seção nova na home ganha `id` também; não renomear os existentes (links já enviados).
+- **Imagens otimizadas no build (out/2026):** `vite-imagetools` (`vite.config.ts`) converte toda imagem importada
+  de `src/` em WebP q80, sem metadados, com largura máxima 1600 px (2400 pra `*-desktop.jpg`, 900 pra flor) —
+  só reduz. Original fica em `src/assets/` em qualidade cheia; foto nova não precisa de tratamento manual.
+  `public/` não passa por aí. `verify-prerender` derruba o build se uma imagem publicada passar de 400 KB.
+  `/assets/*` sai com cache de 1 ano `immutable` (`headers` gerado por `configure-vercel.mjs`). Medir
+  antes/depois com `npm run perf -- <rótulo> [comparar-com]` (retratos em `perf/`).
 - **Texto alternativo das fotos (out/2026):** foto que é conteúdo (frasco, pessoa com o produto) leva `alt`
   descritivo montado com `produtoNome(a)` (`data/archetypes.ts`) — `alt` é obrigatório no `MediaSlot` (o `tsc`
   falha sem ele, de propósito: toda foto nova exige a decisão), a galeria da PDP

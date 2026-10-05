@@ -1,6 +1,7 @@
 import { defineConfig, createServer, type Plugin, type ViteDevServer } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import { imagetools } from 'vite-imagetools'
 import path from 'node:path'
 import { writeFile } from 'node:fs/promises'
 
@@ -76,8 +77,30 @@ function arquivosSeo(): Plugin {
   }
 }
 
+/**
+ * Otimização automática das imagens (out/2026). Toda imagem importada de src/ (import, import.meta.glob) sai no
+ * build em WebP, qualidade 80, sem metadados e com largura máxima — só reduz, nunca amplia. O original fica em
+ * src/assets/ em qualidade cheia. public/ não passa por aqui (og-banner, favicons). Pra uma imagem específica,
+ * passar a regra no import (`foto.jpg?w=2400`) — o que vier no import vale mais que este padrão.
+ * O teto de tamanho por arquivo publicado é conferido em scripts/verify-prerender.mjs.
+ */
+const LARGURA_MAXIMA = 1600
+const larguraMaxima = (arquivo: string) =>
+  arquivo.includes('/brand/flor-') ? 900 // marca d'água: aparece com até 440 px
+  : arquivo.endsWith('-desktop.jpg') ? 2400 // fotos de tela cheia no desktop (hero, destaque)
+  : LARGURA_MAXIMA
+const otimizarImagens = imagetools({
+  defaultDirectives: async (url, metadata) => {
+    const regras = new URLSearchParams({ format: 'webp', quality: '80' })
+    for (const [k, v] of url.searchParams) regras.set(k, v)
+    const max = larguraMaxima(url.pathname)
+    if (!url.searchParams.has('w') && ((await metadata()).width ?? 0) > max) regras.set('w', String(max))
+    return regras
+  },
+})
+
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss(), temaInicial(), arquivosSeo()],
+  plugins: [react(), tailwindcss(), otimizarImagens, temaInicial(), arquivosSeo()],
   resolve: { alias },
 })

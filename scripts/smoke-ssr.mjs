@@ -59,12 +59,25 @@ try {
       sourceRegionMapped: serverAssets.has(source), bytes: emitted.length, sha256: hash(emitted) });
   }
   assert.ok(assets.length > 0);
+  // Imagens passam pelo vite-imagetools (vite.config.ts): saem convertidas (bytes ≠ original) e fora do manifest.
+  // Paridade SSR/cliente: a mesma URL tem que estar no JS do cliente e o arquivo tem que existir em dist/.
+  const IMAGEM = /\.(?:png|jpe?g|webp|avif|gif|tiff|heif)$/i;
+  const clientJs = (await Promise.all((await readdir(path.join(root, 'dist/assets'))).filter(f => f.endsWith('.js'))
+    .map(f => readFile(path.join(root, 'dist/assets', f), 'utf8')))).join('\n');
   for (const [source, url] of serverAssets) {
     if (url.startsWith('data:')) continue;
-    assert.ok(manifest[source], 'Asset SSR ausente no manifest cliente: ' + source);
+    if (IMAGEM.test(source) && !manifest[source]) {
+      assert.ok(url.endsWith('.webp'), 'Imagem sem otimização: ' + source);
+      // o minificador cita com aspas ou crase
+      assert.ok(['"', '`', "'"].some(q => clientJs.includes(q + url + q)), 'URL SSR/cliente: ' + source);
+      const emitted = await readFile(path.join(root, 'dist', url));
+      assets.push({ source, url, inServerBundle: true, sourceRegionMapped: true, bytes: emitted.length, sha256: hash(emitted) });
+    } else assert.ok(manifest[source], 'Asset SSR ausente no manifest cliente: ' + source);
     resource(url);
   }
   for (const m of bundle.matchAll(/["'](\/assets\/[^"'\s]+)["']/g)) resource(m[1]);
+  /** URL publicada de um arquivo de src/: imagem otimizada (lista acima) ou manifest. */
+  const assetUrl = source => assets.find(a => a.source === source)?.url;
   const duplicateBasenames = Object.entries(Object.groupBy(assets, a => path.basename(a.source)))
     .filter(([, group]) => group.length > 1).map(([basename, group]) => ({ basename, sources: group.map(a => a.source), urls: group.map(a => a.url) }));
   assert.ok(duplicateBasenames.length >= 9);
@@ -107,12 +120,12 @@ try {
       const id = products.find(p => '/body-splash/' + p.slug === route)?.id;
       assert.ok(id, 'Produto da rota: ' + route);
       for (const folder of ['pdp-frasco', 'pdp-lifestyle']) {
-        const expected = manifest[`src/assets/fotos/${folder}/${id}.jpg`];
+        const expected = assetUrl(`src/assets/fotos/${folder}/${id}.jpg`);
         assert.ok(expected, folder + '/' + id);
-        assert.ok(html.includes('/' + expected.file), 'Glob no HTML: ' + folder + '/' + id);
+        assert.ok(html.includes(expected), 'Glob no HTML: ' + folder + '/' + id);
       }
       const data = JSON.parse(head.scripts.find(s => s.id === 'arq-seo-product').json);
-      assert.equal(data.image, 'https://www.arquetypus.com.br/' + manifest[`src/assets/fotos/pdp-frasco/${id}.jpg`].file);
+      assert.equal(data.image, 'https://www.arquetypus.com.br' + assetUrl(`src/assets/fotos/pdp-frasco/${id}.jpg`));
       const price = head.description.match(/R\$\s*[\d.,]+/)[0];
       assert.ok(text(main).replaceAll(/\s/g, '').includes(price.replaceAll(/\s/g, '')), 'Preço: ' + route);
     }
@@ -152,9 +165,9 @@ try {
         for (const field of ['image', 'logo']) if (data[field]) {
           const url = new URL(data[field]);
           if (url.pathname.startsWith('/src/assets/')) {
-            const asset = manifest[url.pathname.slice(1)];
-            assert.ok(asset, 'Asset do head no manifest: ' + url.pathname);
-            data[field] = new URL('/' + asset.file, url.origin).href;
+            const asset = assetUrl(url.pathname.slice(1));
+            assert.ok(asset, 'Asset do head publicado: ' + url.pathname);
+            data[field] = new URL(asset, url.origin).href;
           }
         }
         return { ...script, json: serializeJsonLd(data) };

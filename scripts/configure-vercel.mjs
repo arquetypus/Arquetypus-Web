@@ -96,11 +96,17 @@ check('/body-splash', '307 /#catalogo');
 check('/body-splash/', '307 /#catalogo');
 for (const pathname of ['/loja', '/arquetipos', '/assets/nao-existe.js', '/sobre', '/']) check(pathname, 'arquivo');
 
+// /assets/ só tem arquivos com hash no nome (o Vite troca o nome quando o conteúdo muda): cache de 1 ano, sem
+// revalidar. HTML, fontes e o que está em public/ seguem no padrão da Vercel (revalida a cada visita).
+const headers = [
+  { source: '/assets/(.*)', headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }] },
+];
+
 const config = {
   $schema: 'https://openapi.vercel.sh/vercel.json',
   framework: 'vite', buildCommand: 'npm run build', outputDirectory: 'dist',
   cleanUrls: true, trailingSlash: false,
-  redirects,
+  headers, redirects,
 };
 const filename = path.join(root, 'vercel.json');
 if (process.argv.includes('--write')) {
