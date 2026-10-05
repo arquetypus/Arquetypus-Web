@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
-import { scrollToId } from '@/lib/scrollToId'
+import { hasPreservedHydrationScroll, scrollToId } from '@/lib/scrollToId'
 import { ThemeSwitcher } from '@/components/ThemeSwitcher'
 import { Drawer } from '@/components/Drawer'
 import { FooterBoutique } from '@/components/boutique/BoutiqueMore'
@@ -25,6 +25,8 @@ export function Layout() {
   const { pathname } =
     (location.state as { backgroundLocation?: typeof location } | null)?.backgroundLocation ?? location
   const scrollRef = useRef<HTMLDivElement>(null)
+  const previousPath = useRef(pathname)
+  const initialAnchor = useRef(true)
   const navigate = useNavigate()
   const isHome = pathname === '/'
   // header transparente só sobre hero de foto/vídeo em tela cheia; os outros heros têm fundo próprio
@@ -41,19 +43,31 @@ export function Layout() {
   }, [isHome])
 
   useEffect(() => {
+    // A hidratação não é navegação: preserva scroll já iniciado no HTML estático.
+    if (previousPath.current === pathname) return
+    previousPath.current = pathname
     scrollRef.current?.scrollTo(0, 0)
   }, [pathname])
 
   // chegou na home com âncora (link do header/rodapé vindo de outra página): rola até a seção depois de montar
   useEffect(() => {
+    const first = initialAnchor.current
+    initialAnchor.current = false
     if (pathname !== '/' || !location.hash) return
+    // O navegador já pode ter seguido a âncora, e o visitante continuado a rolar.
+    if (first && hasPreservedHydrationScroll()) return
     const target = location.hash.slice(1)
-    const id = requestAnimationFrame(() => scrollToId(target))
+    const el = scrollRef.current
+    let interrupted = false
+    const interrupt = () => { interrupted = true }
+    for (const event of ['wheel', 'touchstart', 'pointerdown', 'keydown']) el?.addEventListener(event, interrupt, { passive: true })
+    const id = requestAnimationFrame(() => { if (!interrupted) scrollToId(target) })
     // 2ª passada: em visita fria as imagens acima ainda carregam e mudam a altura da página durante a rolagem
-    const fix = setTimeout(() => scrollToId(target), 1200)
+    const fix = setTimeout(() => { if (!interrupted) scrollToId(target) }, 1200)
     return () => {
       cancelAnimationFrame(id)
       clearTimeout(fix)
+      for (const event of ['wheel', 'touchstart', 'pointerdown', 'keydown']) el?.removeEventListener(event, interrupt)
     }
   }, [pathname, location.hash])
 

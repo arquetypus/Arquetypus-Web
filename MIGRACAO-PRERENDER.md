@@ -492,8 +492,9 @@ Commit: `Gera HTML estático por rota e hidrata o aplicativo existente`.
 
 #### Critérios de HTML bruto por rota
 
-Executar GET direto para cada uma das 18 URLs no preview; registrar primeiro status sem
-seguir redirects automaticamente, headers e corpo. Repetir inspeção nos artefatos locais.
+Nesta etapa, executar GET direto para cada uma das 18 URLs no servidor local de QA; registrar
+primeiro status sem seguir redirects automaticamente, headers e corpo. Inspecionar também
+os artefatos locais. Repetir esses GETs no preview Vercel na Etapa 6, após configurar roteamento.
 HEAD sozinho não comprova conteúdo. O verificador deve registrar aprovado/reprovado por URL.
 
 | Elemento | Asserção objetiva |
@@ -646,7 +647,7 @@ Preencher a cada etapa; evidência ausente significa **pendente**, nunca “apro
 | 2 — SEO compartilhado | Concluída; build, contratos locais e preview aprovados | Código final `8db4e57` enviado para `prerender`; check Vercel success; preview validado | [Etapa 2](docs/prerender/etapa2.md); 18 heads, nove Products/Breadcrumbs, FAQ exata, 27 passos/26 page_view, hidratação sem erros, pop-up/histórico/404, caminhos codificados, JS/CSS idênticos e capturas desktop/móvel |
 | 3 — Ensaio SSR | Concluída; build, ensaio SSR e preview aprovados | Código `1b2b317` enviado para `prerender`; check Vercel success; preview validado | [Etapa 3](docs/prerender/etapa3.md); 18 renders + 404, 80 assets/88 recursos, globs e basenames repetidos, head isolado, lookup seguro, 18 páginas reais/15 cenários no preview e capturas desktop/móvel; saída pública ainda SPA |
 | 4 — SSG e hidratação | Concluída; build, HTML bruto, hidratação local e preview aprovados | Código `6fa0b4c` enviado para `prerender`; check Vercel success; preview validado | [Etapa 4](docs/prerender/etapa4.md); 18 HTMLs + 404, 82 recursos, 18 hidratações locais, pop-up persistido sem flash em desktop/móvel, dois builds idênticos/remoção de HTML obsoleto, 18 páginas/16 cenários no preview. Rewrite SPA preservado: 17 URLs limpas ainda recebem home; entrega definitiva por rota na Etapa 6 |
-| 5 — QA local | Pendente | — | — |
+| 5 — QA local | Concluída localmente; atenção às métricas da PDP antes do aceite da Etapa 6 | Commit local `Valida artefatos e paridade da pré-renderização`, branch `prerender`; sem push/deploy | [Etapa 5](docs/prerender/etapa5.md); 19 HTMLs/91 recursos, 190 cenários JS/consentimento, 95 hidratações finais, 57 falhas/fallbacks, URLs, nove PDPs, formulários, tracking, quatro viewports e medianas. Quatro regressões pré-hidratação corrigidas. LCP local da PDP +17,3%; repetir investigação equivalente no preview. Entrega HTTP Vercel por rota permanece na Etapa 6 |
 | 6 — Vercel/preview | Pendente | — | — |
 | 7 — Produção/rollback | Pendente | — | — |
 

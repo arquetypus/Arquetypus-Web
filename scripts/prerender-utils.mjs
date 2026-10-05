@@ -54,7 +54,7 @@ export function composeDocument(template, route, rendered) {
   return html;
 }
 
-/** Primeira versão do gate de artefatos. Matriz comportamental completa pertence à Etapa 5. */
+/** Gate do build. DOMParser e matriz comportamental complementam este gate no QA local. */
 export async function verifyDocuments(pages, renderer, dist) {
   const { routes, render, DEFAULT_HTML_ATTRIBUTES } = renderer;
   const expectedFiles = validateRoutes(routes, dist);
@@ -84,6 +84,13 @@ export async function verifyDocuments(pages, renderer, dist) {
     assert.equal((head.match(/<title>/g) ?? []).length, 1);
     assert.equal((head.match(/<meta\b[^>]*name="description"/g) ?? []).length, 1);
     assert.equal((head.match(/<link\b[^>]*rel="canonical"/g) ?? []).length, page.route === null ? 0 : 1);
+    for (const property of ['type', 'locale', 'site_name', 'title', 'description', 'image', 'image:width', 'image:height', 'image:alt']) {
+      assert.equal((head.match(new RegExp(`<meta\\b[^>]*property="og:${property}"`, 'g')) ?? []).length, 1, page.file + ' og:' + property);
+    }
+    assert.equal((head.match(/<meta\b[^>]*property="og:url"/g) ?? []).length, page.route === null ? 0 : 1);
+    for (const name of ['twitter:card', 'twitter:image']) assert.equal((head.match(new RegExp(`<meta\\b[^>]*name="${name}"`, 'g')) ?? []).length, 1, page.file + ' ' + name);
+    const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
+    assert.equal(new Set(ids).size, ids.length, 'IDs duplicados: ' + page.file);
     assert.ok(head.includes(renderHead(expected.head)), 'Head incorreto: ' + page.file);
     assert.equal((head.match(/<script\b[^>]*type="application\/ld\+json"/g) ?? []).length, expected.head.scripts.length);
     for (const script of head.matchAll(/<script\b[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)) {
@@ -101,8 +108,22 @@ export async function verifyDocuments(pages, renderer, dist) {
     const h1 = [...main.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/g)].map(m => plainText(m[1]));
     assert.equal(h1.length, 1, page.file);
     if (page.route?.startsWith('/loja/')) {
-      const price = expected.head.description.match(/R\$\s*[\d.,]+/)[0];
-      assert.ok(plainText(main).replaceAll(/\s/g, '').includes(price.replaceAll(/\s/g, '')), page.file);
+      const product = renderer.products.find(item => '/loja/' + item.id === page.route);
+      assert.ok(product, page.file);
+      const compact = value => plainText(value).replaceAll(/\s/g, '');
+      assert.equal(compact(h1[0]), compact(product.nome + (product.sobrenome ?? '')), 'Nome H1: ' + page.file);
+      const price = product.preco.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      // Identidade e preço são irmãos na coluna de compra; limitar antes dos selos/ritual.
+      const identityStart = main.indexOf('<h1');
+      const nextSection = main.indexOf('<section', identityStart);
+      const purchase = main.slice(identityStart, nextSection);
+      assert.ok(purchase && compact(purchase).includes(compact(price)), 'Preço na compra: ' + page.file);
+      assert.ok(compact(purchase).includes(compact(product.card)), 'Descrição na compra: ' + page.file);
+      const schema = JSON.parse(expected.head.scripts.find(script => script.id === 'arq-seo-product').json);
+      assert.equal(schema.name, `${product.nome} ${product.sobrenome ?? ''}`.trim());
+      assert.ok(!('offers' in schema) && !('aggregateRating' in schema) && !('review' in schema), page.file);
+      assert.equal(schema.sku, product.id);
+      addResource(schema.image);
     }
     for (const m of html.matchAll(/\b(?:src|poster)="([^"]+)"/g)) addResource(m[1]);
     for (const m of html.matchAll(/\b(?:srcset|srcSet|imagesrcset)="([^"]+)"/g)) {
@@ -117,6 +138,14 @@ export async function verifyDocuments(pages, renderer, dist) {
     rows.push({ route: page.route, file: page.file, bytes: Buffer.byteLength(html), title: expected.head.title,
       canonical: expected.head.canonical ?? null, h1, mainExcerpt: plainText(main).slice(0, 600), jsonLdCount: expected.head.scripts.length });
   }
+  // Grafo do manifest: módulos, imports, CSS e assets não necessariamente presentes no HTML.
+  for (const entry of Object.values(manifest)) {
+    addResource('/' + entry.file);
+    for (const file of [...(entry.css ?? []), ...(entry.assets ?? [])]) addResource('/' + file);
+    for (const key of [...(entry.imports ?? []), ...(entry.dynamicImports ?? [])]) assert.ok(manifest[key], 'Import sem manifest: ' + key);
+  }
+  const webmanifest = JSON.parse(await readFile(path.join(dist, 'site.webmanifest'), 'utf8'));
+  for (const icon of webmanifest.icons ?? []) addResource(icon.src);
   for (const css of manifest['index.html'].css ?? []) {
     addResource('/' + css);
     const content = (await readFile(path.join(dist, css), 'utf8')).replace(/url\((["'])data:[\s\S]*?\1\)/g, '');

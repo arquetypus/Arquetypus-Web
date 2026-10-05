@@ -17,7 +17,13 @@ export function ProductGallery({ nome, bg, slides }: { nome: string; bg: string;
   const [hint, setHint] = useState(false)
 
   // O listener de animationend já existe quando a animação começa.
-  useEffect(() => setHint(slides.length > 1), [slides.length])
+  useEffect(() => {
+    const el = trackRef.current
+    const moved = !!el && el.scrollLeft > 0
+    // O scroll-snap funciona antes de JS; hidratação acompanha a foto escolhida.
+    if (el && el.clientWidth > 0) setCurrent(Math.round(el.scrollLeft / el.clientWidth))
+    setHint(slides.length > 1 && !moved)
+  }, [slides.length])
 
   if (slides.length === 0) {
     return <MediaSlot aspect="1/1" bg={bg} requisito={`FOTO · 1:1 · 1200×1200 · FRASCO · ${nome.toUpperCase()}`} />

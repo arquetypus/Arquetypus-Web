@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.tsx'
 import { matchingPublicRoute, PUBLIC_ROUTES } from './lib/publicRoutes'
+import { preserveHydrationScroll } from './lib/scrollToId'
 
 const root = document.getElementById('root')!
 const background = window.history.state?.usr?.backgroundLocation
@@ -18,6 +19,7 @@ const app = (
 )
 
 if (root.hasChildNodes() && document.documentElement.dataset.rota && compatible && !background) {
+  preserveHydrationScroll(root)
   hydrateRoot(root, app, {
     onRecoverableError(error, info) {
       console.error('Falha recuperável na hidratação:', error, info.componentStack)

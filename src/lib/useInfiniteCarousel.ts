@@ -35,6 +35,7 @@ export function useInfiniteCarousel(count: number, { mouseDrag = false }: { mous
   const [activeIndex, setActiveIndex] = useState(count)
   const settleTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const userScrolled = useRef(false)
+  const initializedContainer = useRef<HTMLDivElement | null>(null)
 
   function registerItem(i: number) {
     return (el: HTMLElement | null) => {
@@ -74,9 +75,12 @@ export function useInfiniteCarousel(count: number, { mouseDrag = false }: { mous
   }
 
   useLayoutEffect(() => {
-    if (count === 0) return
-    userScrolled.current = false
-    centerOn(count)
+    if (count === 0 || !container) return
+    // Um trilho recém-hidratado já pode ter recebido scroll nativo no HTML.
+    // Trocar o filtro continua centralizando; apenas a primeira conexão preserva o gesto.
+    userScrolled.current = initializedContainer.current !== container && container.scrollLeft > 0
+    initializedContainer.current = container
+    if (!userScrolled.current) centerOn(count)
     setActiveIndex(closestIndex())
     // segunda passada depois do layout assentar (fontes, snap, seção revelada)
     const raf = requestAnimationFrame(() => {

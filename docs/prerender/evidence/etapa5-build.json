@@ -1,0 +1,43 @@
+﻿{
+    "collectedAt":  "2026-10-05T07:35:02.8629857Z",
+    "baseCommit":  "d4fe6cc95c4701f50c12ceb84d7aafbf3724a60c",
+    "branch":  "prerender",
+    "main":  "8a02e4a2135d407c61315e1ec039c3d28ac9b3f2",
+    "sourceFiles":  [
+                        {
+                            "file":  "src/main.tsx",
+                            "sha256":  "103B888AA3762347E2ADC245F55B62186BD1A416513170246E49D77187EDCD53"
+                        },
+                        {
+                            "file":  "src/lib/scrollToId.ts",
+                            "sha256":  "88523BDB20FA07E780C5F577BC057FE972B84BDF65C65B627316D7B3D24E68BC"
+                        },
+                        {
+                            "file":  "src/lib/useInfiniteCarousel.ts",
+                            "sha256":  "BD6F790B2A93B708AFD6BFFF4EBF014C7ADED88996240C32F1A2FE923BB9BDCC"
+                        },
+                        {
+                            "file":  "src/components/Layout.tsx",
+                            "sha256":  "F209B1911CB4AC8A56376D5D09EBCC048CFA736078EADA83BDAD4D898E6F5472"
+                        },
+                        {
+                            "file":  "src/components/ProductGallery.tsx",
+                            "sha256":  "BC9C755094ED4158B12A866C1973345AE412C00C909608208F7C50478CEFBFD7"
+                        },
+                        {
+                            "file":  "src/entry-server.tsx",
+                            "sha256":  "125B5803D8B588D01500C6DF8ADE3DF3288B606399A5F46724BA0874EDF5AEE6"
+                        },
+                        {
+                            "file":  "scripts/prerender-utils.mjs",
+                            "sha256":  "A81FC68992B718AB1853AC5F71A912DA222E1642C97FD145AAA70CAC0AB5C094"
+                        }
+                    ],
+    "clientEntry":  "assets/index-Cd29iwMJ.js",
+    "clientCss":  [
+                      "assets/index-BYogewtm.css"
+                  ],
+    "fullBuildLog":  "etapa5-build-output.txt",
+    "scope":  "Somente local, sem push/deploy",
+    "buildExit":  0
+}

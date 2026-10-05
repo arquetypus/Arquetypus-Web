@@ -1,0 +1,242 @@
+{
+  "scope": "Desktop local 1024x900; declarações de prioridade, não prioridade efetiva do escalonador",
+  "images": [
+    {
+      "fetchpriority": "auto",
+      "loading": "auto",
+      "src": "http://127.0.0.1:4177/assets/wordmark-marmore-_FVJxRZ6.png"
+    },
+    {
+      "fetchpriority": "auto",
+      "loading": "auto",
+      "src": "http://127.0.0.1:4177/assets/wordmark-preto-BefuJb9g.png"
+    },
+    {
+      "fetchpriority": "auto",
+      "loading": "auto",
+      "src": "http://127.0.0.1:4177/assets/wordmark-preto-BefuJb9g.png"
+    },
+    {
+      "fetchpriority": "auto",
+      "loading": "auto",
+      "src": "http://127.0.0.1:4177/assets/colecao-desktop-9TO7ZM9U.jpg"
+    },
+    {
+      "fetchpriority": "auto",
+      "loading": "auto",
+      "src": "http://127.0.0.1:4177/assets/afrodite-desktop-B7HpEMIW.jpg"
+    },
+    {
+      "fetchpriority": "auto",
+      "loading": "auto",
+      "src": "http://127.0.0.1:4177/assets/guerreiro-desktop-CLkBxrUW.jpg"
+    },
+    {
+      "fetchpriority": "auto",
+      "loading": "lazy",
+      "src": "http://127.0.0.1:4177/assets/cleopatra-Dkqrl1GK.jpg"
+    },
+    {
+      "fetchpriority": "auto",
+      "loading": "auto",
+      "src": "http://127.0.0.1:4177/assets/cleopatra-vBb_yrcd.jpg"
+    },
+    {
+      "fetchpriority": "auto",
+      "loading": "lazy",
+      "src": "http://127.0.0.1:4177/assets/guerreiro-9WjdvcUx.jpg"
+    },
+    {
+      "fetchpriority": "auto",
+      "loading": "auto",
+      "src": "http://127.0.0.1:4177/assets/guerreiro-B-htc0v_.jpg"
+    },
+    {
+      "fetchpriority": "auto",
+      "loading": "lazy",
+      "src": "http://127.0.0.1:4177/assets/sereia-Od4PiDXc.jpg"
+    },
+    {
+      "fetchpriority": "auto",
+      "loading": "auto",
+      "src": "http://127.0.0.1:4177/assets/sereia-C7NIY0eS.jpg"
+    },
+    {
+      "fetchpriority": "auto",
+      "loading": "lazy",
+      "src": "http://127.0.0.1:4177/assets/fenix-DvTwejAx.jpg"
+    },
+    {
+      "fetchpriority": "auto",
+      "loading": "auto",
+      "src": "http://127.0.0.1:4177/assets/fenix-D2gHIR71.jpg"
+    }
+  ],
+  "preloads": [
+    {
+      "as": "font",
+      "fetchpriority": null,
+      "href": "http://127.0.0.1:4177/fonts/elegant.woff2",
+      "imagesrcset": null
+    },
+    {
+      "as": "font",
+      "fetchpriority": null,
+      "href": "http://127.0.0.1:4177/fonts/inter-var.woff2",
+      "imagesrcset": null
+    },
+    {
+      "as": "image",
+      "fetchpriority": null,
+      "href": "http://127.0.0.1:4177/assets/wordmark-marmore-_FVJxRZ6.png",
+      "imagesrcset": null
+    },
+    {
+      "as": "image",
+      "fetchpriority": null,
+      "href": "http://127.0.0.1:4177/assets/wordmark-preto-BefuJb9g.png",
+      "imagesrcset": null
+    },
+    {
+      "as": "image",
+      "fetchpriority": null,
+      "href": "http://127.0.0.1:4177/assets/cleopatra-vBb_yrcd.jpg",
+      "imagesrcset": null
+    },
+    {
+      "as": "image",
+      "fetchpriority": null,
+      "href": "http://127.0.0.1:4177/assets/guerreiro-B-htc0v_.jpg",
+      "imagesrcset": null
+    },
+    {
+      "as": "image",
+      "fetchpriority": null,
+      "href": "http://127.0.0.1:4177/assets/sereia-C7NIY0eS.jpg",
+      "imagesrcset": null
+    },
+    {
+      "as": "image",
+      "fetchpriority": null,
+      "href": "http://127.0.0.1:4177/assets/fenix-D2gHIR71.jpg",
+      "imagesrcset": null
+    },
+    {
+      "as": "image",
+      "fetchpriority": null,
+      "href": "http://127.0.0.1:4177/assets/afrodite-DVF-Wqlu.jpg",
+      "imagesrcset": null
+    },
+    {
+      "as": "image",
+      "fetchpriority": null,
+      "href": "http://127.0.0.1:4177/assets/imperador-DzfD99gB.jpg",
+      "imagesrcset": null
+    },
+    {
+      "as": "image",
+      "fetchpriority": null,
+      "href": "http://127.0.0.1:4177/assets/imperatriz-C0z8_uLt.jpg",
+      "imagesrcset": null
+    },
+    {
+      "as": "image",
+      "fetchpriority": null,
+      "href": "http://127.0.0.1:4177/assets/zeus-ByZH3hi4.jpg",
+      "imagesrcset": null
+    },
+    {
+      "as": "image",
+      "fetchpriority": null,
+      "href": "http://127.0.0.1:4177/assets/fada-BcYvZE2P.jpg",
+      "imagesrcset": null
+    },
+    {
+      "as": "image",
+      "fetchpriority": null,
+      "href": "http://127.0.0.1:4177/assets/cleopatra-Dkqrl1GK.jpg",
+      "imagesrcset": null
+    },
+    {
+      "as": "image",
+      "fetchpriority": null,
+      "href": "http://127.0.0.1:4177/assets/florais-elegantes-gFNKx20V.jpg",
+      "imagesrcset": null
+    },
+    {
+      "as": "image",
+      "fetchpriority": null,
+      "href": "http://127.0.0.1:4177/assets/frutados-citricos-BHSVN3QN.jpg",
+      "imagesrcset": null
+    },
+    {
+      "as": "image",
+      "fetchpriority": null,
+      "href": "http://127.0.0.1:4177/assets/frescos-luminosos-BAvS1EQ-.jpg",
+      "imagesrcset": null
+    },
+    {
+      "as": "image",
+      "fetchpriority": null,
+      "href": "http://127.0.0.1:4177/assets/ambarados-adocicados-B5C3mvbW.jpg",
+      "imagesrcset": null
+    },
+    {
+      "as": "image",
+      "fetchpriority": null,
+      "href": "http://127.0.0.1:4177/assets/amadeirados-especiados-B267512W.jpg",
+      "imagesrcset": null
+    },
+    {
+      "as": "image",
+      "fetchpriority": null,
+      "href": "http://127.0.0.1:4177/assets/flor-arquetypus-CKSiaCgq.png",
+      "imagesrcset": null
+    },
+    {
+      "as": "image",
+      "fetchpriority": null,
+      "href": "http://127.0.0.1:4177/assets/logo-dourado-BkuS44dK.png",
+      "imagesrcset": null
+    }
+  ],
+  "viewport": {
+    "height": 900,
+    "width": 1024
+  },
+  "media": [
+    {
+      "src": "http://127.0.0.1:4177/assets/hero-video-DYdAfdYa.mp4",
+      "currentTime": 3.920393,
+      "readyState": 4,
+      "paused": false,
+      "preload": "auto",
+      "opacity": "1",
+      "visibility": "visible",
+      "display": "none",
+      "filter": "none",
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    }
+  ],
+  "requests": [
+    {
+      "name": "http://127.0.0.1:4177/assets/hero-video-poster-BZSZW7gT.jpg",
+      "initiatorType": "video",
+      "startTime": 49.10000002384186,
+      "duration": 66.69999998807907,
+      "transferSize": 46140,
+      "encodedBodySize": 45840
+    },
+    {
+      "name": "http://127.0.0.1:4177/assets/hero-video-DYdAfdYa.mp4",
+      "initiatorType": "video",
+      "startTime": 65.60000002384186,
+      "duration": 202.0999999642372,
+      "transferSize": 2171817,
+      "encodedBodySize": 2171517
+    }
+  ]
+}

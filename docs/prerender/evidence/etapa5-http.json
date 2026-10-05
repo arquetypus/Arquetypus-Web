@@ -1,0 +1,1198 @@
+{
+  "collectedAt": "2026-10-05T07:34:15.731Z",
+  "scope": "localhost; roteamento Vercel pendente na etapa 6",
+  "documents": [
+    {
+      "target": "/",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "268116",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 268116,
+      "passed": true
+    },
+    {
+      "target": "/index.html",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "268116",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 268116,
+      "passed": true
+    },
+    {
+      "target": "/criadores",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "48363",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 48363,
+      "passed": true
+    },
+    {
+      "target": "/criadores.html",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "48363",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 48363,
+      "passed": true
+    },
+    {
+      "target": "/sobre",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "33981",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 33981,
+      "passed": true
+    },
+    {
+      "target": "/sobre.html",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "33981",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 33981,
+      "passed": true
+    },
+    {
+      "target": "/perguntas-frequentes",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "53510",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 53510,
+      "passed": true
+    },
+    {
+      "target": "/perguntas-frequentes.html",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "53510",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 53510,
+      "passed": true
+    },
+    {
+      "target": "/entrega-e-frete",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "32477",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 32477,
+      "passed": true
+    },
+    {
+      "target": "/entrega-e-frete.html",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "32477",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 32477,
+      "passed": true
+    },
+    {
+      "target": "/trocas-e-devolucoes",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "33000",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 33000,
+      "passed": true
+    },
+    {
+      "target": "/trocas-e-devolucoes.html",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "33000",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 33000,
+      "passed": true
+    },
+    {
+      "target": "/regras-do-site",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "32816",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 32816,
+      "passed": true
+    },
+    {
+      "target": "/regras-do-site.html",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "32816",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 32816,
+      "passed": true
+    },
+    {
+      "target": "/privacidade",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "40551",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 40551,
+      "passed": true
+    },
+    {
+      "target": "/privacidade.html",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "40551",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 40551,
+      "passed": true
+    },
+    {
+      "target": "/termos-de-uso",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "33601",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 33601,
+      "passed": true
+    },
+    {
+      "target": "/termos-de-uso.html",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "33601",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 33601,
+      "passed": true
+    },
+    {
+      "target": "/loja/afrodite",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "61806",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 61806,
+      "passed": true
+    },
+    {
+      "target": "/loja/afrodite.html",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "61806",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 61806,
+      "passed": true
+    },
+    {
+      "target": "/loja/imperatriz",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "61865",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 61865,
+      "passed": true
+    },
+    {
+      "target": "/loja/imperatriz.html",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "61865",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 61865,
+      "passed": true
+    },
+    {
+      "target": "/loja/cleopatra",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "61802",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 61802,
+      "passed": true
+    },
+    {
+      "target": "/loja/cleopatra.html",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "61802",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 61802,
+      "passed": true
+    },
+    {
+      "target": "/loja/fada",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "61608",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 61608,
+      "passed": true
+    },
+    {
+      "target": "/loja/fada.html",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "61608",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 61608,
+      "passed": true
+    },
+    {
+      "target": "/loja/sereia",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "61640",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 61640,
+      "passed": true
+    },
+    {
+      "target": "/loja/sereia.html",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "61640",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 61640,
+      "passed": true
+    },
+    {
+      "target": "/loja/zeus",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "61637",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 61637,
+      "passed": true
+    },
+    {
+      "target": "/loja/zeus.html",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "61637",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 61637,
+      "passed": true
+    },
+    {
+      "target": "/loja/guerreiro",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "61770",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 61770,
+      "passed": true
+    },
+    {
+      "target": "/loja/guerreiro.html",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "61770",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 61770,
+      "passed": true
+    },
+    {
+      "target": "/loja/imperador",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "61823",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 61823,
+      "passed": true
+    },
+    {
+      "target": "/loja/imperador.html",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "61823",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 61823,
+      "passed": true
+    },
+    {
+      "target": "/loja/fenix",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "61697",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 61697,
+      "passed": true
+    },
+    {
+      "target": "/loja/fenix.html",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "61697",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 61697,
+      "passed": true
+    },
+    {
+      "target": "/qa-rota-inexistente",
+      "status": 404,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "27435",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 27435,
+      "passed": true
+    },
+    {
+      "target": "/404.html",
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "27435",
+        "content-type": "text/html; charset=utf-8",
+        "date": "Mon, 05 Oct 2026 07:34:14 GMT",
+        "keep-alive": "timeout=5"
+      },
+      "bytes": 27435,
+      "passed": true
+    }
+  ],
+  "resources": [
+    {
+      "target": "/apple-touch-icon.png",
+      "status": 200,
+      "type": "image/png",
+      "bytes": 15294,
+      "passed": true
+    },
+    {
+      "target": "/assets/afrodite-3me8ajmF.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 133921,
+      "passed": true
+    },
+    {
+      "target": "/assets/afrodite-B05JoXeN.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 81381,
+      "passed": true
+    },
+    {
+      "target": "/assets/afrodite-B6GNBj6I.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 115593,
+      "passed": true
+    },
+    {
+      "target": "/assets/afrodite-DSxSPTn3.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 119318,
+      "passed": true
+    },
+    {
+      "target": "/assets/afrodite-DVF-Wqlu.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 8612,
+      "passed": true
+    },
+    {
+      "target": "/assets/afrodite-Dk0tYPJ7.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 156195,
+      "passed": true
+    },
+    {
+      "target": "/assets/afrodite-desktop-B7HpEMIW.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 155962,
+      "passed": true
+    },
+    {
+      "target": "/assets/amadeirados-especiados-B267512W.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 146431,
+      "passed": true
+    },
+    {
+      "target": "/assets/ambarados-adocicados-B5C3mvbW.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 138763,
+      "passed": true
+    },
+    {
+      "target": "/assets/arquetypus-BVgblDH-.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 115285,
+      "passed": true
+    },
+    {
+      "target": "/assets/cleopatra-BZdVdx6Q.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 116362,
+      "passed": true
+    },
+    {
+      "target": "/assets/cleopatra-Bl8vga44.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 135073,
+      "passed": true
+    },
+    {
+      "target": "/assets/cleopatra-Dkqrl1GK.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 114104,
+      "passed": true
+    },
+    {
+      "target": "/assets/cleopatra-vBb_yrcd.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 9560,
+      "passed": true
+    },
+    {
+      "target": "/assets/cleopatra-zF7WXxBj.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 102114,
+      "passed": true
+    },
+    {
+      "target": "/assets/colecao-completa-DFK73sws.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 248453,
+      "passed": true
+    },
+    {
+      "target": "/assets/colecao-desktop-9TO7ZM9U.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 324912,
+      "passed": true
+    },
+    {
+      "target": "/assets/compartilhavel-sdgMfCjh.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 77488,
+      "passed": true
+    },
+    {
+      "target": "/assets/criadores-hero-CxQZOKK7.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 247090,
+      "passed": true
+    },
+    {
+      "target": "/assets/destaque-fenix-Ok4KUYFV.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 131339,
+      "passed": true
+    },
+    {
+      "target": "/assets/destaque-fenix-desktop-CVj4Qd3r.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 147009,
+      "passed": true
+    },
+    {
+      "target": "/assets/destaque-sereia-DF4lkBtE.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 192172,
+      "passed": true
+    },
+    {
+      "target": "/assets/destaque-sereia-desktop-BYPOaLQs.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 157935,
+      "passed": true
+    },
+    {
+      "target": "/assets/destaque-zeus-DSf4AtfR.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 229600,
+      "passed": true
+    },
+    {
+      "target": "/assets/destaque-zeus-desktop-BQgVxW1K.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 191574,
+      "passed": true
+    },
+    {
+      "target": "/assets/energia-forca-v_xxbPT8.png",
+      "status": 200,
+      "type": "image/png",
+      "bytes": 2732835,
+      "passed": true
+    },
+    {
+      "target": "/assets/energia-misterio-DHubcL27.png",
+      "status": 200,
+      "type": "image/png",
+      "bytes": 1815037,
+      "passed": true
+    },
+    {
+      "target": "/assets/energia-poder-DJu8VmH5.png",
+      "status": 200,
+      "type": "image/png",
+      "bytes": 1843358,
+      "passed": true
+    },
+    {
+      "target": "/assets/energia-seducao-GcdPeK9M.png",
+      "status": 200,
+      "type": "image/png",
+      "bytes": 1779738,
+      "passed": true
+    },
+    {
+      "target": "/assets/fada--tqA5GVs.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 125119,
+      "passed": true
+    },
+    {
+      "target": "/assets/fada-BcYvZE2P.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 8602,
+      "passed": true
+    },
+    {
+      "target": "/assets/fada-Bn1LJZub.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 86203,
+      "passed": true
+    },
+    {
+      "target": "/assets/fada-D6N5CPL0.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 110574,
+      "passed": true
+    },
+    {
+      "target": "/assets/fada-skWWuu9m.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 167543,
+      "passed": true
+    },
+    {
+      "target": "/assets/feminino-Bag6AX96.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 190648,
+      "passed": true
+    },
+    {
+      "target": "/assets/fenix-9ugHzzJn.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 106671,
+      "passed": true
+    },
+    {
+      "target": "/assets/fenix-BUDNXOxD.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 147374,
+      "passed": true
+    },
+    {
+      "target": "/assets/fenix-C9E5TLhz.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 114885,
+      "passed": true
+    },
+    {
+      "target": "/assets/fenix-D2gHIR71.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 9822,
+      "passed": true
+    },
+    {
+      "target": "/assets/fenix-DvTwejAx.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 140031,
+      "passed": true
+    },
+    {
+      "target": "/assets/flor-arquetypus-CKSiaCgq.png",
+      "status": 200,
+      "type": "image/png",
+      "bytes": 1502005,
+      "passed": true
+    },
+    {
+      "target": "/assets/florais-elegantes-gFNKx20V.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 148869,
+      "passed": true
+    },
+    {
+      "target": "/assets/frescos-luminosos-BAvS1EQ-.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 208775,
+      "passed": true
+    },
+    {
+      "target": "/assets/frutados-citricos-BHSVN3QN.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 204512,
+      "passed": true
+    },
+    {
+      "target": "/assets/guerreiro-0wca7BDJ.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 105991,
+      "passed": true
+    },
+    {
+      "target": "/assets/guerreiro-9WjdvcUx.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 167147,
+      "passed": true
+    },
+    {
+      "target": "/assets/guerreiro-B-htc0v_.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 10234,
+      "passed": true
+    },
+    {
+      "target": "/assets/guerreiro-B6Tw63gs.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 114705,
+      "passed": true
+    },
+    {
+      "target": "/assets/guerreiro-BTw7xVzI.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 270670,
+      "passed": true
+    },
+    {
+      "target": "/assets/guerreiro-DRTVWBu0.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 153310,
+      "passed": true
+    },
+    {
+      "target": "/assets/guerreiro-desktop-CLkBxrUW.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 224164,
+      "passed": true
+    },
+    {
+      "target": "/assets/hero-video-DYdAfdYa.mp4",
+      "status": 200,
+      "type": "video/mp4",
+      "bytes": 2171517,
+      "passed": true
+    },
+    {
+      "target": "/assets/hero-video-poster-BZSZW7gT.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 45840,
+      "passed": true
+    },
+    {
+      "target": "/assets/imperador-BvRHgmpJ.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 114670,
+      "passed": true
+    },
+    {
+      "target": "/assets/imperador-BzmM6CjY.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 146389,
+      "passed": true
+    },
+    {
+      "target": "/assets/imperador-CUVygshf.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 166077,
+      "passed": true
+    },
+    {
+      "target": "/assets/imperador-DaPOk4AV.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 113107,
+      "passed": true
+    },
+    {
+      "target": "/assets/imperador-DzfD99gB.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 10475,
+      "passed": true
+    },
+    {
+      "target": "/assets/imperatriz-BRD48Xtr.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 159705,
+      "passed": true
+    },
+    {
+      "target": "/assets/imperatriz-BuMKC5nt.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 128936,
+      "passed": true
+    },
+    {
+      "target": "/assets/imperatriz-C0z8_uLt.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 10526,
+      "passed": true
+    },
+    {
+      "target": "/assets/imperatriz-Dn8gcEzw.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 115569,
+      "passed": true
+    },
+    {
+      "target": "/assets/imperatriz-qEHRqtRT.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 117526,
+      "passed": true
+    },
+    {
+      "target": "/assets/index-BYogewtm.css",
+      "status": 200,
+      "type": "text/css",
+      "bytes": 160335,
+      "passed": true
+    },
+    {
+      "target": "/assets/index-Cd29iwMJ.js",
+      "status": 200,
+      "type": "text/javascript",
+      "bytes": 635962,
+      "passed": true
+    },
+    {
+      "target": "/assets/logo-branco-BDDmtqMW.png",
+      "status": 200,
+      "type": "image/png",
+      "bytes": 24532,
+      "passed": true
+    },
+    {
+      "target": "/assets/logo-dourado-BkuS44dK.png",
+      "status": 200,
+      "type": "image/png",
+      "bytes": 40614,
+      "passed": true
+    },
+    {
+      "target": "/assets/masculino-BUtAdhYX.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 122826,
+      "passed": true
+    },
+    {
+      "target": "/assets/ribbon-arquetypus-O8PVxe-F.png",
+      "status": 200,
+      "type": "image/png",
+      "bytes": 222087,
+      "passed": true
+    },
+    {
+      "target": "/assets/sereia-C7NIY0eS.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 9884,
+      "passed": true
+    },
+    {
+      "target": "/assets/sereia-CYMB6lTe.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 106364,
+      "passed": true
+    },
+    {
+      "target": "/assets/sereia-CmMHd5E9.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 148295,
+      "passed": true
+    },
+    {
+      "target": "/assets/sereia-DMQ0hll0.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 130569,
+      "passed": true
+    },
+    {
+      "target": "/assets/sereia-Od4PiDXc.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 169772,
+      "passed": true
+    },
+    {
+      "target": "/assets/splash-comum-D6smjJu4.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 22572,
+      "passed": true
+    },
+    {
+      "target": "/assets/wordmark-marmore-_FVJxRZ6.png",
+      "status": 200,
+      "type": "image/png",
+      "bytes": 89018,
+      "passed": true
+    },
+    {
+      "target": "/assets/wordmark-preto-BefuJb9g.png",
+      "status": 200,
+      "type": "image/png",
+      "bytes": 87550,
+      "passed": true
+    },
+    {
+      "target": "/assets/zeus-BSVowwxX.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 107288,
+      "passed": true
+    },
+    {
+      "target": "/assets/zeus-Bk4k23TW.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 126144,
+      "passed": true
+    },
+    {
+      "target": "/assets/zeus-ByZH3hi4.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 9581,
+      "passed": true
+    },
+    {
+      "target": "/assets/zeus-GmMKqwvR.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 145054,
+      "passed": true
+    },
+    {
+      "target": "/assets/zeus-adIUQC4G.jpg",
+      "status": 200,
+      "type": "image/jpeg",
+      "bytes": 124314,
+      "passed": true
+    },
+    {
+      "target": "/favicon-32.png",
+      "status": 200,
+      "type": "image/png",
+      "bytes": 2190,
+      "passed": true
+    },
+    {
+      "target": "/favicon.ico",
+      "status": 200,
+      "type": "image/x-icon",
+      "bytes": 6859,
+      "passed": true
+    },
+    {
+      "target": "/fonts/elegant.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "bytes": 32448,
+      "passed": true
+    },
+    {
+      "target": "/fonts/inter-var-italic.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "bytes": 116164,
+      "passed": true
+    },
+    {
+      "target": "/fonts/inter-var.woff2",
+      "status": 200,
+      "type": "font/woff2",
+      "bytes": 105336,
+      "passed": true
+    },
+    {
+      "target": "/icon-192.png",
+      "status": 200,
+      "type": "image/png",
+      "bytes": 16777,
+      "passed": true
+    },
+    {
+      "target": "/icon-512.png",
+      "status": 200,
+      "type": "image/png",
+      "bytes": 84236,
+      "passed": true
+    },
+    {
+      "target": "/site.webmanifest",
+      "status": 200,
+      "type": "application/manifest+json",
+      "bytes": 483,
+      "passed": true
+    },
+    {
+      "target": "/robots.txt",
+      "status": 200,
+      "type": "text/plain",
+      "bytes": 71,
+      "passed": true
+    },
+    {
+      "target": "/sitemap.xml",
+      "status": 200,
+      "type": "application/xml",
+      "bytes": 1765,
+      "passed": true
+    },
+    {
+      "target": "/llms.txt",
+      "status": 200,
+      "type": "text/plain",
+      "bytes": 4381,
+      "passed": true
+    }
+  ]
+}

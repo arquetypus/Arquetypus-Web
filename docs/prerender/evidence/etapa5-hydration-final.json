@@ -1,0 +1,3996 @@
+{
+  "collectedAt": "2026-10-05T07:24:03.097Z",
+  "browser": "Edge; build final da Etapa 5",
+  "rows": [
+    {
+      "route": "/",
+      "consent": "absent",
+      "first": {
+        "time": 474.30000001192093,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Qual versão de você quer expressar hoje?"
+      },
+      "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/?consent=absent",
+          "page_location": "http://127.0.0.1:4177/?consent=absent",
+          "page_title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/",
+      "consent": "accepted",
+      "first": {
+        "time": 483,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Qual versão de você quer expressar hoje?"
+      },
+      "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/?consent=accepted",
+          "page_title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/",
+      "consent": "refused",
+      "first": {
+        "time": 515.1000000238419,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Qual versão de você quer expressar hoje?"
+      },
+      "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "denied",
+            "ad_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/?consent=refused",
+          "page_location": "http://127.0.0.1:4177/?consent=refused",
+          "page_title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/",
+      "consent": "expired",
+      "first": {
+        "time": 471,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Qual versão de você quer expressar hoje?"
+      },
+      "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/?consent=expired",
+          "page_location": "http://127.0.0.1:4177/?consent=expired",
+          "page_title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/",
+      "consent": "blocked",
+      "first": {
+        "time": 579.8999999761581,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Qual versão de você quer expressar hoje?"
+      },
+      "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/?consent=blocked",
+          "page_location": "http://127.0.0.1:4177/?consent=blocked",
+          "page_title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/criadores",
+      "consent": "absent",
+      "first": {
+        "time": 376.19999998807907,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Um arquétipo.O seu, de verdade."
+      },
+      "title": "Programa de Criadores | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/criadores?consent=absent",
+          "page_location": "http://127.0.0.1:4177/criadores?consent=absent",
+          "page_title": "Programa de Criadores | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/criadores",
+      "consent": "accepted",
+      "first": {
+        "time": 246.69999998807907,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Um arquétipo.O seu, de verdade."
+      },
+      "title": "Programa de Criadores | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/criadores?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/criadores?consent=accepted",
+          "page_title": "Programa de Criadores | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/criadores",
+      "consent": "refused",
+      "first": {
+        "time": 234.39999997615814,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Um arquétipo.O seu, de verdade."
+      },
+      "title": "Programa de Criadores | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "denied",
+            "ad_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/criadores?consent=refused",
+          "page_location": "http://127.0.0.1:4177/criadores?consent=refused",
+          "page_title": "Programa de Criadores | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/criadores",
+      "consent": "expired",
+      "first": {
+        "time": 258.0999999642372,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Um arquétipo.O seu, de verdade."
+      },
+      "title": "Programa de Criadores | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/criadores?consent=expired",
+          "page_location": "http://127.0.0.1:4177/criadores?consent=expired",
+          "page_title": "Programa de Criadores | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/criadores",
+      "consent": "blocked",
+      "first": {
+        "time": 202,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Um arquétipo.O seu, de verdade."
+      },
+      "title": "Programa de Criadores | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/criadores?consent=blocked",
+          "page_location": "http://127.0.0.1:4177/criadores?consent=blocked",
+          "page_title": "Programa de Criadores | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/sobre",
+      "consent": "absent",
+      "first": {
+        "time": 161,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Sobre a Arquétypus"
+      },
+      "title": "Sobre Nós: Perfumaria de Arquétipos | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/sobre?consent=absent",
+          "page_location": "http://127.0.0.1:4177/sobre?consent=absent",
+          "page_title": "Sobre Nós: Perfumaria de Arquétipos | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/sobre",
+      "consent": "accepted",
+      "first": {
+        "time": 182,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Sobre a Arquétypus"
+      },
+      "title": "Sobre Nós: Perfumaria de Arquétipos | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/sobre?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/sobre?consent=accepted",
+          "page_title": "Sobre Nós: Perfumaria de Arquétipos | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/sobre",
+      "consent": "refused",
+      "first": {
+        "time": 205.39999997615814,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Sobre a Arquétypus"
+      },
+      "title": "Sobre Nós: Perfumaria de Arquétipos | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "denied",
+            "ad_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/sobre?consent=refused",
+          "page_location": "http://127.0.0.1:4177/sobre?consent=refused",
+          "page_title": "Sobre Nós: Perfumaria de Arquétipos | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/sobre",
+      "consent": "expired",
+      "first": {
+        "time": 186.19999998807907,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Sobre a Arquétypus"
+      },
+      "title": "Sobre Nós: Perfumaria de Arquétipos | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/sobre?consent=expired",
+          "page_location": "http://127.0.0.1:4177/sobre?consent=expired",
+          "page_title": "Sobre Nós: Perfumaria de Arquétipos | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/sobre",
+      "consent": "blocked",
+      "first": {
+        "time": 155.20000004768372,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Sobre a Arquétypus"
+      },
+      "title": "Sobre Nós: Perfumaria de Arquétipos | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/sobre?consent=blocked",
+          "page_location": "http://127.0.0.1:4177/sobre?consent=blocked",
+          "page_title": "Sobre Nós: Perfumaria de Arquétipos | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/perguntas-frequentes",
+      "consent": "absent",
+      "first": {
+        "time": 166.5999999642372,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Perguntas frequentes"
+      },
+      "title": "Perguntas Frequentes | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/perguntas-frequentes?consent=absent",
+          "page_location": "http://127.0.0.1:4177/perguntas-frequentes?consent=absent",
+          "page_title": "Perguntas Frequentes | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/perguntas-frequentes",
+      "consent": "accepted",
+      "first": {
+        "time": 197.60000002384186,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Perguntas frequentes"
+      },
+      "title": "Perguntas Frequentes | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/perguntas-frequentes?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/perguntas-frequentes?consent=accepted",
+          "page_title": "Perguntas Frequentes | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/perguntas-frequentes",
+      "consent": "refused",
+      "first": {
+        "time": 189,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Perguntas frequentes"
+      },
+      "title": "Perguntas Frequentes | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "denied",
+            "ad_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/perguntas-frequentes?consent=refused",
+          "page_location": "http://127.0.0.1:4177/perguntas-frequentes?consent=refused",
+          "page_title": "Perguntas Frequentes | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/perguntas-frequentes",
+      "consent": "expired",
+      "first": {
+        "time": 175.30000001192093,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Perguntas frequentes"
+      },
+      "title": "Perguntas Frequentes | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/perguntas-frequentes?consent=expired",
+          "page_location": "http://127.0.0.1:4177/perguntas-frequentes?consent=expired",
+          "page_title": "Perguntas Frequentes | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/perguntas-frequentes",
+      "consent": "blocked",
+      "first": {
+        "time": 161.5,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Perguntas frequentes"
+      },
+      "title": "Perguntas Frequentes | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/perguntas-frequentes?consent=blocked",
+          "page_location": "http://127.0.0.1:4177/perguntas-frequentes?consent=blocked",
+          "page_title": "Perguntas Frequentes | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/entrega-e-frete",
+      "consent": "absent",
+      "first": {
+        "time": 158.5,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Política de Entrega e Frete"
+      },
+      "title": "Entrega e Frete | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/entrega-e-frete?consent=absent",
+          "page_location": "http://127.0.0.1:4177/entrega-e-frete?consent=absent",
+          "page_title": "Entrega e Frete | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/entrega-e-frete",
+      "consent": "accepted",
+      "first": {
+        "time": 147.19999998807907,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Política de Entrega e Frete"
+      },
+      "title": "Entrega e Frete | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/entrega-e-frete?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/entrega-e-frete?consent=accepted",
+          "page_title": "Entrega e Frete | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/entrega-e-frete",
+      "consent": "refused",
+      "first": {
+        "time": 169.39999997615814,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Política de Entrega e Frete"
+      },
+      "title": "Entrega e Frete | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "denied",
+            "ad_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/entrega-e-frete?consent=refused",
+          "page_location": "http://127.0.0.1:4177/entrega-e-frete?consent=refused",
+          "page_title": "Entrega e Frete | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/entrega-e-frete",
+      "consent": "expired",
+      "first": {
+        "time": 172.5,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Política de Entrega e Frete"
+      },
+      "title": "Entrega e Frete | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/entrega-e-frete?consent=expired",
+          "page_location": "http://127.0.0.1:4177/entrega-e-frete?consent=expired",
+          "page_title": "Entrega e Frete | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/entrega-e-frete",
+      "consent": "blocked",
+      "first": {
+        "time": 154.5,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Política de Entrega e Frete"
+      },
+      "title": "Entrega e Frete | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/entrega-e-frete?consent=blocked",
+          "page_location": "http://127.0.0.1:4177/entrega-e-frete?consent=blocked",
+          "page_title": "Entrega e Frete | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/trocas-e-devolucoes",
+      "consent": "absent",
+      "first": {
+        "time": 271.69999998807907,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Política de Trocas e Devoluções"
+      },
+      "title": "Trocas e Devoluções | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/trocas-e-devolucoes?consent=absent",
+          "page_location": "http://127.0.0.1:4177/trocas-e-devolucoes?consent=absent",
+          "page_title": "Trocas e Devoluções | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/trocas-e-devolucoes",
+      "consent": "accepted",
+      "first": {
+        "time": 144.10000002384186,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Política de Trocas e Devoluções"
+      },
+      "title": "Trocas e Devoluções | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/trocas-e-devolucoes?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/trocas-e-devolucoes?consent=accepted",
+          "page_title": "Trocas e Devoluções | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/trocas-e-devolucoes",
+      "consent": "refused",
+      "first": {
+        "time": 145.19999998807907,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Política de Trocas e Devoluções"
+      },
+      "title": "Trocas e Devoluções | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "denied",
+            "ad_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/trocas-e-devolucoes?consent=refused",
+          "page_location": "http://127.0.0.1:4177/trocas-e-devolucoes?consent=refused",
+          "page_title": "Trocas e Devoluções | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/trocas-e-devolucoes",
+      "consent": "expired",
+      "first": {
+        "time": 207.79999995231628,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Política de Trocas e Devoluções"
+      },
+      "title": "Trocas e Devoluções | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/trocas-e-devolucoes?consent=expired",
+          "page_location": "http://127.0.0.1:4177/trocas-e-devolucoes?consent=expired",
+          "page_title": "Trocas e Devoluções | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/trocas-e-devolucoes",
+      "consent": "blocked",
+      "first": {
+        "time": 159.10000002384186,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Política de Trocas e Devoluções"
+      },
+      "title": "Trocas e Devoluções | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/trocas-e-devolucoes?consent=blocked",
+          "page_location": "http://127.0.0.1:4177/trocas-e-devolucoes?consent=blocked",
+          "page_title": "Trocas e Devoluções | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/regras-do-site",
+      "consent": "absent",
+      "first": {
+        "time": 176,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Regras do Site"
+      },
+      "title": "Regras de Compra | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/regras-do-site?consent=absent",
+          "page_location": "http://127.0.0.1:4177/regras-do-site?consent=absent",
+          "page_title": "Regras de Compra | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/regras-do-site",
+      "consent": "accepted",
+      "first": {
+        "time": 167.19999998807907,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Regras do Site"
+      },
+      "title": "Regras de Compra | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/regras-do-site?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/regras-do-site?consent=accepted",
+          "page_title": "Regras de Compra | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/regras-do-site",
+      "consent": "refused",
+      "first": {
+        "time": 149.20000004768372,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Regras do Site"
+      },
+      "title": "Regras de Compra | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "denied",
+            "ad_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/regras-do-site?consent=refused",
+          "page_location": "http://127.0.0.1:4177/regras-do-site?consent=refused",
+          "page_title": "Regras de Compra | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/regras-do-site",
+      "consent": "expired",
+      "first": {
+        "time": 220.5999999642372,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Regras do Site"
+      },
+      "title": "Regras de Compra | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/regras-do-site?consent=expired",
+          "page_location": "http://127.0.0.1:4177/regras-do-site?consent=expired",
+          "page_title": "Regras de Compra | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/regras-do-site",
+      "consent": "blocked",
+      "first": {
+        "time": 176.69999998807907,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Regras do Site"
+      },
+      "title": "Regras de Compra | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/regras-do-site?consent=blocked",
+          "page_location": "http://127.0.0.1:4177/regras-do-site?consent=blocked",
+          "page_title": "Regras de Compra | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/privacidade",
+      "consent": "absent",
+      "first": {
+        "time": 201,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Política de Privacidade"
+      },
+      "title": "Política de Privacidade | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/privacidade?consent=absent",
+          "page_location": "http://127.0.0.1:4177/privacidade?consent=absent",
+          "page_title": "Política de Privacidade | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/privacidade",
+      "consent": "accepted",
+      "first": {
+        "time": 205.19999998807907,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Política de Privacidade"
+      },
+      "title": "Política de Privacidade | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/privacidade?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/privacidade?consent=accepted",
+          "page_title": "Política de Privacidade | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/privacidade",
+      "consent": "refused",
+      "first": {
+        "time": 225.5,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Política de Privacidade"
+      },
+      "title": "Política de Privacidade | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "denied",
+            "ad_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/privacidade?consent=refused",
+          "page_location": "http://127.0.0.1:4177/privacidade?consent=refused",
+          "page_title": "Política de Privacidade | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/privacidade",
+      "consent": "expired",
+      "first": {
+        "time": 201.80000001192093,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Política de Privacidade"
+      },
+      "title": "Política de Privacidade | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/privacidade?consent=expired",
+          "page_location": "http://127.0.0.1:4177/privacidade?consent=expired",
+          "page_title": "Política de Privacidade | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/privacidade",
+      "consent": "blocked",
+      "first": {
+        "time": 174.80000001192093,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Política de Privacidade"
+      },
+      "title": "Política de Privacidade | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/privacidade?consent=blocked",
+          "page_location": "http://127.0.0.1:4177/privacidade?consent=blocked",
+          "page_title": "Política de Privacidade | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/termos-de-uso",
+      "consent": "absent",
+      "first": {
+        "time": 179.60000002384186,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Termos de Uso"
+      },
+      "title": "Termos de Uso | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/termos-de-uso?consent=absent",
+          "page_location": "http://127.0.0.1:4177/termos-de-uso?consent=absent",
+          "page_title": "Termos de Uso | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/termos-de-uso",
+      "consent": "accepted",
+      "first": {
+        "time": 213.5999999642372,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Termos de Uso"
+      },
+      "title": "Termos de Uso | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/termos-de-uso?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/termos-de-uso?consent=accepted",
+          "page_title": "Termos de Uso | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/termos-de-uso",
+      "consent": "refused",
+      "first": {
+        "time": 181.19999998807907,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Termos de Uso"
+      },
+      "title": "Termos de Uso | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "denied",
+            "ad_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/termos-de-uso?consent=refused",
+          "page_location": "http://127.0.0.1:4177/termos-de-uso?consent=refused",
+          "page_title": "Termos de Uso | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/termos-de-uso",
+      "consent": "expired",
+      "first": {
+        "time": 180.89999997615814,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Termos de Uso"
+      },
+      "title": "Termos de Uso | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/termos-de-uso?consent=expired",
+          "page_location": "http://127.0.0.1:4177/termos-de-uso?consent=expired",
+          "page_title": "Termos de Uso | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/termos-de-uso",
+      "consent": "blocked",
+      "first": {
+        "time": 197.10000002384186,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "Termos de Uso"
+      },
+      "title": "Termos de Uso | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/termos-de-uso?consent=blocked",
+          "page_location": "http://127.0.0.1:4177/termos-de-uso?consent=blocked",
+          "page_title": "Termos de Uso | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/afrodite",
+      "consent": "absent",
+      "first": {
+        "time": 355.9000000357628,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "AfroditeFirst Kiss"
+      },
+      "title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/afrodite?consent=absent",
+          "page_location": "http://127.0.0.1:4177/loja/afrodite?consent=absent",
+          "page_title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/afrodite",
+      "consent": "accepted",
+      "first": {
+        "time": 282.89999997615814,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "AfroditeFirst Kiss"
+      },
+      "title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/afrodite?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/loja/afrodite?consent=accepted",
+          "page_title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/afrodite",
+      "consent": "refused",
+      "first": {
+        "time": 250.30000001192093,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "AfroditeFirst Kiss"
+      },
+      "title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "denied",
+            "ad_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/afrodite?consent=refused",
+          "page_location": "http://127.0.0.1:4177/loja/afrodite?consent=refused",
+          "page_title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/afrodite",
+      "consent": "expired",
+      "first": {
+        "time": 318.30000001192093,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "AfroditeFirst Kiss"
+      },
+      "title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/afrodite?consent=expired",
+          "page_location": "http://127.0.0.1:4177/loja/afrodite?consent=expired",
+          "page_title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/afrodite",
+      "consent": "blocked",
+      "first": {
+        "time": 294.30000001192093,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "AfroditeFirst Kiss"
+      },
+      "title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/afrodite?consent=blocked",
+          "page_location": "http://127.0.0.1:4177/loja/afrodite?consent=blocked",
+          "page_title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/imperatriz",
+      "consent": "absent",
+      "first": {
+        "time": 218.19999998807907,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "ImperatrizVelvet Dynasty"
+      },
+      "title": "Imperatriz Velvet Dynasty – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/imperatriz?consent=absent",
+          "page_location": "http://127.0.0.1:4177/loja/imperatriz?consent=absent",
+          "page_title": "Imperatriz Velvet Dynasty – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/imperatriz",
+      "consent": "accepted",
+      "first": {
+        "time": 200.30000001192093,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "ImperatrizVelvet Dynasty"
+      },
+      "title": "Imperatriz Velvet Dynasty – Body Splash Premium | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/imperatriz?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/loja/imperatriz?consent=accepted",
+          "page_title": "Imperatriz Velvet Dynasty – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/imperatriz",
+      "consent": "refused",
+      "first": {
+        "time": 222.10000002384186,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "ImperatrizVelvet Dynasty"
+      },
+      "title": "Imperatriz Velvet Dynasty – Body Splash Premium | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "denied",
+            "ad_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/imperatriz?consent=refused",
+          "page_location": "http://127.0.0.1:4177/loja/imperatriz?consent=refused",
+          "page_title": "Imperatriz Velvet Dynasty – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/imperatriz",
+      "consent": "expired",
+      "first": {
+        "time": 217.0999999642372,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "ImperatrizVelvet Dynasty"
+      },
+      "title": "Imperatriz Velvet Dynasty – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/imperatriz?consent=expired",
+          "page_location": "http://127.0.0.1:4177/loja/imperatriz?consent=expired",
+          "page_title": "Imperatriz Velvet Dynasty – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/imperatriz",
+      "consent": "blocked",
+      "first": {
+        "time": 236.69999998807907,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "ImperatrizVelvet Dynasty"
+      },
+      "title": "Imperatriz Velvet Dynasty – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/imperatriz?consent=blocked",
+          "page_location": "http://127.0.0.1:4177/loja/imperatriz?consent=blocked",
+          "page_title": "Imperatriz Velvet Dynasty – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/cleopatra",
+      "consent": "absent",
+      "first": {
+        "time": 205.5999999642372,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "CleópatraNile Rose"
+      },
+      "title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/cleopatra?consent=absent",
+          "page_location": "http://127.0.0.1:4177/loja/cleopatra?consent=absent",
+          "page_title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/cleopatra",
+      "consent": "accepted",
+      "first": {
+        "time": 212.4000000357628,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "CleópatraNile Rose"
+      },
+      "title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/cleopatra?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/loja/cleopatra?consent=accepted",
+          "page_title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/cleopatra",
+      "consent": "refused",
+      "first": {
+        "time": 242,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "CleópatraNile Rose"
+      },
+      "title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "denied",
+            "ad_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/cleopatra?consent=refused",
+          "page_location": "http://127.0.0.1:4177/loja/cleopatra?consent=refused",
+          "page_title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/cleopatra",
+      "consent": "expired",
+      "first": {
+        "time": 259.5,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "CleópatraNile Rose"
+      },
+      "title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/cleopatra?consent=expired",
+          "page_location": "http://127.0.0.1:4177/loja/cleopatra?consent=expired",
+          "page_title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/cleopatra",
+      "consent": "blocked",
+      "first": {
+        "time": 227.30000001192093,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "CleópatraNile Rose"
+      },
+      "title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/cleopatra?consent=blocked",
+          "page_location": "http://127.0.0.1:4177/loja/cleopatra?consent=blocked",
+          "page_title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/fada",
+      "consent": "absent",
+      "first": {
+        "time": 221.20000004768372,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "FadaPure Light"
+      },
+      "title": "Fada Pure Light – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/fada?consent=absent",
+          "page_location": "http://127.0.0.1:4177/loja/fada?consent=absent",
+          "page_title": "Fada Pure Light – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/fada",
+      "consent": "accepted",
+      "first": {
+        "time": 219.19999998807907,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "FadaPure Light"
+      },
+      "title": "Fada Pure Light – Body Splash Premium | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/fada?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/loja/fada?consent=accepted",
+          "page_title": "Fada Pure Light – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/fada",
+      "consent": "refused",
+      "first": {
+        "time": 255.19999998807907,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "FadaPure Light"
+      },
+      "title": "Fada Pure Light – Body Splash Premium | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "denied",
+            "ad_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/fada?consent=refused",
+          "page_location": "http://127.0.0.1:4177/loja/fada?consent=refused",
+          "page_title": "Fada Pure Light – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/fada",
+      "consent": "expired",
+      "first": {
+        "time": 220.89999997615814,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "FadaPure Light"
+      },
+      "title": "Fada Pure Light – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/fada?consent=expired",
+          "page_location": "http://127.0.0.1:4177/loja/fada?consent=expired",
+          "page_title": "Fada Pure Light – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/fada",
+      "consent": "blocked",
+      "first": {
+        "time": 225.60000002384186,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "FadaPure Light"
+      },
+      "title": "Fada Pure Light – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/fada?consent=blocked",
+          "page_location": "http://127.0.0.1:4177/loja/fada?consent=blocked",
+          "page_title": "Fada Pure Light – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/sereia",
+      "consent": "absent",
+      "first": {
+        "time": 244.30000001192093,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "SereiaOcean Breeze"
+      },
+      "title": "Sereia Ocean Breeze – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/sereia?consent=absent",
+          "page_location": "http://127.0.0.1:4177/loja/sereia?consent=absent",
+          "page_title": "Sereia Ocean Breeze – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/sereia",
+      "consent": "accepted",
+      "first": {
+        "time": 223.69999998807907,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "SereiaOcean Breeze"
+      },
+      "title": "Sereia Ocean Breeze – Body Splash Premium | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/sereia?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/loja/sereia?consent=accepted",
+          "page_title": "Sereia Ocean Breeze – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/sereia",
+      "consent": "refused",
+      "first": {
+        "time": 220.30000001192093,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "SereiaOcean Breeze"
+      },
+      "title": "Sereia Ocean Breeze – Body Splash Premium | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "denied",
+            "ad_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/sereia?consent=refused",
+          "page_location": "http://127.0.0.1:4177/loja/sereia?consent=refused",
+          "page_title": "Sereia Ocean Breeze – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/sereia",
+      "consent": "expired",
+      "first": {
+        "time": 315.89999997615814,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "SereiaOcean Breeze"
+      },
+      "title": "Sereia Ocean Breeze – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/sereia?consent=expired",
+          "page_location": "http://127.0.0.1:4177/loja/sereia?consent=expired",
+          "page_title": "Sereia Ocean Breeze – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/sereia",
+      "consent": "blocked",
+      "first": {
+        "time": 229.30000001192093,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "SereiaOcean Breeze"
+      },
+      "title": "Sereia Ocean Breeze – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/sereia?consent=blocked",
+          "page_location": "http://127.0.0.1:4177/loja/sereia?consent=blocked",
+          "page_title": "Sereia Ocean Breeze – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/zeus",
+      "consent": "absent",
+      "first": {
+        "time": 229.10000002384186,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "ZeusStormbreak"
+      },
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/zeus?consent=absent",
+          "page_location": "http://127.0.0.1:4177/loja/zeus?consent=absent",
+          "page_title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/zeus",
+      "consent": "accepted",
+      "first": {
+        "time": 227.80000001192093,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "ZeusStormbreak"
+      },
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/zeus?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/loja/zeus?consent=accepted",
+          "page_title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/zeus",
+      "consent": "refused",
+      "first": {
+        "time": 221.5,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "ZeusStormbreak"
+      },
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "denied",
+            "ad_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/zeus?consent=refused",
+          "page_location": "http://127.0.0.1:4177/loja/zeus?consent=refused",
+          "page_title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/zeus",
+      "consent": "expired",
+      "first": {
+        "time": 249,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "ZeusStormbreak"
+      },
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/zeus?consent=expired",
+          "page_location": "http://127.0.0.1:4177/loja/zeus?consent=expired",
+          "page_title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/zeus",
+      "consent": "blocked",
+      "first": {
+        "time": 232.4000000357628,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "ZeusStormbreak"
+      },
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/zeus?consent=blocked",
+          "page_location": "http://127.0.0.1:4177/loja/zeus?consent=blocked",
+          "page_title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/guerreiro",
+      "consent": "absent",
+      "first": {
+        "time": 235.19999998807907,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "GuerreiroSteel Blue"
+      },
+      "title": "Guerreiro Steel Blue – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/guerreiro?consent=absent",
+          "page_location": "http://127.0.0.1:4177/loja/guerreiro?consent=absent",
+          "page_title": "Guerreiro Steel Blue – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/guerreiro",
+      "consent": "accepted",
+      "first": {
+        "time": 235,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "GuerreiroSteel Blue"
+      },
+      "title": "Guerreiro Steel Blue – Body Splash Premium | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/guerreiro?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/loja/guerreiro?consent=accepted",
+          "page_title": "Guerreiro Steel Blue – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/guerreiro",
+      "consent": "refused",
+      "first": {
+        "time": 292.30000001192093,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "GuerreiroSteel Blue"
+      },
+      "title": "Guerreiro Steel Blue – Body Splash Premium | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "denied",
+            "ad_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/guerreiro?consent=refused",
+          "page_location": "http://127.0.0.1:4177/loja/guerreiro?consent=refused",
+          "page_title": "Guerreiro Steel Blue – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/guerreiro",
+      "consent": "expired",
+      "first": {
+        "time": 317.2000000476837,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "GuerreiroSteel Blue"
+      },
+      "title": "Guerreiro Steel Blue – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/guerreiro?consent=expired",
+          "page_location": "http://127.0.0.1:4177/loja/guerreiro?consent=expired",
+          "page_title": "Guerreiro Steel Blue – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/guerreiro",
+      "consent": "blocked",
+      "first": {
+        "time": 262.5,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "GuerreiroSteel Blue"
+      },
+      "title": "Guerreiro Steel Blue – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/guerreiro?consent=blocked",
+          "page_location": "http://127.0.0.1:4177/loja/guerreiro?consent=blocked",
+          "page_title": "Guerreiro Steel Blue – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/imperador",
+      "consent": "absent",
+      "first": {
+        "time": 282.30000001192093,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "ImperadorRed Empire"
+      },
+      "title": "Imperador Red Empire – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/imperador?consent=absent",
+          "page_location": "http://127.0.0.1:4177/loja/imperador?consent=absent",
+          "page_title": "Imperador Red Empire – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/imperador",
+      "consent": "accepted",
+      "first": {
+        "time": 259.89999997615814,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "ImperadorRed Empire"
+      },
+      "title": "Imperador Red Empire – Body Splash Premium | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/imperador?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/loja/imperador?consent=accepted",
+          "page_title": "Imperador Red Empire – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/imperador",
+      "consent": "refused",
+      "first": {
+        "time": 260.89999997615814,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "ImperadorRed Empire"
+      },
+      "title": "Imperador Red Empire – Body Splash Premium | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "denied",
+            "ad_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/imperador?consent=refused",
+          "page_location": "http://127.0.0.1:4177/loja/imperador?consent=refused",
+          "page_title": "Imperador Red Empire – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/imperador",
+      "consent": "expired",
+      "first": {
+        "time": 318.19999998807907,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "ImperadorRed Empire"
+      },
+      "title": "Imperador Red Empire – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/imperador?consent=expired",
+          "page_location": "http://127.0.0.1:4177/loja/imperador?consent=expired",
+          "page_title": "Imperador Red Empire – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/imperador",
+      "consent": "blocked",
+      "first": {
+        "time": 280.2000000476837,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "ImperadorRed Empire"
+      },
+      "title": "Imperador Red Empire – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/imperador?consent=blocked",
+          "page_location": "http://127.0.0.1:4177/loja/imperador?consent=blocked",
+          "page_title": "Imperador Red Empire – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/fenix",
+      "consent": "absent",
+      "first": {
+        "time": 273.5,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "FênixAmber Burn"
+      },
+      "title": "Fênix Amber Burn – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/fenix?consent=absent",
+          "page_location": "http://127.0.0.1:4177/loja/fenix?consent=absent",
+          "page_title": "Fênix Amber Burn – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/fenix",
+      "consent": "accepted",
+      "first": {
+        "time": 291,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "FênixAmber Burn"
+      },
+      "title": "Fênix Amber Burn – Body Splash Premium | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/fenix?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/loja/fenix?consent=accepted",
+          "page_title": "Fênix Amber Burn – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/fenix",
+      "consent": "refused",
+      "first": {
+        "time": 251.10000002384186,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "FênixAmber Burn"
+      },
+      "title": "Fênix Amber Burn – Body Splash Premium | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "denied",
+            "ad_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/fenix?consent=refused",
+          "page_location": "http://127.0.0.1:4177/loja/fenix?consent=refused",
+          "page_title": "Fênix Amber Burn – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/fenix",
+      "consent": "expired",
+      "first": {
+        "time": 271.39999997615814,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "FênixAmber Burn"
+      },
+      "title": "Fênix Amber Burn – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/fenix?consent=expired",
+          "page_location": "http://127.0.0.1:4177/loja/fenix?consent=expired",
+          "page_title": "Fênix Amber Burn – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": "/loja/fenix",
+      "consent": "blocked",
+      "first": {
+        "time": 363.7999999523163,
+        "nodePreserved": true,
+        "scroll": 0,
+        "h1": "FênixAmber Burn"
+      },
+      "title": "Fênix Amber Burn – Body Splash Premium | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/fenix?consent=blocked",
+          "page_location": "http://127.0.0.1:4177/loja/fenix?consent=blocked",
+          "page_title": "Fênix Amber Burn – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": null,
+      "consent": "absent",
+      "first": {
+        "time": 184.30000001192093,
+        "nodePreserved": false,
+        "scroll": 0,
+        "h1": "Página não encontrada"
+      },
+      "title": "Página não encontrada | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/qa-final-404?consent=absent",
+          "page_location": "http://127.0.0.1:4177/qa-final-404?consent=absent",
+          "page_title": "Página não encontrada | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": null,
+      "consent": "accepted",
+      "first": {
+        "time": 160.5999999642372,
+        "nodePreserved": false,
+        "scroll": 0,
+        "h1": "Página não encontrada"
+      },
+      "title": "Página não encontrada | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/qa-final-404?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/qa-final-404?consent=accepted",
+          "page_title": "Página não encontrada | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": null,
+      "consent": "refused",
+      "first": {
+        "time": 197.30000001192093,
+        "nodePreserved": false,
+        "scroll": 0,
+        "h1": "Página não encontrada"
+      },
+      "title": "Página não encontrada | Arquétypus Parfum",
+      "cookie": false,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "denied",
+            "ad_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/qa-final-404?consent=refused",
+          "page_location": "http://127.0.0.1:4177/qa-final-404?consent=refused",
+          "page_title": "Página não encontrada | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": null,
+      "consent": "expired",
+      "first": {
+        "time": 213.80000001192093,
+        "nodePreserved": false,
+        "scroll": 0,
+        "h1": "Página não encontrada"
+      },
+      "title": "Página não encontrada | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/qa-final-404?consent=expired",
+          "page_location": "http://127.0.0.1:4177/qa-final-404?consent=expired",
+          "page_title": "Página não encontrada | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    },
+    {
+      "route": null,
+      "consent": "blocked",
+      "first": {
+        "time": 211.9000000357628,
+        "nodePreserved": false,
+        "scroll": 0,
+        "h1": "Página não encontrada"
+      },
+      "title": "Página não encontrada | Arquétypus Parfum",
+      "cookie": true,
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/qa-final-404?consent=blocked",
+          "page_location": "http://127.0.0.1:4177/qa-final-404?consent=blocked",
+          "page_title": "Página não encontrada | Arquétypus Parfum"
+        }
+      ],
+      "consentBeforeGtm": true,
+      "passed": true
+    }
+  ]
+}
