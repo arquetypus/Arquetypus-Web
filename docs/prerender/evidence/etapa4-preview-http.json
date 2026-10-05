@@ -1,0 +1,859 @@
+{
+  "collectedAt": "2026-10-05T04:36:08.028Z",
+  "codeCommit": "6fa0b4c715c6f7b9035daba1d0a0cc3bad2b5a37",
+  "origin": "https://arquetypus-parfum-git-prerender-saniella.vercel.app",
+  "files": [
+    {
+      "url": "/",
+      "file": "index.html",
+      "bytes": 268750,
+      "sha256": "ae0ba9d99ec5ebd9b6f7693f96574d3b7d313bdbdc0fecb41d8786bec1ae360f",
+      "identical": true,
+      "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "h1": [
+        "Qual versão de você quer expressar hoje?"
+      ]
+    },
+    {
+      "url": "/criadores.html",
+      "file": "criadores.html",
+      "bytes": 48997,
+      "sha256": "503c97cddbf7ee3bae56debfd501537b9ebb4b0ce8773afb33c8c3a97834fa83",
+      "identical": true,
+      "title": "Programa de Criadores | Arquétypus Parfum",
+      "h1": [
+        "Um arquétipo.O seu, de verdade."
+      ]
+    },
+    {
+      "url": "/sobre.html",
+      "file": "sobre.html",
+      "bytes": 34615,
+      "sha256": "3e3299c4ff72a496a3e3864debdd7f50d894e2dc1caac01b1a11ddbceaa5ee8c",
+      "identical": true,
+      "title": "Sobre Nós: Perfumaria de Arquétipos | Arquétypus Parfum",
+      "h1": [
+        "Sobre a Arquétypus"
+      ]
+    },
+    {
+      "url": "/perguntas-frequentes.html",
+      "file": "perguntas-frequentes.html",
+      "bytes": 54144,
+      "sha256": "ef940b2cb18e67f453a47519c0c0edb798b31603f79e9f59f3443e422f4dc2c8",
+      "identical": true,
+      "title": "Perguntas Frequentes | Arquétypus Parfum",
+      "h1": [
+        "Perguntas frequentes"
+      ]
+    },
+    {
+      "url": "/entrega-e-frete.html",
+      "file": "entrega-e-frete.html",
+      "bytes": 33111,
+      "sha256": "720c6aaabf34a54a5aca56fa5be184a2e73e0fa4bfbbf243fb35d9d5e6ea0506",
+      "identical": true,
+      "title": "Entrega e Frete | Arquétypus Parfum",
+      "h1": [
+        "Política de Entrega e Frete"
+      ]
+    },
+    {
+      "url": "/trocas-e-devolucoes.html",
+      "file": "trocas-e-devolucoes.html",
+      "bytes": 33634,
+      "sha256": "0215815a33afcf1ad597243f9ff260a82b806d2e501b6d968085add6aca5da7d",
+      "identical": true,
+      "title": "Trocas e Devoluções | Arquétypus Parfum",
+      "h1": [
+        "Política de Trocas e Devoluções"
+      ]
+    },
+    {
+      "url": "/regras-do-site.html",
+      "file": "regras-do-site.html",
+      "bytes": 33450,
+      "sha256": "37f858766f29f777062d564b51fe58a1a24065b0e9a7a16411dd5d92aba5153c",
+      "identical": true,
+      "title": "Regras de Compra | Arquétypus Parfum",
+      "h1": [
+        "Regras do Site"
+      ]
+    },
+    {
+      "url": "/privacidade.html",
+      "file": "privacidade.html",
+      "bytes": 41185,
+      "sha256": "3b3225f3600e8c5b82feeba2469a89243e7b44e2f9bf2bcccf55a8bd855758e6",
+      "identical": true,
+      "title": "Política de Privacidade | Arquétypus Parfum",
+      "h1": [
+        "Política de Privacidade"
+      ]
+    },
+    {
+      "url": "/termos-de-uso.html",
+      "file": "termos-de-uso.html",
+      "bytes": 34235,
+      "sha256": "13284b33c658adc07e483285b4402151f9ddfaa4d41ad53a71d4d924cbd36557",
+      "identical": true,
+      "title": "Termos de Uso | Arquétypus Parfum",
+      "h1": [
+        "Termos de Uso"
+      ]
+    },
+    {
+      "url": "/loja/afrodite.html",
+      "file": "loja/afrodite.html",
+      "bytes": 62440,
+      "sha256": "46751aed9b0a6a239011fe4a8a2b57dc8181fa5c67defbb325178794bdb28491",
+      "identical": true,
+      "title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum",
+      "h1": [
+        "AfroditeFirst Kiss"
+      ]
+    },
+    {
+      "url": "/loja/imperatriz.html",
+      "file": "loja/imperatriz.html",
+      "bytes": 62499,
+      "sha256": "078c8d29c0d94730a2a59c95d7f5ed990c149110d50df543833223c391f9a28e",
+      "identical": true,
+      "title": "Imperatriz Velvet Dynasty – Body Splash Premium | Arquétypus Parfum",
+      "h1": [
+        "ImperatrizVelvet Dynasty"
+      ]
+    },
+    {
+      "url": "/loja/cleopatra.html",
+      "file": "loja/cleopatra.html",
+      "bytes": 62436,
+      "sha256": "ed743a3dc4d7042df6d7ee1b0129e0ba016c55126dd7b13fb0bff43a0cb93e05",
+      "identical": true,
+      "title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum",
+      "h1": [
+        "CleópatraNile Rose"
+      ]
+    },
+    {
+      "url": "/loja/fada.html",
+      "file": "loja/fada.html",
+      "bytes": 62242,
+      "sha256": "86262f1841456c33478f42a5f54e2bce88b4220919b9cf014756961fd5e9f313",
+      "identical": true,
+      "title": "Fada Pure Light – Body Splash Premium | Arquétypus Parfum",
+      "h1": [
+        "FadaPure Light"
+      ]
+    },
+    {
+      "url": "/loja/sereia.html",
+      "file": "loja/sereia.html",
+      "bytes": 62274,
+      "sha256": "d0c811a0a22061f56e7c5da5bc01abc10cb75f04435ca08b5dd22dea4e6d68f3",
+      "identical": true,
+      "title": "Sereia Ocean Breeze – Body Splash Premium | Arquétypus Parfum",
+      "h1": [
+        "SereiaOcean Breeze"
+      ]
+    },
+    {
+      "url": "/loja/zeus.html",
+      "file": "loja/zeus.html",
+      "bytes": 62271,
+      "sha256": "671de2ee8d44a455cc1ce969ab0b87a16825f682aceaa34a4461448ba7e697db",
+      "identical": true,
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "h1": [
+        "ZeusStormbreak"
+      ]
+    },
+    {
+      "url": "/loja/guerreiro.html",
+      "file": "loja/guerreiro.html",
+      "bytes": 62404,
+      "sha256": "403b9f5d3a5bfbfe2340f5b1eb0ad41af1e3c2a5366a8ff1519f1a121b13313f",
+      "identical": true,
+      "title": "Guerreiro Steel Blue – Body Splash Premium | Arquétypus Parfum",
+      "h1": [
+        "GuerreiroSteel Blue"
+      ]
+    },
+    {
+      "url": "/loja/imperador.html",
+      "file": "loja/imperador.html",
+      "bytes": 62457,
+      "sha256": "3b3ddf42d089f5a75e31111eab44363238f0e1416777380bfa64d304919e2629",
+      "identical": true,
+      "title": "Imperador Red Empire – Body Splash Premium | Arquétypus Parfum",
+      "h1": [
+        "ImperadorRed Empire"
+      ]
+    },
+    {
+      "url": "/loja/fenix.html",
+      "file": "loja/fenix.html",
+      "bytes": 62331,
+      "sha256": "fdddbe8675567feb3c3101230bcd98908c09462535da0782384343d7ebb7ef6b",
+      "identical": true,
+      "title": "Fênix Amber Burn – Body Splash Premium | Arquétypus Parfum",
+      "h1": [
+        "FênixAmber Burn"
+      ]
+    },
+    {
+      "url": "/404.html",
+      "file": "404.html",
+      "bytes": 28069,
+      "sha256": "d9d289a7ca4d51ac3424249e33741fc37818094b7a69eebf7f8b4e3f0e274220",
+      "identical": true,
+      "title": "Página não encontrada | Arquétypus Parfum",
+      "h1": [
+        "Página não encontrada"
+      ]
+    }
+  ],
+  "cleanRoutes": [
+    {
+      "route": "/",
+      "status": 200,
+      "ownHtml": true,
+      "homeFallback": false,
+      "note": "HTML próprio entregue"
+    },
+    {
+      "route": "/criadores",
+      "status": 200,
+      "ownHtml": false,
+      "homeFallback": true,
+      "note": "Rewrite SPA preservado; configuração definitiva na Etapa 6"
+    },
+    {
+      "route": "/sobre",
+      "status": 200,
+      "ownHtml": false,
+      "homeFallback": true,
+      "note": "Rewrite SPA preservado; configuração definitiva na Etapa 6"
+    },
+    {
+      "route": "/perguntas-frequentes",
+      "status": 200,
+      "ownHtml": false,
+      "homeFallback": true,
+      "note": "Rewrite SPA preservado; configuração definitiva na Etapa 6"
+    },
+    {
+      "route": "/entrega-e-frete",
+      "status": 200,
+      "ownHtml": false,
+      "homeFallback": true,
+      "note": "Rewrite SPA preservado; configuração definitiva na Etapa 6"
+    },
+    {
+      "route": "/trocas-e-devolucoes",
+      "status": 200,
+      "ownHtml": false,
+      "homeFallback": true,
+      "note": "Rewrite SPA preservado; configuração definitiva na Etapa 6"
+    },
+    {
+      "route": "/regras-do-site",
+      "status": 200,
+      "ownHtml": false,
+      "homeFallback": true,
+      "note": "Rewrite SPA preservado; configuração definitiva na Etapa 6"
+    },
+    {
+      "route": "/privacidade",
+      "status": 200,
+      "ownHtml": false,
+      "homeFallback": true,
+      "note": "Rewrite SPA preservado; configuração definitiva na Etapa 6"
+    },
+    {
+      "route": "/termos-de-uso",
+      "status": 200,
+      "ownHtml": false,
+      "homeFallback": true,
+      "note": "Rewrite SPA preservado; configuração definitiva na Etapa 6"
+    },
+    {
+      "route": "/loja/afrodite",
+      "status": 200,
+      "ownHtml": false,
+      "homeFallback": true,
+      "note": "Rewrite SPA preservado; configuração definitiva na Etapa 6"
+    },
+    {
+      "route": "/loja/imperatriz",
+      "status": 200,
+      "ownHtml": false,
+      "homeFallback": true,
+      "note": "Rewrite SPA preservado; configuração definitiva na Etapa 6"
+    },
+    {
+      "route": "/loja/cleopatra",
+      "status": 200,
+      "ownHtml": false,
+      "homeFallback": true,
+      "note": "Rewrite SPA preservado; configuração definitiva na Etapa 6"
+    },
+    {
+      "route": "/loja/fada",
+      "status": 200,
+      "ownHtml": false,
+      "homeFallback": true,
+      "note": "Rewrite SPA preservado; configuração definitiva na Etapa 6"
+    },
+    {
+      "route": "/loja/sereia",
+      "status": 200,
+      "ownHtml": false,
+      "homeFallback": true,
+      "note": "Rewrite SPA preservado; configuração definitiva na Etapa 6"
+    },
+    {
+      "route": "/loja/zeus",
+      "status": 200,
+      "ownHtml": false,
+      "homeFallback": true,
+      "note": "Rewrite SPA preservado; configuração definitiva na Etapa 6"
+    },
+    {
+      "route": "/loja/guerreiro",
+      "status": 200,
+      "ownHtml": false,
+      "homeFallback": true,
+      "note": "Rewrite SPA preservado; configuração definitiva na Etapa 6"
+    },
+    {
+      "route": "/loja/imperador",
+      "status": 200,
+      "ownHtml": false,
+      "homeFallback": true,
+      "note": "Rewrite SPA preservado; configuração definitiva na Etapa 6"
+    },
+    {
+      "route": "/loja/fenix",
+      "status": 200,
+      "ownHtml": false,
+      "homeFallback": true,
+      "note": "Rewrite SPA preservado; configuração definitiva na Etapa 6"
+    }
+  ],
+  "resources": [
+    {
+      "url": "/apple-touch-icon.png",
+      "bytes": 15294,
+      "sha256": "34a4f906a7e6d89a091cec7ce02b9f1475bfa49175a0d5d6eb524fc08cb7027d",
+      "identical": true
+    },
+    {
+      "url": "/assets/afrodite-3me8ajmF.jpg",
+      "bytes": 133921,
+      "sha256": "1a3cb889997e6b8452570b2f980851a3792dde7548bbf197e6ffbd080d14882e",
+      "identical": true
+    },
+    {
+      "url": "/assets/afrodite-B05JoXeN.jpg",
+      "bytes": 81381,
+      "sha256": "24bfce73817ae37eb4e9fe2429f0020977ac65c0689b26be3bf48c61f3ff397e",
+      "identical": true
+    },
+    {
+      "url": "/assets/afrodite-B6GNBj6I.jpg",
+      "bytes": 115593,
+      "sha256": "6b0eae4fdee1ce9c2c68800c7e3a857e3b8c5078f252d3c4b6b381710cb272fe",
+      "identical": true
+    },
+    {
+      "url": "/assets/afrodite-desktop-B7HpEMIW.jpg",
+      "bytes": 155962,
+      "sha256": "8b702aac3453ad60661519db38e918bd29848479604c4d9be3c73fa17d1a2421",
+      "identical": true
+    },
+    {
+      "url": "/assets/afrodite-Dk0tYPJ7.jpg",
+      "bytes": 156195,
+      "sha256": "d236eb1d7d8ae7511908993244efab04f849ff281c5e76eb2313f4ac99f3a075",
+      "identical": true
+    },
+    {
+      "url": "/assets/afrodite-DSxSPTn3.jpg",
+      "bytes": 119318,
+      "sha256": "1af5d4c0b614c5e0caf596c55603ddd7b59529db19f3c5238f6db4d1ce8c7851",
+      "identical": true
+    },
+    {
+      "url": "/assets/afrodite-DVF-Wqlu.jpg",
+      "bytes": 8612,
+      "sha256": "318c97b057312de3189cd6a38875b8c9e937faf87a88000952c292d6c51a2a7b",
+      "identical": true
+    },
+    {
+      "url": "/assets/amadeirados-especiados-B267512W.jpg",
+      "bytes": 146431,
+      "sha256": "874f8f52e5d9466e35eaefc47ee187575a386bc654fcef4295ff28f0d56dd5b9",
+      "identical": true
+    },
+    {
+      "url": "/assets/ambarados-adocicados-B5C3mvbW.jpg",
+      "bytes": 138763,
+      "sha256": "8e4a9b6a9784ae0e521bbe72e2b6e4a49767b4d314265bd6b04f482c399fe458",
+      "identical": true
+    },
+    {
+      "url": "/assets/arquetypus-BVgblDH-.jpg",
+      "bytes": 115285,
+      "sha256": "4f215e55ed8472dc47ecaa4d37ec8186d5796a705be95d6a7a097b88b61144af",
+      "identical": true
+    },
+    {
+      "url": "/assets/cleopatra-Bl8vga44.jpg",
+      "bytes": 135073,
+      "sha256": "e456db836a0c7d246c3145034eef0879614f0b05939c442d3f24ea0146550500",
+      "identical": true
+    },
+    {
+      "url": "/assets/cleopatra-BZdVdx6Q.jpg",
+      "bytes": 116362,
+      "sha256": "16b36a2425e27c4db3061c175b7fecc554daf3e7299e543af4917c147ba5a8d2",
+      "identical": true
+    },
+    {
+      "url": "/assets/cleopatra-Dkqrl1GK.jpg",
+      "bytes": 114104,
+      "sha256": "1ca6fe0f6722314d1c3ece170bca6b379c48f7764dafd75407e1d198bfd16963",
+      "identical": true
+    },
+    {
+      "url": "/assets/cleopatra-vBb_yrcd.jpg",
+      "bytes": 9560,
+      "sha256": "c610dce3096614d50487afb5efc0637ca75692fe59a4bc645fca5fa135953d7c",
+      "identical": true
+    },
+    {
+      "url": "/assets/cleopatra-zF7WXxBj.jpg",
+      "bytes": 102114,
+      "sha256": "f8233c2869540318451f10292ca6e1879b2e1e0ecede336f35b7086d5cef5b98",
+      "identical": true
+    },
+    {
+      "url": "/assets/colecao-desktop-9TO7ZM9U.jpg",
+      "bytes": 324912,
+      "sha256": "01e102363e1f7b42e280de08cb084d7b4f0c40d2578887372b97f4402e004737",
+      "identical": true
+    },
+    {
+      "url": "/assets/compartilhavel-sdgMfCjh.jpg",
+      "bytes": 77488,
+      "sha256": "e4ad574fab539c4135218553c82ac12f57d892381ad245850b92d7104f81dfce",
+      "identical": true
+    },
+    {
+      "url": "/assets/criadores-hero-CxQZOKK7.jpg",
+      "bytes": 247090,
+      "sha256": "a08abcced44d980a941b917154c5cc61e1a9b727a19ebb3e4492673da59fcd7f",
+      "identical": true
+    },
+    {
+      "url": "/assets/destaque-fenix-desktop-CVj4Qd3r.jpg",
+      "bytes": 147009,
+      "sha256": "171855148079df04c32ebf3cb1e66fd09fd3c6f7b0b3a444937afcdaec42f142",
+      "identical": true
+    },
+    {
+      "url": "/assets/destaque-fenix-Ok4KUYFV.jpg",
+      "bytes": 131339,
+      "sha256": "e676d5b64d92d29757b99d36199be987e1ecd93484e65744f84a03b954a5edb5",
+      "identical": true
+    },
+    {
+      "url": "/assets/destaque-sereia-desktop-BYPOaLQs.jpg",
+      "bytes": 157935,
+      "sha256": "6247241bef11d09844f9b7ab03ba4e897d03de9922af0c83dd6e494150e2f76b",
+      "identical": true
+    },
+    {
+      "url": "/assets/destaque-sereia-DF4lkBtE.jpg",
+      "bytes": 192172,
+      "sha256": "e1cdbbb5c5d9760f0275264a549bff3b7bc47b712bc3aae0d21cb28fbe8d8b58",
+      "identical": true
+    },
+    {
+      "url": "/assets/destaque-zeus-desktop-BQgVxW1K.jpg",
+      "bytes": 191574,
+      "sha256": "78835844052779fecfb30d55b97baf6629217d5ce896bcca87d3e62ab2f7adab",
+      "identical": true
+    },
+    {
+      "url": "/assets/destaque-zeus-DSf4AtfR.jpg",
+      "bytes": 229600,
+      "sha256": "0fbe6af3e24345f166be0e8436e678038eb8805a4ab35eacf2428c060ee99b83",
+      "identical": true
+    },
+    {
+      "url": "/assets/fada--tqA5GVs.jpg",
+      "bytes": 125119,
+      "sha256": "1089bf765b2f0966fe101dbce46b44c217ca0b45530b2d9699fa9af40dba1058",
+      "identical": true
+    },
+    {
+      "url": "/assets/fada-BcYvZE2P.jpg",
+      "bytes": 8602,
+      "sha256": "ab49fe2c675c3c6e6116cee81491d50992a9f47be57c152da9fc9330c44a3a69",
+      "identical": true
+    },
+    {
+      "url": "/assets/fada-Bn1LJZub.jpg",
+      "bytes": 86203,
+      "sha256": "33dc01562b2a99265ef252e53dcc4ca3c4d5510c32c98228f107bcb5c10b6bbb",
+      "identical": true
+    },
+    {
+      "url": "/assets/fada-D6N5CPL0.jpg",
+      "bytes": 110574,
+      "sha256": "22d4d1a16d402a8808dd62f50b1cac34d094c498231d58555ca315a1b33422c8",
+      "identical": true
+    },
+    {
+      "url": "/assets/fada-skWWuu9m.jpg",
+      "bytes": 167543,
+      "sha256": "d2acf67c3ec35388bf328438690a5f1f3e90d595202e3b3dda743221d0ffa30b",
+      "identical": true
+    },
+    {
+      "url": "/assets/feminino-Bag6AX96.jpg",
+      "bytes": 190648,
+      "sha256": "8549ddbc96e51961eccad9db608903668632d5402e303e797125d76be2504034",
+      "identical": true
+    },
+    {
+      "url": "/assets/fenix-9ugHzzJn.jpg",
+      "bytes": 106671,
+      "sha256": "5a2dfd3881e8318fc87b5f8b925b816f54ed4a5261d4a79e6b7de6a521396c95",
+      "identical": true
+    },
+    {
+      "url": "/assets/fenix-BUDNXOxD.jpg",
+      "bytes": 147374,
+      "sha256": "c026603f422473a38e3c9aab98396a0fbc78d5deb400b6c206fdbd94b663b5ee",
+      "identical": true
+    },
+    {
+      "url": "/assets/fenix-C9E5TLhz.jpg",
+      "bytes": 114885,
+      "sha256": "87c973311211e2f5abdd55628558a4d206e0849484b1f6925bffdfeac76e7916",
+      "identical": true
+    },
+    {
+      "url": "/assets/fenix-D2gHIR71.jpg",
+      "bytes": 9822,
+      "sha256": "a5024525ab1665bee1db044e16f521356f1d8b52d84b748fc0076d7dbc3af1ff",
+      "identical": true
+    },
+    {
+      "url": "/assets/fenix-DvTwejAx.jpg",
+      "bytes": 140031,
+      "sha256": "d81b94cba915a00b174724fee2ca394fe5871f152fcf1a508f81d5025303819b",
+      "identical": true
+    },
+    {
+      "url": "/assets/flor-arquetypus-CKSiaCgq.png",
+      "bytes": 1502005,
+      "sha256": "9c8dd89303dff3bb27d1d2f5193b8980e15f46fcf798fd93399133f8cbc40905",
+      "identical": true
+    },
+    {
+      "url": "/assets/florais-elegantes-gFNKx20V.jpg",
+      "bytes": 148869,
+      "sha256": "4caeb48f9ee4ec686b5f3c045722870177ff8389237e711bc39ec495615f58bd",
+      "identical": true
+    },
+    {
+      "url": "/assets/frescos-luminosos-BAvS1EQ-.jpg",
+      "bytes": 208775,
+      "sha256": "aeb16069ab2940bf8c5d6a1ce1e1d593a6d323790d2ed9be4306e5688ac7c346",
+      "identical": true
+    },
+    {
+      "url": "/assets/frutados-citricos-BHSVN3QN.jpg",
+      "bytes": 204512,
+      "sha256": "d6671c7e621d7119a976a08272bc462342cc7230f4e00dc431f487664349fc70",
+      "identical": true
+    },
+    {
+      "url": "/assets/guerreiro-0wca7BDJ.jpg",
+      "bytes": 105991,
+      "sha256": "72da2aa4ceeb771e42d1bd3e7d3ee32f138fbc8a293daaed09f1696981e9ffc6",
+      "identical": true
+    },
+    {
+      "url": "/assets/guerreiro-9WjdvcUx.jpg",
+      "bytes": 167147,
+      "sha256": "1efece6db3c15aab5d9326ecae522ca543439ae12bae557892b5ef0ada6dbbc0",
+      "identical": true
+    },
+    {
+      "url": "/assets/guerreiro-B-htc0v_.jpg",
+      "bytes": 10234,
+      "sha256": "3849d535c53a378c2234c2225fa68a449b9711012d59bdb471fa62fa1d15818f",
+      "identical": true
+    },
+    {
+      "url": "/assets/guerreiro-B6Tw63gs.jpg",
+      "bytes": 114705,
+      "sha256": "fe6c8e3863207b1364fc82be996f0ece15f44a0faa1fc190cb37f9765fdcad3f",
+      "identical": true
+    },
+    {
+      "url": "/assets/guerreiro-BTw7xVzI.jpg",
+      "bytes": 270670,
+      "sha256": "b201054104baebdf578bf67fe07199d3c94a1288e99a3b7f186f873eb2dbb9d6",
+      "identical": true
+    },
+    {
+      "url": "/assets/guerreiro-desktop-CLkBxrUW.jpg",
+      "bytes": 224164,
+      "sha256": "725ae88ab7b39e4f4a5044239b1ea271e9f61b6098c291bb0d2cde8f926c5118",
+      "identical": true
+    },
+    {
+      "url": "/assets/guerreiro-DRTVWBu0.jpg",
+      "bytes": 153310,
+      "sha256": "f2a8935c1d6acc1db40a72e90113b7666ff2514242258eec1e6a90c13b7c9f80",
+      "identical": true
+    },
+    {
+      "url": "/assets/hero-video-DYdAfdYa.mp4",
+      "bytes": 2171517,
+      "sha256": "d9e18b67af233b9c365ce66e0954b06122e9d5cacf035ac777e2e4f123950f96",
+      "identical": true
+    },
+    {
+      "url": "/assets/hero-video-poster-BZSZW7gT.jpg",
+      "bytes": 45840,
+      "sha256": "54e2b74953d1b64153a9e2889d0cd9bdeea33554168a2874e967246bcdd7b2b4",
+      "identical": true
+    },
+    {
+      "url": "/assets/imperador-BvRHgmpJ.jpg",
+      "bytes": 114670,
+      "sha256": "5a82f0b1aecdc5bf82113f8e16cb89f175b23b8a15ec400a4943f8fec7048d53",
+      "identical": true
+    },
+    {
+      "url": "/assets/imperador-BzmM6CjY.jpg",
+      "bytes": 146389,
+      "sha256": "a287e2e7663c9bdcc02506949c5fdf081062352e980c7fc1b8c6f4e2bd7e39cf",
+      "identical": true
+    },
+    {
+      "url": "/assets/imperador-CUVygshf.jpg",
+      "bytes": 166077,
+      "sha256": "cf4368c3c5d351e8cccd19ca3ea7b07e6270971e071e77cbce8d54b863a2ed40",
+      "identical": true
+    },
+    {
+      "url": "/assets/imperador-DaPOk4AV.jpg",
+      "bytes": 113107,
+      "sha256": "e6e3f11e8e5e8a3db29c9bbcd1b6f3f8e63c7595d592dcfc22ddf68060ea7733",
+      "identical": true
+    },
+    {
+      "url": "/assets/imperador-DzfD99gB.jpg",
+      "bytes": 10475,
+      "sha256": "23d49cbef02f2a674bc64883abb950760aafb14d0d07828481d09f70c7ab9fb1",
+      "identical": true
+    },
+    {
+      "url": "/assets/imperatriz-BRD48Xtr.jpg",
+      "bytes": 159705,
+      "sha256": "dcade93c7c735724aa5b7836c4d60eba3e5e4ad9090190367ee6da97749f153b",
+      "identical": true
+    },
+    {
+      "url": "/assets/imperatriz-BuMKC5nt.jpg",
+      "bytes": 128936,
+      "sha256": "de1bd78ea9f17b193abb307d3b71718cec74386f416e8d8e7bd8e5e2a5ba3691",
+      "identical": true
+    },
+    {
+      "url": "/assets/imperatriz-C0z8_uLt.jpg",
+      "bytes": 10526,
+      "sha256": "40e01c569b2a7cb65c87a5167c22805da8be14d343b78d4401c5d795888f632f",
+      "identical": true
+    },
+    {
+      "url": "/assets/imperatriz-Dn8gcEzw.jpg",
+      "bytes": 115569,
+      "sha256": "d8c2aaeda13190732c09b680e8ee9b06476cb11905d2a8bdf7a146a799b51de3",
+      "identical": true
+    },
+    {
+      "url": "/assets/imperatriz-qEHRqtRT.jpg",
+      "bytes": 117526,
+      "sha256": "ff7c6f7c63ce96baf2877e935706b92520307b5785131ae60645342ab17f284f",
+      "identical": true
+    },
+    {
+      "url": "/assets/index-DKt_0S1i.js",
+      "bytes": 634908,
+      "sha256": "2ded70c9fed9b9de46ae2ef5d043b61b7166447ed10030af6657709b3caa567c",
+      "identical": true
+    },
+    {
+      "url": "/assets/index-DuMrFA1J.css",
+      "bytes": 159991,
+      "sha256": "b9f0f1d4de2fb88a613e0e3d8c0d8a689b87df4ee64c527accbf621af1075226",
+      "identical": true
+    },
+    {
+      "url": "/assets/logo-dourado-BkuS44dK.png",
+      "bytes": 40614,
+      "sha256": "fab6336338b5f092e01e3b3e27fc03fdc6ad37e42b5519fc9508a6bc03353f1f",
+      "identical": true
+    },
+    {
+      "url": "/assets/masculino-BUtAdhYX.jpg",
+      "bytes": 122826,
+      "sha256": "ba2f208942a6e61b8141f363749ce516e57f39ebf2c5bf340e9fd8715abaf6ee",
+      "identical": true
+    },
+    {
+      "url": "/assets/sereia-C7NIY0eS.jpg",
+      "bytes": 9884,
+      "sha256": "4c1f7c1361cf5b111568eaadebe62f7383c095f566c96c9655d1f1b59716734b",
+      "identical": true
+    },
+    {
+      "url": "/assets/sereia-CmMHd5E9.jpg",
+      "bytes": 148295,
+      "sha256": "da40c429201173ed39a783e82848a65113966078e8b4fd2be45e42c39c218536",
+      "identical": true
+    },
+    {
+      "url": "/assets/sereia-CYMB6lTe.jpg",
+      "bytes": 106364,
+      "sha256": "dc9c7f24aa5c6b86a6505505f53b9237c5d5e7170049e9925b5e6a9088524b98",
+      "identical": true
+    },
+    {
+      "url": "/assets/sereia-DMQ0hll0.jpg",
+      "bytes": 130569,
+      "sha256": "95e29073d3f1bc8ffa7e5f18173f9f04e282622b614cc6a7c7b1ddb80599ba60",
+      "identical": true
+    },
+    {
+      "url": "/assets/sereia-Od4PiDXc.jpg",
+      "bytes": 169772,
+      "sha256": "21fa14e602ea93182e97ba15c8c9fcb217cc3c1efb5ec5d1110f199af0b384ca",
+      "identical": true
+    },
+    {
+      "url": "/assets/splash-comum-D6smjJu4.jpg",
+      "bytes": 22572,
+      "sha256": "15ef738a10adbcc420dc3916103cf42802989ee3e47e9fa0b329706574f7f84d",
+      "identical": true
+    },
+    {
+      "url": "/assets/wordmark-marmore-_FVJxRZ6.png",
+      "bytes": 89018,
+      "sha256": "1548e556e0d1d975326ee0d16440f467c0d45624c5cb83932fdf821435f23182",
+      "identical": true
+    },
+    {
+      "url": "/assets/wordmark-preto-BefuJb9g.png",
+      "bytes": 87550,
+      "sha256": "12ab701ef1253c834d095b0338d5459893bc545986cd2051949a50987dd2e4ea",
+      "identical": true
+    },
+    {
+      "url": "/assets/zeus-adIUQC4G.jpg",
+      "bytes": 124314,
+      "sha256": "ba12e3ac2b5d0a722b3e8e105f16f7f2e415fada6d8414ef0ff32f8eefb3f1c2",
+      "identical": true
+    },
+    {
+      "url": "/assets/zeus-Bk4k23TW.jpg",
+      "bytes": 126144,
+      "sha256": "5a35fb201eb7ae3b786b53253d814503f68e31aea009934e5ee130308b82e901",
+      "identical": true
+    },
+    {
+      "url": "/assets/zeus-BSVowwxX.jpg",
+      "bytes": 107288,
+      "sha256": "0e1def3804e851f6bd1fb67dc66fd6f80c11348f9935ee5bac3f30da610e5066",
+      "identical": true
+    },
+    {
+      "url": "/assets/zeus-ByZH3hi4.jpg",
+      "bytes": 9581,
+      "sha256": "957a23414ce8e6c6a4ca18659914472386c30821921f8054c9b41f1796ea1beb",
+      "identical": true
+    },
+    {
+      "url": "/assets/zeus-GmMKqwvR.jpg",
+      "bytes": 145054,
+      "sha256": "56afaa8d3dad88cfcde8921949dbdd3d05660630a911a3a1712cfb8868b1c84b",
+      "identical": true
+    },
+    {
+      "url": "/favicon-32.png",
+      "bytes": 2190,
+      "sha256": "55782c0f7477a68c9fc88aa6441a5f1803309edff0ecead4015748e984f9ee68",
+      "identical": true
+    },
+    {
+      "url": "/favicon.ico",
+      "bytes": 6859,
+      "sha256": "8a4f89b953ae2a7962e3f9ab274afc6e3889db25ce19a62b528f63a53e707257",
+      "identical": true
+    },
+    {
+      "url": "/fonts/elegant.woff2",
+      "bytes": 32448,
+      "sha256": "0fbf9ec87a0035ea51e62df9a392ce825afa8f747a0d554b7e72e051637ab25a",
+      "identical": true
+    },
+    {
+      "url": "/fonts/inter-var-italic.woff2",
+      "bytes": 116164,
+      "sha256": "d6c63540400918ff90abc53dc364ba7928b2bca2851288fc3b2d70f714feda83",
+      "identical": true
+    },
+    {
+      "url": "/fonts/inter-var.woff2",
+      "bytes": 105336,
+      "sha256": "2a4af46ed9b378ee608dbd447942f19c08919661506f5523e6150f27824ca9bb",
+      "identical": true
+    },
+    {
+      "url": "/site.webmanifest",
+      "bytes": 483,
+      "sha256": "74d442a537abadd8eb8380f10a4b88a1f67eba9ef82d3da793f6e4822e24ea6a",
+      "identical": true
+    }
+  ],
+  "seo": [
+    {
+      "file": "robots.txt",
+      "identical": true
+    },
+    {
+      "file": "sitemap.xml",
+      "identical": true
+    },
+    {
+      "file": "llms.txt",
+      "identical": true
+    }
+  ],
+  "checks": [
+    "19 HTMLs publicados iguais ao build local; assets/SEO iguais; produção preservada"
+  ],
+  "production": {
+    "status": 200,
+    "assetsPreserved": true
+  }
+}
