@@ -8,13 +8,17 @@ import { verifyDocuments, routeFile } from '../../../scripts/prerender-utils.mjs
 
 process.env.NODE_ENV = 'production';
 const origin = process.argv[2] ?? 'https://arquetypus-parfum-git-prerender-saniella.vercel.app';
-assert.match(origin, /^https:\/\/[a-z0-9-]+\.vercel\.app\/?$/);
-const output = 'docs/prerender/evidence/etapa6';
+const mode = process.argv[4] ?? 'preview';
+assert.ok(['preview', 'staged', 'production'].includes(mode), 'Modo HTTP inválido');
+if (mode === 'production') assert.equal(origin, 'https://www.arquetypus.com.br');
+else assert.match(origin, /^https:\/\/[a-z0-9-]+\.vercel\.app\/?$/);
+const output = process.argv[3] ?? 'docs/prerender/evidence/etapa6';
+assert.match(output, /^docs\/prerender\/evidence\/etapa[67](?:-[a-z0-9-]+)?$/);
 await mkdir(output + '-html', { recursive: true });
 const renderer = await import(pathToFileURL(path.resolve('dist-server/entry-server.js')).href);
 const gate = JSON.parse(await readFile('dist-server/verify-prerender.json', 'utf8'));
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
-const report = { collectedAt: new Date().toISOString(), origin, checks: [], failures: [], documents: [], resources: [] };
+const report = { collectedAt: new Date().toISOString(), origin, mode, checks: [], failures: [], documents: [], resources: [] };
 const pages = [];
 // Única mutação permitida na comparação: toolbar Vercel injetada em preview.
 const stripToolbar = html => html.replace(/\s*<script\b(?=[^>]*\bsrc="https:\/\/vercel\.live\/[^"\s]*")[^>]*>[\s\S]*?<\/script>\s*/g, '');
@@ -35,9 +39,19 @@ const run = async (target, status, destination, file) => {
         assert.equal(location.search, expected.search, `${target} query`);
       } else assert.equal(response.headers.get('location'), null);
       if (method === 'HEAD') assert.equal(body.length, 0);
+      if (mode === 'production' && file && status === 200) {
+        assert.ok(!/\b(?:noindex|none)\b/i.test(response.headers.get('x-robots-tag') ?? ''), 'Página válida bloqueada no header');
+      }
       if (file && method === 'GET') {
         assert.match(response.headers.get('content-type'), /^text\/html/);
-        assert.match(response.headers.get('x-robots-tag') ?? '', /noindex/);
+        if (mode === 'preview') assert.match(response.headers.get('x-robots-tag') ?? '', /noindex/);
+        if (mode === 'production' && status === 200) {
+          for (const tag of body.matchAll(/<meta\b[^>]*>/gi)) {
+            if (/\bname\s*=\s*["'](?:robots|googlebot|bingbot)["']/i.test(tag[0])) {
+              assert.ok(!/\bcontent\s*=\s*["'][^"']*\b(?:noindex|none)\b/i.test(tag[0]), 'Página válida bloqueada no HTML');
+            }
+          }
+        }
         assert.ok(!/immutable/.test(response.headers.get('cache-control') ?? ''), 'Cache HTML imutável');
         const local = await readFile(path.join('dist', file), 'utf8');
         // A ferramenta não remove head, conteúdo, bootstrap ou scripts da aplicação.

@@ -1,0 +1,59 @@
+{
+  "collectedAt": "2026-10-05T18:09:27.040Z",
+  "browser": "Google Chrome",
+  "origin": "https://arquetypus-parfum-git-prerender-saniella.vercel.app",
+  "scope": "Preview antes da publicação manual. Não constitui smoke em produção.",
+  "home": {
+    "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+    "h1": ["Qual versão de você quer expressar hoje?"],
+    "canonical": "https://arquetypus.com.br/",
+    "gtmAndGtagScriptsObserved": true
+  },
+  "popup": {
+    "path": "/loja/zeus",
+    "dialog": "Comprar Zeus",
+    "canonical": "https://arquetypus.com.br/loja/zeus",
+    "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+    "titleCount": 1,
+    "descriptionCount": 1,
+    "canonicalCount": 1
+  },
+  "fullPage": {
+    "path": "/loja/zeus",
+    "dialog": false,
+    "h1": ["ZeusStormbreak"],
+    "priceVisible": true,
+    "descriptionCount": 1,
+    "canonical": "https://arquetypus.com.br/loja/zeus"
+  },
+  "reload": {"path": "/loja/zeus", "dialog": false, "h1": ["ZeusStormbreak"]},
+  "cookies": {"reopened": true, "refused": true, "afterReloadVisible": false},
+  "faq": {
+    "path": "/perguntas-frequentes",
+    "title": "Perguntas Frequentes | Arquétypus Parfum",
+    "h1": ["Perguntas frequentes"],
+    "openDetails": 1,
+    "canonical": "https://arquetypus.com.br/perguntas-frequentes"
+  },
+  "notFound": {
+    "path": "/qualquer-coisa",
+    "title": "Página não encontrada | Arquétypus Parfum",
+    "h1": ["Página não encontrada"],
+    "robots": "noindex",
+    "canonical": "https://arquetypus.com.br/qualquer-coisa"
+  },
+  "returnHome": {
+    "path": "/",
+    "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+    "h1": ["Qual versão de você quer expressar hoje?"]
+  },
+  "consoleErrorsAndWarningsObserved": [],
+  "limitations": [
+    "Leitura inicial de window.dataLayer retornou array vazio neste adaptador; não comprova envio nem perda de eventos. Entrega externa GA4/GTM não certificada.",
+    "Atributo data-hydrated consultado não existe no contrato da aplicação. Interação funcional prova montagem; nenhum certificado de hidratação foi inferido desse atributo.",
+    "Seleção inicial de botão CUPOM usou caixa incorreta e retornou array vazio; não foi contabilizada como validação de formulário.",
+    "Snapshots imediatamente após navegação mostraram árvore anterior; observações finais foram realizadas após montagem confirmada.",
+    "404 cliente recebe canonical da URL real; HTML bruto 404 genérico não possui canonical. Contrato existente reconferido no modelo SEO e prova anterior.",
+    "Identidade administrativa do deployment aguarda confirmação manual; sem smoke em produção nesta coleta."
+  ]
+}
