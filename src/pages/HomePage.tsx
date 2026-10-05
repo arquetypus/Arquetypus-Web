@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { ARCHETYPES, getArchetype } from '@/data/archetypes'
+import { ARCHETYPES, getArchetype, productPath } from '@/data/archetypes'
 import {
   BODEGON_IMG,
   DIAGNOSIS,
@@ -263,7 +263,7 @@ function CommunitySection() {
                     </div>
                   </div>
                   <Link
-                    to={`/loja/${arq.id}`}
+                    to={productPath(arq)}
                     state={{ backgroundLocation: location }}
                     className="mt-3 block w-full rounded-full border border-latao/50 bg-papel/40 py-2.5 text-center text-xs font-medium tracking-wide text-tinta uppercase transition-colors duration-300 ease-out hover:border-latao hover:bg-papel-2/70"
                   >
@@ -542,8 +542,8 @@ export function HomePage() {
                         {a.status === 'wait' ? 'Avise-me' : <Preco a={a} tom="escuro" />}
                       </span>
                       <Link
-                        // mesmo destino do UGC: pop-up de compra (/loja/:id por cima da home)
-                        to={`/loja/${a.id}`}
+                        // mesmo destino do UGC: pop-up de compra (/body-splash/:slug por cima da home)
+                        to={productPath(a)}
                         state={{ backgroundLocation: location }}
                         className="relative z-20 inline-flex shrink-0 items-center justify-center rounded-full border border-papel-inv/40 bg-papel-inv/10 px-4 py-2.5 font-label text-[10px] tracking-[0.12em] text-papel-inv uppercase backdrop-blur-sm transition-colors duration-300 ease-out hover:border-papel-inv/60 hover:bg-papel-inv/20"
                       >

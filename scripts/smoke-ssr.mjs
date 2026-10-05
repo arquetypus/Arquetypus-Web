@@ -37,8 +37,8 @@ try {
   assert.equal(typeof globalThis.document, 'undefined');
   const { StaticRouter } = await import('react-router-dom');
   assert.equal(typeof StaticRouter, 'function');
-  const { routes, render, DEFAULT_HTML_ATTRIBUTES } = await import(pathToFileURL(path.join(root, 'dist-server/entry-server.js')).href);
-  assert.equal(routes.length, 27, '9 páginas + 9 produtos em /loja e em /arquetipos');
+  const { routes, render, products, DEFAULT_HTML_ATTRIBUTES } = await import(pathToFileURL(path.join(root, 'dist-server/entry-server.js')).href);
+  assert.equal(routes.length, 18, '9 páginas + 9 produtos em /body-splash');
   assert.equal(new Set(routes).size, routes.length);
   const manifest = JSON.parse(await readFile(path.join(root, 'dist/.vite/manifest.json'), 'utf8'));
   assert.ok(manifest['index.html'].isEntry);
@@ -102,8 +102,10 @@ try {
       const data = JSON.parse(script.json);
       for (const field of ['image', 'logo']) if (data[field]) resource(new URL(data[field]).pathname);
     }
-    if (/^\/(?:loja|arquetipos)\//.test(route)) {
-      const id = route.slice(route.indexOf('/', 1) + 1);
+    if (route.startsWith('/body-splash/')) {
+      // fotos seguem nomeadas pelo id interno; a URL usa o slug
+      const id = products.find(p => '/body-splash/' + p.slug === route)?.id;
+      assert.ok(id, 'Produto da rota: ' + route);
       for (const folder of ['pdp-frasco', 'pdp-lifestyle']) {
         const expected = manifest[`src/assets/fotos/${folder}/${id}.jpg`];
         assert.ok(expected, folder + '/' + id);
@@ -119,9 +121,9 @@ try {
     rows.push({ route, bytes: Buffer.byteLength(html), sha256: hash(html), h1, mainExcerpt: text(main).slice(0, 700), head });
   }
   assert.equal(rows.at(-1).head.robots, 'noindex');
-  const first = render('/loja/zeus');
+  const first = render('/body-splash/zeus-stormbreak');
   render('/perguntas-frequentes');
-  assert.deepEqual(render('/loja/zeus'), first);
+  assert.deepEqual(render('/body-splash/zeus-stormbreak'), first);
   assert.deepEqual(DEFAULT_HTML_ATTRIBUTES, { 'data-estrutura': 'boutique', 'data-paleta': 'ambar', 'data-estilo': 'elegant' });
   assert.deepEqual(warnings, [], 'Nenhum warning nas rotas publicáveis + 404');
   // Lookup real, sem expor export de auditoria no entry-server de produção.
@@ -130,17 +132,15 @@ try {
     resolve: { alias: { '@': path.join(root, 'src') } }, server: { middlewareMode: true } });
   const slugs = [];
   try {
-    const { ARCHETYPES, getArchetype } = await server.ssrLoadModule('/src/data/archetypes.ts');
+    const { ARCHETYPES, getArchetype, getArchetypeBySlug, productPath } = await server.ssrLoadModule('/src/data/archetypes.ts');
     const { PAGINAS_PUBLICAS } = await server.ssrLoadModule('/src/data/rotas.ts');
     const { resolveSeo, serializeJsonLd } = await server.ssrLoadModule('/src/lib/seoModel.ts');
-    assert.deepEqual(routes, [...PAGINAS_PUBLICAS.map(p => p.path), ...ARCHETYPES.map(a => '/loja/' + a.id), ...ARCHETYPES.map(a => '/arquetipos/' + a.id)]);
-    // Endereço antigo: mesmo HTML e mesmo head (canonical /loja) da PDP.
-    for (const a of ARCHETYPES) assert.deepEqual(render('/arquetipos/' + a.id), render('/loja/' + a.id), 'Mesmo conteúdo: ' + a.id);
+    assert.deepEqual(routes, [...PAGINAS_PUBLICAS.map(p => p.path), ...ARCHETYPES.map(productPath)]);
     // Página pública só existe via PAGINAS_PUBLICAS (sitemap, llms.txt, SEO, prerender); <Route path> literal no
     // App.tsx fica restrito a produto, redirecionamentos e 404.
     const app = await readFile(path.join(root, 'src/App.tsx'), 'utf8');
     const literais = [...app.matchAll(/<Route\b[^>]*\bpath="([^"]+)"/g)].map(m => m[1]);
-    const foraDoSitemap = ['arquetipos/:id', 'loja/:id', 'kit-descoberta', '*'];
+    const foraDoSitemap = ['body-splash/:slug', 'body-splash', 'arquetipos/:id', 'loja/:id', 'kit-descoberta', '*'];
     assert.deepEqual(literais.filter(p => !foraDoSitemap.includes(p)), [],
       'Rota escrita à mão no App.tsx: cadastrar em PAGINAS_PUBLICAS (src/data/rotas.ts) e ligar em PAGINAS');
     // Contrato permanente: validar dados atuais, sem depender de snapshots da migração.
@@ -161,10 +161,21 @@ try {
       });
       assert.deepEqual(row.head, expected, 'Head fonte/bundle: ' + row.route);
     }
-    for (const product of ARCHETYPES) assert.equal(getArchetype(product.id), product);
-    for (const id of ['constructor', 'toString', '__proto__', 'nao-existe', 'ZEUS']) {
-      assert.equal(getArchetype(id), undefined, id);
+    for (const product of ARCHETYPES) {
+      assert.equal(getArchetype(product.id), product);
+      assert.equal(getArchetypeBySlug(product.slug), product);
+      // Endereços antigos: no cliente redirecionam (Navigate) pra URL definitiva, com o head dela.
       for (const prefix of ['/loja/', '/arquetipos/']) {
+        const result = render(prefix + product.id);
+        assert.equal(result.head.canonical, 'https://arquetypus.com.br' + productPath(product), prefix + product.id);
+        assert.ok(!result.html.includes('Pirâmide olfativa'), prefix + product.id);
+        slugs.push({ id: prefix + product.id, redirect: productPath(product) });
+      }
+    }
+    for (const id of ['constructor', 'toString', '__proto__', 'nao-existe', 'ZEUS', 'zeus', 'ZEUS-STORMBREAK']) {
+      assert.equal(getArchetypeBySlug(id), undefined, id);
+      const prefixes = getArchetype(id) ? ['/body-splash/'] : ['/body-splash/', '/loja/', '/arquetipos/'];
+      for (const prefix of prefixes) {
         const result = render(prefix + id);
         assert.equal(result.head.canonical, 'https://arquetypus.com.br/');
         assert.ok(!result.html.includes('Pirâmide olfativa'), prefix + id);
@@ -196,7 +207,7 @@ try {
   const report = { collectedAt: new Date().toISOString(), node: process.version, mode: process.env.NODE_ENV,
     router: { version: routerPackage.version, StaticRouter: typeof StaticRouter, exports: Object.keys(routerPackage.exports) },
     theme: DEFAULT_HTML_ATTRIBUTES, routes: rows, assets, duplicateBasenames, resources, publicFiles, slugs, warnings, redirectWarnings,
-    checks: ['27 rotas + 404 com H1 e conteúdo; preço/fotos nas PDPs em /loja e /arquetipos', 'Tema igual ao template cliente',
+    checks: ['18 rotas + 404 com H1 e conteúdo; preço/fotos nas nove PDPs em /body-splash; endereços antigos redirecionam', 'Tema igual ao template cliente',
       'URLs e bytes por caminho original iguais ao manifest cliente', 'Globs, basenames duplicados, src/srcset/poster/preloads/CSS/public verificados',
       'Head fonte/bundle iguais; H1 único em cada documento', 'Head e HTML da primeira rota iguais após renderizar outra rota', 'Lookup real rejeita propriedades herdadas', 'Sem DOM ou warnings; modo production', 'Template cliente íntegro antes da geração estática'] };
   await writeFile(path.join(root, 'dist-server/smoke-ssr.json'), JSON.stringify(report, null, 2) + '\n');

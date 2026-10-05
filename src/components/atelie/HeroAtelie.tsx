@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { PRODUCT_BASE } from '@/data/archetypes'
 import { HERO_SLIDES } from '@/data/home'
 import { scrollToId } from '@/lib/scrollToId'
 
@@ -98,7 +99,7 @@ export function HeroAtelie() {
               ) : (
                 <Link
                   to={cta.to}
-                  state={cta.to.startsWith('/loja/') ? { backgroundLocation: location } : undefined}
+                  state={cta.to.startsWith(PRODUCT_BASE + '/') ? { backgroundLocation: location } : undefined}
                   className="group mt-8 inline-flex items-center gap-3 font-label text-[11px] tracking-[0.2em] text-tinta uppercase"
                 >
                   <span className="border-b border-tinta pb-1">{cta.label}</span>

@@ -1,6 +1,7 @@
 import { Link, Navigate, useLocation } from 'react-router-dom'
 import type { QuizResult } from '@/types/archetype'
 import { Reveal } from '@/components/ui/Reveal'
+import { productPath } from '@/data/archetypes'
 
 export function ResultPage() {
   const location = useLocation()
@@ -104,7 +105,7 @@ export function ResultPage() {
               seu resultado.
             </p>
             <Link
-              to={`/loja/${oferta.id}`}
+              to={productPath(oferta)}
               className="mt-3 block w-full rounded-lg bg-tinta py-4 text-center text-sm font-medium tracking-wide text-papel uppercase"
             >
               Conhecer {oferta.nome}
@@ -112,7 +113,7 @@ export function ResultPage() {
           </div>
         ) : (
           <Link
-            to={`/loja/${a.id}`}
+            to={productPath(a)}
             className="block w-full rounded-lg bg-tinta py-4 text-center text-sm font-medium tracking-wide text-papel uppercase"
           >
             Ver {a.nome} na loja

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { ARCHETYPES } from '@/data/archetypes'
+import { ARCHETYPES, productPath } from '@/data/archetypes'
 import { FRASCO_IMG, HERO_SLIDES } from '@/data/home'
 import { scrollToId } from '@/lib/scrollToId'
 import { brl, FilterTabs, parcela, pix, type CatalogProps } from './shared'
@@ -105,7 +105,7 @@ export function CatalogGaleria({ items, filtro, setFiltro, filtros }: CatalogPro
         <ul className="mt-12 grid grid-cols-2 gap-x-4 gap-y-14 lg:mt-20 lg:grid-cols-3 lg:gap-x-14 lg:gap-y-24">
           {items.map((a, n) => (
             <li key={a.id} className={`${n % 2 === 1 ? 'translate-y-10' : ''} ${n % 3 === 1 ? 'lg:translate-y-24' : 'lg:translate-y-0'}`}>
-              <Link to={`/loja/${a.id}`} state={{ backgroundLocation: location }} className="no-press group block">
+              <Link to={productPath(a)} state={{ backgroundLocation: location }} className="no-press group block">
                 {/* passe-partout */}
                 <div className="bg-papel-2 p-3 ring-1 ring-linha transition-shadow duration-500 group-hover:shadow-[0_24px_50px_-24px_rgba(0,0,0,0.35)] lg:p-6">
                   <div className="aspect-[4/5] overflow-hidden" style={{ background: a.bg }}>
@@ -131,7 +131,7 @@ export function CatalogGaleria({ items, filtro, setFiltro, filtros }: CatalogPro
                 </span>
               </div>
               <Link
-                to={`/loja/${a.id}`}
+                to={productPath(a)}
                 state={{ backgroundLocation: location }}
                 className="mt-3 ml-3 inline-flex items-center gap-2 font-label text-[10px] tracking-[0.25em] text-tinta uppercase hover:opacity-70 lg:ml-4"
               >

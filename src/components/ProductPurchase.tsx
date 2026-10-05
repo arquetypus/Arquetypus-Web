@@ -25,7 +25,7 @@ const ARTIGO_ENERGIA: Record<string, string> = { Sedução: 'a', Força: 'a', Po
 
 /**
  * Seção de compra do arquétipo (P-02 a P-09): galeria/notas, identidade,
- * variante, preço, comprar, selos e complementos. Usada na PDP (/loja/:id)
+ * variante, preço, comprar, selos e complementos. Usada na PDP (/body-splash/:slug)
  * e no pop-up de compra aberto a partir da home — mesma fonte, sem duplicar.
  * `status: 'wait'` (hoje nenhum; Zeus saiu em set/2026) nunca vende: mostra lista de espera no lugar de
  * variante/preço/comprar (regra 8 do CLAUDE.md).

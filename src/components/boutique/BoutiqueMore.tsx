@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import type { Archetype } from '@/types/archetype'
-import { getArchetype } from '@/data/archetypes'
+import { getArchetype, productPath } from '@/data/archetypes'
 import { FRASCO_CUT_IMG, JOURNAL, UGC_IMG, UGC_VIDEOS, CONTATOS } from '@/data/home'
 import { CONDICOES, EMPRESA_LINHA, parcela, precoPix } from '@/data/empresa'
 import { openCookiePreferences } from '@/lib/consent'
@@ -62,7 +62,7 @@ export function FeaturedBoutique({ a, img }: { a: Archetype; img: string }) {
             </span>
           </div>
           <Link
-            to={`/loja/${a.id}`}
+            to={productPath(a)}
             state={{ backgroundLocation: location }}
             className="mt-5 block rounded-full bg-tinta py-4 text-center text-sm font-medium text-papel transition-opacity hover:opacity-90 md:self-start md:px-12"
           >
@@ -204,7 +204,7 @@ export function CommunityBoutique() {
                   </span>
                 </div>
                 <Link
-                  to={`/loja/${arq.id}`}
+                  to={productPath(arq)}
                   state={{ backgroundLocation: location }}
                   tabIndex={ativo ? 0 : -1}
                   aria-label={`Descobrir ${arq.nome}`}

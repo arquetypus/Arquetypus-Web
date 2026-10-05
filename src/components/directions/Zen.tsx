@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { getArchetype } from '@/data/archetypes'
+import { getArchetype, productPath } from '@/data/archetypes'
 import { COMPARISON, DIAGNOSIS, ENERGIES, FAMILIES, FRASCO_IMG, HERO_SLIDES, HOME_COPY as C, JOURNAL, QUALIFICATION, SEALS, SEGMENTS, UGC_IMG, UGC_VIDEOS } from '@/data/home'
 import { openCookiePreferences } from '@/lib/consent'
 import { scrollToId } from '@/lib/scrollToId'
@@ -118,7 +118,7 @@ export function CatalogZen({ items, filtro, setFiltro, filtros }: CatalogProps) 
         <ul className="mt-20 space-y-24 lg:mt-32 lg:space-y-40">
           {items.map((a, n) => (
             <li key={a.id} className={`flex flex-col gap-8 md:flex-row md:items-end md:gap-14 ${n % 2 ? 'md:flex-row-reverse md:text-right' : ''}`}>
-              <Link to={`/loja/${a.id}`} state={{ backgroundLocation: location }} className="no-press group relative block w-[72%] md:w-[38%] lg:w-[30%]" style={n % 2 ? { marginLeft: 'auto' } : undefined}>
+              <Link to={productPath(a)} state={{ backgroundLocation: location }} className="no-press group relative block w-[72%] md:w-[38%] lg:w-[30%]" style={n % 2 ? { marginLeft: 'auto' } : undefined}>
                 <img src={FRASCO_IMG[a.id]} alt={`${a.tipo} ${a.nome}`} loading="lazy" className="aspect-[3/4] w-full object-cover transition-opacity duration-700 group-hover:opacity-85" />
                 <Vertical className={`absolute top-0 hidden text-tinta-3 md:block ${n % 2 ? '-left-8' : '-right-8'}`}>
                   {a.energia} · {a.fam}
@@ -132,7 +132,7 @@ export function CatalogZen({ items, filtro, setFiltro, filtros }: CatalogProps) 
                 <p className="text-xs text-tinta-3">
                   {brl(pix(a.preco))} no Pix · 6x de {brl(parcela(a.preco))} · {a.vol}
                 </p>
-                <Link to={`/loja/${a.id}`} state={{ backgroundLocation: location }} className={`group mt-8 inline-flex items-center gap-4 text-sm text-tinta ${n % 2 ? 'md:flex-row-reverse' : ''}`}>
+                <Link to={productPath(a)} state={{ backgroundLocation: location }} className={`group mt-8 inline-flex items-center gap-4 text-sm text-tinta ${n % 2 ? 'md:flex-row-reverse' : ''}`}>
                   <span className="h-px w-10 bg-latao transition-all duration-500 group-hover:w-16" />
                   Comprar
                 </Link>
@@ -262,7 +262,7 @@ export function ZenPage({ catalog, onSegment, toCatalog, featured, featuredImg }
             <p className="text-xs text-tinta-3">
               {brl(pix(featured.preco))} no Pix · ou 6x de {brl(parcela(featured.preco))} sem juros · {featured.tipo} {featured.vol}
             </p>
-            <Link to={`/loja/${featured.id}`} state={{ backgroundLocation: location }} className="group mt-10 inline-flex items-center gap-4 text-sm text-tinta">
+            <Link to={productPath(featured)} state={{ backgroundLocation: location }} className="group mt-10 inline-flex items-center gap-4 text-sm text-tinta">
               <span className="h-px w-12 bg-latao transition-all duration-500 group-hover:w-20" />
               {C.destaque.cta} {featured.nome}
             </Link>
@@ -312,7 +312,7 @@ export function ZenPage({ catalog, onSegment, toCatalog, featured, featuredImg }
             if (!arq) return null
             return (
               <li key={v.creator} className={i % 2 ? 'lg:mt-16' : ''}>
-                <Link to={`/loja/${arq.id}`} state={{ backgroundLocation: location }} className="no-press group block">
+                <Link to={productPath(arq)} state={{ backgroundLocation: location }} className="no-press group block">
                   <img src={UGC_IMG[v.archetypeId]} alt={`${v.creator} segurando o Body Splash Premium ${arq.nome}`} loading="lazy" className="aspect-[3/4] w-full object-cover transition-opacity duration-700 group-hover:opacity-85" />
                   <span className="mt-4 block font-display text-lg text-tinta">{arq.nome}</span>
                   <span className="text-xs text-tinta-3">

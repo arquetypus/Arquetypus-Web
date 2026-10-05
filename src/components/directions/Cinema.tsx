@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { HERO_SLIDES, QUIZ_CTA } from '@/data/home'
 import { scrollToId } from '@/lib/scrollToId'
 import { brl, FilterTabs, parcela, pix, type CatalogProps } from './shared'
+import { productPath } from '@/data/archetypes'
 
 /**
  * Direção "Cinema" (ThemeSwitcher) — campanha de perfume como filme noir. Referências da Behance: "Voléa —
@@ -198,7 +199,7 @@ export function HeroCinema() {
           {slide.sub}
         </p>
         {'cta' in slide && slide.cta ? (
-          // /loja/:id abre o pop-up de compra por cima da home (ver App.tsx)
+          // PDP (/body-splash/…) abre o pop-up de compra por cima da home (ver App.tsx)
           <Link to={slide.cta.to} state={{ backgroundLocation: location }} className={botao} style={{ animationDelay: '300ms' }}>
             {slide.cta.label}
           </Link>
@@ -301,7 +302,7 @@ export function CatalogCinema({ items, filtro, setFiltro, filtros }: CatalogProp
       <ul ref={trilho} className="no-scrollbar scroll-pad mt-10 flex snap-x snap-mandatory gap-3 overflow-x-auto overflow-y-hidden px-4 md:px-10 lg:mt-14 lg:gap-5">
         {items.map((a) => (
           <li key={a.id} className="w-[78%] shrink-0 snap-start sm:w-[46%] lg:w-[30%] xl:w-[23%]">
-            <Link to={`/loja/${a.id}`} state={{ backgroundLocation: location }} className="no-press group relative block aspect-[3/4] overflow-hidden bg-black">
+            <Link to={productPath(a)} state={{ backgroundLocation: location }} className="no-press group relative block aspect-[3/4] overflow-hidden bg-black">
               <img
                 src={LIFESTYLE[a.id]}
                 alt={`Pessoa segurando o ${a.tipo.toLowerCase()} ${a.nome}`}
@@ -326,7 +327,7 @@ export function CatalogCinema({ items, filtro, setFiltro, filtros }: CatalogProp
                 </span>
               </span>
               <Link
-                to={`/loja/${a.id}`}
+                to={productPath(a)}
                 state={{ backgroundLocation: location }}
                 className="shrink-0 font-label text-[10px] tracking-[0.3em] text-latao uppercase hover:opacity-70"
               >

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import type { Archetype } from '@/types/archetype'
 import { FRASCO_CUT_IMG, FRASCO_IMG } from '@/data/home'
+import { productPath } from '@/data/archetypes'
 
 type Filtro = 'ALL' | 'F' | 'M' | 'U'
 
@@ -11,7 +12,7 @@ const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', curren
  * Catálogo da direção "Ateliê" — índice de revista em vez de carrossel: uma linha por arquétipo
  * (número grande, nome, família, volume, preço, seta). No desktop, passar o mouse numa linha mostra a
  * foto do frasco na coluna fixa à direita; no celular cada linha tem a miniatura. Mesmo filtro por gênero
- * e o mesmo destino (pop-up de compra /loja/:id) do carrossel.
+ * e o mesmo destino (pop-up de compra /body-splash/:slug) do carrossel.
  */
 export function CatalogIndex({
   items,
@@ -63,7 +64,7 @@ export function CatalogIndex({
             {items.map((a) => (
               <li key={a.id} onMouseEnter={() => setHover(a.id)}>
                 <Link
-                  to={`/loja/${a.id}`}
+                  to={productPath(a)}
                   state={{ backgroundLocation: location }}
                   className="group grid grid-cols-[3.5rem_1fr_auto] items-center gap-4 border-b border-linha-2 py-4 transition-colors hover:bg-papel-2 lg:grid-cols-[5rem_1fr_auto_auto] lg:gap-8 lg:px-2 lg:py-6"
                 >

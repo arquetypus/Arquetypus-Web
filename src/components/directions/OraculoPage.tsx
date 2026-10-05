@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { getArchetype } from '@/data/archetypes'
+import { getArchetype, productPath } from '@/data/archetypes'
 import { COMPARISON, DIAGNOSIS, ENERGIES, FAMILIES, HOME_COPY as C, JOURNAL, QUALIFICATION, SEALS, SEGMENTS, UGC_IMG, UGC_VIDEOS } from '@/data/home'
 import { openCookiePreferences } from '@/lib/consent'
 import logoBranco from '@/assets/brand/logo-branco.png'
@@ -217,7 +217,7 @@ export function OraculoPage({ catalog, onSegment, toCatalog, featured, featuredI
               {brl(pix(featured.preco))} no Pix · ou 6x de {brl(parcela(featured.preco))} sem juros · {featured.tipo} {featured.vol}
             </p>
             <Link
-              to={`/loja/${featured.id}`}
+              to={productPath(featured)}
               state={{ backgroundLocation: location }}
               className="mt-7 inline-block rounded-full bg-latao px-10 py-4 text-sm font-medium text-papel transition-opacity hover:opacity-90"
             >
@@ -274,7 +274,7 @@ export function OraculoPage({ catalog, onSegment, toCatalog, featured, featuredI
                   </span>
                 </span>
                 <p className="mt-4 font-label text-[10px] tracking-[0.2em] text-tinta-3">{v.creator}</p>
-                <Link to={`/loja/${arq.id}`} state={{ backgroundLocation: location }} className="mt-1 block font-display text-2xl text-tinta hover:text-latao">
+                <Link to={productPath(arq)} state={{ backgroundLocation: location }} className="mt-1 block font-display text-2xl text-tinta hover:text-latao">
                   {arq.nome}
                 </Link>
                 <p className="text-xs text-tinta-2">{brl(arq.preco)}</p>

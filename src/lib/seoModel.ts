@@ -1,4 +1,4 @@
-import { ARCHETYPES } from '@/data/archetypes'
+import { getArchetype, getArchetypeBySlug, productPath } from '@/data/archetypes'
 import { CONDICOES, EMPRESA } from '@/data/empresa'
 import { CONTATOS } from '@/data/home'
 import { FAQ_LOJA, FAQ_PRODUTO } from '@/data/faq'
@@ -53,7 +53,7 @@ export function productMetadata(a: Archetype) {
 }
 
 export function productSchema(a: Archetype) {
-  const url = `${SITE}/loja/${a.id}`
+  const url = SITE + productPath(a)
   return {
     '@context': 'https://schema.org', '@type': 'Product', '@id': `${url}#product`, url,
     name: a.nomeOficial, description: productMetadata(a).description,
@@ -65,10 +65,10 @@ export function productSchema(a: Archetype) {
 
 export function breadcrumbSchema(a: Archetype) {
   return {
-    '@context': 'https://schema.org', '@type': 'BreadcrumbList', '@id': `${SITE}/loja/${a.id}#breadcrumb`,
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList', '@id': `${SITE}${productPath(a)}#breadcrumb`,
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
-      { '@type': 'ListItem', position: 2, name: `${a.nome} ${a.sobrenome ?? ''}`.trim(), item: `${SITE}/loja/${a.id}` },
+      { '@type': 'ListItem', position: 2, name: `${a.nome} ${a.sobrenome ?? ''}`.trim(), item: SITE + productPath(a) },
     ],
   }
 }
@@ -90,16 +90,18 @@ export function resolveSeo(url: string, { genericNotFound = false } = {}): SeoHe
   try { pathname = pathname.split('/').map((part) => decodeURIComponent(part).replace(/\//g, '%2F')).join('/') } catch { /* Preservar caminho malformado, como o Router. */ }
   pathname = pathname.replace(/\/+$/, '') || '/'
   const page = PAGINAS_PUBLICAS.find((p) => p.path.toLowerCase() === pathname.toLowerCase())
-  const match = pathname.match(/^\/(?:loja|arquetipos)\/([^/]+)$/i)
-  // IDs continuam sensíveis a caixa; não usar propriedades herdadas como produtos.
-  const slug = match?.[1].replace(/%2F/g, '/')
-  const product = match ? ARCHETYPES.find((a) => a.id === slug) : undefined
-  const redirectHome = pathname.toLowerCase() === '/kit-descoberta' || (!!match && !product)
+  // PDP em /body-splash/:slug; /loja/:id e /arquetipos/:id são endereços antigos que redirecionam (mesmo head do
+  // destino). Slug e ID continuam sensíveis a caixa; não usar propriedades herdadas como produtos.
+  const match = pathname.match(/^\/body-splash\/([^/]+)$/i)
+  const legacy = pathname.match(/^\/(?:loja|arquetipos)\/([^/]+)$/i)
+  const product = match ? getArchetypeBySlug(match[1].replace(/%2F/g, '/'))
+    : legacy ? getArchetype(legacy[1].replace(/%2F/g, '/')) : undefined
+  const redirectHome = ['/kit-descoberta', '/body-splash'].includes(pathname.toLowerCase()) || (!!(match || legacy) && !product)
   const metadata = product ? productMetadata(product) : page?.seo ?? (redirectHome ? SEO_HOME : {
     title: comMarca('Página não encontrada'), description: 'A página que você procurou não existe ou mudou de endereço.',
   })
   const notFound = !product && !page && !redirectHome
-  const path = product ? `/loja/${product.id}` : page?.path ?? (redirectHome ? '/' : pathname)
+  const path = product ? productPath(product) : page?.path ?? (redirectHome ? '/' : pathname)
   const scripts: SeoScript[] = []
   if (path === '/' && !notFound) scripts.push(script('arq-seo-organization', organizationSchema()), script('arq-seo-website', websiteSchema()))
   if (product) scripts.push(script('arq-seo-product', productSchema(product)), script('arq-seo-breadcrumb', breadcrumbSchema(product)))

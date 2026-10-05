@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import type { Archetype } from '@/types/archetype'
-import { getArchetype } from '@/data/archetypes'
+import { getArchetype, productPath } from '@/data/archetypes'
 import { JOURNAL, UGC_IMG, UGC_VIDEOS } from '@/data/home'
 import { openCookiePreferences } from '@/lib/consent'
 
@@ -49,7 +49,7 @@ export function FeaturedAtelie({ a, img }: { a: Archetype; img: string }) {
             </span>
           </div>
           <Link
-            to={`/loja/${a.id}`}
+            to={productPath(a)}
             state={{ backgroundLocation: location }}
             className="group mt-8 inline-flex items-center gap-3 font-label text-[11px] tracking-[0.2em] text-tinta uppercase"
           >
@@ -83,7 +83,7 @@ export function CommunityAtelie() {
             const arq = getArchetype(v.archetypeId)
             if (!arq) return null
             return (
-              <Link key={v.creator} to={`/loja/${arq.id}`} state={{ backgroundLocation: location }} className="group block">
+              <Link key={v.creator} to={productPath(arq)} state={{ backgroundLocation: location }} className="group block">
                 <div className="aspect-[3/4] overflow-hidden bg-papel-3">
                   <img
                     src={UGC_IMG[v.archetypeId]}

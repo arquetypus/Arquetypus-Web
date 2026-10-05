@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { getArchetype } from '@/data/archetypes'
+import { getArchetype, productPath } from '@/data/archetypes'
 import { COMPARISON, DIAGNOSIS, ENERGIES, FAMILIES, HOME_COPY as C, JOURNAL, QUALIFICATION, SEALS, SEGMENTS, UGC_IMG, UGC_VIDEOS } from '@/data/home'
 import { openCookiePreferences } from '@/lib/consent'
 import {
@@ -223,7 +223,7 @@ export function ManifestoPage({ catalog, onSegment, toCatalog, featured, feature
                 {brl(pix(featured.preco))} no Pix · 6x de {brl(parcela(featured.preco))} · {featured.tipo} {featured.vol}
               </span>
             </span>
-            <Link to={`/loja/${featured.id}`} state={{ backgroundLocation: location }} className="bg-tinta px-8 py-4 font-label text-[12px] tracking-[0.18em] text-papel uppercase hover:bg-papel hover:text-tinta">
+            <Link to={productPath(featured)} state={{ backgroundLocation: location }} className="bg-tinta px-8 py-4 font-label text-[12px] tracking-[0.18em] text-papel uppercase hover:bg-papel hover:text-tinta">
               {C.destaque.cta} {featured.nome} →
             </Link>
           </div>
@@ -275,7 +275,7 @@ export function ManifestoPage({ catalog, onSegment, toCatalog, featured, feature
             if (!arq) return null
             return (
               <li key={v.creator} className={i % 2 === 0 ? 'lg:rotate-[-1.5deg]' : 'lg:translate-y-6 lg:rotate-[1.5deg]'}>
-                <Link to={`/loja/${arq.id}`} state={{ backgroundLocation: location }} className="no-press group relative block border-2 border-tinta bg-papel">
+                <Link to={productPath(arq)} state={{ backgroundLocation: location }} className="no-press group relative block border-2 border-tinta bg-papel">
                   <img src={UGC_IMG[v.archetypeId]} alt={`${v.creator} segurando o Body Splash Premium ${arq.nome}`} loading="lazy" className="aspect-[3/4] w-full object-cover" />
                   <span className="absolute top-3 left-3 -rotate-2 bg-latao px-2 py-1 font-label text-[10px] tracking-[0.1em]">{v.creator}</span>
                   <span className="flex items-center justify-between border-t-2 border-tinta p-3 transition-colors group-hover:bg-tinta group-hover:text-papel">

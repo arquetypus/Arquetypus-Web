@@ -10,6 +10,7 @@ import { FAMILIAS_BY_SLUG } from '@/data/families'
 const RAW: Omit<Archetype, 'fam'>[] = [
   {
     id: 'afrodite',
+    slug: 'afrodite-first-kiss',
     nomeOficial: 'BODY SPLASH AFRODITE FIRST KISS 200 ML',
     gtin13: '7898745336491',
     cod: 'ARQ-01',
@@ -44,6 +45,7 @@ const RAW: Omit<Archetype, 'fam'>[] = [
   },
   {
     id: 'imperatriz',
+    slug: 'imperatriz-velvet-dynasty',
     nomeOficial: 'BODY SPLASH IMPERATRIZ VELVET DYNASTY 200 ML',
     gtin13: '7898745336507',
     cod: 'ARQ-02',
@@ -78,6 +80,7 @@ const RAW: Omit<Archetype, 'fam'>[] = [
   },
   {
     id: 'cleopatra',
+    slug: 'cleopatra-nile-rose',
     nomeOficial: 'BODY SPLASH CLEÓPATRA NILE ROSE 200 ML',
     gtin13: '7898745336484',
     cod: 'ARQ-03',
@@ -112,6 +115,7 @@ const RAW: Omit<Archetype, 'fam'>[] = [
   },
   {
     id: 'fada',
+    slug: 'fada-pure-light',
     nomeOficial: 'BODY SPLASH FADA PURE LIGHT 200 ML',
     gtin13: '7898745336514',
     cod: 'ARQ-04',
@@ -146,6 +150,7 @@ const RAW: Omit<Archetype, 'fam'>[] = [
   },
   {
     id: 'sereia',
+    slug: 'sereia-ocean-breeze',
     nomeOficial: 'BODY SPLASH SEREIA OCEAN BREEZE 200 ML',
     gtin13: '7898745336477',
     cod: 'ARQ-05',
@@ -180,6 +185,7 @@ const RAW: Omit<Archetype, 'fam'>[] = [
   },
   {
     id: 'zeus',
+    slug: 'zeus-stormbreak',
     nomeOficial: 'BODY SPLASH ZEUS STORMBREAK 220 ML',
     gtin13: '7898745336460',
     cod: 'ARQ-06',
@@ -215,6 +221,7 @@ const RAW: Omit<Archetype, 'fam'>[] = [
   },
   {
     id: 'guerreiro',
+    slug: 'guerreiro-steel-blue',
     nomeOficial: 'BODY SPLASH GUERREIRO STEEL BLUE 220 ML',
     gtin13: '7898745336521',
     cod: 'ARQ-07',
@@ -249,6 +256,7 @@ const RAW: Omit<Archetype, 'fam'>[] = [
   },
   {
     id: 'imperador',
+    slug: 'imperador-red-empire',
     nomeOficial: 'BODY SPLASH IMPERADOR RED EMPIRE 220 ML',
     gtin13: '7898745336538',
     cod: 'ARQ-08',
@@ -284,6 +292,7 @@ const RAW: Omit<Archetype, 'fam'>[] = [
   },
   {
     id: 'fenix',
+    slug: 'fenix-amber-burn',
     nomeOficial: 'BODY SPLASH FÊNIX AMBER BURN 220 ML',
     gtin13: '7898745336545',
     cod: 'ARQ-09',
@@ -330,6 +339,16 @@ export const ARCHETYPES_BY_ID: Record<string, Archetype> = Object.fromEntries(
 
 export function getArchetype(id: string): Archetype | undefined {
   return Object.hasOwn(ARCHETYPES_BY_ID, id) ? ARCHETYPES_BY_ID[id] : undefined
+}
+
+/** Prefixo da PDP. Endereços antigos (/loja/:id, /arquetipos/:id) redirecionam (vercel.json + App.tsx). */
+export const PRODUCT_BASE = '/body-splash'
+
+/** URL definitiva do produto — todo link pra PDP sai daqui, nunca montado à mão */
+export const productPath = (a: Pick<Archetype, 'slug'>) => `${PRODUCT_BASE}/${a.slug}`
+
+export function getArchetypeBySlug(slug: string): Archetype | undefined {
+  return ARCHETYPES.find((a) => a.slug === slug)
 }
 
 export function segmentPool(seg: 'F' | 'M' | 'todos'): Archetype[] {

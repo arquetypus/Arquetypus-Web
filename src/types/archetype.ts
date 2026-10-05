@@ -19,6 +19,11 @@ export interface Familia {
 
 export interface Archetype {
   id: string
+  /**
+   * Endereço público da PDP: /body-splash/{slug} (out/2026, nome-sobrenome sem acento). Escrito à mão e definitivo —
+   * não muda se o nome mudar; /loja/:id e /arquetipos/:id redirecionam pra ele. O `id` segue como chave interna.
+   */
+  slug: string
   cod: string
   nome: string
   /** Nome cadastrado no GTIN, informado pelo usuário; uso em SEO/integrações, não na apresentação comercial. */

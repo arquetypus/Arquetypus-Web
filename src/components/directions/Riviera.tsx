@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { getArchetype } from '@/data/archetypes'
+import { getArchetype, productPath } from '@/data/archetypes'
 import { COMPARISON, DIAGNOSIS, ENERGIES, FAMILIES, FRASCO_IMG, HERO_SLIDES, HOME_COPY as C, JOURNAL, QUALIFICATION, SEALS, SEGMENTS, UGC_IMG, UGC_VIDEOS } from '@/data/home'
 import { openCookiePreferences } from '@/lib/consent'
 import { scrollToId } from '@/lib/scrollToId'
@@ -117,7 +117,7 @@ export function CatalogRiviera({ items, filtro, setFiltro, filtros }: CatalogPro
         <ul className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((a, n) => (
             <li key={a.id} className={`rounded-[1.75rem] bg-papel p-3 shadow-[0_14px_30px_-18px_rgba(0,0,0,0.35)] ${n % 2 ? 'lg:rotate-[1deg]' : 'lg:rotate-[-1deg]'}`}>
-              <Link to={`/loja/${a.id}`} state={{ backgroundLocation: location }} className="no-press group relative block overflow-hidden rounded-[1.25rem]" style={{ background: a.bg }}>
+              <Link to={productPath(a)} state={{ backgroundLocation: location }} className="no-press group relative block overflow-hidden rounded-[1.25rem]" style={{ background: a.bg }}>
                 <img src={FRASCO_IMG[a.id]} alt={`${a.tipo} ${a.nome}`} loading="lazy" className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 {/* carimbo postal com a energia */}
                 <span className="absolute top-3 right-3 grid size-20 rotate-12 place-items-center rounded-full border-2 border-dashed border-papel/90 text-center font-label text-[9px] leading-tight tracking-[0.15em] text-papel uppercase">
@@ -143,7 +143,7 @@ export function CatalogRiviera({ items, filtro, setFiltro, filtros }: CatalogPro
                   {brl(pix(a.preco))} no Pix · 6x de {brl(parcela(a.preco))}
                 </p>
               </div>
-              <Link to={`/loja/${a.id}`} state={{ backgroundLocation: location }} className="mx-2 mt-4 mb-1 block rounded-full bg-tinta py-3 text-center text-sm font-medium text-papel hover:bg-latao">
+              <Link to={productPath(a)} state={{ backgroundLocation: location }} className="mx-2 mt-4 mb-1 block rounded-full bg-tinta py-3 text-center text-sm font-medium text-papel hover:bg-latao">
                 Comprar
               </Link>
             </li>
@@ -322,7 +322,7 @@ export function RivieraPage({ catalog, onSegment, toCatalog, featured, featuredI
                 {brl(pix(featured.preco))} no Pix · ou 6x de {brl(parcela(featured.preco))} sem juros · {featured.tipo} {featured.vol}
               </p>
             </div>
-            <Link to={`/loja/${featured.id}`} state={{ backgroundLocation: location }} className="mt-6 self-start rounded-full bg-tinta px-8 py-4 text-sm font-medium text-papel hover:bg-latao">
+            <Link to={productPath(featured)} state={{ backgroundLocation: location }} className="mt-6 self-start rounded-full bg-tinta px-8 py-4 text-sm font-medium text-papel hover:bg-latao">
               {C.destaque.cta} {featured.nome}
             </Link>
           </div>
@@ -380,7 +380,7 @@ export function RivieraPage({ catalog, onSegment, toCatalog, featured, featuredI
             if (!arq) return null
             return (
               <li key={v.creator} className={i % 2 ? 'rotate-2' : '-rotate-2'}>
-                <Link to={`/loja/${arq.id}`} state={{ backgroundLocation: location }} className="no-press block rounded-[1.25rem] bg-papel p-2.5 shadow-[0_14px_30px_-18px_rgba(0,0,0,0.4)]">
+                <Link to={productPath(arq)} state={{ backgroundLocation: location }} className="no-press block rounded-[1.25rem] bg-papel p-2.5 shadow-[0_14px_30px_-18px_rgba(0,0,0,0.4)]">
                   <img src={UGC_IMG[v.archetypeId]} alt={`${v.creator} segurando o Body Splash Premium ${arq.nome}`} loading="lazy" className="aspect-[3/4] w-full rounded-[0.9rem] object-cover" />
                   <span className="flex items-center justify-between px-1 pt-2.5 text-sm">
                     <span className="font-display text-lg text-tinta">{arq.nome}</span>

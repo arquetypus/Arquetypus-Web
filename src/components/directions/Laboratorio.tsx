@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { ARCHETYPES, getArchetype } from '@/data/archetypes'
+import { ARCHETYPES, getArchetype, productPath } from '@/data/archetypes'
 import { COMPARISON, DIAGNOSIS, ENERGIES, FAMILIES, FRASCO_IMG, HERO_SLIDES, HOME_COPY as C, JOURNAL, QUALIFICATION, SEALS, SEGMENTS, UGC_IMG, UGC_VIDEOS } from '@/data/home'
 import { openCookiePreferences } from '@/lib/consent'
 import { scrollToId } from '@/lib/scrollToId'
@@ -137,7 +137,7 @@ export function CatalogLaboratorio({ items, filtro, setFiltro, filtros }: Catalo
                   {a.energia}
                 </span>
               </div>
-              <Link to={`/loja/${a.id}`} state={{ backgroundLocation: location }} className="no-press group mt-3 block">
+              <Link to={productPath(a)} state={{ backgroundLocation: location }} className="no-press group mt-3 block">
                 <Mira>
                   <img src={FRASCO_IMG[a.id]} alt={`${a.tipo} ${a.nome}`} loading="lazy" className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
                 </Mira>
@@ -158,7 +158,7 @@ export function CatalogLaboratorio({ items, filtro, setFiltro, filtros }: Catalo
                     {brl(pix(a.preco))} PIX · 6× {brl(parcela(a.preco))}
                   </span>
                 </span>
-                <Link to={`/loja/${a.id}`} state={{ backgroundLocation: location }} className="shrink-0 bg-tinta px-4 py-2.5 text-[11px] text-papel uppercase hover:bg-latao" style={MONO}>
+                <Link to={productPath(a)} state={{ backgroundLocation: location }} className="shrink-0 bg-tinta px-4 py-2.5 text-[11px] text-papel uppercase hover:bg-latao" style={MONO}>
                   Comprar
                 </Link>
               </div>
@@ -357,7 +357,7 @@ export function LaboratorioPage({ catalog, onSegment, toCatalog, featured, featu
               <Linha k="Pix" v={brl(pix(featured.preco))} />
               <Linha k="Parcelado" v={`6× ${brl(parcela(featured.preco))} sem juros`} />
             </dl>
-            <Link to={`/loja/${featured.id}`} state={{ backgroundLocation: location }} className="mt-6 self-start bg-tinta px-8 py-4 text-[12px] text-papel uppercase hover:bg-latao" style={MONO}>
+            <Link to={productPath(featured)} state={{ backgroundLocation: location }} className="mt-6 self-start bg-tinta px-8 py-4 text-[12px] text-papel uppercase hover:bg-latao" style={MONO}>
               {C.destaque.cta} {featured.nome} →
             </Link>
           </div>
@@ -417,7 +417,7 @@ export function LaboratorioPage({ catalog, onSegment, toCatalog, featured, featu
             if (!arq) return null
             return (
               <li key={v.creator} className="border border-tinta bg-papel">
-                <Link to={`/loja/${arq.id}`} state={{ backgroundLocation: location }} className="no-press block">
+                <Link to={productPath(arq)} state={{ backgroundLocation: location }} className="no-press block">
                   <span className="flex justify-between border-b border-tinta px-3 py-1.5 text-[10px] uppercase" style={MONO}>
                     <span>REG-{String(i + 1).padStart(3, '0')}</span>
                   </span>

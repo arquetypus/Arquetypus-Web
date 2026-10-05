@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { ARCHETYPES, getArchetype } from '@/data/archetypes'
+import { ARCHETYPES, getArchetype, productPath } from '@/data/archetypes'
 import { COMPARISON, DIAGNOSIS, ENERGIES, FAMILIES, FRASCO_IMG, HERO_SLIDES, HOME_COPY as C, JOURNAL, QUALIFICATION, SEALS, SEGMENTS, UGC_IMG, UGC_VIDEOS } from '@/data/home'
 import { openCookiePreferences } from '@/lib/consent'
 import { scrollToId } from '@/lib/scrollToId'
@@ -154,7 +154,7 @@ export function CatalogHerbario({ items, filtro, setFiltro, filtros }: CatalogPr
         <ul className="mt-12 grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((a, n) => (
             <li key={a.id} className={n % 2 ? 'sm:rotate-[0.8deg]' : 'sm:rotate-[-0.8deg]'}>
-              <Link to={`/loja/${a.id}`} state={{ backgroundLocation: location }} className="no-press group block">
+              <Link to={productPath(a)} state={{ backgroundLocation: location }} className="no-press group block">
                 <Presa src={FRASCO_IMG[a.id]} alt={`${a.tipo} ${a.nome}`} className="transition-transform duration-500 group-hover:-translate-y-1" />
               </Link>
               <Etiqueta className="mt-4">
@@ -177,7 +177,7 @@ export function CatalogHerbario({ items, filtro, setFiltro, filtros }: CatalogPr
                       {brl(pix(a.preco))} Pix · 6x {brl(parcela(a.preco))}
                     </span>
                   </span>
-                  <Link to={`/loja/${a.id}`} state={{ backgroundLocation: location }} className="shrink-0 bg-tinta px-3 py-1.5 text-papel hover:bg-latao-texto">
+                  <Link to={productPath(a)} state={{ backgroundLocation: location }} className="shrink-0 bg-tinta px-3 py-1.5 text-papel hover:bg-latao-texto">
                     Comprar
                   </Link>
                 </div>
@@ -373,7 +373,7 @@ export function HerbarioPage({ catalog, onSegment, toCatalog, featured, featured
                 </span>
               </p>
             </Etiqueta>
-            <Link to={`/loja/${featured.id}`} state={{ backgroundLocation: location }} className="mt-6 inline-block bg-tinta px-8 py-4 text-[12px] tracking-[0.15em] text-papel uppercase hover:bg-latao-texto" style={MAQ}>
+            <Link to={productPath(featured)} state={{ backgroundLocation: location }} className="mt-6 inline-block bg-tinta px-8 py-4 text-[12px] tracking-[0.15em] text-papel uppercase hover:bg-latao-texto" style={MAQ}>
               {C.destaque.cta} {featured.nome} →
             </Link>
           </div>
@@ -419,7 +419,7 @@ export function HerbarioPage({ catalog, onSegment, toCatalog, featured, featured
             if (!arq) return null
             return (
               <li key={v.creator} className={i % 2 ? 'rotate-[2deg]' : 'rotate-[-2deg]'}>
-                <Link to={`/loja/${arq.id}`} state={{ backgroundLocation: location }} className="no-press block">
+                <Link to={productPath(arq)} state={{ backgroundLocation: location }} className="no-press block">
                   <Presa src={UGC_IMG[v.archetypeId]} alt={`${v.creator} segurando o Body Splash Premium ${arq.nome}`} aspect="aspect-[3/4]" />
                   <p className="mt-3 text-center text-[11px] text-tinta-2" style={MAQ}>
                     {v.creator} · {arq.nome} · {brl(arq.preco)}

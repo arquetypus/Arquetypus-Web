@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { PRODUCT_BASE } from '@/data/archetypes'
 import { HERO_SLIDES } from '@/data/home'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { MediaSlot } from '@/components/ui/MediaSlot'
@@ -161,9 +162,9 @@ export function HeroCarousel() {
           ) : (
             <Link
               to={slide.cta.to}
-              // /loja/:id e /kit-descoberta abrem o pop-up de compra por cima da home (ver App.tsx)
+              // PDP (/body-splash/…) e /kit-descoberta abrem o pop-up de compra por cima da home (ver App.tsx)
               state={
-                slide.cta.to.startsWith('/loja/') || slide.cta.to === '/kit-descoberta'
+                slide.cta.to.startsWith(PRODUCT_BASE + '/') || slide.cta.to === '/kit-descoberta'
                   ? { backgroundLocation: location }
                   : undefined
               }

@@ -42,10 +42,9 @@ src/
 
 Conteúdo (textos, preços, notas olfativas) fica em `data/`, nunca
 hardcoded em componente. Isso é o que o v6 chama de "template
-preenchido por dados" — a PDP (`/loja/:id`) e o pop-up de compra usam
+preenchido por dados" — a PDP (`/body-splash/:slug`) e o pop-up de compra usam
 o mesmo `ProductPurchase` lendo `Archetype` diferente. A antiga página de
-arquétipo foi descartada; desde out/2026 `/arquetipos/:id` mostra a mesma PDP de
-`/loja/:id` (sem redirecionar, canonical em `/loja/:id`).
+arquétipo foi descartada; `/arquetipos/:id` e `/loja/:id` redirecionam (308) pra PDP.
 
 ## Regras que não podem ser violadas
 
@@ -66,9 +65,9 @@ decisão de produto já tomada:
    (Fênix incluso). O Imperador era perfume 50 ml até set/2026 e foi
    padronizado; `tipo: 'Perfume'` segue no tipo só pra uso futuro.
 6. **Cada arquétipo tem URL própria renderizada no servidor:**
-   `/loja/:id`, e também `/arquetipos/:id` com o mesmo conteúdo (pedido do
-   usuário, out/2026: manter os dois padrões; canonical e sitemap só em
-   `/loja/:id`). Nunca só um
+   `/body-splash/{slug}` (out/2026, ex.: `/body-splash/imperador-red-empire`),
+   a URL definitiva, usada em todo o site, canonical e sitemap. Endereços
+   antigos `/loja/:id` e `/arquetipos/:id` redirecionam pra ela (308). Nunca só um
    modal ou tab client-side sem rota — o pop-up de compra é essa mesma
    rota aberta por cima da home.
 7. **Preço, parcelamento e Pix sempre visíveis junto ao produto** —
@@ -92,7 +91,7 @@ decisão de produto já tomada:
   inventada — quando essas páginas existirem, trocar por `Link` de
   verdade em `Drawer.tsx`.
 - **Pop-up de compra = rota.** Links da home (catálogo, comunidade, hero,
-  Kit) vão para `/loja/:id` ou `/kit-descoberta` com
+  Kit) vão para `/body-splash/:slug` ou `/kit-descoberta` com
   `state.backgroundLocation`; `App.tsx` renderiza a home por baixo e
   `ProductSheet`/`KitSheet` (casca comum em `PurchaseSheet`) por cima.
   Acesso direto à URL abre a página completa — não trocar por modal sem
@@ -145,7 +144,7 @@ decisão de produto já tomada:
   apoio ao time de design — mostram a proporção real da caixa na tela.
   Desligados desde out/2026 (`SHOW_RATIO_TAGS = false`) — o usuário pode pedir pra religar. O
   requisito de produção do `MediaSlot` fica no tooltip do selo.
-- **PDP existe em `/loja/:id`** (`pages/ProductPage.tsx`), com
+- **PDP existe em `/body-splash/:slug`** (`pages/ProductPage.tsx`), com
   `CartContext` global (`context/CartContext.tsx`) — header, barra de
   frete e `KitBuilder` compartilham a mesma sacola agora.
 - **Sem persistência.** O carrinho vive só em memória (`useState`); dá
@@ -226,7 +225,7 @@ decisão de produto já tomada:
   `fullPageTo`, modo compacto) o botão de comprar aparece sem rolar — sem selos
   de envio/garantia/pagamento e sem "Complete o ritual"; no celular a foto vai na
   largura toda e preço + botão ficam numa barra presa no pé do pop-up. A variante
-  mini (8 ml) saiu de vez, também da PDP. A PDP (`/loja/:id` direto) mantém selos e ritual e
+  mini (8 ml) saiu de vez, também da PDP. A PDP (`/body-splash/:slug` direto) mantém selos e ritual e
   ganhou o convite "Descubra {o/a} {energia}" (a etiqueta de energia saiu dos
   cards do catálogo). `PurchaseSheet` fecha com saída animada pelo ✕, fundo, Esc,
   arrastando o puxador ou o conteúdo já no topo (celular).
@@ -269,10 +268,11 @@ decisão de produto já tomada:
   (o usuário pediu 12, que o GA4 não oferece) — configurar igual. Revisão jurídica recomendada antes de publicar.
 - **Hospedagem na Vercel (SSG em produção):** `vercel.json` define Vite, pipeline completo
   `npm run build`, saída `dist`, `cleanUrls: true` e `trailingSlash: false`. Rewrite SPA removido
-  somente após gerar e verificar as páginas + `404.html` (27: 9 páginas, 9 PDPs em `/loja` e as mesmas 9 em `/arquetipos`). Não restaurar catch-all para home:
+  somente após gerar e verificar 18 páginas + `404.html`. Não restaurar catch-all para home:
   cada URL deve entregar seu HTML. Arquivos estáticos são servidos diretamente; rota desconhecida
-  recebe 404 própria/noindex. `/arquetipos/:id` tem HTML próprio, igual ao de `/loja/:id` (só `data-rota` muda;
-  o build confere); kit e produto inexistente (nos dois prefixos) usam 307 para home.
+  recebe 404 própria/noindex. `/loja/:id` e `/arquetipos/:id` usam 308 para `/body-splash/{slug}`; kit, `/body-splash`
+  sozinho (vai pro `#catalogo`) e produto inexistente usam 307 para home. O build simula as regras (primeira que
+  casa vence) antes de aceitar o `vercel.json`.
   Matcher vem de `ARCHETYPES`: executar `npm run configure:vercel`, revisar e versionar antes do push;
   `npm run verify:vercel` bloqueia drift no início do build. Pré-renderização publicada no domínio
   principal; trabalho corrente diretamente na `main`, conforme decisão do usuário. A branch
@@ -354,7 +354,7 @@ decisão de produto já tomada:
   desatualizados — revisar ao religar.
 - **Pré-renderização estática (out/2026):** React `renderToString` +
   `StaticRouter`, mesma árvore React, hidratação do documento compatível e fallback cliente
-  quando URL/histórico exigem outra árvore. Pipeline gera 27 páginas públicas + 404 em `dist`;
+  quando URL/histórico exigem outra árvore. Pipeline gera 18 páginas públicas + 404 em `dist`;
   renderer/template/evidências privadas em `dist-server` nunca são publicados. Sem framework
   novo ou plugin SSG. `build:client` isolado não serve como build de deploy. Os scripts em
   `scripts/` são parte permanente do pipeline; não removê-los junto de documentação temporária.
@@ -370,6 +370,10 @@ decisão de produto já tomada:
 
 ## Convenções de trabalho
 
+- **URL de produto (out/2026):** sempre `productPath(a)` (`data/archetypes.ts`), nunca
+  montada à mão. O `slug` (nome-sobrenome sem acento) é definitivo: não renomear nem
+  derivar do nome — se o nome mudar, o slug fica. Produto novo ganha `slug` e
+  `npm run configure:vercel` gera os redirecionamentos dos endereços antigos.
 - **Nenhuma seção depois do hero pode passar da altura da tela** (decisão de
   reunião, out/2026) — só o hero da home cobre 100%. Seção com muito conteúdo
   vira trilho horizontal no celular ou tem altura presa à tela (`svh`).

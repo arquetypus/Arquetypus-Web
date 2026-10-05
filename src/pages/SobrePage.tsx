@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { EMPRESA as EMPRESA_LINHA, LegalPage, Section, TextLink } from '@/components/ui/Legal'
-import { ARCHETYPES } from '@/data/archetypes'
+import { ARCHETYPES, productPath } from '@/data/archetypes'
 import { CONDICOES, EMPRESA } from '@/data/empresa'
 import { FAMILIAS } from '@/data/families'
 import { CONTATOS } from '@/data/home'
@@ -37,7 +37,7 @@ export function SobrePage() {
           <ul className="grid grid-cols-1 gap-x-6 gap-y-3 sm:grid-cols-2">
             {ARCHETYPES.map((a) => (
               <li key={a.id}>
-                <Link to={`/loja/${a.id}`} className="group block">
+                <Link to={productPath(a)} className="group block">
                   <b className="font-display text-lg font-normal text-tinta group-hover:text-latao-texto">
                     {a.nome}
                     <Sobrenome a={a} size="text-[0.72em]" />

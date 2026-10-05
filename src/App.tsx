@@ -1,6 +1,7 @@
 import type { ComponentType } from 'react'
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom'
 import type { Location } from 'react-router-dom'
+import { getArchetype, productPath } from '@/data/archetypes'
 import { PAGINAS_PUBLICAS } from '@/data/rotas'
 import { CartProvider } from '@/context/CartContext'
 import { Layout } from '@/components/Layout'
@@ -36,9 +37,17 @@ const PAGINAS = {
   '/termos-de-uso': TermosPage,
 } satisfies Record<Exclude<(typeof PAGINAS_PUBLICAS)[number]['path'], '/'>, ComponentType>
 
+/** Endereços antigos de produto (/loja/:id, /arquetipos/:id): vão pra URL definitiva. Em produção o vercel.json já
+ *  responde 308 antes de chegar aqui; isto cobre navegação no cliente e `npm run dev`. */
+function RedirectToProduct() {
+  const { id } = useParams<{ id: string }>()
+  const a = id ? getArchetype(id) : undefined
+  return <Navigate to={a ? productPath(a) : '/'} replace />
+}
+
 export default function App() {
   const location = useLocation()
-  // link com `state.backgroundLocation` abre /loja/:id como pop-up por cima dessa página;
+  // link com `state.backgroundLocation` abre /body-splash/:slug como pop-up por cima dessa página;
   // sem ele (acesso direto, reload, link compartilhado), a mesma URL é a página completa
   const background = (location.state as { backgroundLocation?: Location } | null)?.backgroundLocation
 
@@ -51,9 +60,11 @@ export default function App() {
       <Routes location={background ?? location}>
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
-          {/* produto em dois endereços com o mesmo conteúdo; canonical sempre /loja/:id (lib/seoModel.ts) */}
-          <Route path="loja/:id" element={<ProductPage />} />
-          <Route path="arquetipos/:id" element={<ProductPage />} />
+          {/* PDP: URL definitiva /body-splash/:slug (productPath); endereços antigos redirecionam */}
+          <Route path="body-splash/:slug" element={<ProductPage />} />
+          <Route path="body-splash" element={<Navigate to="/#catalogo" replace />} />
+          <Route path="loja/:id" element={<RedirectToProduct />} />
+          <Route path="arquetipos/:id" element={<RedirectToProduct />} />
           {/* Kit Descoberta saiu do ar (set/2026) — KitPage/KitSheet ficam no repo pra religar */}
           <Route path="kit-descoberta" element={<Navigate to="/" replace />} />
           {/* páginas públicas: lista em data/rotas.ts, componente em PAGINAS — não escrever <Route path> solto aqui */}
@@ -66,7 +77,7 @@ export default function App() {
       </Routes>
       {background && (
         <Routes>
-          <Route path="loja/:id" element={<ProductSheet />} />
+          <Route path="body-splash/:slug" element={<ProductSheet />} />
         </Routes>
       )}
     </CartProvider>

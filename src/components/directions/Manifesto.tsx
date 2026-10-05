@@ -1,6 +1,6 @@
 import { Fragment } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { ARCHETYPES } from '@/data/archetypes'
+import { ARCHETYPES, productPath } from '@/data/archetypes'
 import { FRASCO_IMG, HERO_SLIDES, UGC_IMG } from '@/data/home'
 import { scrollToId } from '@/lib/scrollToId'
 import { brl, FilterTabs, parcela, pix, type CatalogProps } from './shared'
@@ -95,7 +95,7 @@ export function CatalogManifesto({ items, filtro, setFiltro, filtros }: CatalogP
           {items.map((a) => (
             <li key={a.id} className="border-b-2 border-tinta">
               <Link
-                to={`/loja/${a.id}`}
+                to={productPath(a)}
                 state={{ backgroundLocation: location }}
                 className="no-press group grid grid-cols-[auto_1fr_auto] items-center gap-x-3 py-4 transition-colors duration-300 hover:bg-tinta hover:text-papel md:gap-x-6 lg:grid-cols-[4rem_auto_1fr_auto_auto] lg:px-4 lg:py-5"
               >

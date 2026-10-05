@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { getArchetype } from '@/data/archetypes'
+import { getArchetype, productPath } from '@/data/archetypes'
 import { COMPARISON, DIAGNOSIS, ENERGIES, FAMILIES, HOME_COPY as C, JOURNAL, QUALIFICATION, SEALS, SEGMENTS, UGC_IMG, UGC_VIDEOS } from '@/data/home'
 import { openCookiePreferences } from '@/lib/consent'
 import {
@@ -211,7 +211,7 @@ export function GaleriaPage({ catalog, onSegment, toCatalog, featured, featuredI
               </dd>
             </dl>
             <Link
-              to={`/loja/${featured.id}`}
+              to={productPath(featured)}
               state={{ backgroundLocation: location }}
               className="mt-8 inline-block bg-tinta px-10 py-4 font-label text-[11px] tracking-[0.25em] text-papel uppercase hover:opacity-85"
             >
@@ -264,7 +264,7 @@ export function GaleriaPage({ catalog, onSegment, toCatalog, featured, featuredI
             if (!arq) return null
             return (
               <li key={v.creator}>
-                <Link to={`/loja/${arq.id}`} state={{ backgroundLocation: location }} className="no-press group block">
+                <Link to={productPath(arq)} state={{ backgroundLocation: location }} className="no-press group block">
                   <Obra src={UGC_IMG[v.archetypeId]} aspect="aspect-[3/4]" alt={`${v.creator} segurando o Body Splash Premium ${arq.nome}`} />
                   <Plaqueta n={v.creator} title={arq.nome}>
                     <span className="block text-xs text-tinta-3 italic">

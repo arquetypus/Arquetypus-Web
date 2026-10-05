@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { getArchetype } from '@/data/archetypes'
+import { getArchetype, productPath } from '@/data/archetypes'
 import { COMPARISON, DIAGNOSIS, ENERGIES, FAMILIES, HOME_COPY as C, JOURNAL, QUALIFICATION, SEALS, SEGMENTS, UGC_IMG, UGC_VIDEOS } from '@/data/home'
 import { openCookiePreferences } from '@/lib/consent'
 import logoBranco from '@/assets/brand/logo-branco.png'
@@ -186,7 +186,7 @@ export function CinemaPage({ catalog, onSegment, toCatalog, featured, featuredIm
             {brl(pix(featured.preco))} no Pix · ou 6x de {brl(parcela(featured.preco))} sem juros · {featured.tipo} {featured.vol}
           </p>
           <Link
-            to={`/loja/${featured.id}`}
+            to={productPath(featured)}
             state={{ backgroundLocation: location }}
             className="mt-7 inline-block border border-papel-inv/50 lg:self-start px-10 py-3.5 font-label text-[11px] tracking-[0.35em] uppercase transition-colors hover:border-latao hover:bg-latao hover:text-black"
           >
@@ -238,7 +238,7 @@ export function CinemaPage({ catalog, onSegment, toCatalog, featured, featuredIm
               if (!arq) return null
               return (
                 <li key={v.creator} className="w-[62%] shrink-0 snap-center sm:w-[38%] lg:w-[22%]">
-                  <Link to={`/loja/${arq.id}`} state={{ backgroundLocation: location }} className="no-press group relative block aspect-[3/4] overflow-hidden">
+                  <Link to={productPath(arq)} state={{ backgroundLocation: location }} className="no-press group relative block aspect-[3/4] overflow-hidden">
                     <img src={UGC_IMG[v.archetypeId]} alt={`${v.creator} segurando o Body Splash Premium ${arq.nome}`} loading="lazy" className="h-full w-full object-cover sepia-[25%] transition-[filter] duration-700 group-hover:sepia-0" />
                     <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                     <span className="absolute inset-x-0 bottom-0 p-4 text-papel-inv">

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { getArchetype } from '@/data/archetypes'
+import { getArchetype, productPath } from '@/data/archetypes'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { RatioTag } from '@/components/ui/RatioTag'
 import featuredFenix from '@/assets/fotos/destaque-fenix.jpg'
@@ -201,7 +201,7 @@ export function FeaturedCarousel() {
                 <p className="mt-2.5 max-w-[32ch] text-[13px] leading-relaxed text-papel-inv/75 lg:mt-4 lg:max-w-[42ch] lg:text-[15px]">{a.cheiro[1]}</p>
 
                 <Link
-                  to={`/loja/${a.id}`}
+                  to={productPath(a)}
                   state={{ backgroundLocation: location }}
                   className="mt-4 block w-full rounded-full border border-papel-inv/40 bg-papel-inv/10 py-3 text-center text-xs font-medium tracking-wide text-papel-inv uppercase backdrop-blur-sm transition-colors duration-300 ease-out hover:border-papel-inv/60 hover:bg-papel-inv/20 lg:mt-8 lg:inline-block lg:w-auto lg:px-10"
                 >

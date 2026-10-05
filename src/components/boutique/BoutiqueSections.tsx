@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import type { Archetype } from '@/types/archetype'
-import { ARCHETYPES } from '@/data/archetypes'
+import { ARCHETYPES, productPath } from '@/data/archetypes'
 import { FRASCO_IMG, HERO_SLIDES, SEALS } from '@/data/home'
 import { scrollToId } from '@/lib/scrollToId'
 import heroColecao from '@/assets/fotos/hero/colecao-desktop.jpg'
@@ -139,7 +139,7 @@ export function CatalogGrid({
         <ul className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 lg:mt-12 lg:gap-6">
           {items.map((a) => (
             <li key={a.id} id={a.id} className="flex flex-col overflow-hidden rounded-2xl bg-papel ring-1 ring-linha">
-              <Link to={`/loja/${a.id}`} state={{ backgroundLocation: location }} className="group relative block">
+              <Link to={productPath(a)} state={{ backgroundLocation: location }} className="group relative block">
                 <div className="aspect-[4/5] overflow-hidden" style={{ background: a.bg }}>
                   <img
                     src={FRASCO_IMG[a.id]}
@@ -173,7 +173,7 @@ export function CatalogGrid({
                 </div>
                 <div className="mt-auto pt-3.5">
                   <Link
-                    to={`/loja/${a.id}`}
+                    to={productPath(a)}
                     state={{ backgroundLocation: location }}
                     className="block rounded-full bg-tinta py-2.5 text-center text-xs font-medium text-papel uppercase transition-opacity hover:opacity-90 lg:py-3"
                   >

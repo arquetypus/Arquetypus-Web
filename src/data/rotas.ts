@@ -5,8 +5,8 @@ import { maiuscula, porExtenso } from '@/lib/extenso'
 /**
  * Páginas públicas do site, fora as 9 de produto (que vêm de ARCHETYPES) — base do sitemap.xml e do llms.txt
  * gerados no build (lib/arquivosSeo.ts). As rotas do App.tsx saem desta lista (mapa PAGINAS).
- * Ficam de fora a 404, o redirecionamento /kit-descoberta e /arquetipos/:id (mesmo conteúdo de /loja/:id, que é o
- * canonical e o único no sitemap).
+ * Ficam de fora a 404 e os redirecionamentos (/kit-descoberta, /body-splash sem produto e os endereços antigos de
+ * produto /loja/:id e /arquetipos/:id).
  */
 export const SEO_HOME = {
   title: "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",

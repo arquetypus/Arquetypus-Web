@@ -1,5 +1,5 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
-import { getArchetype, NOTAS_LEGENDA } from '@/data/archetypes'
+import { getArchetype, getArchetypeBySlug, NOTAS_LEGENDA, productPath } from '@/data/archetypes'
 import { FAQ_PRODUTO as FAQ } from '@/data/faq'
 import { FRASCO_CUT_IMG } from '@/data/home'
 import { useCart } from '@/context/CartContext'
@@ -42,8 +42,8 @@ function Accordion({ title, children, dark = false }: { title: string; children:
 
 
 export function ProductPage() {
-  const { id } = useParams<{ id: string }>()
-  const a = id ? getArchetype(id) : undefined
+  const { slug } = useParams<{ slug: string }>()
+  const a = slug ? getArchetypeBySlug(slug) : undefined
   const par = a ? getArchetype(a.par) : undefined
   const { addItem } = useCart()
 
@@ -246,7 +246,7 @@ export function ProductPage() {
             <h2 className="mt-4 font-display text-[30px] leading-[1.12] lg:text-5xl">
               Você também pode <span className="text-latao">despertar</span>
             </h2>
-            <Link to={`/loja/${par.id}`} className="group mx-auto mt-10 block max-w-md">
+            <Link to={productPath(par)} className="group mx-auto mt-10 block max-w-md">
               <CutFrame cut={14} innerClassName="flex items-center gap-5 bg-papel p-5 text-left text-tinta transition-colors group-hover:bg-papel-2">
                 {FRASCO_CUT_IMG[par.id] && (
                   <img src={FRASCO_CUT_IMG[par.id]} alt="" aria-hidden className="h-24 w-auto shrink-0 rounded-md" />

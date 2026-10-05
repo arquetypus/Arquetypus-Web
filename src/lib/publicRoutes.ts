@@ -1,27 +1,21 @@
-import { ARCHETYPES } from '@/data/archetypes'
+import { ARCHETYPES, productPath } from '@/data/archetypes'
 import { PAGINAS_PUBLICAS } from '@/data/rotas'
-
-/** Prefixos da página de produto: /loja/:id e o endereço antigo /arquetipos/:id entregam o mesmo HTML (canonical em /loja). */
-export const PRODUCT_PREFIXES = ['/loja/', '/arquetipos/'] as const
 
 export const PUBLIC_ROUTES = [
   ...PAGINAS_PUBLICAS.map(page => page.path),
-  ...PRODUCT_PREFIXES.flatMap(prefix => ARCHETYPES.map(product => `${prefix}${product.id}`)),
+  ...ARCHETYPES.map(productPath),
 ]
 
-/** Mesma decodificação por segmento do Router; IDs de produto mantêm caixa. */
+/** Mesma decodificação por segmento do Router; slugs de produto mantêm caixa. */
 export function matchingPublicRoute(pathname: string, routes: readonly string[]): string | undefined {
   let decoded = pathname
   try { decoded = pathname.split('/').map(part => decodeURIComponent(part).replace(/\//g, '%2F')).join('/') } catch { /* Router preserva caminho malformado. */ }
   // Layout trata somente "/" como home; múltiplas barras não têm primeira árvore idêntica.
   if (decoded !== '/') decoded = decoded.replace(/\/+$/, '')
-  // Prefixo de produto sem distinção de caixa; ID com. Lista literal: a função vai serializada pro head.
-  return routes.find(route => {
-    const prefix = ['/loja/', '/arquetipos/'].find(p => route.startsWith(p))
-    return prefix
-      ? decoded.slice(0, prefix.length).toLowerCase() === prefix && decoded.slice(prefix.length) === route.slice(prefix.length)
-      : route.toLowerCase() === decoded.toLowerCase()
-  })
+  // Prefixo de produto sem distinção de caixa; slug com. Literal: a função vai serializada pro head (sem imports).
+  return routes.find(route => route.startsWith('/body-splash/')
+    ? decoded.slice(0, 13).toLowerCase() === '/body-splash/' && decoded.slice(13) === route.slice(13)
+    : route.toLowerCase() === decoded.toLowerCase())
 }
 
 /** Executado no head, antes da primeira pintura; função de matching compartilhada com main. */

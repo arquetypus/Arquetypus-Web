@@ -1,4 +1,4 @@
-import { ARCHETYPES } from '@/data/archetypes'
+import { ARCHETYPES, productPath } from '@/data/archetypes'
 import { CONDICOES, EMPRESA, FRETE_GRATIS_ACIMA, OPERACAO } from '@/data/empresa'
 import { porExtenso } from '@/lib/extenso'
 import { PAGINAS_PUBLICAS } from '@/data/rotas'
@@ -21,7 +21,7 @@ export function sitemapXml(data: Date): string {
   const lastmod = data.toISOString().slice(0, 10)
   const urls = [
     ...PAGINAS_PUBLICAS.map((p) => p.path),
-    ...ARCHETYPES.map((a) => `/loja/${a.id}`),
+    ...ARCHETYPES.map(productPath),
   ]
   return [
     '<?xml version="1.0" encoding="UTF-8"?>',
@@ -38,7 +38,7 @@ export function llmsTxt(): string {
     const nome = `${a.nome} ${a.sobrenome ?? ''}`.trim()
     const preco = a.precoCheio > a.preco ? `${brl(a.preco)} (de ${brl(a.precoCheio)})` : brl(a.preco)
     return (
-      `- [${nome}](${SITE}/loja/${a.id}): ${a.tipo} ${a.vol}, ${preco}. Família ${a.fam}. ` +
+      `- [${nome}](${SITE}${productPath(a)}): ${a.tipo} ${a.vol}, ${preco}. Família ${a.fam}. ` +
       `Notas de topo: ${a.topo}; coração: ${a.coracao}; fundo: ${a.fundo}. ${a.ep}`
     )
   })

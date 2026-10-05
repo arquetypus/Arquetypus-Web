@@ -3,7 +3,7 @@
  * seções H-01 a H-25. Não inventar texto novo aqui sem confirmar —
  * ver CLAUDE.md.
  */
-import { ARCHETYPES, getArchetype } from '@/data/archetypes'
+import { ARCHETYPES, getArchetype, productPath } from '@/data/archetypes'
 import { FAMILIAS } from '@/data/families'
 import { CONDICOES, EMPRESA, EMPRESA_LINHA, FRETE_GRATIS_ACIMA } from '@/data/empresa'
 import { maiuscula, porExtenso } from '@/lib/extenso'
@@ -96,7 +96,7 @@ export const HERO_SLIDES = [
     eyebrowColor: '#e8a9b8',
     heading: 'Afrodite',
     sub: 'O floral que não pede licença.',
-    cta: { label: 'Conhecer Afrodite', to: '/loja/afrodite' },
+    cta: { label: 'Conhecer Afrodite', to: productPath(getArchetype('afrodite')!) },
     requisito: 'FOTO · 9:16 · 1080×1920 · LIFESTYLE · AFRODITE · MODELO + FRASCO',
     img: heroAfrodite,
     imgDesktop: heroAfroditeDesktop,
@@ -110,7 +110,7 @@ export const HERO_SLIDES = [
     eyebrowColor: '#a9bad3',
     heading: 'Guerreiro',
     sub: 'Constância é a forma mais rara de coragem.',
-    cta: { label: 'Conhecer Guerreiro', to: '/loja/guerreiro' },
+    cta: { label: 'Conhecer Guerreiro', to: productPath(getArchetype('guerreiro')!) },
     requisito: 'FOTO · 9:16 · 1080×1920 · LIFESTYLE · GUERREIRO · MODELO + FRASCO',
     img: heroGuerreiro,
     imgDesktop: heroGuerreiroDesktop,

@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import type { Archetype } from '@/types/archetype'
-import { getArchetype } from '@/data/archetypes'
+import { getArchetype, productPath } from '@/data/archetypes'
 import { FRASCO_IMG, HERO_SLIDES } from '@/data/home'
 import { scrollToId } from '@/lib/scrollToId'
 import { brl, FilterTabs, parcela, pix, type CatalogProps } from './shared'
@@ -125,7 +125,7 @@ export function CatalogOraculo({ items, filtro, setFiltro, filtros }: CatalogPro
           {items.map((a) => (
             <li key={a.id}>
               <Link
-                to={`/loja/${a.id}`}
+                to={productPath(a)}
                 state={{ backgroundLocation: location }}
                 className="no-press group block transition-transform duration-500 ease-out hover:-translate-y-2"
               >
@@ -139,7 +139,7 @@ export function CatalogOraculo({ items, filtro, setFiltro, filtros }: CatalogPro
                   {brl(pix(a.preco))} no Pix · 6x de {brl(parcela(a.preco))}
                 </p>
                 <Link
-                  to={`/loja/${a.id}`}
+                  to={productPath(a)}
                   state={{ backgroundLocation: location }}
                   className="mt-3 inline-block border-b border-latao/60 pb-0.5 font-label text-[10px] tracking-[0.25em] text-latao uppercase hover:border-latao"
                 >
