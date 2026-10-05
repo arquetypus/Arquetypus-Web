@@ -47,21 +47,22 @@ try {
   // Caminho original identifica asset; basename sozinho nunca decide associação.
   const serverAssets = new Map([...bundle.matchAll(/\/\/#region (src\/assets\/[^\r\n]+)\r?\nvar [^=\n]+ = ("[^\r\n]+");/g)]
     .map(m => [m[1], JSON.parse(m[2])]));
+  // Imagens passam pelo vite-imagetools (vite.config.ts): saem convertidas em WebP, com bytes diferentes do original.
+  // No Linux (build da Vercel) elas entram no manifest; no Windows ficam fora — os dois casos são conferidos.
+  const IMAGEM = /\.(?:png|jpe?g|webp|avif|gif|tiff|heif)$/i;
   const assets = [];
   for (const [source, entry] of Object.entries(manifest)) {
     if (!source.startsWith('src/assets/')) continue;
     if (serverAssets.has(source)) assert.equal(serverAssets.get(source), '/' + entry.file, 'URL SSR/cliente: ' + source);
     else assert.ok(!bundle.includes('//#region ' + source), 'Formato de asset SSR não reconhecido: ' + source);
-    const original = await readFile(path.join(root, source));
     const emitted = await readFile(path.join(root, 'dist', entry.file));
-    assert.ok(original.equals(emitted), 'Bytes do asset: ' + source);
+    if (IMAGEM.test(source)) assert.ok(entry.file.endsWith('.webp'), 'Imagem sem otimização: ' + source);
+    else assert.ok((await readFile(path.join(root, source))).equals(emitted), 'Bytes do asset: ' + source);
     assets.push({ source, url: '/' + entry.file, inServerBundle: bundle.includes(JSON.stringify('/' + entry.file)),
       sourceRegionMapped: serverAssets.has(source), bytes: emitted.length, sha256: hash(emitted) });
   }
   assert.ok(assets.length > 0);
-  // Imagens passam pelo vite-imagetools (vite.config.ts): saem convertidas (bytes ≠ original) e fora do manifest.
-  // Paridade SSR/cliente: a mesma URL tem que estar no JS do cliente e o arquivo tem que existir em dist/.
-  const IMAGEM = /\.(?:png|jpe?g|webp|avif|gif|tiff|heif)$/i;
+  // Imagem fora do manifest (Windows): paridade SSR/cliente pela mesma URL no JS do cliente + arquivo em dist/.
   const clientJs = (await Promise.all((await readdir(path.join(root, 'dist/assets'))).filter(f => f.endsWith('.js'))
     .map(f => readFile(path.join(root, 'dist/assets', f), 'utf8')))).join('\n');
   for (const [source, url] of serverAssets) {
