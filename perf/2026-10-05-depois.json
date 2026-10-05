@@ -1,0 +1,315 @@
+{
+  "rotulo": "depois",
+  "data": "2026-10-05T23:17:17.527Z",
+  "site": "https://www.arquetypus.com.br",
+  "ferramenta": "lighthouse@13.5.0 local (SMSP-010643)",
+  "rodadas": 3,
+  "paginas": {
+    "/ · mobile": {
+      "nota": 42,
+      "fcp": 3807.0740000000005,
+      "lcp": 10588.5765,
+      "tbt": 862.7545,
+      "cls": 0,
+      "si": 6278.332522830593,
+      "peso": 5712.9833984375,
+      "semCache": 0,
+      "cacheExemplo": null,
+      "assets": 45,
+      "maiores": [
+        {
+          "url": "/assets/hero-video-DYdAfdYa.mp4",
+          "kb": 2122
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-W81SRZ3K7J&cx=c&gtm=4e6a21h1",
+          "kb": 173
+        },
+        {
+          "url": "/assets/index-BcEOYAfG.js",
+          "kb": 173
+        },
+        {
+          "url": "/assets/guerreiro-BQZfZQ48.webp",
+          "kb": 159
+        },
+        {
+          "url": "/assets/frescos-luminosos-BGACOnq6.webp",
+          "kb": 136
+        },
+        {
+          "url": "/assets/frutados-citricos-Ci4IQNay.webp",
+          "kb": 135
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5DTMCZW8",
+          "kb": 129
+        },
+        {
+          "url": "/assets/sereia-DIviEydJ.webp",
+          "kb": 123
+        }
+      ],
+      "rodadas": [
+        43,
+        42,
+        41
+      ]
+    },
+    "/ · desktop": {
+      "nota": 73,
+      "fcp": 997.247,
+      "lcp": 2789.1190000000015,
+      "tbt": 64.52749999999992,
+      "cls": 0,
+      "si": 2071.162216807381,
+      "peso": 5872.4130859375,
+      "semCache": 0,
+      "cacheExemplo": null,
+      "assets": 46,
+      "maiores": [
+        {
+          "url": "/assets/hero-video-DYdAfdYa.mp4",
+          "kb": 2122
+        },
+        {
+          "url": "/assets/colecao-desktop-cdnhGyEo.webp",
+          "kb": 208
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-W81SRZ3K7J&cx=c&gtm=4e6a21",
+          "kb": 173
+        },
+        {
+          "url": "/assets/index-BcEOYAfG.js",
+          "kb": 173
+        },
+        {
+          "url": "/assets/frescos-luminosos-BGACOnq6.webp",
+          "kb": 136
+        },
+        {
+          "url": "/assets/guerreiro-desktop-pL8UF_fQ.webp",
+          "kb": 135
+        },
+        {
+          "url": "/assets/frutados-citricos-Ci4IQNay.webp",
+          "kb": 135
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5DTMCZW8",
+          "kb": 129
+        }
+      ],
+      "rodadas": [
+        64,
+        73,
+        85
+      ]
+    },
+    "/body-splash/zeus-stormbreak · mobile": {
+      "nota": 55,
+      "fcp": 3506.655,
+      "lcp": 7595.989,
+      "tbt": 338,
+      "cls": 0,
+      "si": 5998.631858874028,
+      "peso": 1213.951171875,
+      "semCache": 0,
+      "cacheExemplo": null,
+      "assets": 10,
+      "maiores": [
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-W81SRZ3K7J&cx=c&gtm=4e6a21",
+          "kb": 173
+        },
+        {
+          "url": "/assets/index-BcEOYAfG.js",
+          "kb": 173
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5DTMCZW8",
+          "kb": 129
+        },
+        {
+          "url": "/fonts/inter-var-italic.woff2",
+          "kb": 114
+        },
+        {
+          "url": "/fonts/inter-var.woff2",
+          "kb": 103
+        },
+        {
+          "url": "/assets/flor-arquetypus-DMBOvLEF.webp",
+          "kb": 93
+        },
+        {
+          "url": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+          "kb": 92
+        },
+        {
+          "url": "/assets/zeus-D9cq5EHg.webp",
+          "kb": 74
+        }
+      ],
+      "rodadas": [
+        53,
+        57,
+        55
+      ]
+    },
+    "/body-splash/zeus-stormbreak · desktop": {
+      "nota": 93,
+      "fcp": 900.229,
+      "lcp": 1530.6407499999996,
+      "tbt": 13,
+      "cls": 0,
+      "si": 1090.5932263327334,
+      "peso": 1213.9580078125,
+      "semCache": 0,
+      "cacheExemplo": null,
+      "assets": 10,
+      "maiores": [
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-W81SRZ3K7J&cx=c&gtm=4e6a21",
+          "kb": 173
+        },
+        {
+          "url": "/assets/index-BcEOYAfG.js",
+          "kb": 173
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5DTMCZW8",
+          "kb": 129
+        },
+        {
+          "url": "/fonts/inter-var-italic.woff2",
+          "kb": 114
+        },
+        {
+          "url": "/fonts/inter-var.woff2",
+          "kb": 103
+        },
+        {
+          "url": "/assets/flor-arquetypus-DMBOvLEF.webp",
+          "kb": 93
+        },
+        {
+          "url": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+          "kb": 92
+        },
+        {
+          "url": "/assets/zeus-D9cq5EHg.webp",
+          "kb": 74
+        }
+      ],
+      "rodadas": [
+        93,
+        94,
+        92
+      ]
+    },
+    "/criadores · mobile": {
+      "nota": 58,
+      "fcp": 3480.739,
+      "lcp": 7232.075500000001,
+      "tbt": 308,
+      "cls": 0,
+      "si": 5480.936922184075,
+      "peso": 1212.1630859375,
+      "semCache": 0,
+      "cacheExemplo": null,
+      "assets": 7,
+      "maiores": [
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-W81SRZ3K7J&cx=c&gtm=4e6a21",
+          "kb": 173
+        },
+        {
+          "url": "/assets/index-BcEOYAfG.js",
+          "kb": 173
+        },
+        {
+          "url": "/assets/criadores-hero-CFVypZqa.webp",
+          "kb": 150
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5DTMCZW8",
+          "kb": 129
+        },
+        {
+          "url": "/fonts/inter-var-italic.woff2",
+          "kb": 114
+        },
+        {
+          "url": "/fonts/inter-var.woff2",
+          "kb": 103
+        },
+        {
+          "url": "/assets/flor-arquetypus-DMBOvLEF.webp",
+          "kb": 93
+        },
+        {
+          "url": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+          "kb": 92
+        }
+      ],
+      "rodadas": [
+        64,
+        58,
+        58
+      ]
+    },
+    "/criadores · desktop": {
+      "nota": 85,
+      "fcp": 1300.6205000000004,
+      "lcp": 1834.4645,
+      "tbt": 13,
+      "cls": 0,
+      "si": 1995.4678303328915,
+      "peso": 1212.1826171875,
+      "semCache": 0,
+      "cacheExemplo": null,
+      "assets": 7,
+      "maiores": [
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-W81SRZ3K7J&cx=c&gtm=4e6a21",
+          "kb": 173
+        },
+        {
+          "url": "/assets/index-BcEOYAfG.js",
+          "kb": 173
+        },
+        {
+          "url": "/assets/criadores-hero-CFVypZqa.webp",
+          "kb": 150
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5DTMCZW8",
+          "kb": 129
+        },
+        {
+          "url": "/fonts/inter-var-italic.woff2",
+          "kb": 114
+        },
+        {
+          "url": "/fonts/inter-var.woff2",
+          "kb": 103
+        },
+        {
+          "url": "/assets/flor-arquetypus-DMBOvLEF.webp",
+          "kb": 93
+        },
+        {
+          "url": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+          "kb": 92
+        }
+      ],
+      "rodadas": [
+        93,
+        79,
+        85
+      ]
+    }
+  }
+}
