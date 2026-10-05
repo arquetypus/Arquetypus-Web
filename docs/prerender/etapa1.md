@@ -1,7 +1,8 @@
 # Etapa 1 — segurança SSR e apresentação inicial
 
 Implementação na branch `prerender`, sobre `e0e829f`. Produção continua em `main`.
-Validação local concluída; validação do novo preview ainda pendente neste registro inicial.
+Etapa 1 concluída: build, contratos locais, push e validação do novo preview aprovados.
+Código enviado em `6422a93cb85d81b2876b90b52fb3fe3317f140d2`.
 
 ## Alterações e contrato
 
@@ -63,8 +64,42 @@ Evidências: [contratos](evidence/etapa1-contracts.json),
 
 ## Preview
 
-Pendente: push do código, conclusão do deploy Vercel do novo commit e validação HTTP/UI.
-Atualizar esta seção com resultado observado, identificação do commit e comparação de assets.
+[Preview validado](https://arquetypus-parfum-git-prerender-saniella.vercel.app/).
+GitHub registrou check Vercel `success` para o commit de código; [deployment](https://vercel.com/saniella/arquetypus-parfum/GZdUH5FGjeD6Rt4cZd9fGmUCoy9h).
+
+- 18 rotas públicas HTTP 200, com `x-robots-tag: noindex` de Preview.
+- JS `index-BgVQipSh.js` (629.484 bytes) e CSS `index-DuMrFA1J.css` (159.991 bytes)
+  idênticos byte a byte ao build local. Incrementos sobre baseline: 848 e 271 bytes.
+- HTML da home coincide com build local, acrescido somente do feedback da Vercel;
+  outras rotas coincidem com template SPA esperado nesta etapa.
+- Title, description, canonical, OG, JSON-LD e H1 das 18 rotas iguais à baseline.
+  Preços dos nove produtos verificados a partir de `ARCHETYPES`, sem literal de preço no teste.
+- Sem erros/warnings de console nem imagens visíveis quebradas nas inspeções.
+- Pop-up Zeus, reload com estado de fundo, fechar, voltar/avançar, link de página completa,
+  galeria desktop/móvel, fim da dica móvel, cupom por Enter/clique, reabrir/recusar cookies,
+  filtro Fênix/Todos, menu/FAQ, 404 cliente e produto inválido aprovados.
+- Playback mudo e avanço de `currentTime` observados no desktop e celular. Capturas da home
+  mostram slides Afrodite (desktop) e Guerreiro (móvel); autoplay mantém variação da baseline.
+- `robots.txt`, `sitemap.xml`, `llms.txt` publicados, HTTP 200 e bytes iguais ao build.
+- Dev real também verificado: atributos iniciais corretos e três arquivos SEO HTTP 200.
+  Vite iniciado diretamente porque npm 12/PowerShell não repassou flags de `npm run dev -- …`.
+- `main` remoto permanece `8a02e4a`; leitura do domínio de produção confirmou assets da baseline.
+  [Verificação de ambiente](evidence/etapa1-environment-check.json).
+
+Evidências: [deployment](evidence/etapa1-deploy.json),
+[HTTP](evidence/etapa1-preview-http-baseline.json), [metadados](evidence/etapa1-preview-metadata.json),
+[navegação](evidence/etapa1-preview-ui.json), [aceite objetivo](evidence/etapa1-preview-validation.json).
+Reexecutar comparação após coletar evidências novas:
+
+```powershell
+node docs/prerender/tools/collect-http.mjs https://arquetypus-parfum-git-prerender-saniella.vercel.app etapa1-preview
+node docs/prerender/tools/etapa1-preview-check.mjs
+```
+
+Capturas: [home desktop](evidence/etapa1-preview-home-desktop.jpg),
+[home móvel](evidence/etapa1-preview-home-mobile.jpg), [Zeus desktop](evidence/etapa1-preview-zeus-desktop.jpg),
+[Zeus móvel](evidence/etapa1-preview-zeus-mobile.jpg). Validação de layout por inspeção visual,
+sem alegar comparação automatizada pixel a pixel.
 
 ## Limites
 

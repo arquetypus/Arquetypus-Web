@@ -1,0 +1,81 @@
+{
+  "collectedAt": "2026-10-05T01:16:03.103Z",
+  "codeCommit": "6422a93cb85d81b2876b90b52fb3fe3317f140d2",
+  "origin": "https://arquetypus-parfum-git-prerender-saniella.vercel.app",
+  "checks": [
+    "18 rotas HTTP 200; preview noindex; JS/CSS idênticos ao build local",
+    "HTML SPA esperado; diferença da home limitada ao feedback da Vercel",
+    "Metadados/H1 das 18 rotas iguais à baseline; sem erros ou imagens visíveis quebradas",
+    "Pop-up/histórico, galeria, autoplay, cupom, cookies, filtros, menu/FAQ e URLs inválidas aprovados",
+    "Nove preços presentes no conteúdo cliente e derivados de ARCHETYPES",
+    "Três arquivos SEO publicados sem mudança de conteúdo"
+  ],
+  "staticFiles": [
+    {
+      "name": "robots.txt",
+      "status": 200,
+      "identical": true,
+      "sha256": "5bc9ffd2c4af45bf14e7fa50057f3c0322e10d413f39d44e502a1dcd8770ae9c"
+    },
+    {
+      "name": "sitemap.xml",
+      "status": 200,
+      "identical": true,
+      "sha256": "04739d64d366623c1d18e0b47d1dc921745fc6254b5dcb48bcfe9fb95b2857cf"
+    },
+    {
+      "name": "llms.txt",
+      "status": 200,
+      "identical": true,
+      "sha256": "32f1d7538f38b0289d4cdfc3213ec70cb3344a71b244efc8345e4f9f1e39cd4e"
+    }
+  ],
+  "prices": [
+    {
+      "route": "/loja/afrodite",
+      "expected": "R$ 79,90",
+      "present": true
+    },
+    {
+      "route": "/loja/imperatriz",
+      "expected": "R$ 79,90",
+      "present": true
+    },
+    {
+      "route": "/loja/cleopatra",
+      "expected": "R$ 79,90",
+      "present": true
+    },
+    {
+      "route": "/loja/fada",
+      "expected": "R$ 79,90",
+      "present": true
+    },
+    {
+      "route": "/loja/sereia",
+      "expected": "R$ 79,90",
+      "present": true
+    },
+    {
+      "route": "/loja/zeus",
+      "expected": "R$ 79,90",
+      "present": true
+    },
+    {
+      "route": "/loja/guerreiro",
+      "expected": "R$ 79,90",
+      "present": true
+    },
+    {
+      "route": "/loja/imperador",
+      "expected": "R$ 79,90",
+      "present": true
+    },
+    {
+      "route": "/loja/fenix",
+      "expected": "R$ 79,90",
+      "present": true
+    }
+  ],
+  "deploymentId": "dpl_GZdUH5FGjeD6Rt4cZd9fGmUCoy9h"
+}

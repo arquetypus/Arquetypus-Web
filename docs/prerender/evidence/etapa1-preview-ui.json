@@ -1,0 +1,63 @@
+{
+  "collectedAt": "2026-10-05T01:05:45.612Z",
+  "codeCommit": "6422a93cb85d81b2876b90b52fb3fe3317f140d2",
+  "origin": "https://arquetypus-parfum-git-prerender-saniella.vercel.app",
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "checks": {
+    "desktopGalleryPhoto2": true,
+    "modalOpened": true,
+    "modalAfterReload": true,
+    "closeReturnsHome": true,
+    "forwardRestoresModal": true,
+    "backReturnsHome": true,
+    "fullPageLink": true,
+    "mobileGalleryHintFinished": true,
+    "mobileGalleryPhoto2": true,
+    "mobileAutoplay": true,
+    "cookieReopen": true,
+    "cookieRefuse": true,
+    "couponSafeAfterMount": true,
+    "autoplaySnapshot": {
+      "heading": "Qual versão de você quer expressar hoje?",
+      "muted": true,
+      "playing": true,
+      "time": 0
+    },
+    "filterSingleFenix": true,
+    "filterRestoresNine": true,
+    "faqOpens": true,
+    "notFound": {
+      "heading": "Página não encontrada",
+      "robots": "noindex"
+    },
+    "invalidProductReturnsHome": true,
+    "autoplayProgressObserved": {
+      "desktop": {
+        "playing": true,
+        "muted": true,
+        "time": 3.799116
+      },
+      "mobile": {
+        "playing": true,
+        "muted": true,
+        "time": 0.205864
+      },
+      "source": "DOM observations before responsive captures; initial samples may still show currentTime=0"
+    }
+  },
+  "console": [],
+  "captures": {
+    "homeDesktop": "Afrodite",
+    "homeMobile": "Guerreiro",
+    "product": "Zeus"
+  }
+}
