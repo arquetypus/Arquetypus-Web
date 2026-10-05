@@ -1,7 +1,7 @@
 {
-  "collectedAt": "2026-10-05T01:51:25.114Z",
+  "collectedAt": "2026-10-05T02:00:56.325Z",
   "origin": "https://arquetypus-parfum-git-prerender-saniella.vercel.app",
-  "codeCommit": "c5707022e5d72dc0cdf6e31c14be5f585bdb6035",
+  "codeCommit": "8db4e576b381e2355c640b0d895a066022ba691e",
   "routes": [
     "/",
     "/criadores",
@@ -28,535 +28,535 @@
       "status": 200,
       "headers": {
         "access-control-allow-origin": "*",
-        "age": "274",
+        "age": "285",
         "cache-control": "public, max-age=0, must-revalidate",
         "content-disposition": "inline",
         "content-encoding": "br",
         "content-type": "text/html; charset=utf-8",
-        "date": "Mon, 05 Oct 2026 01:51:25 GMT",
-        "etag": "W/\"19ac615cb4db1b55c8fad788fb5936c5\"",
-        "last-modified": "Mon, 05 Oct 2026 01:46:50 GMT",
+        "date": "Mon, 05 Oct 2026 02:00:56 GMT",
+        "etag": "W/\"9e7154d2ede480b027cc08db9bab3d74\"",
+        "last-modified": "Mon, 05 Oct 2026 01:56:11 GMT",
         "server": "Vercel",
         "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
         "transfer-encoding": "chunked",
         "x-robots-tag": "noindex",
         "x-vercel-cache": "HIT",
-        "x-vercel-id": "gru1:gru1:gru1::5cgkj-1791165085304-5d02122bd9d0"
+        "x-vercel-id": "gru1:gru1:gru1::8vsmc-1791165656534-da49157a0071"
       },
       "rootEmpty": true,
       "rawH1Count": 0,
-      "sha256": "bb17de24eddd0f26673a24f327d3190443a1e16bcc331ca0810ee8f8699f5425"
+      "sha256": "06822c375866d4044f407960fc716ad24aa013b26b56569e188c873607e03f57"
     },
     {
       "route": "/criadores",
       "status": 200,
       "headers": {
         "access-control-allow-origin": "*",
-        "age": "274",
+        "age": "285",
         "cache-control": "public, max-age=0, must-revalidate",
         "content-disposition": "inline; filename=\"index.html\"",
         "content-encoding": "br",
         "content-type": "text/html; charset=utf-8",
-        "date": "Mon, 05 Oct 2026 01:51:25 GMT",
-        "etag": "W/\"19ac615cb4db1b55c8fad788fb5936c5\"",
-        "last-modified": "Mon, 05 Oct 2026 01:46:50 GMT",
+        "date": "Mon, 05 Oct 2026 02:00:56 GMT",
+        "etag": "W/\"9e7154d2ede480b027cc08db9bab3d74\"",
+        "last-modified": "Mon, 05 Oct 2026 01:56:10 GMT",
         "server": "Vercel",
         "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
         "transfer-encoding": "chunked",
         "x-robots-tag": "noindex",
         "x-vercel-cache": "HIT",
-        "x-vercel-id": "gru1::cpfwl-1791165085299-f1e011e5b67b"
+        "x-vercel-id": "gru1::65pgm-1791165656537-5a69ed1c7f03"
       },
       "rootEmpty": true,
       "rawH1Count": 0,
-      "sha256": "56dc54e9a5de5e4c6ff890d6db39cfcbae0072041d6837ea16af6ef418b5cecb"
+      "sha256": "bf38fc3cc89db3c644ccf4634ce655b0f204c9a464c0aef897efa8074fa84668"
     },
     {
       "route": "/sobre",
       "status": 200,
       "headers": {
         "access-control-allow-origin": "*",
-        "age": "274",
+        "age": "285",
         "cache-control": "public, max-age=0, must-revalidate",
         "content-disposition": "inline; filename=\"index.html\"",
         "content-encoding": "br",
         "content-type": "text/html; charset=utf-8",
-        "date": "Mon, 05 Oct 2026 01:51:25 GMT",
-        "etag": "W/\"19ac615cb4db1b55c8fad788fb5936c5\"",
-        "last-modified": "Mon, 05 Oct 2026 01:46:50 GMT",
+        "date": "Mon, 05 Oct 2026 02:00:56 GMT",
+        "etag": "W/\"9e7154d2ede480b027cc08db9bab3d74\"",
+        "last-modified": "Mon, 05 Oct 2026 01:56:10 GMT",
         "server": "Vercel",
         "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
         "transfer-encoding": "chunked",
         "x-robots-tag": "noindex",
         "x-vercel-cache": "HIT",
-        "x-vercel-id": "gru1::cpfwl-1791165085298-c1aebf5a0fec"
+        "x-vercel-id": "gru1::hnjt7-1791165656560-a2d858015a42"
       },
       "rootEmpty": true,
       "rawH1Count": 0,
-      "sha256": "56dc54e9a5de5e4c6ff890d6db39cfcbae0072041d6837ea16af6ef418b5cecb"
+      "sha256": "bf38fc3cc89db3c644ccf4634ce655b0f204c9a464c0aef897efa8074fa84668"
     },
     {
       "route": "/perguntas-frequentes",
       "status": 200,
       "headers": {
         "access-control-allow-origin": "*",
-        "age": "274",
+        "age": "285",
         "cache-control": "public, max-age=0, must-revalidate",
         "content-disposition": "inline; filename=\"index.html\"",
         "content-encoding": "br",
         "content-type": "text/html; charset=utf-8",
-        "date": "Mon, 05 Oct 2026 01:51:25 GMT",
-        "etag": "W/\"19ac615cb4db1b55c8fad788fb5936c5\"",
-        "last-modified": "Mon, 05 Oct 2026 01:46:50 GMT",
+        "date": "Mon, 05 Oct 2026 02:00:56 GMT",
+        "etag": "W/\"9e7154d2ede480b027cc08db9bab3d74\"",
+        "last-modified": "Mon, 05 Oct 2026 01:56:10 GMT",
         "server": "Vercel",
         "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
         "transfer-encoding": "chunked",
         "x-robots-tag": "noindex",
         "x-vercel-cache": "HIT",
-        "x-vercel-id": "gru1::j5nxn-1791165085306-5a4e616e490b"
+        "x-vercel-id": "gru1::z9jwf-1791165656540-fc871f77b845"
       },
       "rootEmpty": true,
       "rawH1Count": 0,
-      "sha256": "56dc54e9a5de5e4c6ff890d6db39cfcbae0072041d6837ea16af6ef418b5cecb"
+      "sha256": "bf38fc3cc89db3c644ccf4634ce655b0f204c9a464c0aef897efa8074fa84668"
     },
     {
       "route": "/entrega-e-frete",
       "status": 200,
       "headers": {
         "access-control-allow-origin": "*",
-        "age": "274",
+        "age": "285",
         "cache-control": "public, max-age=0, must-revalidate",
         "content-disposition": "inline; filename=\"index.html\"",
         "content-encoding": "br",
         "content-type": "text/html; charset=utf-8",
-        "date": "Mon, 05 Oct 2026 01:51:25 GMT",
-        "etag": "W/\"19ac615cb4db1b55c8fad788fb5936c5\"",
-        "last-modified": "Mon, 05 Oct 2026 01:46:50 GMT",
+        "date": "Mon, 05 Oct 2026 02:00:56 GMT",
+        "etag": "W/\"9e7154d2ede480b027cc08db9bab3d74\"",
+        "last-modified": "Mon, 05 Oct 2026 01:56:10 GMT",
         "server": "Vercel",
         "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
         "transfer-encoding": "chunked",
         "x-robots-tag": "noindex",
         "x-vercel-cache": "HIT",
-        "x-vercel-id": "gru1::p9x5n-1791165085304-dd9baec58ce4"
+        "x-vercel-id": "gru1::x2flh-1791165656571-efd4150825f3"
       },
       "rootEmpty": true,
       "rawH1Count": 0,
-      "sha256": "56dc54e9a5de5e4c6ff890d6db39cfcbae0072041d6837ea16af6ef418b5cecb"
+      "sha256": "bf38fc3cc89db3c644ccf4634ce655b0f204c9a464c0aef897efa8074fa84668"
     },
     {
       "route": "/trocas-e-devolucoes",
       "status": 200,
       "headers": {
         "access-control-allow-origin": "*",
-        "age": "274",
+        "age": "285",
         "cache-control": "public, max-age=0, must-revalidate",
         "content-disposition": "inline; filename=\"index.html\"",
         "content-encoding": "br",
         "content-type": "text/html; charset=utf-8",
-        "date": "Mon, 05 Oct 2026 01:51:25 GMT",
-        "etag": "W/\"19ac615cb4db1b55c8fad788fb5936c5\"",
-        "last-modified": "Mon, 05 Oct 2026 01:46:50 GMT",
+        "date": "Mon, 05 Oct 2026 02:00:56 GMT",
+        "etag": "W/\"9e7154d2ede480b027cc08db9bab3d74\"",
+        "last-modified": "Mon, 05 Oct 2026 01:56:10 GMT",
         "server": "Vercel",
         "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
         "transfer-encoding": "chunked",
         "x-robots-tag": "noindex",
         "x-vercel-cache": "HIT",
-        "x-vercel-id": "gru1::8vsmc-1791165085297-f946d38ff9f6"
+        "x-vercel-id": "gru1::q5ftb-1791165656542-1d3f25ee929f"
       },
       "rootEmpty": true,
       "rawH1Count": 0,
-      "sha256": "56dc54e9a5de5e4c6ff890d6db39cfcbae0072041d6837ea16af6ef418b5cecb"
+      "sha256": "bf38fc3cc89db3c644ccf4634ce655b0f204c9a464c0aef897efa8074fa84668"
     },
     {
       "route": "/regras-do-site",
       "status": 200,
       "headers": {
         "access-control-allow-origin": "*",
-        "age": "274",
+        "age": "285",
         "cache-control": "public, max-age=0, must-revalidate",
         "content-disposition": "inline; filename=\"index.html\"",
         "content-encoding": "br",
         "content-type": "text/html; charset=utf-8",
-        "date": "Mon, 05 Oct 2026 01:51:25 GMT",
-        "etag": "W/\"19ac615cb4db1b55c8fad788fb5936c5\"",
-        "last-modified": "Mon, 05 Oct 2026 01:46:50 GMT",
+        "date": "Mon, 05 Oct 2026 02:00:56 GMT",
+        "etag": "W/\"9e7154d2ede480b027cc08db9bab3d74\"",
+        "last-modified": "Mon, 05 Oct 2026 01:56:10 GMT",
         "server": "Vercel",
         "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
         "transfer-encoding": "chunked",
         "x-robots-tag": "noindex",
         "x-vercel-cache": "HIT",
-        "x-vercel-id": "gru1::6bbmc-1791165085302-ee456d0eb1ba"
+        "x-vercel-id": "gru1::j5xgl-1791165656533-4d8e3beddb07"
       },
       "rootEmpty": true,
       "rawH1Count": 0,
-      "sha256": "56dc54e9a5de5e4c6ff890d6db39cfcbae0072041d6837ea16af6ef418b5cecb"
+      "sha256": "bf38fc3cc89db3c644ccf4634ce655b0f204c9a464c0aef897efa8074fa84668"
     },
     {
       "route": "/privacidade",
       "status": 200,
       "headers": {
         "access-control-allow-origin": "*",
-        "age": "274",
+        "age": "285",
         "cache-control": "public, max-age=0, must-revalidate",
         "content-disposition": "inline; filename=\"index.html\"",
         "content-encoding": "br",
         "content-type": "text/html; charset=utf-8",
-        "date": "Mon, 05 Oct 2026 01:51:25 GMT",
-        "etag": "W/\"19ac615cb4db1b55c8fad788fb5936c5\"",
-        "last-modified": "Mon, 05 Oct 2026 01:46:50 GMT",
+        "date": "Mon, 05 Oct 2026 02:00:56 GMT",
+        "etag": "W/\"9e7154d2ede480b027cc08db9bab3d74\"",
+        "last-modified": "Mon, 05 Oct 2026 01:56:10 GMT",
         "server": "Vercel",
         "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
         "transfer-encoding": "chunked",
         "x-robots-tag": "noindex",
         "x-vercel-cache": "HIT",
-        "x-vercel-id": "gru1::fkbq5-1791165085298-536ce067f6c6"
+        "x-vercel-id": "gru1::59vw4-1791165656531-ee039e1014f0"
       },
       "rootEmpty": true,
       "rawH1Count": 0,
-      "sha256": "56dc54e9a5de5e4c6ff890d6db39cfcbae0072041d6837ea16af6ef418b5cecb"
+      "sha256": "bf38fc3cc89db3c644ccf4634ce655b0f204c9a464c0aef897efa8074fa84668"
     },
     {
       "route": "/termos-de-uso",
       "status": 200,
       "headers": {
         "access-control-allow-origin": "*",
-        "age": "274",
+        "age": "285",
         "cache-control": "public, max-age=0, must-revalidate",
         "content-disposition": "inline; filename=\"index.html\"",
         "content-encoding": "br",
         "content-type": "text/html; charset=utf-8",
-        "date": "Mon, 05 Oct 2026 01:51:25 GMT",
-        "etag": "W/\"19ac615cb4db1b55c8fad788fb5936c5\"",
-        "last-modified": "Mon, 05 Oct 2026 01:46:50 GMT",
+        "date": "Mon, 05 Oct 2026 02:00:56 GMT",
+        "etag": "W/\"9e7154d2ede480b027cc08db9bab3d74\"",
+        "last-modified": "Mon, 05 Oct 2026 01:56:10 GMT",
         "server": "Vercel",
         "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
         "transfer-encoding": "chunked",
         "x-robots-tag": "noindex",
         "x-vercel-cache": "HIT",
-        "x-vercel-id": "gru1::6vmkq-1791165085301-3c96565a0416"
+        "x-vercel-id": "gru1::vx4v5-1791165656555-11a7a2f8906e"
       },
       "rootEmpty": true,
       "rawH1Count": 0,
-      "sha256": "56dc54e9a5de5e4c6ff890d6db39cfcbae0072041d6837ea16af6ef418b5cecb"
+      "sha256": "bf38fc3cc89db3c644ccf4634ce655b0f204c9a464c0aef897efa8074fa84668"
     },
     {
       "route": "/loja/afrodite",
       "status": 200,
       "headers": {
         "access-control-allow-origin": "*",
-        "age": "274",
+        "age": "285",
         "cache-control": "public, max-age=0, must-revalidate",
         "content-disposition": "inline; filename=\"index.html\"",
         "content-encoding": "br",
         "content-type": "text/html; charset=utf-8",
-        "date": "Mon, 05 Oct 2026 01:51:25 GMT",
-        "etag": "W/\"19ac615cb4db1b55c8fad788fb5936c5\"",
-        "last-modified": "Mon, 05 Oct 2026 01:46:50 GMT",
+        "date": "Mon, 05 Oct 2026 02:00:56 GMT",
+        "etag": "W/\"9e7154d2ede480b027cc08db9bab3d74\"",
+        "last-modified": "Mon, 05 Oct 2026 01:56:10 GMT",
         "server": "Vercel",
         "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
         "transfer-encoding": "chunked",
         "x-robots-tag": "noindex",
         "x-vercel-cache": "HIT",
-        "x-vercel-id": "gru1::nhltm-1791165085301-d4200285fb74"
+        "x-vercel-id": "gru1::8n6h4-1791165656540-0f5ada2549c9"
       },
       "rootEmpty": true,
       "rawH1Count": 0,
-      "sha256": "56dc54e9a5de5e4c6ff890d6db39cfcbae0072041d6837ea16af6ef418b5cecb"
+      "sha256": "bf38fc3cc89db3c644ccf4634ce655b0f204c9a464c0aef897efa8074fa84668"
     },
     {
       "route": "/loja/imperatriz",
       "status": 200,
       "headers": {
         "access-control-allow-origin": "*",
-        "age": "274",
+        "age": "285",
         "cache-control": "public, max-age=0, must-revalidate",
         "content-disposition": "inline; filename=\"index.html\"",
         "content-encoding": "br",
         "content-type": "text/html; charset=utf-8",
-        "date": "Mon, 05 Oct 2026 01:51:25 GMT",
-        "etag": "W/\"19ac615cb4db1b55c8fad788fb5936c5\"",
-        "last-modified": "Mon, 05 Oct 2026 01:46:50 GMT",
+        "date": "Mon, 05 Oct 2026 02:00:56 GMT",
+        "etag": "W/\"9e7154d2ede480b027cc08db9bab3d74\"",
+        "last-modified": "Mon, 05 Oct 2026 01:56:10 GMT",
         "server": "Vercel",
         "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
         "transfer-encoding": "chunked",
         "x-robots-tag": "noindex",
         "x-vercel-cache": "HIT",
-        "x-vercel-id": "gru1::nmgjl-1791165085302-8daee8b6cacb"
+        "x-vercel-id": "gru1::ngtf6-1791165656548-0215933bff3a"
       },
       "rootEmpty": true,
       "rawH1Count": 0,
-      "sha256": "56dc54e9a5de5e4c6ff890d6db39cfcbae0072041d6837ea16af6ef418b5cecb"
+      "sha256": "bf38fc3cc89db3c644ccf4634ce655b0f204c9a464c0aef897efa8074fa84668"
     },
     {
       "route": "/loja/cleopatra",
       "status": 200,
       "headers": {
         "access-control-allow-origin": "*",
-        "age": "274",
+        "age": "285",
         "cache-control": "public, max-age=0, must-revalidate",
         "content-disposition": "inline; filename=\"index.html\"",
         "content-encoding": "br",
         "content-type": "text/html; charset=utf-8",
-        "date": "Mon, 05 Oct 2026 01:51:25 GMT",
-        "etag": "W/\"19ac615cb4db1b55c8fad788fb5936c5\"",
-        "last-modified": "Mon, 05 Oct 2026 01:46:50 GMT",
+        "date": "Mon, 05 Oct 2026 02:00:56 GMT",
+        "etag": "W/\"9e7154d2ede480b027cc08db9bab3d74\"",
+        "last-modified": "Mon, 05 Oct 2026 01:56:10 GMT",
         "server": "Vercel",
         "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
         "transfer-encoding": "chunked",
         "x-robots-tag": "noindex",
         "x-vercel-cache": "HIT",
-        "x-vercel-id": "gru1::59vw4-1791165085307-65340b171643"
+        "x-vercel-id": "gru1::w896v-1791165656549-5a82a4f262c4"
       },
       "rootEmpty": true,
       "rawH1Count": 0,
-      "sha256": "56dc54e9a5de5e4c6ff890d6db39cfcbae0072041d6837ea16af6ef418b5cecb"
+      "sha256": "bf38fc3cc89db3c644ccf4634ce655b0f204c9a464c0aef897efa8074fa84668"
     },
     {
       "route": "/loja/fada",
       "status": 200,
       "headers": {
         "access-control-allow-origin": "*",
-        "age": "274",
+        "age": "285",
         "cache-control": "public, max-age=0, must-revalidate",
         "content-disposition": "inline; filename=\"index.html\"",
         "content-encoding": "br",
         "content-type": "text/html; charset=utf-8",
-        "date": "Mon, 05 Oct 2026 01:51:25 GMT",
-        "etag": "W/\"19ac615cb4db1b55c8fad788fb5936c5\"",
-        "last-modified": "Mon, 05 Oct 2026 01:46:50 GMT",
+        "date": "Mon, 05 Oct 2026 02:00:56 GMT",
+        "etag": "W/\"9e7154d2ede480b027cc08db9bab3d74\"",
+        "last-modified": "Mon, 05 Oct 2026 01:56:10 GMT",
         "server": "Vercel",
         "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
         "transfer-encoding": "chunked",
         "x-robots-tag": "noindex",
         "x-vercel-cache": "HIT",
-        "x-vercel-id": "gru1::fkbq5-1791165085304-6f507d33406b"
+        "x-vercel-id": "gru1::ngtf6-1791165656581-363ca00ee3a5"
       },
       "rootEmpty": true,
       "rawH1Count": 0,
-      "sha256": "56dc54e9a5de5e4c6ff890d6db39cfcbae0072041d6837ea16af6ef418b5cecb"
+      "sha256": "bf38fc3cc89db3c644ccf4634ce655b0f204c9a464c0aef897efa8074fa84668"
     },
     {
       "route": "/loja/sereia",
       "status": 200,
       "headers": {
         "access-control-allow-origin": "*",
-        "age": "274",
+        "age": "285",
         "cache-control": "public, max-age=0, must-revalidate",
         "content-disposition": "inline; filename=\"index.html\"",
         "content-encoding": "br",
         "content-type": "text/html; charset=utf-8",
-        "date": "Mon, 05 Oct 2026 01:51:25 GMT",
-        "etag": "W/\"19ac615cb4db1b55c8fad788fb5936c5\"",
-        "last-modified": "Mon, 05 Oct 2026 01:46:50 GMT",
+        "date": "Mon, 05 Oct 2026 02:00:56 GMT",
+        "etag": "W/\"9e7154d2ede480b027cc08db9bab3d74\"",
+        "last-modified": "Mon, 05 Oct 2026 01:56:10 GMT",
         "server": "Vercel",
         "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
         "transfer-encoding": "chunked",
         "x-robots-tag": "noindex",
         "x-vercel-cache": "HIT",
-        "x-vercel-id": "gru1::57r6r-1791165085312-66692a7176d9"
+        "x-vercel-id": "gru1::x67pn-1791165656544-5a7b937ee1d7"
       },
       "rootEmpty": true,
       "rawH1Count": 0,
-      "sha256": "56dc54e9a5de5e4c6ff890d6db39cfcbae0072041d6837ea16af6ef418b5cecb"
+      "sha256": "bf38fc3cc89db3c644ccf4634ce655b0f204c9a464c0aef897efa8074fa84668"
     },
     {
       "route": "/loja/zeus",
       "status": 200,
       "headers": {
         "access-control-allow-origin": "*",
-        "age": "274",
+        "age": "285",
         "cache-control": "public, max-age=0, must-revalidate",
         "content-disposition": "inline; filename=\"index.html\"",
         "content-encoding": "br",
         "content-type": "text/html; charset=utf-8",
-        "date": "Mon, 05 Oct 2026 01:51:25 GMT",
-        "etag": "W/\"19ac615cb4db1b55c8fad788fb5936c5\"",
-        "last-modified": "Mon, 05 Oct 2026 01:46:50 GMT",
+        "date": "Mon, 05 Oct 2026 02:00:56 GMT",
+        "etag": "W/\"9e7154d2ede480b027cc08db9bab3d74\"",
+        "last-modified": "Mon, 05 Oct 2026 01:56:10 GMT",
         "server": "Vercel",
         "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
         "transfer-encoding": "chunked",
         "x-robots-tag": "noindex",
         "x-vercel-cache": "HIT",
-        "x-vercel-id": "gru1::fdqzb-1791165085305-93d8e0b4391e"
+        "x-vercel-id": "gru1::x2cr7-1791165656579-9b9409da793b"
       },
       "rootEmpty": true,
       "rawH1Count": 0,
-      "sha256": "56dc54e9a5de5e4c6ff890d6db39cfcbae0072041d6837ea16af6ef418b5cecb"
+      "sha256": "bf38fc3cc89db3c644ccf4634ce655b0f204c9a464c0aef897efa8074fa84668"
     },
     {
       "route": "/loja/guerreiro",
       "status": 200,
       "headers": {
         "access-control-allow-origin": "*",
-        "age": "274",
+        "age": "285",
         "cache-control": "public, max-age=0, must-revalidate",
         "content-disposition": "inline; filename=\"index.html\"",
         "content-encoding": "br",
         "content-type": "text/html; charset=utf-8",
-        "date": "Mon, 05 Oct 2026 01:51:25 GMT",
-        "etag": "W/\"19ac615cb4db1b55c8fad788fb5936c5\"",
-        "last-modified": "Mon, 05 Oct 2026 01:46:50 GMT",
+        "date": "Mon, 05 Oct 2026 02:00:56 GMT",
+        "etag": "W/\"9e7154d2ede480b027cc08db9bab3d74\"",
+        "last-modified": "Mon, 05 Oct 2026 01:56:10 GMT",
         "server": "Vercel",
         "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
         "transfer-encoding": "chunked",
         "x-robots-tag": "noindex",
         "x-vercel-cache": "HIT",
-        "x-vercel-id": "gru1::8n6h4-1791165085314-a5bc5219295d"
+        "x-vercel-id": "gru1::xlp66-1791165656568-ec67b41df58c"
       },
       "rootEmpty": true,
       "rawH1Count": 0,
-      "sha256": "56dc54e9a5de5e4c6ff890d6db39cfcbae0072041d6837ea16af6ef418b5cecb"
+      "sha256": "bf38fc3cc89db3c644ccf4634ce655b0f204c9a464c0aef897efa8074fa84668"
     },
     {
       "route": "/loja/imperador",
       "status": 200,
       "headers": {
         "access-control-allow-origin": "*",
-        "age": "274",
+        "age": "285",
         "cache-control": "public, max-age=0, must-revalidate",
         "content-disposition": "inline; filename=\"index.html\"",
         "content-encoding": "br",
         "content-type": "text/html; charset=utf-8",
-        "date": "Mon, 05 Oct 2026 01:51:25 GMT",
-        "etag": "W/\"19ac615cb4db1b55c8fad788fb5936c5\"",
-        "last-modified": "Mon, 05 Oct 2026 01:46:50 GMT",
+        "date": "Mon, 05 Oct 2026 02:00:56 GMT",
+        "etag": "W/\"9e7154d2ede480b027cc08db9bab3d74\"",
+        "last-modified": "Mon, 05 Oct 2026 01:56:10 GMT",
         "server": "Vercel",
         "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
         "transfer-encoding": "chunked",
         "x-robots-tag": "noindex",
         "x-vercel-cache": "HIT",
-        "x-vercel-id": "gru1::gsrbr-1791165085310-3ec5999738d4"
+        "x-vercel-id": "gru1::x8msr-1791165656577-3e8e4699194a"
       },
       "rootEmpty": true,
       "rawH1Count": 0,
-      "sha256": "56dc54e9a5de5e4c6ff890d6db39cfcbae0072041d6837ea16af6ef418b5cecb"
+      "sha256": "bf38fc3cc89db3c644ccf4634ce655b0f204c9a464c0aef897efa8074fa84668"
     },
     {
       "route": "/loja/fenix",
       "status": 200,
       "headers": {
         "access-control-allow-origin": "*",
-        "age": "274",
+        "age": "285",
         "cache-control": "public, max-age=0, must-revalidate",
         "content-disposition": "inline; filename=\"index.html\"",
         "content-encoding": "br",
         "content-type": "text/html; charset=utf-8",
-        "date": "Mon, 05 Oct 2026 01:51:25 GMT",
-        "etag": "W/\"19ac615cb4db1b55c8fad788fb5936c5\"",
-        "last-modified": "Mon, 05 Oct 2026 01:46:50 GMT",
+        "date": "Mon, 05 Oct 2026 02:00:56 GMT",
+        "etag": "W/\"9e7154d2ede480b027cc08db9bab3d74\"",
+        "last-modified": "Mon, 05 Oct 2026 01:56:10 GMT",
         "server": "Vercel",
         "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
         "transfer-encoding": "chunked",
         "x-robots-tag": "noindex",
         "x-vercel-cache": "HIT",
-        "x-vercel-id": "gru1::4bzt6-1791165085307-9bcec5a94add"
+        "x-vercel-id": "gru1::24ts5-1791165656573-1023d6cbd680"
       },
       "rootEmpty": true,
       "rawH1Count": 0,
-      "sha256": "56dc54e9a5de5e4c6ff890d6db39cfcbae0072041d6837ea16af6ef418b5cecb"
+      "sha256": "bf38fc3cc89db3c644ccf4634ce655b0f204c9a464c0aef897efa8074fa84668"
     },
     {
       "route": "/404-etapa2-qa",
       "status": 200,
       "headers": {
         "access-control-allow-origin": "*",
-        "age": "274",
+        "age": "285",
         "cache-control": "public, max-age=0, must-revalidate",
         "content-disposition": "inline; filename=\"index.html\"",
         "content-encoding": "br",
         "content-type": "text/html; charset=utf-8",
-        "date": "Mon, 05 Oct 2026 01:51:25 GMT",
-        "etag": "W/\"19ac615cb4db1b55c8fad788fb5936c5\"",
-        "last-modified": "Mon, 05 Oct 2026 01:46:50 GMT",
+        "date": "Mon, 05 Oct 2026 02:00:56 GMT",
+        "etag": "W/\"9e7154d2ede480b027cc08db9bab3d74\"",
+        "last-modified": "Mon, 05 Oct 2026 01:56:10 GMT",
         "server": "Vercel",
         "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
         "transfer-encoding": "chunked",
         "x-robots-tag": "noindex",
         "x-vercel-cache": "HIT",
-        "x-vercel-id": "gru1::r6sn9-1791165085308-cd60d0b715dc"
+        "x-vercel-id": "gru1::8n6h4-1791165656563-347bda80f3a6"
       },
       "rootEmpty": true,
       "rawH1Count": 0,
-      "sha256": "56dc54e9a5de5e4c6ff890d6db39cfcbae0072041d6837ea16af6ef418b5cecb"
+      "sha256": "bf38fc3cc89db3c644ccf4634ce655b0f204c9a464c0aef897efa8074fa84668"
     },
     {
       "route": "/loja/nao-existe",
       "status": 200,
       "headers": {
         "access-control-allow-origin": "*",
-        "age": "274",
+        "age": "285",
         "cache-control": "public, max-age=0, must-revalidate",
         "content-disposition": "inline; filename=\"index.html\"",
         "content-encoding": "br",
         "content-type": "text/html; charset=utf-8",
-        "date": "Mon, 05 Oct 2026 01:51:25 GMT",
-        "etag": "W/\"19ac615cb4db1b55c8fad788fb5936c5\"",
-        "last-modified": "Mon, 05 Oct 2026 01:46:50 GMT",
+        "date": "Mon, 05 Oct 2026 02:00:56 GMT",
+        "etag": "W/\"9e7154d2ede480b027cc08db9bab3d74\"",
+        "last-modified": "Mon, 05 Oct 2026 01:56:10 GMT",
         "server": "Vercel",
         "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
         "transfer-encoding": "chunked",
         "x-robots-tag": "noindex",
         "x-vercel-cache": "HIT",
-        "x-vercel-id": "gru1::j5nxn-1791165085307-755e244f2fac"
+        "x-vercel-id": "gru1::w896v-1791165656569-f18ce03f6fe9"
       },
       "rootEmpty": true,
       "rawH1Count": 0,
-      "sha256": "56dc54e9a5de5e4c6ff890d6db39cfcbae0072041d6837ea16af6ef418b5cecb"
+      "sha256": "bf38fc3cc89db3c644ccf4634ce655b0f204c9a464c0aef897efa8074fa84668"
     },
     {
       "route": "/loja/zeus?utm_source=qa",
       "status": 200,
       "headers": {
         "access-control-allow-origin": "*",
-        "age": "274",
+        "age": "285",
         "cache-control": "public, max-age=0, must-revalidate",
         "content-disposition": "inline; filename=\"index.html\"",
         "content-encoding": "br",
         "content-type": "text/html; charset=utf-8",
-        "date": "Mon, 05 Oct 2026 01:51:25 GMT",
-        "etag": "W/\"19ac615cb4db1b55c8fad788fb5936c5\"",
-        "last-modified": "Mon, 05 Oct 2026 01:46:50 GMT",
+        "date": "Mon, 05 Oct 2026 02:00:56 GMT",
+        "etag": "W/\"9e7154d2ede480b027cc08db9bab3d74\"",
+        "last-modified": "Mon, 05 Oct 2026 01:56:10 GMT",
         "server": "Vercel",
         "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
         "transfer-encoding": "chunked",
         "x-robots-tag": "noindex",
         "x-vercel-cache": "HIT",
-        "x-vercel-id": "gru1::d72dc-1791165085304-d1ae37c530b6"
+        "x-vercel-id": "gru1::j42wx-1791165656566-7abddb58999c"
       },
       "rootEmpty": true,
       "rawH1Count": 0,
-      "sha256": "56dc54e9a5de5e4c6ff890d6db39cfcbae0072041d6837ea16af6ef418b5cecb"
+      "sha256": "bf38fc3cc89db3c644ccf4634ce655b0f204c9a464c0aef897efa8074fa84668"
     },
     {
       "route": "/SOBRE",
       "status": 200,
       "headers": {
         "access-control-allow-origin": "*",
-        "age": "274",
+        "age": "285",
         "cache-control": "public, max-age=0, must-revalidate",
         "content-disposition": "inline; filename=\"index.html\"",
         "content-encoding": "br",
         "content-type": "text/html; charset=utf-8",
-        "date": "Mon, 05 Oct 2026 01:51:25 GMT",
-        "etag": "W/\"19ac615cb4db1b55c8fad788fb5936c5\"",
-        "last-modified": "Mon, 05 Oct 2026 01:46:50 GMT",
+        "date": "Mon, 05 Oct 2026 02:00:56 GMT",
+        "etag": "W/\"9e7154d2ede480b027cc08db9bab3d74\"",
+        "last-modified": "Mon, 05 Oct 2026 01:56:10 GMT",
         "server": "Vercel",
         "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
         "transfer-encoding": "chunked",
         "x-robots-tag": "noindex",
         "x-vercel-cache": "HIT",
-        "x-vercel-id": "gru1::f2t4r-1791165085306-24ff8ee5c72b"
+        "x-vercel-id": "gru1::4l85h-1791165656574-7b843fe2e8e3"
       },
       "rootEmpty": true,
       "rawH1Count": 0,
-      "sha256": "56dc54e9a5de5e4c6ff890d6db39cfcbae0072041d6837ea16af6ef418b5cecb"
+      "sha256": "bf38fc3cc89db3c644ccf4634ce655b0f204c9a464c0aef897efa8074fa84668"
     }
   ],
   "assets": [
     {
-      "path": "/assets/index-BrJ4HRS6.js",
-      "bytes": 633487,
-      "sha256": "79d6245e91d5905b5370ea5615f99bfe387ce968bce4ee92a5cd23ab3dc2fb69",
+      "path": "/assets/index-CX8OyZ51.js",
+      "bytes": 633536,
+      "sha256": "f82f2e862862b250e471100c0e028f3d1227e24cdb33d2394923d61946365f95",
       "identical": true
     },
     {

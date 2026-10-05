@@ -1,12 +1,12 @@
 {
-  "codeCommit": "c5707022e5d72dc0cdf6e31c14be5f585bdb6035",
+  "codeCommit": "8db4e576b381e2355c640b0d895a066022ba691e",
   "source": "GitHub combined commit status",
   "result": {
     "statuses": [
       {
         "context": "Vercel",
         "state": "success",
-        "target_url": "https://vercel.com/saniella/arquetypus-parfum/4g4pCBJWnJafsa3kFcZY5JPmKH7Q"
+        "target_url": "https://vercel.com/saniella/arquetypus-parfum/EDACxvtkZ6J2q1Wrdt3H8KB7R1c1"
       }
     ]
   }
