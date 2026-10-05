@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && npm run build:client && npm run build:server && npm run verify:ssr && npm run prerender && npm run verify:prerender",
+    "build": "npm run verify:vercel && tsc -b && npm run build:client && npm run build:server && npm run verify:ssr && npm run prerender && npm run verify:prerender",
+    "configure:vercel": "node scripts/configure-vercel.mjs --write",
+    "verify:vercel": "node scripts/configure-vercel.mjs",
     "build:client": "vite build --manifest",
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist-server",
     "verify:ssr": "node scripts/smoke-ssr.mjs",

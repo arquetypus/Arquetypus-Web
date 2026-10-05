@@ -1,3 +1,25 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/arquetipos/:id",
+      "destination": "/loja/:id",
+      "permanent": true
+    },
+    {
+      "source": "/kit-descoberta",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/loja/:id((?!(?:(?:a|%61)(?:f|%66)(?:r|%72)(?:o|%6[fF])(?:d|%64)(?:i|%69)(?:t|%74)(?:e|%65)|(?:i|%69)(?:m|%6[dD])(?:p|%70)(?:e|%65)(?:r|%72)(?:a|%61)(?:t|%74)(?:r|%72)(?:i|%69)(?:z|%7[aA])|(?:c|%63)(?:l|%6[cC])(?:e|%65)(?:o|%6[fF])(?:p|%70)(?:a|%61)(?:t|%74)(?:r|%72)(?:a|%61)|(?:f|%66)(?:a|%61)(?:d|%64)(?:a|%61)|(?:s|%73)(?:e|%65)(?:r|%72)(?:e|%65)(?:i|%69)(?:a|%61)|(?:z|%7[aA])(?:e|%65)(?:u|%75)(?:s|%73)|(?:g|%67)(?:u|%75)(?:e|%65)(?:r|%72)(?:r|%72)(?:e|%65)(?:i|%69)(?:r|%72)(?:o|%6[fF])|(?:i|%69)(?:m|%6[dD])(?:p|%70)(?:e|%65)(?:r|%72)(?:a|%61)(?:d|%64)(?:o|%6[fF])(?:r|%72)|(?:f|%66)(?:e|%65)(?:n|%6[eE])(?:i|%69)(?:x|%78))(?:(?:\\.|%2[eE])(?:h|%68)(?:t|%74)(?:m|%6[dD])(?:l|%6[cC]))?/?$)[^/]+)",
+      "destination": "/",
+      "permanent": false
+    }
+  ]
 }

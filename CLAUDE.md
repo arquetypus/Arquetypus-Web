@@ -264,11 +264,14 @@ decisão de produto já tomada:
   após receber e avaliar; estorno do cartão no prazo da operadora; cupom 15% uma vez por CPF, acumula com outras
   promoções e com o Pix; sem promessa de duração na pele (só "10% de essência"). Retenção GA4 no texto = 14 meses
   (o usuário pediu 12, que o GA4 não oferece) — configurar igual. Revisão jurídica recomendada antes de publicar.
-- **Hospedagem na Vercel:** `vercel.json` na raiz reescreve toda rota para `/index.html` (SPA) —
-  sem ele, abrir ou recarregar `/loja/zeus`, `/criadores` etc. direto dá 404. Arquivos estáticos
-  (`/assets`, ícones) continuam servidos antes da regra. Não remover. Endereço que não existe cai na
-  rota `*` → `NotFoundPage` (404 com header, rodapé e botão pra home); como a Vercel responde 200 pra
-  tudo, a página põe `robots: noindex` enquanto está aberta. Produto inexistente (`/loja/xyz`) volta pra home.
+- **Hospedagem na Vercel (SSG na branch `prerender`):** `vercel.json` define Vite, pipeline completo
+  `npm run build`, saída `dist`, `cleanUrls: true` e `trailingSlash: false`. Rewrite SPA removido
+  somente após gerar e verificar 18 páginas + `404.html`. Não restaurar catch-all para home:
+  cada URL deve entregar seu HTML. Arquivos estáticos são servidos diretamente; rota desconhecida
+  recebe 404 própria/noindex. `/arquetipos/:id` usa 308; kit e produto inexistente usam 307 para home.
+  Matcher vem de `ARCHETYPES`: executar `npm run configure:vercel`, revisar e versionar antes do push;
+  `npm run verify:vercel` bloqueia drift no início do build. Produção permanece SPA até Etapa 7
+  autorizada e validada; não interpretar configuração da branch como publicação em produção.
 - **robots.txt, sitemap.xml e llms.txt (out/2026)** são gerados no build (plugin `arquivosSeo` no
   `vite.config.ts`, conteúdo em `src/lib/arquivosSeo.ts`) a partir dos dados do site — produtos e preços
   de `ARCHETYPES`, empresa de `data/empresa.ts`, páginas de `data/rotas.ts` (`PAGINAS_PUBLICAS`: ao criar
@@ -277,10 +280,11 @@ decisão de produto já tomada:
 - **Header e rodapé iguais em todas as páginas (out/2026):** o header é do `Layout`; o
   `FooterBoutique` é montado pela home (por direção visual) e pelo `Layout` em todas as outras rotas
   (`!isHome` — com pop-up aberto o `Layout` olha a página de fundo, então não duplica).
-- **SEO por página (out/2026):** `lib/seo.ts` (`useSeo`) troca título, descrição, canonical e
-  og:title/description/url a cada rota — antes toda página herdava o canonical da home. Títulos
-  "palavra-chave | Arquétypus Parfum"; home em `SEO_HOME` (igual ao `index.html`); PDP monta com nome,
-  sobrenome, frase, família e preço; páginas institucionais via `seoTitle`/`description` do `LegalPage`.
+- **SEO por página (out/2026):** modelo compartilhado em `lib/seoModel.ts`; `RouteSeo` e
+  `lib/seo.ts` aplicam metadados na navegação cliente, renderer injeta o mesmo head no HTML bruto.
+  Títulos, descrição, canonical e OG são próprios de cada rota; canonical sempre oficial,
+  sem hostname de preview. PDP usa nome, sobrenome, frase, família e preço. Não duplicar regras
+  SEO nas páginas ou publicar Offer/avaliações não confirmados.
 - **Favicon (out/2026):** emblema dourado com fundo transparente (`favicon.ico` 16/32/48, `favicon-32.png`);
   ícones de iPhone/app (`apple-touch-icon`, `icon-192/512`) com fundo branco — iOS não aceita transparência.
 - **Revisão de textos (out/2026):** escondida a seção "Quem já vende" de `/criadores` (números de
@@ -335,13 +339,12 @@ decisão de produto já tomada:
   valores (preço cheio riscado via `Preco`). `KIT_TIERS` em `data/home.ts` (escada antiga
   89,90/84,90/79,90 do `KitBuilder`) e `ECON.kitPreco` (Kit Descoberta, 79,90) estão
   desatualizados — revisar ao religar.
-- **Pré-renderização adiada pelo usuário (out/2026).** Hoje o site é SPA: o servidor entrega o mesmo
-  HTML pra toda rota e o JS monta a página — viola a regra 6 ("renderizada no servidor") e faz a prévia
-  de link no WhatsApp/Instagram mostrar a home em vez do produto. Plano combinado: script próprio de
-  pré-renderização no build (React `renderToString` + React Router, sem lib nova — não usar
-  `vite-plugin-prerender` nem `vite-ssg`) pra `/`, `/loja/<9 ids>`, `/criadores` e as 7 institucionais,
-  com título/descrição saindo de `lib/seo.ts`; validar com `curl` sem JS. Fazer antes de divulgar links
-  de produto.
+- **Pré-renderização implementada na branch `prerender` (out/2026):** React `renderToString` +
+  `StaticRouter`, mesma árvore React, hidratação do documento compatível e fallback cliente
+  quando URL/histórico exigem outra árvore. Pipeline gera 18 páginas públicas + 404 em `dist`;
+  renderer/template/evidências privadas em `dist-server` nunca são publicados. Sem framework
+  novo ou plugin SSG. `build:client` isolado não serve como build de deploy. Validar HTML bruto,
+  recursos, roteamento real e paridade antes da Etapa 7; acompanhar plano `MIGRACAO-PRERENDER.md`.
 - **Metadados por página, ajustes adiados pelo usuário (out/2026):** título do produto com volume
   ("Zeus Stormbreak — Body Splash Premium 220 ml | Arquetypus" — decidir o padrão de marca nos títulos),
   descrição do produto com família + 3 notas + 10% de essência (≤155 caracteres), og:image 1200×630 por
