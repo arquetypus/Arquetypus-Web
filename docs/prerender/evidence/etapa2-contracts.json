@@ -1,9 +1,10 @@
 {
-  "collectedAt": "2026-10-05T01:43:00.375Z",
+  "collectedAt": "2026-10-05T01:54:57.906Z",
   "checks": [
     "18 descritores preservam título/descrição/canonical; query/hash/barra final não contaminam head",
     "Nove Products/Breadcrumbs: foto real compartilhada, IDs/canonical/sku coerentes, sem Offer/claims não confirmados",
     "FAQPage mantém perguntas e respostas exatas da baseline, tokens resolvidos",
+    "Caminhos codificados seguem uma decodificação por segmento do Router, sem dupla decodificação ou barra extra",
     "404 genérica sem canonical fictício; caixa conforme Router; render puro sem vazamento; serialização segura",
     "Build ainda SPA deliberadamente; Etapas 3/4 não antecipadas"
   ],

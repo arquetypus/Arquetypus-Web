@@ -61,6 +61,11 @@ try {
   assert.equal(model.resolveSeo('/SOBRE').canonical, model.SITE + '/sobre');
   assert.equal(model.resolveSeo('/LOJA/zeus').canonical, model.SITE + '/loja/zeus');
   assert.equal(model.resolveSeo('/loja/ZEUS').canonical, model.SITE + '/');
+  assert.deepEqual(model.resolveSeo('/%73obre'), model.resolveSeo('/sobre'));
+  assert.deepEqual(model.resolveSeo('/%6Coja/%7Aeus'), model.resolveSeo('/loja/zeus'));
+  assert.equal(model.resolveSeo('/loja/%257Aeus').canonical, model.SITE + '/');
+  assert.equal(model.resolveSeo('/loja%2Fzeus').robots, 'noindex');
+  pass('Caminhos codificados seguem uma decodificação por segmento do Router, sem dupla decodificação ou barra extra');
   const unknown = model.resolveSeo('/404-qa');
   assert.equal(unknown.robots, 'noindex'); assert.deepEqual(unknown.scripts, []);
   assert.equal(model.resolveSeo('/404-qa', { genericNotFound: true }).canonical, undefined);

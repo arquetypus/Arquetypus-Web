@@ -84,12 +84,15 @@ export function faqSchema() {
 
 /** URL real, independente da página mantida ao fundo pelo pop-up. Sem estado global de render. */
 export function resolveSeo(url: string, { genericNotFound = false } = {}): SeoHead {
-  const pathname = new URL(url, SITE).pathname.replace(/\/+$/, '') || '/'
+  let pathname = new URL(url, SITE).pathname
+  // Mesmo contrato de decodePath do Router instalado: uma decodificação por segmento,
+  // mantendo barra codificada dentro do segmento. Não decodificar o slug duas vezes.
+  try { pathname = pathname.split('/').map((part) => decodeURIComponent(part).replace(/\//g, '%2F')).join('/') } catch { /* Preservar caminho malformado, como o Router. */ }
+  pathname = pathname.replace(/\/+$/, '') || '/'
   const page = PAGINAS_PUBLICAS.find((p) => p.path.toLowerCase() === pathname.toLowerCase())
   const match = pathname.match(/^\/(?:loja|arquetipos)\/([^/]+)$/i)
   // IDs continuam sensíveis a caixa; não usar propriedades herdadas como produtos.
-  let slug = match?.[1]
-  try { if (slug) slug = decodeURIComponent(slug) } catch { /* URL malformada não é produto. */ }
+  const slug = match?.[1].replace(/%2F/g, '/')
   const product = match ? ARCHETYPES.find((a) => a.id === slug) : undefined
   const redirectHome = pathname.toLowerCase() === '/kit-descoberta' || (!!match && !product)
   const metadata = product ? productMetadata(product) : page?.seo ?? (redirectHome ? SEO_HOME : {

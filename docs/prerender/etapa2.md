@@ -8,7 +8,7 @@ Produção e `main` ficam preservadas. O aplicativo publicado ainda é SPA; HTML
 ## Implementação
 
 - `data/rotas.ts` reúne os metadados das nove páginas públicas. Textos extraídos sem alteração e comparados com a baseline da Etapa 1.
-- `lib/seoModel.ts` resolve o descritor puro pela URL real. Query/hash não entram no canonical; barra final e caixa das páginas seguem o contrato existente. IDs de produto permanecem sensíveis a caixa.
+- `lib/seoModel.ts` resolve o descritor puro pela URL real. Query/hash não entram no canonical; barra final e caixa das páginas seguem o contrato existente. IDs de produto permanecem sensíveis a caixa. Caminhos codificados usam uma decodificação por segmento, como o Router instalado; `%2F` não cria segmento extra e slug não sofre dupla decodificação.
 - `RouteSeo` fica dentro do Router e fora dos dois conjuntos de Routes. Páginas/LegalPage/FAQ/404 deixam de disputar o head. O pop-up recebe title, description, canonical e dados estruturados do produto, preservando sua interface.
 - O aplicativo reconcilia scripts por IDs `arq-seo-*`, adota nós existentes, compara JSON estável e remove apenas os IDs de scripts pertencentes ao app. Scripts de terceiros e robots externos permanecem intactos. O noindex da 404 tem proprietário e ID próprios.
 - Organization/WebSite aparecem na home; Product/BreadcrumbList na PDP/pop-up; FAQPage somente na URL da FAQ. A FAQ mantém o JSON anterior integralmente. Offer, avaliações, disponibilidade e códigos internos ficam omitidos conforme o plano.
