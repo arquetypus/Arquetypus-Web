@@ -1,5 +1,7 @@
+import type { ComponentType } from 'react'
 import { Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom'
 import type { Location } from 'react-router-dom'
+import { PAGINAS_PUBLICAS } from '@/data/rotas'
 import { CartProvider } from '@/context/CartContext'
 import { Layout } from '@/components/Layout'
 import { RouteTracker } from '@/components/RouteTracker'
@@ -17,6 +19,22 @@ import { TermosPage } from '@/pages/TermosPage'
 import { SobrePage } from '@/pages/SobrePage'
 import { FaqPage } from '@/pages/FaqPage'
 import { NotFoundPage } from '@/pages/NotFoundPage'
+
+/**
+ * Componente de cada página pública de data/rotas.ts (fora a home). As rotas abaixo saem de PAGINAS_PUBLICAS, que
+ * também alimenta sitemap.xml, llms.txt, SEO e pré-renderização: página nova entra lá, e o `satisfies` obriga a
+ * ligar o componente aqui (sem componente, ou com caminho que não está na lista, o tsc falha).
+ */
+const PAGINAS = {
+  '/criadores': CreatorsPage,
+  '/sobre': SobrePage,
+  '/perguntas-frequentes': FaqPage,
+  '/entrega-e-frete': ShippingPage,
+  '/trocas-e-devolucoes': TrocasPage,
+  '/regras-do-site': RegrasPage,
+  '/privacidade': PrivacyPage,
+  '/termos-de-uso': TermosPage,
+} satisfies Record<Exclude<(typeof PAGINAS_PUBLICAS)[number]['path'], '/'>, ComponentType>
 
 function RedirectToLoja() {
   const { id } = useParams<{ id: string }>()
@@ -43,14 +61,10 @@ export default function App() {
           <Route path="loja/:id" element={<ProductPage />} />
           {/* Kit Descoberta saiu do ar (set/2026) — KitPage/KitSheet ficam no repo pra religar */}
           <Route path="kit-descoberta" element={<Navigate to="/" replace />} />
-          <Route path="criadores" element={<CreatorsPage />} />
-          <Route path="privacidade" element={<PrivacyPage />} />
-          <Route path="entrega-e-frete" element={<ShippingPage />} />
-          <Route path="trocas-e-devolucoes" element={<TrocasPage />} />
-          <Route path="regras-do-site" element={<RegrasPage />} />
-          <Route path="termos-de-uso" element={<TermosPage />} />
-          <Route path="sobre" element={<SobrePage />} />
-          <Route path="perguntas-frequentes" element={<FaqPage />} />
+          {/* páginas públicas: lista em data/rotas.ts, componente em PAGINAS — não escrever <Route path> solto aqui */}
+          {Object.entries(PAGINAS).map(([path, Pagina]) => (
+            <Route key={path} path={path.slice(1)} element={<Pagina />} />
+          ))}
           {/* qualquer outro endereço: página 404 com link pra home */}
           <Route path="*" element={<NotFoundPage />} />
         </Route>

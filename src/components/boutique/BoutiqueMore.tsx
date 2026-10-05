@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 import type { Archetype } from '@/types/archetype'
 import { getArchetype } from '@/data/archetypes'
 import { FRASCO_CUT_IMG, JOURNAL, UGC_IMG, UGC_VIDEOS, CONTATOS } from '@/data/home'
-import { EMPRESA_LINHA } from '@/data/empresa'
+import { CONDICOES, EMPRESA_LINHA, parcela, precoPix } from '@/data/empresa'
 import { openCookiePreferences } from '@/lib/consent'
 import logoDourado from '@/assets/brand/logo-dourado.png'
 import { useInfiniteCarousel } from '@/lib/useInfiniteCarousel'
@@ -58,7 +58,7 @@ export function FeaturedBoutique({ a, img }: { a: Archetype; img: string }) {
           <div className="mt-6 rounded-2xl bg-papel p-4">
             <Preco a={a} className="text-2xl" />
             <span className="text-xs text-tinta-2">
-              {brl(a.preco * 0.95)} no Pix · ou 6x de {brl(a.preco / 6)} sem juros · {a.tipo} {a.vol}
+              {brl(precoPix(a.preco))} no Pix · ou {CONDICOES.parcelasSemJuros}x de {brl(parcela(a.preco))} sem juros · {a.tipo} {a.vol}
             </span>
           </div>
           <Link

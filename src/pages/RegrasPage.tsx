@@ -1,5 +1,5 @@
 import { Contato, EMPRESA, LegalPage, Section, TextLink } from '@/components/ui/Legal'
-import { OPERACAO } from '@/data/empresa'
+import { CONDICOES, OPERACAO } from '@/data/empresa'
 
 /**
  * Regras do Site (vigência 01/10/2026): as regras de compra — preço, promoções e cupom, pagamento, pedido,
@@ -27,7 +27,7 @@ export function RegrasPage() {
           Cada promoção tem prazo e condições informados na própria oferta.
         </p>
         <p>
-          Ao cadastrar seu e-mail na home, você recebe um cupom de <strong>15% de desconto na primeira compra</strong>. O
+          Ao cadastrar seu e-mail na home, você recebe um cupom de <strong>{CONDICOES.cupomPrimeiraCompraPct}% de desconto na primeira compra</strong>. O
           cupom vale uma única vez por CPF e pode ser usado junto com outras promoções do site, inclusive o desconto do
           Pix.
         </p>
@@ -40,10 +40,10 @@ export function RegrasPage() {
         </p>
         <ul className="list-inside list-disc space-y-1.5">
           <li>
-            <strong>Pix</strong>, com 5% de desconto.
+            <strong>Pix</strong>, com {CONDICOES.pixDescontoPct}% de desconto.
           </li>
           <li>
-            <strong>Cartão de crédito</strong> Visa, Mastercard, Elo, American Express ou Hipercard, em até 6x sem juros.
+            <strong>Cartão de crédito</strong> Visa, Mastercard, Elo, American Express ou Hipercard, em até {CONDICOES.parcelasSemJuros}x sem juros.
           </li>
         </ul>
       </Section>

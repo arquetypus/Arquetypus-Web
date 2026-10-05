@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { EMPRESA as EMPRESA_LINHA, LegalPage, Section, TextLink } from '@/components/ui/Legal'
 import { ARCHETYPES } from '@/data/archetypes'
-import { EMPRESA } from '@/data/empresa'
+import { CONDICOES, EMPRESA } from '@/data/empresa'
 import { FAMILIAS } from '@/data/families'
 import { CONTATOS } from '@/data/home'
 import { Sobrenome } from '@/components/ui/Sobrenome'
@@ -64,8 +64,8 @@ export function SobrePage() {
         <Section title="Cada detalhe importa">
           <p>
             Do perfume à embalagem, tudo é pensado para quem compra para si e para quem presenteia. Nossos produtos são
-            fabricados em indústria com as licenças exigidas e regularizados na Anvisa. E você compra com segurança: 7 dias
-            de garantia, envio em até 24 horas úteis e atendimento direto com a gente — veja as{' '}
+            fabricados em indústria com as licenças exigidas e regularizados na Anvisa. E você compra com segurança:{' '}
+            {CONDICOES.desistenciaDias} dias de garantia, envio em até {CONDICOES.envioHorasUteis} horas úteis e atendimento direto com a gente — veja as{' '}
             <TextLink to="/trocas-e-devolucoes">trocas e devoluções</TextLink>.
           </p>
         </Section>

@@ -5,6 +5,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow'
 import { RatioTag } from '@/components/ui/RatioTag'
 import { useCart } from '@/context/CartContext'
 import kit9Minis from '@/assets/mocks/kit-9-minis.jpg'
+import { CONDICOES, parcela, precoPix } from '@/data/empresa'
 
 export const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
@@ -107,7 +108,7 @@ export function KitPurchase() {
           <span className="font-label text-[10px] text-latao-texto uppercase">Crédito integral no tamanho cheio</span>
         </div>
         <p className="mt-1 text-xs text-tinta-2">
-          {brl(ECON.kitPreco * 0.95)} no Pix · ou 6x de {brl(ECON.kitPreco / 6)} sem juros
+          {brl(precoPix(ECON.kitPreco))} no Pix · ou {CONDICOES.parcelasSemJuros}x de {brl(parcela(ECON.kitPreco))} sem juros
         </p>
         <button
           disabled

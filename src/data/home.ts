@@ -5,7 +5,8 @@
  */
 import { ARCHETYPES, getArchetype } from '@/data/archetypes'
 import { FAMILIAS } from '@/data/families'
-import { EMPRESA, EMPRESA_LINHA, FRETE_GRATIS_ACIMA } from '@/data/empresa'
+import { CONDICOES, EMPRESA, EMPRESA_LINHA, FRETE_GRATIS_ACIMA } from '@/data/empresa'
+import { maiuscula, porExtenso } from '@/lib/extenso'
 import heroVideo from '@/assets/hero/hero-video.mp4'
 import heroVideoPoster from '@/assets/hero/hero-video-poster.jpg'
 // Fotos em src/assets/fotos/ são as escolhidas pela designer (set/2026), convertidas pra JPG.
@@ -68,7 +69,7 @@ export const UGC_IMG: Record<string, string> = {
 }
 
 export const PUV =
-  'Body Splash Premium de perfumaria para quem cansou de cheirar igual a todo mundo e não quer mais escolher fragrância no escuro — nove arquétipos, um teste de 2 minutos e 7 dias de garantia.'
+  `Body Splash Premium de perfumaria para quem cansou de cheirar igual a todo mundo e não quer mais escolher fragrância no escuro — ${porExtenso(ARCHETYPES.length, 'm')} arquétipos, um teste de 2 minutos e ${CONDICOES.desistenciaDias} dias de garantia.`
 
 export const HERO_SLIDES = [
   {
@@ -78,7 +79,7 @@ export const HERO_SLIDES = [
     eyebrowColor: '#c6a46c',
     // encurtado (out/2026): sem o "Descubra", que o CTA do quiz já diz logo abaixo
     heading: 'Qual versão de você\nquer expressar hoje?',
-    sub: 'Nove fragrâncias. Diferentes formas de expressão.',
+    sub: `${maiuscula(porExtenso(ARCHETYPES.length))} fragrâncias. Diferentes formas de expressão.`,
     requisito: 'VÍDEO · 9:16 · 1080×1920 · HERO FULLSCREEN · AUTOPLAY MUTED',
     img: heroVideoPoster,
     imgDesktop: heroVideoDesktop,
@@ -125,14 +126,14 @@ export const QUIZ_CTA = { label: 'Descubra seus arquétipos', aviso: 'Teste de 2
 export const SEALS = ['Entrega garantida', 'Rápido e seguro', 'Vegano', 'Cruelty free']
 
 /** Faixa de benefícios da home (marquee no lugar do bloco de garantia, out/2026). Textos que já existem no site:
- *  selos da PDP (envio, garantia, pagamento) e as condições de preço (6x sem juros, 5% no Pix = preço × 0,95).
+ *  selos da PDP (envio, garantia, pagamento) e as condições de preço (parcelas e Pix vêm de CONDICOES em data/empresa.ts).
  *  `icon`: path SVG de traço, viewBox 24. */
 export const BENEFITS = [
-  { label: '7 dias de garantia', icon: 'M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6zM9 12l2 2 4-4' },
-  { label: 'Envio em 24 h úteis', icon: 'M3 7h11v9H3zM14 10h4l3 3v3h-7M7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z' },
+  { label: `${CONDICOES.desistenciaDias} dias de garantia`, icon: 'M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6zM9 12l2 2 4-4' },
+  { label: `Envio em ${CONDICOES.envioHorasUteis} h úteis`, icon: 'M3 7h11v9H3zM14 10h4l3 3v3h-7M7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z' },
   { label: 'Pagamento seguro', icon: 'M6 11h12v9H6zM8.5 11V8a3.5 3.5 0 0 1 7 0v3' },
-  { label: '6x sem juros', icon: 'M3 6h18v12H3zM3 10h18M7 15h4' },
-  { label: '5% off no Pix', icon: 'M3 12V4h8l10 10-8 8zM7.5 7.5h.01' },
+  { label: `${CONDICOES.parcelasSemJuros}x sem juros`, icon: 'M3 6h18v12H3zM3 10h18M7 15h4' },
+  { label: `${CONDICOES.pixDescontoPct}% off no Pix`, icon: 'M3 12V4h8l10 10-8 8zM7.5 7.5h.01' },
 ]
 
 export const DIAGNOSIS = [
@@ -347,11 +348,11 @@ export const HOME_COPY = {
     cta: 'Descobrir',
   },
   garantia: {
-    dias: '07',
+    dias: String(CONDICOES.desistenciaDias).padStart(2, '0'),
     label: 'Dias de garantia',
     title: ['Experimente na pele.', 'Descubra se essa fragrância combina com você.'] as const,
     body: ['Deixe a fragrância se revelar.', 'Se não for para você, devolvemos o valor.'] as const,
-    nota: '7 dias para desistir da compra · Produto lacrado e sem uso',
+    nota: `${CONDICOES.desistenciaDias} dias para desistir da compra · Produto lacrado e sem uso`,
   },
   criadores: {
     eyebrow: 'Para criadores',
@@ -364,7 +365,7 @@ export const HOME_COPY = {
   diario: { eyebrow: 'Descubra mais sobre perfumaria', title: 'Diário olfativo', breve: 'Em breve' },
   cupom: {
     eyebrow: 'Primeira compra',
-    valor: '15%',
+    valor: `${CONDICOES.cupomPrimeiraCompraPct}%`,
     title: 'na sua primeira Arquétypus.',
     body: 'Receba seu benefício e descubra primeiro as novidades da Arquétypus.',
     cta: 'Quero meu cupom',

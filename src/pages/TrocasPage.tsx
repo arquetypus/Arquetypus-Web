@@ -1,5 +1,5 @@
 import { Contato, EMPRESA, LegalPage, Section, SubSection, TextLink } from '@/components/ui/Legal'
-import { OPERACAO } from '@/data/empresa'
+import { CONDICOES, OPERACAO } from '@/data/empresa'
 
 /**
  * Política de Trocas e Devoluções (vigência 01/10/2026). Regras confirmadas pelo usuário: arrependimento em 7 dias
@@ -14,11 +14,11 @@ export function TrocasPage() {
       <Section title="1. Em resumo">
         <ul className="list-inside list-disc space-y-1.5">
           <li>
-            <strong>Desistiu da compra?</strong> Você tem 7 dias corridos a partir do recebimento, com o produto lacrado e
+            <strong>Desistiu da compra?</strong> Você tem {CONDICOES.desistenciaDias} dias corridos a partir do recebimento, com o produto lacrado e
             sem uso.
           </li>
           <li>
-            <strong>Chegou com defeito?</strong> Você tem 30 dias para nos avisar, mesmo com o produto aberto.
+            <strong>Chegou com defeito?</strong> Você tem {CONDICOES.defeitoDias} dias para nos avisar, mesmo com o produto aberto.
           </li>
           <li>
             <strong>O frete de volta</strong> é sempre por nossa conta.
@@ -28,7 +28,7 @@ export function TrocasPage() {
 
       <Section title="2. Desistência da compra">
         <p>
-          Comprou e mudou de ideia? Você pode desistir em até <strong>7 dias corridos</strong> a partir do recebimento,
+          Comprou e mudou de ideia? Você pode desistir em até <strong>{CONDICOES.desistenciaDias} dias corridos</strong> a partir do recebimento,
           como garante o Código de Defesa do Consumidor (art. 49) para compras feitas pela internet.
         </p>
         <p>
@@ -44,7 +44,7 @@ export function TrocasPage() {
       <Section title="3. Produto com defeito">
         <p>
           Se o produto apresentar defeito — vazamento, válvula que não borrifa, frasco trincado ou tampa danificada —,
-          avise em até <strong>30 dias</strong> a partir do recebimento (art. 26 do Código de Defesa do Consumidor),
+          avise em até <strong>{CONDICOES.defeitoDias} dias</strong> a partir do recebimento (art. 26 do Código de Defesa do Consumidor),
           mesmo que ele já tenha sido aberto. Você escolhe: troca pelo mesmo produto, troca por outro de mesmo valor ou
           reembolso.
         </p>

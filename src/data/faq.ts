@@ -1,9 +1,14 @@
 /**
  * Perguntas frequentes (revisadas em out/2026). FAQ_PRODUTO aparece na página do produto (PDP) e em
  * /perguntas-frequentes; FAQ_LOJA só nesta última. Respostas com {{token}} viram link na página (ver FaqPage).
- * Texto aqui, nunca no componente. Regras do usuário: sem promessa de duração na pele (só a concentração de 10%);
+ * Texto aqui, nunca no componente. Números comerciais (prazos, Pix, parcelas, essência) vêm de CONDICOES.
+ * Regras do usuário: sem promessa de duração na pele (só a concentração de 10%);
  * desistência em 7 dias com o produto lacrado e sem uso.
  */
+import { ARCHETYPES } from '@/data/archetypes'
+import { brlInteiro, CONDICOES, FRETE_GRATIS_ACIMA, OPERACAO } from '@/data/empresa'
+import { porExtenso } from '@/lib/extenso'
+
 export interface Pergunta {
   q: string
   a: string
@@ -12,11 +17,11 @@ export interface Pergunta {
 export const FAQ_PRODUTO: Pergunta[] = [
   {
     q: 'Qual a diferença entre Body Splash Premium e perfume?',
-    a: 'O Body Splash Premium é feito para o corpo todo, com sensação de frescor e reaplicação livre ao longo do dia. O nosso tem 10% de essência — bem acima dos cerca de 4% de um body splash tradicional. O perfume concentra mais essência e é aplicado em pontos específicos. Um não substitui o outro: muita gente usa os dois em camadas.',
+    a: `O Body Splash Premium é feito para o corpo todo, com sensação de frescor e reaplicação livre ao longo do dia. O nosso tem ${CONDICOES.essenciaPct}% de essência — bem acima dos cerca de 4% de um body splash tradicional. O perfume concentra mais essência e é aplicado em pontos específicos. Um não substitui o outro: muita gente usa os dois em camadas.`,
   },
   {
-    q: 'O que significa ter 10% de essência?',
-    a: 'É a proporção de fragrância na fórmula. Com 10% de essência, o Body Splash Premium tem mais intensidade e presença do que um body splash tradicional. A percepção muda de pessoa para pessoa, com o tipo de pele e o clima — aplicar logo depois do banho, com a pele ainda úmida, ajuda a fragrância a se revelar.',
+    q: `O que significa ter ${CONDICOES.essenciaPct}% de essência?`,
+    a: `É a proporção de fragrância na fórmula. Com ${CONDICOES.essenciaPct}% de essência, o Body Splash Premium tem mais intensidade e presença do que um body splash tradicional. A percepção muda de pessoa para pessoa, com o tipo de pele e o clima — aplicar logo depois do banho, com a pele ainda úmida, ajuda a fragrância a se revelar.`,
   },
   { q: 'Posso usar todos os dias?', a: 'Sim. É um produto de uso diário, para o corpo todo. Reaplique quando quiser.' },
   {
@@ -37,11 +42,11 @@ export const FAQ_PRODUTO: Pergunta[] = [
   },
   {
     q: 'E se eu não gostar da fragrância?',
-    a: 'Você tem 7 dias a partir do recebimento para desistir da compra, com o produto lacrado e sem uso. Para escolher com segurança antes de abrir, veja as notas olfativas e a família de cada fragrância na página do produto.',
+    a: `Você tem ${CONDICOES.desistenciaDias} dias a partir do recebimento para desistir da compra, com o produto lacrado e sem uso. Para escolher com segurança antes de abrir, veja as notas olfativas e a família de cada fragrância na página do produto.`,
   },
   {
     q: 'Como funciona a entrega?',
-    a: 'Enviamos em até 24 horas úteis depois da aprovação do pagamento, para todo o Brasil. O frete é grátis acima de R$ 199, e o prazo aparece no carrinho assim que você informa o CEP.',
+    a: `Enviamos em até ${CONDICOES.envioHorasUteis} horas úteis depois da aprovação do pagamento, para todo o Brasil. O frete é grátis acima de ${brlInteiro(FRETE_GRATIS_ACIMA)}, e o prazo aparece no carrinho assim que você informa o CEP.`,
   },
 ]
 
@@ -52,7 +57,7 @@ export const FAQ_LOJA: Pergunta[] = [
   },
   {
     q: 'Os produtos são originais?',
-    a: 'Sim. Os nove Body Splash Premium são criados e vendidos pela própria Arquétypus — não revendemos outras marcas. Todos são fabricados em indústria com as licenças exigidas e regularizados na Anvisa.',
+    a: `Sim. Os ${porExtenso(ARCHETYPES.length, 'm')} Body Splash Premium são criados e vendidos pela própria Arquétypus — não revendemos outras marcas. Todos são fabricados em indústria com as licenças exigidas e regularizados na Anvisa.`,
   },
   {
     q: 'A Arquétypus tem CNPJ e emite nota fiscal?',
@@ -60,15 +65,15 @@ export const FAQ_LOJA: Pergunta[] = [
   },
   {
     q: 'Quais são as formas de pagamento?',
-    a: 'Pix, com 5% de desconto, e cartão de crédito Visa, Mastercard, Elo, American Express ou Hipercard em até 6x sem juros. Os pagamentos são processados pelo Mercado Pago.',
+    a: `Pix, com ${CONDICOES.pixDescontoPct}% de desconto, e cartão de crédito Visa, Mastercard, Elo, American Express ou Hipercard em até ${CONDICOES.parcelasSemJuros}x sem juros. Os pagamentos são processados pelo ${OPERACAO.pagamento}.`,
   },
   {
     q: 'Como funciona o cupom de primeira compra?',
-    a: 'Cadastre seu e-mail na home e receba 15% de desconto na primeira compra. O cupom vale uma vez por CPF e pode ser usado junto com outras promoções, inclusive o desconto do Pix. Regras completas em {{regras}}.',
+    a: `Cadastre seu e-mail na home e receba ${CONDICOES.cupomPrimeiraCompraPct}% de desconto na primeira compra. O cupom vale uma vez por CPF e pode ser usado junto com outras promoções, inclusive o desconto do Pix. Regras completas em {{regras}}.`,
   },
   {
     q: 'Em quanto tempo meu pedido é enviado?',
-    a: 'Em até 24 horas úteis depois da aprovação do pagamento. Os envios são feitos pela plataforma Melhor Envio, com Correios, Jadlog ou J&T Express — você escolhe a opção no carrinho, com o valor e o prazo para o seu CEP. Detalhes em {{entrega}}.',
+    a: `Em até ${CONDICOES.envioHorasUteis} horas úteis depois da aprovação do pagamento. Os envios são feitos pela plataforma ${OPERACAO.frete}, com Correios, Jadlog ou J&T Express — você escolhe a opção no carrinho, com o valor e o prazo para o seu CEP. Detalhes em {{entrega}}.`,
   },
   {
     q: 'Como acompanho a entrega?',
@@ -76,7 +81,7 @@ export const FAQ_LOJA: Pergunta[] = [
   },
   {
     q: 'Posso trocar ou devolver?',
-    a: 'Sim. Você tem 7 dias a partir do recebimento para desistir da compra, com o produto lacrado e sem uso, e 30 dias para nos avisar de um defeito. O frete de volta é por nossa conta. Veja {{trocas}}.',
+    a: `Sim. Você tem ${CONDICOES.desistenciaDias} dias a partir do recebimento para desistir da compra, com o produto lacrado e sem uso, e ${CONDICOES.defeitoDias} dias para nos avisar de um defeito. O frete de volta é por nossa conta. Veja {{trocas}}.`,
   },
   {
     q: 'As fotos são reais?',

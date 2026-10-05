@@ -1,5 +1,5 @@
 import { Contato, EMPRESA, LegalPage, Section, TextLink } from '@/components/ui/Legal'
-import { OPERACAO } from '@/data/empresa'
+import { CONDICOES, OPERACAO } from '@/data/empresa'
 import { REWARD_FREIGHT } from '@/data/home'
 
 const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
@@ -16,7 +16,7 @@ export function ShippingPage() {
     >
       <Section title="1. Quando seu pedido é enviado">
         <p>
-          Seu pedido é preparado e postado em até <strong>24 horas úteis</strong> depois que o pagamento é aprovado. No
+          Seu pedido é preparado e postado em até <strong>{CONDICOES.envioHorasUteis} horas úteis</strong> depois que o pagamento é aprovado. No
           Pix, a aprovação costuma ser imediata; no cartão de crédito, ela acontece quando a operadora confirma a compra.
           Pedidos aprovados em fins de semana ou feriados seguem no próximo dia útil.
         </p>

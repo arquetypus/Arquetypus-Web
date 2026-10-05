@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { CONDICOES } from '@/data/empresa'
 
 const SESSION_KEY = 'arquetypus_capture_shown'
 
@@ -48,7 +49,7 @@ export function CaptureModal() {
               Primeira compra
             </p>
             <h2 className="mt-2 font-display text-2xl">
-              15% na sua
+              {CONDICOES.cupomPrimeiraCompraPct}% na sua
               <br />
               primeira Arquétypus
             </h2>

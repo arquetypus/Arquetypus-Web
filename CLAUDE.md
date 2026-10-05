@@ -275,9 +275,17 @@ decisão de produto já tomada:
   `prerender` foi integrada e removida. Operação e manutenção em `README.md`.
 - **robots.txt, sitemap.xml e llms.txt (out/2026)** são gerados no build (plugin `arquivosSeo` no
   `vite.config.ts`, conteúdo em `src/lib/arquivosSeo.ts`) a partir dos dados do site — produtos e preços
-  de `ARCHETYPES`, empresa de `data/empresa.ts`, páginas de `data/rotas.ts` (`PAGINAS_PUBLICAS`: ao criar
-  ou remover página em `App.tsx`, atualizar lá também). Não criar esses arquivos à mão em `public/`. Também
-  respondem em `npm run dev`. Frete grátis agora vem de `FRETE_GRATIS_ACIMA` (`data/empresa.ts`).
+  de `ARCHETYPES`, empresa de `data/empresa.ts`, páginas de `data/rotas.ts`. Não criar esses arquivos à mão
+  em `public/`. Também respondem em `npm run dev`. Frete grátis vem de `FRETE_GRATIS_ACIMA` (`data/empresa.ts`).
+  - **Página pública nova:** cadastrar em `PAGINAS_PUBLICAS` (`data/rotas.ts`) e ligar o componente em `PAGINAS`
+    no `App.tsx` — as rotas saem dessa lista. O `satisfies` faz o `tsc` falhar se faltar componente ou sobrar
+    caminho, e o `verify:ssr` falha se alguém escrever `<Route path="…">` solto no `App.tsx` (só produto,
+    redirecionamentos e 404 ficam fora da lista).
+  - **Números comerciais** (Pix, parcelas, prazos de desistência/defeito/envio, % de essência, cupom) vêm de
+    `CONDICOES` em `data/empresa.ts`, com `precoPix`/`parcela` pras contas; a quantidade de fragrâncias por extenso
+    vem de `ARCHETYPES.length` (`lib/extenso.ts`). Site, FAQ, políticas, descrições de SEO e `llms.txt` leem dali —
+    nunca escrever "6x", "5%", "7 dias" etc. à mão. As direções desligadas ainda têm "6x" escrito no texto
+    (as contas já usam `CONDICOES`).
 - **Header e rodapé iguais em todas as páginas (out/2026):** o header é do `Layout`; o
   `FooterBoutique` é montado pela home (por direção visual) e pelo `Layout` em todas as outras rotas
   (`!isHome` — com pop-up aberto o `Layout` olha a página de fundo, então não duplica).

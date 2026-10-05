@@ -1,4 +1,5 @@
 import { comissaoTexto } from '@/data/economics'
+import { parcela, precoPix } from '@/data/empresa'
 import type { Archetype } from '@/types/archetype'
 
 /**
@@ -15,8 +16,8 @@ export type CatalogProps = {
 }
 
 export const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-export const pix = (v: number) => v * 0.95
-export const parcela = (v: number) => v / 6
+export const pix = precoPix
+export { parcela }
 
 const ROMANOS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII']
 /** "ARQ-07" → "VII" (numeração de arcano das cartas do Oráculo) */

@@ -7,6 +7,7 @@ import heroColecao from '@/assets/fotos/hero/colecao-desktop.jpg'
 import { Sobrenome } from '@/components/ui/Sobrenome'
 import { Preco } from '@/components/ui/Preco'
 import { Avaliacao } from '@/components/ui/Avaliacao'
+import { CONDICOES, parcela, precoPix } from '@/data/empresa'
 
 /**
  * Direção "Boutique" (ThemeSwitcher) — pegada de loja: tudo a um clique da compra. Hero compacto com os
@@ -64,7 +65,7 @@ export function HeroBoutique() {
           <div className="absolute bottom-4 left-4 rounded-2xl bg-papel/95 px-4 py-3 shadow-lg backdrop-blur">
             <span className="block font-label text-[9px] tracking-[0.16em] text-tinta-3 uppercase">A partir de</span>
             <Preco a={MAIS_BARATO} className="font-display text-2xl leading-tight" />
-            <span className="block text-[11px] text-tinta-2">ou {brl(PRECO_MIN * 0.95)} no Pix</span>
+            <span className="block text-[11px] text-tinta-2">ou {brl(precoPix(PRECO_MIN))} no Pix</span>
           </div>
         </div>
       </div>
@@ -167,7 +168,7 @@ export function CatalogGrid({
                       (out/2026) e segue no pop-up/PDP */}
                   <div className="mt-3 flex flex-col lg:mt-0.5 lg:shrink-0 lg:items-end lg:text-right">
                     <Preco a={a} className="text-base lg:flex-col lg:items-end lg:gap-y-0.5 lg:text-xl" />
-                    <span className="mt-0.5 text-[11px] text-tinta-2 lg:mt-1 lg:text-xs">6x {brl(a.preco / 6)} sem juros</span>
+                    <span className="mt-0.5 text-[11px] text-tinta-2 lg:mt-1 lg:text-xs">{CONDICOES.parcelasSemJuros}x {brl(parcela(a.preco))} sem juros</span>
                   </div>
                 </div>
                 <div className="mt-auto pt-3.5">

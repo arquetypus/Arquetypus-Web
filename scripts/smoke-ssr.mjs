@@ -134,6 +134,13 @@ try {
     const { PAGINAS_PUBLICAS } = await server.ssrLoadModule('/src/data/rotas.ts');
     const { resolveSeo, serializeJsonLd } = await server.ssrLoadModule('/src/lib/seoModel.ts');
     assert.deepEqual(routes, [...PAGINAS_PUBLICAS.map(p => p.path), ...ARCHETYPES.map(a => '/loja/' + a.id)]);
+    // Página pública só existe via PAGINAS_PUBLICAS (sitemap, llms.txt, SEO, prerender); <Route path> literal no
+    // App.tsx fica restrito a produto, redirecionamentos e 404.
+    const app = await readFile(path.join(root, 'src/App.tsx'), 'utf8');
+    const literais = [...app.matchAll(/<Route\b[^>]*\bpath="([^"]+)"/g)].map(m => m[1]);
+    const foraDoSitemap = ['arquetipos/:id', 'loja/:id', 'kit-descoberta', '*'];
+    assert.deepEqual(literais.filter(p => !foraDoSitemap.includes(p)), [],
+      'Rota escrita à mão no App.tsx: cadastrar em PAGINAS_PUBLICAS (src/data/rotas.ts) e ligar em PAGINAS');
     // Contrato permanente: validar dados atuais, sem depender de snapshots da migração.
     for (const row of rows) {
       const expected = resolveSeo(row.route);

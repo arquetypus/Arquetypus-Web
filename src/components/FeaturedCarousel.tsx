@@ -18,6 +18,7 @@ import featuredZeusDesktop from '@/assets/fotos/destaque-zeus-desktop.jpg'
 import { Sobrenome } from '@/components/ui/Sobrenome'
 import { Preco } from '@/components/ui/Preco'
 import { Avaliacao } from '@/components/ui/Avaliacao'
+import { CONDICOES, parcela, precoPix } from '@/data/empresa'
 
 /** Banners do "Arquétipo em destaque", na ordem. `bg` é o fundo do card, na cor da foto: burgundy da marca
  *  (Fênix), azul-petróleo do mar (Sereia) e bege escurecido de céu nublado (Zeus). Hex, não var(): a cor anima
@@ -195,7 +196,7 @@ export function FeaturedCarousel() {
                 </div>
                 {/* regra 7: Pix e parcelamento junto do preço — mesma conta do ProductPurchase */}
                 <p className="mt-1.5 text-[12px] text-papel-inv/60">
-                  {brl(a.preco * 0.95)} no Pix · ou 6x de {brl(a.preco / 6)} sem juros
+                  {brl(precoPix(a.preco))} no Pix · ou {CONDICOES.parcelasSemJuros}x de {brl(parcela(a.preco))} sem juros
                 </p>
                 <p className="mt-2.5 max-w-[32ch] text-[13px] leading-relaxed text-papel-inv/75 lg:mt-4 lg:max-w-[42ch] lg:text-[15px]">{a.cheiro[1]}</p>
 

@@ -8,13 +8,14 @@ import { ProductGallery } from '@/components/ProductGallery'
 import { Sobrenome } from '@/components/ui/Sobrenome'
 import { Preco } from '@/components/ui/Preco'
 import { PDP_FRASCO, PDP_LIFESTYLE } from '@/data/productMedia'
+import { CONDICOES, parcela, precoPix } from '@/data/empresa'
 
 export const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
 // Selos de confiança (P-08) — ícones de traço, mesmo estilo dos selos da home
 const TRUST = [
-  { label: ['Envio em', '24 h úteis'], icon: 'M3 7h11v9H3zM14 10h4l3 3v3h-7M7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z' },
-  { label: ['7 dias de', 'garantia'], icon: 'M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6zM9 12l2 2 4-4' },
+  { label: ['Envio em', `${CONDICOES.envioHorasUteis} h úteis`], icon: 'M3 7h11v9H3zM14 10h4l3 3v3h-7M7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z' },
+  { label: [`${CONDICOES.desistenciaDias} dias de`, 'garantia'], icon: 'M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6zM9 12l2 2 4-4' },
   { label: ['Pagamento', 'seguro'], icon: 'M6 11h12v9H6zM8.5 11V8a3.5 3.5 0 0 1 7 0v3' },
 ]
 
@@ -52,7 +53,7 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
   const [addonPar, setAddonPar] = useState(false)
   const [added, setAdded] = useState(false)
 
-  const pix = selected.price * 0.95
+  const pix = precoPix(selected.price)
 
   function addToCart() {
     addItem({
@@ -199,7 +200,7 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
               <div className={compact ? 'max-lg:flex max-lg:items-end max-lg:justify-between max-lg:gap-3' : ''}>
                 <Preco a={a} className="font-display text-2xl lg:text-[30px] lg:leading-none" />
                 <p className={`mt-1 text-xs text-tinta-2 lg:mt-2 lg:text-[13px] ${compact ? 'max-lg:mt-0 max-lg:pb-1 max-lg:text-right max-lg:text-[11px]' : ''}`}>
-                  {brl(pix)} no Pix · ou 6x de {brl(selected.price / 6)} sem juros
+                  {brl(pix)} no Pix · ou {CONDICOES.parcelasSemJuros}x de {brl(parcela(selected.price))} sem juros
                 </p>
               </div>
               <p className={`mt-1.5 font-label text-[10px] text-ok uppercase ${compact ? 'max-lg:hidden' : ''}`}>● Em estoque e pronto para envio</p>

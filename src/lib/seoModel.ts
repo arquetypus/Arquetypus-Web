@@ -1,5 +1,5 @@
 import { ARCHETYPES } from '@/data/archetypes'
-import { EMPRESA } from '@/data/empresa'
+import { CONDICOES, EMPRESA } from '@/data/empresa'
 import { CONTATOS } from '@/data/home'
 import { FAQ_LOJA, FAQ_PRODUTO } from '@/data/faq'
 import { respostaTexto } from '@/data/faqText'
@@ -48,7 +48,7 @@ const brlSeo = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', cur
 export function productMetadata(a: Archetype) {
   return {
     title: comMarca(`${a.nome} ${a.sobrenome ?? ''} – ${a.tipo}`.replace(/\s+–/, ' –')),
-    description: `${a.nome} ${a.sobrenome ?? ''}: ${a.ep} ${a.tipo} ${a.vol} com 10% de essência, família ${a.fam}. ${brlSeo(a.preco)} em até 6x sem juros.`,
+    description: `${a.nome} ${a.sobrenome ?? ''}: ${a.ep} ${a.tipo} ${a.vol} com ${CONDICOES.essenciaPct}% de essência, família ${a.fam}. ${brlSeo(a.preco)} em até ${CONDICOES.parcelasSemJuros}x sem juros.`,
   }
 }
 

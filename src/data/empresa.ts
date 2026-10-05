@@ -31,3 +31,24 @@ export const OPERACAO = {
 
 /** Frete grátis a partir deste valor (R$) — home, Entrega e Frete, FAQ e llms.txt leem daqui */
 export const FRETE_GRATIS_ACIMA = 199
+
+/**
+ * Condições comerciais (confirmadas pelo usuário, out/2026) — preço no Pix, parcelas, prazos e concentração. Site,
+ * descrições de SEO (data/rotas.ts, lib/seoModel.ts) e llms.txt leem daqui: mudar só aqui e rodar o build.
+ */
+export const CONDICOES = {
+  pixDescontoPct: 5,
+  parcelasSemJuros: 6,
+  desistenciaDias: 7,
+  defeitoDias: 30,
+  envioHorasUteis: 24,
+  essenciaPct: 10,
+  cupomPrimeiraCompraPct: 15,
+} as const
+
+/** Preço no Pix (desconto de CONDICOES.pixDescontoPct) */
+export const precoPix = (v: number) => v * (1 - CONDICOES.pixDescontoPct / 100)
+/** Valor de cada parcela sem juros */
+export const parcela = (v: number) => v / CONDICOES.parcelasSemJuros
+/** Valor redondo em reais, sem centavos ("R$ 199") — pra frete grátis em textos e descrições */
+export const brlInteiro = (v: number) => `R$ ${v.toLocaleString('pt-BR')}`

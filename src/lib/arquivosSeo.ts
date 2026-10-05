@@ -1,5 +1,6 @@
 import { ARCHETYPES } from '@/data/archetypes'
-import { EMPRESA, FRETE_GRATIS_ACIMA, OPERACAO } from '@/data/empresa'
+import { CONDICOES, EMPRESA, FRETE_GRATIS_ACIMA, OPERACAO } from '@/data/empresa'
+import { porExtenso } from '@/lib/extenso'
 import { PAGINAS_PUBLICAS } from '@/data/rotas'
 
 /**
@@ -44,13 +45,15 @@ export function llmsTxt(): string {
   return [
     `# ${EMPRESA.marca}`,
     '',
-    '> Perfumaria de arquétipos brasileira: nove fragrâncias Body Splash Premium com 10% de essência, cada uma ' +
+    `> Perfumaria de arquétipos brasileira: ${porExtenso(ARCHETYPES.length)} fragrâncias Body Splash Premium com ` +
+      `${CONDICOES.essenciaPct}% de essência, cada uma ` +
       'traduzindo um arquétipo. "Você não escolhe um perfume. Você reconhece o seu."',
     '',
     `A ${EMPRESA.marca} é uma marca da ${EMPRESA.razao} (CNPJ ${EMPRESA.cnpj}), loja 100% online que entrega em todo ` +
-      `o Brasil. Envio em até 24 horas úteis após a aprovação do pagamento, frete grátis acima de ` +
-      `${brl(FRETE_GRATIS_ACIMA)}, Pix com 5% de desconto e cartão em até 6x sem juros (${OPERACAO.pagamento}). ` +
-      'Desistência em até 7 dias com o produto lacrado e sem uso; 30 dias para defeito. Produtos regularizados na Anvisa. ' +
+      `o Brasil. Envio em até ${CONDICOES.envioHorasUteis} horas úteis após a aprovação do pagamento, frete grátis acima de ` +
+      `${brl(FRETE_GRATIS_ACIMA)}, Pix com ${CONDICOES.pixDescontoPct}% de desconto e cartão em até ${CONDICOES.parcelasSemJuros}x sem juros ` +
+      `(${OPERACAO.pagamento}). Desistência em até ${CONDICOES.desistenciaDias} dias com o produto lacrado e sem uso; ` +
+      `${CONDICOES.defeitoDias} dias para defeito. Produtos regularizados na Anvisa. ` +
       `Contato: ${EMPRESA.email}.`,
     '',
     '## Produtos',
