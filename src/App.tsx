@@ -1,5 +1,5 @@
 import type { ComponentType } from 'react'
-import { Navigate, Route, Routes, useLocation, useParams } from 'react-router-dom'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import type { Location } from 'react-router-dom'
 import { PAGINAS_PUBLICAS } from '@/data/rotas'
 import { CartProvider } from '@/context/CartContext'
@@ -36,11 +36,6 @@ const PAGINAS = {
   '/termos-de-uso': TermosPage,
 } satisfies Record<Exclude<(typeof PAGINAS_PUBLICAS)[number]['path'], '/'>, ComponentType>
 
-function RedirectToLoja() {
-  const { id } = useParams<{ id: string }>()
-  return <Navigate to={`/loja/${id}`} replace />
-}
-
 export default function App() {
   const location = useLocation()
   // link com `state.backgroundLocation` abre /loja/:id como pop-up por cima dessa página;
@@ -56,9 +51,9 @@ export default function App() {
       <Routes location={background ?? location}>
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
-          {/* página antiga de arquétipo foi descartada: links antigos caem na PDP */}
-          <Route path="arquetipos/:id" element={<RedirectToLoja />} />
+          {/* produto em dois endereços com o mesmo conteúdo; canonical sempre /loja/:id (lib/seoModel.ts) */}
           <Route path="loja/:id" element={<ProductPage />} />
+          <Route path="arquetipos/:id" element={<ProductPage />} />
           {/* Kit Descoberta saiu do ar (set/2026) — KitPage/KitSheet ficam no repo pra religar */}
           <Route path="kit-descoberta" element={<Navigate to="/" replace />} />
           {/* páginas públicas: lista em data/rotas.ts, componente em PAGINAS — não escrever <Route path> solto aqui */}

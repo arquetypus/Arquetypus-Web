@@ -1,9 +1,12 @@
 import { ARCHETYPES } from '@/data/archetypes'
 import { PAGINAS_PUBLICAS } from '@/data/rotas'
 
+/** Prefixos da página de produto: /loja/:id e o endereço antigo /arquetipos/:id entregam o mesmo HTML (canonical em /loja). */
+export const PRODUCT_PREFIXES = ['/loja/', '/arquetipos/'] as const
+
 export const PUBLIC_ROUTES = [
   ...PAGINAS_PUBLICAS.map(page => page.path),
-  ...ARCHETYPES.map(product => `/loja/${product.id}`),
+  ...PRODUCT_PREFIXES.flatMap(prefix => ARCHETYPES.map(product => `${prefix}${product.id}`)),
 ]
 
 /** Mesma decodificação por segmento do Router; IDs de produto mantêm caixa. */
@@ -12,9 +15,13 @@ export function matchingPublicRoute(pathname: string, routes: readonly string[])
   try { decoded = pathname.split('/').map(part => decodeURIComponent(part).replace(/\//g, '%2F')).join('/') } catch { /* Router preserva caminho malformado. */ }
   // Layout trata somente "/" como home; múltiplas barras não têm primeira árvore idêntica.
   if (decoded !== '/') decoded = decoded.replace(/\/+$/, '')
-  return routes.find(route => route.startsWith('/loja/')
-    ? decoded.slice(0, 6).toLowerCase() === '/loja/' && decoded.slice(6) === route.slice(6)
-    : route.toLowerCase() === decoded.toLowerCase())
+  // Prefixo de produto sem distinção de caixa; ID com. Lista literal: a função vai serializada pro head.
+  return routes.find(route => {
+    const prefix = ['/loja/', '/arquetipos/'].find(p => route.startsWith(p))
+    return prefix
+      ? decoded.slice(0, prefix.length).toLowerCase() === prefix && decoded.slice(prefix.length) === route.slice(prefix.length)
+      : route.toLowerCase() === decoded.toLowerCase()
+  })
 }
 
 /** Executado no head, antes da primeira pintura; função de matching compartilhada com main. */

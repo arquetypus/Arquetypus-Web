@@ -38,7 +38,7 @@ try {
   const { StaticRouter } = await import('react-router-dom');
   assert.equal(typeof StaticRouter, 'function');
   const { routes, render, DEFAULT_HTML_ATTRIBUTES } = await import(pathToFileURL(path.join(root, 'dist-server/entry-server.js')).href);
-  assert.equal(routes.length, 18);
+  assert.equal(routes.length, 27, '9 páginas + 9 produtos em /loja e em /arquetipos');
   assert.equal(new Set(routes).size, routes.length);
   const manifest = JSON.parse(await readFile(path.join(root, 'dist/.vite/manifest.json'), 'utf8'));
   assert.ok(manifest['index.html'].isEntry);
@@ -102,8 +102,8 @@ try {
       const data = JSON.parse(script.json);
       for (const field of ['image', 'logo']) if (data[field]) resource(new URL(data[field]).pathname);
     }
-    if (route.startsWith('/loja/')) {
-      const id = route.slice('/loja/'.length);
+    if (/^\/(?:loja|arquetipos)\//.test(route)) {
+      const id = route.slice(route.indexOf('/', 1) + 1);
       for (const folder of ['pdp-frasco', 'pdp-lifestyle']) {
         const expected = manifest[`src/assets/fotos/${folder}/${id}.jpg`];
         assert.ok(expected, folder + '/' + id);
@@ -133,7 +133,9 @@ try {
     const { ARCHETYPES, getArchetype } = await server.ssrLoadModule('/src/data/archetypes.ts');
     const { PAGINAS_PUBLICAS } = await server.ssrLoadModule('/src/data/rotas.ts');
     const { resolveSeo, serializeJsonLd } = await server.ssrLoadModule('/src/lib/seoModel.ts');
-    assert.deepEqual(routes, [...PAGINAS_PUBLICAS.map(p => p.path), ...ARCHETYPES.map(a => '/loja/' + a.id)]);
+    assert.deepEqual(routes, [...PAGINAS_PUBLICAS.map(p => p.path), ...ARCHETYPES.map(a => '/loja/' + a.id), ...ARCHETYPES.map(a => '/arquetipos/' + a.id)]);
+    // Endereço antigo: mesmo HTML e mesmo head (canonical /loja) da PDP.
+    for (const a of ARCHETYPES) assert.deepEqual(render('/arquetipos/' + a.id), render('/loja/' + a.id), 'Mesmo conteúdo: ' + a.id);
     // Página pública só existe via PAGINAS_PUBLICAS (sitemap, llms.txt, SEO, prerender); <Route path> literal no
     // App.tsx fica restrito a produto, redirecionamentos e 404.
     const app = await readFile(path.join(root, 'src/App.tsx'), 'utf8');
@@ -162,10 +164,12 @@ try {
     for (const product of ARCHETYPES) assert.equal(getArchetype(product.id), product);
     for (const id of ['constructor', 'toString', '__proto__', 'nao-existe', 'ZEUS']) {
       assert.equal(getArchetype(id), undefined, id);
-      const result = render('/loja/' + id);
-      assert.equal(result.head.canonical, 'https://arquetypus.com.br/');
-      assert.ok(!result.html.includes('Pirâmide olfativa'), id);
-      slugs.push({ id, rejected: true });
+      for (const prefix of ['/loja/', '/arquetipos/']) {
+        const result = render(prefix + id);
+        assert.equal(result.head.canonical, 'https://arquetypus.com.br/');
+        assert.ok(!result.html.includes('Pirâmide olfativa'), prefix + id);
+        slugs.push({ id: prefix + id, rejected: true });
+      }
     }
   } finally { await server.close(); }
   const redirectWarnings = warnings.splice(0);
@@ -192,11 +196,11 @@ try {
   const report = { collectedAt: new Date().toISOString(), node: process.version, mode: process.env.NODE_ENV,
     router: { version: routerPackage.version, StaticRouter: typeof StaticRouter, exports: Object.keys(routerPackage.exports) },
     theme: DEFAULT_HTML_ATTRIBUTES, routes: rows, assets, duplicateBasenames, resources, publicFiles, slugs, warnings, redirectWarnings,
-    checks: ['18 rotas + 404 com H1 e conteúdo; preço/fotos nas nove PDPs', 'Tema igual ao template cliente',
+    checks: ['27 rotas + 404 com H1 e conteúdo; preço/fotos nas PDPs em /loja e /arquetipos', 'Tema igual ao template cliente',
       'URLs e bytes por caminho original iguais ao manifest cliente', 'Globs, basenames duplicados, src/srcset/poster/preloads/CSS/public verificados',
       'Head fonte/bundle iguais; H1 único em cada documento', 'Head e HTML da primeira rota iguais após renderizar outra rota', 'Lookup real rejeita propriedades herdadas', 'Sem DOM ou warnings; modo production', 'Template cliente íntegro antes da geração estática'] };
   await writeFile(path.join(root, 'dist-server/smoke-ssr.json'), JSON.stringify(report, null, 2) + '\n');
-  console.log(`PASS SSR: 18 rotas + 404; ${assets.length} assets por origem; ${resources.length} recursos; ${duplicateBasenames.length} basenames repetidos; slugs seguros; sem DOM/warnings nas rotas publicáveis. ${redirectWarnings.length} avisos esperados de Navigate nos testes negativos.`);
+  console.log(`PASS SSR: ${routes.length} rotas + 404; ${assets.length} assets por origem; ${resources.length} recursos; ${duplicateBasenames.length} basenames repetidos; slugs seguros; sem DOM/warnings nas rotas publicáveis. ${redirectWarnings.length} avisos esperados de Navigate nos testes negativos.`);
 } finally {
   console.warn = originalWarn;
   console.error = originalError;

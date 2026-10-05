@@ -14,7 +14,7 @@ npm run build
 ```
 
 Build verifica `vercel.json`, compila TypeScript, gera cliente e renderer privado,
-testa SSR, pré-renderiza e verifica os artefatos. `dist` contém 18 páginas públicas
+testa SSR, pré-renderiza e verifica os artefatos. `dist` contém 27 páginas públicas (9 PDPs em `/loja` e as mesmas em `/arquetipos`)
 e `404.html`; `dist-server` contém renderer, template e relatórios privados e não
 deve ser publicado. `npm run build:client` isolado não produz o site SSG completo.
 
@@ -42,8 +42,8 @@ de pré-renderização e validação continuam fazendo parte do build permanente
 `.html` e sem barra final. Rewrite SPA substituído por arquivos reais: não
 restaurar catch-all para `index.html`, pois serviria home em todas as páginas.
 
-- `/arquetipos/:id` → `/loja/:id` (308).
-- `/kit-descoberta` e produto inexistente → `/` (307).
+- `/arquetipos/:id` → mesmo HTML de `/loja/:id`, sem redirecionar (canonical em `/loja/:id`, fora do sitemap).
+- `/kit-descoberta` e produto inexistente em `/loja` ou `/arquetipos` → `/` (307).
 - URLs desconhecidas, segmentos extras e aliases `/trocas` e `/termos` → 404 própria.
 - URLs institucionais reais: `/trocas-e-devolucoes` e `/termos-de-uso`.
 

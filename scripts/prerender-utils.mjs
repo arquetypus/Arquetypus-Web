@@ -117,8 +117,9 @@ export async function verifyDocuments(pages, renderer, dist) {
     assert.equal(main, serverMain, 'Conteúdo divergente: ' + page.file);
     const h1 = [...main.matchAll(/<h1\b[^>]*>([\s\S]*?)<\/h1>/g)].map(m => plainText(m[1]));
     assert.equal(h1.length, 1, page.file);
-    if (page.route?.startsWith('/loja/')) {
-      const product = renderer.products.find(item => '/loja/' + item.id === page.route);
+    const productRoute = page.route?.match(/^\/(?:loja|arquetipos)\/([^/]+)$/);
+    if (productRoute) {
+      const product = renderer.products.find(item => item.id === productRoute[1]);
       assert.ok(product, page.file);
       const compact = value => plainText(value).replaceAll(/\s/g, '');
       assert.equal(compact(h1[0]), compact(product.nome + (product.sobrenome ?? '')), 'Nome H1: ' + page.file);
@@ -171,6 +172,11 @@ export async function verifyDocuments(pages, renderer, dist) {
   }
   const sitemap = await readFile(path.join(dist, 'sitemap.xml'), 'utf8');
   const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => decodeHtml(m[1])).sort();
-  assert.deepEqual(urls, rows.filter(row => row.route !== null).map(row => row.canonical).sort(), 'Sitemap/canonicals');
+  // /arquetipos/:id tem canonical em /loja/:id: sitemap lista cada canonical uma vez.
+  assert.deepEqual(urls, [...new Set(rows.filter(row => row.route !== null).map(row => row.canonical))].sort(), 'Sitemap/canonicals');
+  for (const row of rows.filter(row => row.route?.startsWith('/arquetipos/'))) {
+    const loja = rows.find(other => other.route === row.route.replace('/arquetipos/', '/loja/'));
+    assert.ok(loja && row.canonical === loja.canonical && row.mainExcerpt === loja.mainExcerpt, 'Mesmo conteúdo: ' + row.route);
+  }
   return { rows, resources: checkedResources, sitemap: urls };
 }
