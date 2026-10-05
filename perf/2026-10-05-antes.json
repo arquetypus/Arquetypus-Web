@@ -1,0 +1,315 @@
+{
+  "rotulo": "antes",
+  "data": "2026-10-05T22:55:54.717Z",
+  "site": "https://www.arquetypus.com.br",
+  "ferramenta": "lighthouse@13.5.0 local (SMSP-010643)",
+  "rodadas": 3,
+  "paginas": {
+    "/ · mobile": {
+      "nota": 44,
+      "fcp": 3807.16,
+      "lcp": 17382.16,
+      "tbt": 720,
+      "cls": 0,
+      "si": 6320.553716509727,
+      "peso": 9068.162109375,
+      "semCache": 45,
+      "cacheExemplo": "public, max-age=0, must-revalidate",
+      "assets": 45,
+      "maiores": [
+        {
+          "url": "/assets/hero-video-DYdAfdYa.mp4",
+          "kb": 2122
+        },
+        {
+          "url": "/assets/flor-arquetypus-CKSiaCgq.png",
+          "kb": 1468
+        },
+        {
+          "url": "/assets/guerreiro-BTw7xVzI.jpg",
+          "kb": 265
+        },
+        {
+          "url": "/assets/destaque-zeus-DSf4AtfR.jpg",
+          "kb": 224
+        },
+        {
+          "url": "/assets/frescos-luminosos-BAvS1EQ-.jpg",
+          "kb": 204
+        },
+        {
+          "url": "/assets/frutados-citricos-BHSVN3QN.jpg",
+          "kb": 200
+        },
+        {
+          "url": "/assets/destaque-sereia-DF4lkBtE.jpg",
+          "kb": 188
+        },
+        {
+          "url": "/assets/feminino-Bag6AX96.jpg",
+          "kb": 186
+        }
+      ],
+      "rodadas": [
+        44,
+        43,
+        45
+      ]
+    },
+    "/ · desktop": {
+      "nota": 83,
+      "fcp": 1065.539,
+      "lcp": 2007.2219999999998,
+      "tbt": 34,
+      "cls": 0,
+      "si": 1604.2533586132454,
+      "peso": 9284.9951171875,
+      "semCache": 46,
+      "cacheExemplo": "public, max-age=0, must-revalidate",
+      "assets": 46,
+      "maiores": [
+        {
+          "url": "/assets/hero-video-DYdAfdYa.mp4",
+          "kb": 2122
+        },
+        {
+          "url": "/assets/flor-arquetypus-CKSiaCgq.png",
+          "kb": 1468
+        },
+        {
+          "url": "/assets/colecao-desktop-9TO7ZM9U.jpg",
+          "kb": 318
+        },
+        {
+          "url": "/assets/guerreiro-desktop-CLkBxrUW.jpg",
+          "kb": 219
+        },
+        {
+          "url": "/assets/frescos-luminosos-BAvS1EQ-.jpg",
+          "kb": 204
+        },
+        {
+          "url": "/assets/frutados-citricos-BHSVN3QN.jpg",
+          "kb": 200
+        },
+        {
+          "url": "/assets/destaque-zeus-desktop-BQgVxW1K.jpg",
+          "kb": 187
+        },
+        {
+          "url": "/assets/feminino-Bag6AX96.jpg",
+          "kb": 186
+        }
+      ],
+      "rodadas": [
+        78,
+        91,
+        83
+      ]
+    },
+    "/body-splash/zeus-stormbreak · mobile": {
+      "nota": 55,
+      "fcp": 3542.25,
+      "lcp": 11583.492750000005,
+      "tbt": 349,
+      "cls": 0,
+      "si": 5812.901203526454,
+      "peso": 2805.4326171875,
+      "semCache": 10,
+      "cacheExemplo": "public, max-age=0, must-revalidate",
+      "assets": 10,
+      "maiores": [
+        {
+          "url": "/assets/flor-arquetypus-CKSiaCgq.png",
+          "kb": 1468
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-W81SRZ3K7J&cx=c&gtm=4e6a21",
+          "kb": 173
+        },
+        {
+          "url": "/assets/index-PmnzePjr.js",
+          "kb": 172
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5DTMCZW8",
+          "kb": 129
+        },
+        {
+          "url": "/assets/zeus-adIUQC4G.jpg",
+          "kb": 122
+        },
+        {
+          "url": "/fonts/inter-var-italic.woff2",
+          "kb": 114
+        },
+        {
+          "url": "/assets/zeus-BSVowwxX.jpg",
+          "kb": 105
+        },
+        {
+          "url": "/fonts/inter-var.woff2",
+          "kb": 103
+        }
+      ],
+      "rodadas": [
+        55,
+        55,
+        54
+      ]
+    },
+    "/body-splash/zeus-stormbreak · desktop": {
+      "nota": 88,
+      "fcp": 901.81,
+      "lcp": 2072.244,
+      "tbt": 0,
+      "cls": 0,
+      "si": 1326.2380034128196,
+      "peso": 2805.400390625,
+      "semCache": 10,
+      "cacheExemplo": "public, max-age=0, must-revalidate",
+      "assets": 10,
+      "maiores": [
+        {
+          "url": "/assets/flor-arquetypus-CKSiaCgq.png",
+          "kb": 1468
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-W81SRZ3K7J&cx=c&gtm=4e6a21",
+          "kb": 173
+        },
+        {
+          "url": "/assets/index-PmnzePjr.js",
+          "kb": 172
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5DTMCZW8",
+          "kb": 129
+        },
+        {
+          "url": "/assets/zeus-adIUQC4G.jpg",
+          "kb": 122
+        },
+        {
+          "url": "/fonts/inter-var-italic.woff2",
+          "kb": 114
+        },
+        {
+          "url": "/assets/zeus-BSVowwxX.jpg",
+          "kb": 105
+        },
+        {
+          "url": "/fonts/inter-var.woff2",
+          "kb": 103
+        }
+      ],
+      "rodadas": [
+        88,
+        84,
+        96
+      ]
+    },
+    "/criadores · mobile": {
+      "nota": 57,
+      "fcp": 3504.095,
+      "lcp": 12082.998000000005,
+      "tbt": 326,
+      "cls": 0,
+      "si": 5571.101998084337,
+      "peso": 2798.111328125,
+      "semCache": 7,
+      "cacheExemplo": "public, max-age=0, must-revalidate",
+      "assets": 7,
+      "maiores": [
+        {
+          "url": "/assets/flor-arquetypus-CKSiaCgq.png",
+          "kb": 1468
+        },
+        {
+          "url": "/assets/criadores-hero-CxQZOKK7.jpg",
+          "kb": 242
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-W81SRZ3K7J&cx=c&gtm=4e6a21",
+          "kb": 173
+        },
+        {
+          "url": "/assets/index-PmnzePjr.js",
+          "kb": 172
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5DTMCZW8",
+          "kb": 129
+        },
+        {
+          "url": "/fonts/inter-var-italic.woff2",
+          "kb": 114
+        },
+        {
+          "url": "/fonts/inter-var.woff2",
+          "kb": 103
+        },
+        {
+          "url": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+          "kb": 92
+        }
+      ],
+      "rodadas": [
+        57,
+        56,
+        57
+      ]
+    },
+    "/criadores · desktop": {
+      "nota": 87,
+      "fcp": 918.1044999999999,
+      "lcp": 2181.1125,
+      "tbt": 6,
+      "cls": 0,
+      "si": 1216.6337291903842,
+      "peso": 2798.1015625,
+      "semCache": 7,
+      "cacheExemplo": "public, max-age=0, must-revalidate",
+      "assets": 7,
+      "maiores": [
+        {
+          "url": "/assets/flor-arquetypus-CKSiaCgq.png",
+          "kb": 1468
+        },
+        {
+          "url": "/assets/criadores-hero-CxQZOKK7.jpg",
+          "kb": 242
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-W81SRZ3K7J&cx=c&gtm=4e6a21",
+          "kb": 173
+        },
+        {
+          "url": "/assets/index-PmnzePjr.js",
+          "kb": 172
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5DTMCZW8",
+          "kb": 129
+        },
+        {
+          "url": "/fonts/inter-var-italic.woff2",
+          "kb": 114
+        },
+        {
+          "url": "/fonts/inter-var.woff2",
+          "kb": 103
+        },
+        {
+          "url": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+          "kb": 92
+        }
+      ],
+      "rodadas": [
+        87,
+        94,
+        84
+      ]
+    }
+  }
+}
