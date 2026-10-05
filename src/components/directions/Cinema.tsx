@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { HERO_SLIDES, QUIZ_CTA } from '@/data/home'
 import { scrollToId } from '@/lib/scrollToId'
@@ -20,6 +20,10 @@ const LIFESTYLE: Record<string, string> = Object.fromEntries(
 )
 
 const AUTOPLAY_MS = 4000
+// breakpoint `lg` do Tailwind: daí pra cima o hero mostra a foto 16:9, sem vídeo
+const DESKTOP_MIN = '64rem'
+// se o `load` da página demorar mais que isso (ex.: script de terceiro preso), o vídeo entra assim mesmo
+const VIDEO_TETO_MS = 8000
 // arrasto mínimo (px) pra trocar de slide no gesto de deslizar
 const SWIPE_PX = 50
 
@@ -34,6 +38,23 @@ export function HeroCinema() {
   const total = HERO_SLIDES.length
   const slide = HERO_SLIDES[current]
   const duration = 'durationMs' in slide ? slide.durationMs : AUTOPLAY_MS
+  // Vídeo do hero atrasado de propósito (out/2026): o HTML sai só com a foto do 1º quadro, e o <video> monta depois
+  // do `load` da página, pra não disputar a conexão com CSS/JS/imagens no celular. No desktop nunca monta (lá aparece
+  // a foto 16:9). 'esperando' é o estado do servidor e do 1º render (hidratação igual); o teto evita esperar pra sempre.
+  const [video, setVideo] = useState<'esperando' | 'liberado' | 'desligado'>('esperando')
+  const esperandoVideo = 'video' in slide && video === 'esperando'
+
+  useEffect(() => {
+    if (window.matchMedia(`(min-width: ${DESKTOP_MIN})`).matches) return setVideo('desligado')
+    const liberar = () => setVideo((v) => (v === 'esperando' ? 'liberado' : v))
+    if (document.readyState === 'complete') return liberar()
+    window.addEventListener('load', liberar, { once: true })
+    const teto = setTimeout(liberar, VIDEO_TETO_MS)
+    return () => {
+      window.removeEventListener('load', liberar)
+      clearTimeout(teto)
+    }
+  }, [])
 
   const next = useCallback(() => {
     setAdvanced(true)
@@ -50,7 +71,8 @@ export function HeroCinema() {
   }, [])
 
   useLayoutEffect(() => {
-    if (!startup.started) return
+    // slide do vídeo: o relógio (e a barra) só começa quando o vídeo entra, pra não cortar o vídeo no meio
+    if (!startup.started || esperandoVideo) return
     // Mesmo commit: CSS é habilitado, playback é solicitado e o relógio começa.
     // Falha de autoplay mantém o poster, sem interromper a navegação do carrossel.
     const video = videoRef.current
@@ -60,7 +82,7 @@ export function HeroCinema() {
       clearTimeout(timer)
       video?.pause()
     }
-  }, [current, next, duration, startup.started])
+  }, [current, next, duration, startup.started, esperandoVideo])
 
   // deslizar com o dedo (só toque/caneta; touch-pan-y deixa o scroll vertical com o navegador)
   const dragStart = useRef<number | null>(null)
@@ -93,7 +115,11 @@ export function HeroCinema() {
             {i < current ? (
               <span className="block h-full w-full bg-latao" />
             ) : i === current ? (
-              <span key={`bar-${current}`} className="hero-timer-bar block h-full bg-latao" style={{ animationDuration: `${duration}ms` }} />
+              <span
+                key={`bar-${current}-${esperandoVideo}`}
+                className="hero-timer-bar block h-full bg-latao"
+                style={{ animationDuration: `${duration}ms`, animationPlayState: esperandoVideo ? 'paused' : undefined }}
+              />
             ) : null}
           </span>
         </button>
@@ -134,8 +160,9 @@ export function HeroCinema() {
               }`}
             />
           </picture>
-          {'video' in s && i === current && (
-            // monta só no slide ativo: ao voltar pro slide, o vídeo recomeça junto com a barra
+          {'video' in s && i === current && video === 'liberado' && (
+            // monta só no slide ativo e depois do `load` (ver `video` acima): a foto do 1º quadro (img acima e poster)
+            // fica por baixo, então a entrada não tem salto. Ao voltar pro slide, o vídeo recomeça junto com a barra
             <video
               ref={videoRef}
               src={s.video}

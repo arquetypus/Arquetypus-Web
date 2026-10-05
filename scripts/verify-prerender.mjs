@@ -27,6 +27,15 @@ for (const file of imagens) {
   if (kb > TETO_IMAGEM_KB) pesadas.push(`${file} (${Math.round(kb)} KB)`);
 }
 assert.deepEqual(pesadas, [], `Imagem acima de ${TETO_IMAGEM_KB} KB — otimizar antes de publicar`);
+// Vídeo no HTML publicado (out/2026): sempre com foto do 1º quadro (poster) e sem download antecipado — senão
+// ele disputa a conexão com o que monta a página. O vídeo do hero nem sai no HTML: entra depois do `load`
+// (HeroCinema). Um <video> novo que caia no HTML inicial tem que seguir a mesma regra.
+for (const page of pages) {
+  for (const [tag] of page.html.matchAll(/<video\b[^>]*>/g)) {
+    assert.match(tag, /\bposter="[^"]+"/, `Vídeo sem poster (foto do 1º quadro) em ${page.file}: ${tag}`);
+    assert.match(tag, /\bpreload="(?:none|metadata)"/, `Vídeo com download antecipado em ${page.file} (usar preload="none" ou "metadata"): ${tag}`);
+  }
+}
 const report = await verifyDocuments(pages, renderer, dist);
 await writeFile(path.join(root, 'dist-server/verify-prerender.json'), JSON.stringify({ ...report, inventory: files }, null, 2) + '\n');
 console.log(`PASS artefatos: ${pages.length} HTMLs, ${report.resources.length} recursos, ${report.sitemap.length} canonicals no sitemap, ${imagens.length} imagens até ${TETO_IMAGEM_KB} KB.`);

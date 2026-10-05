@@ -393,6 +393,11 @@ decisão de produto já tomada:
   `#segmentos`, `#catalogo`, `#familias`, `#destaque`, `#diferenca`, `#beneficios`,
   `#cupom`, `#rodape`, e cada produto do catálogo pelo id (`#afrodite`, `#fenix`…).
   Seção nova na home ganha `id` também; não renomear os existentes (links já enviados).
+- **Vídeo do hero atrasado (out/2026):** `HeroCinema` não põe o `<video>` no HTML inicial — mostra a foto do 1º
+  quadro (`hero-video-poster`) e monta o vídeo depois do `load` da página (teto de 8 s), só no celular (no desktop
+  aparece a foto 16:9 e o vídeo nunca baixa). A barra do 1º slide espera o vídeo entrar. `verify-prerender` derruba
+  o build se um `<video>` publicado no HTML sair sem `poster` ou com `preload` diferente de `none`/`metadata`. Ao
+  trocar o vídeo, trocar também `hero-video-poster.jpg` pelo 1º quadro do novo.
 - **Imagens otimizadas no build (out/2026):** `vite-imagetools` (`vite.config.ts`) converte toda imagem importada
   de `src/` em WebP q80, sem metadados, com largura máxima 1600 px (2400 pra `*-desktop.jpg`, 900 pra flor) —
   só reduz. Original fica em `src/assets/` em qualidade cheia; foto nova não precisa de tratamento manual.
