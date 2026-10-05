@@ -60,7 +60,14 @@ export function productSchema(a: Archetype) {
     name: a.nomeOficial, description: productMetadata(a).description,
     image: absolute(PDP_FRASCO[a.id]), brand: { '@type': 'Brand', name: EMPRESA.marca },
     category: a.tipo, sku: a.id, gtin13: a.gtin13,
-    // Compra desativada: não publicar Offer, disponibilidade ou avaliações não confirmadas.
+    // Offer ligado por decisão do usuário (out/2026), mesmo antes do checkout. Sem priceValidUntil até haver
+    // data real de fim de promoção. Avaliações seguem fora até serem confirmadas.
+    offers: {
+      '@type': 'Offer', url, price: a.preco.toFixed(2), priceCurrency: 'BRL',
+      availability: a.status === 'wait' ? 'https://schema.org/OutOfStock' : 'https://schema.org/InStock',
+      itemCondition: 'https://schema.org/NewCondition',
+      seller: { '@type': 'Organization', '@id': `${SITE}/#organization`, name: EMPRESA.marca },
+    },
   }
 }
 
@@ -97,7 +104,8 @@ export function resolveSeo(url: string, { genericNotFound = false } = {}): SeoHe
   const legacy = pathname.match(/^\/(?:loja|arquetipos)\/([^/]+)$/i)
   const product = match ? getArchetypeBySlug(match[1].replace(/%2F/g, '/'))
     : legacy ? getArchetype(legacy[1].replace(/%2F/g, '/')) : undefined
-  const redirectHome = ['/kit-descoberta', '/body-splash'].includes(pathname.toLowerCase()) || (!!(match || legacy) && !product)
+  // Produto inexistente (slug ou ID antigo) é 404 de verdade, não redirecionamento pra home (soft 404).
+  const redirectHome = ['/kit-descoberta', '/body-splash'].includes(pathname.toLowerCase())
   const metadata = product ? productMetadata(product) : page?.seo ?? (redirectHome ? SEO_HOME : {
     title: comMarca('Página não encontrada'), description: 'A página que você procurou não existe ou mudou de endereço.',
   })

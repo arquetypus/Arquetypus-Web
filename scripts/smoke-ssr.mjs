@@ -176,15 +176,17 @@ try {
       assert.equal(getArchetypeBySlug(id), undefined, id);
       const prefixes = getArchetype(id) ? ['/body-splash/'] : ['/body-splash/', '/loja/', '/arquetipos/'];
       for (const prefix of prefixes) {
+        // Produto inexistente: página 404 (noindex), nunca redirecionamento pra home (soft 404).
         const result = render(prefix + id);
-        assert.equal(result.head.canonical, 'https://www.arquetypus.com.br/');
+        assert.equal(result.head.robots, 'noindex', prefix + id);
+        assert.ok(result.html.includes('Página não encontrada'), prefix + id);
         assert.ok(!result.html.includes('Pirâmide olfativa'), prefix + id);
         slugs.push({ id: prefix + id, rejected: true });
       }
     }
   } finally { await server.close(); }
   const redirectWarnings = warnings.splice(0);
-  assert.equal(redirectWarnings.length, slugs.length);
+  assert.equal(redirectWarnings.length, slugs.filter(s => s.redirect).length);
   for (const warning of redirectWarnings) assert.ok(warning.startsWith('<Navigate> must not be used on the initial render in a <StaticRouter>.'), warning);
   const resources = [];
   for (const url of [...references].sort()) {

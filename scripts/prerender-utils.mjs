@@ -135,7 +135,9 @@ export async function verifyDocuments(pages, renderer, dist) {
       const schema = JSON.parse(rawProduct);
       assert.equal(schema.name, product.nomeOficial);
       assert.equal(schema.gtin13, product.gtin13);
-      assert.ok(!('offers' in schema) && !('aggregateRating' in schema) && !('review' in schema), page.file);
+      assert.ok(!('aggregateRating' in schema) && !('review' in schema), page.file);
+      assert.equal(schema.offers?.price, product.preco.toFixed(2), 'Offer.price: ' + page.file);
+      assert.equal(schema.offers?.priceCurrency, 'BRL', page.file);
       assert.equal(schema.sku, product.id);
       addResource(schema.image);
     }

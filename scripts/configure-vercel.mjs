@@ -29,19 +29,17 @@ const encodedPattern = value => [...value].map(char => {
 }).join('');
 const extension = encodedPattern('.html');
 const withExtension = value => `${encodedPattern(value)}(?:${extension})?`;
-const invalidSlug = `(?!(?:${slugs.map(encodedPattern).join('|')})(?:${extension})?/?$)[^/]+`;
 
 // URL definitiva do produto: /body-splash/{slug}, com HTML pré-renderizado. Endereços antigos /loja/{id} e
-// /arquetipos/{id} vão pra ela com 308, num salto só; ID/slug inexistente e /body-splash sozinho vão pra home (307).
+// /arquetipos/{id} vão pra ela com 308, num salto só, declarados um por um (sem curinga). ID/slug inexistente cai no
+// 404.html com status 404 — nunca redirecionar pra home (soft 404). /body-splash sozinho vai pro catálogo (307).
 const legacyPrefixes = ['loja', 'arquetipos'];
 const redirects = [
   { source: '/kit-descoberta', destination: '/', permanent: false },
   { source: '/body-splash', destination: '/#catalogo', permanent: false },
-  { source: `/body-splash/:slug(${invalidSlug})`, destination: '/', permanent: false },
   ...legacyPrefixes.flatMap(prefix => products.map(product => ({
     source: `/${prefix}/:id(${withExtension(product.id)})`, destination: `/body-splash/${product.slug}`, permanent: true,
   }))),
-  ...legacyPrefixes.map(prefix => ({ source: `/${prefix}/:id`, destination: '/', permanent: false })),
 ];
 
 // Simula a Vercel: a primeira regra que casa vence; sem regra, responde o arquivo estático (ou a 404).
@@ -76,22 +74,22 @@ for (const product of products) {
     }
     check(`/${prefix}/${product.id}%2ehtml`, destino);
     check(new URL(`/${prefix}/${product.id}?utm_source=teste`, 'https://example.test').pathname, destino);
-    check(`/${prefix}/${product.id}x`, '307 /');
-    check(`/${prefix}/${product.id.toUpperCase()}`, '307 /');
-    check(`/${prefix}/${product.slug}`, '307 /');
+    check(`/${prefix}/${product.id}x`, 'arquivo');
+    check(`/${prefix}/${product.id.toUpperCase()}`, 'arquivo');
+    check(`/${prefix}/${product.slug}`, 'arquivo');
     check(`/${prefix}/${product.id}/extra`, 'arquivo');
   }
   for (const value of [product.slug, encodeAll(product.slug)]) {
     for (const suffix of ['', '/', '.html', '.html/']) check(`/body-splash/${value}${suffix}`, 'arquivo');
   }
-  check(`/body-splash/${product.slug}x`, '307 /');
-  check(`/body-splash/${product.id}`, '307 /');
-  check(`/body-splash/${product.slug.toUpperCase()}`, '307 /');
+  check(`/body-splash/${product.slug}x`, 'arquivo');
+  check(`/body-splash/${product.id}`, 'arquivo');
+  check(`/body-splash/${product.slug.toUpperCase()}`, 'arquivo');
   check(`/body-splash/${product.slug}/extra`, 'arquivo');
 }
 for (const prefix of ['loja', 'arquetipos', 'body-splash']) {
   for (const id of ['nao-existe', 'constructor', 'toString', '__proto__', 'ze', 'zeus-extra', '%5Aeus', '%257aeus', 'zeus%2Fextra']) {
-    check(`/${prefix}/${id}`, '307 /'); check(`/${prefix}/${id}/`, '307 /');
+    check(`/${prefix}/${id}`, 'arquivo'); check(`/${prefix}/${id}/`, 'arquivo');
   }
 }
 check('/body-splash', '307 /#catalogo');

@@ -2,9 +2,8 @@ import { Link } from 'react-router-dom'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 
 /**
- * Página não encontrada (rota "*", out/2026). Com o vercel.json mandando toda rota pro index.html, a Vercel
- * responde 200 até pra endereço inexistente — por isso RouteSeo marca `robots: noindex` enquanto está aberta,
- * pro Google não indexar URL quebrada.
+ * Página não encontrada (rota "*" e produto inexistente, out/2026). Em produção a Vercel responde o 404.html
+ * pré-renderizado com status 404; RouteSeo marca `robots: noindex` também na navegação no cliente.
  */
 export function NotFoundPage() {
   return (

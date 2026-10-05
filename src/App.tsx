@@ -38,11 +38,11 @@ const PAGINAS = {
 } satisfies Record<Exclude<(typeof PAGINAS_PUBLICAS)[number]['path'], '/'>, ComponentType>
 
 /** Endereços antigos de produto (/loja/:id, /arquetipos/:id): vão pra URL definitiva. Em produção o vercel.json já
- *  responde 308 antes de chegar aqui; isto cobre navegação no cliente e `npm run dev`. */
+ *  responde 308 antes de chegar aqui; isto cobre navegação no cliente e `npm run dev`. ID que nunca existiu é 404. */
 function RedirectToProduct() {
   const { id } = useParams<{ id: string }>()
   const a = id ? getArchetype(id) : undefined
-  return <Navigate to={a ? productPath(a) : '/'} replace />
+  return a ? <Navigate to={productPath(a)} replace /> : <NotFoundPage />
 }
 
 export default function App() {

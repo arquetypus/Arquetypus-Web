@@ -43,9 +43,10 @@ de pré-renderização e validação continuam fazendo parte do build permanente
 restaurar catch-all para `index.html`, pois serviria home em todas as páginas.
 
 - PDP definitiva: `/body-splash/{slug}` (`slug` em `src/data/archetypes.ts`, link sempre por `productPath`).
-- `/loja/:id` e `/arquetipos/:id` → `/body-splash/{slug}` (308, um salto só).
-- `/body-splash` → `/#catalogo` (307); `/kit-descoberta` e produto inexistente → `/` (307).
-- URLs desconhecidas, segmentos extras e aliases `/trocas` e `/termos` → 404 própria.
+- `/loja/:id` e `/arquetipos/:id` → `/body-splash/{slug}` (308, um salto só), só para os IDs que existiram, um por um.
+- `/body-splash` → `/#catalogo` (307); `/kit-descoberta` → `/` (307).
+- URLs desconhecidas, produto/ID inexistente, segmentos extras e aliases `/trocas` e `/termos` → 404 própria
+  (nunca redirecionar pra home: o Google trata como soft 404).
 - URLs institucionais reais: `/trocas-e-devolucoes` e `/termos-de-uso`.
 
 Matcher de produto gerado dos dados, sem lista manual duplicada. Após alterar

@@ -1,4 +1,5 @@
-import { Link, Navigate, useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import { NotFoundPage } from '@/pages/NotFoundPage'
 import { getArchetype, getArchetypeBySlug, NOTAS_LEGENDA, productPath } from '@/data/archetypes'
 import { FAQ_PRODUTO as FAQ } from '@/data/faq'
 import { FRASCO_CUT_IMG } from '@/data/home'
@@ -47,7 +48,8 @@ export function ProductPage() {
   const par = a ? getArchetype(a.par) : undefined
   const { addItem } = useCart()
 
-  if (!a) return <Navigate to="/" replace />
+  // slug inexistente: 404 de verdade (a Vercel responde 404.html), nunca redirecionar pra home (soft 404)
+  if (!a) return <NotFoundPage />
 
   // botão "Em breve" (sacola desativada): leva o tamanho cheio dos dois
   function levarOsDois() {
