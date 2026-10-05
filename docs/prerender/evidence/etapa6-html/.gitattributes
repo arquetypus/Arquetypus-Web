@@ -1,0 +1,2 @@
+# Evidência HTTP: manter bytes e espaços do documento recebido, sem conversão CRLF.
+*.html -text whitespace=-blank-at-eol
