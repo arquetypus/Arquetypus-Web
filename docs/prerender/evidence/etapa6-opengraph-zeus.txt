@@ -1,0 +1,466 @@
+- complementary "AppSumo launch offer":
+  - text: AppSumo launch
+  - generic: Get OpenGraph with an exclusive lifetime deal
+  - link "See the deal":
+    - /url: https://appsumo.8odi.net/dyv5L3
+    - text: See the deal
+  - button "Dismiss AppSumo offer":
+- banner:
+  - link "OpenGraph home":
+    - /url: /
+    - img "OpenGraph logo"
+    - generic: OpenGraph
+  - navigation "Tools":
+    - link "Scan Free":
+      - /url: /
+      - text: Scan
+      - generic: Free
+    - link "Generate Free + Pro":
+      - /url: /generate
+      - text: Generate
+      - generic: Free + Pro
+    - link "Short Links Pro":
+      - /url: /short-links
+      - text: Short Links
+      - generic: Pro
+    - link "Pricing":
+      - /url: /pricing
+  - link "Login":
+    - /url: /login
+  - link "Get started":
+    - /url: /register
+- main:
+  - heading "Preview & Generate Open Graph Images" [level=1]
+  - paragraph: Scan any URL to see exactly how it looks on social media. Create a new OG image for free from one of our high-converting templates.
+  - textbox "Paste your URL": https://arquetypus-parfum-git-prerender-saniella.vercel.app/loja/zeus
+  - button "Rescan":
+    - text: Rescan
+  - paragraph: Loved by 100,000+ monthly users.
+  - generic: Optimized for
+  - img "X"
+  - img "Facebook"
+  - img "LinkedIn"
+  - img "WhatsApp"
+  - img "Discord"
+  - tablist:
+    - tab "Facebook" [selected]:
+    - tab "X":
+    - tab "LinkedIn":
+    - tab "WhatsApp":
+    - tab "Discord":
+    - tab "HTML tags":
+  - generic: arquetypus-parfum-git-prerender-saniella.vercel.app
+  - generic: Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum
+  - complementary:
+    - generic: Meta-tag inspector
+    - 'button "Error: 0"':
+      - generic: "0"
+    - 'button "Warning: 3"':
+      - generic: "3"
+    - 'button "Good: 10"':
+      - generic: "10"
+    - list:
+      - generic: Image is missing conversion text
+      - generic: og:image
+      - paragraph: No clear headline or CTA was detected. Adding both can make the image more clickable.
+      - link "Improve image":
+        - /url: "#generate"
+        - text: Improve image
+      - generic: Description is too long
+      - generic: og:description
+      - paragraph: 159 characters — social previews often show ~125 characters and may truncate on mobile.
+      - generic: Meta description is too long
+      - generic: description
+      - paragraph: 163 characters — Google typically truncates around 150–160 characters in search results.
+      - generic: Title is present
+      - generic: og:title
+      - paragraph: "\"Zeus Stormbreak – Body Splash Premium | Arquétypus Parf…\" — 57 characters."
+      - generic: Title length
+      - generic: og:title
+      - paragraph: 57 characters — within the 60-character target.
+      - generic: Page title is present
+      - generic: title
+      - paragraph: "\"Zeus Stormbreak – Body Splash Premium | Arquétypus Parf…\" — 57 characters."
+      - generic: Image loads cleanly
+      - generic: og:image
+      - paragraph: 86 KB image/jpg
+      - generic: Image dimensions are perfect
+      - generic: og:image
+      - paragraph: 1200×630 — matches what every major platform expects.
+      - generic: X card uses a large image
+      - generic: twitter:card
+      - paragraph: summary_large_image is set, so X can render the image at full card width.
+      - generic: X title is missing
+      - generic: twitter:title
+      - paragraph: twitter:title is not strictly necessary — X falls back to og:title.
+      - generic: X description is missing
+      - generic: twitter:description
+      - paragraph: twitter:description is not strictly necessary — X falls back to og:description.
+      - generic: X image is present
+      - generic: twitter:image
+      - paragraph: twitter:image is set and can be used for the X preview.
+      - generic: Site name is set
+      - generic: og:site_name
+      - paragraph: "\"Arquétypus Parfum\" — Discord and others use this as the eyebrow."
+  - link "Scroll to generate section":
+    - /url: "#generate"
+    - heading "Lift your CTR with a better-converting image" [level=3]
+    - paragraph: Pick a template, customize it with your content and download a ready-to-use image optimized for social media.
+  - tablist:
+    - tab "Facebook" [selected]:
+    - tab "X":
+    - tab "LinkedIn":
+    - tab "WhatsApp":
+    - tab "Discord":
+  - generic: Your Startup Logo
+  - generic: Always-on AI agents
+  - generic: Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum
+  - generic: "Zeus Stormbreak: A voz que encerra a discussão. Body Splash Premium 220 ml com 10% de essência, família Amadeirados & Especiados. R$ 79,90 em até 6x sem juros."
+  - generic: Start Free
+  - generic: arquetypus-parfum-git-prerender-saniella.vercel.app
+  - generic: Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum
+  - generic: Choose another template
+  - generic: 1 / 9
+  - region:
+    - button "Select template Saas Landing Page":
+      - generic: Your Startup Logo
+      - generic: Always-on AI agents
+      - generic: Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum
+      - generic: "Zeus Stormbreak: A voz que encerra a discussão. Body Splash Premium 220 ml com 10% de essência, família Amadeirados & Especiados. R$ 79,90 em até 6x sem juros."
+      - generic: Start Free
+    - button "Select template Blogger Blog Page":
+      - generic: arquetypus-parfum-git-prerender-saniella.vercel.app
+      - generic: Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum
+      - generic: Read Blog
+    - button "Select template Educational Event Page":
+      - generic: Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum
+      - generic: "Zeus Stormbreak: A voz que encerra a discussão. Body Splash Premium 220 ml com 10% de essência, família Amadeirados & Especiados. R$ 79,90 em até 6x sem juros."
+      - generic: Join the Collective
+      - generic: Events & Arts
+    - button "Select template Design Blog Page":
+      - generic: READ ARTICLE
+      - generic: Jenna Gray
+      - generic: Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum
+      - generic: arquetypus-parfum-git-prerender-saniella.vercel.app
+    - button "Select template Auto Rental LP":
+      - generic: Auto Rental Brand
+      - generic: Orange County's Car Fleet
+      - generic: Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum
+      - generic: "Zeus Stormbreak: A voz que encerra a discussão. Body Splash Premium 220 ml com 10% de essência, família Amadeirados & Especiados. R$ 79,90 em até 6x sem juros."
+      - generic: Book Now →
+    - button "Select template Agency Portfolio Page":
+      - generic: yourwebsite.com
+      - generic: UX/UI Designer Agency
+      - generic: Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum
+      - generic: "Zeus Stormbreak: A voz que encerra a discussão. Body Splash Premium 220 ml com 10% de essência, família Amadeirados & Especiados. R$ 79,90 em até 6x sem juros."
+      - generic: View Project
+      - generic: Figma-first design
+    - button "Select template Agency Blog Page":
+      - generic: Read Article
+      - generic: 30 March 2025
+      - generic: Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum
+    - button "Select template Real Estate Listing Page":
+      - generic: Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum
+      - generic: $339,000
+      - generic: View Listing
+      - generic: "4"
+      - generic: "3"
+      - generic: 1,909
+      - generic: Bds
+      - generic: Ba
+      - generic: Sqft
+    - button "Select template Saas Product Page":
+      - generic: SECURE VAULT
+      - generic: TRACKING ACTIVE
+      - generic: Your Company
+      - generic: Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum
+      - generic: "Zeus Stormbreak: A voz que encerra a discussão. Body Splash Premium 220 ml com 10% de essência, família Amadeirados & Especiados. R$ 79,90 em até 6x sem juros."
+      - generic: GET STARTED
+    - button "Previous templates":
+      - generic: Previous slide
+    - button "Next templates":
+      - generic: Next slide
+  - heading "Want a custom design?" [level=3]
+  - paragraph: Generate your own template with AI or build it manually using our designer. Get on-brand looking images across every page.
+  - button "Get custom design"
+  - complementary:
+    - generic: Edit content
+    - button "Reset":
+      - text: Reset
+    - generic: Image Image URL
+    - textbox "Image Image URL": https://arquetypus.com.br/og-image.jpg
+    - button "Select":
+      - text: Select
+    - generic: Image Object Fit
+    - combobox "Image Object Fit":
+      - generic: Cover
+      - img: ▼
+    - textbox: cover
+    - generic: Logo Image URL
+    - textbox "Logo Image URL": https://www.google.com/s2/favicons?domain=arquetypus-parfum-git-prerender-saniella.vercel.app&sz=256
+    - button "Select":
+      - text: Select
+    - generic: Logo Object Fit
+    - combobox "Logo Object Fit":
+      - generic: Contain
+      - img: ▼
+    - textbox: contain
+    - generic: Badge Text
+    - textbox "Badge Text": Always-on AI agents
+    - generic: Title Text
+    - textbox "Title Text": Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum
+    - generic: Description Text
+    - textbox "Description Text": "Zeus Stormbreak: A voz que encerra a discussão. Body Splash Premium 220 ml com 10% de essência, família Amadeirados & Especiados. R$ 79,90 em até 6x sem juros."
+    - generic: CTA Text
+    - textbox "CTA Text": Start Free
+    - button "CTA Background Color picker":
+      - generic: CTA Background Color
+    - generic: Brand Name Text
+    - textbox "Brand Name Text": Your Startup Logo
+    - button "Top Accent Bar Background Color picker":
+      - generic: Top Accent Bar Background Color
+    - button "Green Glow Background Color picker":
+      - generic: Green Glow Background Color
+    - button "Blue Glow Background Color picker":
+      - generic: Blue Glow Background Color
+    - button "Download Image":
+      - text: Download Image
+  - heading "Stop Losing Traffic to “Broken” Social Previews" [level=2]:
+    - text: Stop Losing Traffic to
+    - text: “Broken”
+    - text: Social Previews
+  - paragraph:
+    - text: You spend hours (or thousands of dollars) creating world-class content. But when you share the link on social media, the preview feels like a
+    - emphasis: “limp handshake”
+    - text: — generic, unbranded, or completely broken.
+  - generic: Read latest article
+  - generic: Welcome to our newsletter
+  - generic: Untitled
+  - generic: notion.site
+  - generic: wordpress.com
+  - generic: Home | My Site
+  - generic: Product page
+  - generic: shopify.com
+  - generic: About — Studio
+  - generic: The blog of John Smith
+  - generic: ghost.org
+  - 'group "facebook preview: 1428 Maplewood Dr, Portland OR"':
+    - img "Featured house"
+    - generic: orrealestate.com
+    - generic: 1428 Maplewood Dr, Portland OR
+  - 'group "x preview: Toyota Camry 2016 - $15,000 - Excellent Condition"':
+    - img "A car for sale"
+    - generic: sellfast.com
+    - generic: Toyota Camry 2016 - $15,000 - Excellent Condition
+  - 'group "facebook preview: Fed raises rates again"':
+    - generic: thenews.co
+    - generic: Fed raises rates again
+  - 'group "discord preview: Conc Co. | 4.9⭐ on RankFlow"':
+    - generic: Conc Co. | 4.9⭐ on RankFlow
+    - generic: RankFlow helps you choose the best contractor for your project.
+    - img "Logo placeholder"
+  - 'group "x preview: Grow your marketing in 2026"':
+    - generic: Grow your marketing in 2026
+    - generic: From marketingheros.com
+  - 'group "linkedin preview: Senior Product Designer — Remote, Full-Time"':
+    - img "Job listing"
+    - generic: Senior Product Designer — Remote, Full-Time
+    - generic: workhub.io
+  - 'group "whatsapp preview: Pro Speaker"':
+    - img "Speaker photo"
+    - generic: Pro Speaker
+    - generic: Experience sound like never before with our latest speaker.
+    - generic: estore.com
+  - button "Broken image":
+    - generic: Broken image
+  - button "Bad crop":
+    - generic: Bad crop
+  - button "The visual battle":
+    - generic: The visual battle
+  - heading "Design Once. Deploy At Scale." [level=2]:
+    - text: Design Once.
+    - text: Deploy At Scale.
+  - paragraph: Keep every preview on-brand, generate thousands from one template, and optimize performance with different short links.
+  - heading "AI Brand Matching" [level=3]
+  - paragraph: Our AI analyzes your site’s colors, fonts and styles to automatically generate professional templates. No more manual design for every new page.
+  - generic: Your page
+  - generic: prime-realty.com
+  - img "Prime Realty"
+  - generic: PRIME REALTY
+  - generic: Buy
+  - generic: Rent
+  - generic: Sell
+  - generic: Search
+  - generic: For Sale
+  - generic: $875,000
+  - generic: 1204 Heritage Pines Dr
+  - text: 4 bd
+  - text: 3.5 ba
+  - generic: View Listing
+  - generic: For Sale
+  - generic: $795,000
+  - generic: 314 Willow Bend Court
+  - text: 4 bd
+  - text: 3.5 ba
+  - generic: View Listing
+  - generic: For Sale
+  - generic: $715,000
+  - generic: 102 Whispering Wind Way
+  - text: 4 bd
+  - text: 3 ba
+  - generic: View Listing
+  - generic: AI-Matched OG Template
+  - img "AI-matched OG template"
+  - heading "Programmatic OG Automation" [level=3]
+  - paragraph:
+    - text: One template powers thousands of pages. Use dynamic variables like
+    - code: "{title}"
+    - text: ","
+    - code: "{image}"
+    - text: ","
+    - code: "{price}"
+    - text: and more to ensure every page on your site has a unique, branded preview image.
+  - generic: Pages
+  - list:
+    - generic: /listings/1204-heritage-pines-dr
+    - generic: /listings/314-willow-bend-court
+    - generic: /listings/102-whispering-wind-way
+    - generic: +2,840 more
+  - generic: Template
+  - img "OG image template"
+  - generic: Generated Images
+  - img "1204 Heritage Pines Dr"
+  - img "314 Willow Bend Court"
+  - img "102 Whispering Wind Way"
+  - generic: +2,840 more
+  - heading "Short Links with Custom Previews" [level=3]
+  - paragraph: Give any page a custom Open Graph image and a clean branded URL. Track every click with time series, country, device and referrer analytics.
+  - img "Custom social preview for a real estate listing"
+  - generic: s.prime-realty.com/apex-home
+  - generic: prime-realty.com/listings/apex-home
+  - text: Total clicks
+  - generic: 3,421
+  - generic: Last 30 days
+  - generic: Jun 17
+  - generic: Jul 1
+  - generic: Jul 16
+  - text: Countries
+  - generic: United States
+  - generic: 1,284
+  - generic: Germany
+  - generic: "842"
+  - text: Devices
+  - generic: Mobile
+  - generic: 2,326
+  - generic: Desktop
+  - generic: 1,095
+  - text: Browsers
+  - generic: Chrome
+  - generic: 1,907
+  - generic: Safari
+  - generic: 1,021
+  - text: Referrers
+  - generic: LinkedIn
+  - generic: 1,462
+  - generic: Direct
+  - generic: "936"
+  - paragraph: Join thousands of teams already generating branded OG images automatically.
+  - link "Start for free":
+    - /url: /register
+  - heading "Open Graph Frequently Asked Questions" [level=2]:
+    - text: Open Graph
+    - text: Frequently Asked Questions
+  - paragraph: Everything you need to know about turning shared links into your highest-converting marketing channel.
+  - region:
+    - heading "What are Open Graph (OG) meta tags?" [level=3]:
+      - button "What are Open Graph (OG) meta tags?" [expanded]:
+        - generic: What are Open Graph (OG) meta tags?
+    - region "What are Open Graph (OG) meta tags?":
+      - paragraph: Open Graph is an internet protocol introduced by Facebook to allow seamless integration between any web page and social media platforms. By adding OG tags to your HTML, you control exactly how your website’s title, description, and featured image appear when shared. Today, virtually all major platforms—including LinkedIn, X (formerly Twitter), Threads, Slack, WhatsApp, and Discord—rely on Open Graph tags to generate rich link previews.
+    - heading "Can I place meta tags inside the HTML <body> element?" [level=3]:
+      - button "Can I place meta tags inside the HTML <body> element?":
+        - generic: Can I place meta tags inside the HTML <body> element?
+    - heading "What is the recommended Open Graph image size?" [level=3]:
+      - button "What is the recommended Open Graph image size?":
+        - generic: What is the recommended Open Graph image size?
+    - heading "What makes an Open Graph image actually convert?" [level=3]:
+      - button "What makes an Open Graph image actually convert?":
+        - generic: What makes an Open Graph image actually convert?
+    - heading "How do I force social networks to update a cached or broken link preview?" [level=3]:
+      - button "How do I force social networks to update a cached or broken link preview?":
+        - generic: How do I force social networks to update a cached or broken link preview?
+    - heading "Can I generate dynamic Open Graph images automatically at scale?" [level=3]:
+      - button "Can I generate dynamic Open Graph images automatically at scale?":
+        - generic: Can I generate dynamic Open Graph images automatically at scale?
+    - heading "Do I still need separate Twitter Card tags if I already have Open Graph tags?" [level=3]:
+      - button "Do I still need separate Twitter Card tags if I already have Open Graph tags?":
+        - generic: Do I still need separate Twitter Card tags if I already have Open Graph tags?
+    - heading "Why are my Open Graph previews missing on React, Vue, or Single Page Applications (SPAs)?" [level=3]:
+      - button "Why are my Open Graph previews missing on React, Vue, or Single Page Applications (SPAs)?":
+        - generic: Why are my Open Graph previews missing on React, Vue, or Single Page Applications (SPAs)?
+    - heading "How do Open Graph tags function on messaging apps like WhatsApp, Slack, and Discord?" [level=3]:
+      - button "How do Open Graph tags function on messaging apps like WhatsApp, Slack, and Discord?":
+        - generic: How do Open Graph tags function on messaging apps like WhatsApp, Slack, and Discord?
+    - heading "What is the ideal length for og:title and og:description?" [level=3]:
+      - button "What is the ideal length for og:title and og:description?":
+        - generic: What is the ideal length for og:title and og:description?
+- contentinfo:
+  - link "OpenGraph home":
+    - /url: /
+    - generic: OpenGraph
+  - paragraph: The easiest way to preview and generate Open Graph meta tags for any website. Win the social click war with dynamic, branded previews.
+  - link "Follow OpenGraph on X":
+    - /url: https://x.com/opengraph_xyz
+  - link "Follow OpenGraph on LinkedIn":
+    - /url: https://www.linkedin.com/company/opengraph-xyz/
+  - link "Follow OpenGraph on Facebook":
+    - /url: https://www.facebook.com/opengraph.xyz/
+  - link "Follow OpenGraph on Reddit":
+    - /url: https://www.reddit.com/user/opengraph/
+  - link "Follow OpenGraph on Instagram":
+    - /url: https://www.instagram.com/opengraph_xyz/
+  - textbox "Email for product updates":
+    - /placeholder: your@email.com
+  - button "Subscribe":
+    - text: Subscribe
+  - paragraph: Product updates, no spam. Unsubscribe anytime.
+  - heading "Product" [level=4]
+  - list:
+    - link "Automated OG Images":
+      - /url: /automated-open-graph-images
+    - link "AI Template Generator":
+      - /url: /ai-og-image-template-generator
+    - link "Short Links":
+      - /url: /short-links
+    - link "Pricing":
+      - /url: /pricing
+  - heading "Resources" [level=4]
+  - list:
+    - link "Docs":
+      - /url: /docs
+    - link "Inspiration":
+      - /url: /inspiration
+    - link "Blog":
+      - /url: /blog
+    - link "FAQ":
+      - /url: /#faq
+  - heading "Company" [level=4]
+  - list:
+    - link "About Us":
+      - /url: /about
+    - link "Contact":
+      - /url: /contact
+    - link "Terms of Service":
+      - /url: /terms-of-service
+    - link "Privacy Policy":
+      - /url: /privacy-policy
+    - link "Legal Notice":
+      - /url: /legal-notice
+    - button "Cookie Settings"
+  - paragraph: © 2026 Enter.nl B.V. All rights reserved.
+  - link "View OpenGraph analytics on Simple Analytics":
+    - /url: https://simpleanalytics.com/opengraph.xyz?utm_source=opengraph.xyz&utm_content=badge
+    - img "Simple Analytics badge"
+- region "Notifications alt+T"
+- alert
+- button "Bate-papo aberto"

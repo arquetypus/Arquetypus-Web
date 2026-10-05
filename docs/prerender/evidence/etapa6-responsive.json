@@ -1,0 +1,450 @@
+[
+  {
+    "variant": "baseline",
+    "route": "/loja/zeus",
+    "size": [
+      390,
+      844
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 54.59375,
+            "width": 343,
+            "x": 16,
+            "y": 536.5
+          },
+          "font": "Elegant, serif",
+          "text": "ZeusStormbreak"
+        }
+      ],
+      "height": 844,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 390,
+      "width": 390
+    }
+  },
+  {
+    "variant": "ssg",
+    "route": "/loja/zeus",
+    "size": [
+      390,
+      844
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 54.59375,
+            "width": 343,
+            "x": 16,
+            "y": 536.5
+          },
+          "font": "Elegant, serif",
+          "text": "ZeusStormbreak"
+        }
+      ],
+      "height": 844,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 390,
+      "width": 390
+    }
+  },
+  {
+    "route": "/",
+    "variant": "baseline",
+    "size": [
+      390,
+      844
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 104.015625,
+            "width": 293.25,
+            "x": 40.875,
+            "y": 582.3370971679688
+          },
+          "font": "Elegant, serif",
+          "text": "Qual versão de você quer expressar hoje?"
+        }
+      ],
+      "height": 844,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 390,
+      "width": 390
+    }
+  },
+  {
+    "route": "/",
+    "variant": "ssg",
+    "size": [
+      390,
+      844
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 104.015625,
+            "width": 293.25,
+            "x": 40.875,
+            "y": 594.7069091796875
+          },
+          "font": "Elegant, serif",
+          "text": "Qual versão de você quer expressar hoje?"
+        }
+      ],
+      "height": 844,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 390,
+      "width": 390
+    }
+  },
+  {
+    "route": "/",
+    "variant": "baseline",
+    "size": [
+      768,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 183.5625,
+            "width": 517.5,
+            "x": 117.75,
+            "y": 575.9019775390625
+          },
+          "font": "Elegant, serif",
+          "text": "Qual versão de você quer expressar hoje?"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 768,
+      "width": 768
+    }
+  },
+  {
+    "route": "/",
+    "variant": "ssg",
+    "size": [
+      768,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 183.5625,
+            "width": 517.5,
+            "x": 117.75,
+            "y": 573.1459350585938
+          },
+          "font": "Elegant, serif",
+          "text": "Qual versão de você quer expressar hoje?"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 768,
+      "width": 768
+    }
+  },
+  {
+    "route": "/",
+    "variant": "baseline",
+    "size": [
+      1024,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 202.5,
+            "width": 582.1875,
+            "x": 64,
+            "y": 393.5
+          },
+          "font": "Elegant, serif",
+          "text": "Qual versão de você quer expressar hoje?"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 1024,
+      "width": 1024
+    }
+  },
+  {
+    "route": "/",
+    "variant": "ssg",
+    "size": [
+      1024,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 202.50003051757812,
+            "width": 582.1875,
+            "x": 64,
+            "y": 383.9664611816406
+          },
+          "font": "Elegant, serif",
+          "text": "Qual versão de você quer expressar hoje?"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 1024,
+      "width": 1024
+    }
+  },
+  {
+    "route": "/",
+    "variant": "baseline",
+    "size": [
+      1440,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 202.5,
+            "width": 582.1875,
+            "x": 64,
+            "y": 393.5
+          },
+          "font": "Elegant, serif",
+          "text": "Qual versão de você quer expressar hoje?"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 1440,
+      "width": 1440
+    }
+  },
+  {
+    "route": "/",
+    "variant": "ssg",
+    "size": [
+      1440,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 202.5,
+            "width": 582.1875,
+            "x": 64,
+            "y": 393.5
+          },
+          "font": "Elegant, serif",
+          "text": "Qual versão de você quer expressar hoje?"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 1440,
+      "width": 1440
+    }
+  },
+  {
+    "route": "/loja/zeus",
+    "variant": "baseline",
+    "size": [
+      768,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 54.59375,
+            "width": 721,
+            "x": 16,
+            "y": 914.5
+          },
+          "font": "Elegant, serif",
+          "text": "ZeusStormbreak"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 768,
+      "width": 768
+    }
+  },
+  {
+    "route": "/loja/zeus",
+    "variant": "ssg",
+    "size": [
+      768,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 54.59375,
+            "width": 721,
+            "x": 16,
+            "y": 914.5
+          },
+          "font": "Elegant, serif",
+          "text": "ZeusStormbreak"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 768,
+      "width": 768
+    }
+  },
+  {
+    "route": "/loja/zeus",
+    "variant": "baseline",
+    "size": [
+      1024,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 80.0625,
+            "width": 352.40625,
+            "x": 608.578125,
+            "y": 210
+          },
+          "font": "Elegant, serif",
+          "text": "ZeusStormbreak"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 1024,
+      "width": 1024
+    }
+  },
+  {
+    "route": "/loja/zeus",
+    "variant": "ssg",
+    "size": [
+      1024,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 80.0625,
+            "width": 352.40625,
+            "x": 608.578125,
+            "y": 210
+          },
+          "font": "Elegant, serif",
+          "text": "ZeusStormbreak"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 1024,
+      "width": 1024
+    }
+  },
+  {
+    "route": "/loja/zeus",
+    "variant": "baseline",
+    "size": [
+      1440,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 80.0625,
+            "width": 456,
+            "x": 848.5,
+            "y": 210
+          },
+          "font": "Elegant, serif",
+          "text": "ZeusStormbreak"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 1440,
+      "width": 1440
+    }
+  },
+  {
+    "route": "/loja/zeus",
+    "variant": "ssg",
+    "size": [
+      1440,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 80.0625,
+            "width": 456,
+            "x": 848.5,
+            "y": 210
+          },
+          "font": "Elegant, serif",
+          "text": "ZeusStormbreak"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 1440,
+      "width": 1440
+    }
+  }
+]

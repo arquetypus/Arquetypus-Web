@@ -13,8 +13,25 @@
   "documents": 19,
   "resourceGetHeadPairs": 94,
   "browserValidationPassed": null,
-  "performanceAccepted": null,
+  "performanceAccepted": false,
   "rollbackPermissionVerified": false,
   "phase6FullyAccepted": false,
-  "productionPublished": false
+  "productionPublished": false,
+  "browserChecksPassed": {
+    "consentCases": 54,
+    "interactiveRoutes": 18,
+    "pdpUi": 9,
+    "noJsAndBlockedStorage": 36,
+    "responsive": 16
+  },
+  "browserMatrixFullyRepeated": false,
+  "performanceReport": "etapa6-analysis.json",
+  "schemaTemplatesValidated": true,
+  "breadcrumbRichResultValid": true,
+  "productRichResultEligible": false,
+  "socialPreviewInspected": true,
+  "qaDeployment": {
+    "commit": "3c03eef04d9f709f917e1dd87ce7adb732de13f2",
+    "id": "dpl_AbsewHyULcjgiuNhV8ho5WLmBTL6"
+  }
 }

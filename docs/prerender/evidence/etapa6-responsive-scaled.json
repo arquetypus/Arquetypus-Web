@@ -1,0 +1,482 @@
+[
+  {
+    "route": "/",
+    "variant": "baseline",
+    "size": [
+      390,
+      844
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 104.015625,
+            "width": 293.25,
+            "x": 40.875,
+            "y": 587.2076416015625
+          },
+          "font": "Elegant, serif",
+          "text": "Qual versão de você quer expressar hoje?"
+        }
+      ],
+      "height": 844,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 390,
+      "width": 390
+    },
+    "file": "etapa6-fit-baseline-home-390.png",
+    "presentationScale": 1
+  },
+  {
+    "route": "/",
+    "variant": "ssg",
+    "size": [
+      390,
+      844
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 104.015625,
+            "width": 293.25,
+            "x": 40.875,
+            "y": 599.96044921875
+          },
+          "font": "Elegant, serif",
+          "text": "Qual versão de você quer expressar hoje?"
+        }
+      ],
+      "height": 844,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 390,
+      "width": 390
+    },
+    "file": "etapa6-fit-ssg-home-390.png",
+    "presentationScale": 1
+  },
+  {
+    "route": "/",
+    "variant": "baseline",
+    "size": [
+      768,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 183.5625,
+            "width": 517.5,
+            "x": 117.75,
+            "y": 582.6875
+          },
+          "font": "Elegant, serif",
+          "text": "Qual versão de você quer expressar hoje?"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 768,
+      "width": 768
+    },
+    "file": "etapa6-fit-baseline-home-768.png",
+    "presentationScale": 0.5078125
+  },
+  {
+    "route": "/",
+    "variant": "ssg",
+    "size": [
+      768,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 183.5625,
+            "width": 517.5,
+            "x": 117.75,
+            "y": 558.879638671875
+          },
+          "font": "Elegant, serif",
+          "text": "Qual versão de você quer expressar hoje?"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 768,
+      "width": 768
+    },
+    "file": "etapa6-fit-ssg-home-768.png",
+    "presentationScale": 0.5078125
+  },
+  {
+    "route": "/",
+    "variant": "baseline",
+    "size": [
+      1024,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 202.50003051757812,
+            "width": 582.1875,
+            "x": 64,
+            "y": 371.6889343261719
+          },
+          "font": "Elegant, serif",
+          "text": "Qual versão de você quer expressar hoje?"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 1024,
+      "width": 1024
+    },
+    "file": "etapa6-fit-baseline-home-1024.png",
+    "presentationScale": 0.380859375
+  },
+  {
+    "route": "/",
+    "variant": "ssg",
+    "size": [
+      1024,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 202.5,
+            "width": 582.1875,
+            "x": 64,
+            "y": 369.5
+          },
+          "font": "Elegant, serif",
+          "text": "Qual versão de você quer expressar hoje?"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 1024,
+      "width": 1024
+    },
+    "file": "etapa6-fit-ssg-home-1024.png",
+    "presentationScale": 0.380859375
+  },
+  {
+    "route": "/",
+    "variant": "baseline",
+    "size": [
+      1440,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 202.50003051757812,
+            "width": 582.1875,
+            "x": 64,
+            "y": 372.6164245605469
+          },
+          "font": "Elegant, serif",
+          "text": "Qual versão de você quer expressar hoje?"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    "file": "etapa6-fit-baseline-home-1440.png",
+    "presentationScale": 0.2708333333333333
+  },
+  {
+    "route": "/",
+    "variant": "ssg",
+    "size": [
+      1440,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 202.50003051757812,
+            "width": 582.1875,
+            "x": 64,
+            "y": 370.0699157714844
+          },
+          "font": "Elegant, serif",
+          "text": "Qual versão de você quer expressar hoje?"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    "file": "etapa6-fit-ssg-home-1440.png",
+    "presentationScale": 0.2708333333333333
+  },
+  {
+    "route": "/loja/zeus",
+    "variant": "baseline",
+    "size": [
+      390,
+      844
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 54.59375,
+            "width": 343,
+            "x": 16,
+            "y": 536.5
+          },
+          "font": "Elegant, serif",
+          "text": "ZeusStormbreak"
+        }
+      ],
+      "height": 844,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 390,
+      "width": 390
+    },
+    "file": "etapa6-fit-baseline-zeus-390.png",
+    "presentationScale": 1
+  },
+  {
+    "route": "/loja/zeus",
+    "variant": "ssg",
+    "size": [
+      390,
+      844
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 54.59375,
+            "width": 343,
+            "x": 16,
+            "y": 536.5
+          },
+          "font": "Elegant, serif",
+          "text": "ZeusStormbreak"
+        }
+      ],
+      "height": 844,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 390,
+      "width": 390
+    },
+    "file": "etapa6-fit-ssg-zeus-390.png",
+    "presentationScale": 1
+  },
+  {
+    "route": "/loja/zeus",
+    "variant": "baseline",
+    "size": [
+      768,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 54.59375,
+            "width": 721,
+            "x": 16,
+            "y": 914.5
+          },
+          "font": "Elegant, serif",
+          "text": "ZeusStormbreak"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 768,
+      "width": 768
+    },
+    "file": "etapa6-fit-baseline-zeus-768.png",
+    "presentationScale": 0.5078125
+  },
+  {
+    "route": "/loja/zeus",
+    "variant": "ssg",
+    "size": [
+      768,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 54.59375,
+            "width": 721,
+            "x": 16,
+            "y": 914.5
+          },
+          "font": "Elegant, serif",
+          "text": "ZeusStormbreak"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 768,
+      "width": 768
+    },
+    "file": "etapa6-fit-ssg-zeus-768.png",
+    "presentationScale": 0.5078125
+  },
+  {
+    "route": "/loja/zeus",
+    "variant": "baseline",
+    "size": [
+      1024,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 80.0625,
+            "width": 352.40625,
+            "x": 608.578125,
+            "y": 210
+          },
+          "font": "Elegant, serif",
+          "text": "ZeusStormbreak"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 1024,
+      "width": 1024
+    },
+    "file": "etapa6-fit-baseline-zeus-1024.png",
+    "presentationScale": 0.380859375
+  },
+  {
+    "route": "/loja/zeus",
+    "variant": "ssg",
+    "size": [
+      1024,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 80.0625,
+            "width": 352.40625,
+            "x": 608.578125,
+            "y": 210
+          },
+          "font": "Elegant, serif",
+          "text": "ZeusStormbreak"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 1024,
+      "width": 1024
+    },
+    "file": "etapa6-fit-ssg-zeus-1024.png",
+    "presentationScale": 0.380859375
+  },
+  {
+    "route": "/loja/zeus",
+    "variant": "baseline",
+    "size": [
+      1440,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 80.0625,
+            "width": 456,
+            "x": 848.5,
+            "y": 210
+          },
+          "font": "Elegant, serif",
+          "text": "ZeusStormbreak"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    "file": "etapa6-fit-baseline-zeus-1440.png",
+    "presentationScale": 0.2708333333333333
+  },
+  {
+    "route": "/loja/zeus",
+    "variant": "ssg",
+    "size": [
+      1440,
+      900
+    ],
+    "dom": {
+      "broken": [],
+      "h1": [
+        {
+          "box": {
+            "height": 80.0625,
+            "width": 456,
+            "x": 848.5,
+            "y": 210
+          },
+          "font": "Elegant, serif",
+          "text": "ZeusStormbreak"
+        }
+      ],
+      "height": 900,
+      "main": true,
+      "menu": true,
+      "scrollWidth": 1440,
+      "width": 1440
+    },
+    "file": "etapa6-fit-ssg-zeus-1440.png",
+    "presentationScale": 0.2708333333333333
+  }
+]

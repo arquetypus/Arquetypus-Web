@@ -1,0 +1,119 @@
+[
+  {
+    "details": 10,
+    "disabled": [
+      true,
+      true
+    ],
+    "notes": true,
+    "path": "/loja/afrodite",
+    "photo2": "true",
+    "price": true,
+    "accordion": true,
+    "passed": true
+  },
+  {
+    "details": 10,
+    "disabled": [
+      true,
+      true
+    ],
+    "notes": true,
+    "path": "/loja/imperatriz",
+    "photo2": "true",
+    "price": true,
+    "accordion": true,
+    "passed": true
+  },
+  {
+    "details": 10,
+    "disabled": [
+      true,
+      true
+    ],
+    "notes": true,
+    "path": "/loja/cleopatra",
+    "photo2": "true",
+    "price": true,
+    "accordion": true,
+    "passed": true
+  },
+  {
+    "details": 10,
+    "disabled": [
+      true,
+      true
+    ],
+    "notes": true,
+    "path": "/loja/fada",
+    "photo2": "true",
+    "price": true,
+    "accordion": true,
+    "passed": true
+  },
+  {
+    "details": 10,
+    "disabled": [
+      true,
+      true
+    ],
+    "notes": true,
+    "path": "/loja/sereia",
+    "photo2": "true",
+    "price": true,
+    "accordion": true,
+    "passed": true
+  },
+  {
+    "details": 10,
+    "disabled": [
+      true,
+      true
+    ],
+    "notes": true,
+    "path": "/loja/zeus",
+    "photo2": "true",
+    "price": true,
+    "accordion": true,
+    "passed": true
+  },
+  {
+    "details": 10,
+    "disabled": [
+      true,
+      true
+    ],
+    "notes": true,
+    "path": "/loja/guerreiro",
+    "photo2": "true",
+    "price": true,
+    "accordion": true,
+    "passed": true
+  },
+  {
+    "details": 10,
+    "disabled": [
+      true,
+      true
+    ],
+    "notes": true,
+    "path": "/loja/imperador",
+    "photo2": "true",
+    "price": true,
+    "accordion": true,
+    "passed": true
+  },
+  {
+    "details": 10,
+    "disabled": [
+      true,
+      true
+    ],
+    "notes": true,
+    "path": "/loja/fenix",
+    "photo2": "true",
+    "price": true,
+    "accordion": true,
+    "passed": true
+  }
+]

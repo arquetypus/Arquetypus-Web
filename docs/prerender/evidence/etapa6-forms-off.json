@@ -1,0 +1,72 @@
+[
+  {
+    "forms": [
+      {
+        "action": null,
+        "fields": [
+          {
+            "disabled": true,
+            "name": "email",
+            "tag": "INPUT",
+            "type": "email"
+          },
+          {
+            "disabled": true,
+            "name": "whatsapp",
+            "tag": "INPUT",
+            "type": "tel"
+          },
+          {
+            "disabled": true,
+            "name": null,
+            "tag": "BUTTON",
+            "type": "submit"
+          }
+        ],
+        "method": null
+      }
+    ],
+    "path": "/"
+  },
+  {
+    "forms": [
+      {
+        "action": null,
+        "fields": [
+          {
+            "disabled": false,
+            "name": null,
+            "tag": "INPUT",
+            "type": "text"
+          },
+          {
+            "disabled": false,
+            "name": null,
+            "tag": "INPUT",
+            "type": "tel"
+          },
+          {
+            "disabled": false,
+            "name": null,
+            "tag": "INPUT",
+            "type": "text"
+          },
+          {
+            "disabled": false,
+            "name": null,
+            "tag": "INPUT",
+            "type": "url"
+          },
+          {
+            "disabled": true,
+            "name": null,
+            "tag": "BUTTON",
+            "type": "submit"
+          }
+        ],
+        "method": null
+      }
+    ],
+    "path": "/criadores"
+  }
+]

@@ -1,0 +1,128 @@
+{
+  "browserCasesPassed": 54,
+  "interactiveRoutesPassed": 18,
+  "pdpUiPassed": 9,
+  "noScriptsAndBlockedStorageLatestPassed": 36,
+  "responsiveCasesPassed": 16,
+  "initialCollectorFalseNegatives": [
+    {
+      "mode": "blocked",
+      "route": "/regras-do-site"
+    },
+    {
+      "mode": "blocked",
+      "route": "/privacidade"
+    }
+  ],
+  "flowCollectorCorrection": "Filtro tinha dois links por card; contagem corrigida para produtos únicos. Drawer confirmado após pathname mudar, não apenas H2 da PDP.",
+  "performance": [
+    {
+      "route": "/",
+      "rounds": [
+        1,
+        2,
+        3
+      ],
+      "baseline": {
+        "FCP": 3322,
+        "LCP": 9430,
+        "TBT": 280,
+        "CLS": 0
+      },
+      "ssg": {
+        "FCP": 3608,
+        "LCP": 8780,
+        "TBT": 168,
+        "CLS": 0
+      },
+      "deltaPercent": {
+        "FCP": 8.609271523178808,
+        "LCP": -6.892895015906686,
+        "TBT": -40
+      }
+    },
+    {
+      "route": "/loja/zeus",
+      "rounds": [
+        1,
+        2,
+        3
+      ],
+      "baseline": {
+        "FCP": 3355,
+        "LCP": 8260,
+        "TBT": 72,
+        "CLS": 0
+      },
+      "ssg": {
+        "FCP": 3337,
+        "LCP": 6959,
+        "TBT": 112,
+        "CLS": 0
+      },
+      "deltaPercent": {
+        "FCP": -0.536512667660205,
+        "LCP": -15.75060532687651,
+        "TBT": 55.55555555555556
+      }
+    },
+    {
+      "route": "/loja/zeus",
+      "rounds": [
+        4,
+        5,
+        6
+      ],
+      "baseline": {
+        "FCP": 2732,
+        "LCP": 8001,
+        "TBT": 56,
+        "CLS": 0
+      },
+      "ssg": {
+        "FCP": 3324,
+        "LCP": 5890,
+        "TBT": 68,
+        "CLS": 0
+      },
+      "deltaPercent": {
+        "FCP": 21.669106881405554,
+        "LCP": -26.384201974753154,
+        "TBT": 21.42857142857142
+      }
+    },
+    {
+      "route": "/loja/zeus",
+      "rounds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "baseline": {
+        "FCP": 3336,
+        "LCP": 8257.5,
+        "TBT": 64,
+        "CLS": 0
+      },
+      "ssg": {
+        "FCP": 3334,
+        "LCP": 6061,
+        "TBT": 90,
+        "CLS": 0
+      },
+      "deltaPercent": {
+        "FCP": -0.059952038369304184,
+        "LCP": -26.600060551014227,
+        "TBT": 40.625
+      }
+    }
+  ],
+  "performanceAccepted": false,
+  "reason": "TBT mediano da PDP acima de 10% no conjunto final; tarefas de GTM/GA4 predominam na amostra diagnosticada. Causa da diferença ainda não isolada.",
+  "fullPhase5RemoteMatrixRepeated": false,
+  "rollbackPermissionVerified": false,
+  "phase6FullyAccepted": false
+}
