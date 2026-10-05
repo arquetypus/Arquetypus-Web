@@ -23,6 +23,19 @@ SEO compartilhado em `src/lib/seoModel.ts`; servidor e cliente usam a mesma árv
 React. Home contém estado inicial e preços; cada PDP contém nome, H1, preço,
 descrição, imagem e metadados próprios antes do JavaScript.
 
+Entrada de build: `src/entry-server.tsx`, com `renderToString` e `StaticRouter`.
+Entrada cliente: `src/main.tsx`, com `hydrateRoot` para HTML compatível e renderização
+cliente para estados de histórico/rotas que exigem outra árvore. Preservar esse contrato;
+a primeira renderização não deve depender de storage, relógio ou APIs do navegador.
+Mudanças de conteúdo, preço, metadados ou catálogo exigem novo build/deploy.
+
+## Fluxo Git
+
+Pré-renderização integrada e publicada no domínio principal. Trabalho corrente
+diretamente na `main`, conforme decisão do usuário. A branch `prerender` foi integrada
+e removida local e remotamente. Não há mais etapas de migração a executar; scripts
+de pré-renderização e validação continuam fazendo parte do build permanente.
+
 ## Vercel
 
 `vercel.json` versionado define preset Vite, `npm run build`, saída `dist`, URLs sem

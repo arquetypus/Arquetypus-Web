@@ -264,14 +264,15 @@ decisão de produto já tomada:
   após receber e avaliar; estorno do cartão no prazo da operadora; cupom 15% uma vez por CPF, acumula com outras
   promoções e com o Pix; sem promessa de duração na pele (só "10% de essência"). Retenção GA4 no texto = 14 meses
   (o usuário pediu 12, que o GA4 não oferece) — configurar igual. Revisão jurídica recomendada antes de publicar.
-- **Hospedagem na Vercel (SSG na branch `prerender`):** `vercel.json` define Vite, pipeline completo
+- **Hospedagem na Vercel (SSG em produção):** `vercel.json` define Vite, pipeline completo
   `npm run build`, saída `dist`, `cleanUrls: true` e `trailingSlash: false`. Rewrite SPA removido
   somente após gerar e verificar 18 páginas + `404.html`. Não restaurar catch-all para home:
   cada URL deve entregar seu HTML. Arquivos estáticos são servidos diretamente; rota desconhecida
   recebe 404 própria/noindex. `/arquetipos/:id` usa 308; kit e produto inexistente usam 307 para home.
   Matcher vem de `ARCHETYPES`: executar `npm run configure:vercel`, revisar e versionar antes do push;
-  `npm run verify:vercel` bloqueia drift no início do build. Produção permanece SPA até Etapa 7
-  autorizada e validada; não interpretar configuração da branch como publicação em produção.
+  `npm run verify:vercel` bloqueia drift no início do build. Pré-renderização publicada no domínio
+  principal; trabalho corrente diretamente na `main`, conforme decisão do usuário. A branch
+  `prerender` foi integrada e removida. Operação e manutenção em `README.md`.
 - **robots.txt, sitemap.xml e llms.txt (out/2026)** são gerados no build (plugin `arquivosSeo` no
   `vite.config.ts`, conteúdo em `src/lib/arquivosSeo.ts`) a partir dos dados do site — produtos e preços
   de `ARCHETYPES`, empresa de `data/empresa.ts`, páginas de `data/rotas.ts` (`PAGINAS_PUBLICAS`: ao criar
