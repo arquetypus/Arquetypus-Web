@@ -1,0 +1,27 @@
+{
+  "scope": "Chrome; bytes do preview em loopback; --no-app-scripts remove executáveis nas respostas QA; JSON-LD preservado; JavaScript do navegador ativo para automação, zero scripts do site",
+  "before": {
+    "h1": "Qual versão de você quer expressar hoje?",
+    "homeDisabled": true,
+    "scripts": 0,
+    "url": "http://127.0.0.1:4177/"
+  },
+  "after": {
+    "h1": "ZeusStormbreak",
+    "openDetails": 1,
+    "scripts": 0,
+    "url": "http://127.0.0.1:4177/loja/zeus"
+  },
+  "pass": true,
+  "creatorsEnter": {
+    "fields": [
+      "",
+      "",
+      "",
+      ""
+    ],
+    "scripts": 0,
+    "submitDisabled": true,
+    "url": "http://127.0.0.1:4177/criadores"
+  }
+}

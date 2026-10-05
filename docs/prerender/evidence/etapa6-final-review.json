@@ -1,0 +1,60 @@
+{
+  "reviewedAt": "2026-10-05",
+  "verdict": "Aprovada com limitações documentadas",
+  "acceptanceScope": "Aceite técnico da Etapa 6: entrega estática e paridade da migração no preview. Cobertura combinada de preview intacto no Chrome e falhas induzidas com bytes verificados; não certifica execução literal integral de todas as combinações no deployment intacto.",
+  "blockingIssues": [],
+  "applicationCommit": "a0f211dcb7409f2accdb392dd021c7c946c61242",
+  "previewDocumentCommit": "67d66d35c4535f121cd0c4179e5f531acee52012",
+  "previewDeploymentId": "dpl_89SSTyW7scpYwRyuv7LrDDK4zUge",
+  "previewUrl": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/",
+  "productionCommit": "8a02e4a2135d407c61315e1ec039c3d28ac9b3f2",
+  "manualEvidence": {
+    "provider": "Usuário, por anexos e prints nesta conversa; agente não acessou painel",
+    "record": "../vercel-validacao-manual.md",
+    "previewCommit": "67d66d35c4535f121cd0c4179e5f531acee52012",
+    "framework": "Vite",
+    "node": "24.x",
+    "buildCommand": "npm run build",
+    "outputDirectory": "dist",
+    "fullBuildPassed": true,
+    "htmlArtifacts": 19,
+    "productionStableUrl": "https://arquetypus-parfum-b6orb7kc1-saniella.vercel.app/",
+    "productionReadyCurrent": true,
+    "rollbackDialogAvailable": true,
+    "dialogCurrentCommit": "8a02e4a",
+    "dialogPreviousCommit": "3833162",
+    "rollbackExecuted": false,
+    "futureRecoveryTarget": "8a02e4a"
+  },
+  "methodReview": [
+    {
+      "topic": "Falhas, consentimento expirado e storage bloqueado",
+      "decision": "Método aceito para o comportamento da aplicação: 19 documentos e assets remotos conferidos antes da instrumentação, 95 hidratações e 57 falhas aprovadas no Chrome. Visitas normais, consentimentos salvos e integração do roteamento também possuem prova no preview intacto. Não exigir que Vercel induza falhas de APIs do navegador."
+    },
+    {
+      "topic": "Tracking",
+      "decision": "Requisito da matriz é contrato page_view/título/consentimento. Sete eventos e ausência de duplicação na mesma URL comprovados na fixture; lógica executável RouteTracker e snippets GTM/Consent Mode comparados ao baseline. GTM/GA4 reais carregaram no preview. Recebimento de cada evento pelo Google não certificado; verificar no smoke de produção da Etapa 7 com usuário, sem mudar tags."
+    },
+    {
+      "topic": "Responsivo e gestos",
+      "decision": "Quatro viewports reais medidos no Chrome, produção/preview, home/Zeus: 16 casos. Arraste do pop-up por mouse em viewport móvel comprovado; touch físico não certificado. Capturas finais da home confirmam scrollTop do container zero. Vídeo/animações impedem declarar identidade de pixels."
+    },
+    {
+      "topic": "Desempenho",
+      "decision": "Limite original preservado. Home: três pares; Zeus: onze pares, sem excluir amostras. LCP/TBT e CLS comparativos atendidos. Não declarar metas absolutas de Core Web Vitals atingidas, causa completa da variação isolada ou custo zero de hidratação."
+    },
+    {
+      "topic": "SEO e recuperação",
+      "decision": "HTML bruto, status, canonical, noindex do preview e schema conferidos. Product sem Offer permanece inelegível conforme plano. Preparação de rollback comprovada por consulta manual; operação efetiva não executada. Indexação e domínio oficial após promoção pertencem à Etapa 7."
+    }
+  ],
+  "remainingPhase7Checks": [
+    "Obter autorização explícita antes de merge/publicação; operações Vercel exclusivamente manuais pelo usuário",
+    "Conferir commit/deployment liberado e HTML/assets do mesmo build, revalidando se houver rebuild",
+    "Smoke em produção: rotas, redirects, 404, ausência de noindex em URLs públicas e tracking/consentimento",
+    "Confirmar destino estável 8a02e4a elegível para recuperação no contexto da publicação",
+    "Revalidar métricas após publicação e acompanhar erros/indexação conforme plano"
+  ],
+  "productionPublished": false,
+  "phase7Authorized": false
+}

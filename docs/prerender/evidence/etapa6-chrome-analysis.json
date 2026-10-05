@@ -1,0 +1,27 @@
+{
+  "collectedAt": "2026-10-05T16:33:13.762Z",
+  "primaryBrowser": "Google Chrome",
+  "deployedHtmlWithJsPassed": 19,
+  "deployedHtmlWithoutScriptsVisiblePassed": 19,
+  "instrumentedHydrationConsentPassed": 95,
+  "instrumentedFallbackCasesPassed": 57,
+  "deployedPdpUiPassed": 9,
+  "preHydrationGestureRunsPassed": 3,
+  "formCasesPassed": 8,
+  "mobileFlowsPassed": 4,
+  "expectedPageViews": 7,
+  "nativeControlsWithoutSiteScriptsPassed": true,
+  "functionalScenariosCovered": true,
+  "literalEntirePhase5MatrixOnUnmodifiedPreviewRepeated": false,
+  "limitations": [
+    "Falhas/consentimento/gestos/tracking: bytes do preview verificados, servidos em loopback com instrumentação. Origem muda e GTM é substituído.",
+    "Sem JS no preview: visibilidade comprovada em iframe sandbox. Controles nativos comprovados em loopback com zero scripts executáveis do site.",
+    "Viewport móvel CSS 390×844 verificado em iframe do preview real. Não testa touch ou aparelho físico. Override do Chrome não aplicou dimensão e foi resetado.",
+    "Tracking comprova contrato do dataLayer e ordem de consentimento; entrega real GA4/GTM não certificada."
+  ],
+  "performanceAccepted": false,
+  "rollbackPermissionVerified": false,
+  "manualVercelBuildVerified": false,
+  "phase6FullyAccepted": false,
+  "productionPublished": false
+}

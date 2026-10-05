@@ -1,0 +1,519 @@
+{
+  "scope": "Chrome; dataLayer exposto por fixture DOM; GTM substituído por marcador; entrega externa não certificada",
+  "expectedPaths": [
+    "/loja/afrodite?consent=accepted",
+    "/loja/cleopatra",
+    "/perguntas-frequentes",
+    "/loja/cleopatra",
+    "/",
+    "/loja/zeus",
+    "/"
+  ],
+  "pass": true,
+  "rows": [
+    {
+      "label": "fria Afrodite",
+      "url": "http://127.0.0.1:4177/loja/afrodite?consent=accepted",
+      "title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum",
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/afrodite?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/loja/afrodite?consent=accepted",
+          "page_title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "label": "Cleópatra",
+      "url": "http://127.0.0.1:4177/loja/cleopatra",
+      "title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum",
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/afrodite?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/loja/afrodite?consent=accepted",
+          "page_title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/cleopatra",
+          "page_location": "http://127.0.0.1:4177/loja/cleopatra",
+          "page_title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "label": "FAQ",
+      "url": "http://127.0.0.1:4177/perguntas-frequentes",
+      "title": "Perguntas Frequentes | Arquétypus Parfum",
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/afrodite?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/loja/afrodite?consent=accepted",
+          "page_title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/cleopatra",
+          "page_location": "http://127.0.0.1:4177/loja/cleopatra",
+          "page_title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/perguntas-frequentes",
+          "page_location": "http://127.0.0.1:4177/perguntas-frequentes",
+          "page_title": "Perguntas Frequentes | Arquétypus Parfum"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "label": "voltar Cleópatra",
+      "url": "http://127.0.0.1:4177/loja/cleopatra",
+      "title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum",
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/afrodite?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/loja/afrodite?consent=accepted",
+          "page_title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/cleopatra",
+          "page_location": "http://127.0.0.1:4177/loja/cleopatra",
+          "page_title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/perguntas-frequentes",
+          "page_location": "http://127.0.0.1:4177/perguntas-frequentes",
+          "page_title": "Perguntas Frequentes | Arquétypus Parfum"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "label": "home",
+      "url": "http://127.0.0.1:4177/",
+      "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/afrodite?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/loja/afrodite?consent=accepted",
+          "page_title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/cleopatra",
+          "page_location": "http://127.0.0.1:4177/loja/cleopatra",
+          "page_title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/perguntas-frequentes",
+          "page_location": "http://127.0.0.1:4177/perguntas-frequentes",
+          "page_title": "Perguntas Frequentes | Arquétypus Parfum"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/cleopatra",
+          "page_location": "http://127.0.0.1:4177/loja/cleopatra",
+          "page_title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/",
+          "page_location": "http://127.0.0.1:4177/",
+          "page_title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "label": "pop-up Zeus",
+      "url": "http://127.0.0.1:4177/loja/zeus",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/afrodite?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/loja/afrodite?consent=accepted",
+          "page_title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/cleopatra",
+          "page_location": "http://127.0.0.1:4177/loja/cleopatra",
+          "page_title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/perguntas-frequentes",
+          "page_location": "http://127.0.0.1:4177/perguntas-frequentes",
+          "page_title": "Perguntas Frequentes | Arquétypus Parfum"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/cleopatra",
+          "page_location": "http://127.0.0.1:4177/loja/cleopatra",
+          "page_title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/",
+          "page_location": "http://127.0.0.1:4177/",
+          "page_title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/zeus",
+          "page_location": "http://127.0.0.1:4177/loja/zeus",
+          "page_title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "label": "página completa mesma URL",
+      "url": "http://127.0.0.1:4177/loja/zeus",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/afrodite?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/loja/afrodite?consent=accepted",
+          "page_title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/cleopatra",
+          "page_location": "http://127.0.0.1:4177/loja/cleopatra",
+          "page_title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/perguntas-frequentes",
+          "page_location": "http://127.0.0.1:4177/perguntas-frequentes",
+          "page_title": "Perguntas Frequentes | Arquétypus Parfum"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/cleopatra",
+          "page_location": "http://127.0.0.1:4177/loja/cleopatra",
+          "page_title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/",
+          "page_location": "http://127.0.0.1:4177/",
+          "page_title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/zeus",
+          "page_location": "http://127.0.0.1:4177/loja/zeus",
+          "page_title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "label": "home final",
+      "url": "http://127.0.0.1:4177/",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        [
+          "consent",
+          "update",
+          {
+            "analytics_storage": "granted",
+            "ad_storage": "granted",
+            "ad_user_data": "granted",
+            "ad_personalization": "granted"
+          }
+        ],
+        {
+          "event": "gtm.js",
+          "qa": true
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/afrodite?consent=accepted",
+          "page_location": "http://127.0.0.1:4177/loja/afrodite?consent=accepted",
+          "page_title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/cleopatra",
+          "page_location": "http://127.0.0.1:4177/loja/cleopatra",
+          "page_title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/perguntas-frequentes",
+          "page_location": "http://127.0.0.1:4177/perguntas-frequentes",
+          "page_title": "Perguntas Frequentes | Arquétypus Parfum"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/cleopatra",
+          "page_location": "http://127.0.0.1:4177/loja/cleopatra",
+          "page_title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/",
+          "page_location": "http://127.0.0.1:4177/",
+          "page_title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/zeus",
+          "page_location": "http://127.0.0.1:4177/loja/zeus",
+          "page_title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum"
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "pageViews": [
+    {
+      "event": "page_view",
+      "page_path": "/loja/afrodite?consent=accepted",
+      "page_location": "http://127.0.0.1:4177/loja/afrodite?consent=accepted",
+      "page_title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum"
+    },
+    {
+      "event": "page_view",
+      "page_path": "/loja/cleopatra",
+      "page_location": "http://127.0.0.1:4177/loja/cleopatra",
+      "page_title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum"
+    },
+    {
+      "event": "page_view",
+      "page_path": "/perguntas-frequentes",
+      "page_location": "http://127.0.0.1:4177/perguntas-frequentes",
+      "page_title": "Perguntas Frequentes | Arquétypus Parfum"
+    },
+    {
+      "event": "page_view",
+      "page_path": "/loja/cleopatra",
+      "page_location": "http://127.0.0.1:4177/loja/cleopatra",
+      "page_title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum"
+    },
+    {
+      "event": "page_view",
+      "page_path": "/",
+      "page_location": "http://127.0.0.1:4177/",
+      "page_title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos"
+    },
+    {
+      "event": "page_view",
+      "page_path": "/loja/zeus",
+      "page_location": "http://127.0.0.1:4177/loja/zeus",
+      "page_title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum"
+    },
+    {
+      "event": "page_view",
+      "page_path": "/",
+      "page_location": "http://127.0.0.1:4177/",
+      "page_title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos"
+    }
+  ],
+  "firstReadBeforeFixtureRefresh": {
+    "count": 6,
+    "finalEventPending": true
+  }
+}

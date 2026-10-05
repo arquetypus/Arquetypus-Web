@@ -1,0 +1,32 @@
+{
+  "analyzedAt": "2026-10-05T16:33:15.001Z",
+  "verdict": "Aprovada com limitações documentadas",
+  "phase6Accepted": true,
+  "scope": "Aceite técnico da Etapa 6: entrega estática e paridade da migração no preview. Cobertura combinada de preview intacto no Chrome e falhas induzidas com bytes verificados; não certifica execução literal integral de todas as combinações no deployment intacto.",
+  "routeChecks": 306,
+  "rawHtmlDocuments": 19,
+  "resourcePairs": 94,
+  "deployedPdpFullGalleries": 9,
+  "photosTested": 18,
+  "detailsOpened": 90,
+  "responsiveCases": 16,
+  "cleanHomeCaptures": 8,
+  "validatedFlowObservations": 29,
+  "homePerformanceAccepted": true,
+  "zeusPerformanceAccepted": true,
+  "manualBuildAndRollbackPreparationReviewed": true,
+  "literalEntirePhase5MatrixOnUnmodifiedPreviewRepeated": false,
+  "analyticsDeliveryCertified": false,
+  "physicalTouchCertified": false,
+  "pixelIdentityCertified": false,
+  "productionPublished": false,
+  "phase7Authorized": false,
+  "blockingIssues": [],
+  "inputHashes": {
+    "etapa6-final-chrome.json": "95dde857be5b1d83a59afd5497e2b5ec7999b513c49db99e73c5b1eaa587a2f5",
+    "etapa6-http.json": "eac594846b1c6d51b055725df664a8896636a8b4f58f0b60cb0db63a728355cb",
+    "etapa6-chrome-analysis.json": "e06a695fc4964ec9c1340a623a83e791fb3ac8aa6770dbd3721f3c2259aa0c7d",
+    "etapa6-tbt-investigation-analysis.json": "9e1a56069e40c8def96d8be1385d00dc7668c9ec0ac796e5e754f505ffdc136a",
+    "etapa6-final-review.json": "8358fe95269b2eadf3d1acea4ac45268990f4114fe3333bacefed1cd9d92d61b"
+  }
+}

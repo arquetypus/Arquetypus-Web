@@ -1,0 +1,2518 @@
+{
+  "ready": true,
+  "rows": [
+    {
+      "variant": "baseline",
+      "round": 1,
+      "ready": true,
+      "url": "http://127.0.0.1:4179/loja/zeus?variant=baseline&tags=blocked&consent=absent&sample=0",
+      "visibilityAtStart": "visible",
+      "visibilityAtEnd": "visible",
+      "collectedAtMs": 8155,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "cutoffMs": 8000,
+      "fcp": 2512,
+      "lcp": 2532,
+      "cls": 0,
+      "longTasks": [
+        {
+          "startTime": 111.09999996423721,
+          "duration": 66
+        },
+        {
+          "startTime": 190,
+          "duration": 87
+        },
+        {
+          "startTime": 283.69999998807907,
+          "duration": 182
+        }
+      ],
+      "blockingAfterFcpObserved": 0,
+      "hydratedAt": 515.5999999642372,
+      "preserved": false,
+      "originalTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "h1": "ZeusStormbreak",
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/zeus?variant=baseline&tags=blocked&consent=absent&sample=0"
+        }
+      ],
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+          "startTime": 44.59999996423721,
+          "duration": 18.200000047683716,
+          "transferSize": 0,
+          "encodedBodySize": 93450
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/elegant.woff2",
+          "startTime": 46.30000001192093,
+          "duration": 18.799999952316284,
+          "transferSize": 32748,
+          "encodedBodySize": 32448
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 46.59999996423721,
+          "duration": 19,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/__baseline/assets/index-CEBNf12q.js",
+          "startTime": 46.80000001192093,
+          "duration": 27,
+          "transferSize": 628936,
+          "encodedBodySize": 628636
+        },
+        {
+          "name": "http://127.0.0.1:4179/__baseline/assets/index-C9zeGloN.css",
+          "startTime": 46.89999997615814,
+          "duration": 27.80000001192093,
+          "transferSize": 160020,
+          "encodedBodySize": 159720
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 183.30000001192093,
+          "duration": 13.099999964237213,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-marmore-_FVJxRZ6.png",
+          "startTime": 276.5,
+          "duration": 14.399999976158142,
+          "transferSize": 89318,
+          "encodedBodySize": 89018
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-preto-BefuJb9g.png",
+          "startTime": 276.5999999642372,
+          "duration": 15.900000035762787,
+          "transferSize": 87850,
+          "encodedBodySize": 87550
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-BSVowwxX.jpg",
+          "startTime": 276.89999997615814,
+          "duration": 19.100000023841858,
+          "transferSize": 107588,
+          "encodedBodySize": 107288
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-adIUQC4G.jpg",
+          "startTime": 277,
+          "duration": 20.899999976158142,
+          "transferSize": 124614,
+          "encodedBodySize": 124314
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/flor-arquetypus-CKSiaCgq.png",
+          "startTime": 277.0999999642372,
+          "duration": 26.80000001192093,
+          "transferSize": 1502305,
+          "encodedBodySize": 1502005
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-ByZH3hi4.jpg",
+          "startTime": 277.19999998807907,
+          "duration": 20.399999976158142,
+          "transferSize": 9881,
+          "encodedBodySize": 9581
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/guerreiro-B-htc0v_.jpg",
+          "startTime": 277.30000001192093,
+          "duration": 28,
+          "transferSize": 10534,
+          "encodedBodySize": 10234
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/logo-dourado-BkuS44dK.png",
+          "startTime": 277.69999998807907,
+          "duration": 28.80000001192093,
+          "transferSize": 40914,
+          "encodedBodySize": 40614
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var-italic.woff2",
+          "startTime": 315.80000001192093,
+          "duration": 162.29999995231628,
+          "transferSize": 116464,
+          "encodedBodySize": 116164
+        }
+      ]
+    },
+    {
+      "variant": "ssg",
+      "round": 1,
+      "ready": true,
+      "url": "http://127.0.0.1:4179/loja/zeus?variant=ssg&tags=blocked&consent=absent&sample=1",
+      "visibilityAtStart": "visible",
+      "visibilityAtEnd": "visible",
+      "collectedAtMs": 8068.300000011921,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "cutoffMs": 8000,
+      "fcp": null,
+      "lcp": null,
+      "cls": 0,
+      "longTasks": [
+        {
+          "startTime": 136.80000001192093,
+          "duration": 323
+        },
+        {
+          "startTime": 479.30000001192093,
+          "duration": 76
+        },
+        {
+          "startTime": 557.8999999761581,
+          "duration": 126
+        },
+        {
+          "startTime": 2569.199999988079,
+          "duration": 53
+        }
+      ],
+      "blockingAfterFcpObserved": null,
+      "hydratedAt": 710.3000000119209,
+      "preserved": true,
+      "originalTitle": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "h1": "ZeusStormbreak",
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/zeus?variant=ssg&tags=blocked&consent=absent&sample=1"
+        }
+      ],
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+          "startTime": 48.89999997615814,
+          "duration": 0,
+          "transferSize": 0,
+          "encodedBodySize": 93450
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/elegant.woff2",
+          "startTime": 49.10000002384186,
+          "duration": 20.599999964237213,
+          "transferSize": 32748,
+          "encodedBodySize": 32448
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 49.5,
+          "duration": 25.399999976158142,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/index-Cd29iwMJ.js",
+          "startTime": 49.60000002384186,
+          "duration": 23.099999964237213,
+          "transferSize": 636262,
+          "encodedBodySize": 635962
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-marmore-_FVJxRZ6.png",
+          "startTime": 49.69999998807907,
+          "duration": 27.19999998807907,
+          "transferSize": 89318,
+          "encodedBodySize": 89018
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/index-BYogewtm.css",
+          "startTime": 49.69999998807907,
+          "duration": 29.19999998807907,
+          "transferSize": 160635,
+          "encodedBodySize": 160335
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-preto-BefuJb9g.png",
+          "startTime": 49.80000001192093,
+          "duration": 29.399999976158142,
+          "transferSize": 87850,
+          "encodedBodySize": 87550
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-BSVowwxX.jpg",
+          "startTime": 49.89999997615814,
+          "duration": 58.80000001192093,
+          "transferSize": 107588,
+          "encodedBodySize": 107288
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-adIUQC4G.jpg",
+          "startTime": 50,
+          "duration": 53.19999998807907,
+          "transferSize": 124614,
+          "encodedBodySize": 124314
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-ByZH3hi4.jpg",
+          "startTime": 50.10000002384186,
+          "duration": 60,
+          "transferSize": 9881,
+          "encodedBodySize": 9581
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/flor-arquetypus-CKSiaCgq.png",
+          "startTime": 50.10000002384186,
+          "duration": 70.09999996423721,
+          "transferSize": 1502305,
+          "encodedBodySize": 1502005
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/guerreiro-B-htc0v_.jpg",
+          "startTime": 50.30000001192093,
+          "duration": 60,
+          "transferSize": 10534,
+          "encodedBodySize": 10234
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/logo-dourado-BkuS44dK.png",
+          "startTime": 50.30000001192093,
+          "duration": 62.69999998807907,
+          "transferSize": 40914,
+          "encodedBodySize": 40614
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-preto-BefuJb9g.png",
+          "startTime": 114,
+          "duration": 9.399999976158142,
+          "transferSize": 87850,
+          "encodedBodySize": 87550
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 259.5,
+          "duration": 209,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var-italic.woff2",
+          "startTime": 260.39999997615814,
+          "duration": 212.10000002384186,
+          "transferSize": 116464,
+          "encodedBodySize": 116164
+        }
+      ]
+    },
+    {
+      "variant": "csr",
+      "round": 1,
+      "ready": true,
+      "url": "http://127.0.0.1:4179/loja/zeus?variant=csr&tags=blocked&consent=absent&sample=2",
+      "visibilityAtStart": "visible",
+      "visibilityAtEnd": "visible",
+      "collectedAtMs": 8061.199999988079,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "cutoffMs": 8000,
+      "fcp": null,
+      "lcp": null,
+      "cls": 0,
+      "longTasks": [
+        {
+          "startTime": 105.19999998807907,
+          "duration": 157
+        },
+        {
+          "startTime": 324.2999999523163,
+          "duration": 93
+        }
+      ],
+      "blockingAfterFcpObserved": null,
+      "hydratedAt": 283.69999998807907,
+      "preserved": true,
+      "originalTitle": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "h1": "ZeusStormbreak",
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/zeus?variant=csr&tags=blocked&consent=absent&sample=2"
+        }
+      ],
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+          "startTime": 42.89999997615814,
+          "duration": 0,
+          "transferSize": 0,
+          "encodedBodySize": 93450
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/elegant.woff2",
+          "startTime": 43,
+          "duration": 16.099999964237213,
+          "transferSize": 32748,
+          "encodedBodySize": 32448
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 43.299999952316284,
+          "duration": 18.700000047683716,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/index-Cd29iwMJ.js",
+          "startTime": 43.39999997615814,
+          "duration": 20.899999976158142,
+          "transferSize": 636262,
+          "encodedBodySize": 635962
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/index-BYogewtm.css",
+          "startTime": 43.59999996423721,
+          "duration": 19,
+          "transferSize": 160635,
+          "encodedBodySize": 160335
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-preto-BefuJb9g.png",
+          "startTime": 121.29999995231628,
+          "duration": 6.100000023841858,
+          "transferSize": 87850,
+          "encodedBodySize": 87550
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-BSVowwxX.jpg",
+          "startTime": 125.89999997615814,
+          "duration": 10,
+          "transferSize": 107588,
+          "encodedBodySize": 107288
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-adIUQC4G.jpg",
+          "startTime": 126.19999998807907,
+          "duration": 13,
+          "transferSize": 124614,
+          "encodedBodySize": 124314
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/flor-arquetypus-CKSiaCgq.png",
+          "startTime": 131.69999998807907,
+          "duration": 14.800000011920929,
+          "transferSize": 1502305,
+          "encodedBodySize": 1502005
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-ByZH3hi4.jpg",
+          "startTime": 134.69999998807907,
+          "duration": 16.099999964237213,
+          "transferSize": 9881,
+          "encodedBodySize": 9581
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/guerreiro-B-htc0v_.jpg",
+          "startTime": 136.19999998807907,
+          "duration": 17.099999964237213,
+          "transferSize": 10534,
+          "encodedBodySize": 10234
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 195.5999999642372,
+          "duration": 79.90000003576279,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var-italic.woff2",
+          "startTime": 197.0999999642372,
+          "duration": 80.90000003576279,
+          "transferSize": 116464,
+          "encodedBodySize": 116164
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-marmore-_FVJxRZ6.png",
+          "startTime": 261.0999999642372,
+          "duration": 10.699999988079071,
+          "transferSize": 89318,
+          "encodedBodySize": 89018
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/logo-dourado-BkuS44dK.png",
+          "startTime": 261.19999998807907,
+          "duration": 9.800000011920929,
+          "transferSize": 40914,
+          "encodedBodySize": 40614
+        }
+      ]
+    },
+    {
+      "variant": "baseline",
+      "round": 2,
+      "ready": true,
+      "url": "http://127.0.0.1:4179/loja/zeus?variant=baseline&tags=blocked&consent=absent&sample=3",
+      "visibilityAtStart": "visible",
+      "visibilityAtEnd": "visible",
+      "collectedAtMs": 8121.099999964237,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "cutoffMs": 8000,
+      "fcp": 6864,
+      "lcp": 6864,
+      "cls": 0,
+      "longTasks": [
+        {
+          "startTime": 269.5,
+          "duration": 64
+        },
+        {
+          "startTime": 397.5999999642372,
+          "duration": 90
+        }
+      ],
+      "blockingAfterFcpObserved": 0,
+      "hydratedAt": 348.80000001192093,
+      "preserved": false,
+      "originalTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "h1": "ZeusStormbreak",
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/zeus?variant=baseline&tags=blocked&consent=absent&sample=3"
+        }
+      ],
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+          "startTime": 98.30000001192093,
+          "duration": 0,
+          "transferSize": 0,
+          "encodedBodySize": 93450
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/elegant.woff2",
+          "startTime": 98.59999996423721,
+          "duration": 15.400000035762787,
+          "transferSize": 32748,
+          "encodedBodySize": 32448
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 99.30000001192093,
+          "duration": 35.5,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/__baseline/assets/index-CEBNf12q.js",
+          "startTime": 99.39999997615814,
+          "duration": 36.80000001192093,
+          "transferSize": 628936,
+          "encodedBodySize": 628636
+        },
+        {
+          "name": "http://127.0.0.1:4179/__baseline/assets/index-C9zeGloN.css",
+          "startTime": 99.5,
+          "duration": 19.899999976158142,
+          "transferSize": 160020,
+          "encodedBodySize": 159720
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-marmore-_FVJxRZ6.png",
+          "startTime": 239.19999998807907,
+          "duration": 8.300000011920929,
+          "transferSize": 89318,
+          "encodedBodySize": 89018
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-preto-BefuJb9g.png",
+          "startTime": 239.5,
+          "duration": 10.199999988079071,
+          "transferSize": 87850,
+          "encodedBodySize": 87550
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-BSVowwxX.jpg",
+          "startTime": 250.5999999642372,
+          "duration": 7.900000035762787,
+          "transferSize": 107588,
+          "encodedBodySize": 107288
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-adIUQC4G.jpg",
+          "startTime": 250.89999997615814,
+          "duration": 8,
+          "transferSize": 124614,
+          "encodedBodySize": 124314
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/flor-arquetypus-CKSiaCgq.png",
+          "startTime": 255.19999998807907,
+          "duration": 12.699999988079071,
+          "transferSize": 1502305,
+          "encodedBodySize": 1502005
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-ByZH3hi4.jpg",
+          "startTime": 258.0999999642372,
+          "duration": 12.200000047683716,
+          "transferSize": 9881,
+          "encodedBodySize": 9581
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/guerreiro-B-htc0v_.jpg",
+          "startTime": 258.5,
+          "duration": 12,
+          "transferSize": 10534,
+          "encodedBodySize": 10234
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/logo-dourado-BkuS44dK.png",
+          "startTime": 263.69999998807907,
+          "duration": 10.300000011920929,
+          "transferSize": 40914,
+          "encodedBodySize": 40614
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 292.0999999642372,
+          "duration": 50.80000001192093,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var-italic.woff2",
+          "startTime": 293.89999997615814,
+          "duration": 51.90000003576279,
+          "transferSize": 116464,
+          "encodedBodySize": 116164
+        }
+      ]
+    },
+    {
+      "variant": "ssg",
+      "round": 2,
+      "ready": true,
+      "url": "http://127.0.0.1:4179/loja/zeus?variant=ssg&tags=blocked&consent=absent&sample=4",
+      "visibilityAtStart": "visible",
+      "visibilityAtEnd": "visible",
+      "collectedAtMs": 8146.199999988079,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "cutoffMs": 8000,
+      "fcp": null,
+      "lcp": null,
+      "cls": 0,
+      "longTasks": [
+        {
+          "startTime": 153.10000002384186,
+          "duration": 58
+        },
+        {
+          "startTime": 264.30000001192093,
+          "duration": 114
+        },
+        {
+          "startTime": 379.39999997615814,
+          "duration": 63
+        },
+        {
+          "startTime": 442.69999998807907,
+          "duration": 53
+        },
+        {
+          "startTime": 538.1000000238419,
+          "duration": 118
+        }
+      ],
+      "blockingAfterFcpObserved": null,
+      "hydratedAt": 512.8000000119209,
+      "preserved": true,
+      "originalTitle": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "h1": "ZeusStormbreak",
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/zeus?variant=ssg&tags=blocked&consent=absent&sample=4"
+        }
+      ],
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+          "startTime": 116.30000001192093,
+          "duration": 0,
+          "transferSize": 0,
+          "encodedBodySize": 93450
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/elegant.woff2",
+          "startTime": 116.39999997615814,
+          "duration": 33.80000001192093,
+          "transferSize": 32748,
+          "encodedBodySize": 32448
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 117,
+          "duration": 36.10000002384186,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/index-Cd29iwMJ.js",
+          "startTime": 121.5,
+          "duration": 33.30000001192093,
+          "transferSize": 636262,
+          "encodedBodySize": 635962
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/index-BYogewtm.css",
+          "startTime": 121.69999998807907,
+          "duration": 35.90000003576279,
+          "transferSize": 160635,
+          "encodedBodySize": 160335
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-marmore-_FVJxRZ6.png",
+          "startTime": 121.89999997615814,
+          "duration": 41.60000002384186,
+          "transferSize": 89318,
+          "encodedBodySize": 89018
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-preto-BefuJb9g.png",
+          "startTime": 122.10000002384186,
+          "duration": 38,
+          "transferSize": 87850,
+          "encodedBodySize": 87550
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-BSVowwxX.jpg",
+          "startTime": 122.19999998807907,
+          "duration": 67,
+          "transferSize": 107588,
+          "encodedBodySize": 107288
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-adIUQC4G.jpg",
+          "startTime": 122.39999997615814,
+          "duration": 68.80000001192093,
+          "transferSize": 124614,
+          "encodedBodySize": 124314
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/flor-arquetypus-CKSiaCgq.png",
+          "startTime": 122.5,
+          "duration": 78.19999998807907,
+          "transferSize": 1502305,
+          "encodedBodySize": 1502005
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-ByZH3hi4.jpg",
+          "startTime": 122.69999998807907,
+          "duration": 68.19999998807907,
+          "transferSize": 9881,
+          "encodedBodySize": 9581
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/guerreiro-B-htc0v_.jpg",
+          "startTime": 123,
+          "duration": 74.60000002384186,
+          "transferSize": 10534,
+          "encodedBodySize": 10234
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/logo-dourado-BkuS44dK.png",
+          "startTime": 123.19999998807907,
+          "duration": 74.69999998807907,
+          "transferSize": 40914,
+          "encodedBodySize": 40614
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 297.60000002384186,
+          "duration": 95.29999995231628,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var-italic.woff2",
+          "startTime": 298.69999998807907,
+          "duration": 98.19999998807907,
+          "transferSize": 116464,
+          "encodedBodySize": 116164
+        }
+      ]
+    },
+    {
+      "variant": "csr",
+      "round": 2,
+      "ready": true,
+      "url": "http://127.0.0.1:4179/loja/zeus?variant=csr&tags=blocked&consent=absent&sample=5",
+      "visibilityAtStart": "visible",
+      "visibilityAtEnd": "visible",
+      "collectedAtMs": 8059.699999988079,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "cutoffMs": 8000,
+      "fcp": null,
+      "lcp": null,
+      "cls": 0,
+      "longTasks": [
+        {
+          "startTime": 95.30000001192093,
+          "duration": 80
+        },
+        {
+          "startTime": 234.30000001192093,
+          "duration": 58
+        }
+      ],
+      "blockingAfterFcpObserved": null,
+      "hydratedAt": 205.5999999642372,
+      "preserved": true,
+      "originalTitle": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "h1": "ZeusStormbreak",
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/zeus?variant=csr&tags=blocked&consent=absent&sample=5"
+        }
+      ],
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+          "startTime": 41.59999996423721,
+          "duration": 0,
+          "transferSize": 0,
+          "encodedBodySize": 93450
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/elegant.woff2",
+          "startTime": 41.80000001192093,
+          "duration": 13,
+          "transferSize": 32748,
+          "encodedBodySize": 32448
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 42,
+          "duration": 13.099999964237213,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/index-Cd29iwMJ.js",
+          "startTime": 42.19999998807907,
+          "duration": 17.899999976158142,
+          "transferSize": 636262,
+          "encodedBodySize": 635962
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/index-BYogewtm.css",
+          "startTime": 42.30000001192093,
+          "duration": 15.699999988079071,
+          "transferSize": 160635,
+          "encodedBodySize": 160335
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-marmore-_FVJxRZ6.png",
+          "startTime": 102.09999996423721,
+          "duration": 4.300000011920929,
+          "transferSize": 89318,
+          "encodedBodySize": 89018
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-preto-BefuJb9g.png",
+          "startTime": 102.30000001192093,
+          "duration": 4.899999976158142,
+          "transferSize": 87850,
+          "encodedBodySize": 87550
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-BSVowwxX.jpg",
+          "startTime": 104.80000001192093,
+          "duration": 6.899999976158142,
+          "transferSize": 107588,
+          "encodedBodySize": 107288
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-adIUQC4G.jpg",
+          "startTime": 105.09999996423721,
+          "duration": 9.100000023841858,
+          "transferSize": 124614,
+          "encodedBodySize": 124314
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/flor-arquetypus-CKSiaCgq.png",
+          "startTime": 107.39999997615814,
+          "duration": 11.699999988079071,
+          "transferSize": 1502305,
+          "encodedBodySize": 1502005
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-ByZH3hi4.jpg",
+          "startTime": 110.69999998807907,
+          "duration": 10.699999988079071,
+          "transferSize": 9881,
+          "encodedBodySize": 9581
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/guerreiro-B-htc0v_.jpg",
+          "startTime": 110.89999997615814,
+          "duration": 12.699999988079071,
+          "transferSize": 10534,
+          "encodedBodySize": 10234
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/logo-dourado-BkuS44dK.png",
+          "startTime": 114.59999996423721,
+          "duration": 10.800000011920929,
+          "transferSize": 40914,
+          "encodedBodySize": 40614
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 136.5,
+          "duration": 51,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var-italic.woff2",
+          "startTime": 137.5,
+          "duration": 52.69999998807907,
+          "transferSize": 116464,
+          "encodedBodySize": 116164
+        }
+      ]
+    },
+    {
+      "variant": "baseline",
+      "round": 3,
+      "ready": true,
+      "url": "http://127.0.0.1:4179/loja/zeus?variant=baseline&tags=blocked&consent=absent&sample=6",
+      "visibilityAtStart": "visible",
+      "visibilityAtEnd": "visible",
+      "collectedAtMs": 8046.200000047684,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "cutoffMs": 8000,
+      "fcp": null,
+      "lcp": null,
+      "cls": 0,
+      "longTasks": [
+        {
+          "startTime": 199.10000002384186,
+          "duration": 54
+        }
+      ],
+      "blockingAfterFcpObserved": null,
+      "hydratedAt": 175.20000004768372,
+      "preserved": false,
+      "originalTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "h1": "ZeusStormbreak",
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/zeus?variant=baseline&tags=blocked&consent=absent&sample=6"
+        }
+      ],
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+          "startTime": 30.900000035762787,
+          "duration": 0,
+          "transferSize": 0,
+          "encodedBodySize": 93450
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/elegant.woff2",
+          "startTime": 30.900000035762787,
+          "duration": 14.300000011920929,
+          "transferSize": 32748,
+          "encodedBodySize": 32448
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 31.30000001192093,
+          "duration": 14.600000023841858,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/__baseline/assets/index-CEBNf12q.js",
+          "startTime": 31.30000001192093,
+          "duration": 15.300000011920929,
+          "transferSize": 628936,
+          "encodedBodySize": 628636
+        },
+        {
+          "name": "http://127.0.0.1:4179/__baseline/assets/index-C9zeGloN.css",
+          "startTime": 31.400000035762787,
+          "duration": 17.30000001192093,
+          "transferSize": 160020,
+          "encodedBodySize": 159720
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-marmore-_FVJxRZ6.png",
+          "startTime": 84.60000002384186,
+          "duration": 4.600000023841858,
+          "transferSize": 89318,
+          "encodedBodySize": 89018
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-preto-BefuJb9g.png",
+          "startTime": 84.80000001192093,
+          "duration": 6.800000011920929,
+          "transferSize": 87850,
+          "encodedBodySize": 87550
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-BSVowwxX.jpg",
+          "startTime": 89.20000004768372,
+          "duration": 13,
+          "transferSize": 107588,
+          "encodedBodySize": 107288
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-adIUQC4G.jpg",
+          "startTime": 89.5,
+          "duration": 12.900000035762787,
+          "transferSize": 124614,
+          "encodedBodySize": 124314
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/flor-arquetypus-CKSiaCgq.png",
+          "startTime": 92.70000004768372,
+          "duration": 15.299999952316284,
+          "transferSize": 1502305,
+          "encodedBodySize": 1502005
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-ByZH3hi4.jpg",
+          "startTime": 93.90000003576279,
+          "duration": 14.800000011920929,
+          "transferSize": 9881,
+          "encodedBodySize": 9581
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/guerreiro-B-htc0v_.jpg",
+          "startTime": 94.40000003576279,
+          "duration": 14.800000011920929,
+          "transferSize": 10534,
+          "encodedBodySize": 10234
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/logo-dourado-BkuS44dK.png",
+          "startTime": 99.40000003576279,
+          "duration": 12.300000011920929,
+          "transferSize": 40914,
+          "encodedBodySize": 40614
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 119.20000004768372,
+          "duration": 55.299999952316284,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var-italic.woff2",
+          "startTime": 119.80000001192093,
+          "duration": 54.40000003576279,
+          "transferSize": 116464,
+          "encodedBodySize": 116164
+        }
+      ]
+    },
+    {
+      "variant": "ssg",
+      "round": 3,
+      "ready": true,
+      "url": "http://127.0.0.1:4179/loja/zeus?variant=ssg&tags=blocked&consent=absent&sample=7",
+      "visibilityAtStart": "visible",
+      "visibilityAtEnd": "visible",
+      "collectedAtMs": 8045.300000011921,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "cutoffMs": 8000,
+      "fcp": null,
+      "lcp": null,
+      "cls": 0,
+      "longTasks": [
+        {
+          "startTime": 172.9000000357628,
+          "duration": 57
+        }
+      ],
+      "blockingAfterFcpObserved": null,
+      "hydratedAt": 157.80000001192093,
+      "preserved": true,
+      "originalTitle": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "h1": "ZeusStormbreak",
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/zeus?variant=ssg&tags=blocked&consent=absent&sample=7"
+        }
+      ],
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+          "startTime": 30.400000035762787,
+          "duration": 0,
+          "transferSize": 0,
+          "encodedBodySize": 93450
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/elegant.woff2",
+          "startTime": 30.5,
+          "duration": 13.900000035762787,
+          "transferSize": 32748,
+          "encodedBodySize": 32448
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 30.69999998807907,
+          "duration": 14,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/index-Cd29iwMJ.js",
+          "startTime": 31.400000035762787,
+          "duration": 22.399999976158142,
+          "transferSize": 636262,
+          "encodedBodySize": 635962
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/index-BYogewtm.css",
+          "startTime": 31.69999998807907,
+          "duration": 16.80000001192093,
+          "transferSize": 160635,
+          "encodedBodySize": 160335
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-marmore-_FVJxRZ6.png",
+          "startTime": 31.80000001192093,
+          "duration": 14.899999976158142,
+          "transferSize": 89318,
+          "encodedBodySize": 89018
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-preto-BefuJb9g.png",
+          "startTime": 32,
+          "duration": 17.100000023841858,
+          "transferSize": 87850,
+          "encodedBodySize": 87550
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-BSVowwxX.jpg",
+          "startTime": 32,
+          "duration": 24.100000023841858,
+          "transferSize": 107588,
+          "encodedBodySize": 107288
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-adIUQC4G.jpg",
+          "startTime": 32.10000002384186,
+          "duration": 24.599999964237213,
+          "transferSize": 124614,
+          "encodedBodySize": 124314
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-ByZH3hi4.jpg",
+          "startTime": 32.19999998807907,
+          "duration": 31,
+          "transferSize": 9881,
+          "encodedBodySize": 9581
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/flor-arquetypus-CKSiaCgq.png",
+          "startTime": 32.19999998807907,
+          "duration": 30,
+          "transferSize": 1502305,
+          "encodedBodySize": 1502005
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/guerreiro-B-htc0v_.jpg",
+          "startTime": 32.30000001192093,
+          "duration": 31.899999976158142,
+          "transferSize": 10534,
+          "encodedBodySize": 10234
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/logo-dourado-BkuS44dK.png",
+          "startTime": 32.30000001192093,
+          "duration": 35.60000002384186,
+          "transferSize": 40914,
+          "encodedBodySize": 40614
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 100.60000002384186,
+          "duration": 39,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var-italic.woff2",
+          "startTime": 101.5,
+          "duration": 39.5,
+          "transferSize": 116464,
+          "encodedBodySize": 116164
+        }
+      ]
+    },
+    {
+      "variant": "csr",
+      "round": 3,
+      "ready": true,
+      "url": "http://127.0.0.1:4179/loja/zeus?variant=csr&tags=blocked&consent=absent&sample=8",
+      "visibilityAtStart": "visible",
+      "visibilityAtEnd": "visible",
+      "collectedAtMs": 8070.199999988079,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "cutoffMs": 8000,
+      "fcp": null,
+      "lcp": null,
+      "cls": 0,
+      "longTasks": [
+        {
+          "startTime": 163.5,
+          "duration": 149
+        },
+        {
+          "startTime": 568.3000000119209,
+          "duration": 140
+        }
+      ],
+      "blockingAfterFcpObserved": null,
+      "hydratedAt": 355.39999997615814,
+      "preserved": true,
+      "originalTitle": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "h1": "ZeusStormbreak",
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/zeus?variant=csr&tags=blocked&consent=absent&sample=8"
+        }
+      ],
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+          "startTime": 51.69999998807907,
+          "duration": 0,
+          "transferSize": 0,
+          "encodedBodySize": 93450
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/elegant.woff2",
+          "startTime": 51.69999998807907,
+          "duration": 17.400000035762787,
+          "transferSize": 32748,
+          "encodedBodySize": 32448
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 52.10000002384186,
+          "duration": 17.69999998807907,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/index-BYogewtm.css",
+          "startTime": 52.30000001192093,
+          "duration": 22.69999998807907,
+          "transferSize": 160635,
+          "encodedBodySize": 160335
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/index-Cd29iwMJ.js",
+          "startTime": 52.30000001192093,
+          "duration": 34,
+          "transferSize": 636262,
+          "encodedBodySize": 635962
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-marmore-_FVJxRZ6.png",
+          "startTime": 171.19999998807907,
+          "duration": 5.900000035762787,
+          "transferSize": 89318,
+          "encodedBodySize": 89018
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-preto-BefuJb9g.png",
+          "startTime": 171.39999997615814,
+          "duration": 6.800000011920929,
+          "transferSize": 87850,
+          "encodedBodySize": 87550
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-BSVowwxX.jpg",
+          "startTime": 175.69999998807907,
+          "duration": 10.5,
+          "transferSize": 107588,
+          "encodedBodySize": 107288
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-adIUQC4G.jpg",
+          "startTime": 176,
+          "duration": 14.100000023841858,
+          "transferSize": 124614,
+          "encodedBodySize": 124314
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/flor-arquetypus-CKSiaCgq.png",
+          "startTime": 184.60000002384186,
+          "duration": 17.799999952316284,
+          "transferSize": 1502305,
+          "encodedBodySize": 1502005
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-ByZH3hi4.jpg",
+          "startTime": 191.19999998807907,
+          "duration": 15.300000011920929,
+          "transferSize": 9881,
+          "encodedBodySize": 9581
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/guerreiro-B-htc0v_.jpg",
+          "startTime": 192.10000002384186,
+          "duration": 15.099999964237213,
+          "transferSize": 10534,
+          "encodedBodySize": 10234
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/logo-dourado-BkuS44dK.png",
+          "startTime": 200.39999997615814,
+          "duration": 26.400000035762787,
+          "transferSize": 40914,
+          "encodedBodySize": 40614
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 261.5,
+          "duration": 66,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var-italic.woff2",
+          "startTime": 262.69999998807907,
+          "duration": 67,
+          "transferSize": 116464,
+          "encodedBodySize": 116164
+        }
+      ]
+    },
+    {
+      "variant": "baseline",
+      "round": 4,
+      "ready": true,
+      "url": "http://127.0.0.1:4179/loja/zeus?variant=baseline&tags=blocked&consent=absent&sample=9",
+      "visibilityAtStart": "visible",
+      "visibilityAtEnd": "visible",
+      "collectedAtMs": 8095.599999964237,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "cutoffMs": 8000,
+      "fcp": null,
+      "lcp": null,
+      "cls": 0,
+      "longTasks": [
+        {
+          "startTime": 175.5,
+          "duration": 107
+        },
+        {
+          "startTime": 296.5,
+          "duration": 128
+        },
+        {
+          "startTime": 494.19999998807907,
+          "duration": 98
+        }
+      ],
+      "blockingAfterFcpObserved": null,
+      "hydratedAt": 435.39999997615814,
+      "preserved": false,
+      "originalTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "h1": "ZeusStormbreak",
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/zeus?variant=baseline&tags=blocked&consent=absent&sample=9"
+        }
+      ],
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+          "startTime": 76,
+          "duration": 0,
+          "transferSize": 0,
+          "encodedBodySize": 93450
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/elegant.woff2",
+          "startTime": 76.19999998807907,
+          "duration": 19.30000001192093,
+          "transferSize": 32748,
+          "encodedBodySize": 32448
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 77,
+          "duration": 16.399999976158142,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/__baseline/assets/index-CEBNf12q.js",
+          "startTime": 77.09999996423721,
+          "duration": 22.80000001192093,
+          "transferSize": 628936,
+          "encodedBodySize": 628636
+        },
+        {
+          "name": "http://127.0.0.1:4179/__baseline/assets/index-C9zeGloN.css",
+          "startTime": 77.29999995231628,
+          "duration": 20.100000023841858,
+          "transferSize": 160020,
+          "encodedBodySize": 159720
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-marmore-_FVJxRZ6.png",
+          "startTime": 228.39999997615814,
+          "duration": 9.899999976158142,
+          "transferSize": 89318,
+          "encodedBodySize": 89018
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-preto-BefuJb9g.png",
+          "startTime": 228.79999995231628,
+          "duration": 15.800000011920929,
+          "transferSize": 87850,
+          "encodedBodySize": 87550
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-BSVowwxX.jpg",
+          "startTime": 244.19999998807907,
+          "duration": 14,
+          "transferSize": 107588,
+          "encodedBodySize": 107288
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-adIUQC4G.jpg",
+          "startTime": 244.5999999642372,
+          "duration": 12.400000035762787,
+          "transferSize": 124614,
+          "encodedBodySize": 124314
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/flor-arquetypus-CKSiaCgq.png",
+          "startTime": 256.19999998807907,
+          "duration": 23.80000001192093,
+          "transferSize": 1502305,
+          "encodedBodySize": 1502005
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-ByZH3hi4.jpg",
+          "startTime": 258.69999998807907,
+          "duration": 16.30000001192093,
+          "transferSize": 9881,
+          "encodedBodySize": 9581
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/guerreiro-B-htc0v_.jpg",
+          "startTime": 259.2999999523163,
+          "duration": 11.600000023841858,
+          "transferSize": 10534,
+          "encodedBodySize": 10234
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/logo-dourado-BkuS44dK.png",
+          "startTime": 268.5999999642372,
+          "duration": 15.199999988079071,
+          "transferSize": 40914,
+          "encodedBodySize": 40614
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 329,
+          "duration": 105.5,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var-italic.woff2",
+          "startTime": 338.0999999642372,
+          "duration": 99.90000003576279,
+          "transferSize": 116464,
+          "encodedBodySize": 116164
+        }
+      ]
+    },
+    {
+      "variant": "ssg",
+      "round": 4,
+      "ready": true,
+      "url": "http://127.0.0.1:4179/loja/zeus?variant=ssg&tags=blocked&consent=absent&sample=10",
+      "visibilityAtStart": "visible",
+      "visibilityAtEnd": "visible",
+      "collectedAtMs": 8112.700000047684,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "cutoffMs": 8000,
+      "fcp": null,
+      "lcp": null,
+      "cls": 0,
+      "longTasks": [
+        {
+          "startTime": 238.60000002384186,
+          "duration": 105
+        },
+        {
+          "startTime": 438.30000001192093,
+          "duration": 135
+        }
+      ],
+      "blockingAfterFcpObserved": null,
+      "hydratedAt": 403.7000000476837,
+      "preserved": true,
+      "originalTitle": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "h1": "ZeusStormbreak",
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/zeus?variant=ssg&tags=blocked&consent=absent&sample=10"
+        }
+      ],
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+          "startTime": 76.90000003576279,
+          "duration": 0,
+          "transferSize": 0,
+          "encodedBodySize": 93450
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/elegant.woff2",
+          "startTime": 77.30000001192093,
+          "duration": 12.199999988079071,
+          "transferSize": 32748,
+          "encodedBodySize": 32448
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 79.10000002384186,
+          "duration": 16.69999998807907,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/index-Cd29iwMJ.js",
+          "startTime": 79.30000001192093,
+          "duration": 21.100000023841858,
+          "transferSize": 636262,
+          "encodedBodySize": 635962
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/index-BYogewtm.css",
+          "startTime": 79.40000003576279,
+          "duration": 15,
+          "transferSize": 160635,
+          "encodedBodySize": 160335
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-marmore-_FVJxRZ6.png",
+          "startTime": 79.60000002384186,
+          "duration": 24.100000023841858,
+          "transferSize": 89318,
+          "encodedBodySize": 89018
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-preto-BefuJb9g.png",
+          "startTime": 79.80000001192093,
+          "duration": 24.900000035762787,
+          "transferSize": 87850,
+          "encodedBodySize": 87550
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-BSVowwxX.jpg",
+          "startTime": 79.90000003576279,
+          "duration": 54.69999998807907,
+          "transferSize": 107588,
+          "encodedBodySize": 107288
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-adIUQC4G.jpg",
+          "startTime": 80.10000002384186,
+          "duration": 55.89999997615814,
+          "transferSize": 124614,
+          "encodedBodySize": 124314
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/flor-arquetypus-CKSiaCgq.png",
+          "startTime": 80.20000004768372,
+          "duration": 62.09999996423721,
+          "transferSize": 1502305,
+          "encodedBodySize": 1502005
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-ByZH3hi4.jpg",
+          "startTime": 85.80000001192093,
+          "duration": 49.90000003576279,
+          "transferSize": 9881,
+          "encodedBodySize": 9581
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/guerreiro-B-htc0v_.jpg",
+          "startTime": 86,
+          "duration": 57.40000003576279,
+          "transferSize": 10534,
+          "encodedBodySize": 10234
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/logo-dourado-BkuS44dK.png",
+          "startTime": 86.30000001192093,
+          "duration": 58.30000001192093,
+          "transferSize": 40914,
+          "encodedBodySize": 40614
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-preto-BefuJb9g.png",
+          "startTime": 153.60000002384186,
+          "duration": 8.600000023841858,
+          "transferSize": 87850,
+          "encodedBodySize": 87550
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-BSVowwxX.jpg",
+          "startTime": 153.9000000357628,
+          "duration": 10.099999964237213,
+          "transferSize": 107588,
+          "encodedBodySize": 107288
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-adIUQC4G.jpg",
+          "startTime": 154,
+          "duration": 19.80000001192093,
+          "transferSize": 124614,
+          "encodedBodySize": 124314
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 292.30000001192093,
+          "duration": 67.19999998807907,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var-italic.woff2",
+          "startTime": 295.60000002384186,
+          "duration": 66.5,
+          "transferSize": 116464,
+          "encodedBodySize": 116164
+        }
+      ]
+    },
+    {
+      "variant": "csr",
+      "round": 4,
+      "ready": true,
+      "url": "http://127.0.0.1:4179/loja/zeus?variant=csr&tags=blocked&consent=absent&sample=11",
+      "visibilityAtStart": "visible",
+      "visibilityAtEnd": "visible",
+      "collectedAtMs": 8070,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "cutoffMs": 8000,
+      "fcp": null,
+      "lcp": null,
+      "cls": 0,
+      "longTasks": [
+        {
+          "startTime": 132.69999998807907,
+          "duration": 141
+        },
+        {
+          "startTime": 381.0999999642372,
+          "duration": 99
+        }
+      ],
+      "blockingAfterFcpObserved": null,
+      "hydratedAt": 351.0999999642372,
+      "preserved": true,
+      "originalTitle": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "h1": "ZeusStormbreak",
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/zeus?variant=csr&tags=blocked&consent=absent&sample=11"
+        }
+      ],
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+          "startTime": 57.69999998807907,
+          "duration": 0,
+          "transferSize": 0,
+          "encodedBodySize": 93450
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/elegant.woff2",
+          "startTime": 57.89999997615814,
+          "duration": 23.600000023841858,
+          "transferSize": 32748,
+          "encodedBodySize": 32448
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 58.39999997615814,
+          "duration": 21.69999998807907,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/index-Cd29iwMJ.js",
+          "startTime": 58.5,
+          "duration": 27.899999976158142,
+          "transferSize": 636262,
+          "encodedBodySize": 635962
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/index-BYogewtm.css",
+          "startTime": 58.59999996423721,
+          "duration": 48.10000002384186,
+          "transferSize": 160635,
+          "encodedBodySize": 160335
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-preto-BefuJb9g.png",
+          "startTime": 141.79999995231628,
+          "duration": 6.400000035762787,
+          "transferSize": 87850,
+          "encodedBodySize": 87550
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-BSVowwxX.jpg",
+          "startTime": 146.79999995231628,
+          "duration": 9.700000047683716,
+          "transferSize": 107588,
+          "encodedBodySize": 107288
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-adIUQC4G.jpg",
+          "startTime": 147.5999999642372,
+          "duration": 9.800000011920929,
+          "transferSize": 124614,
+          "encodedBodySize": 124314
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/flor-arquetypus-CKSiaCgq.png",
+          "startTime": 150.89999997615814,
+          "duration": 38.19999998807907,
+          "transferSize": 1502305,
+          "encodedBodySize": 1502005
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/guerreiro-B-htc0v_.jpg",
+          "startTime": 156.5,
+          "duration": 9.299999952316284,
+          "transferSize": 10534,
+          "encodedBodySize": 10234
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 197.79999995231628,
+          "duration": 97.40000003576279,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var-italic.woff2",
+          "startTime": 198.69999998807907,
+          "duration": 97.30000001192093,
+          "transferSize": 116464,
+          "encodedBodySize": 116164
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-marmore-_FVJxRZ6.png",
+          "startTime": 272.0999999642372,
+          "duration": 12.400000035762787,
+          "transferSize": 89318,
+          "encodedBodySize": 89018
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-ByZH3hi4.jpg",
+          "startTime": 272.19999998807907,
+          "duration": 11.399999976158142,
+          "transferSize": 9881,
+          "encodedBodySize": 9581
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/logo-dourado-BkuS44dK.png",
+          "startTime": 272.2999999523163,
+          "duration": 15.900000035762787,
+          "transferSize": 40914,
+          "encodedBodySize": 40614
+        }
+      ]
+    },
+    {
+      "variant": "baseline",
+      "round": 5,
+      "ready": true,
+      "url": "http://127.0.0.1:4179/loja/zeus?variant=baseline&tags=blocked&consent=absent&sample=12",
+      "visibilityAtStart": "visible",
+      "visibilityAtEnd": "visible",
+      "collectedAtMs": 8128.5,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "cutoffMs": 8000,
+      "fcp": null,
+      "lcp": null,
+      "cls": 0,
+      "longTasks": [
+        {
+          "startTime": 148.69999998807907,
+          "duration": 50
+        },
+        {
+          "startTime": 211.69999998807907,
+          "duration": 84
+        },
+        {
+          "startTime": 354.9000000357628,
+          "duration": 250
+        }
+      ],
+      "blockingAfterFcpObserved": null,
+      "hydratedAt": 304.69999998807907,
+      "preserved": false,
+      "originalTitle": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "h1": "ZeusStormbreak",
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/zeus?variant=baseline&tags=blocked&consent=absent&sample=12"
+        }
+      ],
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+          "startTime": 77.90000003576279,
+          "duration": 0,
+          "transferSize": 0,
+          "encodedBodySize": 93450
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/elegant.woff2",
+          "startTime": 78,
+          "duration": 13.100000023841858,
+          "transferSize": 32748,
+          "encodedBodySize": 32448
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 78.5,
+          "duration": 14.900000035762787,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/__baseline/assets/index-CEBNf12q.js",
+          "startTime": 78.60000002384186,
+          "duration": 17,
+          "transferSize": 628936,
+          "encodedBodySize": 628636
+        },
+        {
+          "name": "http://127.0.0.1:4179/__baseline/assets/index-C9zeGloN.css",
+          "startTime": 78.80000001192093,
+          "duration": 13.899999976158142,
+          "transferSize": 160020,
+          "encodedBodySize": 159720
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-marmore-_FVJxRZ6.png",
+          "startTime": 153.30000001192093,
+          "duration": 6.699999988079071,
+          "transferSize": 89318,
+          "encodedBodySize": 89018
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-preto-BefuJb9g.png",
+          "startTime": 153.4000000357628,
+          "duration": 7.299999952316284,
+          "transferSize": 87850,
+          "encodedBodySize": 87550
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-BSVowwxX.jpg",
+          "startTime": 159.19999998807907,
+          "duration": 13.900000035762787,
+          "transferSize": 107588,
+          "encodedBodySize": 107288
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-adIUQC4G.jpg",
+          "startTime": 160.69999998807907,
+          "duration": 14.100000023841858,
+          "transferSize": 124614,
+          "encodedBodySize": 124314
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/flor-arquetypus-CKSiaCgq.png",
+          "startTime": 165.30000001192093,
+          "duration": 19,
+          "transferSize": 1502305,
+          "encodedBodySize": 1502005
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-ByZH3hi4.jpg",
+          "startTime": 173.30000001192093,
+          "duration": 14.5,
+          "transferSize": 9881,
+          "encodedBodySize": 9581
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/guerreiro-B-htc0v_.jpg",
+          "startTime": 173.9000000357628,
+          "duration": 16.19999998807907,
+          "transferSize": 10534,
+          "encodedBodySize": 10234
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/logo-dourado-BkuS44dK.png",
+          "startTime": 192.4000000357628,
+          "duration": 10.799999952316284,
+          "transferSize": 40914,
+          "encodedBodySize": 40614
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 230.9000000357628,
+          "duration": 72.5,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var-italic.woff2",
+          "startTime": 232,
+          "duration": 75.30000001192093,
+          "transferSize": 116464,
+          "encodedBodySize": 116164
+        }
+      ]
+    },
+    {
+      "variant": "ssg",
+      "round": 5,
+      "ready": true,
+      "url": "http://127.0.0.1:4179/loja/zeus?variant=ssg&tags=blocked&consent=absent&sample=13",
+      "visibilityAtStart": "visible",
+      "visibilityAtEnd": "visible",
+      "collectedAtMs": 11187.899999976158,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "cutoffMs": 8000,
+      "fcp": null,
+      "lcp": null,
+      "cls": 0,
+      "longTasks": [
+        {
+          "startTime": 825.1999999880791,
+          "duration": 2444
+        },
+        {
+          "startTime": 3269.699999988079,
+          "duration": 153
+        },
+        {
+          "startTime": 3440.199999988079,
+          "duration": 191
+        },
+        {
+          "startTime": 3633,
+          "duration": 138
+        },
+        {
+          "startTime": 4096.599999964237,
+          "duration": 1712
+        },
+        {
+          "startTime": 7626.399999976158,
+          "duration": 60
+        },
+        {
+          "startTime": 8626.399999976158,
+          "duration": 150
+        },
+        {
+          "startTime": 9031.099999964237,
+          "duration": 228
+        }
+      ],
+      "blockingAfterFcpObserved": null,
+      "hydratedAt": 6170.299999952316,
+      "preserved": true,
+      "originalTitle": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "h1": "ZeusStormbreak",
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/zeus?variant=ssg&tags=blocked&consent=absent&sample=13"
+        }
+      ],
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+          "startTime": 759.2999999523163,
+          "duration": 0,
+          "transferSize": 0,
+          "encodedBodySize": 93450
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/elegant.woff2",
+          "startTime": 759.5,
+          "duration": 127.39999997615814,
+          "transferSize": 32748,
+          "encodedBodySize": 32448
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 795.7999999523163,
+          "duration": 109.5,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/index-Cd29iwMJ.js",
+          "startTime": 796,
+          "duration": 102.19999998807907,
+          "transferSize": 636262,
+          "encodedBodySize": 635962
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/index-BYogewtm.css",
+          "startTime": 796.1999999880791,
+          "duration": 96.09999996423721,
+          "transferSize": 160635,
+          "encodedBodySize": 160335
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-marmore-_FVJxRZ6.png",
+          "startTime": 796.2999999523163,
+          "duration": 98.70000004768372,
+          "transferSize": 89318,
+          "encodedBodySize": 89018
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-preto-BefuJb9g.png",
+          "startTime": 796.3999999761581,
+          "duration": 100.39999997615814,
+          "transferSize": 87850,
+          "encodedBodySize": 87550
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-BSVowwxX.jpg",
+          "startTime": 796.3999999761581,
+          "duration": 2424.899999976158,
+          "transferSize": 107588,
+          "encodedBodySize": 107288
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-adIUQC4G.jpg",
+          "startTime": 796.5,
+          "duration": 2421,
+          "transferSize": 124614,
+          "encodedBodySize": 124314
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/flor-arquetypus-CKSiaCgq.png",
+          "startTime": 796.5999999642372,
+          "duration": 2438.600000023842,
+          "transferSize": 1502305,
+          "encodedBodySize": 1502005
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-ByZH3hi4.jpg",
+          "startTime": 796.6999999880791,
+          "duration": 2423.5,
+          "transferSize": 9881,
+          "encodedBodySize": 9581
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/guerreiro-B-htc0v_.jpg",
+          "startTime": 796.7999999523163,
+          "duration": 2423.900000035763,
+          "transferSize": 10534,
+          "encodedBodySize": 10234
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/logo-dourado-BkuS44dK.png",
+          "startTime": 796.7999999523163,
+          "duration": 2521,
+          "transferSize": 40914,
+          "encodedBodySize": 40614
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-preto-BefuJb9g.png",
+          "startTime": 3837.399999976158,
+          "duration": 159.19999998807907,
+          "transferSize": 87850,
+          "encodedBodySize": 87550
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-BSVowwxX.jpg",
+          "startTime": 3837.699999988079,
+          "duration": 162.5999999642372,
+          "transferSize": 107588,
+          "encodedBodySize": 107288
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-adIUQC4G.jpg",
+          "startTime": 3837.7999999523163,
+          "duration": 163.5,
+          "transferSize": 124614,
+          "encodedBodySize": 124314
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/guerreiro-B-htc0v_.jpg",
+          "startTime": 4091.2999999523163,
+          "duration": 48.700000047683716,
+          "transferSize": 10534,
+          "encodedBodySize": 10234
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var-italic.woff2",
+          "startTime": 4972.5,
+          "duration": 850.5,
+          "transferSize": 116464,
+          "encodedBodySize": 116164
+        }
+      ]
+    },
+    {
+      "variant": "csr",
+      "round": 5,
+      "ready": true,
+      "url": "http://127.0.0.1:4179/loja/zeus?variant=csr&tags=blocked&consent=absent&sample=14",
+      "visibilityAtStart": "visible",
+      "visibilityAtEnd": "visible",
+      "collectedAtMs": 9519.399999976158,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "cutoffMs": 8000,
+      "fcp": null,
+      "lcp": null,
+      "cls": 0,
+      "longTasks": [
+        {
+          "startTime": 283.80000001192093,
+          "duration": 299
+        },
+        {
+          "startTime": 677.6999999880791,
+          "duration": 5908
+        },
+        {
+          "startTime": 6587.5,
+          "duration": 656
+        },
+        {
+          "startTime": 7250.899999976158,
+          "duration": 73
+        }
+      ],
+      "blockingAfterFcpObserved": null,
+      "hydratedAt": 7385.300000011921,
+      "preserved": true,
+      "originalTitle": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "h1": "ZeusStormbreak",
+      "errors": [],
+      "events": [
+        [
+          "consent",
+          "default",
+          {
+            "ad_storage": "denied",
+            "analytics_storage": "denied",
+            "ad_user_data": "denied",
+            "ad_personalization": "denied",
+            "wait_for_update": 500
+          }
+        ],
+        {
+          "event": "gtm.js"
+        },
+        {
+          "event": "page_view",
+          "page_path": "/loja/zeus?variant=csr&tags=blocked&consent=absent&sample=14"
+        }
+      ],
+      "resources": [
+        {
+          "name": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+          "startTime": 279.60000002384186,
+          "duration": 0,
+          "transferSize": 0,
+          "encodedBodySize": 93450
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/elegant.woff2",
+          "startTime": 279.80000001192093,
+          "duration": 47.89999997615814,
+          "transferSize": 32748,
+          "encodedBodySize": 32448
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var.woff2",
+          "startTime": 280.80000001192093,
+          "duration": 60.59999996423721,
+          "transferSize": 105636,
+          "encodedBodySize": 105336
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/index-Cd29iwMJ.js",
+          "startTime": 281,
+          "duration": 73.39999997615814,
+          "transferSize": 636262,
+          "encodedBodySize": 635962
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/index-BYogewtm.css",
+          "startTime": 281.10000002384186,
+          "duration": 69.29999995231628,
+          "transferSize": 160635,
+          "encodedBodySize": 160335
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-preto-BefuJb9g.png",
+          "startTime": 6711.399999976158,
+          "duration": 25.600000023841858,
+          "transferSize": 87850,
+          "encodedBodySize": 87550
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-BSVowwxX.jpg",
+          "startTime": 6740.399999976158,
+          "duration": 29.30000001192093,
+          "transferSize": 107588,
+          "encodedBodySize": 107288
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-adIUQC4G.jpg",
+          "startTime": 6741.100000023842,
+          "duration": 45.299999952316284,
+          "transferSize": 124614,
+          "encodedBodySize": 124314
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/guerreiro-B-htc0v_.jpg",
+          "startTime": 7068,
+          "duration": 15,
+          "transferSize": 10534,
+          "encodedBodySize": 10234
+        },
+        {
+          "name": "http://127.0.0.1:4179/fonts/inter-var-italic.woff2",
+          "startTime": 7150.199999988079,
+          "duration": 109.60000002384186,
+          "transferSize": 116464,
+          "encodedBodySize": 116164
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/wordmark-marmore-_FVJxRZ6.png",
+          "startTime": 7211.300000011921,
+          "duration": 13.899999976158142,
+          "transferSize": 89318,
+          "encodedBodySize": 89018
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/flor-arquetypus-CKSiaCgq.png",
+          "startTime": 7211.5,
+          "duration": 19.5,
+          "transferSize": 1502305,
+          "encodedBodySize": 1502005
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/zeus-ByZH3hi4.jpg",
+          "startTime": 7213.699999988079,
+          "duration": 34.10000002384186,
+          "transferSize": 9881,
+          "encodedBodySize": 9581
+        },
+        {
+          "name": "http://127.0.0.1:4179/assets/logo-dourado-BkuS44dK.png",
+          "startTime": 7238.5,
+          "duration": 11.300000011920929,
+          "transferSize": 40914,
+          "encodedBodySize": 40614
+        }
+      ]
+    }
+  ]
+}

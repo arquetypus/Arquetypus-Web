@@ -1,0 +1,36 @@
+{
+  "scope": "Chrome; iframe do preview real, viewport CSS 390×844 verificado; sem touch/dispositivo físico; override sem efeito e resetado",
+  "rows": [
+    {
+      "label": "mobile X",
+      "pass": true
+    },
+    {
+      "label": "mobile Esc",
+      "pass": true
+    },
+    {
+      "label": "mobile página completa",
+      "pass": true,
+      "dom": {
+        "dialogs": 0,
+        "h1": "ZeusStormbreak",
+        "height": 844,
+        "scrollWidth": 390,
+        "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/loja/zeus",
+        "width": 390
+      },
+      "note": "Primeiro clique não confirmou transição na janela do coletor; ativação por Enter confirmou página completa"
+    },
+    {
+      "label": "mobile drawer → FAQ",
+      "pass": true,
+      "dom": {
+        "h1": "Perguntas frequentes",
+        "menuExpanded": "false",
+        "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/perguntas-frequentes",
+        "width": 390
+      }
+    }
+  ]
+}

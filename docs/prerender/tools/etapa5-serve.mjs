@@ -3,12 +3,21 @@ import { createServer } from 'node:http';
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { createHash } from 'node:crypto';
 process.env.NODE_ENV = 'production';
 const root = fileURLToPath(new URL('../../../', import.meta.url));
 const dist = path.join(root, 'dist');
 const renderer = await import(pathToFileURL(path.join(root, 'dist-server/entry-server.js')));
 const fixture = await readFile(new URL('./etapa5-fixture.js', import.meta.url), 'utf8');
 const requests = [];
+// A opção remota testa os bytes do preview em loopback com falhas controladas.
+// Não acessa o painel Vercel nem altera o deployment. Analytics real é substituído.
+const remotePreview = process.argv.includes('--remote-preview');
+const noAppScripts = process.argv.includes('--no-app-scripts');
+const previewOrigin = 'https://arquetypus-parfum-git-prerender-saniella.vercel.app';
+const remoteCache = new Map();
+const remoteProof = [];
+const stripToolbar = html => html.replace(/\s*<script\b(?=[^>]*\bsrc="https:\/\/vercel\.live\/[^"\s]*")[^>]*>[\s\S]*?<\/script>\s*/g, '').trim();
 const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.xml': 'application/xml', '.txt': 'text/plain', '.jpg': 'image/jpeg', '.png': 'image/png', '.ico': 'image/x-icon', '.woff2': 'font/woff2', '.mp4': 'video/mp4', '.webmanifest': 'application/manifest+json' };
 const cleanAnalytics = html => html.replace(/<!-- Google Tag Manager -->[\s\S]*?<!-- End Google Tag Manager -->/, '<script>window.dataLayer.push({event:"gtm.js",qa:true})</script>')
   .replace(/<!-- Google Tag Manager \(noscript\) -->[\s\S]*?<!-- End Google Tag Manager \(noscript\) -->/, '');
@@ -26,6 +35,7 @@ createServer(async (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
   try {
     if (url.pathname === '/__qa/requests') { res.setHeader('Content-Type', types['.json']); return res.end(JSON.stringify(requests)); }
+    if (url.pathname === '/__qa/remote-proof') { res.setHeader('Content-Type', types['.json']); return res.end(JSON.stringify(remoteProof)); }
     if (url.pathname === '/__qa/dom.js') {
       const script = await readFile(new URL('./etapa5-dom.js', import.meta.url), 'utf8');
       res.setHeader('Content-Type', types['.js']); return res.end(script);
@@ -75,12 +85,34 @@ var samples=[];setInterval(function(){var doc=document.getElementById('qa-frame'
       bytes = await readFile(path.join(url.searchParams.has('baseline') ? base : dist, file));
       res.statusCode = url.searchParams.has('baseline') ? 200 : 404;
     }
+    if (remotePreview) {
+      if (url.searchParams.has('baseline') || url.pathname.startsWith('/__baseline-assets/')) throw Error('Baseline não permitido no QA remoto');
+      // Apenas caminhos que correspondem a arquivos do build validado são encaminhados.
+      const remotePath = file === '404.html' ? '/qualquer-coisa' : file.endsWith('.html') ? pathname : '/' + file.replaceAll(path.sep, '/');
+      if (!remoteCache.has(remotePath)) {
+        const upstream = await fetch(previewOrigin + remotePath, { redirect: 'manual', signal: AbortSignal.timeout(30000) });
+        const remoteBytes = Buffer.from(await upstream.arrayBuffer());
+        if (upstream.status !== res.statusCode) throw Error('Status remoto divergente: ' + remotePath);
+        const same = file.endsWith('.html') ? stripToolbar(remoteBytes.toString('utf8')) === stripToolbar(bytes.toString('utf8')) : remoteBytes.equals(bytes);
+        if (!same) throw Error('Bytes remotos divergentes do build validado: ' + remotePath);
+        remoteProof.push({ path: remotePath, status: upstream.status, sameAsValidatedBuild: same,
+          sha256: createHash('sha256').update(remoteBytes).digest('hex'),
+          deploymentId: remoteBytes.toString('utf8').match(/data-deployment-id="([^"]+)"/)?.[1] ?? null });
+        remoteCache.set(remotePath, remoteBytes);
+      }
+      bytes = remoteCache.get(remotePath);
+      if (file.endsWith('.html')) bytes = Buffer.from(stripToolbar(bytes.toString('utf8')));
+    }
     if (file.endsWith('.js') && url.searchParams.get('bundle') === 'blocked') { res.writeHead(503); return res.end('QA bundle bloqueado'); }
     if (file.endsWith('.js') && url.searchParams.get('bundle') === 'slow') await new Promise(resolve => setTimeout(resolve, 45000));
     if (file.endsWith('.html')) {
       let html = cleanAnalytics(bytes.toString('utf8'));
       if (url.searchParams.has('baseline')) html = html.replaceAll('/assets/', '/__baseline-assets/assets/');
-      if (!url.searchParams.has('raw')) {
+      if (noAppScripts) {
+        // Remove somente scripts executáveis das respostas QA; JSON-LD permanece.
+        // Permite controles nativos sem React/bootstrap/GTM, com automação do Chrome ativa.
+        html = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, script => /type=["']application\/ld\+json["']/.test(script) ? script : '');
+      } else if (!url.searchParams.has('raw')) {
         html = html.replace('<head>', '<head><script>' + fixture + '</script>');
         html = html.replace('</body>', '<pre id="qa-report" hidden></pre><script>window.dispatchEvent(new Event("qa:root-ready"))</script></body>');
         const bundle = url.searchParams.get('bundle');
@@ -110,5 +142,5 @@ var samples=[];setInterval(function(){var doc=document.getElementById('qa-frame'
     Object.assign(requestRecord, { status: res.statusCode, bytes: bytes.length });
     res.end(bytes);
   } catch (error) { res.writeHead(500); res.end(String(error)); }
-}).listen(4177, '127.0.0.1', () => console.log('Etapa 5 QA: http://127.0.0.1:4177/'));
-process.on('SIGINT', async () => { await writeFile(path.join(root, 'node_modules/.tmp/etapa5-requests.json'), JSON.stringify(requests, null, 2)); process.exit(); });
+}).listen(4177, '127.0.0.1', () => console.log(`QA ${remotePreview ? 'preview instrumentado' : 'local'}: http://127.0.0.1:4177/`));
+process.on('SIGINT', async () => { await writeFile(path.join(root, `node_modules/.tmp/${remotePreview ? 'etapa6' : 'etapa5'}-requests.json`), JSON.stringify(remotePreview ? { requests, remoteProof } : requests, null, 2)); process.exit(); });

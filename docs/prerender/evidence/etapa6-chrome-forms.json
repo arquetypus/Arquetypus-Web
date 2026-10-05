@@ -1,0 +1,3069 @@
+{
+  "scope": "Chrome; preview instrumentado; dados sintéticos; nenhuma submissão externa; Enter real nos campos de criadores e home após JS; home antes JS não admite foco",
+  "rows": [
+    {
+      "route": "/criadores",
+      "mode": "slow-before",
+      "url": "http://127.0.0.1:4177/__qa/slow?route=%2Fcriadores",
+      "disabled": true,
+      "fields": [
+        {
+          "disabled": false,
+          "name": "",
+          "value": "QA Chrome"
+        },
+        {
+          "disabled": false,
+          "name": "",
+          "value": "<redacted>"
+        },
+        {
+          "disabled": false,
+          "name": "",
+          "value": "@qa_chrome"
+        },
+        {
+          "disabled": false,
+          "name": "",
+          "value": ""
+        }
+      ],
+      "report": null,
+      "pass": true
+    },
+    {
+      "route": "/",
+      "mode": "slow-before",
+      "pass": true,
+      "note": "SSR inputs e submit desativados; tentativa Enter recusada pelo navegador por campo disabled",
+      "initialFields": [
+        {
+          "name": "email",
+          "disabled": true
+        },
+        {
+          "name": "whatsapp",
+          "disabled": true
+        }
+      ],
+      "submitsBeforeHydration": []
+    },
+    {
+      "route": "/criadores",
+      "mode": "off",
+      "disabled": true,
+      "fields": [
+        {
+          "disabled": false,
+          "name": ""
+        },
+        {
+          "disabled": false,
+          "name": ""
+        },
+        {
+          "disabled": false,
+          "name": ""
+        },
+        {
+          "disabled": false,
+          "name": ""
+        }
+      ],
+      "frameUrl": "http://127.0.0.1:4177/criadores?raw=1",
+      "pass": true
+    },
+    {
+      "route": "/criadores",
+      "mode": "blocked",
+      "url": "http://127.0.0.1:4177/criadores?bundle=blocked&consent=refused",
+      "disabled": true,
+      "report": {
+        "before": {
+          "h1": "Um arquétipo.O seu, de verdade.",
+          "route": "/criadores",
+          "scroll": 0
+        },
+        "now": {
+          "title": "Programa de Criadores | Arquétypus Parfum",
+          "h1": [
+            "Um arquétipo.O seu, de verdade."
+          ],
+          "marker": "/criadores",
+          "canonical": "https://arquetypus.com.br/criadores",
+          "mainText": "Para criadoresUm arquétipo.O seu, de verdade.Você não vende o catálogo inteiro — representa um dos nove, com amostra grátis e comissão em cada venda pelo seu link.Quero ser criadorO que você ganhaComissão, amostrae pagamento rápidode comissãopor venda10% a 20%amostra do seuarquétipoGrátispagamentovia PixD+30O processoDo formulárioà primeira venda01Aplique escolhendo um arquétipoUm só — é ele que você vai representar, gravar e recomendar.02Aguarde a aprovaçãoAvaliamos fit de conteúdo e disponibilidade do arquétipo escolhido.03Receba a amostra e o briefingFrasco do seu arquétipo, ângulos que funcionam e o que não fazer.04Grave do seu jeito e ganhe por vendaSeu link, sua comissão, pagamento em D+30 via Pix.A regraPor que só um arquétipoQuem carrega o catálogo inteiro não é ninguém em especial. Quem carrega um só vira referência dele — o conteúdo fica mais verdadeiro e você não compete com outro criador vendendo a mesma coisa que você.O que você recebeKit de mídiado seu arquétipoAmostra física do arquétipo escolhido, em casaBriefing de tom e glifo — o que combina com aquela energiaÂngulos e ganchos que já converteram para outros criadoresLink e cupom próprios, rastreados por vendaPainel com ranking e status de pagamentoAplicaçãoEscolha o seu arquétipo1 · Seu arquétipoAfroditeFirst KissImperatrizVelvet DynastyCleópatraNile RoseFadaPure LightSereiaOcean BreezeZeusStormbreakGuerreiroSteel BlueImperadorRed EmpireFênixAmber BurnNenhum arquétipo selecionado2 · Seus dadosNomeWhatsAppRede socialPortfólio (opcional)Enviar aplicação",
+          "root": {
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "filter": "none",
+            "x": 0,
+            "y": 0,
+            "width": 1704,
+            "height": 1241
+          },
+          "scroll": 3068,
+          "reveal": "released",
+          "revealHidden": 0,
+          "cookie": false,
+          "nodePreserved": true,
+          "forms": [
+            {
+              "action": null,
+              "method": "get",
+              "fields": [
+                {
+                  "tag": "INPUT",
+                  "name": "",
+                  "disabled": false,
+                  "type": "text"
+                },
+                {
+                  "tag": "INPUT",
+                  "name": "",
+                  "disabled": false,
+                  "type": "tel"
+                },
+                {
+                  "tag": "INPUT",
+                  "name": "",
+                  "disabled": false,
+                  "type": "text"
+                },
+                {
+                  "tag": "INPUT",
+                  "name": "",
+                  "disabled": false,
+                  "type": "url"
+                },
+                {
+                  "tag": "BUTTON",
+                  "name": "",
+                  "disabled": true,
+                  "type": "submit"
+                }
+              ]
+            }
+          ],
+          "images": [
+            {
+              "src": "http://127.0.0.1:4177/assets/wordmark-marmore-_FVJxRZ6.png",
+              "complete": true,
+              "width": 4167
+            },
+            {
+              "src": "http://127.0.0.1:4177/assets/wordmark-preto-BefuJb9g.png",
+              "complete": true,
+              "width": 4167
+            },
+            {
+              "src": "http://127.0.0.1:4177/assets/logo-dourado-BkuS44dK.png",
+              "complete": true,
+              "width": 600
+            }
+          ],
+          "carousel": [],
+          "media": []
+        },
+        "events": [
+          [
+            "consent",
+            "default",
+            {
+              "ad_storage": "denied",
+              "analytics_storage": "denied",
+              "ad_user_data": "denied",
+              "ad_personalization": "denied",
+              "wait_for_update": 500
+            }
+          ],
+          [
+            "consent",
+            "update",
+            {
+              "analytics_storage": "denied",
+              "ad_storage": "denied",
+              "ad_user_data": "denied",
+              "ad_personalization": "denied"
+            }
+          ],
+          {
+            "event": "gtm.js",
+            "qa": true
+          }
+        ],
+        "errors": [],
+        "samples": [
+          {
+            "time": 238.5,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 0
+          },
+          {
+            "time": 270.5,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 0
+          },
+          {
+            "time": 276.80000001192093,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 0
+          },
+          {
+            "time": 332.30000001192093,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 0
+          },
+          {
+            "time": 340.30000001192093,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 0
+          },
+          {
+            "time": 362,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3068
+          }
+        ],
+        "submits": [],
+        "viewport": {
+          "width": 1704,
+          "height": 1241
+        },
+        "performance": {
+          "paints": [],
+          "lcp": [],
+          "shifts": [],
+          "longTasks": [
+            {
+              "startTime": 170.89999997615814,
+              "duration": 67
+            }
+          ],
+          "navigation": [
+            {
+              "name": "http://127.0.0.1:4177/criadores?bundle=blocked&consent=refused",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 275.89999997615814,
+              "navigationId": 9584,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "http/1.1",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 8.600000023841858,
+              "domainLookupStart": 8.600000023841858,
+              "domainLookupEnd": 8.600000023841858,
+              "connectStart": 8.600000023841858,
+              "secureConnectionStart": 0,
+              "connectEnd": 8.600000023841858,
+              "requestStart": 17.30000001192093,
+              "responseStart": 22.80000001192093,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 22.80000001192093,
+              "responseEnd": 24.100000023841858,
+              "transferSize": 56431,
+              "encodedBodySize": 56131,
+              "decodedBodySize": 56131,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 37.19999998807907,
+              "unloadEventEnd": 37.19999998807907,
+              "domInteractive": 171,
+              "domContentLoadedEventStart": 171.39999997615814,
+              "domContentLoadedEventEnd": 171.5,
+              "domComplete": 275.69999998807907,
+              "loadEventStart": 275.69999998807907,
+              "loadEventEnd": 275.89999997615814,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": {
+                "randomizedTriggerRate": 0.4994798,
+                "value": "high"
+              }
+            }
+          ],
+          "resources": [
+            {
+              "name": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+              "initiatorType": "link",
+              "startTime": 45.30000001192093,
+              "duration": 0,
+              "transferSize": 0,
+              "encodedBodySize": 93450
+            },
+            {
+              "name": "http://127.0.0.1:4177/fonts/elegant.woff2",
+              "initiatorType": "link",
+              "startTime": 45.5,
+              "duration": 54.80000001192093,
+              "transferSize": 32748,
+              "encodedBodySize": 32448
+            },
+            {
+              "name": "http://127.0.0.1:4177/fonts/inter-var.woff2",
+              "initiatorType": "link",
+              "startTime": 45.80000001192093,
+              "duration": 58.30000001192093,
+              "transferSize": 105636,
+              "encodedBodySize": 105336
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/index-Cd29iwMJ.js?bundle=blocked",
+              "initiatorType": "script",
+              "startTime": 45.89999997615814,
+              "duration": 75.70000004768372,
+              "transferSize": 300,
+              "encodedBodySize": 0
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/index-BYogewtm.css",
+              "initiatorType": "link",
+              "startTime": 46,
+              "duration": 59.19999998807907,
+              "transferSize": 160635,
+              "encodedBodySize": 160335
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/wordmark-marmore-_FVJxRZ6.png",
+              "initiatorType": "link",
+              "startTime": 46,
+              "duration": 65.19999998807907,
+              "transferSize": 89318,
+              "encodedBodySize": 89018
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/wordmark-preto-BefuJb9g.png",
+              "initiatorType": "link",
+              "startTime": 46.10000002384186,
+              "duration": 63.69999998807907,
+              "transferSize": 87850,
+              "encodedBodySize": 87550
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/flor-arquetypus-CKSiaCgq.png",
+              "initiatorType": "link",
+              "startTime": 46.10000002384186,
+              "duration": 74.79999995231628,
+              "transferSize": 1502305,
+              "encodedBodySize": 1502005
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/logo-dourado-BkuS44dK.png",
+              "initiatorType": "link",
+              "startTime": 46.19999998807907,
+              "duration": 76.80000001192093,
+              "transferSize": 40914,
+              "encodedBodySize": 40614
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/criadores-hero-CxQZOKK7.jpg",
+              "initiatorType": "img",
+              "startTime": 46.60000002384186,
+              "duration": 67.39999997615814,
+              "transferSize": 247390,
+              "encodedBodySize": 247090
+            },
+            {
+              "name": "http://127.0.0.1:4177/site.webmanifest",
+              "initiatorType": "link",
+              "startTime": 72.10000002384186,
+              "duration": 43.09999996423721,
+              "transferSize": 783,
+              "encodedBodySize": 483
+            },
+            {
+              "name": "http://127.0.0.1:4177/fonts/inter-var-italic.woff2",
+              "initiatorType": "css",
+              "startTime": 140.10000002384186,
+              "duration": 33.09999996423721,
+              "transferSize": 116464,
+              "encodedBodySize": 116164
+            },
+            {
+              "name": "http://127.0.0.1:4177/favicon.ico",
+              "initiatorType": "other",
+              "startTime": 311.19999998807907,
+              "duration": 6.300000011920929,
+              "transferSize": 7159,
+              "encodedBodySize": 6859
+            },
+            {
+              "name": "http://127.0.0.1:4177/icon-192.png",
+              "initiatorType": "other",
+              "startTime": 311.89999997615814,
+              "duration": 7.200000047683716,
+              "transferSize": 17077,
+              "encodedBodySize": 16777
+            }
+          ]
+        },
+        "ready": true,
+        "hydrated": false
+      },
+      "pass": true
+    },
+    {
+      "route": "/",
+      "mode": "off",
+      "disabled": true,
+      "fields": [
+        {
+          "disabled": true,
+          "name": "email"
+        },
+        {
+          "disabled": true,
+          "name": "whatsapp"
+        }
+      ],
+      "note": "Inputs disabled impedem foco e envio por Enter antes de JS",
+      "pass": true
+    },
+    {
+      "route": "/",
+      "mode": "blocked",
+      "disabled": true,
+      "fields": [
+        {
+          "disabled": true,
+          "name": "email"
+        },
+        {
+          "disabled": true,
+          "name": "whatsapp"
+        }
+      ],
+      "note": "Inputs disabled impedem foco e envio por Enter antes de JS",
+      "pass": true
+    },
+    {
+      "route": "/",
+      "mode": "slow-after",
+      "pass": true,
+      "report": {
+        "before": {
+          "h1": "Qual versão de você quer expressar hoje?",
+          "route": "/",
+          "scroll": 0
+        },
+        "now": {
+          "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+          "h1": [
+            "Qual versão de você quer expressar hoje?"
+          ],
+          "marker": "/",
+          "canonical": "https://arquetypus.com.br/",
+          "mainText": "Perfumaria & expressãoQual versão de você quer expressar hoje?Nove fragrâncias. Diferentes formas de expressão.Descubra seus arquétiposTeste de 2 minutos · em breve←→A comunidadeColeção Arquétypus@marianac_CleópatraNile RoseDe R$ 99,90por R$ 79,904,8(260)Florais & ElegantesBody Splash PremiumDescobrir@diego.treinoGuerreiroSteel BlueDe R$ 99,90por R$ 79,904,7(115)Frescos & LuminososBody Splash PremiumDescobrir@rafa_diasSereiaOcean BreezeDe R$ 99,90por R$ 79,904,7(275)Frescos & LuminososBody Splash PremiumDescobrir@theo.kaiFênixAmber BurnDe R$ 99,90por R$ 79,904,9(186)Ambarados & AdocicadosBody Splash PremiumDescobrir@brunavieiraAfroditeFirst KissDe R$ 99,90por R$ 79,904,9(446)Florais & ElegantesBody Splash PremiumDescobrir@ricardo.mImperadorRed EmpireDe R$ 99,90por R$ 79,904,7(247)Amadeirados & EspeciadosBody Splash PremiumDescobrir@camila.beautyImperatrizVelvet DynastyDe R$ 99,90por R$ 79,904,8(185)Florais & ElegantesBody Splash PremiumDescobrir@raoni_ZeusStormbreakDe R$ 99,90por R$ 79,904,8(213)Amadeirados & EspeciadosBody Splash PremiumDescobrir@aline.cachosFadaPure LightDe R$ 99,90por R$ 79,904,8(187)Frescos & LuminososBody Splash PremiumDescobrir@marianac_CleópatraNile RoseDe R$ 99,90por R$ 79,904,8(260)Florais & ElegantesBody Splash PremiumDescobrir@diego.treinoGuerreiroSteel BlueDe R$ 99,90por R$ 79,904,7(115)Frescos & LuminososBody Splash PremiumDescobrir@rafa_diasSereiaOcean BreezeDe R$ 99,90por R$ 79,904,7(275)Frescos & LuminososBody Splash PremiumDescobrir@theo.kaiFênixAmber BurnDe R$ 99,90por R$ 79,904,9(186)Ambarados & AdocicadosBody Splash PremiumDescobrir@brunavieiraAfroditeFirst KissDe R$ 99,90por R$ 79,904,9(446)Florais & ElegantesBody Splash PremiumDescobrir@ricardo.mImperadorRed EmpireDe R$ 99,90por R$ 79,904,7(247)Amadeirados & EspeciadosBody Splash PremiumDescobrir@camila.beautyImperatrizVelvet DynastyDe R$ 99,90por R$ 79,904,8(185)Florais & ElegantesBody Splash PremiumDescobrir@raoni_ZeusStormbreakDe R$ 99,90por R$ 79,904,8(213)Amadeirados & EspeciadosBody Splash PremiumDescobrir@aline.cachosFadaPure LightDe R$ 99,90por R$ 79,904,8(187)Frescos & LuminososBody Splash PremiumDescobrir@marianac_CleópatraNile RoseDe R$ 99,90por R$ 79,904,8(260)Florais & ElegantesBody Splash PremiumDescobrir@diego.treinoGuerreiroSteel BlueDe R$ 99,90por R$ 79,904,7(115)Frescos & LuminososBody Splash PremiumDescobrir@rafa_diasSereiaOcean BreezeDe R$ 99,90por R$ 79,904,7(275)Frescos & LuminososBody Splash PremiumDescobrir@theo.kaiFênixAmber BurnDe R$ 99,90por R$ 79,904,9(186)Ambarados & AdocicadosBody Splash PremiumDescobrir@brunavieiraAfroditeFirst KissDe R$ 99,90por R$ 79,904,9(446)Florais & ElegantesBody Splash PremiumDescobrir@ricardo.mImperadorRed EmpireDe R$ 99,90por R$ 79,904,7(247)Amadeirados & EspeciadosBody Splash PremiumDescobrir@camila.beautyImperatrizVelvet DynastyDe R$ 99,90por R$ 79,904,8(185)Florais & ElegantesBody Splash PremiumDescobrir@raoni_ZeusStormbreakDe R$ 99,90por R$ 79,904,8(213)Amadeirados & EspeciadosBody Splash PremiumDescobrir@aline.cachosFadaPure LightDe R$ 99,90por R$ 79,904,8(187)Frescos & LuminososBody Splash PremiumDescobrirPessoas reais.Diferentes fragrâncias, momentos e formas de expressão.ColeçõesEscolha por onde começarPara elasFeminino5 fragrânciasVer coleçãoPara elesMasculino3 fragrânciasVer coleçãoPara todosCompartilhável1 fragrânciaVer coleçãoO catálogoNove fragrâncias. Diferentes versões de você.TodosFemininoMasculinoCompartilhávelAfroditeFirst Kiss4,9(446)Florais & ElegantesBody Splash PremiumDe R$ 99,90por R$ 79,906x R$ 13,32 sem jurosComprarImperatrizVelvet Dynasty4,8(185)Florais & ElegantesBody Splash PremiumDe R$ 99,90por R$ 79,906x R$ 13,32 sem jurosComprarCleópatraNile Rose4,8(260)Florais & ElegantesBody Splash PremiumDe R$ 99,90por R$ 79,906x R$ 13,32 sem jurosComprarFadaPure Light4,8(187)Frescos & LuminososBody Splash PremiumDe R$ 99,90por R$ 79,906x R$ 13,32 sem jurosComprarSereiaOcean Breeze4,7(275)Frescos & LuminososBody Splash PremiumDe R$ 99,90por R$ 79,906x R$ 13,32 sem jurosComprarZeusStormbreak4,8(213)Amadeirados & EspeciadosBody Splash PremiumDe R$ 99,90por R$ 79,906x R$ 13,32 sem jurosComprarGuerreiroSteel Blue4,7(115)Frescos & LuminososBody Splash PremiumDe R$ 99,90por R$ 79,906x R$ 13,32 sem jurosComprarImperadorRed Empire4,7(247)Amadeirados & EspeciadosBody Splash PremiumDe R$ 99,90por R$ 79,906x R$ 13,32 sem jurosComprarFênixAmber Burn4,9(186)Ambarados & AdocicadosBody Splash PremiumDe R$ 99,90por R$ 79,906x R$ 13,32 sem jurosComprarFamílias olfativasDescubra pelo cheiroExplore as famílias olfativas e encontre os cheiros que mais combinam com você.Sedutor · Majestoso · DelicadoFlorais & ElegantesBouquets de rosa, jasmim e flor de laranjeira. Sofisticados, femininos e marcantes.Ver coleção →Suculento · Vibrante · SolarFrutados & CítricosFrutas suculentas e cítricos na saída. Alegres e vibrantes.Ver coleção →Leve · Limpo · RadianteFrescos & LuminososLeves, radiantes e cheios de frescor. Como luz do sol na pele.Ver coleção →Quente · Envolvente · MarcanteAmbarados & AdocicadosQuentes, doces e envolventes: baunilha, âmbar, açúcar.Ver coleção →Intenso · Seco · ImponenteAmadeirados & EspeciadosMadeiras e especiarias. Intensos, marcantes, com presença.Ver coleção →Arquétipo em destaqueFênixAmber Burn4,9(186)Você já foi outra pessoa. E deu certo.Body Splash Premium · 220 mlDe R$ 99,90por R$ 79,90Ambarados & AdocicadosR$ 75,91 no Pix · ou 6x de R$ 13,32 sem jurosÉ a única fragrância da coleção que não termina como começou.Conhecer FênixArquétipo em destaqueSereiaOcean Breeze4,7(275)Encanta sem levantar a voz.Body Splash Premium · 200 mlDe R$ 99,90por R$ 79,90Frescos & LuminososR$ 75,91 no Pix · ou 6x de R$ 13,32 sem jurosFunciona melhor na pele hidratada, logo depois do banho — é quando o fundo de cedro e âmbar aparece.Conhecer SereiaArquétipo em destaqueZeusStormbreak4,8(213)A voz que encerra a discussão.Body Splash Premium · 220 mlDe R$ 99,90por R$ 79,90Amadeirados & EspeciadosR$ 75,91 no Pix · ou 6x de R$ 13,32 sem jurosÉ a fragrância que ocupa o espaço inteiro sem precisar levantar a voz.Conhecer ZeusA diferençaO que torna Arquétypus diferente?Arquétypus10% de essênciaMais intensidade e presençaPerfumaria premiumFragrâncias sofisticadas9 arquétiposUma identidade para despertarCriados para layeringCrie sua assinatura olfativaExperiência completaDo perfume à embalagem, cada detalhe importa.Marcas tradicionaisMenor concentraçãoExperiência mais leveProposta casualPara o cotidianoEscolha pelo aromaUma fragrância para usarUso individualFragrâncias independentesApresentação tradicionalFragrância para o dia a dia7 dias de garantiaEnvio em 24 h úteisPagamento seguro6x sem juros5% off no Pix7 dias de garantiaEnvio em 24 h úteisPagamento seguro6x sem juros5% off no Pix7 dias de garantiaEnvio em 24 h úteisPagamento seguro6x sem juros5% off no Pix7 dias de garantiaEnvio em 24 h úteisPagamento seguro6x sem juros5% off no Pix7 dias de garantiaEnvio em 24 h úteisPagamento seguro6x sem juros5% off no Pix7 dias de garantiaEnvio em 24 h úteisPagamento seguro6x sem juros5% off no PixPrimeira compra15%na sua primeiraArquétypus.Receba seu benefício e descubra primeiro as novidades da Arquétypus.E-mailWhatsAppQuero meu cupomAo se cadastrar, você aceita receber o cupom e as novidades da Arquétypus. Cancele quando quiser. Política de PrivacidadeVocê não escolhe um perfume. Você reconhece o seu.Nossas redesLojaOs 9 arquétiposColeçõesFamílias olfativasInstitucionalSobre nósSeja criadorAjudaPerguntas frequentesEntrega e freteTrocas e devoluçõesFale conoscoPolíticasPrivacidadeTermos de usoRegras do siteGerenciar cookiesFormas de pagamentoPixpixVisaVISAMastercardEloeloAmerican ExpressAMEXHipercardHipercard© 2026 Arquétypus Parfum. Todos os direitos reservados.Saniella Ltda · CNPJ 58.267.823/0001-68 · Praça Cândido Mota, 193, sala 52, piso 2, Centro, Caraguatatuba – SP, CEP 11660-060",
+          "root": {
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "filter": "none",
+            "x": 0,
+            "y": 0,
+            "width": 1534,
+            "height": 881
+          },
+          "scroll": 7004,
+          "reveal": "released",
+          "revealHidden": 0,
+          "cookie": false,
+          "nodePreserved": false,
+          "forms": [
+            {
+              "action": null,
+              "method": "get",
+              "fields": [
+                {
+                  "tag": "INPUT",
+                  "name": "email",
+                  "disabled": false,
+                  "type": "email"
+                },
+                {
+                  "tag": "INPUT",
+                  "name": "whatsapp",
+                  "disabled": false,
+                  "type": "tel"
+                },
+                {
+                  "tag": "BUTTON",
+                  "name": "",
+                  "disabled": false,
+                  "type": "submit"
+                }
+              ]
+            }
+          ],
+          "images": [
+            {
+              "src": "http://127.0.0.1:4177/assets/wordmark-marmore-_FVJxRZ6.png",
+              "complete": true,
+              "width": 4167
+            },
+            {
+              "src": "http://127.0.0.1:4177/assets/wordmark-preto-BefuJb9g.png",
+              "complete": true,
+              "width": 4167
+            },
+            {
+              "src": "http://127.0.0.1:4177/assets/colecao-desktop-9TO7ZM9U.jpg",
+              "complete": true,
+              "width": 1920
+            },
+            {
+              "src": "http://127.0.0.1:4177/assets/afrodite-desktop-B7HpEMIW.jpg",
+              "complete": true,
+              "width": 1920
+            },
+            {
+              "src": "http://127.0.0.1:4177/assets/guerreiro-desktop-CLkBxrUW.jpg",
+              "complete": true,
+              "width": 1920
+            },
+            {
+              "src": "http://127.0.0.1:4177/assets/logo-dourado-BkuS44dK.png",
+              "complete": true,
+              "width": 600
+            }
+          ],
+          "carousel": [
+            {
+              "text": "@marianac_CleópatraNile RoseDe R$ 99,90por R$ 79,904,8(260)Florais & ElegantesBody Splash PremiumDes",
+              "opacity": "0.15",
+              "visibility": "visible",
+              "display": "block",
+              "filter": "blur(2px)",
+              "x": -2153.815673828125,
+              "y": -6079.4169921875,
+              "width": 261.675048828125,
+              "height": 499.302734375
+            },
+            {
+              "text": "@diego.treinoGuerreiroSteel BlueDe R$ 99,90por R$ 79,904,7(115)Frescos & LuminososBody Splash Premiu",
+              "opacity": "0.15",
+              "visibility": "visible",
+              "display": "block",
+              "filter": "blur(2px)",
+              "x": -1843.065673828125,
+              "y": -6079.4169921875,
+              "width": 261.675048828125,
+              "height": 499.302734375
+            },
+            {
+              "text": "@rafa_diasSereiaOcean BreezeDe R$ 99,90por R$ 79,904,7(275)Frescos & LuminososBody Splash PremiumDes",
+              "opacity": "0.15",
+              "visibility": "visible",
+              "display": "block",
+              "filter": "blur(2px)",
+              "x": -1532.315673828125,
+              "y": -6079.4169921875,
+              "width": 261.675048828125,
+              "height": 499.302734375
+            },
+            {
+              "text": "@theo.kaiFênixAmber BurnDe R$ 99,90por R$ 79,904,9(186)Ambarados & AdocicadosBody Splash PremiumDesc",
+              "opacity": "0.15",
+              "visibility": "visible",
+              "display": "block",
+              "filter": "blur(2px)",
+              "x": -1221.565673828125,
+              "y": -6079.4169921875,
+              "width": 261.67498779296875,
+              "height": 499.302734375
+            },
+            {
+              "text": "@brunavieiraAfroditeFirst KissDe R$ 99,90por R$ 79,904,9(446)Florais & ElegantesBody Splash PremiumD",
+              "opacity": "0.15",
+              "visibility": "visible",
+              "display": "block",
+              "filter": "blur(2px)",
+              "x": -910.8156127929688,
+              "y": -6079.4169921875,
+              "width": 261.67498779296875,
+              "height": 499.302734375
+            },
+            {
+              "text": "@ricardo.mImperadorRed EmpireDe R$ 99,90por R$ 79,904,7(247)Amadeirados & EspeciadosBody Splash Prem",
+              "opacity": "0.15",
+              "visibility": "visible",
+              "display": "block",
+              "filter": "blur(2px)",
+              "x": -600.0656127929688,
+              "y": -6079.4169921875,
+              "width": 261.67498779296875,
+              "height": 499.302734375
+            },
+            {
+              "text": "@camila.beautyImperatrizVelvet DynastyDe R$ 99,90por R$ 79,904,8(185)Florais & ElegantesBody Splash ",
+              "opacity": "0.15",
+              "visibility": "visible",
+              "display": "block",
+              "filter": "blur(2px)",
+              "x": -289.31561279296875,
+              "y": -6079.4169921875,
+              "width": 261.67498779296875,
+              "height": 499.302734375
+            },
+            {
+              "text": "@raoni_ZeusStormbreakDe R$ 99,90por R$ 79,904,8(213)Amadeirados & EspeciadosBody Splash PremiumDesco",
+              "opacity": "0.15",
+              "visibility": "visible",
+              "display": "block",
+              "filter": "blur(2px)",
+              "x": 21.43438720703125,
+              "y": -6079.4169921875,
+              "width": 261.67498779296875,
+              "height": 499.302734375
+            },
+            {
+              "text": "@aline.cachosFadaPure LightDe R$ 99,90por R$ 79,904,8(187)Frescos & LuminososBody Splash PremiumDesc",
+              "opacity": "0.15",
+              "visibility": "visible",
+              "display": "block",
+              "filter": "blur(2px)",
+              "x": 332.18438720703125,
+              "y": -6079.4169921875,
+              "width": 261.67498779296875,
+              "height": 499.302734375
+            },
+            {
+              "text": "@marianac_CleópatraNile RoseDe R$ 99,90por R$ 79,904,8(260)Florais & ElegantesBody Splash PremiumDes",
+              "opacity": "1",
+              "visibility": "visible",
+              "display": "block",
+              "filter": "blur(0px)",
+              "x": 613.859375,
+              "y": -6107.15625,
+              "width": 290.75,
+              "height": 554.78125
+            },
+            {
+              "text": "@diego.treinoGuerreiroSteel BlueDe R$ 99,90por R$ 79,904,7(115)Frescos & LuminososBody Splash Premiu",
+              "opacity": "0.15",
+              "visibility": "visible",
+              "display": "block",
+              "filter": "blur(2px)",
+              "x": 924.609375,
+              "y": -6079.4169921875,
+              "width": 261.675048828125,
+              "height": 499.302734375
+            },
+            {
+              "text": "@rafa_diasSereiaOcean BreezeDe R$ 99,90por R$ 79,904,7(275)Frescos & LuminososBody Splash PremiumDes",
+              "opacity": "0.15",
+              "visibility": "visible",
+              "display": "block",
+              "filter": "blur(2px)",
+              "x": 1235.359375,
+              "y": -6079.4169921875,
+              "width": 261.675048828125,
+              "height": 499.302734375
+            }
+          ],
+          "media": [
+            {
+              "src": "http://127.0.0.1:4177/assets/hero-video-DYdAfdYa.mp4",
+              "currentTime": 1.079493,
+              "readyState": 4,
+              "paused": false,
+              "preload": "auto",
+              "opacity": "1",
+              "visibility": "visible",
+              "display": "none",
+              "filter": "none",
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          ]
+        },
+        "events": [
+          [
+            "consent",
+            "default",
+            {
+              "ad_storage": "denied",
+              "analytics_storage": "denied",
+              "ad_user_data": "denied",
+              "ad_personalization": "denied",
+              "wait_for_update": 500
+            }
+          ],
+          [
+            "consent",
+            "update",
+            {
+              "analytics_storage": "granted",
+              "ad_storage": "granted",
+              "ad_user_data": "granted",
+              "ad_personalization": "granted"
+            }
+          ],
+          {
+            "event": "gtm.js",
+            "qa": true
+          },
+          {
+            "event": "page_view",
+            "page_path": "/?bundle=slow&consent=accepted",
+            "page_location": "http://127.0.0.1:4177/?bundle=slow&consent=accepted",
+            "page_title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos"
+          }
+        ],
+        "errors": [],
+        "samples": [
+          {
+            "time": 54086.299999952316,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 55065,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 56063.59999996424,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 57063.5,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 58065.09999996424,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 59065.19999998808,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 60066.69999998808,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 61067.39999997616,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 62068.59999996424,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 63069.19999998808,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 64070.39999997616,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 65409.89999997616,
+            "h1": "Afrodite",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 66963,
+            "h1": "Afrodite",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 67397.69999998808,
+            "h1": "Afrodite",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 68396.89999997616,
+            "h1": "Afrodite",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 69396.89999997616,
+            "h1": "Guerreiro",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 70399.39999997616,
+            "h1": "Guerreiro",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 71399.89999997616,
+            "h1": "Guerreiro",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 72398.89999997616,
+            "h1": "Guerreiro",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 73399.89999997616,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 74399.69999998808,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 75402.39999997616,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 76411.19999998808,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 77403.39999997616,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 78404,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 79406.29999995232,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 80405.09999996424,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 81408.59999996424,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 82407.5,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 83408.19999998808,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 84410.39999997616,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 85410,
+            "h1": "Afrodite",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 86410.89999997616,
+            "h1": "Afrodite",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 87412.5,
+            "h1": "Afrodite",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 88412.69999998808,
+            "h1": "Afrodite",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 89416,
+            "h1": "Guerreiro",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 90414.5,
+            "h1": "Guerreiro",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 91416.09999996424,
+            "h1": "Guerreiro",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 92416.59999996424,
+            "h1": "Guerreiro",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 93418.19999998808,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 94418.39999997616,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 95425.89999997616,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 96420.09999996424,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 96994.79999995232,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 97981.79999995232,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 98982.5,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 99984.5,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 100984.29999995232,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 101985.5,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 102986.39999997616,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 103990.09999996424,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 104988.29999995232,
+            "h1": "Afrodite",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 105989,
+            "h1": "Afrodite",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 106990.19999998808,
+            "h1": "Afrodite",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 107996.79999995232,
+            "h1": "Afrodite",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 108993.29999995232,
+            "h1": "Guerreiro",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 109994.09999996424,
+            "h1": "Guerreiro",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 110995.19999998808,
+            "h1": "Guerreiro",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 111995.29999995232,
+            "h1": "Guerreiro",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 112995.29999995232,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 113996.5,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 6938
+          },
+          {
+            "time": 115001.79999995232,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 115566.89999997616,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 115706.79999995232,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 115777,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 116143.79999995232,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 116327.09999996424,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 116430.79999995232,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 116569.79999995232,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 116630.79999995232,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 116747.29999995232,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 116828.29999995232,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 116985,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 117078.19999998808,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 117126.5,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 117217.09999996424,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 117279.79999995232,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 117389.09999996424,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 117596.69999998808,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 117892.09999996424,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 118031.59999996424,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 118194.19999998808,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 118870.29999995232,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 119997.89999997616,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 120865.39999997616,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 121867.69999998808,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 122865.19999998808,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 123866.89999997616,
+            "h1": "Afrodite",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 124868.19999998808,
+            "h1": "Afrodite",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 125867.79999995232,
+            "h1": "Afrodite",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 126869,
+            "h1": "Afrodite",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 127870.09999996424,
+            "h1": "Guerreiro",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 128870.19999998808,
+            "h1": "Guerreiro",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 129871.59999996424,
+            "h1": "Guerreiro",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 130873.59999996424,
+            "h1": "Guerreiro",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 131874.29999995232,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 132874.29999995232,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 133875.29999995232,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 134876.09999996424,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          },
+          {
+            "time": 135877.59999996424,
+            "h1": "Qual versão de você quer expressar hoje?",
+            "hidden": false,
+            "scroll": 7004
+          }
+        ],
+        "submits": [
+          {
+            "action": "http://127.0.0.1:4177/?bundle=slow&consent=accepted",
+            "fields": [
+              "email",
+              "whatsapp"
+            ],
+            "time": 114494.59999996424
+          },
+          {
+            "action": "http://127.0.0.1:4177/?bundle=slow&consent=accepted",
+            "fields": [
+              "email",
+              "whatsapp"
+            ],
+            "time": 114956.89999997616
+          }
+        ],
+        "firstHydrated": {
+          "time": 54087.39999997616,
+          "nodePreserved": true,
+          "scroll": 6938,
+          "h1": "Qual versão de você quer expressar hoje?"
+        },
+        "measurement": {
+          "cutoffMs": 4000,
+          "fontsLoaded": true,
+          "fcp": 6156,
+          "lcp": null,
+          "cls": 0,
+          "blockingObserved": 233
+        },
+        "viewport": {
+          "width": 1534,
+          "height": 881
+        },
+        "performance": {
+          "paints": [
+            {
+              "name": "first-paint",
+              "time": 6156
+            },
+            {
+              "name": "first-contentful-paint",
+              "time": 6156
+            }
+          ],
+          "lcp": [
+            {
+              "startTime": 6156,
+              "duration": 0,
+              "element": "IMG",
+              "src": "http://127.0.0.1:4177/assets/wordmark-marmore-_FVJxRZ6.png"
+            },
+            {
+              "startTime": 42032,
+              "duration": 0,
+              "element": "DIV"
+            }
+          ],
+          "shifts": [],
+          "longTasks": [
+            {
+              "startTime": 102.19999998807907,
+              "duration": 237
+            },
+            {
+              "startTime": 354.5999999642372,
+              "duration": 96
+            },
+            {
+              "startTime": 53593.299999952316,
+              "duration": 97
+            },
+            {
+              "startTime": 54062.59999996424,
+              "duration": 82
+            },
+            {
+              "startTime": 54741.5,
+              "duration": 55
+            },
+            {
+              "startTime": 55109.89999997616,
+              "duration": 114
+            },
+            {
+              "startTime": 61091.19999998808,
+              "duration": 51
+            },
+            {
+              "startTime": 63068.69999998808,
+              "duration": 62
+            },
+            {
+              "startTime": 63591.19999998808,
+              "duration": 51
+            },
+            {
+              "startTime": 64069.5,
+              "duration": 416
+            },
+            {
+              "startTime": 64511.09999996424,
+              "duration": 77
+            },
+            {
+              "startTime": 64598.09999996424,
+              "duration": 62
+            },
+            {
+              "startTime": 64724.69999998808,
+              "duration": 58
+            },
+            {
+              "startTime": 65091.39999997616,
+              "duration": 147
+            },
+            {
+              "startTime": 65356.69999998808,
+              "duration": 50
+            },
+            {
+              "startTime": 65407.09999996424,
+              "duration": 170
+            },
+            {
+              "startTime": 65579.5,
+              "duration": 476
+            },
+            {
+              "startTime": 66127.09999996424,
+              "duration": 57
+            },
+            {
+              "startTime": 66191.39999997616,
+              "duration": 724
+            },
+            {
+              "startTime": 66915.39999997616,
+              "duration": 295
+            },
+            {
+              "startTime": 70395.5,
+              "duration": 79
+            },
+            {
+              "startTime": 77402.19999998808,
+              "duration": 51
+            },
+            {
+              "startTime": 80142.89999997616,
+              "duration": 68
+            },
+            {
+              "startTime": 96986.09999996424,
+              "duration": 104
+            },
+            {
+              "startTime": 115557.79999995232,
+              "duration": 68
+            },
+            {
+              "startTime": 115691.59999996424,
+              "duration": 58
+            },
+            {
+              "startTime": 115772.5,
+              "duration": 79
+            },
+            {
+              "startTime": 116134.5,
+              "duration": 105
+            },
+            {
+              "startTime": 116316.39999997616,
+              "duration": 88
+            },
+            {
+              "startTime": 116428.69999998808,
+              "duration": 110
+            },
+            {
+              "startTime": 116562.5,
+              "duration": 62
+            },
+            {
+              "startTime": 116629.09999996424,
+              "duration": 72
+            },
+            {
+              "startTime": 116824.69999998808,
+              "duration": 118
+            },
+            {
+              "startTime": 116982.29999995232,
+              "duration": 67
+            },
+            {
+              "startTime": 117277.39999997616,
+              "duration": 64
+            },
+            {
+              "startTime": 117385,
+              "duration": 162
+            },
+            {
+              "startTime": 117596.09999996424,
+              "duration": 179
+            },
+            {
+              "startTime": 117777.5,
+              "duration": 114
+            },
+            {
+              "startTime": 117891.79999995232,
+              "duration": 53
+            },
+            {
+              "startTime": 117979.09999996424,
+              "duration": 51
+            },
+            {
+              "startTime": 118031.09999996424,
+              "duration": 60
+            },
+            {
+              "startTime": 118114,
+              "duration": 53
+            },
+            {
+              "startTime": 118191.59999996424,
+              "duration": 126
+            },
+            {
+              "startTime": 119862,
+              "duration": 213
+            },
+            {
+              "startTime": 146171.69999998808,
+              "duration": 51
+            },
+            {
+              "startTime": 160803,
+              "duration": 91
+            },
+            {
+              "startTime": 161026.19999998808,
+              "duration": 52
+            },
+            {
+              "startTime": 167591.59999996424,
+              "duration": 62
+            },
+            {
+              "startTime": 167830.59999996424,
+              "duration": 59
+            },
+            {
+              "startTime": 168825.09999996424,
+              "duration": 482
+            },
+            {
+              "startTime": 169341.69999998808,
+              "duration": 83
+            },
+            {
+              "startTime": 169626.5,
+              "duration": 117
+            },
+            {
+              "startTime": 170105.89999997616,
+              "duration": 169
+            },
+            {
+              "startTime": 171059.09999996424,
+              "duration": 573
+            }
+          ],
+          "navigation": [
+            {
+              "name": "http://127.0.0.1:4177/?bundle=slow&consent=accepted",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 53698.69999998808,
+              "navigationId": 636,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "http/1.1",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 2.699999988079071,
+              "domainLookupStart": 2.699999988079071,
+              "domainLookupEnd": 2.699999988079071,
+              "connectStart": 2.699999988079071,
+              "secureConnectionStart": 0,
+              "connectEnd": 2.699999988079071,
+              "requestStart": 5.699999988079071,
+              "responseStart": 16.5,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 16.5,
+              "responseEnd": 17.599999964237213,
+              "transferSize": 276181,
+              "encodedBodySize": 275881,
+              "decodedBodySize": 275881,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 0,
+              "unloadEventEnd": 0,
+              "domInteractive": 354.39999997615814,
+              "domContentLoadedEventStart": 53590.5,
+              "domContentLoadedEventEnd": 53590.5,
+              "domComplete": 53695.19999998808,
+              "loadEventStart": 53698.69999998808,
+              "loadEventEnd": 53698.69999998808,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": null
+            }
+          ],
+          "resources": [
+            {
+              "name": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+              "initiatorType": "link",
+              "startTime": 37,
+              "duration": 9.5,
+              "transferSize": 0,
+              "encodedBodySize": 93450
+            },
+            {
+              "name": "http://127.0.0.1:4177/fonts/elegant.woff2",
+              "initiatorType": "link",
+              "startTime": 37.19999998807907,
+              "duration": 10.800000011920929,
+              "transferSize": 32748,
+              "encodedBodySize": 32448
+            },
+            {
+              "name": "http://127.0.0.1:4177/fonts/inter-var.woff2",
+              "initiatorType": "link",
+              "startTime": 37.299999952316284,
+              "duration": 11.600000023841858,
+              "transferSize": 105636,
+              "encodedBodySize": 105336
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/index-Cd29iwMJ.js?bundle=slow",
+              "initiatorType": "script",
+              "startTime": 37.39999997615814,
+              "duration": 53507.39999997616,
+              "transferSize": 636262,
+              "encodedBodySize": 635962
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/index-BYogewtm.css",
+              "initiatorType": "link",
+              "startTime": 37.5,
+              "duration": 13.5,
+              "transferSize": 160635,
+              "encodedBodySize": 160335
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/wordmark-marmore-_FVJxRZ6.png",
+              "initiatorType": "link",
+              "startTime": 37.59999996423721,
+              "duration": 16.100000023841858,
+              "transferSize": 89318,
+              "encodedBodySize": 89018
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/wordmark-preto-BefuJb9g.png",
+              "initiatorType": "link",
+              "startTime": 37.69999998807907,
+              "duration": 20.899999976158142,
+              "transferSize": 87850,
+              "encodedBodySize": 87550
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/cleopatra-vBb_yrcd.jpg",
+              "initiatorType": "link",
+              "startTime": 37.69999998807907,
+              "duration": 39,
+              "transferSize": 9860,
+              "encodedBodySize": 9560
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/guerreiro-B-htc0v_.jpg",
+              "initiatorType": "link",
+              "startTime": 37.799999952316284,
+              "duration": 40.10000002384186,
+              "transferSize": 10534,
+              "encodedBodySize": 10234
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/sereia-C7NIY0eS.jpg",
+              "initiatorType": "link",
+              "startTime": 37.89999997615814,
+              "duration": 42,
+              "transferSize": 10184,
+              "encodedBodySize": 9884
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/fenix-D2gHIR71.jpg",
+              "initiatorType": "link",
+              "startTime": 37.89999997615814,
+              "duration": 43,
+              "transferSize": 10122,
+              "encodedBodySize": 9822
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/afrodite-DVF-Wqlu.jpg",
+              "initiatorType": "link",
+              "startTime": 38,
+              "duration": 43.59999996423721,
+              "transferSize": 8912,
+              "encodedBodySize": 8612
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/imperador-DzfD99gB.jpg",
+              "initiatorType": "link",
+              "startTime": 38.09999996423721,
+              "duration": 46.90000003576279,
+              "transferSize": 10775,
+              "encodedBodySize": 10475
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/imperatriz-C0z8_uLt.jpg",
+              "initiatorType": "link",
+              "startTime": 38.19999998807907,
+              "duration": 47.80000001192093,
+              "transferSize": 10826,
+              "encodedBodySize": 10526
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/zeus-ByZH3hi4.jpg",
+              "initiatorType": "link",
+              "startTime": 38.299999952316284,
+              "duration": 52.40000003576279,
+              "transferSize": 9881,
+              "encodedBodySize": 9581
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/fada-BcYvZE2P.jpg",
+              "initiatorType": "link",
+              "startTime": 38.39999997615814,
+              "duration": 53.5,
+              "transferSize": 8902,
+              "encodedBodySize": 8602
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/cleopatra-Dkqrl1GK.jpg",
+              "initiatorType": "link",
+              "startTime": 38.39999997615814,
+              "duration": 55.30000001192093,
+              "transferSize": 114404,
+              "encodedBodySize": 114104
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/frutados-citricos-BHSVN3QN.jpg",
+              "initiatorType": "link",
+              "startTime": 38.59999996423721,
+              "duration": 59.60000002384186,
+              "transferSize": 204812,
+              "encodedBodySize": 204512
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/florais-elegantes-gFNKx20V.jpg",
+              "initiatorType": "link",
+              "startTime": 38.59999996423721,
+              "duration": 61.80000001192093,
+              "transferSize": 149169,
+              "encodedBodySize": 148869
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/frescos-luminosos-BAvS1EQ-.jpg",
+              "initiatorType": "link",
+              "startTime": 38.799999952316284,
+              "duration": 63.700000047683716,
+              "transferSize": 209075,
+              "encodedBodySize": 208775
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/ambarados-adocicados-B5C3mvbW.jpg",
+              "initiatorType": "link",
+              "startTime": 38.799999952316284,
+              "duration": 65.10000002384186,
+              "transferSize": 139063,
+              "encodedBodySize": 138763
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/amadeirados-especiados-B267512W.jpg",
+              "initiatorType": "link",
+              "startTime": 38.799999952316284,
+              "duration": 68.60000002384186,
+              "transferSize": 146731,
+              "encodedBodySize": 146431
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/logo-dourado-BkuS44dK.png",
+              "initiatorType": "link",
+              "startTime": 39,
+              "duration": 74.29999995231628,
+              "transferSize": 40914,
+              "encodedBodySize": 40614
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/flor-arquetypus-CKSiaCgq.png",
+              "initiatorType": "link",
+              "startTime": 39,
+              "duration": 72.69999998807907,
+              "transferSize": 1502305,
+              "encodedBodySize": 1502005
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/colecao-desktop-9TO7ZM9U.jpg",
+              "initiatorType": "img",
+              "startTime": 39.19999998807907,
+              "duration": 34,
+              "transferSize": 325212,
+              "encodedBodySize": 324912
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/hero-video-poster-BZSZW7gT.jpg",
+              "initiatorType": "video",
+              "startTime": 39.299999952316284,
+              "duration": 35.200000047683716,
+              "transferSize": 46140,
+              "encodedBodySize": 45840
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/afrodite-desktop-B7HpEMIW.jpg",
+              "initiatorType": "img",
+              "startTime": 39.299999952316284,
+              "duration": 75.70000004768372,
+              "transferSize": 156262,
+              "encodedBodySize": 155962
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/guerreiro-desktop-CLkBxrUW.jpg",
+              "initiatorType": "img",
+              "startTime": 39.39999997615814,
+              "duration": 82,
+              "transferSize": 224464,
+              "encodedBodySize": 224164
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/feminino-Bag6AX96.jpg",
+              "initiatorType": "img",
+              "startTime": 40.09999996423721,
+              "duration": 80.80000001192093,
+              "transferSize": 190948,
+              "encodedBodySize": 190648
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/masculino-BUtAdhYX.jpg",
+              "initiatorType": "img",
+              "startTime": 40.299999952316284,
+              "duration": 86,
+              "transferSize": 123126,
+              "encodedBodySize": 122826
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/compartilhavel-sdgMfCjh.jpg",
+              "initiatorType": "img",
+              "startTime": 40.299999952316284,
+              "duration": 87.30000001192093,
+              "transferSize": 77788,
+              "encodedBodySize": 77488
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/destaque-fenix-desktop-CVj4Qd3r.jpg",
+              "initiatorType": "img",
+              "startTime": 40.5,
+              "duration": 88.19999998807907,
+              "transferSize": 147309,
+              "encodedBodySize": 147009
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/destaque-sereia-desktop-BYPOaLQs.jpg",
+              "initiatorType": "img",
+              "startTime": 40.59999996423721,
+              "duration": 92.60000002384186,
+              "transferSize": 158235,
+              "encodedBodySize": 157935
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/destaque-zeus-desktop-BQgVxW1K.jpg",
+              "initiatorType": "img",
+              "startTime": 40.59999996423721,
+              "duration": 93.80000001192093,
+              "transferSize": 191874,
+              "encodedBodySize": 191574
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/wordmark-preto-BefuJb9g.png",
+              "initiatorType": "img",
+              "startTime": 82.09999996423721,
+              "duration": 52.10000002384186,
+              "transferSize": 87850,
+              "encodedBodySize": 87550
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/hero-video-DYdAfdYa.mp4",
+              "initiatorType": "video",
+              "startTime": 87.59999996423721,
+              "duration": 259.80000001192093,
+              "transferSize": 2171817,
+              "encodedBodySize": 2171517
+            },
+            {
+              "name": "http://127.0.0.1:4177/fonts/inter-var-italic.woff2",
+              "initiatorType": "css",
+              "startTime": 199,
+              "duration": 151.89999997615814,
+              "transferSize": 116464,
+              "encodedBodySize": 116164
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/guerreiro-9WjdvcUx.jpg",
+              "initiatorType": "img",
+              "startTime": 1081.3999999761581,
+              "duration": 4.800000011920929,
+              "transferSize": 167447,
+              "encodedBodySize": 167147
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/sereia-Od4PiDXc.jpg",
+              "initiatorType": "img",
+              "startTime": 1081.5999999642372,
+              "duration": 5.300000011920929,
+              "transferSize": 170072,
+              "encodedBodySize": 169772
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/fenix-DvTwejAx.jpg",
+              "initiatorType": "img",
+              "startTime": 1081.5999999642372,
+              "duration": 6.800000011920929,
+              "transferSize": 140331,
+              "encodedBodySize": 140031
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/afrodite-3me8ajmF.jpg",
+              "initiatorType": "img",
+              "startTime": 1081.5999999642372,
+              "duration": 7.5,
+              "transferSize": 134221,
+              "encodedBodySize": 133921
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/arquetypus-BVgblDH-.jpg",
+              "initiatorType": "img",
+              "startTime": 35297.299999952316,
+              "duration": 15.700000047683716,
+              "transferSize": 115585,
+              "encodedBodySize": 115285
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/splash-comum-D6smjJu4.jpg",
+              "initiatorType": "img",
+              "startTime": 35299.299999952316,
+              "duration": 12.700000047683716,
+              "transferSize": 22872,
+              "encodedBodySize": 22572
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/hero-video-DYdAfdYa.mp4",
+              "initiatorType": "video",
+              "startTime": 53699.39999997616,
+              "duration": 16.80000001192093,
+              "transferSize": 2171817,
+              "encodedBodySize": 2171517
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/imperador-BzmM6CjY.jpg",
+              "initiatorType": "img",
+              "startTime": 54091.299999952316,
+              "duration": 20.5,
+              "transferSize": 146689,
+              "encodedBodySize": 146389
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/imperatriz-BuMKC5nt.jpg",
+              "initiatorType": "img",
+              "startTime": 54091.89999997616,
+              "duration": 19.5,
+              "transferSize": 129236,
+              "encodedBodySize": 128936
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/zeus-Bk4k23TW.jpg",
+              "initiatorType": "img",
+              "startTime": 54092.09999996424,
+              "duration": 24,
+              "transferSize": 126444,
+              "encodedBodySize": 126144
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/fada-skWWuu9m.jpg",
+              "initiatorType": "img",
+              "startTime": 54092.59999996424,
+              "duration": 32.10000002384186,
+              "transferSize": 167843,
+              "encodedBodySize": 167543
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/afrodite-DSxSPTn3.jpg",
+              "initiatorType": "img",
+              "startTime": 54097.19999998808,
+              "duration": 31.899999976158142,
+              "transferSize": 119618,
+              "encodedBodySize": 119318
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/imperatriz-BRD48Xtr.jpg",
+              "initiatorType": "img",
+              "startTime": 54097.39999997616,
+              "duration": 37.19999998807907,
+              "transferSize": 160005,
+              "encodedBodySize": 159705
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/cleopatra-Bl8vga44.jpg",
+              "initiatorType": "img",
+              "startTime": 54097.59999996424,
+              "duration": 37.30000001192093,
+              "transferSize": 135373,
+              "encodedBodySize": 135073
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/fada--tqA5GVs.jpg",
+              "initiatorType": "img",
+              "startTime": 54100.09999996424,
+              "duration": 35.69999998807907,
+              "transferSize": 125419,
+              "encodedBodySize": 125119
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/sereia-CmMHd5E9.jpg",
+              "initiatorType": "img",
+              "startTime": 54100.89999997616,
+              "duration": 36.19999998807907,
+              "transferSize": 148595,
+              "encodedBodySize": 148295
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/zeus-GmMKqwvR.jpg",
+              "initiatorType": "img",
+              "startTime": 54101.299999952316,
+              "duration": 38.40000003576279,
+              "transferSize": 145354,
+              "encodedBodySize": 145054
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/guerreiro-DRTVWBu0.jpg",
+              "initiatorType": "img",
+              "startTime": 54102.5,
+              "duration": 39.09999996423721,
+              "transferSize": 153610,
+              "encodedBodySize": 153310
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/imperador-CUVygshf.jpg",
+              "initiatorType": "img",
+              "startTime": 54103.69999998808,
+              "duration": 40.80000001192093,
+              "transferSize": 166377,
+              "encodedBodySize": 166077
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/fenix-BUDNXOxD.jpg",
+              "initiatorType": "img",
+              "startTime": 54103.89999997616,
+              "duration": 41.39999997615814,
+              "transferSize": 147674,
+              "encodedBodySize": 147374
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/frutados-citricos-BHSVN3QN.jpg",
+              "initiatorType": "img",
+              "startTime": 54129.59999996424,
+              "duration": 18,
+              "transferSize": 204812,
+              "encodedBodySize": 204512
+            }
+          ]
+        },
+        "ready": true,
+        "hydrated": true
+      }
+    },
+    {
+      "route": "/criadores",
+      "mode": "slow-after",
+      "pass": true,
+      "report": {
+        "before": {
+          "h1": "Um arquétipo.O seu, de verdade.",
+          "route": "/criadores",
+          "scroll": 0
+        },
+        "now": {
+          "title": "Programa de Criadores | Arquétypus Parfum",
+          "h1": [
+            "Um arquétipo.O seu, de verdade."
+          ],
+          "marker": "/criadores",
+          "canonical": "https://arquetypus.com.br/criadores",
+          "mainText": "Para criadoresUm arquétipo.O seu, de verdade.Você não vende o catálogo inteiro — representa um dos nove, com amostra grátis e comissão em cada venda pelo seu link.Quero ser criadorO que você ganhaComissão, amostrae pagamento rápidode comissãopor venda10% a 20%amostra do seuarquétipoGrátispagamentovia PixD+30O processoDo formulárioà primeira venda01Aplique escolhendo um arquétipoUm só — é ele que você vai representar, gravar e recomendar.02Aguarde a aprovaçãoAvaliamos fit de conteúdo e disponibilidade do arquétipo escolhido.03Receba a amostra e o briefingFrasco do seu arquétipo, ângulos que funcionam e o que não fazer.04Grave do seu jeito e ganhe por vendaSeu link, sua comissão, pagamento em D+30 via Pix.A regraPor que só um arquétipoQuem carrega o catálogo inteiro não é ninguém em especial. Quem carrega um só vira referência dele — o conteúdo fica mais verdadeiro e você não compete com outro criador vendendo a mesma coisa que você.O que você recebeKit de mídiado seu arquétipoAmostra física do arquétipo escolhido, em casaBriefing de tom e glifo — o que combina com aquela energiaÂngulos e ganchos que já converteram para outros criadoresLink e cupom próprios, rastreados por vendaPainel com ranking e status de pagamentoAplicaçãoEscolha o seu arquétipo1 · Seu arquétipoAfroditeFirst KissImperatrizVelvet DynastyCleópatraNile RoseFadaPure LightSereiaOcean BreezeZeusStormbreakGuerreiroSteel BlueImperadorRed EmpireFênixAmber BurnVocê vai representar: Afrodite2 · Seus dadosAplicação enviada. Avaliamos e voltamos por WhatsApp.",
+          "root": {
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "filter": "none",
+            "x": 0,
+            "y": 0,
+            "width": 1704,
+            "height": 1241
+          },
+          "scroll": 3235,
+          "reveal": "released",
+          "revealHidden": 0,
+          "cookie": false,
+          "nodePreserved": true,
+          "forms": [],
+          "images": [
+            {
+              "src": "http://127.0.0.1:4177/assets/wordmark-marmore-_FVJxRZ6.png",
+              "complete": true,
+              "width": 4167
+            },
+            {
+              "src": "http://127.0.0.1:4177/assets/wordmark-preto-BefuJb9g.png",
+              "complete": true,
+              "width": 4167
+            },
+            {
+              "src": "http://127.0.0.1:4177/assets/logo-dourado-BkuS44dK.png",
+              "complete": true,
+              "width": 600
+            }
+          ],
+          "carousel": [],
+          "media": []
+        },
+        "events": [
+          [
+            "consent",
+            "default",
+            {
+              "ad_storage": "denied",
+              "analytics_storage": "denied",
+              "ad_user_data": "denied",
+              "ad_personalization": "denied",
+              "wait_for_update": 500
+            }
+          ],
+          [
+            "consent",
+            "update",
+            {
+              "analytics_storage": "granted",
+              "ad_storage": "granted",
+              "ad_user_data": "granted",
+              "ad_personalization": "granted"
+            }
+          ],
+          {
+            "event": "gtm.js",
+            "qa": true
+          },
+          {
+            "event": "page_view",
+            "page_path": "/criadores?bundle=slow&consent=accepted",
+            "page_location": "http://127.0.0.1:4177/criadores?bundle=slow&consent=accepted",
+            "page_title": "Programa de Criadores | Arquétypus Parfum"
+          }
+        ],
+        "errors": [],
+        "samples": [
+          {
+            "time": 66191,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 67191.5,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 67692.5,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 67872.30000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 67913.30000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 67952.30000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 67992.80000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 68052.39999997616,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 68092.30000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 68493.30000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 68533.5,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 68580.69999998808,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 68636.69999998808,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 68673.09999996424,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 68893.39999997616,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 68933.30000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 68973.19999998808,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 69015.19999998808,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 69053.19999998808,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 69093.80000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 69633.80000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 69674.5,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 70674.89999997616,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 71675.69999998808,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 72676.80000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 73677.80000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 74678.39999997616,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 75679.30000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 76680.19999998808,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 77042.69999998808,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 78053,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 78403.19999998808,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 79403.5,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 80403.89999997616,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 81404.80000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 82406.19999998808,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 83410.89999997616,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 84408.80000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 85408.39999997616,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 86353,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 86409.69999998808,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 86469.5,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 87471.80000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 87521.30000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 87570.59999996424,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 87652.30000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 87714.39999997616,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 87754.80000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 87811.09999996424,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 87871.39999997616,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 87965.5,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 88026.69999998808,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 88152.59999996424,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 88192.30000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 88278.19999998808,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 88357.30000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 88397.19999998808,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 88650.59999996424,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 88998.30000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 89060.39999997616,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 89743.30000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 90173.59999996424,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 90286.59999996424,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 91275.80000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 91334.30000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 92335,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 92374.89999997616,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 93376,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 93415.89999997616,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 93456,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 93496,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 93536.30000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 93617.59999996424,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 93656.19999998808,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 93696.09999996424,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 93736.5,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 93776.5,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 93816.19999998808,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 93856.30000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 93896.39999997616,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 93936.59999996424,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 93976.30000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 94016.5,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 94056.39999997616,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 94116.5,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 94156.5,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 95157.80000001192,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 95197.59999996424,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 96198.59999996424,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 96238.69999998808,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 97239.59999996424,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 97279.69999998808,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 97319.69999998808,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 98321.89999997616,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 98360.69999998808,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 98400.5,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 98440.69999998808,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 98480.59999996424,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 98520.59999996424,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          },
+          {
+            "time": 98561,
+            "h1": "Um arquétipo.O seu, de verdade.",
+            "hidden": false,
+            "scroll": 3235
+          }
+        ],
+        "submits": [
+          {
+            "action": "http://127.0.0.1:4177/criadores?bundle=slow&consent=accepted",
+            "fields": [],
+            "time": 138261.69999998808
+          }
+        ],
+        "firstHydrated": {
+          "time": 65740.89999997616,
+          "nodePreserved": true,
+          "scroll": 3235,
+          "h1": "Um arquétipo.O seu, de verdade."
+        },
+        "measurement": {
+          "cutoffMs": 4000,
+          "fontsLoaded": true,
+          "fcp": 1312,
+          "lcp": 1672,
+          "cls": 0,
+          "blockingObserved": 91
+        },
+        "viewport": {
+          "width": 1704,
+          "height": 1241
+        },
+        "performance": {
+          "paints": [
+            {
+              "name": "first-paint",
+              "time": 1312
+            },
+            {
+              "name": "first-contentful-paint",
+              "time": 1312
+            }
+          ],
+          "lcp": [
+            {
+              "startTime": 1312,
+              "duration": 0,
+              "element": "IMG",
+              "src": "http://127.0.0.1:4177/assets/wordmark-preto-BefuJb9g.png"
+            },
+            {
+              "startTime": 1672,
+              "duration": 0,
+              "element": "IMG",
+              "src": "http://127.0.0.1:4177/assets/criadores-hero-CxQZOKK7.jpg"
+            }
+          ],
+          "shifts": [
+            {
+              "startTime": 138280.69999998808,
+              "duration": 0,
+              "value": 0.004752987589735063,
+              "recentInput": false
+            }
+          ],
+          "longTasks": [
+            {
+              "startTime": 66.80000001192093,
+              "duration": 128
+            },
+            {
+              "startTime": 199.5,
+              "duration": 63
+            },
+            {
+              "startTime": 34195.30000001192,
+              "duration": 102
+            },
+            {
+              "startTime": 65185.59999996424,
+              "duration": 57
+            },
+            {
+              "startTime": 77621.5,
+              "duration": 62
+            },
+            {
+              "startTime": 87245.09999996424,
+              "duration": 74
+            },
+            {
+              "startTime": 88498,
+              "duration": 470
+            },
+            {
+              "startTime": 89743,
+              "duration": 55
+            }
+          ],
+          "navigation": [
+            {
+              "name": "http://127.0.0.1:4177/criadores?bundle=slow&consent=accepted",
+              "entryType": "navigation",
+              "startTime": 0,
+              "duration": 65292,
+              "navigationId": 3649,
+              "initiatorType": "navigation",
+              "deliveryType": "",
+              "nextHopProtocol": "http/1.1",
+              "renderBlockingStatus": "non-blocking",
+              "contentType": "text/html",
+              "contentEncoding": "",
+              "workerStart": 0,
+              "workerRouterEvaluationStart": 0,
+              "workerCacheLookupStart": 0,
+              "workerMatchedSourceType": "",
+              "workerFinalSourceType": "",
+              "redirectStart": 0,
+              "redirectEnd": 0,
+              "fetchStart": 2.899999976158142,
+              "domainLookupStart": 2.899999976158142,
+              "domainLookupEnd": 2.899999976158142,
+              "connectStart": 2.899999976158142,
+              "secureConnectionStart": 0,
+              "connectEnd": 2.899999976158142,
+              "requestStart": 6.599999964237213,
+              "responseStart": 11,
+              "firstInterimResponseStart": 0,
+              "finalResponseHeadersStart": 11,
+              "responseEnd": 11.899999976158142,
+              "transferSize": 56428,
+              "encodedBodySize": 56128,
+              "decodedBodySize": 56128,
+              "responseStatus": 200,
+              "serverTiming": [],
+              "unloadEventStart": 0,
+              "unloadEventEnd": 0,
+              "domInteractive": 262.89999997615814,
+              "domContentLoadedEventStart": 65240,
+              "domContentLoadedEventEnd": 65240.09999996424,
+              "domComplete": 65289.5,
+              "loadEventStart": 65291.39999997616,
+              "loadEventEnd": 65292,
+              "type": "navigate",
+              "redirectCount": 0,
+              "activationStart": 0,
+              "criticalCHRestart": 0,
+              "notRestoredReasons": null,
+              "confidence": null
+            }
+          ],
+          "resources": [
+            {
+              "name": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400&family=Anton&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Courier+Prime:wght@400;700&family=Space+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Shippori+Mincho:wght@400;500;600&display=swap",
+              "initiatorType": "link",
+              "startTime": 28.19999998807907,
+              "duration": 14.199999988079071,
+              "transferSize": 0,
+              "encodedBodySize": 93450
+            },
+            {
+              "name": "http://127.0.0.1:4177/fonts/elegant.woff2",
+              "initiatorType": "link",
+              "startTime": 28.80000001192093,
+              "duration": 14.599999964237213,
+              "transferSize": 32748,
+              "encodedBodySize": 32448
+            },
+            {
+              "name": "http://127.0.0.1:4177/fonts/inter-var.woff2",
+              "initiatorType": "link",
+              "startTime": 29.30000001192093,
+              "duration": 17,
+              "transferSize": 105636,
+              "encodedBodySize": 105336
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/index-Cd29iwMJ.js?bundle=slow",
+              "initiatorType": "script",
+              "startTime": 29.5,
+              "duration": 65014.09999996424,
+              "transferSize": 636262,
+              "encodedBodySize": 635962
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/index-BYogewtm.css",
+              "initiatorType": "link",
+              "startTime": 29.69999998807907,
+              "duration": 16,
+              "transferSize": 160635,
+              "encodedBodySize": 160335
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/wordmark-marmore-_FVJxRZ6.png",
+              "initiatorType": "link",
+              "startTime": 29.899999976158142,
+              "duration": 17.5,
+              "transferSize": 89318,
+              "encodedBodySize": 89018
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/wordmark-preto-BefuJb9g.png",
+              "initiatorType": "link",
+              "startTime": 30.19999998807907,
+              "duration": 19.30000001192093,
+              "transferSize": 87850,
+              "encodedBodySize": 87550
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/flor-arquetypus-CKSiaCgq.png",
+              "initiatorType": "link",
+              "startTime": 30.19999998807907,
+              "duration": 25.80000001192093,
+              "transferSize": 1502305,
+              "encodedBodySize": 1502005
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/logo-dourado-BkuS44dK.png",
+              "initiatorType": "link",
+              "startTime": 30.399999976158142,
+              "duration": 28.30000001192093,
+              "transferSize": 40914,
+              "encodedBodySize": 40614
+            },
+            {
+              "name": "http://127.0.0.1:4177/assets/criadores-hero-CxQZOKK7.jpg",
+              "initiatorType": "img",
+              "startTime": 30.80000001192093,
+              "duration": 26.5,
+              "transferSize": 247390,
+              "encodedBodySize": 247090
+            },
+            {
+              "name": "http://127.0.0.1:4177/fonts/inter-var-italic.woff2",
+              "initiatorType": "css",
+              "startTime": 107.39999997615814,
+              "duration": 92.5,
+              "transferSize": 116464,
+              "encodedBodySize": 116164
+            }
+          ]
+        },
+        "ready": true,
+        "hydrated": true
+      }
+    }
+  ]
+}

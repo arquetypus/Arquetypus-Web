@@ -2,13 +2,15 @@
 
 ## Estado
 
-Implementação, commit, push e validação HTTP remota concluídos. Navegador remoto,
-interações, Schema.org, Rich Results e prévias sociais agora têm evidências.
-**Aceite completo pendente** de desempenho, cenários adicionais e rollback. Build local aprovado (19 HTMLs,
-91 recursos, 18 canonicals), matcher validado em 139 casos.
+**Aceite técnico encerrado: aprovada com limitações documentadas**, conforme
+[revisão final de 05/10/2026](etapa6-fechamento.md). HTTP reconferido, cobertura funcional
+e responsiva no Google Chrome, desempenho e preparação manual de rollback revisados.
+Limitações de instrumentação, entrega de analytics e touch físico permanecem explícitas.
+Etapa 7 exige autorização específica; produção não foi alterada.
+Build local aprovado (19 HTMLs, 91 recursos, 18 canonicals), matcher validado em 139 casos.
 
-Código enviado em `a0f211dcb7409f2accdb392dd021c7c946c61242`, incluindo commit local
-da Etapa 5 `59724cd`. Check Vercel `success`, deployment
+Registro da implementação inicial: código enviado em `a0f211dcb7409f2accdb392dd021c7c946c61242`, incluindo commit local
+da Etapa 5 `59724cd`. Check Vercel `success`, deployment inicial
 [AqYmeBN9n2hHY6Hi97Dx1qRYH4LG](https://vercel.com/saniella/arquetypus-parfum/AqYmeBN9n2hHY6Hi97Dx1qRYH4LG).
 Preview: <https://arquetypus-parfum-git-prerender-saniella.vercel.app/>.
 Toolbar da home informa o mesmo ID com prefixo `dpl_`.
@@ -65,7 +67,8 @@ impede conversão de fim de linha e aceita whitespace já presente no template r
 - Preset/comando/saída explícitos conforme
   [configuração Vercel](https://vercel.com/docs/project-configuration/vercel-json).
   Conteúdo remoto/recursos iguais ao pipeline local comprovam saída SSG efetiva;
-  leitura administrativa do dashboard/log completo ainda não foi realizada nesta execução.
+  consulta administrativa de configuração/log completo posteriormente realizada pelo
+  usuário e registrada em [validação manual](vercel-validacao-manual.md).
 
 Reprodução: Node 24.x, `npm run build`, depois
 `node docs/prerender/tools/etapa6-http.mjs`. Ferramenta não executa scripts do site,
@@ -129,7 +132,7 @@ Avisos de comprimento/CTA são heurísticas editoriais da ferramenta, não defei
 Imagem compartilhada existente foi preservada. A simulação social não comprova cache
 ou exibição em todos os aplicativos; nenhum WhatsApp/mensagem foi enviado.
 
-## PageSpeed remoto — desempenho ainda não aceito
+## PageSpeed remoto — série original, antes da investigação ampliada
 
 API pública havia retornado [429](evidence/etapa6-pagespeed-access.json); interface web
 oficial funcionou nesta continuação. Medições alternadas, URLs públicas reais, Moto G Power,
@@ -164,21 +167,33 @@ TBT só inclui tarefas na janela FCP→TTI; não somar excessos arbitrariamente.
 Domínios, toolbar e execução dos tags podem influenciar comparação. Nenhum GTM/GA4,
 consentimento ou mídia foi alterado para obter nota artificialmente melhor.
 
-## Pendências para aceite completo
+## Histórico dos itens de fechamento
 
-1. Investigar diferença consistente de TBT da PDP acima do gate de 10%, com trace e
-   condições equivalentes de consentimento/tags. Não mudar comportamento comercial
-   ou adiar tracking sem causa comprovada. Performance permanece não aceita.
-2. Completar cenários da matriz da Etapa 5 ainda não repetidos no remoto: consentimento
-   expirado, bundle lento/bloqueado, observer ausente/reduced motion, gestos antes da
-   hidratação, formulário por Enter e sequência completa de tracking. Bytes locais/remotos
-   já coincidem; isso dá confiança no QA local, mas não equivale a repetir tais cenários
-   no preview. Coleta atual não certifica pacotes/eventos reais de analytics.
-3. Dashboard/log completo e disponibilidade/permissão de rollback. Aba do deployment
-   ficou em **Log in to Vercel**; solicitado login manual, ainda não recebido.
-   Produção estável `8a02e4a` identificada; elegibilidade administrativa não comprovada.
-   [Procedimento oficial](https://vercel.com/docs/instant-rollback), sem executar rollback.
+1. **Gate comparativo do Zeus atendido após investigação ampliada**, conforme
+   [relatório de TBT](etapa6-tbt.md). Cinco novos pares completos, somados aos seis
+   originais sem exclusões: TBT mediano 97→84 ms (−13,4%), LCP 8260→6366 ms (−22,9%),
+   CLS zero. A regressão inicial não se confirmou como consistente. Dez auditorias de
+   tarefas e tracking comparados; atribuição causal absoluta sem trace completo não
+   foi certificada. Não houve ajuste da aplicação. Revalidar após publicação autorizada.
+2. Cenários funcionais adicionais agora cobertos no **Google Chrome**, conforme
+   [complemento funcional](etapa6-chrome.md): 95 hidratações/consentimentos, 57 falhas,
+   19 rotas com JS e 19 sem scripts no preview, nove PDPs, gestos, formulários e tracking.
+   Falhas induzidas usam bytes remotos instrumentados em loopback; não equivalem à
+   repetição literal de toda a matriz no preview intacto nem certificam entrega real
+   de analytics. Métodos/limites e tentativas não contabilizadas estão documentados.
+3. **Build/configuração e preparação administrativa de rollback comprovados pelo usuário**
+   por logs, inventário e prints na conversa de 05/10/2026; registro em
+   [consulta manual](vercel-validacao-manual.md). Vite, Node 24.x, `npm run build`, `dist`,
+   pipeline completo e 19 HTMLs confirmados. Produção `8a02e4a`, Ready/Current;
+   diálogo Instant Rollback acessível com destino anterior `3833162`. Não foi executado
+   rollback nem promovido preview. Após a migração, recuperar `8a02e4a` se necessário.
+   Acesso administrativo continuará exclusivamente manual pelo usuário.
 
-Etapa 6 **não está 100%**. Etapa 7 permanece pendente e não autorizada. Servidor QA e
-overrides temporários são encerrados após coleta; evidências/pendências versionadas
-na branch `prerender`, sem publicação em produção.
+TBT e consulta manual deixaram de ser bloqueios. Cobertura e limites do item 2 foram
+revisados em [fechamento final](etapa6-fechamento.md), que concede **aceite técnico da
+Etapa 6 com limitações documentadas**, sem afirmar repetição literal integral no preview
+intacto ou certificação de serviços externos. Nova coleta direta no Chrome valida todas
+as fotos, ritual, fluxos e quatro viewports. A [consolidação atual](evidence/etapa6-final-analysis.json)
+substitui o estado pendente dos relatórios históricos para fins de avanço.
+Etapa 7 permanece pendente e não autorizada. Abas QA fechadas e override restaurado;
+novas provas/documentação locais na branch `prerender`, sem commit/push/publicação nesta revisão.

@@ -13,3 +13,8 @@ Stop: "stop caveman" or "normal mode"
 Auto-Clarity: drop caveman for security warnings, irreversible actions, user confused. Resume after.
 
 Boundaries: code/commits/PRs written normal.
+
+## Regras do projeto
+
+- Use Google Chrome como navegador principal para testes funcionais, visuais e de navegação. Microsoft Edge pode ser usado apenas como teste adicional de compatibilidade. Se Chrome não estiver conectado, solicite sua conexão; não substitua silenciosamente por Edge.
+- Todo acesso administrativo à Vercel será realizado manualmente pelo usuário. Não automatize acesso ao painel, autenticação, configurações, publicação, promoção de deployment ou rollback. Solicite as informações necessárias ou forneça passos objetivos para execução manual. Testes funcionais no site/preview devem usar Google Chrome.
