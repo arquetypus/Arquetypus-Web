@@ -1,6 +1,6 @@
 # Etapa 3 — entrada de servidor e ensaio SSR
 
-Implementação em `prerender`, em 05/10/2026. Validação local aprovada; publicação e aceite do preview pendentes.
+Etapa concluída e validada em `prerender`, em 05/10/2026. Código: `1b2b317bf5929b35d25688df8fb4f269e0a052ad`. Build local, check Vercel e preview aprovados. Produção permanece preservada.
 
 ## Implementação
 
@@ -34,7 +34,33 @@ Lint dos arquivos alterados: zero erros; dois avisos `react/only-export-componen
 
 ## Publicação e preview
 
-Pendente. Executar `node docs/prerender/tools/etapa3-preview-check.mjs <sha> --http-only`, coletar 18 páginas no navegador e cenários de regressão, depois executar com `--browser-only`. Registrar SHA/deployment/evidências antes do aceite final.
+Deployment do código: [Vercel — check success](https://vercel.com/saniella/arquetypus-parfum/4bhCU8vhjgbsFjmFhZdjVTjPGhq5). Preview: https://arquetypus-parfum-git-prerender-saniella.vercel.app/.
+
+Validação HTTP: 24 rotas/variantes retornam o template SPA esperado, com `X-Robots-Tag: noindex` do preview. As 88 referências locais e os três arquivos SEO têm bytes idênticos ao build local. Os caminhos do bundle/relatório/fontes SSR retornam fallback HTML, sem expor esses artefatos. Produção continua com `/assets/index-CEBNf12q.js` e `/assets/index-C9zeGloN.css`; `main` continua em `8a02e4a2135d407c61315e1ec039c3d28ac9b3f2`.
+
+Validação no navegador: 18 títulos/descrições/canonicals, tema, H1, JSON-LD e conteúdo principal confrontados com contratos SSR; nove PDPs com preço e foto primária corretos; nenhuma imagem visível quebrada ou warning/erro de console. Os cinco slugs negativos voltam à home sem crash ou schema de produto residual.
+
+Quinze cenários de regressão aprovados: slugs inválidos, head do pop-up, galeria do pop-up, página completa, reload, voltar/avançar, fechar pop-up e restaurar head da home, 404/noindex, saída da 404, query/canonical, caminho codificado, galeria móvel, menu móvel e acordeão FAQ. O link de página completa conserva `replace`: voltar retorna à home, conforme implementação existente. Capturas verificadas em desktop 1440×900 e móvel 390×844; viewport restaurado após o teste.
+
+| Evidência | Conteúdo |
+| --- | --- |
+| [etapa3-deploy.json](evidence/etapa3-deploy.json) | SHA e check Vercel do código |
+| [etapa3-preview-http.json](evidence/etapa3-preview-http.json) | Rotas, recursos, SEO e produção |
+| [etapa3-preview-metadata.json](evidence/etapa3-preview-metadata.json) | Metadados e conteúdo das 18 páginas reais |
+| [etapa3-preview-ui.json](evidence/etapa3-preview-ui.json) | Quinze cenários e slugs negativos |
+| [etapa3-preview-validation.json](evidence/etapa3-preview-validation.json) | Aceite agregado |
+| [Desktop](evidence/etapa3-preview-zeus-desktop.jpg) / [Móvel](evidence/etapa3-preview-zeus-mobile.jpg) | Layout da PDP Zeus |
+
+Comandos de verificação:
+
+```sh
+npx tsc -b
+npm run build
+node docs/prerender/tools/etapa3-preview-check.mjs 1b2b317bf5929b35d25688df8fb4f269e0a052ad --http-only
+node docs/prerender/tools/etapa3-preview-check.mjs 1b2b317bf5929b35d25688df8fb4f269e0a052ad --browser-only
+```
+
+O segundo comando de preview valida os arquivos de coleta do navegador, vinculados ao SHA. Uma nova versão exige nova coleta; não reutilizar snapshots como comprovação de um código diferente.
 
 ## Limite deste aceite
 

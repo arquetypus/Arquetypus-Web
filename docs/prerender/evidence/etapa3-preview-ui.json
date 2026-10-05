@@ -1,0 +1,50 @@
+{
+  "collectedAt": "2026-10-05T04:00:48.816Z",
+  "codeCommit": "1b2b317bf5929b35d25688df8fb4f269e0a052ad",
+  "checks": {
+    "invalidSlugsReturnHome": true,
+    "popupWithProductHead": true,
+    "popupGallery": true,
+    "popupToFullPdp": true,
+    "fullPdpReload": true,
+    "fullPdpBackRestoresHome": true,
+    "forwardRestoresFullPdp": true,
+    "popupCloseRestoresHomeHead": true,
+    "notFoundNoindex": true,
+    "notFoundToHomeClearsNoindex": true,
+    "queryCanonical": true,
+    "encodedRoute": true,
+    "mobileGallery": true,
+    "mobileMenuNavigation": true,
+    "faqAccordion": true
+  },
+  "redirects": [
+    {
+      "slug": "constructor",
+      "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/",
+      "canonical": "https://arquetypus.com.br/"
+    },
+    {
+      "slug": "toString",
+      "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/",
+      "canonical": "https://arquetypus.com.br/"
+    },
+    {
+      "slug": "__proto__",
+      "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/",
+      "canonical": "https://arquetypus.com.br/"
+    },
+    {
+      "slug": "nao-existe",
+      "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/",
+      "canonical": "https://arquetypus.com.br/"
+    },
+    {
+      "slug": "ZEUS",
+      "url": "https://arquetypus-parfum-git-prerender-saniella.vercel.app/",
+      "canonical": "https://arquetypus.com.br/"
+    }
+  ],
+  "console": [],
+  "historyNote": "Ver página completa usa Link replace: voltar retorna home, preservando comportamento existente."
+}

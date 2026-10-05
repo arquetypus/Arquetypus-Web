@@ -1,0 +1,722 @@
+{
+  "collectedAt": "2026-10-05T03:59:12.433Z",
+  "codeCommit": "1b2b317bf5929b35d25688df8fb4f269e0a052ad",
+  "origin": "https://arquetypus-parfum-git-prerender-saniella.vercel.app",
+  "responses": [
+    {
+      "route": "/",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "09c6e8131cf06d2f8e3e7851d328834578d3424d009a817823e52d22f43e322f"
+    },
+    {
+      "route": "/criadores",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "4fc4948a3313591906c89c764c113b3a76421d5136f6e67486e7ed6ad405616d"
+    },
+    {
+      "route": "/sobre",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "4fc4948a3313591906c89c764c113b3a76421d5136f6e67486e7ed6ad405616d"
+    },
+    {
+      "route": "/perguntas-frequentes",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "4fc4948a3313591906c89c764c113b3a76421d5136f6e67486e7ed6ad405616d"
+    },
+    {
+      "route": "/entrega-e-frete",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "4fc4948a3313591906c89c764c113b3a76421d5136f6e67486e7ed6ad405616d"
+    },
+    {
+      "route": "/trocas-e-devolucoes",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "4fc4948a3313591906c89c764c113b3a76421d5136f6e67486e7ed6ad405616d"
+    },
+    {
+      "route": "/regras-do-site",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "4fc4948a3313591906c89c764c113b3a76421d5136f6e67486e7ed6ad405616d"
+    },
+    {
+      "route": "/privacidade",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "4fc4948a3313591906c89c764c113b3a76421d5136f6e67486e7ed6ad405616d"
+    },
+    {
+      "route": "/termos-de-uso",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "4fc4948a3313591906c89c764c113b3a76421d5136f6e67486e7ed6ad405616d"
+    },
+    {
+      "route": "/loja/afrodite",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "4fc4948a3313591906c89c764c113b3a76421d5136f6e67486e7ed6ad405616d"
+    },
+    {
+      "route": "/loja/imperatriz",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "4fc4948a3313591906c89c764c113b3a76421d5136f6e67486e7ed6ad405616d"
+    },
+    {
+      "route": "/loja/cleopatra",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "4fc4948a3313591906c89c764c113b3a76421d5136f6e67486e7ed6ad405616d"
+    },
+    {
+      "route": "/loja/fada",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "4fc4948a3313591906c89c764c113b3a76421d5136f6e67486e7ed6ad405616d"
+    },
+    {
+      "route": "/loja/sereia",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "4fc4948a3313591906c89c764c113b3a76421d5136f6e67486e7ed6ad405616d"
+    },
+    {
+      "route": "/loja/zeus",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "4fc4948a3313591906c89c764c113b3a76421d5136f6e67486e7ed6ad405616d"
+    },
+    {
+      "route": "/loja/guerreiro",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "4fc4948a3313591906c89c764c113b3a76421d5136f6e67486e7ed6ad405616d"
+    },
+    {
+      "route": "/loja/imperador",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "4fc4948a3313591906c89c764c113b3a76421d5136f6e67486e7ed6ad405616d"
+    },
+    {
+      "route": "/loja/fenix",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "4fc4948a3313591906c89c764c113b3a76421d5136f6e67486e7ed6ad405616d"
+    },
+    {
+      "route": "/nao-existe-ensaio-ssr",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "4fc4948a3313591906c89c764c113b3a76421d5136f6e67486e7ed6ad405616d"
+    },
+    {
+      "route": "/loja/constructor",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "4fc4948a3313591906c89c764c113b3a76421d5136f6e67486e7ed6ad405616d"
+    },
+    {
+      "route": "/loja/toString",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "4fc4948a3313591906c89c764c113b3a76421d5136f6e67486e7ed6ad405616d"
+    },
+    {
+      "route": "/loja/__proto__",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "4fc4948a3313591906c89c764c113b3a76421d5136f6e67486e7ed6ad405616d"
+    },
+    {
+      "route": "/loja/zeus?utm_source=qa",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "4fc4948a3313591906c89c764c113b3a76421d5136f6e67486e7ed6ad405616d"
+    },
+    {
+      "route": "/%6Coja/%7Aeus",
+      "status": 200,
+      "rootEmpty": true,
+      "sha256": "4fc4948a3313591906c89c764c113b3a76421d5136f6e67486e7ed6ad405616d"
+    },
+    {
+      "route": "/dist-server/entry-server.js",
+      "status": 200,
+      "privateArtifactNotExposed": true
+    },
+    {
+      "route": "/dist-server/smoke-ssr.json",
+      "status": 200,
+      "privateArtifactNotExposed": true
+    },
+    {
+      "route": "/src/entry-server.tsx",
+      "status": 200,
+      "privateArtifactNotExposed": true
+    }
+  ],
+  "resources": [
+    {
+      "url": "/apple-touch-icon.png",
+      "bytes": 15294,
+      "sha256": "34a4f906a7e6d89a091cec7ce02b9f1475bfa49175a0d5d6eb524fc08cb7027d",
+      "identical": true
+    },
+    {
+      "url": "/assets/afrodite-3me8ajmF.jpg",
+      "bytes": 133921,
+      "sha256": "1a3cb889997e6b8452570b2f980851a3792dde7548bbf197e6ffbd080d14882e",
+      "identical": true
+    },
+    {
+      "url": "/assets/afrodite-B05JoXeN.jpg",
+      "bytes": 81381,
+      "sha256": "24bfce73817ae37eb4e9fe2429f0020977ac65c0689b26be3bf48c61f3ff397e",
+      "identical": true
+    },
+    {
+      "url": "/assets/afrodite-B6GNBj6I.jpg",
+      "bytes": 115593,
+      "sha256": "6b0eae4fdee1ce9c2c68800c7e3a857e3b8c5078f252d3c4b6b381710cb272fe",
+      "identical": true
+    },
+    {
+      "url": "/assets/afrodite-desktop-B7HpEMIW.jpg",
+      "bytes": 155962,
+      "sha256": "8b702aac3453ad60661519db38e918bd29848479604c4d9be3c73fa17d1a2421",
+      "identical": true
+    },
+    {
+      "url": "/assets/afrodite-Dk0tYPJ7.jpg",
+      "bytes": 156195,
+      "sha256": "d236eb1d7d8ae7511908993244efab04f849ff281c5e76eb2313f4ac99f3a075",
+      "identical": true
+    },
+    {
+      "url": "/assets/afrodite-DSxSPTn3.jpg",
+      "bytes": 119318,
+      "sha256": "1af5d4c0b614c5e0caf596c55603ddd7b59529db19f3c5238f6db4d1ce8c7851",
+      "identical": true
+    },
+    {
+      "url": "/assets/afrodite-DVF-Wqlu.jpg",
+      "bytes": 8612,
+      "sha256": "318c97b057312de3189cd6a38875b8c9e937faf87a88000952c292d6c51a2a7b",
+      "identical": true
+    },
+    {
+      "url": "/assets/amadeirados-especiados-B267512W.jpg",
+      "bytes": 146431,
+      "sha256": "874f8f52e5d9466e35eaefc47ee187575a386bc654fcef4295ff28f0d56dd5b9",
+      "identical": true
+    },
+    {
+      "url": "/assets/ambarados-adocicados-B5C3mvbW.jpg",
+      "bytes": 138763,
+      "sha256": "8e4a9b6a9784ae0e521bbe72e2b6e4a49767b4d314265bd6b04f482c399fe458",
+      "identical": true
+    },
+    {
+      "url": "/assets/arquetypus-BVgblDH-.jpg",
+      "bytes": 115285,
+      "sha256": "4f215e55ed8472dc47ecaa4d37ec8186d5796a705be95d6a7a097b88b61144af",
+      "identical": true
+    },
+    {
+      "url": "/assets/cleopatra-Bl8vga44.jpg",
+      "bytes": 135073,
+      "sha256": "e456db836a0c7d246c3145034eef0879614f0b05939c442d3f24ea0146550500",
+      "identical": true
+    },
+    {
+      "url": "/assets/cleopatra-BZdVdx6Q.jpg",
+      "bytes": 116362,
+      "sha256": "16b36a2425e27c4db3061c175b7fecc554daf3e7299e543af4917c147ba5a8d2",
+      "identical": true
+    },
+    {
+      "url": "/assets/cleopatra-Dkqrl1GK.jpg",
+      "bytes": 114104,
+      "sha256": "1ca6fe0f6722314d1c3ece170bca6b379c48f7764dafd75407e1d198bfd16963",
+      "identical": true
+    },
+    {
+      "url": "/assets/cleopatra-vBb_yrcd.jpg",
+      "bytes": 9560,
+      "sha256": "c610dce3096614d50487afb5efc0637ca75692fe59a4bc645fca5fa135953d7c",
+      "identical": true
+    },
+    {
+      "url": "/assets/cleopatra-zF7WXxBj.jpg",
+      "bytes": 102114,
+      "sha256": "f8233c2869540318451f10292ca6e1879b2e1e0ecede336f35b7086d5cef5b98",
+      "identical": true
+    },
+    {
+      "url": "/assets/colecao-completa-DFK73sws.jpg",
+      "bytes": 248453,
+      "sha256": "b527b7bc8efdebd589d73d3912e27ba3332d2d50f8287a64f56b522ce65241d9",
+      "identical": true
+    },
+    {
+      "url": "/assets/colecao-desktop-9TO7ZM9U.jpg",
+      "bytes": 324912,
+      "sha256": "01e102363e1f7b42e280de08cb084d7b4f0c40d2578887372b97f4402e004737",
+      "identical": true
+    },
+    {
+      "url": "/assets/compartilhavel-sdgMfCjh.jpg",
+      "bytes": 77488,
+      "sha256": "e4ad574fab539c4135218553c82ac12f57d892381ad245850b92d7104f81dfce",
+      "identical": true
+    },
+    {
+      "url": "/assets/criadores-hero-CxQZOKK7.jpg",
+      "bytes": 247090,
+      "sha256": "a08abcced44d980a941b917154c5cc61e1a9b727a19ebb3e4492673da59fcd7f",
+      "identical": true
+    },
+    {
+      "url": "/assets/destaque-fenix-desktop-CVj4Qd3r.jpg",
+      "bytes": 147009,
+      "sha256": "171855148079df04c32ebf3cb1e66fd09fd3c6f7b0b3a444937afcdaec42f142",
+      "identical": true
+    },
+    {
+      "url": "/assets/destaque-fenix-Ok4KUYFV.jpg",
+      "bytes": 131339,
+      "sha256": "e676d5b64d92d29757b99d36199be987e1ecd93484e65744f84a03b954a5edb5",
+      "identical": true
+    },
+    {
+      "url": "/assets/destaque-sereia-desktop-BYPOaLQs.jpg",
+      "bytes": 157935,
+      "sha256": "6247241bef11d09844f9b7ab03ba4e897d03de9922af0c83dd6e494150e2f76b",
+      "identical": true
+    },
+    {
+      "url": "/assets/destaque-sereia-DF4lkBtE.jpg",
+      "bytes": 192172,
+      "sha256": "e1cdbbb5c5d9760f0275264a549bff3b7bc47b712bc3aae0d21cb28fbe8d8b58",
+      "identical": true
+    },
+    {
+      "url": "/assets/destaque-zeus-desktop-BQgVxW1K.jpg",
+      "bytes": 191574,
+      "sha256": "78835844052779fecfb30d55b97baf6629217d5ce896bcca87d3e62ab2f7adab",
+      "identical": true
+    },
+    {
+      "url": "/assets/destaque-zeus-DSf4AtfR.jpg",
+      "bytes": 229600,
+      "sha256": "0fbe6af3e24345f166be0e8436e678038eb8805a4ab35eacf2428c060ee99b83",
+      "identical": true
+    },
+    {
+      "url": "/assets/energia-forca-v_xxbPT8.png",
+      "bytes": 2732835,
+      "sha256": "28b0efafafc6e9e4ea6e8b87cf56da00f8e7252236aeee664f42e67ae584a5f5",
+      "identical": true
+    },
+    {
+      "url": "/assets/energia-misterio-DHubcL27.png",
+      "bytes": 1815037,
+      "sha256": "de7e7ea8c43ff3274496d7009c86802437b670d48e4b8330573785e151a4edf6",
+      "identical": true
+    },
+    {
+      "url": "/assets/energia-poder-DJu8VmH5.png",
+      "bytes": 1843358,
+      "sha256": "229a19b12022d55613f37cfd853e92441d3cbb7b5e2443ce1f0a29fbfe34816a",
+      "identical": true
+    },
+    {
+      "url": "/assets/energia-seducao-GcdPeK9M.png",
+      "bytes": 1779738,
+      "sha256": "cb878149f9f8e24900842e8684e23eb00d17ded1d5dc3cd1295bfc34886d5697",
+      "identical": true
+    },
+    {
+      "url": "/assets/fada--tqA5GVs.jpg",
+      "bytes": 125119,
+      "sha256": "1089bf765b2f0966fe101dbce46b44c217ca0b45530b2d9699fa9af40dba1058",
+      "identical": true
+    },
+    {
+      "url": "/assets/fada-BcYvZE2P.jpg",
+      "bytes": 8602,
+      "sha256": "ab49fe2c675c3c6e6116cee81491d50992a9f47be57c152da9fc9330c44a3a69",
+      "identical": true
+    },
+    {
+      "url": "/assets/fada-Bn1LJZub.jpg",
+      "bytes": 86203,
+      "sha256": "33dc01562b2a99265ef252e53dcc4ca3c4d5510c32c98228f107bcb5c10b6bbb",
+      "identical": true
+    },
+    {
+      "url": "/assets/fada-D6N5CPL0.jpg",
+      "bytes": 110574,
+      "sha256": "22d4d1a16d402a8808dd62f50b1cac34d094c498231d58555ca315a1b33422c8",
+      "identical": true
+    },
+    {
+      "url": "/assets/fada-skWWuu9m.jpg",
+      "bytes": 167543,
+      "sha256": "d2acf67c3ec35388bf328438690a5f1f3e90d595202e3b3dda743221d0ffa30b",
+      "identical": true
+    },
+    {
+      "url": "/assets/feminino-Bag6AX96.jpg",
+      "bytes": 190648,
+      "sha256": "8549ddbc96e51961eccad9db608903668632d5402e303e797125d76be2504034",
+      "identical": true
+    },
+    {
+      "url": "/assets/fenix-9ugHzzJn.jpg",
+      "bytes": 106671,
+      "sha256": "5a2dfd3881e8318fc87b5f8b925b816f54ed4a5261d4a79e6b7de6a521396c95",
+      "identical": true
+    },
+    {
+      "url": "/assets/fenix-BUDNXOxD.jpg",
+      "bytes": 147374,
+      "sha256": "c026603f422473a38e3c9aab98396a0fbc78d5deb400b6c206fdbd94b663b5ee",
+      "identical": true
+    },
+    {
+      "url": "/assets/fenix-C9E5TLhz.jpg",
+      "bytes": 114885,
+      "sha256": "87c973311211e2f5abdd55628558a4d206e0849484b1f6925bffdfeac76e7916",
+      "identical": true
+    },
+    {
+      "url": "/assets/fenix-D2gHIR71.jpg",
+      "bytes": 9822,
+      "sha256": "a5024525ab1665bee1db044e16f521356f1d8b52d84b748fc0076d7dbc3af1ff",
+      "identical": true
+    },
+    {
+      "url": "/assets/fenix-DvTwejAx.jpg",
+      "bytes": 140031,
+      "sha256": "d81b94cba915a00b174724fee2ca394fe5871f152fcf1a508f81d5025303819b",
+      "identical": true
+    },
+    {
+      "url": "/assets/flor-arquetypus-CKSiaCgq.png",
+      "bytes": 1502005,
+      "sha256": "9c8dd89303dff3bb27d1d2f5193b8980e15f46fcf798fd93399133f8cbc40905",
+      "identical": true
+    },
+    {
+      "url": "/assets/florais-elegantes-gFNKx20V.jpg",
+      "bytes": 148869,
+      "sha256": "4caeb48f9ee4ec686b5f3c045722870177ff8389237e711bc39ec495615f58bd",
+      "identical": true
+    },
+    {
+      "url": "/assets/frescos-luminosos-BAvS1EQ-.jpg",
+      "bytes": 208775,
+      "sha256": "aeb16069ab2940bf8c5d6a1ce1e1d593a6d323790d2ed9be4306e5688ac7c346",
+      "identical": true
+    },
+    {
+      "url": "/assets/frutados-citricos-BHSVN3QN.jpg",
+      "bytes": 204512,
+      "sha256": "d6671c7e621d7119a976a08272bc462342cc7230f4e00dc431f487664349fc70",
+      "identical": true
+    },
+    {
+      "url": "/assets/guerreiro-0wca7BDJ.jpg",
+      "bytes": 105991,
+      "sha256": "72da2aa4ceeb771e42d1bd3e7d3ee32f138fbc8a293daaed09f1696981e9ffc6",
+      "identical": true
+    },
+    {
+      "url": "/assets/guerreiro-9WjdvcUx.jpg",
+      "bytes": 167147,
+      "sha256": "1efece6db3c15aab5d9326ecae522ca543439ae12bae557892b5ef0ada6dbbc0",
+      "identical": true
+    },
+    {
+      "url": "/assets/guerreiro-B-htc0v_.jpg",
+      "bytes": 10234,
+      "sha256": "3849d535c53a378c2234c2225fa68a449b9711012d59bdb471fa62fa1d15818f",
+      "identical": true
+    },
+    {
+      "url": "/assets/guerreiro-B6Tw63gs.jpg",
+      "bytes": 114705,
+      "sha256": "fe6c8e3863207b1364fc82be996f0ece15f44a0faa1fc190cb37f9765fdcad3f",
+      "identical": true
+    },
+    {
+      "url": "/assets/guerreiro-BTw7xVzI.jpg",
+      "bytes": 270670,
+      "sha256": "b201054104baebdf578bf67fe07199d3c94a1288e99a3b7f186f873eb2dbb9d6",
+      "identical": true
+    },
+    {
+      "url": "/assets/guerreiro-desktop-CLkBxrUW.jpg",
+      "bytes": 224164,
+      "sha256": "725ae88ab7b39e4f4a5044239b1ea271e9f61b6098c291bb0d2cde8f926c5118",
+      "identical": true
+    },
+    {
+      "url": "/assets/guerreiro-DRTVWBu0.jpg",
+      "bytes": 153310,
+      "sha256": "f2a8935c1d6acc1db40a72e90113b7666ff2514242258eec1e6a90c13b7c9f80",
+      "identical": true
+    },
+    {
+      "url": "/assets/hero-video-DYdAfdYa.mp4",
+      "bytes": 2171517,
+      "sha256": "d9e18b67af233b9c365ce66e0954b06122e9d5cacf035ac777e2e4f123950f96",
+      "identical": true
+    },
+    {
+      "url": "/assets/hero-video-poster-BZSZW7gT.jpg",
+      "bytes": 45840,
+      "sha256": "54e2b74953d1b64153a9e2889d0cd9bdeea33554168a2874e967246bcdd7b2b4",
+      "identical": true
+    },
+    {
+      "url": "/assets/imperador-BvRHgmpJ.jpg",
+      "bytes": 114670,
+      "sha256": "5a82f0b1aecdc5bf82113f8e16cb89f175b23b8a15ec400a4943f8fec7048d53",
+      "identical": true
+    },
+    {
+      "url": "/assets/imperador-BzmM6CjY.jpg",
+      "bytes": 146389,
+      "sha256": "a287e2e7663c9bdcc02506949c5fdf081062352e980c7fc1b8c6f4e2bd7e39cf",
+      "identical": true
+    },
+    {
+      "url": "/assets/imperador-CUVygshf.jpg",
+      "bytes": 166077,
+      "sha256": "cf4368c3c5d351e8cccd19ca3ea7b07e6270971e071e77cbce8d54b863a2ed40",
+      "identical": true
+    },
+    {
+      "url": "/assets/imperador-DaPOk4AV.jpg",
+      "bytes": 113107,
+      "sha256": "e6e3f11e8e5e8a3db29c9bbcd1b6f3f8e63c7595d592dcfc22ddf68060ea7733",
+      "identical": true
+    },
+    {
+      "url": "/assets/imperador-DzfD99gB.jpg",
+      "bytes": 10475,
+      "sha256": "23d49cbef02f2a674bc64883abb950760aafb14d0d07828481d09f70c7ab9fb1",
+      "identical": true
+    },
+    {
+      "url": "/assets/imperatriz-BRD48Xtr.jpg",
+      "bytes": 159705,
+      "sha256": "dcade93c7c735724aa5b7836c4d60eba3e5e4ad9090190367ee6da97749f153b",
+      "identical": true
+    },
+    {
+      "url": "/assets/imperatriz-BuMKC5nt.jpg",
+      "bytes": 128936,
+      "sha256": "de1bd78ea9f17b193abb307d3b71718cec74386f416e8d8e7bd8e5e2a5ba3691",
+      "identical": true
+    },
+    {
+      "url": "/assets/imperatriz-C0z8_uLt.jpg",
+      "bytes": 10526,
+      "sha256": "40e01c569b2a7cb65c87a5167c22805da8be14d343b78d4401c5d795888f632f",
+      "identical": true
+    },
+    {
+      "url": "/assets/imperatriz-Dn8gcEzw.jpg",
+      "bytes": 115569,
+      "sha256": "d8c2aaeda13190732c09b680e8ee9b06476cb11905d2a8bdf7a146a799b51de3",
+      "identical": true
+    },
+    {
+      "url": "/assets/imperatriz-qEHRqtRT.jpg",
+      "bytes": 117526,
+      "sha256": "ff7c6f7c63ce96baf2877e935706b92520307b5785131ae60645342ab17f284f",
+      "identical": true
+    },
+    {
+      "url": "/assets/index-DuMrFA1J.css",
+      "bytes": 159991,
+      "sha256": "b9f0f1d4de2fb88a613e0e3d8c0d8a689b87df4ee64c527accbf621af1075226",
+      "identical": true
+    },
+    {
+      "url": "/assets/index-DzLm8jzG.js",
+      "bytes": 633563,
+      "sha256": "06862c4e73845daf0d899dbe50cdb762519d16731073ea08dd053035b3a709db",
+      "identical": true
+    },
+    {
+      "url": "/assets/logo-branco-BDDmtqMW.png",
+      "bytes": 24532,
+      "sha256": "09486ced75f4732b58e0743254178d05260bc7472d54f4a994a87a44b64df829",
+      "identical": true
+    },
+    {
+      "url": "/assets/logo-dourado-BkuS44dK.png",
+      "bytes": 40614,
+      "sha256": "fab6336338b5f092e01e3b3e27fc03fdc6ad37e42b5519fc9508a6bc03353f1f",
+      "identical": true
+    },
+    {
+      "url": "/assets/masculino-BUtAdhYX.jpg",
+      "bytes": 122826,
+      "sha256": "ba2f208942a6e61b8141f363749ce516e57f39ebf2c5bf340e9fd8715abaf6ee",
+      "identical": true
+    },
+    {
+      "url": "/assets/sereia-C7NIY0eS.jpg",
+      "bytes": 9884,
+      "sha256": "4c1f7c1361cf5b111568eaadebe62f7383c095f566c96c9655d1f1b59716734b",
+      "identical": true
+    },
+    {
+      "url": "/assets/sereia-CmMHd5E9.jpg",
+      "bytes": 148295,
+      "sha256": "da40c429201173ed39a783e82848a65113966078e8b4fd2be45e42c39c218536",
+      "identical": true
+    },
+    {
+      "url": "/assets/sereia-CYMB6lTe.jpg",
+      "bytes": 106364,
+      "sha256": "dc9c7f24aa5c6b86a6505505f53b9237c5d5e7170049e9925b5e6a9088524b98",
+      "identical": true
+    },
+    {
+      "url": "/assets/sereia-DMQ0hll0.jpg",
+      "bytes": 130569,
+      "sha256": "95e29073d3f1bc8ffa7e5f18173f9f04e282622b614cc6a7c7b1ddb80599ba60",
+      "identical": true
+    },
+    {
+      "url": "/assets/sereia-Od4PiDXc.jpg",
+      "bytes": 169772,
+      "sha256": "21fa14e602ea93182e97ba15c8c9fcb217cc3c1efb5ec5d1110f199af0b384ca",
+      "identical": true
+    },
+    {
+      "url": "/assets/splash-comum-D6smjJu4.jpg",
+      "bytes": 22572,
+      "sha256": "15ef738a10adbcc420dc3916103cf42802989ee3e47e9fa0b329706574f7f84d",
+      "identical": true
+    },
+    {
+      "url": "/assets/wordmark-marmore-_FVJxRZ6.png",
+      "bytes": 89018,
+      "sha256": "1548e556e0d1d975326ee0d16440f467c0d45624c5cb83932fdf821435f23182",
+      "identical": true
+    },
+    {
+      "url": "/assets/wordmark-preto-BefuJb9g.png",
+      "bytes": 87550,
+      "sha256": "12ab701ef1253c834d095b0338d5459893bc545986cd2051949a50987dd2e4ea",
+      "identical": true
+    },
+    {
+      "url": "/assets/zeus-adIUQC4G.jpg",
+      "bytes": 124314,
+      "sha256": "ba12e3ac2b5d0a722b3e8e105f16f7f2e415fada6d8414ef0ff32f8eefb3f1c2",
+      "identical": true
+    },
+    {
+      "url": "/assets/zeus-Bk4k23TW.jpg",
+      "bytes": 126144,
+      "sha256": "5a35fb201eb7ae3b786b53253d814503f68e31aea009934e5ee130308b82e901",
+      "identical": true
+    },
+    {
+      "url": "/assets/zeus-BSVowwxX.jpg",
+      "bytes": 107288,
+      "sha256": "0e1def3804e851f6bd1fb67dc66fd6f80c11348f9935ee5bac3f30da610e5066",
+      "identical": true
+    },
+    {
+      "url": "/assets/zeus-ByZH3hi4.jpg",
+      "bytes": 9581,
+      "sha256": "957a23414ce8e6c6a4ca18659914472386c30821921f8054c9b41f1796ea1beb",
+      "identical": true
+    },
+    {
+      "url": "/assets/zeus-GmMKqwvR.jpg",
+      "bytes": 145054,
+      "sha256": "56afaa8d3dad88cfcde8921949dbdd3d05660630a911a3a1712cfb8868b1c84b",
+      "identical": true
+    },
+    {
+      "url": "/favicon-32.png",
+      "bytes": 2190,
+      "sha256": "55782c0f7477a68c9fc88aa6441a5f1803309edff0ecead4015748e984f9ee68",
+      "identical": true
+    },
+    {
+      "url": "/favicon.ico",
+      "bytes": 6859,
+      "sha256": "8a4f89b953ae2a7962e3f9ab274afc6e3889db25ce19a62b528f63a53e707257",
+      "identical": true
+    },
+    {
+      "url": "/fonts/elegant.woff2",
+      "bytes": 32448,
+      "sha256": "0fbf9ec87a0035ea51e62df9a392ce825afa8f747a0d554b7e72e051637ab25a",
+      "identical": true
+    },
+    {
+      "url": "/fonts/inter-var-italic.woff2",
+      "bytes": 116164,
+      "sha256": "d6c63540400918ff90abc53dc364ba7928b2bca2851288fc3b2d70f714feda83",
+      "identical": true
+    },
+    {
+      "url": "/fonts/inter-var.woff2",
+      "bytes": 105336,
+      "sha256": "2a4af46ed9b378ee608dbd447942f19c08919661506f5523e6150f27824ca9bb",
+      "identical": true
+    },
+    {
+      "url": "/site.webmanifest",
+      "bytes": 483,
+      "sha256": "74d442a537abadd8eb8380f10a4b88a1f67eba9ef82d3da793f6e4822e24ea6a",
+      "identical": true
+    }
+  ],
+  "staticFiles": [
+    {
+      "file": "robots.txt",
+      "identical": true,
+      "sha256": "5bc9ffd2c4af45bf14e7fa50057f3c0322e10d413f39d44e502a1dcd8770ae9c"
+    },
+    {
+      "file": "sitemap.xml",
+      "identical": true,
+      "sha256": "04739d64d366623c1d18e0b47d1dc921745fc6254b5dcb48bcfe9fb95b2857cf"
+    },
+    {
+      "file": "llms.txt",
+      "identical": true,
+      "sha256": "32f1d7538f38b0289d4cdfc3213ec70cb3344a71b244efc8345e4f9f1e39cd4e"
+    }
+  ],
+  "checks": [
+    "24 respostas SPA, preview noindex, ensaio privado, recursos/SEO byte a byte, produção preservada"
+  ],
+  "production": {
+    "origin": "https://www.arquetypus.com.br",
+    "status": 200,
+    "assetsPreserved": true,
+    "sha256": "13ea600c41448bfcf090d634a10d498225a8fbc9b6eb0f5065586fda53df811a"
+  }
+}
