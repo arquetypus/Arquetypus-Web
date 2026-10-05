@@ -1,0 +1,117 @@
+{
+  "collectedAt": "2026-10-05T18:31:18.101Z",
+  "scope": "Repeti??o isolada de duas falhas de transporte, sem apagar tentativa inicial.",
+  "initialFailureCount": 2,
+  "retries": [
+    {
+      "target": "/assets/fenix-DvTwejAx.jpg",
+      "rows": [
+        {
+          "method": "GET",
+          "status": 200,
+          "headers": {
+            "accept-ranges": "bytes",
+            "access-control-allow-origin": "*",
+            "age": "230",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-disposition": "inline; filename=\"fenix-DvTwejAx.jpg\"",
+            "content-length": "140031",
+            "content-type": "image/jpeg",
+            "date": "Mon, 05 Oct 2026 18:31:17 GMT",
+            "etag": "\"f2fbe320bc4a887b778f6bda955dd002\"",
+            "last-modified": "Mon, 05 Oct 2026 18:27:26 GMT",
+            "server": "Vercel",
+            "strict-transport-security": "max-age=63072000",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::p772z-1791225077861-1d7b1a2279ff"
+          },
+          "bytes": 140031,
+          "sha256": "d81b94cba915a00b174724fee2ca394fe5871f152fcf1a508f81d5025303819b",
+          "passed": true
+        },
+        {
+          "method": "HEAD",
+          "status": 200,
+          "headers": {
+            "accept-ranges": "bytes",
+            "access-control-allow-origin": "*",
+            "age": "230",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "connection": "close",
+            "content-disposition": "inline; filename=\"fenix-DvTwejAx.jpg\"",
+            "content-length": "140031",
+            "content-type": "image/jpeg",
+            "date": "Mon, 05 Oct 2026 18:31:17 GMT",
+            "etag": "\"f2fbe320bc4a887b778f6bda955dd002\"",
+            "last-modified": "Mon, 05 Oct 2026 18:27:26 GMT",
+            "server": "Vercel",
+            "strict-transport-security": "max-age=63072000",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::8cfsn-1791225077940-cceb8c564378"
+          },
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "target": "/assets/wordmark-marmore-_FVJxRZ6.png",
+      "rows": [
+        {
+          "method": "GET",
+          "status": 200,
+          "headers": {
+            "accept-ranges": "bytes",
+            "access-control-allow-origin": "*",
+            "age": "231",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "content-disposition": "inline; filename=\"wordmark-marmore-_FVJxRZ6.png\"",
+            "content-length": "89018",
+            "content-type": "image/png",
+            "date": "Mon, 05 Oct 2026 18:31:18 GMT",
+            "etag": "\"cd470a81d43776dfc8bd55f197883025\"",
+            "last-modified": "Mon, 05 Oct 2026 18:27:26 GMT",
+            "server": "Vercel",
+            "strict-transport-security": "max-age=63072000",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::247nm-1791225078017-fd8374b2ebd0"
+          },
+          "bytes": 89018,
+          "sha256": "1548e556e0d1d975326ee0d16440f467c0d45624c5cb83932fdf821435f23182",
+          "passed": true
+        },
+        {
+          "method": "HEAD",
+          "status": 200,
+          "headers": {
+            "accept-ranges": "bytes",
+            "access-control-allow-origin": "*",
+            "age": "231",
+            "cache-control": "public, max-age=0, must-revalidate",
+            "connection": "close",
+            "content-disposition": "inline; filename=\"wordmark-marmore-_FVJxRZ6.png\"",
+            "content-length": "89018",
+            "content-type": "image/png",
+            "date": "Mon, 05 Oct 2026 18:31:18 GMT",
+            "etag": "\"cd470a81d43776dfc8bd55f197883025\"",
+            "last-modified": "Mon, 05 Oct 2026 18:27:26 GMT",
+            "server": "Vercel",
+            "strict-transport-security": "max-age=63072000",
+            "x-vercel-cache": "HIT",
+            "x-vercel-id": "gru1::9bqz8-1791225078103-4a4a6c6f813b"
+          },
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "passed": true
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "routeChecksPassed": 306,
+  "rawHtmlDocuments": 19,
+  "resourcesPassedAfterRetest": 94,
+  "productionHttpAccepted": true
+}

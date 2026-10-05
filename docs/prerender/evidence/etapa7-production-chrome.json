@@ -1,0 +1,457 @@
+{
+  "collectedAt": "2026-10-05T18:28:46.219Z",
+  "browser": "Google Chrome",
+  "origin": "https://www.arquetypus.com.br",
+  "expectedCommit": "7e86dc69833ba62d8d9f6ecb7a77db4cdd43442b",
+  "routes": [
+    {
+      "canonical": "https://arquetypus.com.br/",
+      "canonicalCount": 1,
+      "descriptionCount": 1,
+      "h1": [
+        "Qual versão de você quer expressar hoje?"
+      ],
+      "mainChars": 7859,
+      "ogType": "website",
+      "pricePresent": true,
+      "readyBrokenImages": [],
+      "robots": null,
+      "routeMarker": "/",
+      "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "titleCount": 1,
+      "url": "https://www.arquetypus.com.br/"
+    },
+    {
+      "canonical": "https://arquetypus.com.br/criadores",
+      "canonicalCount": 1,
+      "descriptionCount": 1,
+      "h1": [
+        "Um arquétipo.O seu, de verdade."
+      ],
+      "mainChars": 1544,
+      "ogType": "website",
+      "pricePresent": false,
+      "readyBrokenImages": [],
+      "robots": null,
+      "routeMarker": "/criadores",
+      "title": "Programa de Criadores | Arquétypus Parfum",
+      "titleCount": 1,
+      "url": "https://www.arquetypus.com.br/criadores"
+    },
+    {
+      "canonical": "https://arquetypus.com.br/sobre",
+      "canonicalCount": 1,
+      "descriptionCount": 1,
+      "h1": [
+        "Sobre a Arquétypus"
+      ],
+      "mainChars": 1903,
+      "ogType": "website",
+      "pricePresent": false,
+      "readyBrokenImages": [],
+      "robots": null,
+      "routeMarker": "/sobre",
+      "title": "Sobre Nós: Perfumaria de Arquétipos | Arquétypus Parfum",
+      "titleCount": 1,
+      "url": "https://www.arquetypus.com.br/sobre"
+    },
+    {
+      "canonical": "https://arquetypus.com.br/perguntas-frequentes",
+      "canonicalCount": 1,
+      "descriptionCount": 1,
+      "h1": [
+        "Perguntas frequentes"
+      ],
+      "mainChars": 4571,
+      "ogType": "website",
+      "pricePresent": false,
+      "readyBrokenImages": [],
+      "robots": null,
+      "routeMarker": "/perguntas-frequentes",
+      "title": "Perguntas Frequentes | Arquétypus Parfum",
+      "titleCount": 1,
+      "url": "https://www.arquetypus.com.br/perguntas-frequentes"
+    },
+    {
+      "canonical": "https://arquetypus.com.br/entrega-e-frete",
+      "canonicalCount": 1,
+      "descriptionCount": 1,
+      "h1": [
+        "Política de Entrega e Frete"
+      ],
+      "mainChars": 2768,
+      "ogType": "website",
+      "pricePresent": false,
+      "readyBrokenImages": [],
+      "robots": null,
+      "routeMarker": "/entrega-e-frete",
+      "title": "Entrega e Frete | Arquétypus Parfum",
+      "titleCount": 1,
+      "url": "https://www.arquetypus.com.br/entrega-e-frete"
+    },
+    {
+      "canonical": "https://arquetypus.com.br/trocas-e-devolucoes",
+      "canonicalCount": 1,
+      "descriptionCount": 1,
+      "h1": [
+        "Política de Trocas e Devoluções"
+      ],
+      "mainChars": 2623,
+      "ogType": "website",
+      "pricePresent": false,
+      "readyBrokenImages": [],
+      "robots": null,
+      "routeMarker": "/trocas-e-devolucoes",
+      "title": "Trocas e Devoluções | Arquétypus Parfum",
+      "titleCount": 1,
+      "url": "https://www.arquetypus.com.br/trocas-e-devolucoes"
+    },
+    {
+      "canonical": "https://arquetypus.com.br/regras-do-site",
+      "canonicalCount": 1,
+      "descriptionCount": 1,
+      "h1": [
+        "Regras do Site"
+      ],
+      "mainChars": 2369,
+      "ogType": "website",
+      "pricePresent": false,
+      "readyBrokenImages": [],
+      "robots": null,
+      "routeMarker": "/regras-do-site",
+      "title": "Regras de Compra | Arquétypus Parfum",
+      "titleCount": 1,
+      "url": "https://www.arquetypus.com.br/regras-do-site"
+    },
+    {
+      "canonical": "https://arquetypus.com.br/privacidade",
+      "canonicalCount": 1,
+      "descriptionCount": 1,
+      "h1": [
+        "Política de Privacidade"
+      ],
+      "mainChars": 7047,
+      "ogType": "website",
+      "pricePresent": false,
+      "readyBrokenImages": [],
+      "robots": null,
+      "routeMarker": "/privacidade",
+      "title": "Política de Privacidade | Arquétypus Parfum",
+      "titleCount": 1,
+      "url": "https://www.arquetypus.com.br/privacidade"
+    },
+    {
+      "canonical": "https://arquetypus.com.br/termos-de-uso",
+      "canonicalCount": 1,
+      "descriptionCount": 1,
+      "h1": [
+        "Termos de Uso"
+      ],
+      "mainChars": 2920,
+      "ogType": "website",
+      "pricePresent": false,
+      "readyBrokenImages": [],
+      "robots": null,
+      "routeMarker": "/termos-de-uso",
+      "title": "Termos de Uso | Arquétypus Parfum",
+      "titleCount": 1,
+      "url": "https://www.arquetypus.com.br/termos-de-uso"
+    },
+    {
+      "canonical": "https://arquetypus.com.br/loja/afrodite",
+      "canonicalCount": 1,
+      "descriptionCount": 1,
+      "h1": [
+        "AfroditeFirst Kiss"
+      ],
+      "mainChars": 4206,
+      "ogType": "product",
+      "pricePresent": true,
+      "readyBrokenImages": [],
+      "robots": null,
+      "routeMarker": "/loja/afrodite",
+      "title": "Afrodite First Kiss – Body Splash Premium | Arquétypus Parfum",
+      "titleCount": 1,
+      "url": "https://www.arquetypus.com.br/loja/afrodite"
+    },
+    {
+      "canonical": "https://arquetypus.com.br/loja/imperatriz",
+      "canonicalCount": 1,
+      "descriptionCount": 1,
+      "h1": [
+        "ImperatrizVelvet Dynasty"
+      ],
+      "mainChars": 4213,
+      "ogType": "product",
+      "pricePresent": true,
+      "readyBrokenImages": [],
+      "robots": null,
+      "routeMarker": "/loja/imperatriz",
+      "title": "Imperatriz Velvet Dynasty – Body Splash Premium | Arquétypus Parfum",
+      "titleCount": 1,
+      "url": "https://www.arquetypus.com.br/loja/imperatriz"
+    },
+    {
+      "canonical": "https://arquetypus.com.br/loja/cleopatra",
+      "canonicalCount": 1,
+      "descriptionCount": 1,
+      "h1": [
+        "CleópatraNile Rose"
+      ],
+      "mainChars": 4161,
+      "ogType": "product",
+      "pricePresent": true,
+      "readyBrokenImages": [],
+      "robots": null,
+      "routeMarker": "/loja/cleopatra",
+      "title": "Cleópatra Nile Rose – Body Splash Premium | Arquétypus Parfum",
+      "titleCount": 1,
+      "url": "https://www.arquetypus.com.br/loja/cleopatra"
+    },
+    {
+      "canonical": "https://arquetypus.com.br/loja/fada",
+      "canonicalCount": 1,
+      "descriptionCount": 1,
+      "h1": [
+        "FadaPure Light"
+      ],
+      "mainChars": 4162,
+      "ogType": "product",
+      "pricePresent": true,
+      "readyBrokenImages": [],
+      "robots": null,
+      "routeMarker": "/loja/fada",
+      "title": "Fada Pure Light – Body Splash Premium | Arquétypus Parfum",
+      "titleCount": 1,
+      "url": "https://www.arquetypus.com.br/loja/fada"
+    },
+    {
+      "canonical": "https://arquetypus.com.br/loja/sereia",
+      "canonicalCount": 1,
+      "descriptionCount": 1,
+      "h1": [
+        "SereiaOcean Breeze"
+      ],
+      "mainChars": 4123,
+      "ogType": "product",
+      "pricePresent": true,
+      "readyBrokenImages": [],
+      "robots": null,
+      "routeMarker": "/loja/sereia",
+      "title": "Sereia Ocean Breeze – Body Splash Premium | Arquétypus Parfum",
+      "titleCount": 1,
+      "url": "https://www.arquetypus.com.br/loja/sereia"
+    },
+    {
+      "canonical": "https://arquetypus.com.br/loja/zeus",
+      "canonicalCount": 1,
+      "descriptionCount": 1,
+      "h1": [
+        "ZeusStormbreak"
+      ],
+      "mainChars": 4137,
+      "ogType": "product",
+      "pricePresent": true,
+      "readyBrokenImages": [],
+      "robots": null,
+      "routeMarker": "/loja/zeus",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "titleCount": 1,
+      "url": "https://www.arquetypus.com.br/loja/zeus"
+    },
+    {
+      "canonical": "https://arquetypus.com.br/loja/guerreiro",
+      "canonicalCount": 1,
+      "descriptionCount": 1,
+      "h1": [
+        "GuerreiroSteel Blue"
+      ],
+      "mainChars": 4126,
+      "ogType": "product",
+      "pricePresent": true,
+      "readyBrokenImages": [],
+      "robots": null,
+      "routeMarker": "/loja/guerreiro",
+      "title": "Guerreiro Steel Blue – Body Splash Premium | Arquétypus Parfum",
+      "titleCount": 1,
+      "url": "https://www.arquetypus.com.br/loja/guerreiro"
+    },
+    {
+      "canonical": "https://arquetypus.com.br/loja/imperador",
+      "canonicalCount": 1,
+      "descriptionCount": 1,
+      "h1": [
+        "ImperadorRed Empire"
+      ],
+      "mainChars": 4170,
+      "ogType": "product",
+      "pricePresent": true,
+      "readyBrokenImages": [],
+      "robots": null,
+      "routeMarker": "/loja/imperador",
+      "title": "Imperador Red Empire – Body Splash Premium | Arquétypus Parfum",
+      "titleCount": 1,
+      "url": "https://www.arquetypus.com.br/loja/imperador"
+    },
+    {
+      "canonical": "https://arquetypus.com.br/loja/fenix",
+      "canonicalCount": 1,
+      "descriptionCount": 1,
+      "h1": [
+        "FênixAmber Burn"
+      ],
+      "mainChars": 4127,
+      "ogType": "product",
+      "pricePresent": true,
+      "readyBrokenImages": [],
+      "robots": null,
+      "routeMarker": "/loja/fenix",
+      "title": "Fênix Amber Burn – Body Splash Premium | Arquétypus Parfum",
+      "titleCount": 1,
+      "url": "https://www.arquetypus.com.br/loja/fenix"
+    }
+  ],
+  "flows": [
+    {
+      "name": "popup Zeus",
+      "canonical": "https://arquetypus.com.br/loja/zeus",
+      "canonicalCount": 1,
+      "descriptionCount": 1,
+      "h1": [
+        "Qual versão de você quer expressar hoje?",
+        "ZeusStormbreak"
+      ],
+      "mainChars": 7859,
+      "ogType": "product",
+      "pricePresent": true,
+      "readyBrokenImages": [],
+      "robots": null,
+      "routeMarker": "/",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "titleCount": 1,
+      "url": "https://www.arquetypus.com.br/loja/zeus",
+      "dialog": true
+    },
+    {
+      "name": "página completa",
+      "canonical": "https://arquetypus.com.br/loja/zeus",
+      "canonicalCount": 1,
+      "descriptionCount": 1,
+      "h1": [
+        "ZeusStormbreak"
+      ],
+      "mainChars": 4137,
+      "ogType": "product",
+      "pricePresent": true,
+      "readyBrokenImages": [],
+      "robots": null,
+      "routeMarker": "/",
+      "title": "Zeus Stormbreak – Body Splash Premium | Arquétypus Parfum",
+      "titleCount": 1,
+      "url": "https://www.arquetypus.com.br/loja/zeus",
+      "dialog": false
+    },
+    {
+      "name": "foto 2 Fênix",
+      "ariaCurrent": "true"
+    },
+    {
+      "name": "notas Fênix",
+      "visible": true
+    },
+    {
+      "name": "recusa persistida",
+      "bannerVisible": false
+    },
+    {
+      "name": "aceite persistido",
+      "bannerVisible": false,
+      "scripts": [
+        "https://www.googletagmanager.com/gtag/js?id=G-W81SRZ3K7J&cx=c&gtm=4e6a10",
+        "https://www.googletagmanager.com/gtm.js?id=GTM-5DTMCZW8"
+      ]
+    },
+    {
+      "name": "FAQ SPA e acordeão",
+      "openDetails": 1,
+      "canonical": "https://arquetypus.com.br/perguntas-frequentes",
+      "canonicalCount": 1,
+      "descriptionCount": 1,
+      "h1": [
+        "Perguntas frequentes"
+      ],
+      "mainChars": 4571,
+      "ogType": "website",
+      "pricePresent": false,
+      "readyBrokenImages": [],
+      "robots": null,
+      "routeMarker": "/loja/fenix",
+      "title": "Perguntas Frequentes | Arquétypus Parfum",
+      "titleCount": 1,
+      "url": "https://www.arquetypus.com.br/perguntas-frequentes"
+    },
+    {
+      "name": "404 direta",
+      "canonical": "https://arquetypus.com.br/qualquer-coisa",
+      "canonicalCount": 1,
+      "descriptionCount": 1,
+      "h1": [
+        "Página não encontrada"
+      ],
+      "mainChars": 171,
+      "ogType": "website",
+      "pricePresent": false,
+      "readyBrokenImages": [],
+      "robots": "noindex",
+      "routeMarker": null,
+      "title": "Página não encontrada | Arquétypus Parfum",
+      "titleCount": 1,
+      "url": "https://www.arquetypus.com.br/qualquer-coisa"
+    },
+    {
+      "name": "404 → home",
+      "canonical": "https://arquetypus.com.br/",
+      "canonicalCount": 1,
+      "descriptionCount": 1,
+      "h1": [
+        "Qual versão de você quer expressar hoje?"
+      ],
+      "mainChars": 7859,
+      "ogType": "website",
+      "pricePresent": true,
+      "readyBrokenImages": [],
+      "robots": null,
+      "routeMarker": null,
+      "title": "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
+      "titleCount": 1,
+      "url": "https://www.arquetypus.com.br/"
+    },
+    {
+      "name": "reload pop-up",
+      "url": "https://www.arquetypus.com.br/loja/zeus",
+      "dialog": true
+    },
+    {
+      "name": "voltar",
+      "url": "https://www.arquetypus.com.br/",
+      "dialog": false
+    },
+    {
+      "name": "avançar",
+      "url": "https://www.arquetypus.com.br/loja/zeus",
+      "dialog": true
+    },
+    {
+      "name": "fechar pop-up",
+      "url": "https://www.arquetypus.com.br/",
+      "dialog": false
+    }
+  ],
+  "console": [],
+  "limitations": [
+    "Smoke técnico no domínio principal. SHA/ID e logs administrativos dependem da confirmação manual do usuário.",
+    "Presença dos scripts Google e consentimento visual comprovados; recebimento externo GA4/GTM não certificado.",
+    "Cobertura visual responsiva completa e métricas comparativas permanecem nas provas da Etapa 6; não foram repetidas integralmente nesta coleta.",
+    "Acompanhamento em 24–48 h e inspeção Search Console não concluídos neste smoke."
+  ]
+}

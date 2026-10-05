@@ -1,0 +1,2 @@
+# Evidência HTTP: preservar bytes e whitespace recebidos.
+*.html -text whitespace=-blank-at-eol
