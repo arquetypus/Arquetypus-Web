@@ -47,7 +47,8 @@ export function websiteSchema() {
 const brlSeo = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 export function productMetadata(a: Archetype) {
   return {
-    title: comMarca(`${a.nome} ${a.sobrenome ?? ''} – ${a.tipo}`.replace(/\s+–/, ' –')),
+    // "Body Splash Premium" na frente (out/2026): é o termo buscado; o nome segue logo depois
+    title: comMarca(`${a.tipo} ${a.nome} ${a.sobrenome ?? ''}`.trim()),
     description: `${a.nome} ${a.sobrenome ?? ''}: ${a.ep} ${a.tipo} ${a.vol} com ${CONDICOES.essenciaPct}% de essência, família ${a.fam}. ${brlSeo(a.preco)} em até ${CONDICOES.parcelasSemJuros}x sem juros.`,
   }
 }

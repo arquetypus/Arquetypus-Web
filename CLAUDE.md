@@ -359,9 +359,9 @@ decisão de produto já tomada:
   novo ou plugin SSG. `build:client` isolado não serve como build de deploy. Os scripts em
   `scripts/` são parte permanente do pipeline; não removê-los junto de documentação temporária.
   Validar HTML bruto, recursos, roteamento real e paridade antes de publicar; operação em `README.md`.
-- **Metadados por página, ajustes adiados pelo usuário (out/2026):** título do produto com volume
-  ("Zeus Stormbreak — Body Splash Premium 220 ml | Arquetypus" — decidir o padrão de marca nos títulos),
-  descrição do produto com família + 3 notas + 10% de essência (≤155 caracteres), og:image 1200×630 por
+- **Título do produto decidido (out/2026):** "Body Splash Premium {nome} {sobrenome} | Arquétypus Parfum"
+  (termo buscado na frente, sem volume), em `productMetadata` (`lib/seoModel.ts`); o H1 segue só o nome.
+- **Metadados por página, ajustes adiados pelo usuário (out/2026):** descrição do produto com família + 3 notas + 10% de essência (≤155 caracteres), og:image 1200×630 por
   produto (só faz efeito com a pré-renderização) e H1 fixo na home ("Body Splash Premium com 10% de
   essência" — hoje o H1 é o texto do slide e muda a cada 4 s; decidir se visível ou só pra leitor).
   Não usar `react-helmet-async`: `lib/seo.ts` já faz título, descrição, canonical e og por rota.
