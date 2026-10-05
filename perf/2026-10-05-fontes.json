@@ -1,0 +1,315 @@
+{
+  "rotulo": "fontes",
+  "data": "2026-10-05T23:32:31.286Z",
+  "site": "https://www.arquetypus.com.br",
+  "ferramenta": "lighthouse@13.5.0 local (SMSP-010643)",
+  "rodadas": 3,
+  "paginas": {
+    "/ · mobile": {
+      "nota": 54,
+      "fcp": 2865.1534999999994,
+      "lcp": 10404.6055,
+      "tbt": 509,
+      "cls": 0,
+      "si": 5062.993187933786,
+      "peso": 5620.5185546875,
+      "semCache": 0,
+      "cacheExemplo": null,
+      "assets": 45,
+      "maiores": [
+        {
+          "url": "/assets/hero-video-DYdAfdYa.mp4",
+          "kb": 2122
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-W81SRZ3K7J&cx=c&gtm=4e6a50h2",
+          "kb": 173
+        },
+        {
+          "url": "/assets/index-SHCkISGz.js",
+          "kb": 172
+        },
+        {
+          "url": "/assets/guerreiro-BQZfZQ48.webp",
+          "kb": 159
+        },
+        {
+          "url": "/assets/frescos-luminosos-BGACOnq6.webp",
+          "kb": 136
+        },
+        {
+          "url": "/assets/frutados-citricos-Ci4IQNay.webp",
+          "kb": 135
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5DTMCZW8",
+          "kb": 129
+        },
+        {
+          "url": "/assets/sereia-DIviEydJ.webp",
+          "kb": 123
+        }
+      ],
+      "rodadas": [
+        54,
+        54,
+        49
+      ]
+    },
+    "/ · desktop": {
+      "nota": 94,
+      "fcp": 670.941,
+      "lcp": 1507.6040000000003,
+      "tbt": 36.999999999999886,
+      "cls": 0,
+      "si": 1248.581802801888,
+      "peso": 5779.9267578125,
+      "semCache": 0,
+      "cacheExemplo": null,
+      "assets": 46,
+      "maiores": [
+        {
+          "url": "/assets/hero-video-DYdAfdYa.mp4",
+          "kb": 2122
+        },
+        {
+          "url": "/assets/colecao-desktop-cdnhGyEo.webp",
+          "kb": 209
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-W81SRZ3K7J&cx=c&gtm=4e6a21",
+          "kb": 173
+        },
+        {
+          "url": "/assets/index-SHCkISGz.js",
+          "kb": 172
+        },
+        {
+          "url": "/assets/frescos-luminosos-BGACOnq6.webp",
+          "kb": 136
+        },
+        {
+          "url": "/assets/guerreiro-desktop-pL8UF_fQ.webp",
+          "kb": 135
+        },
+        {
+          "url": "/assets/frutados-citricos-Ci4IQNay.webp",
+          "kb": 135
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5DTMCZW8",
+          "kb": 129
+        }
+      ],
+      "rodadas": [
+        93,
+        94,
+        94
+      ]
+    },
+    "/body-splash/zeus-stormbreak · mobile": {
+      "nota": 60,
+      "fcp": 2497.2819999999997,
+      "lcp": 6839.008750000001,
+      "tbt": 386,
+      "cls": 0,
+      "si": 4677.727954038992,
+      "peso": 1121.5078125,
+      "semCache": 0,
+      "cacheExemplo": null,
+      "assets": 10,
+      "maiores": [
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-W81SRZ3K7J&cx=c&gtm=4e6a21",
+          "kb": 173
+        },
+        {
+          "url": "/assets/index-SHCkISGz.js",
+          "kb": 172
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5DTMCZW8",
+          "kb": 129
+        },
+        {
+          "url": "/fonts/inter-var-italic.woff2",
+          "kb": 114
+        },
+        {
+          "url": "/fonts/inter-var.woff2",
+          "kb": 103
+        },
+        {
+          "url": "/assets/flor-arquetypus-DMBOvLEF.webp",
+          "kb": 93
+        },
+        {
+          "url": "/assets/zeus-D9cq5EHg.webp",
+          "kb": 74
+        },
+        {
+          "url": "/assets/zeus-5RvbpOdq.webp",
+          "kb": 62
+        }
+      ],
+      "rodadas": [
+        56,
+        67,
+        60
+      ]
+    },
+    "/body-splash/zeus-stormbreak · desktop": {
+      "nota": 97,
+      "fcp": 533.198,
+      "lcp": 1219.422,
+      "tbt": 7,
+      "cls": 0,
+      "si": 790.1065150927446,
+      "peso": 1121.5,
+      "semCache": 0,
+      "cacheExemplo": null,
+      "assets": 10,
+      "maiores": [
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-W81SRZ3K7J&cx=c&gtm=4e6a21",
+          "kb": 173
+        },
+        {
+          "url": "/assets/index-SHCkISGz.js",
+          "kb": 172
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5DTMCZW8",
+          "kb": 129
+        },
+        {
+          "url": "/fonts/inter-var-italic.woff2",
+          "kb": 114
+        },
+        {
+          "url": "/fonts/inter-var.woff2",
+          "kb": 103
+        },
+        {
+          "url": "/assets/flor-arquetypus-DMBOvLEF.webp",
+          "kb": 93
+        },
+        {
+          "url": "/assets/zeus-D9cq5EHg.webp",
+          "kb": 74
+        },
+        {
+          "url": "/assets/zeus-5RvbpOdq.webp",
+          "kb": 62
+        }
+      ],
+      "rodadas": [
+        99,
+        97,
+        97
+      ]
+    },
+    "/criadores · mobile": {
+      "nota": 66,
+      "fcp": 2548.8324999999995,
+      "lcp": 6812.3755,
+      "tbt": 278,
+      "cls": 0,
+      "si": 3968.564000800532,
+      "peso": 1119.771484375,
+      "semCache": 0,
+      "cacheExemplo": null,
+      "assets": 7,
+      "maiores": [
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-W81SRZ3K7J&cx=c&gtm=4e6a21",
+          "kb": 173
+        },
+        {
+          "url": "/assets/index-SHCkISGz.js",
+          "kb": 172
+        },
+        {
+          "url": "/assets/criadores-hero-CFVypZqa.webp",
+          "kb": 150
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5DTMCZW8",
+          "kb": 129
+        },
+        {
+          "url": "/fonts/inter-var-italic.woff2",
+          "kb": 114
+        },
+        {
+          "url": "/fonts/inter-var.woff2",
+          "kb": 103
+        },
+        {
+          "url": "/assets/flor-arquetypus-DMBOvLEF.webp",
+          "kb": 93
+        },
+        {
+          "url": "/assets/wordmark-marmore-B59whIZ1.webp",
+          "kb": 43
+        }
+      ],
+      "rodadas": [
+        66,
+        68,
+        57
+      ]
+    },
+    "/criadores · desktop": {
+      "nota": 99,
+      "fcp": 511.837,
+      "lcp": 1032.996,
+      "tbt": 11,
+      "cls": 0,
+      "si": 724.009106903072,
+      "peso": 1119.779296875,
+      "semCache": 0,
+      "cacheExemplo": null,
+      "assets": 7,
+      "maiores": [
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-W81SRZ3K7J&cx=c&gtm=4e6a21",
+          "kb": 173
+        },
+        {
+          "url": "/assets/index-SHCkISGz.js",
+          "kb": 172
+        },
+        {
+          "url": "/assets/criadores-hero-CFVypZqa.webp",
+          "kb": 150
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5DTMCZW8",
+          "kb": 129
+        },
+        {
+          "url": "/fonts/inter-var-italic.woff2",
+          "kb": 114
+        },
+        {
+          "url": "/fonts/inter-var.woff2",
+          "kb": 103
+        },
+        {
+          "url": "/assets/flor-arquetypus-DMBOvLEF.webp",
+          "kb": 93
+        },
+        {
+          "url": "/assets/wordmark-marmore-B59whIZ1.webp",
+          "kb": 43
+        }
+      ],
+      "rodadas": [
+        99,
+        99,
+        96
+      ]
+    }
+  }
+}
