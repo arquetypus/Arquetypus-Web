@@ -3,7 +3,7 @@
  * seções H-01 a H-25. Não inventar texto novo aqui sem confirmar —
  * ver CLAUDE.md.
  */
-import { ARCHETYPES, getArchetype, productPath } from '@/data/archetypes'
+import { ARCHETYPES, getArchetype, productPath, produtoNome } from '@/data/archetypes'
 import { FAMILIAS } from '@/data/families'
 import { CONDICOES, EMPRESA, EMPRESA_LINHA, FRETE_GRATIS_ACIMA } from '@/data/empresa'
 import { maiuscula, porExtenso } from '@/lib/extenso'
@@ -81,6 +81,8 @@ export const HERO_SLIDES = [
     heading: 'Qual versão de você\nquer expressar hoje?',
     sub: `${maiuscula(porExtenso(ARCHETYPES.length))} fragrâncias. Diferentes formas de expressão.`,
     requisito: 'VÍDEO · 9:16 · 1080×1920 · HERO FULLSCREEN · AUTOPLAY MUTED',
+    // decorativa: no celular é clima (pessoa entre véus), no desktop os frascos; o texto do slide carrega a mensagem
+    alt: '',
     img: heroVideoPoster,
     imgDesktop: heroVideoDesktop,
     video: heroVideo,
@@ -98,6 +100,7 @@ export const HERO_SLIDES = [
     sub: 'O floral que não pede licença.',
     cta: { label: 'Conhecer Afrodite', to: productPath(getArchetype('afrodite')!) },
     requisito: 'FOTO · 9:16 · 1080×1920 · LIFESTYLE · AFRODITE · MODELO + FRASCO',
+    alt: `${produtoNome(getArchetype('afrodite')!)} segurado junto ao colo, entre rosas cor-de-rosa`,
     img: heroAfrodite,
     imgDesktop: heroAfroditeDesktop,
     tint: '#2e141c', // vinho/rosado bem escuro
@@ -112,6 +115,7 @@ export const HERO_SLIDES = [
     sub: 'Constância é a forma mais rara de coragem.',
     cta: { label: 'Conhecer Guerreiro', to: productPath(getArchetype('guerreiro')!) },
     requisito: 'FOTO · 9:16 · 1080×1920 · LIFESTYLE · GUERREIRO · MODELO + FRASCO',
+    alt: `Mão segurando o ${produtoNome(getArchetype('guerreiro')!)}`,
     img: heroGuerreiro,
     imgDesktop: heroGuerreiroDesktop,
     tint: '#0e1829', // azul-marinho escuro

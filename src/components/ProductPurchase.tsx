@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { Archetype } from '@/types/archetype'
-import { getArchetype, NOTAS_LEGENDA } from '@/data/archetypes'
+import { getArchetype, NOTAS_LEGENDA, produtoNome } from '@/data/archetypes'
 import { useCart } from '@/context/CartContext'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { ProductGallery } from '@/components/ProductGallery'
@@ -96,8 +96,14 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
             nome={a.nome}
             bg={a.bg}
             slides={[
-              { src: PDP_FRASCO[a.id], requisito: `FOTO · 1:1 · 1200×1200 · FRASCO · ${a.nome.toUpperCase()}` },
-              { src: PDP_LIFESTYLE[a.id], requisito: `FOTO · 1:1 · 1200×1200 · LIFESTYLE · ${a.nome.toUpperCase()}` },
+              {
+                src: PDP_FRASCO[a.id], requisito: `FOTO · 1:1 · 1200×1200 · FRASCO · ${a.nome.toUpperCase()}`,
+                alt: `Frasco do ${produtoNome(a)}, ${a.vol}`,
+              },
+              {
+                src: PDP_LIFESTYLE[a.id], requisito: `FOTO · 1:1 · 1200×1200 · LIFESTYLE · ${a.nome.toUpperCase()}`,
+                alt: `Pessoa segurando o ${produtoNome(a)}`,
+              },
             ].filter((s) => s.src)}
           />
           {showNotes && (

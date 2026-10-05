@@ -99,6 +99,7 @@ export function HeroCarousel() {
                   bg="transparent"
                   src={s.img}
                   srcDesktop={s.imgDesktop}
+                  alt={s.alt}
                   requisito={s.requisito}
                   dark
                   className="h-full w-full rounded-none border-0"

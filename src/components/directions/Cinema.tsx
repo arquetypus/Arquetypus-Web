@@ -128,7 +128,7 @@ export function HeroCinema() {
             <source media="(min-width: 1024px)" srcSet={s.imgDesktop} />
             <img
               src={s.img}
-              alt=""
+              alt={s.alt}
               className={`absolute inset-0 h-full w-full object-cover transition-transform ease-out motion-reduce:scale-100 motion-reduce:transition-none ${
                 i === current ? 'scale-100 duration-[6000ms]' : 'scale-[1.08] delay-[1200ms] duration-0'
               }`}

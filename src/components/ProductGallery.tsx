@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { MediaSlot } from '@/components/ui/MediaSlot'
 import { GOLD_SHEEN } from '@/lib/goldSheen'
 
-type Slide = { src: string; requisito: string }
+type Slide = { src: string; requisito: string; alt: string }
 
 /**
  * Galeria de fotos do produto (P-02). Trilho com scroll-snap: no celular
@@ -26,7 +26,7 @@ export function ProductGallery({ nome, bg, slides }: { nome: string; bg: string;
   }, [slides.length])
 
   if (slides.length === 0) {
-    return <MediaSlot aspect="1/1" bg={bg} requisito={`FOTO · 1:1 · 1200×1200 · FRASCO · ${nome.toUpperCase()}`} />
+    return <MediaSlot aspect="1/1" bg={bg} alt="" requisito={`FOTO · 1:1 · 1200×1200 · FRASCO · ${nome.toUpperCase()}`} />
   }
 
   function goTo(i: number) {
@@ -91,7 +91,7 @@ export function ProductGallery({ nome, bg, slides }: { nome: string; bg: string;
             aria-roledescription="slide"
             aria-label={`${i + 1} de ${slides.length}`}
           >
-            <MediaSlot aspect="1/1" bg={bg} src={s.src} requisito={s.requisito} className="rounded-none" />
+            <MediaSlot aspect="1/1" bg={bg} src={s.src} alt={s.alt} requisito={s.requisito} className="rounded-none" />
           </div>
         ))}
       </div>

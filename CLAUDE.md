@@ -271,7 +271,8 @@ decisão de produto já tomada:
   somente após gerar e verificar 18 páginas + `404.html`. Não restaurar catch-all para home:
   cada URL deve entregar seu HTML. Arquivos estáticos são servidos diretamente; rota desconhecida
   recebe 404 própria/noindex. `/loja/:id` e `/arquetipos/:id` usam 308 para `/body-splash/{slug}`; kit, `/body-splash`
-  sozinho (vai pro `#catalogo`) e produto inexistente usam 307 para home. O build simula as regras (primeira que
+  sozinho (vai pro `#catalogo`) usam 307 para home. Produto/ID inexistente (`/loja/x`, `/body-splash/x`) é 404
+  real, sem curinga pra home (soft 404, out/2026). O build simula as regras (primeira que
   casa vence) antes de aceitar o `vercel.json`.
   Matcher vem de `ARCHETYPES`: executar `npm run configure:vercel`, revisar e versionar antes do push;
   `npm run verify:vercel` bloqueia drift no início do build. Pré-renderização publicada no domínio
@@ -298,7 +299,9 @@ decisão de produto já tomada:
   Títulos, descrição, canonical e OG são próprios de cada rota; canonical sempre oficial,
   sem hostname de preview. Domínio oficial: `https://www.arquetypus.com.br` (`SITE` em `data/empresa.ts`),
   porque a Vercel serve o www e redireciona o domínio sem www pra ele (decisão do usuário, out/2026). PDP usa nome, sobrenome, frase, família e preço. Não duplicar regras
-  SEO nas páginas ou publicar Offer/avaliações não confirmados.
+  SEO nas páginas ou publicar avaliações não confirmadas. O Product tem `offers` (preço de `a.preco`, BRL,
+  InStock — OutOfStock se `status: 'wait'`) desde out/2026, por decisão do usuário, mesmo sem checkout ativo;
+  sem `priceValidUntil` até existir data real de fim de promoção.
 - **Favicon (out/2026):** emblema dourado com fundo transparente (`favicon.ico` 16/32/48, `favicon-32.png`);
   ícones de iPhone/app (`apple-touch-icon`, `icon-192/512`) com fundo branco — iOS não aceita transparência.
 - **Revisão de textos (out/2026):** escondida a seção "Quem já vende" de `/criadores` (números de
@@ -388,6 +391,11 @@ decisão de produto já tomada:
   `#segmentos`, `#catalogo`, `#familias`, `#destaque`, `#diferenca`, `#beneficios`,
   `#cupom`, `#rodape`, e cada produto do catálogo pelo id (`#afrodite`, `#fenix`…).
   Seção nova na home ganha `id` também; não renomear os existentes (links já enviados).
+- **Texto alternativo das fotos (out/2026):** foto que é conteúdo (frasco, pessoa com o produto) leva `alt`
+  descritivo montado com `produtoNome(a)` (`data/archetypes.ts`) — `alt` é obrigatório no `MediaSlot` (o `tsc`
+  falha sem ele, de propósito: toda foto nova exige a decisão), a galeria da PDP
+  e os slides do hero (`HERO_SLIDES[].alt`) passam o seu. `alt=""` só pra foto decorativa ou já dita pelo texto
+  ao lado (miniatura do card com o nome, foto de gênero/família com rótulo, flor/fita).
 - **Nome do produto no site: "Body Splash Premium"** (out/2026), nunca só "body
   splash" — está em `tipo` (`data/archetypes.ts`), FAQ, alts e textos. "Splash
   comum" (concorrente genérico em "A diferença") continua como está.

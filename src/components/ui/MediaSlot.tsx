@@ -9,6 +9,10 @@ import { RatioTag } from '@/components/ui/RatioTag'
  *
  * `srcDesktop` é a segunda fonte pra lg+ (quando a proporção vertical do
  * celular não serve no desktop); sem ela, o desktop usa `src`.
+ *
+ * `alt` é obrigatório (out/2026), pra toda foto nova passar por uma decisão: texto que descreve a foto quando ela
+ * é conteúdo (produto, pessoa com o produto), ou `alt=""` explícito pra foto decorativa ou já dita pelo texto ao
+ * lado. Sem foto (placeholder), o `alt` não é usado — passar `alt=""`.
  */
 export function MediaSlot({
   aspect = '4/5',
@@ -20,6 +24,7 @@ export function MediaSlot({
   srcDesktop,
   tagClassName,
   tagLabel,
+  alt,
 }: {
   aspect?: string
   bg?: string
@@ -30,6 +35,7 @@ export function MediaSlot({
   srcDesktop?: string
   tagClassName?: string
   tagLabel?: string
+  alt: string
 }) {
   if (src) {
     return (
@@ -39,7 +45,7 @@ export function MediaSlot({
       >
         <picture>
           {srcDesktop && <source media="(min-width: 1024px)" srcSet={srcDesktop} />}
-          <img src={src} alt="" className="absolute inset-0 h-full w-full object-cover" />
+          <img src={src} alt={alt} className="absolute inset-0 h-full w-full object-cover" />
         </picture>
         <RatioTag className={tagClassName} title={requisito} label={tagLabel} />
       </div>

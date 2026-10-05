@@ -347,6 +347,10 @@ export const PRODUCT_BASE = '/body-splash'
 /** URL definitiva do produto — todo link pra PDP sai daqui, nunca montado à mão */
 export const productPath = (a: Pick<Archetype, 'slug'>) => `${PRODUCT_BASE}/${a.slug}`
 
+/** "Body Splash Premium Zeus Stormbreak" — nome comercial completo, pra textos alternativos das fotos */
+export const produtoNome = (a: Pick<Archetype, 'tipo' | 'nome' | 'sobrenome'>) =>
+  `${a.tipo} ${a.nome} ${a.sobrenome ?? ''}`.trim()
+
 export function getArchetypeBySlug(slug: string): Archetype | undefined {
   return ARCHETYPES.find((a) => a.slug === slug)
 }

@@ -655,6 +655,8 @@ export function HomePage() {
                   aspect="auto"
                   bg="transparent"
                   src={seg.img}
+                  // decorativa: o rótulo do gênero está escrito no card
+                  alt=""
                   requisito={`FOTO · 4:3 · 1600×1200 · LIFESTYLE · ${seg.label.toUpperCase()}`}
                   className="segmento-foto absolute! inset-0 h-full w-full rounded-none border-0"
                 />

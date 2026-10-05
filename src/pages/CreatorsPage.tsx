@@ -68,6 +68,7 @@ export function CreatorsPage() {
             aspect="4/5"
             bg="#F0EAE4"
             src={creatorsHero}
+            alt="Pessoa gravando um vídeo com o celular enquanto apresenta o Body Splash Premium Afrodite First Kiss, com o Cleópatra Nile Rose sobre a mesa"
             requisito="FOTO · 4:5 · 1600×2000 · CRIADOR(A) SEGURANDO UM FRASCO · LUZ NATURAL"
             // lg: a foto preenche a coluna (altura da tela) — ! vence o aspectRatio inline
             className="rounded-none border-0 lg:absolute! lg:inset-0 lg:aspect-auto! lg:h-full"
