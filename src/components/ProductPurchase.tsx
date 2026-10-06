@@ -7,7 +7,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow'
 import { ProductGallery } from '@/components/ProductGallery'
 import { Sobrenome } from '@/components/ui/Sobrenome'
 import { Preco } from '@/components/ui/Preco'
-import { PDP_FRASCO_FOTO, PDP_LIFESTYLE_FOTO } from '@/data/productMedia'
+import { PDP_ARQUETIPO_FOTO, PDP_FRASCO_FOTO, PDP_LIFESTYLE_FOTO, PDP_NOTAS_FOTO, PDP_REPRESENTACAO_FOTO } from '@/data/productMedia'
 import { CONDICOES, parcela, precoPix } from '@/data/empresa'
 
 export const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
@@ -99,6 +99,18 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
               {
                 src: PDP_FRASCO_FOTO[a.id], requisito: `FOTO · 1:1 · 1200×1200 · FRASCO · ${a.nome.toUpperCase()}`,
                 alt: `Frasco do ${produtoNome(a)}, ${a.vol}`,
+              },
+              {
+                src: PDP_NOTAS_FOTO[a.id], requisito: `FOTO · 1:1 · 1200×1200 · NOTAS · ${a.nome.toUpperCase()}`,
+                alt: `${produtoNome(a)} entre os ingredientes das suas notas olfativas`,
+              },
+              {
+                src: PDP_ARQUETIPO_FOTO[a.id], requisito: `FOTO · 1:1 · 1200×1200 · ARQUÉTIPO · ${a.nome.toUpperCase()}`,
+                alt: `${produtoNome(a)} com a figura do arquétipo ${a.nome} ao fundo`,
+              },
+              {
+                src: PDP_REPRESENTACAO_FOTO[a.id], requisito: `FOTO · 1:1 · 1200×1200 · REPRESENTAÇÃO · ${a.nome.toUpperCase()}`,
+                alt: `${produtoNome(a)} com a representação do arquétipo ${a.nome} ao fundo`,
               },
               {
                 src: PDP_LIFESTYLE_FOTO[a.id], requisito: `FOTO · 1:1 · 1200×1200 · LIFESTYLE · ${a.nome.toUpperCase()}`,

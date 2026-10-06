@@ -794,7 +794,7 @@ export function HomePage() {
             className="scroll-pad no-scrollbar mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 md:px-10 lg:mx-auto lg:mt-12 lg:grid lg:max-w-[88rem] lg:grid-cols-5 lg:gap-5 lg:overflow-visible lg:pt-2 lg:after:hidden"
           >
             {/* mesma linguagem dos pôsteres de Coleções (classes .segmento-*): fundo noite, aro latão, filete
-                interno. Texto alinhado à esquerda: no topo as três palavras da família; embaixo nome,
+                interno. No topo as três palavras da família, centradas numa linha; embaixo, à esquerda, nome,
                 descrição e CTA (out/2026 — os nomes dos arquétipos saíram do card) */}
             {FAMILIES.map((f) => (
               <button
@@ -806,7 +806,7 @@ export function HomePage() {
                   setCatalogoFamilia(f.nome)
                   requestAnimationFrame(() => requestAnimationFrame(() => scrollToId('catalogo')))
                 }}
-                className="segmento no-press relative isolate block aspect-[3/4] w-[74%] shrink-0 cursor-pointer snap-start overflow-hidden rounded-2xl bg-noite text-left ring-1 ring-latao/40 sm:w-[44%] lg:w-auto"
+                className="segmento no-press @container relative isolate block aspect-[3/4] w-[74%] shrink-0 cursor-pointer snap-start overflow-hidden rounded-2xl bg-noite text-left ring-1 ring-latao/40 sm:w-[44%] lg:w-auto"
               >
                 <div className="segmento-foto absolute inset-0">
                   <img loading="lazy" src={familyFoto(f.slug)?.src} srcSet={familyFoto(f.slug)?.srcSet} sizes="(min-width: 1024px) 20vw, 80vw" alt="" className="h-full w-full object-cover" />
@@ -821,7 +821,9 @@ export function HomePage() {
                   }}
                 />
                 <span aria-hidden className="segmento-moldura pointer-events-none absolute inset-2.5 rounded-[calc(var(--radius-2xl)-0.5rem)] border border-latao/35" />
-                <span className="absolute inset-x-0 top-5 px-5 font-label text-[9px] tracking-[0.22em] text-balance text-papel-inv/75 uppercase">
+                {/* as três palavras sempre numa linha, centradas (out/2026): a fonte acompanha a largura do card
+                    (cqi, o card é @container) com teto de 9px — no lg de 5 colunas o card fica estreito */}
+                <span className="absolute inset-x-0 top-5 px-4 text-center font-label text-[clamp(6px,calc((100cqi-2rem)/24),9px)] tracking-[0.18em] whitespace-nowrap text-papel-inv/75 uppercase">
                   {f.attrs.join(' · ')}
                 </span>
                 <span className="segmento-texto absolute inset-x-0 bottom-5 px-5 text-papel-inv lg:bottom-6">

@@ -22,14 +22,14 @@ import { Avaliacao } from '@/components/ui/Avaliacao'
 import { CONDICOES, parcela, precoPix } from '@/data/empresa'
 
 /** Banners do "Arquétipo em destaque", na ordem. `bg` é o fundo do card, na cor da foto: burgundy da marca
- *  (Fênix), azul-petróleo do mar (Sereia) e bege escurecido de céu nublado (Zeus). Hex, não var(): a cor anima
+ *  (Fênix), azul-petróleo do mar (Sereia) e bronze escurecido da névoa dourada (Zeus, out/2026: frasco novo em bronze). Hex, não var(): a cor anima
  *  como propriedade registrada. `pos` é o recorte vertical da foto 9:16 no tablet (onde fica o frasco); `sobe` é
  *  quanto a foto sobe no celular (margem negativa, % da largura) pra o frasco ficar acima do texto.
  *  Todo o texto vem de data/archetypes.ts. */
 const SLIDES = [
   { id: 'fenix', img: foto(featuredFenix), imgDesktop: foto(featuredFenixDesktop), bg: '#540010', pos: '50% 20%', sobe: '10.5%' },
   { id: 'sereia', img: foto(featuredSereia), imgDesktop: foto(featuredSereiaDesktop), bg: '#0d4350', pos: '50% 12%', sobe: '10.5%' },
-  { id: 'zeus', img: foto(featuredZeus), imgDesktop: foto(featuredZeusDesktop), bg: '#4f483e', pos: '50% 12%', sobe: '10.5%' },
+  { id: 'zeus', img: foto(featuredZeus), imgDesktop: foto(featuredZeusDesktop), bg: '#4f3a29', pos: '50% 12%', sobe: '10.5%' },
 ] as const
 
 const AUTOPLAY_MS = 4000
@@ -193,8 +193,15 @@ export function FeaturedCarousel() {
                     </span>
                     <Preco a={a} tom="escuro" className="mt-1.5 font-display text-3xl leading-none" />
                   </div>
-                  <span className="max-w-[12ch] pb-0.5 text-right font-label text-[9px] tracking-widest uppercase" style={{ color: LATAO_CLARO }}>
-                    {a.fam}
+                  {/* família sempre em 2 linhas, quebrando depois do "&" ("Ambarados &" / "Adocicados") — com
+                      largura fixa em ch, nomes longos caíam em 3 linhas */}
+                  <span className="pb-0.5 text-right font-label text-[9px] tracking-widest whitespace-nowrap uppercase" style={{ color: LATAO_CLARO }}>
+                    {a.fam.split(/\s*&\s*/).map((parte, i, partes) => (
+                      <span key={parte} className="block">
+                        {parte}
+                        {i < partes.length - 1 && ' &'}
+                      </span>
+                    ))}
                   </span>
                 </div>
                 {/* regra 7: Pix e parcelamento junto do preço — mesma conta do ProductPurchase */}

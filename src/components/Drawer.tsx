@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import wordmarkPreto from '@/assets/brand/wordmark-preto.png'
+// só o emblema (o "A" com raios) no topo do menu, em tinta como o wordmark que estava aqui (out/2026) — recorte de
+// logo-dourado.png recolorido
+import emblemaPreto from '@/assets/brand/emblema-preto.png'
 
 interface DrawerLink {
   label: string
@@ -97,7 +99,7 @@ export function Drawer({
       >
         {/* topo com a mesma altura e o mesmo filete dourado do header */}
         <div className="relative flex h-14 shrink-0 items-center justify-between px-5">
-          <img loading="lazy" src={wordmarkPreto} alt="Arquétypus" className="logo-tinta h-9 w-auto" />
+          <img loading="lazy" src={emblemaPreto} alt="Arquétypus" className="logo-tinta size-9" />
           <button ref={closeRef} type="button" aria-label="Fechar menu" onClick={onClose} className="-mr-2 grid size-10 cursor-pointer place-items-center">
             <svg aria-hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" className="size-[18px]">
               <path d="M6 6l12 12M18 6 6 18" />

@@ -123,16 +123,18 @@ export function CommunityBoutique() {
 
   // 1ª seção depois do hero (sobe por cima dele). Cada experiência é um "vídeo" (2:3 no celular) com o produto num cartão
   // à parte, sobreposto à base do vídeo (metade dentro, metade fora) — o vídeo é a prova, o cartão é a compra.
-  // Desktop: a foto acompanha a altura disponível, com teto de 34rem. A largura tem piso de 300px:
+  // Desktop: a foto acompanha a altura disponível, entre 27rem e 34rem. A largura tem piso de 300px:
   // em notebooks baixos, reduzir as duas medidas em 2:3 cortava nomes e comprimia o preço contra a miniatura.
-  // Abaixo desse piso, só a foto muda de proporção; os dados do produto conservam espaço para leitura.
+  // Piso de 27rem na altura (out/2026): em 1366×768 a conta dava ~13rem e a foto virava uma faixa deitada, cortando
+  // a pessoa e o frasco. Com o piso o card fica perto de 2:3 (300×432) — exceção aceita pelo usuário à regra da
+  // altura: em notebook baixo a seção pode passar um pouco da tela.
   // Celular: só a largura manda — min(66vw, 270px) × --ugc-escala (1.155, out/2026). Exceção pedida (out/2026) à
   // regra da altura: em celular baixo o card continua grande e proporcional, mesmo que a seção passe da tela.
   // Hoje são fotos (UGC_IMG); quando os vídeos chegarem, trocar o <img> por <video> mudo em loop.
   return (
     <section
       id="comunidade"
-      className="relative z-20 rounded-t-2xl bg-papel pt-4 pb-5 [--ugc-w:min(66vw*var(--ugc-escala),270px*var(--ugc-escala))] [--ugc-escala:1.155] lg:pt-4.5 lg:pb-5 lg:[--ugc-h:clamp(13rem,94svh-25.5rem,34rem)] lg:[--ugc-w:max(300px,var(--ugc-h)*2/3)]"
+      className="relative z-20 rounded-t-2xl bg-papel pt-4 pb-5 [--ugc-w:min(66vw*var(--ugc-escala),270px*var(--ugc-escala))] [--ugc-escala:1.155] lg:pt-4.5 lg:pb-5 lg:[--ugc-h:clamp(27rem,94svh-25.5rem,34rem)] lg:[--ugc-w:max(300px,var(--ugc-h)*2/3)]"
       style={{
         // degrau no fim: esta seção fica por cima da seguinte e projeta sombra nela, com filete latão na borda
         boxShadow: '0 14px 26px -12px rgba(40,46,41,0.3), 0 4px 8px -4px rgba(40,46,41,0.2)',

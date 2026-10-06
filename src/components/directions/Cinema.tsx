@@ -73,10 +73,16 @@ export function HeroCinema() {
     // Mesmo commit: CSS é habilitado, playback é solicitado e o relógio começa.
     // Falha de autoplay mantém o poster, sem interromper a navegação do carrossel.
     const video = videoRef.current
-    void video?.play().catch(() => {})
+    // React só liga a propriedade `muted`, não o atributo — o Safari do iPhone confere o atributo pra liberar o autoplay
+    if (video) video.defaultMuted = true
+    // iPhone em Modo de Pouca Energia (e Android em economia de dados) recusa autoplay: o poster fica e o vídeo
+    // tenta de novo no 1º toque na página
+    const tentarDeNovo = () => void video?.play().catch(() => {})
+    void video?.play().catch(() => window.addEventListener('pointerdown', tentarDeNovo, { once: true }))
     const timer = setTimeout(next, duration)
     return () => {
       clearTimeout(timer)
+      window.removeEventListener('pointerdown', tentarDeNovo)
       video?.pause()
     }
   }, [current, next, duration, startup.started, esperandoVideo])
@@ -171,6 +177,7 @@ export function HeroCinema() {
               src={s.video}
               poster={s.img}
               muted
+              autoPlay
               playsInline
               preload="auto"
               aria-hidden

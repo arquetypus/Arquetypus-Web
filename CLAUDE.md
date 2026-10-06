@@ -175,7 +175,18 @@ decisão de produto já tomada:
   (`pdp-frasco/`), 2ª a pessoa com o frasco (`pdp-lifestyle/`), ambas
   recorte 1:1 das fotos 9:16, lidas por `import.meta.glob` (arquivo = id do
   arquétipo; pra mais fotos, nova pasta e mais uma entrada em `slides`).
-  `miniaturas/` são recortes do frasco pro product tag da comunidade. As versões desktop do
+  `miniaturas/` são recortes do frasco pro product tag da comunidade.
+  **Galeria da PDP com 5 fotos (out/2026):** frasco → notas (`pdp-notas/`) → arquétipo
+  ao fundo (`pdp-arquetipo/`) → representação do arquétipo de corpo inteiro
+  (`pdp-representacao/`) → pessoa com o frasco. As 3 do meio são geradas por IA
+  (Higgsfield, GPT Image 2.5, 1200×1200), com o ícone original (`public/icon-512.png`
+  recolorido na cor do rótulo) como referência pra não distorcer o emblema. Arquétipo
+  sem arquivo na pasta só não ganha o slide. Feitos: Afrodite, Imperatriz, Cleópatra, Fada,
+  Sereia, Zeus, Guerreiro, Imperador, Fênix (os 9; Fênix com duas pessoas, por ser unissex). Desde out/2026 em qualidade média (custo).
+  **Zeus trocou de frasco (out/2026):** rótulo bronze/sépia com nuvens, rosto de Zeus e águia, texto
+  creme e "DEO COLÔNIA" (referência: lab-fabio.vercel.app/arquetypus-lp, `zeus-criativo.png`). Todas
+  as fotos do Zeus (catálogo, comunidade, destaque, PDP, miniatura) foram refeitas com IA trocando o
+  frasco azul pelo novo; o card do destaque passou a `#4f3a29`. As versões desktop do
   hero de Afrodite/Guerreiro (`hero/*-desktop.jpg`) são a foto da designer
   expandida pra 16:9 com IA (Higgsfield, FLUX.2 Pro Outpaint) — as laterais
   foram geradas; o frasco e a pessoa são os pixels originais.
@@ -384,7 +395,9 @@ decisão de produto já tomada:
   reunião, out/2026) — só o hero da home cobre 100%. Seção com muito conteúdo
   vira trilho horizontal no celular ou tem altura presa à tela (`svh`).
   Exceção: comunidade/UGC no celular — cards grandes pela largura mesmo que a
-  seção passe da tela em celular baixo (pedido de out/2026).
+  seção passe da tela em celular baixo (pedido de out/2026). No desktop a foto
+  do card tem piso de 27rem de altura (notebook 1366×768 achatava a foto) — lá
+  a seção também pode passar um pouco da tela.
 - **Cantos: uma escala só.** Usar `rounded-sm…3xl` (tokens `--radius-*`,
   ajustados no estilo Elegant em `index.css`), nunca raio em px solto;
   `rounded-full` só pra pílula/círculo.
