@@ -393,6 +393,14 @@ decisão de produto já tomada:
   `#segmentos`, `#catalogo`, `#familias`, `#destaque`, `#diferenca`, `#beneficios`,
   `#cupom`, `#rodape`, e cada produto do catálogo pelo id (`#afrodite`, `#fenix`…).
   Seção nova na home ganha `id` também; não renomear os existentes (links já enviados).
+- **Performance da home e páginas (out/2026):**
+  - Direções desligadas fora do JS principal: `HomePage` importa as peças delas de
+    `components/directions/lazy.tsx` (`React.lazy`, só baixam se desenhadas). Peça nova de direção alternativa
+    entra lá; a direção decidida segue importada direto (é a que o servidor pré-renderiza).
+  - Estrelas de avaliação: uma fileira = um elemento (`.estrelas` em `index.css`, máscara CSS), não 5 SVGs.
+  - `content-visibility: auto` nas seções da home abaixo da dobra (Boutique) — `index.css`.
+  - Imagens fora da 1ª tela com `loading="lazy"`: `MediaSlot` é lazy por padrão (`prioridade` pra foto de topo);
+    `<img>` solto precisa do atributo. `verify-prerender` derruba o build com mais de 5 imagens sem lazy numa página.
 - **Vídeo do hero atrasado (out/2026):** `HeroCinema` não põe o `<video>` no HTML inicial — mostra a foto do 1º
   quadro (`hero-video-poster`) e monta o vídeo depois do `load` da página (teto de 8 s), só no celular (no desktop
   aparece a foto 16:9 e o vídeo nunca baixa). A barra do 1º slide espera o vídeo entrar. `verify-prerender` derruba

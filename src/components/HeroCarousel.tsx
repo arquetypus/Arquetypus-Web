@@ -100,6 +100,7 @@ export function HeroCarousel() {
                   src={s.img}
                   srcDesktop={s.imgDesktop}
                   alt={s.alt}
+                  prioridade={i === 0}
                   requisito={s.requisito}
                   dark
                   className="h-full w-full rounded-none border-0"

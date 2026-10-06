@@ -36,6 +36,15 @@ for (const page of pages) {
     assert.match(tag, /\bpreload="(?:none|metadata)"/, `Vídeo com download antecipado em ${page.file} (usar preload="none" ou "metadata"): ${tag}`);
   }
 }
+// Imagens que baixam de cara (sem loading="lazy") por página (out/2026): só as da primeira tela — logos do header,
+// foto do topo e o card central da comunidade. Imagem nova entra lazy (MediaSlot já é; <img> solto precisa do
+// atributo); foto de topo usa MediaSlot `prioridade`. Passou do teto: alguma imagem fora da tela está competindo.
+const TETO_IMAGENS_DE_CARA = 5;
+for (const page of pages) {
+  const deCara = [...page.html.matchAll(/<img\b[^>]*>/g)].map(([tag]) => tag).filter(tag => !/\bloading="lazy"/.test(tag));
+  assert.ok(deCara.length <= TETO_IMAGENS_DE_CARA,
+    `${page.file}: ${deCara.length} imagens sem loading="lazy" (teto ${TETO_IMAGENS_DE_CARA}):\n${deCara.map(t => t.match(/src="([^"]+)"/)?.[1]).join('\n')}`);
+}
 const report = await verifyDocuments(pages, renderer, dist);
 await writeFile(path.join(root, 'dist-server/verify-prerender.json'), JSON.stringify({ ...report, inventory: files }, null, 2) + '\n');
 console.log(`PASS artefatos: ${pages.length} HTMLs, ${report.resources.length} recursos, ${report.sitemap.length} canonicals no sitemap, ${imagens.length} imagens até ${TETO_IMAGEM_KB} KB.`);

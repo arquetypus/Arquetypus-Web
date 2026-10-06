@@ -1,17 +1,9 @@
 import { getReview, SHOW_RATINGS } from '@/lib/reviews'
 
-const STAR = 'M10 1.6l2.47 5.3 5.8.68-4.29 3.96 1.15 5.73L10 14.4l-5.13 2.87 1.15-5.73L1.73 7.58l5.8-.68z'
-
+/** Fileira de 5 estrelas num elemento só (out/2026): a estrela é máscara CSS (`.estrelas` em index.css) repetida
+ *  5 vezes com 1px entre elas, na cor do texto. Eram 5 SVGs por fileira — centenas de elementos na home. */
 function Estrelas({ className }: { className: string }) {
-  return (
-    <span className={`flex gap-px ${className}`}>
-      {Array.from({ length: 5 }).map((_, i) => (
-        <svg key={i} viewBox="0 0 20 20" className="size-[1em] shrink-0" fill="currentColor">
-          <path d={STAR} />
-        </svg>
-      ))}
-    </span>
-  )
+  return <span className={`estrelas ${className}`} />
 }
 
 /**

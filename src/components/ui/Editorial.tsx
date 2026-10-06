@@ -33,7 +33,7 @@ export function Glow({ className, forca = 16 }: { className: string; forca?: num
 /** Flor da marca como marca d'água, cortada pela borda da seção. */
 export function Flor({ style }: { style: CSSProperties }) {
   return (
-    <img
+    <img loading="lazy"
       src={florArquetypus}
       alt=""
       aria-hidden="true"

@@ -21,7 +21,6 @@ import { Eyebrow } from '@/components/ui/Eyebrow'
 import { MediaSlot } from '@/components/ui/MediaSlot'
 import { RatioTag } from '@/components/ui/RatioTag'
 // import { KitBuilder } from '@/components/KitBuilder' // seção "Monte o seu" desativada
-import { HeroCarousel } from '@/components/HeroCarousel'
 import { Reveal } from '@/components/ui/Reveal'
 import { CarouselDots } from '@/components/ui/CarouselDots'
 import { CutFrame } from '@/components/ui/CutFrame'
@@ -33,23 +32,17 @@ import { FeaturedCarousel } from '@/components/FeaturedCarousel'
 import { DifferenceSection } from '@/components/DifferenceSection'
 import { BenefitsMarquee } from '@/components/BenefitsMarquee'
 import { isBoutiqueLayout, useThemeState } from '@/lib/theme'
-import { HeroAtelie } from '@/components/atelie/HeroAtelie'
-import { CatalogIndex } from '@/components/atelie/CatalogIndex'
-import { CommunityAtelie, DiaryAtelie, FeaturedAtelie, FooterAtelie } from '@/components/atelie/AtelieSections'
+// direção decidida: importada direto (entra no JS principal e no HTML pré-renderizado)
 import { CatalogGrid, HeroBoutique } from '@/components/boutique/BoutiqueSections'
 import { CommunityBoutique, DiaryBoutique, FooterBoutique } from '@/components/boutique/BoutiqueMore'
-import { CatalogOraculo, HeroOraculo } from '@/components/directions/Oraculo'
-import { CatalogGaleria, HeroGaleria } from '@/components/directions/Galeria'
-import { CatalogManifesto, HeroManifesto } from '@/components/directions/Manifesto'
 import { CatalogCinema, HeroCinema } from '@/components/directions/Cinema'
-import { OraculoPage } from '@/components/directions/OraculoPage'
-import { GaleriaPage } from '@/components/directions/GaleriaPage'
-import { ManifestoPage } from '@/components/directions/ManifestoPage'
-import { CinemaPage } from '@/components/directions/CinemaPage'
-import { CatalogHerbario, HerbarioPage, HeroHerbario } from '@/components/directions/Herbario'
-import { CatalogLaboratorio, HeroLaboratorio, LaboratorioPage } from '@/components/directions/Laboratorio'
-import { CatalogRiviera, HeroRiviera, RivieraPage } from '@/components/directions/Riviera'
-import { CatalogZen, HeroZen, ZenPage } from '@/components/directions/Zen'
+// demais direções: só baixadas se desenhadas (ThemeSwitcher ligado) — ver components/directions/lazy.tsx
+import {
+  CatalogGaleria, CatalogHerbario, CatalogIndex, CatalogLaboratorio, CatalogManifesto, CatalogOraculo, CatalogRiviera,
+  CatalogZen, CinemaPage, CommunityAtelie, DiaryAtelie, FeaturedAtelie, FooterAtelie, GaleriaPage, HeroAtelie,
+  HeroCarousel, HeroGaleria, HeroHerbario, HeroLaboratorio, HeroManifesto, HeroOraculo, HeroRiviera, HeroZen,
+  HerbarioPage, LaboratorioPage, ManifestoPage, OraculoPage, RivieraPage, ZenPage,
+} from '@/components/directions/lazy'
 import type { DirectionPageProps } from '@/components/directions/shared'
 import type { ThemeId } from '@/lib/theme'
 
@@ -162,7 +155,7 @@ function CommunitySection() {
           'inset 0 1px 0 color-mix(in srgb, var(--color-latao) 60%, transparent), inset 0 26px 28px -20px rgba(40,46,41,0.4), inset 0 8px 10px -7px rgba(40,46,41,0.28)',
       }}
     >
-      <img
+      <img loading="lazy"
         src={florArquetypus}
         alt=""
         aria-hidden="true"
@@ -394,7 +387,7 @@ export function HomePage() {
           }}
         >
           <div className="relative lg:min-h-full lg:overflow-hidden">
-            <img
+            <img loading="lazy"
               src={BODEGON_IMG}
               alt="Os nove frascos Arquétypus sobre uma bandeja de mármore, à luz dourada do fim de tarde"
               className="aspect-[4/5] w-full object-cover lg:absolute lg:inset-0 lg:aspect-auto lg:h-full"
@@ -503,7 +496,7 @@ export function HomePage() {
                   />
 
                   {FRASCO_IMG[a.id] && (
-                    <img
+                    <img loading="lazy"
                       src={FRASCO_IMG[a.id]}
                       alt=""
                       className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
@@ -700,7 +693,7 @@ export function HomePage() {
               'linear-gradient(to bottom, var(--color-papel) 0%, var(--color-papel-2) 10%, var(--color-papel-2) 90%, var(--color-papel) 100%)',
           }}
         >
-          <img
+          <img loading="lazy"
             src={florArquetypus}
             alt=""
             aria-hidden="true"
@@ -715,7 +708,7 @@ export function HomePage() {
               WebkitMaskImage: 'radial-gradient(closest-side, black 55%, transparent 100%)',
             }}
           />
-          <img
+          <img loading="lazy"
             src={florArquetypus}
             alt=""
             aria-hidden="true"
@@ -814,7 +807,7 @@ export function HomePage() {
                 className="segmento no-press relative isolate block aspect-[3/4] w-[74%] shrink-0 cursor-pointer snap-start overflow-hidden rounded-2xl bg-noite text-left ring-1 ring-latao/40 sm:w-[44%] lg:w-auto"
               >
                 <div className="segmento-foto absolute inset-0">
-                  <img src={familyImg(f.slug)} alt="" className="h-full w-full object-cover" />
+                  <img loading="lazy" src={familyImg(f.slug)} alt="" className="h-full w-full object-cover" />
                 </div>
                 <RatioTag className="top-3 right-3" />
                 <div
@@ -859,7 +852,7 @@ export function HomePage() {
               'inset 0 1px 0 color-mix(in srgb, var(--color-linha-2) 80%, transparent), inset 0 18px 22px -16px rgba(40,46,41,0.28), inset 0 6px 8px -6px rgba(40,46,41,0.18)',
           }}
         >
-          <img
+          <img loading="lazy"
             src={ribbonArquetypus}
             alt=""
             aria-hidden="true"
@@ -875,7 +868,7 @@ export function HomePage() {
               WebkitMaskImage: 'radial-gradient(closest-side, black 55%, transparent 100%)',
             }}
           />
-          <img
+          <img loading="lazy"
             src={ribbonArquetypus}
             alt=""
             aria-hidden="true"
@@ -979,7 +972,7 @@ export function HomePage() {
         >
           {SHOW_PROOF_STATS && (
           <>
-          <img
+          <img loading="lazy"
             src={florArquetypus}
             alt=""
             aria-hidden="true"
@@ -1036,7 +1029,7 @@ export function HomePage() {
               SHOW_PROOF_STATS ? 'mt-14 border-t border-linha' : ''
             }`}
           >
-            <img
+            <img loading="lazy"
               src={florArquetypus}
               alt=""
               aria-hidden="true"
@@ -1082,7 +1075,7 @@ export function HomePage() {
               'inset 0 26px 28px -20px rgba(40,46,41,0.4), inset 0 8px 10px -7px rgba(40,46,41,0.28)',
           }}
         >
-          <img
+          <img loading="lazy"
             src={florArquetypus}
             alt=""
             aria-hidden="true"
@@ -1214,7 +1207,7 @@ export function HomePage() {
               'inset 0 26px 28px -20px rgba(40,46,41,0.4), inset 0 8px 10px -7px rgba(40,46,41,0.28)',
           }}
         >
-          <img
+          <img loading="lazy"
             src={florArquetypus}
             alt=""
             aria-hidden="true"

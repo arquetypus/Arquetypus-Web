@@ -97,7 +97,7 @@ export function Drawer({
       >
         {/* topo com a mesma altura e o mesmo filete dourado do header */}
         <div className="relative flex h-14 shrink-0 items-center justify-between px-5">
-          <img src={wordmarkPreto} alt="Arquétypus" className="logo-tinta h-9 w-auto" />
+          <img loading="lazy" src={wordmarkPreto} alt="Arquétypus" className="logo-tinta h-9 w-auto" />
           <button ref={closeRef} type="button" aria-label="Fechar menu" onClick={onClose} className="-mr-2 grid size-10 cursor-pointer place-items-center">
             <svg aria-hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" className="size-[18px]">
               <path d="M6 6l12 12M18 6 6 18" />

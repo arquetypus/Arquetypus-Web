@@ -158,7 +158,7 @@ export function ProductPage() {
                   {i === 1 && <span aria-hidden className="mb-16 font-display text-4xl text-latao lg:text-5xl">+</span>}
                   <figure className="flex flex-col items-center">
                     {FRASCO_CUT_IMG[x.id] && (
-                      <img
+                      <img loading="lazy"
                         src={FRASCO_CUT_IMG[x.id]}
                         alt={`Frasco ${x.nome}`}
                         className="h-40 w-auto rounded-lg shadow-[0_18px_40px_-18px_rgba(0,0,0,0.7)] ring-1 ring-latao/40 lg:h-56"
@@ -251,7 +251,7 @@ export function ProductPage() {
             <Link to={productPath(par)} className="group mx-auto mt-10 block max-w-md">
               <CutFrame cut={14} innerClassName="flex items-center gap-5 bg-papel p-5 text-left text-tinta transition-colors group-hover:bg-papel-2">
                 {FRASCO_CUT_IMG[par.id] && (
-                  <img src={FRASCO_CUT_IMG[par.id]} alt="" aria-hidden className="h-24 w-auto shrink-0 rounded-md" />
+                  <img loading="lazy" src={FRASCO_CUT_IMG[par.id]} alt="" aria-hidden className="h-24 w-auto shrink-0 rounded-md" />
                 )}
                 <span className="min-w-0 flex-1">
                   <b className="block font-display text-2xl font-normal" style={{ color: par.cor }}>

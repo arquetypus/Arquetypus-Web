@@ -186,7 +186,7 @@ export function CommunityBoutique() {
               <div className="ugc-pop relative z-10 mx-1.5 -mt-10 rounded-xl bg-papel p-2 ring-1 ring-latao/45">
                 <div className="flex items-center gap-2.5">
                   {FRASCO_CUT_IMG[arq.id] && (
-                    <img src={FRASCO_CUT_IMG[arq.id]} alt="" className="h-[68px] w-[51px] shrink-0 rounded-md object-cover lg:h-20 lg:w-14" />
+                    <img loading="lazy" src={FRASCO_CUT_IMG[arq.id]} alt="" className="h-[68px] w-[51px] shrink-0 rounded-md object-cover lg:h-20 lg:w-14" />
                   )}
                   <span className="min-w-0 flex-1">
                     <span className="flex items-baseline justify-between gap-2">
@@ -372,7 +372,7 @@ export function FooterBoutique() {
         <div className="grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-12 lg:gap-x-12">
           {/* marca: logo, assinatura e redes (padrão de loja: redes junto da marca, links em colunas por assunto) */}
           <div className="col-span-2 flex flex-col items-center text-center lg:col-span-4 lg:items-start lg:text-left">
-            <img src={logoDourado} alt="Arquétypus Parfum" className="h-auto w-44 lg:w-52" />
+            <img loading="lazy" src={logoDourado} alt="Arquétypus Parfum" className="h-auto w-44 lg:w-52" />
             <p className="mt-5 max-w-[30ch] font-display text-lg leading-snug text-papel-inv/80 italic">
               Você não escolhe um perfume. Você reconhece o seu.
             </p>

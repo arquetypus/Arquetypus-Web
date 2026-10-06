@@ -155,6 +155,9 @@ export function HeroCinema() {
             <img
               src={s.img}
               alt={s.alt}
+              // 1º slide é o topo da home: baixa de cara e na frente; os outros só depois (aparecem em 4 s ou mais)
+              loading={i === 0 ? 'eager' : 'lazy'}
+              fetchPriority={i === 0 ? 'high' : 'low'}
               className={`absolute inset-0 h-full w-full object-cover transition-transform ease-out motion-reduce:scale-100 motion-reduce:transition-none ${
                 i === current ? 'scale-100 duration-[6000ms]' : 'scale-[1.08] delay-[1200ms] duration-0'
               }`}

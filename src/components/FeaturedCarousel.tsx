@@ -103,7 +103,7 @@ export function FeaturedCarousel() {
           <picture key={`img-${s.id}`} className="contents">
           {/* hidden: com a picture em `contents`, o source (que aqui fica block) virava linha extra do grid */}
           <source media="(min-width: 1024px)" srcSet={s.imgDesktop} className="hidden" />
-          <img
+          <img loading="lazy"
             src={s.img}
             alt={i === current ? `${a.nome}: ${a.tipo.toLowerCase()} em foto editorial` : ''}
             aria-hidden={i !== current}

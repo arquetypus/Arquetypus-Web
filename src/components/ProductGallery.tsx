@@ -59,7 +59,7 @@ export function ProductGallery({ nome, bg, slides }: { nome: string; bg: string;
                 i === current ? 'opacity-100 ring-tinta' : 'opacity-60 ring-linha hover:opacity-100'
               }`}
             >
-              <img src={s.src} alt="" decoding="async" className="aspect-square w-full object-cover" />
+              <img loading="lazy" src={s.src} alt="" decoding="async" className="aspect-square w-full object-cover" />
             </button>
           ))}
         </div>
@@ -91,7 +91,8 @@ export function ProductGallery({ nome, bg, slides }: { nome: string; bg: string;
             aria-roledescription="slide"
             aria-label={`${i + 1} de ${slides.length}`}
           >
-            <MediaSlot aspect="1/1" bg={bg} src={s.src} alt={s.alt} requisito={s.requisito} className="rounded-none" />
+            {/* 1ª foto é o topo da PDP: baixa de cara; as outras só quando a galeria chega nelas */}
+            <MediaSlot aspect="1/1" bg={bg} src={s.src} alt={s.alt} prioridade={i === 0} requisito={s.requisito} className="rounded-none" />
           </div>
         ))}
       </div>

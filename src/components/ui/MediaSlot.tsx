@@ -13,6 +13,9 @@ import { RatioTag } from '@/components/ui/RatioTag'
  * `alt` é obrigatório (out/2026), pra toda foto nova passar por uma decisão: texto que descreve a foto quando ela
  * é conteúdo (produto, pessoa com o produto), ou `alt=""` explícito pra foto decorativa ou já dita pelo texto ao
  * lado. Sem foto (placeholder), o `alt` não é usado — passar `alt=""`.
+ *
+ * `prioridade` (out/2026): por padrão a foto só baixa perto da tela (`loading="lazy"`). Foto da primeira tela
+ * (topo da página, 1ª foto da galeria) passa `prioridade` — baixa de cara e com prioridade alta.
  */
 export function MediaSlot({
   aspect = '4/5',
@@ -25,6 +28,7 @@ export function MediaSlot({
   tagClassName,
   tagLabel,
   alt,
+  prioridade = false,
 }: {
   aspect?: string
   bg?: string
@@ -36,6 +40,7 @@ export function MediaSlot({
   tagClassName?: string
   tagLabel?: string
   alt: string
+  prioridade?: boolean
 }) {
   if (src) {
     return (
@@ -45,7 +50,12 @@ export function MediaSlot({
       >
         <picture>
           {srcDesktop && <source media="(min-width: 1024px)" srcSet={srcDesktop} />}
-          <img src={src} alt={alt} className="absolute inset-0 h-full w-full object-cover" />
+          <img
+            src={src}
+            alt={alt}
+            loading={prioridade ? 'eager' : 'lazy'}
+            fetchPriority={prioridade ? 'high' : undefined}
+            className="absolute inset-0 h-full w-full object-cover" />
         </picture>
         <RatioTag className={tagClassName} title={requisito} label={tagLabel} />
       </div>
