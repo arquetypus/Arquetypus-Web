@@ -1,7 +1,8 @@
 import { COMPARISON } from '@/data/home'
 import { Eyebrow } from '@/components/ui/Eyebrow'
-import arquetypusImg from '@/assets/fotos/diferenca/arquetypus.jpg'
-import splashComumImg from '@/assets/fotos/diferenca/splash-comum.jpg'
+import arquetypusImg from '@/assets/fotos/diferenca/arquetypus.jpg?responsiva'
+import splashComumImg from '@/assets/fotos/diferenca/splash-comum.jpg?responsiva'
+import { foto } from '@/lib/foto'
 
 /** Dourado sobre o fundo escuro da seção */
 const LATAO = 'var(--color-latao)'
@@ -31,8 +32,8 @@ function Cross() {
  */
 export function DifferenceSection() {
   const colunas = [
-    { key: 'arquetypus', label: 'Arquétypus', img: arquetypusImg, alt: 'Frascos Arquétypus de Afrodite, Fênix e Sereia' },
-    { key: 'comum', label: 'Marcas tradicionais', img: splashComumImg, alt: 'Frasco genérico de body splash' },
+    { key: 'arquetypus', label: 'Arquétypus', img: foto(arquetypusImg), alt: 'Frascos Arquétypus de Afrodite, Fênix e Sereia' },
+    { key: 'comum', label: 'Marcas tradicionais', img: foto(splashComumImg), alt: 'Frasco genérico de body splash' },
   ] as const
 
   return (
@@ -73,7 +74,9 @@ export function DifferenceSection() {
               >
                 <div>
                   <img
-                    src={col.img}
+                    src={col.img.src}
+                    srcSet={col.img.srcSet || undefined}
+                    sizes="(min-width: 1024px) 30vw, 55vw"
                     alt={col.alt}
                     loading="lazy"
                     // mesma altura nas duas fotos (a coluna Arquétypus é mais larga) pra os rótulos ficarem na mesma linha

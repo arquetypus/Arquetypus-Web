@@ -4,6 +4,7 @@ import { HERO_SLIDES, QUIZ_CTA } from '@/data/home'
 import { scrollToId } from '@/lib/scrollToId'
 import { brl, FilterTabs, parcela, pix, type CatalogProps } from './shared'
 import { productPath } from '@/data/archetypes'
+import { PDP_LIFESTYLE } from '@/data/productMedia'
 
 /**
  * Direção "Cinema" (ThemeSwitcher) — campanha de perfume como filme noir. Referências da Behance: "Voléa —
@@ -13,11 +14,7 @@ import { productPath } from '@/data/archetypes'
  */
 
 // foto da pessoa com o frasco (a mesma da 2ª foto da galeria da PDP); arquivo = id do arquétipo
-const LIFESTYLE: Record<string, string> = Object.fromEntries(
-  Object.entries(import.meta.glob<string>('@/assets/fotos/pdp-lifestyle/*.jpg', { eager: true, import: 'default' })).map(
-    ([path, src]) => [path.split('/').pop()!.replace('.jpg', ''), src],
-  ),
-)
+const LIFESTYLE = PDP_LIFESTYLE
 
 const AUTOPLAY_MS = 4000
 // breakpoint `lg` do Tailwind: daí pra cima o hero mostra a foto 16:9, sem vídeo
@@ -151,9 +148,12 @@ export function HeroCinema() {
           className={`absolute inset-0 transition-opacity duration-[1200ms] ease-out motion-reduce:transition-none ${i === current ? 'opacity-100' : 'opacity-0'}`}
         >
           <picture>
-            <source media="(min-width: 1024px)" srcSet={s.imgDesktop} />
+            {/* várias larguras (lib/foto.ts): o celular baixa a versão do tamanho da tela */}
+            <source media="(min-width: 1024px)" srcSet={s.fotoDesktop.srcSet || s.imgDesktop} sizes="100vw" />
             <img
               src={s.img}
+              srcSet={s.foto.srcSet || undefined}
+              sizes="100vw"
               alt={s.alt}
               // 1º slide é o topo da home: baixa de cara e na frente; os outros só depois (aparecem em 4 s ou mais)
               loading={i === 0 ? 'eager' : 'lazy'}

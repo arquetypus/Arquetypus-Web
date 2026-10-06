@@ -1,6 +1,11 @@
 import type { CSSProperties, ReactNode } from 'react'
 import { Eyebrow } from '@/components/ui/Eyebrow'
-import florArquetypus from '@/assets/brand/flor-arquetypus.png'
+import florArquetypus from '@/assets/brand/flor-arquetypus.png?responsiva'
+import { foto } from '@/lib/foto'
+
+const florFoto = foto(florArquetypus)
+/** Atributos da flor-marca d'água (várias larguras; aparece com até 440 px). Espalhar no <img>: {...FLOR_IMG}. */
+export const FLOR_IMG = { src: florFoto.src, srcSet: florFoto.srcSet || undefined, sizes: '(min-width: 1024px) 440px, 60vw' }
 
 /**
  * Peças da linguagem visual da home reaproveitadas nas páginas internas (Criadores, PDP).
@@ -34,7 +39,7 @@ export function Glow({ className, forca = 16 }: { className: string; forca?: num
 export function Flor({ style }: { style: CSSProperties }) {
   return (
     <img loading="lazy"
-      src={florArquetypus}
+      {...FLOR_IMG}
       alt=""
       aria-hidden="true"
       className="pointer-events-none absolute select-none"

@@ -1,9 +1,10 @@
 import { Link, useLocation } from 'react-router-dom'
 import type { Archetype } from '@/types/archetype'
 import { ARCHETYPES, productPath } from '@/data/archetypes'
-import { FRASCO_IMG, HERO_SLIDES, SEALS } from '@/data/home'
+import { FRASCO_FOTO, HERO_SLIDES, SEALS } from '@/data/home'
 import { scrollToId } from '@/lib/scrollToId'
-import heroColecao from '@/assets/fotos/hero/colecao-desktop.jpg'
+// mesma foto do 1º banner do hero (HERO_SLIDES), já em várias larguras — não importar o arquivo de novo (lib/foto.ts)
+const heroColecao = HERO_SLIDES[0].fotoDesktop
 import { Sobrenome } from '@/components/ui/Sobrenome'
 import { Preco } from '@/components/ui/Preco'
 import { Avaliacao } from '@/components/ui/Avaliacao'
@@ -60,7 +61,7 @@ export function HeroBoutique() {
           </ul>
         </div>
         <div className="relative mt-10 lg:col-span-7 lg:mt-0">
-          <img src={heroColecao} alt="Frascos Arquétypus sobre pedra escura" className="aspect-[4/3] w-full rounded-3xl object-cover object-right" />
+          <img src={heroColecao.src} srcSet={heroColecao.srcSet || undefined} sizes="(min-width: 1024px) 50vw, 100vw" alt="Frascos Arquétypus sobre pedra escura" className="aspect-[4/3] w-full rounded-3xl object-cover object-right" />
           {/* etiqueta de preço sobre a foto */}
           <div className="absolute bottom-4 left-4 rounded-2xl bg-papel/95 px-4 py-3 shadow-lg backdrop-blur">
             <span className="block font-label text-[9px] tracking-[0.16em] text-tinta-3 uppercase">A partir de</span>
@@ -142,7 +143,10 @@ export function CatalogGrid({
               <Link to={productPath(a)} state={{ backgroundLocation: location }} className="group relative block">
                 <div className="aspect-[4/5] overflow-hidden" style={{ background: a.bg }}>
                   <img
-                    src={FRASCO_IMG[a.id]}
+                    src={FRASCO_FOTO[a.id]?.src}
+                    srcSet={FRASCO_FOTO[a.id]?.srcSet}
+                    // 2 colunas no celular, 3 no tablet, 4 no desktop
+                    sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
                     alt={`${a.tipo} ${a.nome}`}
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"

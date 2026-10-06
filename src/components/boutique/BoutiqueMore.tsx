@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import type { Archetype } from '@/types/archetype'
 import { getArchetype, productPath } from '@/data/archetypes'
-import { FRASCO_CUT_IMG, JOURNAL, UGC_IMG, UGC_VIDEOS, CONTATOS } from '@/data/home'
+import { FRASCO_CUT_IMG, JOURNAL, UGC_FOTO, UGC_VIDEOS, CONTATOS } from '@/data/home'
 import { CONDICOES, EMPRESA_LINHA, parcela, precoPix } from '@/data/empresa'
 import { openCookiePreferences } from '@/lib/consent'
 import logoDourado from '@/assets/brand/logo-dourado.png'
@@ -162,7 +162,9 @@ export function CommunityBoutique() {
               {/* o vídeo */}
               <div className="relative aspect-[2/3] overflow-hidden rounded-2xl bg-noite ring-1 ring-latao/30 lg:aspect-auto lg:h-(--ugc-h)">
                 <img
-                  src={UGC_IMG[v.archetypeId]}
+                  src={UGC_FOTO[v.archetypeId]?.src}
+                  srcSet={UGC_FOTO[v.archetypeId]?.srcSet}
+                  sizes="(min-width: 1024px) 360px, 77vw"
                   alt={`${v.creator} segurando o Body Splash Premium ${arq.nome}`}
                   loading={i === total ? 'eager' : 'lazy'}
                   decoding="async"

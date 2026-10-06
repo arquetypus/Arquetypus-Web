@@ -7,66 +7,33 @@ import { ARCHETYPES, getArchetype, productPath, produtoNome } from '@/data/arche
 import { FAMILIAS } from '@/data/families'
 import { CONDICOES, EMPRESA, EMPRESA_LINHA, FRETE_GRATIS_ACIMA } from '@/data/empresa'
 import { maiuscula, porExtenso } from '@/lib/extenso'
+import { foto, fotosPorId, urls, type FotoBruta } from '@/lib/foto'
 import heroVideo from '@/assets/hero/hero-video.mp4'
-import heroVideoPoster from '@/assets/hero/hero-video-poster.jpg'
+import heroVideoPoster from '@/assets/hero/hero-video-poster.jpg?responsiva'
 // Fotos em src/assets/fotos/ são as escolhidas pela designer (set/2026), convertidas pra JPG.
-import heroAfrodite from '@/assets/fotos/hero/afrodite.jpg'
-import heroGuerreiro from '@/assets/fotos/hero/guerreiro.jpg'
+import heroAfrodite from '@/assets/fotos/hero/afrodite.jpg?responsiva'
+import heroGuerreiro from '@/assets/fotos/hero/guerreiro.jpg?responsiva'
 // versões 16:9 pro desktop (lg+). Afrodite/Guerreiro: foto 9:16 da designer recortada em 3:4 e expandida
 // pra 16:9 no Higgsfield (FLUX.2 Pro Outpaint), mais espaço à esquerda pro texto — o centro é a foto original.
 // No slide de vídeo o desktop mostra um still (o vídeo é 9:16): frascos reais sobre pedra escura, gerado no
 // Higgsfield (GPT Image 2.5) com as fotos de produto como referência — trocar pela foto de campanha quando houver
-import heroVideoDesktop from '@/assets/fotos/hero/colecao-desktop.jpg'
-import heroAfroditeDesktop from '@/assets/fotos/hero/afrodite-desktop.jpg'
-import heroGuerreiroDesktop from '@/assets/fotos/hero/guerreiro-desktop.jpg'
-import segmentoFeminino from '@/assets/fotos/segmentos/feminino.jpg'
-import segmentoMasculino from '@/assets/fotos/segmentos/masculino.jpg'
-import segmentoUnissex from '@/assets/fotos/segmentos/compartilhavel.jpg'
+import heroVideoDesktop from '@/assets/fotos/hero/colecao-desktop.jpg?responsiva'
+import heroAfroditeDesktop from '@/assets/fotos/hero/afrodite-desktop.jpg?responsiva'
+import heroGuerreiroDesktop from '@/assets/fotos/hero/guerreiro-desktop.jpg?responsiva'
+import segmentoFeminino from '@/assets/fotos/segmentos/feminino.jpg?responsiva'
+import segmentoMasculino from '@/assets/fotos/segmentos/masculino.jpg?responsiva'
+import segmentoUnissex from '@/assets/fotos/segmentos/compartilhavel.jpg?responsiva'
 import energiaSeducao from '@/assets/mocks/energia-seducao.png'
 import energiaPoder from '@/assets/mocks/energia-poder.png'
 import energiaMisterio from '@/assets/mocks/energia-misterio.png'
 import energiaForca from '@/assets/mocks/energia-forca.png'
-import frascoAfrodite from '@/assets/fotos/catalogo/afrodite.jpg'
-import frascoImperatriz from '@/assets/fotos/catalogo/imperatriz.jpg'
-import frascoCleopatra from '@/assets/fotos/catalogo/cleopatra.jpg'
-import frascoFada from '@/assets/fotos/catalogo/fada.jpg'
-import frascoSereia from '@/assets/fotos/catalogo/sereia.jpg'
-import frascoZeus from '@/assets/fotos/catalogo/zeus.jpg'
-import frascoGuerreiro from '@/assets/fotos/catalogo/guerreiro.jpg'
-import frascoImperador from '@/assets/fotos/catalogo/imperador.jpg'
-import frascoFenix from '@/assets/fotos/catalogo/fenix.jpg'
-import miniAfrodite from '@/assets/fotos/miniaturas/afrodite.jpg'
-import miniImperatriz from '@/assets/fotos/miniaturas/imperatriz.jpg'
-import miniCleopatra from '@/assets/fotos/miniaturas/cleopatra.jpg'
-import miniFada from '@/assets/fotos/miniaturas/fada.jpg'
-import miniSereia from '@/assets/fotos/miniaturas/sereia.jpg'
-import miniZeus from '@/assets/fotos/miniaturas/zeus.jpg'
-import miniGuerreiro from '@/assets/fotos/miniaturas/guerreiro.jpg'
-import miniImperador from '@/assets/fotos/miniaturas/imperador.jpg'
-import miniFenix from '@/assets/fotos/miniaturas/fenix.jpg'
 export { default as BODEGON_IMG } from '@/assets/fotos/colecao-completa.jpg'
-import ugcCleopatra from '@/assets/fotos/comunidade/cleopatra.jpg'
-import ugcSereia from '@/assets/fotos/comunidade/sereia.jpg'
-import ugcAfrodite from '@/assets/fotos/comunidade/afrodite.jpg'
-import ugcImperatriz from '@/assets/fotos/comunidade/imperatriz.jpg'
-// geradas por IA (Higgsfield, GPT Image 2.5, out/2026) a partir das fotos de frasco da PDP — placeholders, ver UGC_VIDEOS
-import ugcFada from '@/assets/fotos/comunidade/fada.jpg'
-import ugcFenix from '@/assets/fotos/comunidade/fenix.jpg'
-import ugcGuerreiro from '@/assets/fotos/comunidade/guerreiro.jpg'
-import ugcImperador from '@/assets/fotos/comunidade/imperador.jpg'
-import ugcZeus from '@/assets/fotos/comunidade/zeus.jpg'
 
-export const UGC_IMG: Record<string, string> = {
-  cleopatra: ugcCleopatra,
-  sereia: ugcSereia,
-  afrodite: ugcAfrodite,
-  imperatriz: ugcImperatriz,
-  fada: ugcFada,
-  fenix: ugcFenix,
-  guerreiro: ugcGuerreiro,
-  imperador: ugcImperador,
-  zeus: ugcZeus,
-}
+// Fotos da comunidade (arquivo = id do arquétipo). Fada, Fênix, Guerreiro, Imperador e Zeus foram geradas por IA
+// (Higgsfield, GPT Image 2.5, out/2026) a partir das fotos de frasco da PDP — placeholders, ver UGC_VIDEOS.
+// Lidas por pasta, em várias larguras (lib/foto.ts): foto nova com o id do arquétipo entra sozinha.
+export const UGC_FOTO = fotosPorId(import.meta.glob<FotoBruta>('@/assets/fotos/comunidade/*.jpg', { eager: true, import: 'default', query: '?responsiva' }))
+export const UGC_IMG = urls(UGC_FOTO)
 
 export const PUV =
   `Body Splash Premium de perfumaria para quem cansou de cheirar igual a todo mundo e não quer mais escolher fragrância no escuro — ${porExtenso(ARCHETYPES.length, 'm')} arquétipos, um teste de 2 minutos e ${CONDICOES.desistenciaDias} dias de garantia.`
@@ -83,8 +50,10 @@ export const HERO_SLIDES = [
     requisito: 'VÍDEO · 9:16 · 1080×1920 · HERO FULLSCREEN · AUTOPLAY MUTED',
     // decorativa: no celular é clima (pessoa entre véus), no desktop os frascos; o texto do slide carrega a mensagem
     alt: '',
-    img: heroVideoPoster,
-    imgDesktop: heroVideoDesktop,
+    img: foto(heroVideoPoster).src,
+    imgDesktop: foto(heroVideoDesktop).src,
+    foto: foto(heroVideoPoster),
+    fotoDesktop: foto(heroVideoDesktop),
     video: heroVideo,
     // tom do escurecimento atrás do texto — marrom quase preto, da luz âmbar da foto dos frascos
     tint: '#150e09',
@@ -101,8 +70,10 @@ export const HERO_SLIDES = [
     cta: { label: 'Conhecer Afrodite', to: productPath(getArchetype('afrodite')!) },
     requisito: 'FOTO · 9:16 · 1080×1920 · LIFESTYLE · AFRODITE · MODELO + FRASCO',
     alt: `${produtoNome(getArchetype('afrodite')!)} segurado junto ao colo, entre rosas cor-de-rosa`,
-    img: heroAfrodite,
-    imgDesktop: heroAfroditeDesktop,
+    img: foto(heroAfrodite).src,
+    imgDesktop: foto(heroAfroditeDesktop).src,
+    foto: foto(heroAfrodite),
+    fotoDesktop: foto(heroAfroditeDesktop),
     tint: '#2e141c', // vinho/rosado bem escuro
   },
   {
@@ -116,8 +87,10 @@ export const HERO_SLIDES = [
     cta: { label: 'Conhecer Guerreiro', to: productPath(getArchetype('guerreiro')!) },
     requisito: 'FOTO · 9:16 · 1080×1920 · LIFESTYLE · GUERREIRO · MODELO + FRASCO',
     alt: `Mão segurando o ${produtoNome(getArchetype('guerreiro')!)}`,
-    img: heroGuerreiro,
-    imgDesktop: heroGuerreiroDesktop,
+    img: foto(heroGuerreiro).src,
+    imgDesktop: foto(heroGuerreiroDesktop).src,
+    foto: foto(heroGuerreiro),
+    fotoDesktop: foto(heroGuerreiroDesktop),
     tint: '#0e1829', // azul-marinho escuro
   },
 ]
@@ -162,19 +135,21 @@ export const DIAGNOSIS = [
 export const SEGMENTS_HEADING = { eyebrow: 'Coleções', title: 'Escolha por onde começar' }
 
 export const SEGMENTS = [
-  { label: 'Para elas', name: 'Feminino', meta: '5 fragrâncias', seg: 'F' as const, img: segmentoFeminino },
-  { label: 'Para eles', name: 'Masculino', meta: '3 fragrâncias', seg: 'M' as const, img: segmentoMasculino },
-  { label: 'Para todos', name: 'Compartilhável', meta: '1 fragrância', seg: 'U' as const, img: segmentoUnissex },
+  { label: 'Para elas', name: 'Feminino', meta: '5 fragrâncias', seg: 'F' as const, img: foto(segmentoFeminino).src, foto: foto(segmentoFeminino) },
+  { label: 'Para eles', name: 'Masculino', meta: '3 fragrâncias', seg: 'M' as const, img: foto(segmentoMasculino).src, foto: foto(segmentoMasculino) },
+  { label: 'Para todos', name: 'Compartilhável', meta: '1 fragrância', seg: 'U' as const, img: foto(segmentoUnissex).src, foto: foto(segmentoUnissex) },
 ]
 
 // Fotos das famílias olfativas, geradas no Higgsfield (GPT Image 2.5, out/2026) no estilo editorial quente
 // em linho/travertino (a "opção b", escolhida em out/2026). Arquivo = {slug}.jpg. Arquivos *-opcao-*.jpg na
 // mesma pasta são alternativas em avaliação: ficam fora do build até alguém escolher.
-const FAMILY_PHOTOS = import.meta.glob<string>(['@/assets/fotos/familias/*.jpg', '!**/*-opcao-*.jpg'], {
+const FAMILY_FOTOS = fotosPorId(import.meta.glob<FotoBruta>(['@/assets/fotos/familias/*.jpg', '!**/*-opcao-*.jpg'], {
   eager: true,
   import: 'default',
-})
-export const familyImg = (slug: string) => FAMILY_PHOTOS[`/src/assets/fotos/familias/${slug}.jpg`]
+  query: '?responsiva',
+}))
+export const familyFoto = (slug: string) => FAMILY_FOTOS[slug]
+export const familyImg = (slug: string) => FAMILY_FOTOS[slug]?.src
 
 /**
  * As 5 famílias (data/families.ts) com os arquétipos de cada uma, montados a partir de
@@ -185,6 +160,7 @@ export const FAMILIES = FAMILIAS.map((f) => ({
   ...f,
   arquetipos: [0, 1].flatMap((i) => ARCHETYPES.filter((a) => a.familias[i] === f.slug).map((a) => a.id)),
   img: familyImg(f.slug),
+  foto: familyFoto(f.slug),
 }))
 
 export const ENERGIES = [
@@ -195,33 +171,19 @@ export const ENERGIES = [
 ]
 
 /** Foto do frasco (pasta "bodys" da designer) — card do catálogo "Os 9 arquétipos". A foto com pessoa fica na galeria da PDP. */
-export const FRASCO_IMG: Record<string, string> = {
-  afrodite: frascoAfrodite,
-  imperatriz: frascoImperatriz,
-  cleopatra: frascoCleopatra,
-  fada: frascoFada,
-  sereia: frascoSereia,
-  zeus: frascoZeus,
-  guerreiro: frascoGuerreiro,
-  imperador: frascoImperador,
-  fenix: frascoFenix,
-}
+// Lida por pasta (arquivo = id do arquétipo), em várias larguras (lib/foto.ts): foto nova entra sozinha.
+export const FRASCO_FOTO = fotosPorId(import.meta.glob<FotoBruta>('@/assets/fotos/catalogo/*.jpg', { eager: true, import: 'default', query: '?responsiva' }))
+export const FRASCO_IMG = urls(FRASCO_FOTO)
 
 /**
  * Miniatura do frasco (52:76) — product tag da comunidade. Recorte da foto de produto
  * (pasta "bodys" da designer) centrado no frasco; não é recorte com fundo transparente.
  */
-export const FRASCO_CUT_IMG: Record<string, string> = {
-  afrodite: miniAfrodite,
-  imperatriz: miniImperatriz,
-  cleopatra: miniCleopatra,
-  fada: miniFada,
-  sereia: miniSereia,
-  zeus: miniZeus,
-  guerreiro: miniGuerreiro,
-  imperador: miniImperador,
-  fenix: miniFenix,
-}
+// Lida por pasta (arquivo = id do arquétipo). Pequena (≤ 80 px na tela): uma versão só, sem srcset.
+export const FRASCO_CUT_IMG: Record<string, string> = Object.fromEntries(
+  Object.entries(import.meta.glob<string>('@/assets/fotos/miniaturas/*.jpg', { eager: true, import: 'default' }))
+    .map(([caminho, url]) => [caminho.split('/').pop()!.replace('.jpg', ''), url]),
+)
 
 export const QUALIFICATION = [
   {

@@ -45,6 +45,19 @@ for (const page of pages) {
   assert.ok(deCara.length <= TETO_IMAGENS_DE_CARA,
     `${page.file}: ${deCara.length} imagens sem loading="lazy" (teto ${TETO_IMAGENS_DE_CARA}):\n${deCara.map(t => t.match(/src="([^"]+)"/)?.[1]).join('\n')}`);
 }
+// Foto grande sem srcset (out/2026): imagem publicada acima de 60 KB precisa sair em várias larguras, senão o
+// celular baixa a versão de desktop. Resolver importando com `?responsiva` (ver src/lib/foto.ts).
+const TETO_SEM_SRCSET_KB = 60;
+const semSrcset = new Set();
+for (const page of pages) {
+  for (const [tag] of page.html.matchAll(/<img\b[^>]*>/g)) {
+    const src = tag.match(/\bsrc="(\/assets\/[^"]+)"/)?.[1];
+    if (!src || /\bsrcset="/i.test(tag)) continue;
+    const kb = (await readFile(path.join(dist, src))).length / 1024;
+    if (kb > TETO_SEM_SRCSET_KB) semSrcset.add(`${src} (${Math.round(kb)} KB) em ${page.file}`);
+  }
+}
+assert.deepEqual([...semSrcset], [], `Foto acima de ${TETO_SEM_SRCSET_KB} KB sem srcset — importar com ?responsiva (src/lib/foto.ts)`);
 const report = await verifyDocuments(pages, renderer, dist);
 await writeFile(path.join(root, 'dist-server/verify-prerender.json'), JSON.stringify({ ...report, inventory: files }, null, 2) + '\n');
 console.log(`PASS artefatos: ${pages.length} HTMLs, ${report.resources.length} recursos, ${report.sitemap.length} canonicals no sitemap, ${imagens.length} imagens até ${TETO_IMAGEM_KB} KB.`);

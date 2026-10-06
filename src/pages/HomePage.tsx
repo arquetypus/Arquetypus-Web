@@ -5,7 +5,7 @@ import {
   BODEGON_IMG,
   DIAGNOSIS,
   FAMILIES,
-  familyImg,
+  familyFoto,
   FRASCO_CUT_IMG,
   FRASCO_IMG,
   JOURNAL,
@@ -62,10 +62,11 @@ import { useCarouselIndex } from '@/lib/useCarouselIndex'
 import { useTapGuard } from '@/lib/useTapGuard'
 import { useInfiniteCarousel } from '@/lib/useInfiniteCarousel'
 import { useCoverflow } from '@/lib/useCoverflow'
-import featuredFenix from '@/assets/fotos/destaque-fenix.jpg'
-import florArquetypus from '@/assets/brand/flor-arquetypus.png'
+import featuredFenix from '@/assets/fotos/destaque-fenix.jpg?responsiva'
+import { foto } from '@/lib/foto'
 import ribbonArquetypus from '@/assets/brand/ribbon-arquetypus.png'
 import logoBranco from '@/assets/brand/logo-branco.png'
+import { FLOR_IMG } from '@/components/ui/Editorial'
 import { Sobrenome } from '@/components/ui/Sobrenome'
 import { Preco } from '@/components/ui/Preco'
 
@@ -110,7 +111,7 @@ const SHOW_CLOSING = false
 // Arquétipo em destaque das estruturas que ainda usam um só (Ateliê e direções). A home Boutique/Editorial
 // usa o banner rotativo (components/FeaturedCarousel). Foto escolhida pela designer (set/2026).
 const FEATURED_ID = 'fenix'
-const FEATURED_IMG = featuredFenix
+const FEATURED_IMG = foto(featuredFenix).src
 const featured = getArchetype(FEATURED_ID)!
 
 /** Largura do card de UGC — o carrossel centraliza a partir dela. Vem da variável
@@ -156,7 +157,7 @@ function CommunitySection() {
       }}
     >
       <img loading="lazy"
-        src={florArquetypus}
+        {...FLOR_IMG}
         alt=""
         aria-hidden="true"
         className="pointer-events-none absolute select-none"
@@ -647,7 +648,8 @@ export function HomePage() {
                 <MediaSlot
                   aspect="auto"
                   bg="transparent"
-                  src={seg.img}
+                  src={seg.foto}
+                  sizes="(min-width: 768px) 33vw, 80vw"
                   // decorativa: o rótulo do gênero está escrito no card
                   alt=""
                   requisito={`FOTO · 4:3 · 1600×1200 · LIFESTYLE · ${seg.label.toUpperCase()}`}
@@ -694,7 +696,7 @@ export function HomePage() {
           }}
         >
           <img loading="lazy"
-            src={florArquetypus}
+            {...FLOR_IMG}
             alt=""
             aria-hidden="true"
             className="pointer-events-none absolute select-none"
@@ -709,7 +711,7 @@ export function HomePage() {
             }}
           />
           <img loading="lazy"
-            src={florArquetypus}
+            {...FLOR_IMG}
             alt=""
             aria-hidden="true"
             className="pointer-events-none absolute select-none"
@@ -807,7 +809,7 @@ export function HomePage() {
                 className="segmento no-press relative isolate block aspect-[3/4] w-[74%] shrink-0 cursor-pointer snap-start overflow-hidden rounded-2xl bg-noite text-left ring-1 ring-latao/40 sm:w-[44%] lg:w-auto"
               >
                 <div className="segmento-foto absolute inset-0">
-                  <img loading="lazy" src={familyImg(f.slug)} alt="" className="h-full w-full object-cover" />
+                  <img loading="lazy" src={familyFoto(f.slug)?.src} srcSet={familyFoto(f.slug)?.srcSet} sizes="(min-width: 1024px) 20vw, 80vw" alt="" className="h-full w-full object-cover" />
                 </div>
                 <RatioTag className="top-3 right-3" />
                 <div
@@ -973,7 +975,7 @@ export function HomePage() {
           {SHOW_PROOF_STATS && (
           <>
           <img loading="lazy"
-            src={florArquetypus}
+            {...FLOR_IMG}
             alt=""
             aria-hidden="true"
             className="pointer-events-none absolute select-none"
@@ -1030,7 +1032,7 @@ export function HomePage() {
             }`}
           >
             <img loading="lazy"
-              src={florArquetypus}
+              {...FLOR_IMG}
               alt=""
               aria-hidden="true"
               // lg: flor maior pra acompanhar o texto — ! vence o width inline
@@ -1076,7 +1078,7 @@ export function HomePage() {
           }}
         >
           <img loading="lazy"
-            src={florArquetypus}
+            {...FLOR_IMG}
             alt=""
             aria-hidden="true"
             // lg: flor maior, proporcional à seção mais alta
@@ -1208,7 +1210,7 @@ export function HomePage() {
           }}
         >
           <img loading="lazy"
-            src={florArquetypus}
+            {...FLOR_IMG}
             alt=""
             aria-hidden="true"
             // lg: flor maior, proporcional à seção mais alta

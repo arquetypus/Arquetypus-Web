@@ -3,18 +3,19 @@ import { Link, useLocation } from 'react-router-dom'
 import { getArchetype, productPath } from '@/data/archetypes'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { RatioTag } from '@/components/ui/RatioTag'
-import featuredFenix from '@/assets/fotos/destaque-fenix.jpg'
+import { foto } from '@/lib/foto'
+import featuredFenix from '@/assets/fotos/destaque-fenix.jpg?responsiva'
 // Sereia e Zeus: geradas por IA (Higgsfield, GPT Image 2.5, out/2026) com o frasco da PDP como referência, cada
 // uma numa natureza-morta de alta perfumaria própria — Sereia num pedestal de madrepérola sobre água parada, Zeus
 // sobre travertino diante de uma estátua grega, em bege nublado. Trocar pelas de campanha; as versões 9:16 foram
 // expandidas embaixo e nas laterais (FLUX.2 Pro Outpaint) pra o frasco ficar menor e acima do texto no celular
-import featuredSereia from '@/assets/fotos/destaque-sereia.jpg'
-import featuredZeus from '@/assets/fotos/destaque-zeus.jpg'
+import featuredSereia from '@/assets/fotos/destaque-sereia.jpg?responsiva'
+import featuredZeus from '@/assets/fotos/destaque-zeus.jpg?responsiva'
 // versões desktop (lg+): a foto recortada um pouco em altura e expandida nas laterais com IA (Higgsfield, FLUX.2 Pro
 // Outpaint) pra ~5:4 — no espaço largo do desktop a 9:16 ficava com zoom demais. O centro é a foto original
-import featuredFenixDesktop from '@/assets/fotos/destaque-fenix-desktop.jpg'
-import featuredSereiaDesktop from '@/assets/fotos/destaque-sereia-desktop.jpg'
-import featuredZeusDesktop from '@/assets/fotos/destaque-zeus-desktop.jpg'
+import featuredFenixDesktop from '@/assets/fotos/destaque-fenix-desktop.jpg?responsiva'
+import featuredSereiaDesktop from '@/assets/fotos/destaque-sereia-desktop.jpg?responsiva'
+import featuredZeusDesktop from '@/assets/fotos/destaque-zeus-desktop.jpg?responsiva'
 import { Sobrenome } from '@/components/ui/Sobrenome'
 import { Preco } from '@/components/ui/Preco'
 import { Avaliacao } from '@/components/ui/Avaliacao'
@@ -26,9 +27,9 @@ import { CONDICOES, parcela, precoPix } from '@/data/empresa'
  *  quanto a foto sobe no celular (margem negativa, % da largura) pra o frasco ficar acima do texto.
  *  Todo o texto vem de data/archetypes.ts. */
 const SLIDES = [
-  { id: 'fenix', img: featuredFenix, imgDesktop: featuredFenixDesktop, bg: '#540010', pos: '50% 20%', sobe: '10.5%' },
-  { id: 'sereia', img: featuredSereia, imgDesktop: featuredSereiaDesktop, bg: '#0d4350', pos: '50% 12%', sobe: '10.5%' },
-  { id: 'zeus', img: featuredZeus, imgDesktop: featuredZeusDesktop, bg: '#4f483e', pos: '50% 12%', sobe: '10.5%' },
+  { id: 'fenix', img: foto(featuredFenix), imgDesktop: foto(featuredFenixDesktop), bg: '#540010', pos: '50% 20%', sobe: '10.5%' },
+  { id: 'sereia', img: foto(featuredSereia), imgDesktop: foto(featuredSereiaDesktop), bg: '#0d4350', pos: '50% 12%', sobe: '10.5%' },
+  { id: 'zeus', img: foto(featuredZeus), imgDesktop: foto(featuredZeusDesktop), bg: '#4f483e', pos: '50% 12%', sobe: '10.5%' },
 ] as const
 
 const AUTOPLAY_MS = 4000
@@ -102,9 +103,11 @@ export function FeaturedCarousel() {
           // picture `contents`: o img continua sendo o item do grid
           <picture key={`img-${s.id}`} className="contents">
           {/* hidden: com a picture em `contents`, o source (que aqui fica block) virava linha extra do grid */}
-          <source media="(min-width: 1024px)" srcSet={s.imgDesktop} className="hidden" />
+          <source media="(min-width: 1024px)" srcSet={s.imgDesktop.srcSet || s.imgDesktop.src} sizes="60vw" className="hidden" />
           <img loading="lazy"
-            src={s.img}
+            src={s.img.src}
+            srcSet={s.img.srcSet || undefined}
+            sizes="100vw"
             alt={i === current ? `${a.nome}: ${a.tipo.toLowerCase()} em foto editorial` : ''}
             aria-hidden={i !== current}
             // md+: altura vem do card (h-0 + min-h-full), não da proporção da foto — ! vence o aspectRatio inline;

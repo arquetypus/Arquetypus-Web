@@ -76,6 +76,53 @@ try {
     } else assert.ok(manifest[source], 'Asset SSR ausente no manifest cliente: ' + source);
     resource(url);
   }
+  // Mesma foto importada simples E com `?responsiva`: no build do Linux (Vercel) as duas saídas disputam a mesma
+  // entrada do manifest e a URL SSR/cliente diverge — no Windows passa despercebido. Barrar no código-fonte.
+  {
+    const fontes = (await readdir(path.join(root, 'src'), { recursive: true })).filter(f => /\.tsx?$/.test(f));
+    const simples = new Set(), responsivas = new Set(), globs = [];
+    for (const f of fontes) {
+      const code = await readFile(path.join(root, 'src', f), 'utf8');
+      for (const m of code.matchAll(/from '@\/(assets\/[^']+\.(?:jpe?g|png))(\?responsiva)?'/g)) (m[2] ? responsivas : simples).add(m[1]);
+      for (const m of code.matchAll(/import\.meta\.glob(?:<[^>]*>)?\(\s*(\[[^\]]*\]|'[^']*')([^)]*)\)/g)) {
+        const padroes = [...m[1].matchAll(/'([^']+)'/g)].map(p => p[1]);
+        const incluir = padroes.filter(p => !p.startsWith('!')).map(p => new RegExp('^' + p.replace(/^@\//, '').replace(/[.]/g, '\\.').replace(/\*\*\//g, '(?:.*/)?').replace(/\*/g, '[^/]*') + '$'));
+        const excluir = padroes.filter(p => p.startsWith('!')).map(p => new RegExp('^' + p.slice(1).replace(/^@\//, '').replace(/[.]/g, '\\.').replace(/\*\*\//g, '(?:.*/)?').replace(/\*/g, '[^/]*') + '$'));
+        globs.push({ incluir, excluir, responsiva: /responsiva/.test(m[2]) });
+      }
+    }
+    const imagens = (await readdir(path.join(root, 'src/assets'), { recursive: true })).map(f => 'assets/' + f.replaceAll(path.sep, '/')).filter(f => IMAGEM.test(f));
+    const duplas = imagens.filter(img => {
+      const viaGlob = globs.filter(g => g.incluir.some(r => r.test(img)) && !g.excluir.some(r => r.test(img)));
+      return (simples.has(img) || viaGlob.some(g => !g.responsiva)) && (responsivas.has(img) || viaGlob.some(g => g.responsiva));
+    });
+    assert.deepEqual(duplas, [], 'Foto importada simples e com ?responsiva — usar só a responsiva (foto(x).src dá a URL única)');
+  }
+  // Fotos responsivas (`?responsiva`, src/lib/foto.ts): no servidor viram `{ sources: { webp: srcset }, img: { src } }`.
+  // Toda URL de cada srcset tem que existir em dist/ e estar no JS do cliente (paridade SSR/cliente). As lidas por
+  // pasta (import.meta.glob) entram no inventário pelo caminho de origem, como as demais.
+  const responsivas = new Map([...bundle.matchAll(/var (\S+) = \{\s*sources: \{ webp: "([^"]+)" \},\s*img: \{\s*src: "([^"]+)"/g)]
+    .map(m => [m[1], { srcset: m[2], src: m[3] }]));
+  assert.ok(responsivas.size > 0, 'Nenhuma foto responsiva no bundle do servidor');
+  for (const { srcset, src } of responsivas.values()) {
+    const candidatas = srcset.split(',').map(c => c.trim().split(/\s+/)[0]);
+    assert.ok(candidatas.includes(src), 'src fora do srcset: ' + src);
+    for (const url of candidatas) {
+      assert.ok(url.endsWith('.webp'), 'Imagem sem otimização: ' + url);
+      assert.ok(['"', '`', "'"].some(q => clientJs.includes(q + srcset + q)) || clientJs.includes(url), 'URL SSR/cliente: ' + url);
+      await readFile(path.join(root, 'dist', url));
+      resource(url);
+    }
+  }
+  for (const [, source, variavel] of bundle.matchAll(/"\/(src\/assets\/[^"]+)": (\S+?),?\r?$/gm)) {
+    const r = responsivas.get(variavel);
+    if (!r) continue;
+    // No Linux o manifest também lista a origem, apontando pra uma das larguras: vale a leitura do servidor (maior)
+    const doManifest = assets.findIndex(a => a.source === source);
+    if (doManifest >= 0) assets.splice(doManifest, 1);
+    const emitted = await readFile(path.join(root, 'dist', r.src));
+    assets.push({ source, url: r.src, srcset: r.srcset, inServerBundle: true, sourceRegionMapped: false, bytes: emitted.length, sha256: hash(emitted) });
+  }
   for (const m of bundle.matchAll(/["'](\/assets\/[^"'\s]+)["']/g)) resource(m[1]);
   /** URL publicada de um arquivo de src/: imagem otimizada (lista acima) ou manifest. */
   const assetUrl = source => assets.find(a => a.source === source)?.url;

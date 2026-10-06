@@ -1,4 +1,5 @@
 import { RatioTag } from '@/components/ui/RatioTag'
+import type { Foto } from '@/lib/foto'
 
 /**
  * Placeholder de mídia — mostra o requisito de produção no lugar do
@@ -16,6 +17,9 @@ import { RatioTag } from '@/components/ui/RatioTag'
  *
  * `prioridade` (out/2026): por padrão a foto só baixa perto da tela (`loading="lazy"`). Foto da primeira tela
  * (topo da página, 1ª foto da galeria) passa `prioridade` — baixa de cara e com prioridade alta.
+ *
+ * `src`/`srcDesktop` aceitam `Foto` (import `?responsiva`, lib/foto.ts): sai com `srcset` e o navegador baixa a
+ * largura que serve. `sizes` diz a largura da foto na tela (padrão: tela inteira).
  */
 export function MediaSlot({
   aspect = '4/5',
@@ -29,29 +33,35 @@ export function MediaSlot({
   tagLabel,
   alt,
   prioridade = false,
+  sizes = '100vw',
 }: {
   aspect?: string
   bg?: string
   requisito: string
   className?: string
   dark?: boolean
-  src?: string
-  srcDesktop?: string
+  src?: string | Foto
+  srcDesktop?: string | Foto
   tagClassName?: string
   tagLabel?: string
   alt: string
   prioridade?: boolean
+  sizes?: string
 }) {
   if (src) {
+    const f = typeof src === 'string' ? { src, srcSet: '' } : src
+    const d = typeof srcDesktop === 'string' ? { src: srcDesktop, srcSet: '' } : srcDesktop
     return (
       <div
         className={`relative overflow-hidden rounded-lg ${className}`}
         style={{ aspectRatio: aspect === 'auto' ? undefined : aspect }}
       >
         <picture>
-          {srcDesktop && <source media="(min-width: 1024px)" srcSet={srcDesktop} />}
+          {d && <source media="(min-width: 1024px)" srcSet={d.srcSet || d.src} sizes={d.srcSet ? sizes : undefined} />}
           <img
-            src={src}
+            src={f.src}
+            srcSet={f.srcSet || undefined}
+            sizes={f.srcSet ? sizes : undefined}
             alt={alt}
             loading={prioridade ? 'eager' : 'lazy'}
             fetchPriority={prioridade ? 'high' : undefined}

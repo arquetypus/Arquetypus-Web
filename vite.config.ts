@@ -89,8 +89,17 @@ const larguraMaxima = (arquivo: string) =>
   arquivo.includes('/brand/flor-') ? 900 // marca d'água: aparece com até 440 px
   : arquivo.endsWith('-desktop.jpg') ? 2400 // fotos de tela cheia no desktop (hero, destaque)
   : LARGURA_MAXIMA
+/** `?responsiva` (out/2026): gera várias larguras pro `srcset` (o navegador baixa a menor que serve na tela) e
+ *  devolve `{ sources, img }` — ler com `foto()`/`fotosPorId()` de src/lib/foto.ts. Nunca amplia: larguras acima
+ *  do original viram o próprio original. */
+const LARGURAS = '400;800;1200'
+const LARGURAS_DESKTOP = '800;1200;1600;1920;2400'
 const otimizarImagens = imagetools({
   defaultDirectives: async (url, metadata) => {
+    if (url.searchParams.has('responsiva')) {
+      const larguras = url.pathname.endsWith('-desktop.jpg') ? LARGURAS_DESKTOP : LARGURAS
+      return new URLSearchParams({ format: 'webp', quality: '80', w: larguras, as: 'picture' })
+    }
     const regras = new URLSearchParams({ format: 'webp', quality: '80' })
     for (const [k, v] of url.searchParams) regras.set(k, v)
     const max = larguraMaxima(url.pathname)

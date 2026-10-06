@@ -7,7 +7,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow'
 import { ProductGallery } from '@/components/ProductGallery'
 import { Sobrenome } from '@/components/ui/Sobrenome'
 import { Preco } from '@/components/ui/Preco'
-import { PDP_FRASCO, PDP_LIFESTYLE } from '@/data/productMedia'
+import { PDP_FRASCO_FOTO, PDP_LIFESTYLE_FOTO } from '@/data/productMedia'
 import { CONDICOES, parcela, precoPix } from '@/data/empresa'
 
 export const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
@@ -97,11 +97,11 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
             bg={a.bg}
             slides={[
               {
-                src: PDP_FRASCO[a.id], requisito: `FOTO · 1:1 · 1200×1200 · FRASCO · ${a.nome.toUpperCase()}`,
+                src: PDP_FRASCO_FOTO[a.id], requisito: `FOTO · 1:1 · 1200×1200 · FRASCO · ${a.nome.toUpperCase()}`,
                 alt: `Frasco do ${produtoNome(a)}, ${a.vol}`,
               },
               {
-                src: PDP_LIFESTYLE[a.id], requisito: `FOTO · 1:1 · 1200×1200 · LIFESTYLE · ${a.nome.toUpperCase()}`,
+                src: PDP_LIFESTYLE_FOTO[a.id], requisito: `FOTO · 1:1 · 1200×1200 · LIFESTYLE · ${a.nome.toUpperCase()}`,
                 alt: `Pessoa segurando o ${produtoNome(a)}`,
               },
             ].filter((s) => s.src)}

@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { MediaSlot } from '@/components/ui/MediaSlot'
 import { GOLD_SHEEN } from '@/lib/goldSheen'
+import type { Foto } from '@/lib/foto'
 
-type Slide = { src: string; requisito: string; alt: string }
+type Slide = { src: Foto; requisito: string; alt: string }
 
 /**
  * Galeria de fotos do produto (P-02). Trilho com scroll-snap: no celular
@@ -50,7 +51,7 @@ export function ProductGallery({ nome, bg, slides }: { nome: string; bg: string;
         <div className="hidden w-[4.5rem] shrink-0 flex-col gap-3 lg:flex" aria-label="Miniaturas">
           {slides.map((s, i) => (
             <button
-              key={s.src}
+              key={s.src.src}
               type="button"
               aria-label={`Ver foto ${i + 1}`}
               aria-current={i === current}
@@ -59,7 +60,7 @@ export function ProductGallery({ nome, bg, slides }: { nome: string; bg: string;
                 i === current ? 'opacity-100 ring-tinta' : 'opacity-60 ring-linha hover:opacity-100'
               }`}
             >
-              <img loading="lazy" src={s.src} alt="" decoding="async" className="aspect-square w-full object-cover" />
+              <img loading="lazy" src={s.src.src} srcSet={s.src.srcSet || undefined} sizes="72px" alt="" decoding="async" className="aspect-square w-full object-cover" />
             </button>
           ))}
         </div>
@@ -85,14 +86,14 @@ export function ProductGallery({ nome, bg, slides }: { nome: string; bg: string;
       >
         {slides.map((s, i) => (
           <div
-            key={s.src}
+            key={s.src.src}
             onAnimationEnd={() => setHint(false)}
             className={`w-full shrink-0 snap-center ${hint ? 'gallery-hint' : ''}`}
             aria-roledescription="slide"
             aria-label={`${i + 1} de ${slides.length}`}
           >
             {/* 1ª foto é o topo da PDP: baixa de cara; as outras só quando a galeria chega nelas */}
-            <MediaSlot aspect="1/1" bg={bg} src={s.src} alt={s.alt} prioridade={i === 0} requisito={s.requisito} className="rounded-none" />
+            <MediaSlot aspect="1/1" bg={bg} src={s.src} alt={s.alt} prioridade={i === 0} sizes="(min-width: 1024px) 36rem, 100vw" requisito={s.requisito} className="rounded-none" />
           </div>
         ))}
       </div>
@@ -125,7 +126,7 @@ export function ProductGallery({ nome, bg, slides }: { nome: string; bg: string;
           <div className="absolute inset-x-0 bottom-3 flex justify-center gap-1.5 lg:hidden">
             {slides.map((s, i) => (
               <button
-                key={s.src}
+                key={s.src.src}
                 type="button"
                 aria-label={`Ver foto ${i + 1}`}
                 aria-current={i === current}

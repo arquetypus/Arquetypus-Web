@@ -8,7 +8,8 @@ import { CutFrame } from '@/components/ui/CutFrame'
 import { SweepCta } from '@/components/ui/SweepCta'
 import { DEGRAU_CLARO, DEGRAU_ESCURO, Flor, Glow, SectionEyebrow } from '@/components/ui/Editorial'
 // gerada no Higgsfield (GPT Image 2.5) com as fotos de produto como referência — pessoa não existe; trocar por criador(a) real
-import creatorsHero from '@/assets/fotos/criadores-hero.jpg'
+import creatorsHero from '@/assets/fotos/criadores-hero.jpg?responsiva'
+import { foto } from '@/lib/foto'
 import { Sobrenome } from '@/components/ui/Sobrenome'
 
 const HOW_IT_WORKS = [
@@ -67,7 +68,8 @@ export function CreatorsPage() {
           <MediaSlot
             aspect="4/5"
             bg="#F0EAE4"
-            src={creatorsHero}
+            src={foto(creatorsHero)}
+            sizes="(min-width: 1024px) 50vw, 100vw"
             prioridade
             alt="Pessoa gravando um vídeo com o celular enquanto apresenta o Body Splash Premium Afrodite First Kiss, com o Cleópatra Nile Rose sobre a mesa"
             requisito="FOTO · 4:5 · 1600×2000 · CRIADOR(A) SEGURANDO UM FRASCO · LUZ NATURAL"

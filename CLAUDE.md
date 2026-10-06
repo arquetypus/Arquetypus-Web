@@ -414,6 +414,12 @@ decisão de produto já tomada:
   de `src/` em WebP q80, sem metadados, com largura máxima 1600 px (2400 pra `*-desktop.jpg`, 900 pra flor) —
   só reduz. Original fica em `src/assets/` em qualidade cheia; foto nova não precisa de tratamento manual.
   `public/` não passa por aí. `verify-prerender` derruba o build se uma imagem publicada passar de 400 KB.
+  **Fotos responsivas:** foto de conteúdo grande entra com `?responsiva` (400/800/1200 px; 800–2400 nas
+  `*-desktop.jpg`) e é lida por `foto()`/`fotosPorId()` (`src/lib/foto.ts`) → `{ src, srcSet }`; `MediaSlot` aceita
+  `Foto` + `sizes`. Catálogo, comunidade, PDP, famílias (e miniaturas, sem srcset) são lidos **por pasta** — trocar
+  o arquivo ou pôr foto nova com o id do arquétipo não pede código. Travas: `verify-prerender` falha com foto > 60 KB
+  publicada sem `srcset`; `smoke-ssr` falha se a mesma foto for importada simples e com `?responsiva` (no Linux da
+  Vercel isso quebra a paridade SSR/cliente) — pra URL única, usar `foto(x).src`.
   `/assets/*` sai com cache de 1 ano `immutable` (`headers` gerado por `configure-vercel.mjs`). Medir
   antes/depois com `npm run perf -- <rótulo> [comparar-com]` (retratos em `perf/`).
 - **Texto alternativo das fotos (out/2026):** foto que é conteúdo (frasco, pessoa com o produto) leva `alt`
