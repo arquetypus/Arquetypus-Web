@@ -23,8 +23,13 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react
  * `mouseDrag`: arrastar com o mouse (desktop). Toque e trackpad seguem com o scroll nativo; o mouse não rola na
  * horizontal sozinho, então o arraste move o scrollLeft na mão (snap desligado via data-dragging, ver index.css),
  * centraliza o card mais próximo ao soltar e engole o clique que viria no fim do arraste (não abre o link).
+ *
+ * `copias` (out/2026, performance): o componente pode começar com 1 cópia (só os `count` itens — HTML inicial e
+ * primeiro desenho leves) e passar a 3 depois do carregamento. Para a troca ser invisível, os itens da cópia única
+ * devem ter as mesmas `key` da cópia do meio (ver `chaveDaCopia`): o React reaproveita esses elementos, insere as
+ * cópias novas antes e depois, e aqui o scroll é compensado pela largura de um bloco antes da pintura.
  */
-export function useInfiniteCarousel(count: number, { mouseDrag = false }: { mouseDrag?: boolean } = {}) {
+export function useInfiniteCarousel(count: number, { mouseDrag = false, copias = 3 }: { mouseDrag?: boolean; copias?: 1 | 3 } = {}) {
   const elRef = useRef<HTMLDivElement | null>(null)
   const [container, setContainer] = useState<HTMLDivElement | null>(null)
   const containerRef = useCallback((node: HTMLDivElement | null) => {
@@ -74,17 +79,30 @@ export function useInfiniteCarousel(count: number, { mouseDrag = false }: { mous
     el.scrollLeft = layoutCenter(el, item) - el.clientWidth / 2
   }
 
+  // 1 → 3 cópias: os itens visíveis viraram a cópia do meio (mesmas keys) e um bloco novo entrou antes deles —
+  // anda o scroll exatamente esse bloco, antes da pintura, pra nada sair do lugar na tela
+  const copiasAntes = useRef(copias)
+  useLayoutEffect(() => {
+    const antes = copiasAntes.current
+    copiasAntes.current = copias
+    const el = elRef.current
+    if (antes !== 1 || copias !== 3 || !el) return
+    const primeiro = itemsRef.current[0], meio = itemsRef.current[count]
+    if (primeiro && meio) el.scrollLeft += meio.offsetLeft - primeiro.offsetLeft
+    setActiveIndex(closestIndex())
+  }, [copias, count])
+
   useLayoutEffect(() => {
     if (count === 0 || !container) return
     // Um trilho recém-hidratado já pode ter recebido scroll nativo no HTML.
     // Trocar o filtro continua centralizando; apenas a primeira conexão preserva o gesto.
     userScrolled.current = initializedContainer.current !== container && container.scrollLeft > 0
     initializedContainer.current = container
-    if (!userScrolled.current) centerOn(count)
+    if (!userScrolled.current && copiasAntes.current === 3) centerOn(count)
     setActiveIndex(closestIndex())
     // segunda passada depois do layout assentar (fontes, snap, seção revelada)
     const raf = requestAnimationFrame(() => {
-      if (userScrolled.current) return
+      if (userScrolled.current || copiasAntes.current !== 3) return
       centerOn(count)
       setActiveIndex(closestIndex())
     })
@@ -97,7 +115,7 @@ export function useInfiniteCarousel(count: number, { mouseDrag = false }: { mous
 
     // container que nasce sem tamanho (ou muda de largura) é recentralizado enquanto ninguém mexeu nele
     const ro = new ResizeObserver(() => {
-      if (userScrolled.current) {
+      if (userScrolled.current || copiasAntes.current !== 3) {
         setActiveIndex(closestIndex())
         return
       }
@@ -227,4 +245,10 @@ export function useInfiniteCarousel(count: number, { mouseDrag = false }: { mous
   }
 
   return { containerRef, container, registerItem, activeIndex, step }
+}
+
+/** Key estável de um item do carrossel com `copias`: a cópia única e a cópia do meio têm as mesmas keys. */
+export function chaveDaCopia(base: string, i: number, count: number, copias: 1 | 3) {
+  const bloco = Math.floor(i / count) - (copias === 3 ? 1 : 0)
+  return `${base}:${bloco}`
 }

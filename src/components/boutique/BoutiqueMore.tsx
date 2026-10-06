@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import type { Archetype } from '@/types/archetype'
 import { getArchetype, productPath } from '@/data/archetypes'
@@ -5,7 +6,7 @@ import { FRASCO_CUT_IMG, JOURNAL, UGC_FOTO, UGC_VIDEOS, CONTATOS } from '@/data/
 import { CONDICOES, EMPRESA_LINHA, parcela, precoPix } from '@/data/empresa'
 import { openCookiePreferences } from '@/lib/consent'
 import logoDourado from '@/assets/brand/logo-dourado.png'
-import { useInfiniteCarousel } from '@/lib/useInfiniteCarousel'
+import { chaveDaCopia, useInfiniteCarousel } from '@/lib/useInfiniteCarousel'
 import { useCoverflow } from '@/lib/useCoverflow'
 import { CarouselDots } from '@/components/ui/CarouselDots'
 import { Eyebrow } from '@/components/ui/Eyebrow'
@@ -80,11 +81,45 @@ export function CommunityBoutique() {
   // carrossel infinito com o card do centro em foco (mesmo esquema da comunidade do Editorial): 3 cópias, e o hook
   // reposiciona o scroll ao cruzar as bordas
   const total = UGC_VIDEOS.length
-  const loop = [...UGC_VIDEOS, ...UGC_VIDEOS, ...UGC_VIDEOS]
+  // Performance (out/2026): o HTML inicial e o 1º desenho levam 1 cópia (9 cards) — eram 27, quase metade das caixas
+  // da home e a maior pintura da 1ª tela. As outras 2 cópias (só servem pra dar a volta infinita) entram depois do
+  // load, com o navegador livre e fora de um deslize em andamento; o hook compensa o scroll sem salto.
+  const [copias, setCopias] = useState<1 | 3>(1)
+  const loop = Array.from({ length: copias }, () => UGC_VIDEOS).flat()
   // mouseDrag: no desktop dá pra arrastar os cards com o mouse (out/2026)
-  const trilho = useInfiniteCarousel(total, { mouseDrag: true })
+  const trilho = useInfiniteCarousel(total, { mouseDrag: true, copias })
   // cards de trás bem apagados: o do centro é o protagonista
-  useCoverflow(trilho.container, { minOpacity: 0.15 })
+  useCoverflow(trilho.container, { minOpacity: 0.15, itens: loop.length })
+
+  useEffect(() => {
+    const el = trilho.container
+    if (!el || copias === 3) return
+    // desktop mostra vários cards lado a lado: com 1 cópia o lado esquerdo ficaria vazio — lá as cópias entram já
+    // na hidratação (a nota no desktop não depende disso). A espera até o load vale só pro celular (1 card à vista).
+    if (window.matchMedia('(min-width: 64rem)').matches) return void setCopias(3)
+    let ultimoScroll = 0
+    let timer: ReturnType<typeof setTimeout> | undefined
+    let idle: number | undefined
+    const marcar = () => (ultimoScroll = Date.now())
+    const expandir = () => {
+      // no meio de um deslize, mexer no scroll atrapalharia o gesto: tenta de novo quando parar
+      if (Date.now() - ultimoScroll < 300) return void (timer = setTimeout(expandir, 300))
+      setCopias(3)
+    }
+    const quandoLivre = () => {
+      if ('requestIdleCallback' in window) idle = window.requestIdleCallback(expandir, { timeout: 2000 })
+      else timer = setTimeout(expandir, 200)
+    }
+    el.addEventListener('scroll', marcar, { passive: true })
+    if (document.readyState === 'complete') quandoLivre()
+    else window.addEventListener('load', quandoLivre, { once: true })
+    return () => {
+      el.removeEventListener('scroll', marcar)
+      window.removeEventListener('load', quandoLivre)
+      clearTimeout(timer)
+      if (idle !== undefined) window.cancelIdleCallback(idle)
+    }
+  }, [trilho.container, copias])
 
   // 1ª seção depois do hero (sobe por cima dele). Cada experiência é um "vídeo" (2:3 no celular) com o produto num cartão
   // à parte, sobreposto à base do vídeo (metade dentro, metade fora) — o vídeo é a prova, o cartão é a compra.
@@ -144,7 +179,9 @@ export function CommunityBoutique() {
         className="no-scrollbar relative flex snap-x snap-mandatory gap-3 overflow-x-auto pb-9 lg:gap-5 lg:pb-7"
         // padding lateral = metade da sobra, pra o primeiro e o último card também pararem no centro.
         // pb-9: o overflow do scroll corta tudo que passa da caixa — a folga embaixo deixa a sombra dos cartões inteira
-        style={{ paddingInline: 'calc((100% - var(--ugc-w)) / 2)' }}
+        // overflowAnchor: as cópias que entram depois do load são compensadas no scroll pelo useInfiniteCarousel —
+        // o ajuste automático do navegador somaria outra compensação
+        style={{ paddingInline: 'calc((100% - var(--ugc-w)) / 2)', overflowAnchor: 'none' }}
       >
         {loop.map((v, i) => {
           const arq = getArchetype(v.archetypeId)
@@ -152,7 +189,7 @@ export function CommunityBoutique() {
           const ativo = i === trilho.activeIndex
           return (
             <article
-              key={`${v.creator}-${i}`}
+              key={chaveDaCopia(`${v.creator}-${i % total}`, i, total, copias)}
               ref={trilho.registerItem(i)}
               aria-current={ativo ? 'true' : undefined}
               // escala/opacidade/blur vêm do useCoverflow, contínuos conforme o scroll
@@ -166,7 +203,8 @@ export function CommunityBoutique() {
                   srcSet={UGC_FOTO[v.archetypeId]?.srcSet}
                   sizes="(min-width: 1024px) 360px, 77vw"
                   alt={`${v.creator} segurando o Body Splash Premium ${arq.nome}`}
-                  loading={i === total ? 'eager' : 'lazy'}
+                  // o card que abre centralizado: 1º da cópia única (que depois vira a do meio)
+                  loading={i === (copias === 3 ? total : 0) ? 'eager' : 'lazy'}
                   decoding="async"
                   className="ugc-midia h-full w-full object-cover lg:object-[50%_25%]"
                 />

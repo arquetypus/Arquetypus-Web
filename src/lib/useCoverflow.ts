@@ -10,7 +10,7 @@ import { useEffect } from 'react'
  */
 export function useCoverflow(
   el: HTMLElement | null,
-  { minScale = 0.9, minOpacity = 0.35, maxBlur = 2 }: { minScale?: number; minOpacity?: number; maxBlur?: number } = {},
+  { minScale = 0.9, minOpacity = 0.35, maxBlur = 2, itens = 0 }: { minScale?: number; minOpacity?: number; maxBlur?: number; itens?: number } = {},
 ) {
   useEffect(() => {
     if (!el) return
@@ -19,11 +19,17 @@ export function useCoverflow(
 
     function paint() {
       frame = 0
-      // posição de layout (offset*), que não muda com a escala aplicada aqui — o container precisa ser `relative`
+      // posição de layout (offset*), que não muda com a escala aplicada aqui — o container precisa ser `relative`.
+      // Lê tudo primeiro e escreve depois (out/2026): ler offsetLeft logo após escrever o estilo do card anterior
+      // obrigava o navegador a recalcular o layout card a card (27 vezes por quadro).
       const center = el!.scrollLeft + el!.clientWidth / 2
-      for (const child of Array.from(el!.children) as HTMLElement[]) {
-        const childCenter = child.offsetLeft + child.offsetWidth / 2
-        const d = Math.min(1, Math.abs(childCenter - center) / (child.offsetWidth || 1))
+      const medidas = (Array.from(el!.children) as HTMLElement[]).map((child) => ({
+        child,
+        childCenter: child.offsetLeft + child.offsetWidth / 2,
+        largura: child.offsetWidth || 1,
+      }))
+      for (const { child, childCenter, largura } of medidas) {
+        const d = Math.min(1, Math.abs(childCenter - center) / largura)
         child.style.opacity = String(1 - (1 - minOpacity) * d)
         if (reduceMotion) continue
         const side = childCenter < center ? 'right' : 'left'
@@ -53,5 +59,5 @@ export function useCoverflow(
       el.removeEventListener('scroll', schedule)
       ro.disconnect()
     }
-  }, [el, minScale, minOpacity, maxBlur])
+  }, [el, minScale, minOpacity, maxBlur, itens])
 }

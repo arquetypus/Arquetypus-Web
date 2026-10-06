@@ -399,6 +399,11 @@ decisão de produto já tomada:
     entra lá; a direção decidida segue importada direto (é a que o servidor pré-renderiza).
   - Estrelas de avaliação: uma fileira = um elemento (`.estrelas` em `index.css`, máscara CSS), não 5 SVGs.
   - `content-visibility: auto` nas seções da home abaixo da dobra (Boutique) — `index.css`.
+  - Comunidade (`CommunityBoutique`): HTML inicial com 1 cópia dos cards (eram 3 = 27 cards, 45% das caixas de
+    layout da home, medido seção a seção). No celular as outras 2 entram depois do `load` (navegador livre, fora
+    de um deslize); no desktop logo na hidratação (vários cards à vista). `useInfiniteCarousel({ copias })` +
+    `chaveDaCopia` reaproveitam os cards como cópia do meio e compensam o scroll antes da pintura (trilho com
+    `overflow-anchor: none`). `useCoverflow` lê todas as posições antes de escrever (sem layout card a card).
   - Imagens fora da 1ª tela com `loading="lazy"`: `MediaSlot` é lazy por padrão (`prioridade` pra foto de topo);
     `<img>` solto precisa do atributo. `verify-prerender` derruba o build com mais de 5 imagens sem lazy numa página.
 - **GTM carregado depois do `load` (out/2026, decisão do usuário):** snippet em `index.html` (teto de 5 s). Eventos
