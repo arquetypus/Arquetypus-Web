@@ -1,0 +1,315 @@
+{
+  "rotulo": "gtm",
+  "data": "2026-10-06T00:25:29.953Z",
+  "site": "https://www.arquetypus.com.br",
+  "ferramenta": "lighthouse@13.5.0 local (SMSP-010643)",
+  "rodadas": 3,
+  "paginas": {
+    "/ · mobile": {
+      "nota": 65,
+      "fcp": 2055.3885,
+      "lcp": 6410.8635,
+      "tbt": 410,
+      "cls": 0,
+      "si": 4381.107263028863,
+      "peso": 4097.8857421875,
+      "semCache": 0,
+      "cacheExemplo": null,
+      "assets": 30,
+      "maiores": [
+        {
+          "url": "/assets/hero-video-DYdAfdYa.mp4",
+          "kb": 2122
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-W81SRZ3K7J&cx=c&gtm=4e6a21h1",
+          "kb": 173
+        },
+        {
+          "url": "/assets/guerreiro-BQZfZQ48.webp",
+          "kb": 159
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5DTMCZW8",
+          "kb": 129
+        },
+        {
+          "url": "/assets/sereia-DIviEydJ.webp",
+          "kb": 123
+        },
+        {
+          "url": "/assets/index-BnvBQ6bt.js",
+          "kb": 118
+        },
+        {
+          "url": "/assets/feminino-1UHvwhqM.webp",
+          "kb": 115
+        },
+        {
+          "url": "/fonts/inter-var.woff2",
+          "kb": 103
+        }
+      ],
+      "rodadas": [
+        69,
+        65,
+        56
+      ]
+    },
+    "/ · desktop": {
+      "nota": 99,
+      "fcp": 541.049,
+      "lcp": 851.9710000000001,
+      "tbt": 7,
+      "cls": 0,
+      "si": 1011.2681593025313,
+      "peso": 2172.5654296875,
+      "semCache": 0,
+      "cacheExemplo": null,
+      "assets": 30,
+      "maiores": [
+        {
+          "url": "/assets/colecao-desktop-cdnhGyEo.webp",
+          "kb": 209
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-W81SRZ3K7J&cx=c&gtm=4e6a21",
+          "kb": 173
+        },
+        {
+          "url": "/assets/guerreiro-desktop-pL8UF_fQ.webp",
+          "kb": 135
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5DTMCZW8",
+          "kb": 129
+        },
+        {
+          "url": "/assets/sereia-DIviEydJ.webp",
+          "kb": 123
+        },
+        {
+          "url": "/assets/index-BnvBQ6bt.js",
+          "kb": 118
+        },
+        {
+          "url": "/assets/feminino-1UHvwhqM.webp",
+          "kb": 115
+        },
+        {
+          "url": "/fonts/inter-var.woff2",
+          "kb": 103
+        }
+      ],
+      "rodadas": [
+        99,
+        99,
+        98
+      ]
+    },
+    "/body-splash/zeus-stormbreak · mobile": {
+      "nota": 74,
+      "fcp": 1693.5415,
+      "lcp": 5886.479,
+      "tbt": 194.5,
+      "cls": 0,
+      "si": 3788.2119588807304,
+      "peso": 869.77734375,
+      "semCache": 0,
+      "cacheExemplo": null,
+      "assets": 10,
+      "maiores": [
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-W81SRZ3K7J&cx=c&gtm=4e6a21h1",
+          "kb": 173
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5DTMCZW8",
+          "kb": 129
+        },
+        {
+          "url": "/assets/index-BnvBQ6bt.js",
+          "kb": 118
+        },
+        {
+          "url": "/fonts/inter-var.woff2",
+          "kb": 103
+        },
+        {
+          "url": "/assets/zeus-D9cq5EHg.webp",
+          "kb": 74
+        },
+        {
+          "url": "/assets/zeus-5RvbpOdq.webp",
+          "kb": 62
+        },
+        {
+          "url": "/assets/wordmark-marmore-B59whIZ1.webp",
+          "kb": 43
+        },
+        {
+          "url": "/fonts/elegant.woff2",
+          "kb": 32
+        }
+      ],
+      "rodadas": [
+        74,
+        64,
+        74
+      ]
+    },
+    "/body-splash/zeus-stormbreak · desktop": {
+      "nota": 99,
+      "fcp": 413.073,
+      "lcp": 1029.0349999999999,
+      "tbt": 0,
+      "cls": 0,
+      "si": 690.7900139167255,
+      "peso": 869.7197265625,
+      "semCache": 0,
+      "cacheExemplo": null,
+      "assets": 10,
+      "maiores": [
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-W81SRZ3K7J&cx=c&gtm=4e6a21",
+          "kb": 173
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5DTMCZW8",
+          "kb": 129
+        },
+        {
+          "url": "/assets/index-BnvBQ6bt.js",
+          "kb": 118
+        },
+        {
+          "url": "/fonts/inter-var.woff2",
+          "kb": 103
+        },
+        {
+          "url": "/assets/zeus-D9cq5EHg.webp",
+          "kb": 74
+        },
+        {
+          "url": "/assets/zeus-5RvbpOdq.webp",
+          "kb": 62
+        },
+        {
+          "url": "/assets/wordmark-marmore-B59whIZ1.webp",
+          "kb": 43
+        },
+        {
+          "url": "/fonts/elegant.woff2",
+          "kb": 32
+        }
+      ],
+      "rodadas": [
+        98,
+        99,
+        99
+      ]
+    },
+    "/criadores · mobile": {
+      "nota": 67,
+      "fcp": 1704.2009999999998,
+      "lcp": 6748.226500000001,
+      "tbt": 256,
+      "cls": 0,
+      "si": 4838.3438302266095,
+      "peso": 867.9267578125,
+      "semCache": 0,
+      "cacheExemplo": null,
+      "assets": 7,
+      "maiores": [
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-W81SRZ3K7J&cx=c&gtm=4e6a21h1",
+          "kb": 173
+        },
+        {
+          "url": "/assets/criadores-hero-CFVypZqa.webp",
+          "kb": 150
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5DTMCZW8",
+          "kb": 129
+        },
+        {
+          "url": "/assets/index-BnvBQ6bt.js",
+          "kb": 118
+        },
+        {
+          "url": "/fonts/inter-var.woff2",
+          "kb": 103
+        },
+        {
+          "url": "/assets/wordmark-marmore-B59whIZ1.webp",
+          "kb": 43
+        },
+        {
+          "url": "/fonts/elegant.woff2",
+          "kb": 32
+        },
+        {
+          "url": "/assets/wordmark-preto-CdJsnoXk.webp",
+          "kb": 31
+        }
+      ],
+      "rodadas": [
+        67,
+        74,
+        67
+      ]
+    },
+    "/criadores · desktop": {
+      "nota": 100,
+      "fcp": 420.63699999999994,
+      "lcp": 693.095,
+      "tbt": 8,
+      "cls": 0,
+      "si": 676.6044871670135,
+      "peso": 867.94140625,
+      "semCache": 0,
+      "cacheExemplo": null,
+      "assets": 7,
+      "maiores": [
+        {
+          "url": "https://www.googletagmanager.com/gtag/js?id=G-W81SRZ3K7J&cx=c&gtm=4e6a21",
+          "kb": 173
+        },
+        {
+          "url": "/assets/criadores-hero-CFVypZqa.webp",
+          "kb": 150
+        },
+        {
+          "url": "https://www.googletagmanager.com/gtm.js?id=GTM-5DTMCZW8",
+          "kb": 129
+        },
+        {
+          "url": "/assets/index-BnvBQ6bt.js",
+          "kb": 118
+        },
+        {
+          "url": "/fonts/inter-var.woff2",
+          "kb": 103
+        },
+        {
+          "url": "/assets/wordmark-marmore-B59whIZ1.webp",
+          "kb": 43
+        },
+        {
+          "url": "/fonts/elegant.woff2",
+          "kb": 32
+        },
+        {
+          "url": "/assets/wordmark-preto-CdJsnoXk.webp",
+          "kb": 31
+        }
+      ],
+      "rodadas": [
+        100,
+        98,
+        100
+      ]
+    }
+  }
+}
