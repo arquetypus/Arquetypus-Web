@@ -68,11 +68,16 @@
       } catch (e) {}
     </script>
 
-    <!-- Google Tag Manager -->
+    <!-- Google Tag Manager — carregado depois do `load` da página (out/2026, performance): o GTM e as tags dele
+         (GA4, Ads, Meta, TikTok) não disputam mais a montagem da página no celular. Nada se perde de quem fica: o
+         dataLayer já existe (consentimento acima, page_view do RouteTracker) e os eventos esperam na fila até o
+         GTM chegar. Só não é medido quem sai antes do load. Teto de 5 s se o load demorar (recurso preso).
+         O gtm.start continua marcado na abertura da página, como no snippet original. -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    new Date().getTime(),event:'gtm.js'});var feito=false;function carregar(){if(feito)return;feito=true;
+    var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);}
+    if(d.readyState==='complete')carregar();else{w.addEventListener('load',carregar,{once:true});setTimeout(carregar,5000);}
     })(window,document,'script','dataLayer','GTM-5DTMCZW8');</script>
     <!-- End Google Tag Manager -->
 

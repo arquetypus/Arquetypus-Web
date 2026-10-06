@@ -401,6 +401,10 @@ decisão de produto já tomada:
   - `content-visibility: auto` nas seções da home abaixo da dobra (Boutique) — `index.css`.
   - Imagens fora da 1ª tela com `loading="lazy"`: `MediaSlot` é lazy por padrão (`prioridade` pra foto de topo);
     `<img>` solto precisa do atributo. `verify-prerender` derruba o build com mais de 5 imagens sem lazy numa página.
+- **GTM carregado depois do `load` (out/2026, decisão do usuário):** snippet em `index.html` (teto de 5 s). Eventos
+  enviados antes (consentimento, `page_view` do `RouteTracker`) esperam no `dataLayer` e são processados quando o
+  GTM chega. Custo aceito: não mede quem sai antes do `load` (visitas de 1–3 s, cliques acidentais em anúncio) —
+  sessões no GA4 caem um pouco frente aos cliques do Ads/Meta a partir de 06/10/2026. Não voltar o GTM pro topo.
 - **Vídeo do hero atrasado (out/2026):** `HeroCinema` não põe o `<video>` no HTML inicial — mostra a foto do 1º
   quadro (`hero-video-poster`) e monta o vídeo depois do `load` da página (teto de 8 s), só no celular (no desktop
   aparece a foto 16:9 e o vídeo nunca baixa). A barra do 1º slide espera o vídeo entrar. `verify-prerender` derruba
