@@ -21,9 +21,8 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react
  * elemento antigo e o carrossel novo nascia travado.
  *
  * `mouseDrag`: arrastar com o mouse (desktop). Toque e trackpad seguem com o scroll nativo; o mouse não rola na
- * horizontal sozinho, então o arraste move o scrollLeft na mão (snap desligado via data-dragging, ver index.css) e
- * engole o clique que viria no fim do arraste (não abre o link). Depois de um arraste o trilho PARA ONDE PAROU: o
- * encaixe fica desligado (`data-livre`) até alguém usar as setas (`step`), que centralizam um card e religam o snap.
+ * horizontal sozinho, então o arraste move o scrollLeft na mão (snap desligado via data-dragging, ver index.css),
+ * centraliza o card mais próximo ao soltar e engole o clique que viria no fim do arraste (não abre o link).
  *
  * `copias` (out/2026, performance): o componente pode começar com 1 cópia (só os `count` itens — HTML inicial e
  * primeiro desenho leves) e passar a 3 depois do carregamento. Para a troca ser invisível, os itens da cópia única
@@ -40,7 +39,6 @@ export function useInfiniteCarousel(count: number, { mouseDrag = false, copias =
   const itemsRef = useRef<(HTMLElement | null)[]>([])
   const [activeIndex, setActiveIndex] = useState(count)
   const settleTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
-  const livreTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const userScrolled = useRef(false)
   const initializedContainer = useRef<HTMLDivElement | null>(null)
 
@@ -187,7 +185,6 @@ export function useInfiniteCarousel(count: number, { mouseDrag = false, copias =
         drag.moved = true
         el!.setPointerCapture(drag.id)
         el!.dataset.dragging = ''
-        el!.dataset.livre = ''
       }
       el!.scrollLeft = drag.left - dx
     }
@@ -199,8 +196,10 @@ export function useInfiniteCarousel(count: number, { mouseDrag = false, copias =
       if (!moved) return
       swallowClick = true
       setTimeout(() => (swallowClick = false), 0)
-      // sem centralizar: fica onde o arraste deixou (data-livre segura o snap desligado até as setas)
-      dragEndTimer = setTimeout(() => delete el!.dataset.dragging, 60)
+      const item = itemsRef.current[closestIndex()]
+      if (item) el!.scrollTo({ left: layoutCenter(el!, item) - el!.clientWidth / 2, behavior: 'smooth' })
+      // o snap só volta depois da rolagem suave assentar — religado antes, o navegador pula pro ponto de snap
+      dragEndTimer = setTimeout(() => delete el!.dataset.dragging, 450)
     }
 
     function onClickCapture(e: MouseEvent) {
@@ -243,11 +242,6 @@ export function useInfiniteCarousel(count: number, { mouseDrag = false, copias =
     if (!el || !item) return
     userScrolled.current = true
     el.scrollTo({ left: layoutCenter(el, item) - el.clientWidth / 2, behavior: 'smooth' })
-    // depois de um arraste o snap estava desligado: volta quando a rolagem suave assentar (já centralizado, sem pulo)
-    if (el.dataset.livre !== undefined) {
-      clearTimeout(livreTimer.current)
-      livreTimer.current = setTimeout(() => delete el.dataset.livre, 500)
-    }
   }
 
   return { containerRef, container, registerItem, activeIndex, step }
