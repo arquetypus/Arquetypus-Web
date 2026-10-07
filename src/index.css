@@ -35,6 +35,11 @@
   font-display: swap;
 }
 
+/* desktop com pouco espaço horizontal pra altura (proporção abaixo de 3:2, ex.: 1280×1024, 1366×1024): na PDP as
+   miniaturas da galeria descem pra baixo da foto principal, liberando a largura pra foto crescer. Telas largas
+   (1366×768, 1920×1080) mantêm as miniaturas ao lado */
+@custom-variant vertical (@media (min-width: 1024px) and (max-aspect-ratio: 3/2));
+
 @theme {
   --font-display: 'Elegant', serif;
   --font-sans: 'Inter', system-ui, sans-serif;
@@ -1204,7 +1209,8 @@ button:active:not(.no-press) {
 [data-dragging] > * {
   pointer-events: none;
 }
-/* depois de arrastar, o trilho fica onde parou (sem encaixe) até alguém usar as setas */
+/* depois de arrastar (useArrasteMouse — carrossel da PDP), o trilho fica onde parou, sem encaixe, até alguém usar
+   as setas. O carrossel da comunidade (useInfiniteCarousel) não usa: lá o arraste centraliza o card ao soltar */
 [data-livre] {
   scroll-snap-type: none !important;
 }

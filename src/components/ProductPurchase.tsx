@@ -116,17 +116,23 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
   return (
     // Grade de 12 colunas no lg+: galeria em 7, compra em 5, os dois blocos centralizados na altura (sem texto
     // solto no topo). Celular: uma coluna, galeria → compra. Vale pro pop-up e pra PDP
-    <div className={`lg:grid lg:grid-cols-12 lg:gap-x-12 lg:px-12 lg:py-10 xl:gap-x-16 ${compact ? 'lg:items-center' : 'lg:items-start'}`}>
+    <div className={`lg:grid lg:grid-cols-12 lg:gap-x-12 lg:px-12 lg:py-10 ${compact ? 'xl:gap-x-16 lg:items-center' : 'lg:items-start xl:gap-x-24'}`}>
       {/* P-02 Galeria + notas (botões Fotos/Notas embaixo). Celular: largura toda, só a margem lateral */}
-      {/* página completa (out/2026): galeria no topo e presa ao rolar, enquanto a coluna de compra (mais alta) passa */}
-      <section className={`px-4 pt-3 lg:col-span-7 lg:px-0 lg:pt-0 ${compact ? '' : 'lg:sticky lg:top-24'}`}>
+      {/* página completa (out/2026): a coluna da galeria fica fixa enquanto a coluna de compra (mais alta) rola. Ela prende
+          na MESMA posição em que começa (8,5rem do topo = header 5rem + respiro da seção 3,5rem), então não "acompanha"
+          o scroll no início, e termina os mesmos 3,5rem antes do pé da tela — galeria centralizada nela, com a mesma
+          distância do header e do pé da tela. Galeria alinhada à esquerda, na maior medida que a altura deixa (foto
+          quadrada, sem corte, até 100svh − 12,5rem e no máximo ~700 px); em tela mais
+          vertical (variante `vertical`) as miniaturas descem pra baixo dela e a foto ocupa a largura da coluna */}
+      <section className={`px-4 pt-3 lg:col-span-7 lg:px-0 lg:pt-0 ${compact ? '' : 'lg:sticky lg:top-[8.5rem] lg:flex lg:h-[calc(100svh-12rem)] lg:items-center'}`}>
         {/* lg: largura limitada também pela altura da tela, pra caber sem rolagem em monitores baixos */}
-        <div className={`lg:mx-auto lg:w-full ${compact ? 'lg:max-w-[min(36rem,calc(88svh-10rem))]' : 'md:max-lg:mx-auto md:max-lg:max-w-[min(36rem,calc(100svh-20.5rem))] lg:max-w-[min(42rem,calc(92svh-7rem))]'}`}>
+        <div className={`lg:mx-auto lg:w-full ${compact ? 'lg:max-w-[min(36rem,calc(88svh-10rem))]' : 'md:max-lg:mx-auto md:max-lg:max-w-[min(36rem,calc(100svh-20.5rem))] lg:mx-0 lg:max-w-[min(49rem,calc(100svh-7.25rem))] vertical:max-w-[calc(100svh-17.75rem)]'}`}>
         <div className="relative">
           <ProductGallery
             key={a.id}
             nome={a.nome}
             bg={a.bg}
+            miniaturasEmbaixoNaTelaAlta={!compact}
             // página completa no celular (out/2026): foto na largura toda, altura que sobra na 1ª tela depois de nome,
             // preço e botão (~20,5rem), entre 12rem e quadrada — object-cover mantém a proporção; em tela baixa o corte é
             // ancorado no topo, pra a tampa do frasco nunca sumir (iPhone SE, out/2026)

@@ -193,7 +193,7 @@ export function ProductPage() {
   return (
     <div className="-mb-24">
       {/* P-02 a P-09 — seção de compra (mesmo componente do pop-up da home), contida no grid da página */}
-      <div className="bg-papel pb-10 lg:mx-auto lg:max-w-7xl lg:pt-4 lg:pb-16">
+      <div className="bg-papel pb-10 lg:mx-auto lg:max-w-[100rem] lg:pt-4 lg:pb-16">
         <ProductPurchase key={a.id} a={a} />
       </div>
 
