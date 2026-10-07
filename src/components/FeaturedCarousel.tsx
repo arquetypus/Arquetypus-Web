@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { getArchetype, productPath } from '@/data/archetypes'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { RatioTag } from '@/components/ui/RatioTag'
@@ -45,7 +45,6 @@ const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', curren
  *  texto e não pula. Barras de progresso como as do hero, sem as setas; no celular dá pra deslizar.
  *  Celular: card vertical com texto sobre a foto; md+: foto à esquerda, texto à direita na cor do banner. */
 export function FeaturedCarousel() {
-  const location = useLocation()
   const [current, setCurrent] = useState(0)
   // banner que está saindo: fica opaco por baixo enquanto o novo aparece por cima
   const [anterior, setAnterior] = useState<number | null>(null)
@@ -212,7 +211,6 @@ export function FeaturedCarousel() {
 
                 <Link
                   to={productPath(a)}
-                  state={{ backgroundLocation: location }}
                   className="mt-4 block w-full rounded-full border border-papel-inv/40 bg-papel-inv/10 py-3 text-center text-xs font-medium tracking-wide text-papel-inv uppercase backdrop-blur-sm transition-colors duration-300 ease-out hover:border-papel-inv/60 hover:bg-papel-inv/20 lg:mt-8 lg:inline-block lg:w-auto lg:px-10"
                 >
                   Conhecer {a.nome}

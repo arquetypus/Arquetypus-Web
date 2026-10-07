@@ -90,9 +90,10 @@ decisão de produto já tomada:
   desabilitados com rótulo "Em breve" em vez de link morto ou rota
   inventada — quando essas páginas existirem, trocar por `Link` de
   verdade em `Drawer.tsx`.
-- **Pop-up de compra = rota.** Links da home (catálogo, comunidade, hero,
-  Kit) vão para `/body-splash/:slug` ou `/kit-descoberta` com
-  `state.backgroundLocation`; `App.tsx` renderiza a home por baixo e
+- **Pop-up de compra = rota, só pelo "olhinho" (out/2026, como no site da Saniella).** Na home, todo link de produto
+  (card do catálogo, comunidade, destaque, hero) vai pra página completa; o pop-up só abre pelo botão de olho
+  (`components/ui/EspiarProduto.tsx`) no canto da foto dos cards do catálogo — no desktop aparece no hover do card,
+  no celular fica sempre à vista. Ele leva a `/body-splash/:slug` com `state.backgroundLocation`; `App.tsx` renderiza a home por baixo e
   `ProductSheet`/`KitSheet` (casca comum em `PurchaseSheet`) por cima.
   Acesso direto à URL abre a página completa — não trocar por modal sem
   rota (regra 6). As seções de compra são `ProductPurchase` e

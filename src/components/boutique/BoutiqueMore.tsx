@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import type { Archetype } from '@/types/archetype'
 import { getArchetype, productPath } from '@/data/archetypes'
 import { FRASCO_CUT_IMG, JOURNAL, UGC_FOTO, UGC_VIDEOS, CONTATOS } from '@/data/home'
@@ -34,7 +34,6 @@ function SectionHead({ kicker, title, center = false }: { kicker: string; title:
 
 /** Destaque como banner de produto: foto, selo "Destaque", preço com Pix e parcelas (regra 7) e CTA. */
 export function FeaturedBoutique({ a, img }: { a: Archetype; img: string }) {
-  const location = useLocation()
   return (
     <section id="destaque" className="bg-papel px-4 py-14 md:px-10 lg:py-24">
       <div className="mx-auto grid max-w-7xl overflow-hidden rounded-3xl bg-papel-2 md:grid-cols-2">
@@ -65,7 +64,6 @@ export function FeaturedBoutique({ a, img }: { a: Archetype; img: string }) {
           </div>
           <Link
             to={productPath(a)}
-            state={{ backgroundLocation: location }}
             className="mt-5 block rounded-full bg-tinta py-4 text-center text-sm font-medium text-papel transition-opacity hover:opacity-90 md:self-start md:px-12"
           >
             Comprar {a.nome}
@@ -78,7 +76,6 @@ export function FeaturedBoutique({ a, img }: { a: Archetype; img: string }) {
 
 /** Comunidade: carrossel de "vídeos" com o cartão do produto sobreposto à base de cada um. */
 export function CommunityBoutique() {
-  const location = useLocation()
   // carrossel infinito com o card do centro em foco (mesmo esquema da comunidade do Editorial): 3 cópias, e o hook
   // reposiciona o scroll ao cruzar as bordas
   const total = UGC_VIDEOS.length
@@ -249,7 +246,6 @@ export function CommunityBoutique() {
                 </div>
                 <Link
                   to={productPath(arq)}
-                  state={{ backgroundLocation: location }}
                   tabIndex={ativo ? 0 : -1}
                   aria-label={`Descobrir ${arq.nome}`}
                   className="mt-1.5 block w-full rounded-full border border-latao bg-latao py-1.5 text-center lg:mt-2 lg:py-2 font-label text-[10px] tracking-[0.2em] text-papel uppercase transition-colors duration-300 hover:border-tinta hover:bg-tinta"

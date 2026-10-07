@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { memo, useEffect, useMemo, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { ARCHETYPES, getArchetype, productPath } from '@/data/archetypes'
 import {
@@ -137,7 +137,6 @@ const CATALOGO_FILTROS: { key: 'ALL' | 'F' | 'M' | 'U'; label: string }[] = [
  * inteira no meio do gesto (travadinha ao trocar de card).
  */
 function CommunitySection() {
-  const location = useLocation()
   // infinito, como o catálogo: 3 cópias e o hook reposiciona o scroll ao cruzar as bordas
   const ugcCount = UGC_VIDEOS.length
   const ugcLoop = [...UGC_VIDEOS, ...UGC_VIDEOS, ...UGC_VIDEOS]
@@ -258,7 +257,6 @@ function CommunitySection() {
                   </div>
                   <Link
                     to={productPath(arq)}
-                    state={{ backgroundLocation: location }}
                     className="mt-3 block w-full rounded-full border border-latao/50 bg-papel/40 py-2.5 text-center text-xs font-medium tracking-wide text-tinta uppercase transition-colors duration-300 ease-out hover:border-latao hover:bg-papel-2/70"
                   >
                     Descobrir
@@ -303,11 +301,20 @@ function CommunitySection() {
   )
 }
 
+/**
+ * A home lê só o `hash` da URL — da página de fundo, quando o pop-up de compra está aberto (state.backgroundLocation).
+ * O conteúdo fica em `HomeConteudo` (memo): abrir/fechar o pop-up muda a URL mas não o hash, então a home inteira não
+ * é redesenhada antes do pop-up aparecer (era o atraso ao clicar no olhinho, out/2026).
+ */
 export function HomePage() {
+  const location = useLocation()
+  const fundo = (location.state as { backgroundLocation?: typeof location } | null)?.backgroundLocation
+  return <HomeConteudo hash={(fundo ?? location).hash} />
+}
+
+const HomeConteudo = memo(function HomeConteudo({ hash }: { hash: string }) {
   const [hydrated, setHydrated] = useState(false)
   useEffect(() => setHydrated(true), [])
-  const location = useLocation()
-  const { hash } = location
   const familiesScroll = useCarouselIndex<HTMLDivElement>(FAMILIES.length)
   const tapGuard = useTapGuard()
   const [catalogoFiltro, setCatalogoFiltroGenero] = useState<'ALL' | 'F' | 'M' | 'U'>('ALL')
@@ -536,9 +543,8 @@ export function HomePage() {
                         {a.status === 'wait' ? 'Avise-me' : <Preco a={a} tom="escuro" />}
                       </span>
                       <Link
-                        // mesmo destino do UGC: pop-up de compra (/body-splash/:slug por cima da home)
+                        // página completa (out/2026: o pop-up de compra só abre pelo olhinho do catálogo)
                         to={productPath(a)}
-                        state={{ backgroundLocation: location }}
                         className="relative z-20 inline-flex shrink-0 items-center justify-center rounded-full border border-papel-inv/40 bg-papel-inv/10 px-4 py-2.5 font-label text-[10px] tracking-[0.12em] text-papel-inv uppercase backdrop-blur-sm transition-colors duration-300 ease-out hover:border-papel-inv/60 hover:bg-papel-inv/20"
                       >
                         {a.status === 'wait' ? 'Entrar na lista' : 'Descobrir'}
@@ -1385,4 +1391,4 @@ export function HomePage() {
       )}
     </div>
   )
-}
+})

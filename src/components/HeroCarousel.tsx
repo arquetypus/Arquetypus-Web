@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { PRODUCT_BASE } from '@/data/archetypes'
+import { Link } from 'react-router-dom'
 import { HERO_SLIDES } from '@/data/home'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { MediaSlot } from '@/components/ui/MediaSlot'
@@ -11,7 +10,6 @@ const AUTOPLAY_MS = 5000
 const SWIPE_PX = 50
 
 export function HeroCarousel() {
-  const location = useLocation()
   const [current, setCurrent] = useState(0)
   const total = HERO_SLIDES.length
   const slide = HERO_SLIDES[current]
@@ -164,12 +162,7 @@ export function HeroCarousel() {
           ) : (
             <Link
               to={slide.cta.to}
-              // PDP (/body-splash/…) e /kit-descoberta abrem o pop-up de compra por cima da home (ver App.tsx)
-              state={
-                slide.cta.to.startsWith(PRODUCT_BASE + '/') || slide.cta.to === '/kit-descoberta'
-                  ? { backgroundLocation: location }
-                  : undefined
-              }
+              // vai pra página completa (out/2026: na home, o pop-up de compra só abre pelo olhinho do catálogo)
               className="hero-fade-up mx-auto mt-5 block w-full max-w-xs rounded-lg lg:mt-8 lg:inline-block lg:w-auto lg:rounded-full lg:px-10 border border-papel-inv/30 bg-papel-inv/10 py-4 text-sm font-medium tracking-wide text-papel-inv uppercase backdrop-blur-sm"
               style={{ animationDelay: '300ms' }}
             >

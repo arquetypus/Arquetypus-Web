@@ -176,7 +176,7 @@ export function PurchaseSheet({ label, fullPageTo, children }: { label: string; 
         type="button"
         aria-label="Fechar"
         onClick={close}
-        className="sheet-backdrop absolute inset-0 cursor-default bg-noite/55 backdrop-blur-[2px]"
+        className="sheet-backdrop absolute inset-0 cursor-default bg-noite/60"
         style={{ opacity: fundoOpacity, transition: dragging ? 'none' : `opacity ${SAIDA_MS}ms ease-out` }}
       />
       <div

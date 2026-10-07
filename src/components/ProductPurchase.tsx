@@ -278,7 +278,9 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
                   : ''
               }`}
             >
-              <div className={compact ? 'max-lg:flex max-lg:items-end max-lg:justify-between max-lg:gap-3' : ''}>
+              {/* pop-up no celular: preço + desconto numa linha e Pix + parcelas embaixo, numa linha só (lado a lado
+                  ficavam espremidos, out/2026) — regra 7: os três continuam visíveis */}
+              <div>
                 <div className="flex items-center gap-2.5">
                   <Preco a={a} className={`shrink-0 font-display lg:leading-none ${compact ? 'text-2xl lg:text-[30px]' : 'text-[30px] lg:text-[36px]'}`} />
                   {descontoPct > 0 && (
@@ -287,7 +289,7 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
                     </span>
                   )}
                 </div>
-                <p className={`mt-1 text-xs text-tinta-2 lg:mt-2 lg:text-[13px] ${compact ? 'max-lg:mt-0 max-lg:pb-1 max-lg:text-right max-lg:text-[11px]' : ''}`}>
+                <p className={`mt-1 text-xs text-tinta-2 lg:mt-2 lg:text-[13px] ${compact ? 'max-lg:mt-0.5 max-lg:truncate max-lg:text-[12px]' : ''}`}>
                   <b className="font-semibold text-tinta">{brl(pix)} no Pix</b> ({CONDICOES.pixDescontoPct}% off) · ou {CONDICOES.parcelasSemJuros}x de {brl(parcela(selected.price))} sem juros
                 </p>
               </div>

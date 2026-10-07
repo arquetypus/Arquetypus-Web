@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import type { Archetype } from '@/types/archetype'
 import { ARCHETYPES, productPath } from '@/data/archetypes'
 import { FRASCO_FOTO, HERO_SLIDES, SEALS } from '@/data/home'
@@ -8,6 +8,7 @@ const heroColecao = HERO_SLIDES[0].fotoDesktop
 import { Sobrenome } from '@/components/ui/Sobrenome'
 import { Preco } from '@/components/ui/Preco'
 import { Avaliacao } from '@/components/ui/Avaliacao'
+import { EspiarProduto } from '@/components/ui/EspiarProduto'
 import { CONDICOES, parcela, precoPix } from '@/data/empresa'
 
 /**
@@ -90,7 +91,6 @@ export function CatalogGrid({
   familia?: string | null
   limparFamilia?: () => void
 }) {
-  const location = useLocation()
   return (
     <section
       id="catalogo"
@@ -139,8 +139,12 @@ export function CatalogGrid({
 
         <ul className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 lg:mt-12 lg:gap-6">
           {items.map((a) => (
-            <li key={a.id} id={a.id} className="flex flex-col overflow-hidden rounded-2xl bg-papel ring-1 ring-linha">
-              <Link to={productPath(a)} state={{ backgroundLocation: location }} className="group relative block">
+            <li key={a.id} id={a.id} className="group/card relative flex flex-col overflow-hidden rounded-2xl bg-papel ring-1 ring-linha">
+              {/* card leva pra página completa; o pop-up só abre pelo olhinho — celular: ícone no canto da foto;
+                  desktop: pílula "Visualização rápida" no pé da foto, que sobe no hover do card */}
+              <div className="relative">
+              <EspiarProduto a={a} className="absolute top-2.5 right-2.5 z-10 lg:top-auto lg:right-auto lg:bottom-4 lg:left-1/2 lg:-translate-x-1/2" />
+              <Link to={productPath(a)} className="group relative block">
                 <div className="aspect-[4/5] overflow-hidden" style={{ background: a.bg }}>
                   <img
                     src={FRASCO_FOTO[a.id]?.src}
@@ -153,6 +157,7 @@ export function CatalogGrid({
                   />
                 </div>
               </Link>
+              </div>
               <div className="flex flex-1 flex-col p-3 lg:p-5">
                 {/* celular: tudo empilhado; lg: informações à esquerda e preço à direita (out/2026) */}
                 <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between lg:gap-4">
@@ -178,8 +183,7 @@ export function CatalogGrid({
                 <div className="mt-auto pt-3.5">
                   <Link
                     to={productPath(a)}
-                    state={{ backgroundLocation: location }}
-                    className="block rounded-full bg-tinta py-2.5 text-center text-xs font-medium text-papel uppercase transition-opacity hover:opacity-90 lg:py-3"
+                    className="block rounded-full border border-latao bg-latao py-2.5 text-center font-label text-[10px] tracking-[0.2em] text-papel uppercase transition-colors duration-300 hover:border-tinta hover:bg-tinta lg:py-3"
                   >
                     Comprar
                   </Link>
