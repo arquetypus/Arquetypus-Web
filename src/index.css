@@ -1187,7 +1187,8 @@ button:active:not(.no-press) {
   transition: none !important;
 }
 
-/* Arraste com o mouse (useInfiniteCarousel com mouseDrag): o snap brigaria com o scrollLeft movido na mão */
+/* Arraste com o mouse (useInfiniteCarousel com mouseDrag, useArrasteMouse): o snap brigaria com o scrollLeft movido
+   na mão; durante o arraste os cards não reagem a hover (zoom/sombra repintando a cada quadro deixavam travado) */
 [data-drag-scroll] {
   cursor: grab;
 }
@@ -1199,6 +1200,13 @@ button:active:not(.no-press) {
 }
 [data-drag-scroll] img {
   -webkit-user-drag: none;
+}
+[data-dragging] > * {
+  pointer-events: none;
+}
+/* depois de arrastar, o trilho fica onde parou (sem encaixe) até alguém usar as setas */
+[data-livre] {
+  scroll-snap-type: none !important;
 }
 
 /* Brasas (components/ui/Embers): cada ponto sobe devagar, desviando de leve, e se apaga */

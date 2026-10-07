@@ -271,11 +271,13 @@ decisão de produto já tomada:
   garantia, envio 24 h, pagamento seguro, 6x sem juros, 5% no Pix
   (ajustes de caixa alta/ícone testados e revertidos a pedido, out/2026 — fica o
   original: itálico, ícone de traço pequeno, 44 s por volta).
-- **Outros canais de venda (out/2026, pedido do usuário):** Mercado Livre, Shopee e TikTok Shop (`CANAIS_VENDA` em
+- **Outros canais de venda (out/2026, pedido do usuário):** Mercado Livre, Shopee, TikTok Shop, Magalu, Beleza na Web,
+  Amazon e Época Cosméticos (`CANAIS_VENDA` em
   `data/empresa.ts`, componente `ui/CanaisVenda.tsx`) — na coluna de compra da PDP logo depois dos selos de
   envio/garantia/pagamento ("Prefere comprar em outro lugar?"; o quadro de frete abaixo do botão só aparece com frete
   grátis ativo), e no rodapé ("Também à venda em"). Só os logos, monocromáticos em latão (paths da Simple Icons,
-  CC0; o Mercado Livre usa o aperto de mãos do Mercado Pago), sem texto — as cores originais chamavam atenção demais.
+  CC0; o Mercado Livre usa o aperto de mãos do Mercado Pago; Magalu, Beleza na Web e Época foram vetorizados com potrace
+  a partir dos PNG/JPG enviados pelo usuário), sem texto — as cores originais chamavam atenção demais.
   O order bump de layering ("Complete o ritual") saiu junto, desligado por `SHOW_ORDER_BUMP` em `ProductPurchase`.
   Links ainda `null` (selo sem clique) — preencher quando o
   usuário passar as URLs das lojas.

@@ -48,10 +48,18 @@ export const FRETE_GRATIS_ACIMA: number | null = null
  * Outros canais de venda (out/2026, pedido do usuário): pra quem prefere comprar num marketplace que já conhece.
  * Aparecem na coluna de compra da PDP e no rodapé. `url` null = loja ainda sem link (o selo aparece, sem clique).
  */
-export const CANAIS_VENDA: { id: 'mercado-livre' | 'shopee' | 'tiktok-shop'; nome: string; url: string | null }[] = [
+export const CANAIS_VENDA: {
+  id: 'mercado-livre' | 'shopee' | 'tiktok-shop' | 'magalu' | 'beleza-na-web' | 'amazon' | 'epoca-cosmeticos'
+  nome: string
+  url: string | null
+}[] = [
   { id: 'mercado-livre', nome: 'Mercado Livre', url: null },
   { id: 'shopee', nome: 'Shopee', url: null },
   { id: 'tiktok-shop', nome: 'TikTok Shop', url: null },
+  { id: 'magalu', nome: 'Magalu', url: null },
+  { id: 'beleza-na-web', nome: 'Beleza na Web', url: null },
+  { id: 'amazon', nome: 'Amazon', url: null },
+  { id: 'epoca-cosmeticos', nome: 'Época Cosméticos', url: null },
 ]
 
 /**

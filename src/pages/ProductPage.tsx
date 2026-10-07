@@ -19,6 +19,7 @@ import { brl, ProductPurchase } from '@/components/ProductPurchase'
 import { Sobrenome } from '@/components/ui/Sobrenome'
 import { Preco } from '@/components/ui/Preco'
 import { Avaliacao } from '@/components/ui/Avaliacao'
+import { rolarTrilho, useArrasteMouse } from '@/lib/useArrasteMouse'
 
 // ícones de traço fino (gota, ciclo, camadas), no mesmo estilo dos selos da coluna de compra
 const BENEFITS = [
@@ -172,6 +173,8 @@ export function ProductPage() {
   const duo = a ? comboDe(a, getArchetype) : undefined
   const { addItem } = useCart()
   const trilho = useRef<HTMLDivElement>(null)
+  // desktop: arrastar os cards com o mouse (toque e trackpad já rolam sozinhos)
+  useArrasteMouse(trilho)
 
   // slug inexistente: 404 de verdade (a Vercel responde 404.html), nunca redirecionar pra home (soft 404)
   if (!a) return <NotFoundPage />
@@ -350,7 +353,7 @@ export function ProductPage() {
                 <button
                   key={dir}
                   type="button"
-                  onClick={() => trilho.current?.scrollBy({ left: dir * trilho.current.clientWidth * 0.75, behavior: 'smooth' })}
+                  onClick={() => rolarTrilho(trilho.current, dir)}
                   aria-label={dir < 0 ? 'Arquétipos anteriores' : 'Próximos arquétipos'}
                   className="grid size-11 cursor-pointer place-items-center rounded-full bg-papel text-latao-texto ring-1 ring-latao/50 transition-colors hover:bg-latao hover:text-papel"
                 >
@@ -363,6 +366,7 @@ export function ProductPage() {
           </div>
           <div
             ref={trilho}
+            data-drag-scroll
             className="no-scrollbar mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-5 px-5 pb-6 md:scroll-px-10 md:px-10 lg:mt-10 lg:grid lg:grid-flow-col lg:auto-cols-[calc((100%-3*1.25rem)/4)] lg:gap-5"
           >
             {outros.map((x) => (
