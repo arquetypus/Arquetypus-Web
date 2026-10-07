@@ -10,8 +10,25 @@ type Slide = { src: Foto; requisito: string; alt: string }
  * desliza com o dedo; no desktop, setas aparecem no hover. Pontos embaixo
  * indicam a foto atual e também navegam. Sem fotos, cai no placeholder do MediaSlot.
  */
-/** `classeSlide`: classes extras de cada foto — a PDP usa pra mudar a altura no celular (ver ProductPurchase) */
-export function ProductGallery({ nome, bg, slides, classeSlide = '' }: { nome: string; bg: string; slides: Slide[]; classeSlide?: string }) {
+/**
+ * `classeSlide`: classes extras de cada foto — a PDP usa pra mudar a altura no celular (ver ProductPurchase).
+ * `miniaturasEmbaixoNaTelaAlta`: no desktop com pouco espaço horizontal (variante `vertical`, index.css) as miniaturas
+ * saem da coluna ao lado e viram uma fileira embaixo da foto principal (PDP completa).
+ */
+export function ProductGallery({
+  nome,
+  bg,
+  slides,
+  classeSlide = '',
+  miniaturasEmbaixoNaTelaAlta = false,
+}: {
+  nome: string
+  bg: string
+  slides: Slide[]
+  classeSlide?: string
+  miniaturasEmbaixoNaTelaAlta?: boolean
+}) {
+  const alta = miniaturasEmbaixoNaTelaAlta
   const trackRef = useRef<HTMLDivElement>(null)
   const [current, setCurrent] = useState(0)
   // dica de arrasto: as fotos avançam um pouco (mostra a borda da próxima) e voltam, toda vez que a galeria abre.
@@ -46,10 +63,10 @@ export function ProductGallery({ nome, bg, slides, classeSlide = '' }: { nome: s
   const multi = slides.length > 1
 
   return (
-    // lg+: miniaturas numa coluna vertical à esquerda da foto principal
-    <div className="lg:flex lg:gap-3">
+    // lg+: miniaturas numa coluna vertical à esquerda da foto principal (ou numa fileira embaixo, na tela mais vertical)
+    <div className={`lg:flex lg:gap-3 ${alta ? 'vertical:flex-col-reverse' : ''}`}>
       {multi && (
-        <div className="hidden w-[4.5rem] shrink-0 flex-col gap-3 lg:flex" aria-label="Miniaturas">
+        <div className={`hidden w-[4.5rem] shrink-0 flex-col gap-3 lg:flex ${alta ? 'vertical:w-auto vertical:flex-row' : ''}`} aria-label="Miniaturas">
           {slides.map((s, i) => (
             <button
               key={s.src.src}
@@ -57,7 +74,7 @@ export function ProductGallery({ nome, bg, slides, classeSlide = '' }: { nome: s
               aria-label={`Ver foto ${i + 1}`}
               aria-current={i === current}
               onClick={() => goTo(i)}
-              className={`overflow-hidden rounded-md ring-1 transition-[opacity,box-shadow] duration-200 ${
+              className={`overflow-hidden rounded-md ring-1 transition-[opacity,box-shadow] duration-200 ${alta ? 'vertical:w-[4.5rem] vertical:shrink-0' : ''} ${
                 i === current ? 'opacity-100 ring-tinta' : 'opacity-60 ring-linha hover:opacity-100'
               }`}
             >
@@ -94,7 +111,7 @@ export function ProductGallery({ nome, bg, slides, classeSlide = '' }: { nome: s
             aria-label={`${i + 1} de ${slides.length}`}
           >
             {/* 1ª foto é o topo da PDP: baixa de cara; as outras só quando a galeria chega nelas */}
-            <MediaSlot aspect="1/1" bg={bg} src={s.src} alt={s.alt} prioridade={i === 0} sizes="(min-width: 1024px) 36rem, 100vw" requisito={s.requisito} className={`rounded-none ${classeSlide}`} />
+            <MediaSlot aspect="1/1" bg={bg} src={s.src} alt={s.alt} prioridade={i === 0} sizes="(min-width: 1024px) 46rem, 100vw" requisito={s.requisito} className={`rounded-none ${classeSlide}`} />
           </div>
         ))}
       </div>
