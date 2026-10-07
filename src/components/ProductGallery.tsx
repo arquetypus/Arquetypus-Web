@@ -10,7 +10,8 @@ type Slide = { src: Foto; requisito: string; alt: string }
  * desliza com o dedo; no desktop, setas aparecem no hover. Pontos embaixo
  * indicam a foto atual e também navegam. Sem fotos, cai no placeholder do MediaSlot.
  */
-export function ProductGallery({ nome, bg, slides }: { nome: string; bg: string; slides: Slide[] }) {
+/** `classeSlide`: classes extras de cada foto — a PDP usa pra mudar a altura no celular (ver ProductPurchase) */
+export function ProductGallery({ nome, bg, slides, classeSlide = '' }: { nome: string; bg: string; slides: Slide[]; classeSlide?: string }) {
   const trackRef = useRef<HTMLDivElement>(null)
   const [current, setCurrent] = useState(0)
   // dica de arrasto: as fotos avançam um pouco (mostra a borda da próxima) e voltam, toda vez que a galeria abre.
@@ -93,7 +94,7 @@ export function ProductGallery({ nome, bg, slides }: { nome: string; bg: string;
             aria-label={`${i + 1} de ${slides.length}`}
           >
             {/* 1ª foto é o topo da PDP: baixa de cara; as outras só quando a galeria chega nelas */}
-            <MediaSlot aspect="1/1" bg={bg} src={s.src} alt={s.alt} prioridade={i === 0} sizes="(min-width: 1024px) 36rem, 100vw" requisito={s.requisito} className="rounded-none" />
+            <MediaSlot aspect="1/1" bg={bg} src={s.src} alt={s.alt} prioridade={i === 0} sizes="(min-width: 1024px) 36rem, 100vw" requisito={s.requisito} className={`rounded-none ${classeSlide}`} />
           </div>
         ))}
       </div>

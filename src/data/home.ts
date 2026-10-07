@@ -5,7 +5,7 @@
  */
 import { ARCHETYPES, getArchetype, productPath, produtoNome } from '@/data/archetypes'
 import { FAMILIAS } from '@/data/families'
-import { CONDICOES, EMPRESA, EMPRESA_LINHA, FRETE_GRATIS_ACIMA } from '@/data/empresa'
+import { CONDICOES, EMPRESA, EMPRESA_LINHA, FRETE_GRATIS_PLANEJADO } from '@/data/empresa'
 import { maiuscula, porExtenso } from '@/lib/extenso'
 import { foto, fotosPorId, urls, type FotoBruta } from '@/lib/foto'
 import heroVideo from '@/assets/hero/hero-video.mp4'
@@ -267,7 +267,8 @@ export const KIT_TIERS = [
 ]
 
 export const REWARD_MINI = 150
-export const REWARD_FREIGHT = FRETE_GRATIS_ACIMA
+// kit desligado (set/2026): a escada do KitBuilder usa o valor planejado, não a oferta ativa do site
+export const REWARD_FREIGHT = FRETE_GRATIS_PLANEJADO
 
 /**
  * Textos das seções da home que estavam escritos direto no HomePage. As direções com página própria

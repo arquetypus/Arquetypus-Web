@@ -1,6 +1,5 @@
 import { Contato, EMPRESA, LegalPage, Section, TextLink } from '@/components/ui/Legal'
-import { CONDICOES, OPERACAO } from '@/data/empresa'
-import { REWARD_FREIGHT } from '@/data/home'
+import { CONDICOES, FRETE_GRATIS_ACIMA, OPERACAO } from '@/data/empresa'
 
 const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
@@ -32,9 +31,11 @@ export function ShippingPage() {
           {OPERACAO.transportadoras}. Ao informar o CEP no carrinho, você vê as opções de entrega disponíveis para o seu
           endereço, com o valor e o prazo de cada uma, e escolhe a que preferir.
         </p>
-        <p>
-          Compras acima de <strong>{brl(REWARD_FREIGHT)}</strong> têm frete grátis.
-        </p>
+        {FRETE_GRATIS_ACIMA && (
+          <p>
+            Compras acima de <strong>{brl(FRETE_GRATIS_ACIMA)}</strong> têm frete grátis.
+          </p>
+        )}
       </Section>
 
       <Section title="3. Prazo de entrega">

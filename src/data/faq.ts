@@ -1,6 +1,6 @@
 /**
- * Perguntas frequentes (revisadas em out/2026). FAQ_PRODUTO aparece na página do produto (PDP) e em
- * /perguntas-frequentes; FAQ_LOJA só nesta última. Respostas com {{token}} viram link na página (ver FaqPage).
+ * Perguntas frequentes (revisadas em out/2026). FAQ_PRODUTO aparece em /perguntas-frequentes (e um recorte de 5,
+ * FAQ_PDP, na página do produto); FAQ_LOJA só em /perguntas-frequentes. Respostas com {{token}} viram link na página (ver FaqPage).
  * Texto aqui, nunca no componente. Números comerciais (prazos, Pix, parcelas, essência) vêm de CONDICOES.
  * Regras do usuário: sem promessa de duração na pele (só a concentração de 10%);
  * desistência em 7 dias com o produto lacrado e sem uso.
@@ -46,9 +46,14 @@ export const FAQ_PRODUTO: Pergunta[] = [
   },
   {
     q: 'Como funciona a entrega?',
-    a: `Enviamos em até ${CONDICOES.envioHorasUteis} horas úteis depois da aprovação do pagamento, para todo o Brasil. O frete é grátis acima de ${brlInteiro(FRETE_GRATIS_ACIMA)}, e o prazo aparece no carrinho assim que você informa o CEP.`,
+    a: `Enviamos em até ${CONDICOES.envioHorasUteis} horas úteis depois da aprovação do pagamento, para todo o Brasil. ${FRETE_GRATIS_ACIMA ? `O frete é grátis acima de ${brlInteiro(FRETE_GRATIS_ACIMA)}, e o prazo` : 'O valor e o prazo do frete'} aparece no carrinho assim que você informa o CEP.`,
   },
 ]
+
+/** Recorte curto da PDP (out/2026, pedido do usuário): 5 das perguntas de produto — as que mais pesam na compra.
+ *  A lista completa continua em /perguntas-frequentes. */
+const PDP = [0, 1, 5, 7, 8]
+export const FAQ_PDP: Pergunta[] = PDP.map((i) => FAQ_PRODUTO[i])
 
 export const FAQ_LOJA: Pergunta[] = [
   {

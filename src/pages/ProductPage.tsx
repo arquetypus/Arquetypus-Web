@@ -1,29 +1,31 @@
+import { useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { NotFoundPage } from '@/pages/NotFoundPage'
-import { getArchetype, getArchetypeBySlug, NOTAS_LEGENDA, productPath } from '@/data/archetypes'
-import { FAQ_PRODUTO as FAQ } from '@/data/faq'
-import { FRASCO_CUT_IMG } from '@/data/home'
+import { ARCHETYPES, getArchetype, getArchetypeBySlug, produtoNome, productPath } from '@/data/archetypes'
+import type { Archetype } from '@/types/archetype'
+import { FAQ_PDP as FAQ } from '@/data/faq'
+import { FRASCO_CUT_IMG, FRASCO_FOTO } from '@/data/home'
+import { PDP_REPRESENTACAO_FOTO } from '@/data/productMedia'
+import { PiramideOlfativa } from '@/components/PiramideOlfativa'
+import { ComboEditorial } from '@/components/ComboEditorial'
+import { comboDe } from '@/data/combos'
+import { CONDICOES, parcela, precoPix } from '@/data/empresa'
 import { useCart } from '@/context/CartContext'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { Reveal } from '@/components/ui/Reveal'
-import { CutFrame } from '@/components/ui/CutFrame'
-import { DEGRAU_CLARO, DEGRAU_ESCURO, Flor, Glow, Ornament, SectionEyebrow } from '@/components/ui/Editorial'
-import { ProductPurchase } from '@/components/ProductPurchase'
+import { MediaSlot } from '@/components/ui/MediaSlot'
+import { DEGRAU_CLARO, Glow, Ornament, SectionEyebrow } from '@/components/ui/Editorial'
+import { brl, ProductPurchase } from '@/components/ProductPurchase'
 import { Sobrenome } from '@/components/ui/Sobrenome'
 import { Preco } from '@/components/ui/Preco'
+import { Avaliacao } from '@/components/ui/Avaliacao'
 
+// ícones de traço fino (gota, ciclo, camadas), no mesmo estilo dos selos da coluna de compra
 const BENEFITS = [
-  { n: '01', title: '10% de essência', body: 'Mais intensidade e presença do que um body splash tradicional, que costuma ter cerca de 4%.' },
-  { n: '02', title: 'Leve o bastante para reaplicar', body: 'Não satura. Pode voltar a usar depois da academia, antes do jantar, quando quiser.' },
-  { n: '03', title: 'Combina em vez de brigar', body: 'Construído para sobrepor com os outros oito. Camada, não substituição.' },
+  { n: '01', title: '10% de essência', body: 'Mais intensidade e presença do que um body splash tradicional, que costuma ter cerca de 4%.', icon: 'M12 3c3.5 4.2 6 7.6 6 10.5a6 6 0 0 1-12 0C6 10.6 8.5 7.2 12 3z' },
+  { n: '02', title: 'Leve o bastante para reaplicar', body: 'Não satura. Pode voltar a usar depois da academia, antes do jantar, quando quiser.', icon: 'M20 12a8 8 0 1 1-2.34-5.66M20 4v4h-4' },
+  { n: '03', title: 'Combina em vez de brigar', body: 'Construído para sobrepor com os outros oito. Camada, não substituição.', icon: 'M12 3l9 5-9 5-9-5 9-5zM3 13l9 5 9-5' },
 ]
-
-const HOW_TO = [
-  { step: 'Passo 1', text: 'Aplique após o banho, com a pele ainda úmida.' },
-  { step: 'Passo 2', text: 'Pescoço, pulsos e atrás dos joelhos.' },
-  { step: 'Passo 3', text: 'Reaplique quando quiser. É splash, não perfume.' },
-]
-
 
 /** Acordeão no estilo editorial: linha fina, título em fonte de display, "+" que vira "−" ao abrir. */
 function Accordion({ title, children, dark = false }: { title: string; children: React.ReactNode; dark?: boolean }) {
@@ -41,55 +43,226 @@ function Accordion({ title, children, dark = false }: { title: string; children:
   )
 }
 
+/**
+ * Barra fixa de compra (out/2026): aparece quando o botão de comprar da coluna (#pdp-comprar) sai da tela por
+ * cima, e some ao voltar. Miniatura, nome, preço e o mesmo botão — hoje "Em breve" (sem checkout, ver CLAUDE.md).
+ * Celular: presa no pé da tela; desktop: faixa fina no pé também, centralizada no grid da página.
+ */
+function PdpStickyBar({ a }: { a: Archetype }) {
+  const [visivel, setVisivel] = useState(false)
+
+  useEffect(() => {
+    const cta = document.getElementById('pdp-comprar')
+    if (!cta) return
+    // some também quando o rodapé entra na tela, pra não cobrir os links do fim
+    const rodape = document.querySelector('footer')
+    // celular (out/2026): o botão tem que aparecer sem rolar — a barra fica à vista sempre que o botão da coluna
+    // não estiver na tela (antes de chegar nele e depois de passar). Desktop: só depois de passar (lá o botão já
+    // está na primeira tela)
+    const celular = window.matchMedia('(max-width: 1023px)')
+    let ctaFora = false
+    let ctaAcima = false
+    let rodapeVisivel = false
+    const atualizar = () => setVisivel((celular.matches ? ctaFora : ctaAcima) && !rodapeVisivel)
+    const obs = new IntersectionObserver((entradas) => {
+      for (const e of entradas) {
+        if (e.target === cta) {
+          ctaFora = !e.isIntersecting
+          ctaAcima = ctaFora && e.boundingClientRect.top < 0
+        } else rodapeVisivel = e.isIntersecting
+      }
+      atualizar()
+    })
+    celular.addEventListener('change', atualizar)
+    obs.observe(cta)
+    if (rodape) obs.observe(rodape)
+    return () => {
+      obs.disconnect()
+      celular.removeEventListener('change', atualizar)
+    }
+  }, [a.id])
+
+  return (
+    <div
+      aria-hidden={!visivel}
+      className={`fixed inset-x-0 bottom-0 z-30 border-t border-linha bg-papel/95 shadow-[0_-12px_24px_-16px_rgba(40,46,41,0.4)] backdrop-blur-sm transition-transform duration-300 ease-out motion-reduce:transition-none ${
+        visivel ? 'translate-y-0' : 'pointer-events-none translate-y-full'
+      }`}
+    >
+      <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-2.5 lg:gap-5 lg:px-12 lg:py-3">
+        {FRASCO_CUT_IMG[a.id] && (
+          <img src={FRASCO_CUT_IMG[a.id]} alt="" loading="lazy" className="h-12 w-auto shrink-0 rounded-md lg:h-14" />
+        )}
+        <div className="min-w-0 flex-1">
+          <p className="truncate font-display text-base leading-tight lg:text-lg" style={{ color: a.cor }}>
+            {a.nome} <span className="text-tinta-3">{a.sobrenome}</span>
+          </p>
+          <p className="mt-0.5 flex flex-wrap items-baseline gap-x-2 text-[12px] text-tinta-2">
+            <Preco a={a} className="text-[15px]" />
+            <span className="hidden sm:inline">{brl(precoPix(a.preco))} no Pix</span>
+          </p>
+        </div>
+        <button
+          disabled
+          tabIndex={visivel ? 0 : -1}
+          className="shrink-0 rounded-lg bg-tinta px-5 py-3 text-xs font-medium tracking-[0.12em] text-papel uppercase opacity-40 lg:px-10"
+        >
+          Em breve
+        </button>
+      </div>
+    </div>
+  )
+}
+
+/** Card de um arquétipo no carrossel do fim da página: foto do catálogo, nome, nota e preço. */
+/**
+ * Card do carrossel "Continue descobrindo" (redesenho out/2026, mesma linguagem dos cards do combo): contorno fino,
+ * cantos suaves, foto do frasco de ponta a ponta no topo e, embaixo, nome em preto + sobrenome, família, estrelas,
+ * preço e parcelas (regra 7) e um "Ver fragrância →" discreto. O card inteiro é o link.
+ */
+function CardArquetipo({ x }: { x: Archetype }) {
+  const foto = FRASCO_FOTO[x.id]
+  return (
+    <Link
+      to={productPath(x)}
+      className="group flex w-[68vw] max-w-[16rem] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-tinta/12 bg-papel/70 transition-shadow duration-500 hover:shadow-[0_18px_36px_-24px_rgba(43,29,22,0.45)] sm:w-[40vw] lg:w-auto lg:max-w-none"
+    >
+      <div className="overflow-hidden">
+        <MediaSlot
+          aspect="4/5"
+          bg={x.bg}
+          src={foto}
+          alt={`Frasco do ${produtoNome(x)}`}
+          sizes="(min-width: 1024px) 300px, 68vw"
+          requisito={`FOTO · 4:5 · CATÁLOGO · ${x.nome.toUpperCase()}`}
+          className="rounded-none! transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+        />
+      </div>
+      <div className="flex flex-1 flex-col px-4 pt-4 pb-5 lg:px-5">
+        <p className="font-label text-[9px] tracking-[0.18em] text-latao-texto uppercase">{x.fam}</p>
+        <h3 className="mt-1.5 font-display text-[22px] leading-tight text-tinta">
+          {x.nome}
+          <Sobrenome a={x} />
+        </h3>
+        <Avaliacao id={x.id} className="mt-2 text-[11px]" />
+        <div className="mt-3 border-t border-tinta/10 pt-3">
+          {x.status === 'wait' ? (
+            <span className="text-sm text-tinta-2">Em breve</span>
+          ) : (
+            <>
+              <Preco a={x} className="text-[15px]" />
+              <span className="mt-0.5 block text-[11px] text-tinta-2">
+                {CONDICOES.parcelasSemJuros}x de {brl(parcela(x.preco))} sem juros
+              </span>
+            </>
+          )}
+        </div>
+        <span className="mt-auto pt-4 font-label text-[10px] tracking-[0.18em] text-latao-texto uppercase transition-colors group-hover:text-tinta">
+          Ver fragrância <span aria-hidden>→</span>
+        </span>
+      </div>
+    </Link>
+  )
+}
 
 export function ProductPage() {
   const { slug } = useParams<{ slug: string }>()
   const a = slug ? getArchetypeBySlug(slug) : undefined
   const par = a ? getArchetype(a.par) : undefined
+  const duo = a ? comboDe(a, getArchetype) : undefined
   const { addItem } = useCart()
+  const trilho = useRef<HTMLDivElement>(null)
 
   // slug inexistente: 404 de verdade (a Vercel responde 404.html), nunca redirecionar pra home (soft 404)
   if (!a) return <NotFoundPage />
 
   // botão "Em breve" (sacola desativada): leva o tamanho cheio dos dois
-  function levarOsDois() {
-    if (!par || !a) return
-    for (const x of [a, par]) {
+  function levarOsDois(outro = par) {
+    if (!outro || !a) return
+    for (const x of [a, outro]) {
       addItem({ key: `${x.id}-full-layer`, archetypeId: x.id, label: `${x.nome} · ${x.vol}`, variant: x.vol, unitPrice: x.preco })
     }
   }
 
-  // pirâmide: topo mais estreito, base mais larga (só no desenho — o conteúdo vem de data/archetypes.ts)
-  const piramide = [
-    { label: 'Topo', value: a.topo, note: NOTAS_LEGENDA.topo, w: 'lg:w-[62%]' },
-    { label: 'Coração', value: a.coracao, note: NOTAS_LEGENDA.coracao, w: 'lg:w-[81%]' },
-    { label: 'Base', value: a.fundo, note: NOTAS_LEGENDA.fundo, w: 'lg:w-full' },
-  ]
+  // o par primeiro (layering), depois os outros na ordem do catálogo
+  const outros = [...(par ? [par] : []), ...ARCHETYPES.filter((x) => x.id !== a.id && x.id !== par?.id)]
 
   return (
     <div className="-mb-24">
       {/* P-02 a P-09 — seção de compra (mesmo componente do pop-up da home), contida no grid da página */}
-      <div className="bg-papel pb-10 lg:mx-auto lg:max-w-7xl lg:pt-6 lg:pb-20">
+      <div className="bg-papel pb-10 lg:mx-auto lg:max-w-7xl lg:pt-4 lg:pb-16">
         <ProductPurchase key={a.id} a={a} />
       </div>
 
-      {/* P-11 Benefícios — escuro, sobe por cima (degrau), lista numerada editorial */}
-      <Reveal as="section" className="relative z-10 overflow-hidden bg-noite px-5 pt-14 pb-14 text-papel-inv md:px-10 lg:pt-24 lg:pb-24" style={DEGRAU_ESCURO} animateContent>
-        <Glow className="-top-24 -right-24 size-72 lg:size-96" forca={20} />
-        <div className="relative md:mx-auto md:max-w-3xl lg:max-w-7xl">
-          <SectionEyebrow dark>Benefícios</SectionEyebrow>
-          <h2 className="mt-4 font-display text-[30px] leading-[1.12] lg:text-5xl">
-            O que <span className="text-latao">{a.nome}</span> faz por você
-          </h2>
-          <ol className="mt-8 lg:mt-14 lg:grid lg:grid-cols-3 lg:gap-x-12">
+      {/* Quem é você — o arquétipo como identidade (textos `quem`/`cheiro` dos dados). Desde out/2026 a foto da
+          representação sangra a seção — no desktop cobre a metade esquerda inteira, no celular o topo todo — e se
+          dissolve no fundo por um degradê suave até o texto. Na maioria das fotos a pessoa fica à direita, então o
+          degradê do desktop só começa nos últimos ~40% da foto, pra não apagá-la */}
+      <Reveal as="section" className="relative overflow-hidden bg-papel-2">
+        {/* degrau (sombra interna no topo) numa camada por cima de tudo: no fundo da seção a foto o escondia */}
+        <span aria-hidden className="pointer-events-none absolute inset-0 z-10" style={DEGRAU_CLARO} />
+        <div className="relative aspect-[4/5] w-full md:aspect-[16/10] lg:absolute lg:inset-y-0 lg:left-0 lg:aspect-auto lg:w-[56%]">
+          <MediaSlot
+            aspect="auto"
+            bg={a.bg}
+            src={PDP_REPRESENTACAO_FOTO[a.id]}
+            alt={`${produtoNome(a)} com a representação do arquétipo ${a.nome} ao fundo`}
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            requisito={`FOTO · 1:1 · REPRESENTAÇÃO · ${a.nome.toUpperCase()}`}
+            className="absolute! inset-0 rounded-none [&_img]:object-top"
+          />
+          {/* degradê bem esvaído na cor do fundo: celular pra baixo, desktop pra direita */}
+          <div
+            aria-hidden
+            className="absolute inset-0 lg:hidden"
+            style={{ background: 'linear-gradient(to bottom, transparent 40%, color-mix(in srgb, var(--color-papel-2) 35%, transparent) 62%, color-mix(in srgb, var(--color-papel-2) 80%, transparent) 82%, var(--color-papel-2) 100%)' }}
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 hidden lg:block"
+            style={{ background: 'linear-gradient(to right, transparent 62%, color-mix(in srgb, var(--color-papel-2) 35%, transparent) 78%, color-mix(in srgb, var(--color-papel-2) 80%, transparent) 92%, var(--color-papel-2) 100%)' }}
+          />
+        </div>
+        <div className="relative -mt-20 px-5 pb-14 md:mx-auto md:max-w-3xl md:px-10 lg:mt-0 lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-x-16 lg:py-24">
+          <div className="lg:col-span-6 lg:col-start-7">
+            <SectionEyebrow>Arquétipo {a.nome}</SectionEyebrow>
+            <h2 className="mt-4 font-display text-[30px] leading-[1.12] text-tinta lg:text-5xl">{a.ep}</h2>
+            <div className="mt-6 space-y-3 text-[15px] leading-relaxed text-tinta-2 lg:mt-8 lg:text-[17px]">
+              {a.quem.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+            </div>
+            <p className="mt-6 border-l-2 border-latao pl-4 font-display text-lg leading-snug text-tinta italic lg:text-xl">{a.cheiro[1]}</p>
+          </div>
+        </div>
+      </Reveal>
+
+      {/* P-11 Benefícios — redesenho out/2026: claro, centrado e editorial (o bloco escuro destoava do resto da página).
+          Três colunas separadas por filetes latão; cada uma com ícone de traço num aro dourado, número discreto,
+          título em display e texto curto. Celular: lista com ícone à esquerda */}
+      <Reveal as="section" className="relative overflow-hidden bg-papel px-5 pt-14 pb-14 md:px-10 lg:pt-24 lg:pb-24" style={DEGRAU_CLARO} animateContent>
+        <Glow className="top-1/2 left-1/2 size-80 -translate-x-1/2 -translate-y-1/2 lg:size-[34rem]" forca={10} />
+        <div className="relative mx-auto max-w-6xl">
+          <div className="text-center">
+            <SectionEyebrow center>Por que Arquétypus</SectionEyebrow>
+            <h2 className="mt-4 font-display text-[30px] leading-[1.12] text-tinta lg:text-5xl">
+              {/* nome na cor do arquétipo, como no H1 e em "Como {nome} se revela" */}
+              O que <span className="italic" style={{ color: a.cor }}>{a.nome}</span> faz por você
+            </h2>
+            <Ornament className="mx-auto mt-6 w-28 lg:mt-8" />
+          </div>
+          <ol className="mt-8 divide-y divide-latao/25 border-y border-latao/25 lg:mt-14 lg:grid lg:grid-cols-3 lg:divide-x lg:divide-y-0 lg:border-y-0">
             {BENEFITS.map((b) => (
-              <li key={b.n} className="flex gap-4 border-t border-papel-inv/10 py-5 last:border-b lg:flex-col lg:gap-5 lg:border-papel-inv/20 lg:pt-6 lg:pb-0 lg:last:border-b-0">
-                <span aria-hidden className="w-6 shrink-0 pt-1 font-label text-[10px] tracking-widest text-latao lg:w-auto lg:pt-0 lg:font-display lg:text-5xl lg:font-light lg:tracking-normal">
-                  {b.n}
+              <li key={b.n} className="flex items-start gap-5 py-5 lg:flex-col lg:items-center lg:gap-0 lg:px-10 lg:py-2 lg:text-center">
+                <span aria-hidden className="grid size-12 shrink-0 place-items-center rounded-full bg-papel-2 ring-1 ring-latao/50 lg:size-16">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.25} strokeLinecap="round" strokeLinejoin="round" className="size-5 text-latao-texto lg:size-6">
+                    <path d={b.icon} />
+                  </svg>
                 </span>
-                <div className="min-w-0">
-                  <h3 className="font-display text-[19px] leading-snug lg:text-2xl lg:leading-[1.25]">{b.title}</h3>
-                  <p className="mt-1.5 text-[13px] leading-relaxed text-papel-inv/60 lg:mt-3 lg:text-[15px]">{b.body}</p>
+                <div className="min-w-0 lg:mt-6">
+                  <span className="font-label text-[9px] tracking-[0.3em] text-latao-texto">{b.n}</span>
+                  <h3 className="mt-1 font-display text-[19px] leading-snug text-tinta lg:mt-2 lg:text-2xl">{b.title}</h3>
+                  <p className="mt-1.5 text-[13px] leading-relaxed text-tinta-2 lg:mx-auto lg:mt-3 lg:max-w-[30ch] lg:text-[15px]">{b.body}</p>
                 </div>
               </li>
             ))}
@@ -97,98 +270,14 @@ export function ProductPage() {
         </div>
       </Reveal>
 
-      {/* Pirâmide olfativa + P-13 Como usar — claro, lado a lado no desktop */}
-      <Reveal as="section" className="relative overflow-hidden bg-papel px-5 pt-14 pb-14 md:px-10 lg:pt-24 lg:pb-24" style={DEGRAU_CLARO}>
-        <Flor style={{ bottom: '-70px', right: '-90px', width: '260px', transform: 'rotate(-30deg)' }} />
-        <div className="relative md:mx-auto md:max-w-3xl lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-x-16">
-          <div className="lg:col-span-7">
-            <SectionEyebrow>Pirâmide olfativa</SectionEyebrow>
-            <h2 className="mt-4 font-display text-[30px] leading-[1.12] text-tinta lg:text-5xl">
-              Como {a.nome} <span className="text-latao-texto">se revela</span>
-            </h2>
-            {/* desktop: faixas que alargam de cima pra baixo, desenhando a pirâmide */}
-            <ol className="mt-8 flex flex-col gap-3 lg:mt-12 lg:items-center">
-              {piramide.map((n) => (
-                <li key={n.label} className={`w-full ${n.w}`}>
-                  <CutFrame cut={10} innerClassName="bg-papel px-5 py-4 lg:py-5 lg:text-center">
-                    <span className="font-label text-[9px] tracking-[0.2em] text-latao-texto uppercase">
-                      {n.label} <span className="text-tinta-3">· {n.note}</span>
-                    </span>
-                    <p className="mt-1.5 font-display text-xl leading-snug text-tinta lg:text-2xl">{n.value}</p>
-                  </CutFrame>
-                </li>
-              ))}
-            </ol>
-          </div>
+      {/* Pirâmide olfativa — editorial clara (out/2026), mesma estrutura pros 9; dados em data/piramideOlfativa.ts */}
+      <PiramideOlfativa a={a} />
 
-          <div className="mt-14 lg:col-span-5 lg:mt-0">
-            <SectionEyebrow>Como usar</SectionEyebrow>
-            <h2 className="mt-4 font-display text-[30px] leading-[1.12] text-tinta lg:text-5xl">
-              Três gestos, <span className="text-latao-texto">todo dia</span>
-            </h2>
-            <ol className="mt-8 lg:mt-12">
-              {HOW_TO.map((h, i) => (
-                <li key={h.step} className="flex gap-5 border-t border-linha py-5 last:border-b">
-                  <span aria-hidden className="font-display text-4xl leading-none font-light text-latao-texto">
-                    {i + 1}
-                  </span>
-                  <div>
-                    <span className="font-label text-[9px] tracking-[0.2em] text-tinta-3 uppercase">{h.step}</span>
-                    <p className="mt-1 text-[15px] leading-relaxed text-tinta lg:text-base">{h.text}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
-      </Reveal>
-
-      {/* P-14 Layering — escuro, os dois frascos lado a lado com "+" */}
-      {par && (
-        <Reveal as="section" className="relative z-10 overflow-hidden bg-noite px-5 pt-14 pb-14 text-papel-inv md:px-10 lg:pt-24 lg:pb-24" style={DEGRAU_ESCURO} animateContent>
-          <Glow className="top-1/3 left-1/2 size-80 -translate-x-1/2 lg:size-[30rem]" forca={14} />
-          <div className="relative mx-auto max-w-4xl text-center">
-            <SectionEyebrow dark center>Combina com</SectionEyebrow>
-            <h2 className="mt-4 font-display text-[30px] leading-[1.12] lg:text-5xl">
-              {a.nome} <span className="text-latao">+</span> {par.nome}
-            </h2>
-            <div className="mt-10 flex items-end justify-center gap-6 lg:gap-12">
-              {[a, par].map((x, i) => (
-                <div key={x.id} className="contents">
-                  {i === 1 && <span aria-hidden className="mb-16 font-display text-4xl text-latao lg:text-5xl">+</span>}
-                  <figure className="flex flex-col items-center">
-                    {FRASCO_CUT_IMG[x.id] && (
-                      <img loading="lazy"
-                        src={FRASCO_CUT_IMG[x.id]}
-                        alt={`Frasco ${x.nome}`}
-                        className="h-40 w-auto rounded-lg shadow-[0_18px_40px_-18px_rgba(0,0,0,0.7)] ring-1 ring-latao/40 lg:h-56"
-                      />
-                    )}
-                    <figcaption className="mt-4">
-                      <b className="block font-display text-xl font-normal" style={{ color: 'var(--color-papel-inv)' }}>
-                        {x.nome}
-                        <Sobrenome a={x} />
-                      </b>
-                      <span className="mt-1 block font-label text-[9px] tracking-[0.18em] text-papel-inv/50 uppercase">{x.fam}</span>
-                    </figcaption>
-                  </figure>
-                </div>
-              ))}
-            </div>
-            <p className="mx-auto mt-10 max-w-[44ch] font-display text-lg leading-relaxed text-papel-inv/80 italic lg:text-xl">{a.layer}</p>
-            <button
-              disabled
-              onClick={levarOsDois}
-              className="mt-8 w-full max-w-xs rounded-full border border-papel-inv/30 bg-papel-inv/10 py-4 text-xs font-medium tracking-wide text-papel-inv uppercase opacity-50"
-            >
-              Levar os dois · em breve
-            </button>
-          </div>
-        </Reveal>
-      )}
+      {/* P-14 Combina com — editorial (aprovado na Sereia, out/2026, espelhado pros 9; dados em data/combos.ts) */}
+      {duo && <ComboEditorial a={a} par={duo.par} combo={duo.combo} onLevar={() => levarOsDois(duo.par)} />}
 
       {/* P-17 FAQ + P-18 Ficha técnica — claro; título à esquerda, acordeões à direita no desktop */}
-      <Reveal as="section" className="relative overflow-hidden bg-papel-2 px-5 pt-14 pb-14 md:px-10 lg:pt-24 lg:pb-24" style={DEGRAU_CLARO}>
+      <Reveal as="section" className="relative overflow-hidden bg-papel-2 px-5 pt-14 pb-14 md:px-10 lg:pt-20 lg:pb-20" style={DEGRAU_CLARO}>
         <div className="relative md:mx-auto md:max-w-3xl lg:grid lg:max-w-7xl lg:grid-cols-12 lg:gap-x-16">
           <div className="lg:col-span-4">
             <SectionEyebrow>Dúvidas</SectionEyebrow>
@@ -204,6 +293,10 @@ export function ProductPage() {
                 </Accordion>
               ))}
             </div>
+            {/* só 5 perguntas aqui (FAQ_PDP); o resto fica na página de perguntas frequentes */}
+            <Link to="/perguntas-frequentes" className="mt-5 inline-block border-b border-latao/50 pb-0.5 font-label text-[10px] tracking-[0.18em] text-latao-texto uppercase hover:border-latao">
+              Ver todas as perguntas
+            </Link>
 
             <div className="mt-12">
               <Eyebrow>Ficha técnica</Eyebrow>
@@ -213,7 +306,7 @@ export function ProductPage() {
                     {[
                       ['Volume', a.vol],
                       ['Tipo', a.tipo],
-                      ['Concentração', '10% de essência'],
+                      ['Concentração', `${CONDICOES.essenciaPct}% de essência`],
                       ['Notificação Anvisa', a.anvisa],
                     ].map(([k, v]) => (
                       <div key={k} className="col-span-2 grid grid-cols-subgrid border-b border-linha py-2.5">
@@ -239,43 +332,47 @@ export function ProductPage() {
         </div>
       </Reveal>
 
-      {/* Mesma energia — escuro, fecha a página com o par em card claro */}
-      {par && (
-        <Reveal as="section" className="relative z-10 overflow-hidden bg-noite px-5 pt-14 pb-24 text-papel-inv md:px-10 lg:pt-24 lg:pb-32" style={DEGRAU_ESCURO} animateContent>
-          <Glow className="-bottom-20 -left-24 size-72 lg:size-96" forca={14} />
-          <div className="relative mx-auto max-w-3xl text-center">
-            <SectionEyebrow dark center>Mesma energia</SectionEyebrow>
-            <h2 className="mt-4 font-display text-[30px] leading-[1.12] lg:text-5xl">
-              Você também pode <span className="text-latao">despertar</span>
-            </h2>
-            <Link to={productPath(par)} className="group mx-auto mt-10 block max-w-md">
-              <CutFrame cut={14} innerClassName="flex items-center gap-5 bg-papel p-5 text-left text-tinta transition-colors group-hover:bg-papel-2">
-                {FRASCO_CUT_IMG[par.id] && (
-                  <img loading="lazy" src={FRASCO_CUT_IMG[par.id]} alt="" aria-hidden className="h-24 w-auto shrink-0 rounded-md" />
-                )}
-                <span className="min-w-0 flex-1">
-                  <b className="block font-display text-2xl font-normal" style={{ color: par.cor }}>
-                    {par.nome}
-                    <Sobrenome a={par} />
-                  </b>
-                  <span className="mt-1 block text-sm text-tinta-2">{par.fam}</span>
-                  <span className="mt-2 block text-sm text-tinta">{par.status === 'wait' ? 'Em breve' : <Preco a={par} />}</span>
-                </span>
-                <span aria-hidden className="text-xl text-latao-texto transition-transform duration-300 group-hover:translate-x-1">
-                  →
-                </span>
-              </CutFrame>
-            </Link>
-            <Ornament className="mx-auto mt-12 w-24" />
-            <Link
-              to="/#catalogo"
-              className="mt-6 inline-block font-label text-[10px] tracking-[0.18em] text-latao uppercase"
-            >
-              <span className="border-b border-latao/40 pb-0.5">Ver os 9 arquétipos</span>
-            </Link>
+      {/* Os outros arquétipos — redesenho out/2026 na estética das seções novas da PDP: claro (creme), título editorial,
+          cards com contorno fino; trilho horizontal no celular, 4 por vez no desktop com setas; o par vem primeiro.
+          pb maior no celular pra barra fixa de compra não cobrir o fim dos cards */}
+      <Reveal as="section" className="relative overflow-hidden bg-papel pt-14 pb-28 text-tinta lg:pt-20 lg:pb-24" style={DEGRAU_CLARO} animateContent>
+        <div className="relative mx-auto max-w-7xl">
+          <div className="flex items-end justify-between gap-6 px-5 md:px-10">
+            <div>
+              <SectionEyebrow>Continue descobrindo</SectionEyebrow>
+              <h2 className="mt-4 font-display text-[30px] leading-[1.12] lg:text-5xl">
+                Os outros <span className="text-latao-texto italic">arquétipos</span>
+              </h2>
+            </div>
+            {/* desktop: setas pra passar os cards (no celular é o dedo) */}
+            <div className="hidden shrink-0 items-center gap-2 lg:flex">
+              {([-1, 1] as const).map((dir) => (
+                <button
+                  key={dir}
+                  type="button"
+                  onClick={() => trilho.current?.scrollBy({ left: dir * trilho.current.clientWidth * 0.75, behavior: 'smooth' })}
+                  aria-label={dir < 0 ? 'Arquétipos anteriores' : 'Próximos arquétipos'}
+                  className="grid size-11 cursor-pointer place-items-center rounded-full bg-papel text-latao-texto ring-1 ring-latao/50 transition-colors hover:bg-latao hover:text-papel"
+                >
+                  <svg aria-hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="size-5">
+                    <path d={dir < 0 ? 'M15 5l-7 7 7 7' : 'M9 5l7 7-7 7'} />
+                  </svg>
+                </button>
+              ))}
+            </div>
           </div>
-        </Reveal>
-      )}
+          <div
+            ref={trilho}
+            className="no-scrollbar mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-5 px-5 pb-6 md:scroll-px-10 md:px-10 lg:mt-10 lg:grid lg:grid-flow-col lg:auto-cols-[calc((100%-3*1.25rem)/4)] lg:gap-5"
+          >
+            {outros.map((x) => (
+              <CardArquetipo key={x.id} x={x} />
+            ))}
+          </div>
+        </div>
+      </Reveal>
+
+      <PdpStickyBar a={a} />
     </div>
   )
 }

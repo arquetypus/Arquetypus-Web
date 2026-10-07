@@ -50,8 +50,8 @@ export function llmsTxt(): string {
       'traduzindo um arquétipo. "Você não escolhe um perfume. Você reconhece o seu."',
     '',
     `A ${EMPRESA.marca} é uma marca da ${EMPRESA.razao} (CNPJ ${EMPRESA.cnpj}), loja 100% online que entrega em todo ` +
-      `o Brasil. Envio em até ${CONDICOES.envioHorasUteis} horas úteis após a aprovação do pagamento, frete grátis acima de ` +
-      `${brl(FRETE_GRATIS_ACIMA)}, Pix com ${CONDICOES.pixDescontoPct}% de desconto e cartão em até ${CONDICOES.parcelasSemJuros}x sem juros ` +
+      `o Brasil. Envio em até ${CONDICOES.envioHorasUteis} horas úteis após a aprovação do pagamento, ` +
+      `${FRETE_GRATIS_ACIMA ? `frete grátis acima de ${brl(FRETE_GRATIS_ACIMA)}, ` : ''}Pix com ${CONDICOES.pixDescontoPct}% de desconto e cartão em até ${CONDICOES.parcelasSemJuros}x sem juros ` +
       `(${OPERACAO.pagamento}). Desistência em até ${CONDICOES.desistenciaDias} dias com o produto lacrado e sem uso; ` +
       `${CONDICOES.defeitoDias} dias para defeito. Produtos regularizados na Anvisa. ` +
       `Contato: ${EMPRESA.email}.`,

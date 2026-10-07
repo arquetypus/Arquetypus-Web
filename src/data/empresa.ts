@@ -36,8 +36,23 @@ export const OPERACAO = {
   anuncios: 'Google Ads, Meta (Facebook e Instagram) e TikTok',
 } as const
 
-/** Frete grátis a partir deste valor (R$) — home, Entrega e Frete, FAQ e llms.txt leem daqui */
-export const FRETE_GRATIS_ACIMA = 199
+/**
+ * Frete grátis a partir deste valor (R$) — home, PDP, Entrega e Frete, FAQ e llms.txt leem daqui. DESLIGADO desde
+ * out/2026 (`null`, pedido do usuário: ainda não confirmado) — com `null`, nenhum texto do site promete frete grátis.
+ * Pra religar, trocar por `FRETE_GRATIS_PLANEJADO` (ou o valor confirmado) e rodar o build.
+ */
+export const FRETE_GRATIS_PLANEJADO = 199
+export const FRETE_GRATIS_ACIMA: number | null = null
+
+/**
+ * Outros canais de venda (out/2026, pedido do usuário): pra quem prefere comprar num marketplace que já conhece.
+ * Aparecem na coluna de compra da PDP e no rodapé. `url` null = loja ainda sem link (o selo aparece, sem clique).
+ */
+export const CANAIS_VENDA: { id: 'mercado-livre' | 'shopee' | 'tiktok-shop'; nome: string; url: string | null }[] = [
+  { id: 'mercado-livre', nome: 'Mercado Livre', url: null },
+  { id: 'shopee', nome: 'Shopee', url: null },
+  { id: 'tiktok-shop', nome: 'TikTok Shop', url: null },
+]
 
 /**
  * Condições comerciais (confirmadas pelo usuário, out/2026) — preço no Pix, parcelas, prazos e concentração. Site,

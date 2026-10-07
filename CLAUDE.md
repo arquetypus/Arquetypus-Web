@@ -146,6 +146,53 @@ decisão de produto já tomada:
   apoio ao time de design — mostram a proporção real da caixa na tela.
   Desligados desde out/2026 (`SHOW_RATIO_TAGS = false`) — o usuário pode pedir pra religar. O
   requisito de produção do `MediaSlot` fica no tooltip do selo.
+- **PDP redesenhada (out/2026, foco em conversão):** coluna de compra com trilha, estrelas
+  (`Avaliacao`), etiquetas (família, volume, % de essência), "notas em destaque" (1ª nota de cada
+  camada), selo de desconto, Pix em destaque, frete grátis/prazo abaixo do botão e acordeões (Sobre a
+  fragrância, Notas, Como usar); galeria maior, presa ao rolar no desktop. Abaixo: "Arquétipo {nome}"
+  (foto da representação sangrando a seção — metade esquerda no desktop, topo no celular — com degradê só nos
+  últimos ~40% pra não apagar a pessoa; degrau numa camada por cima da foto — + `quem`/`cheiro[1]`), benefícios
+  ("Por que Arquétypus", claro e centrado: ícones de traço em aro latão, colunas com filetes), pirâmide olfativa
+  (`components/PiramideOlfativa.tsx`, out/2026): editorial clara, foto 48% + texto 52%, "Como {nome} se revela" e três
+  linhas Topo/Coração/Fundo (título fixo da camada, notas, descritores, mini natureza-morta à direita). No desktop a foto
+  sangra a seção (altura toda, metade esquerda) e some no creme por máscara nos últimos ~40%, como em "Arquétipo {nome}";
+  o nome no título vai na cor do arquétipo (`a.cor`, como o H1), o resto da interface é igual pros 9; mesma estrutura
+  pros 9, o que varia fica em `data/piramideOlfativa.ts` (descrição, descritores, alts) e nas pastas
+  `assets/fotos/piramide/principal/{id}.jpg` (sem ela, usa `pdp-notas/`) e `piramide/camadas/{id}-{topo|coracao|fundo}.jpg`
+  (sem ela, a linha mostra um mockup tracejado com a especificação). As minis são fotos 4:3 NÃO recortadas — naturezas-mortas da mesma "sessão"
+  (superfície creme lisa, luz lateral da esquerda, sombra de contato suave; prompt-base descrito em
+  `data/piramideOlfativa.ts`), com fundo calibrado pro creme da seção (#ebe1d3) e bordas esmaecidas por máscara CSS.
+  Geradas por IA (Higgsfield, GPT Image 2.5): só a Sereia; os outros 8 mostram mockup até gerar (Higgsfield sem
+  crédito em out/2026). Descritores dos outros 8 são RASCUNHO técnico tirado das notas — revisar com o usuário.
+  Em dev, se uma foto trocada com o mesmo nome continuar aparecendo a antiga, apagar `node_modules/.cache/imagetools`
+  e reiniciar o Vite. No celular: título → descrição → foto → camadas, e a seção passa da altura da tela (pedido
+  do usuário: sem carrossel e sem esconder etapa). `PiramideInfografico.tsx`/`data/piramides.ts` e as pastas
+  `pdp-piramide*` ficaram sem uso. "Combina com" editorial (`components/ComboEditorial.tsx`, out/2026) aprovado na
+  Sereia e espelhado pros 9 (`comboDe` em `data/combos.ts`): a Sereia tem entrada própria (Sereia + Afrodite, copy do
+  usuário); os outros usam o par de layering (`a.par`), texto = `a.layer` + fechamento do usuário, card = `ep`,
+  família e 4 notas da fórmula (nada inventado). Vende identidade e não economia (preço numa linha discreta depois do botão, sem "os dois por"),
+  título grande = "Sereia + Afrodite" (nomes na cor de cada arquétipo, suavizada), headline vira título de apoio;
+  título dos nomes em itálico; à direita dois cards com contorno — foto de ponta a ponta até o topo com nome + legenda
+  por cima (degradê creme no alto), embaixo frase do momento e 4 notas centralizadas (`cards` em `data/combos.ts`;
+  frase da Afrodite é rascunho a confirmar) unidos por um "+" grande que invade os dois; botão = `SweepCta` da home vazado com borda dourada (hover: dourado com texto claro); desligado (sem checkout); `VER_HOVER` em `ComboEditorial` liga só a aparência pra revisar o hover.
+  A seção inteira fica dentro de um banner retangular largo (até 100rem) com fundo de foto de cetim bege (centro liso,
+  dobras só nas bordas; `assets/fotos/texturas/cetim.jpg`, gerada por IA e calibrada pro `papel-2`, a 20% de opacidade pra não competir) e sombra leve embaixo, como se flutuasse.
+  Celular (< 768 px) tem versão própria: tudo centralizado, ordem texto → cards empilhados (até 420 px, "+" entre
+  eles) → botão → preço → selos; título de apoio com uma frase por linha; cetim a 10%. Tablet e desktop não mudam.
+  Os cards do celular são horizontais (referência do usuário): foto 16:9 de ponta a ponta com o frasco à direita
+  (`combo/{id}-mobile.jpg`, geradas por IA), nome grande na cor do arquétipo + frase + filete dourado à esquerda. Fotos: natureza-morta de produto
+  por arquétipo em `assets/fotos/combo/{id}.jpg` (sem pessoas, mesma "sessão" da Pirâmide; geradas por IA no
+  Higgsfield — só Sereia e Afrodite por enquanto; faixa de fundo estendida no topo pro texto do card não cair no
+  frasco); sem arquivo (desktop ou `-mobile`), o card mostra mockup tracejado até gerar. As versões com o arquétipo
+  ao fundo foram testadas e deixadas pra depois (out/2026). A seção de layering antiga saiu da PDP. Depois: FAQ/ficha e carrossel dos outros 8 (o par primeiro, setas no desktop; claro desde out/2026, cards
+  com contorno fino como os do combo: foto, família, nome, estrelas, preço + parcelas e "Ver fragrância →"). Barra fixa
+  de compra (`PdpStickyBar`): no celular fica à vista sempre que `#pdp-comprar` não está na tela (o botão
+  aparece sem rolar, pedido do usuário); no desktop só depois de passar o botão; some no rodapé. O botão segue
+  "Em breve" (decisão do usuário: sem checkout). O pop-up (modo compacto) mantém o layout anterior.
+  **Celular: o botão principal (abaixo do preço) aparece sem rolar** (pedido do usuário): ordem foto → nome →
+  estrelas → preço → botão, e frase/etiquetas/notas descem pra depois do botão; a foto ocupa a largura toda com
+  altura `clamp(12rem, 100svh − 20.5rem, quadrada)` (object-cover ancorado no topo, a tampa nunca some);
+  sem o "Descubra a…" e com menos respiro entre estrelas e preço no celular. Conferido no iPhone SE (375×548).
 - **PDP existe em `/body-splash/:slug`** (`pages/ProductPage.tsx`), com
   `CartContext` global (`context/CartContext.tsx`) — header, barra de
   frete e `KitBuilder` compartilham a mesma sacola agora.
@@ -221,6 +268,14 @@ decisão de produto já tomada:
   garantia, envio 24 h, pagamento seguro, 6x sem juros, 5% no Pix
   (ajustes de caixa alta/ícone testados e revertidos a pedido, out/2026 — fica o
   original: itálico, ícone de traço pequeno, 44 s por volta).
+- **Outros canais de venda (out/2026, pedido do usuário):** Mercado Livre, Shopee e TikTok Shop (`CANAIS_VENDA` em
+  `data/empresa.ts`, componente `ui/CanaisVenda.tsx`) — na coluna de compra da PDP logo depois dos selos de
+  envio/garantia/pagamento ("Prefere comprar em outro lugar?"; o quadro de frete abaixo do botão só aparece com frete
+  grátis ativo), e no rodapé ("Também à venda em"). Só os logos, monocromáticos em latão (paths da Simple Icons,
+  CC0; o Mercado Livre usa o aperto de mãos do Mercado Pago), sem texto — as cores originais chamavam atenção demais.
+  O order bump de layering ("Complete o ritual") saiu junto, desligado por `SHOW_ORDER_BUMP` em `ProductPurchase`.
+  Links ainda `null` (selo sem clique) — preencher quando o
+  usuário passar as URLs das lojas.
 - **Rodapé Boutique (out/2026)** (`FooterBoutique` em `boutique/BoutiqueMore.tsx`):
   escuro, logo dourada completa (`assets/brand/logo-dourado.png`), email
   `contato@arquetypus.com.br` (era sac@, trocado em todos os rodapés), canais oficiais com
@@ -270,7 +325,7 @@ decisão de produto já tomada:
   verdade** — submit só muda estado local (`submitted`/`added`), sem
   request nenhuma. Precisa de backend antes de ir pra produção.
 - **Páginas institucionais (vigência 01/10/2026)**, no rodapé em 4 colunas no padrão de loja — Loja · Institucional · Ajuda · Políticas, com "Nossas redes" junto da marca — e nos mesmos grupos no menu do celular:
-  `/perguntas-frequentes` (`FAQ_LOJA` + `FAQ_PRODUTO` em `data/faq.ts`, o mesmo da PDP; publica
+  `/perguntas-frequentes` (`FAQ_LOJA` + `FAQ_PRODUTO` em `data/faq.ts`; a PDP mostra só 5 de `FAQ_PRODUTO` — `FAQ_PDP` — com link pra cá; publica
   schema.org/FAQPage), `/entrega-e-frete`, `/trocas-e-devolucoes`, `/privacidade`, `/termos-de-uso`,
   `/regras-do-site`, `/sobre`. Casca em `components/ui/Legal.tsx`. Dados da empresa e fornecedores num lugar só:
   `data/empresa.ts` (`EMPRESA`, `EMPRESA_LINHA` no rodapé com endereço completo, `OPERACAO`: Mercado Pago,
@@ -294,7 +349,9 @@ decisão de produto já tomada:
 - **robots.txt, sitemap.xml e llms.txt (out/2026)** são gerados no build (plugin `arquivosSeo` no
   `vite.config.ts`, conteúdo em `src/lib/arquivosSeo.ts`) a partir dos dados do site — produtos e preços
   de `ARCHETYPES`, empresa de `data/empresa.ts`, páginas de `data/rotas.ts`. Não criar esses arquivos à mão
-  em `public/`. Também respondem em `npm run dev`. Frete grátis vem de `FRETE_GRATIS_ACIMA` (`data/empresa.ts`).
+  em `public/`. Também respondem em `npm run dev`. Frete grátis vem de `FRETE_GRATIS_ACIMA` (`data/empresa.ts`) — DESLIGADO desde out/2026 (`null`, não confirmado):
+  com `null` nenhum texto (PDP, FAQ, Entrega e Frete, descrições, llms.txt) promete frete grátis; o valor planejado
+  fica em `FRETE_GRATIS_PLANEJADO`.
   - **Página pública nova:** cadastrar em `PAGINAS_PUBLICAS` (`data/rotas.ts`) e ligar o componente em `PAGINAS`
     no `App.tsx` — as rotas saem dessa lista. O `satisfies` faz o `tsc` falhar se faltar componente ou sobrar
     caminho, e o `verify:ssr` falha se alguém escrever `<Route path="…">` solto no `App.tsx` (só produto,

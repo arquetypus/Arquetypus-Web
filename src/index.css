@@ -720,6 +720,30 @@ html:is([data-estrutura='laboratorio'], [data-estrutura='zen'], [data-estrutura=
   }
 }
 
+/* Entrada discreta em sequência (seções editoriais da PDP: PiramideOlfativa, ComboEditorial): a seção ganha `.seq-on`
+   ao entrar na tela e cada `.seq-anim` faz fade + 10px (`--y: 0px` = só fade), com atraso por `--i`. Mesmo controle
+   do reveal: sem JS ou com movimento reduzido, tudo aparece parado. */
+@media (prefers-reduced-motion: no-preference) {
+  html:is([data-reveal='pending'], [data-reveal='ready']) .seq-anim {
+    opacity: 0;
+    transform: translateY(var(--y, 10px));
+  }
+  html[data-reveal='ready'] .seq-on .seq-anim {
+    animation: seq-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: calc(var(--i, 0) * 110ms);
+  }
+}
+@keyframes seq-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--y, 10px));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .page-fade {
     animation: page-fade 0.25s ease-out;

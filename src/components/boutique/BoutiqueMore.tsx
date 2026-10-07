@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import type { Archetype } from '@/types/archetype'
 import { getArchetype, productPath } from '@/data/archetypes'
 import { FRASCO_CUT_IMG, JOURNAL, UGC_FOTO, UGC_VIDEOS, CONTATOS } from '@/data/home'
+import { CanaisVenda } from '@/components/ui/CanaisVenda'
 import { CONDICOES, EMPRESA_LINHA, parcela, precoPix } from '@/data/empresa'
 import { openCookiePreferences } from '@/lib/consent'
 import logoDourado from '@/assets/brand/logo-dourado.png'
@@ -481,8 +482,14 @@ export function FooterBoutique() {
           </nav>
         </div>
 
-        {/* formas de pagamento */}
+        {/* outros canais de venda (out/2026): Mercado Livre, Shopee e TikTok Shop — CANAIS_VENDA em data/empresa.ts */}
         <div className="mt-12 flex flex-col items-center gap-4 border-t border-papel-inv/10 pt-8 lg:flex-row lg:justify-between">
+          <p className={titulo}>Também à venda em</p>
+          <CanaisVenda tom="escuro" className="justify-center" />
+        </div>
+
+        {/* formas de pagamento */}
+        <div className="mt-8 flex flex-col items-center gap-4 border-t border-papel-inv/10 pt-8 lg:flex-row lg:justify-between">
           <p className={titulo}>Formas de pagamento</p>
           <ul className="flex flex-wrap justify-center gap-2" aria-label="Formas de pagamento aceitas">
             {PAGAMENTOS.map((p) => (

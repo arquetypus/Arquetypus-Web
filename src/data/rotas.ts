@@ -10,7 +10,7 @@ import { maiuscula, porExtenso } from '@/lib/extenso'
  */
 export const SEO_HOME = {
   title: "Arquetypus | Body Splash Premium e Perfumaria de Arquétipos",
-  description: `${maiuscula(porExtenso(ARCHETYPES.length))} fragrâncias Body Splash Premium com ${CONDICOES.essenciaPct}% de essência, uma para cada arquétipo. Descubra a sua: frete grátis acima de ${brlInteiro(FRETE_GRATIS_ACIMA)}, ${CONDICOES.parcelasSemJuros}x sem juros e ${CONDICOES.pixDescontoPct}% off no Pix.`,
+  description: `${maiuscula(porExtenso(ARCHETYPES.length))} fragrâncias Body Splash Premium com ${CONDICOES.essenciaPct}% de essência, uma para cada arquétipo. Descubra a sua: ${FRETE_GRATIS_ACIMA ? `frete grátis acima de ${brlInteiro(FRETE_GRATIS_ACIMA)}, ` : ''}${CONDICOES.parcelasSemJuros}x sem juros e ${CONDICOES.pixDescontoPct}% off no Pix.`,
 } as const
 
 export const PAGINAS_PUBLICAS = [
@@ -43,7 +43,7 @@ export const PAGINAS_PUBLICAS = [
     path: "/entrega-e-frete", nome: "Política de Entrega e Frete",
     seo: {
       title: "Entrega e Frete | Arquétypus Parfum",
-      description: `Envio em até ${CONDICOES.envioHorasUteis} horas úteis para todo o Brasil, frete grátis acima de ${brlInteiro(FRETE_GRATIS_ACIMA)} e rastreio por e-mail. Veja prazos, transportadoras e como acompanhar seu pedido.`,
+      description: `Envio em até ${CONDICOES.envioHorasUteis} horas úteis para todo o Brasil${FRETE_GRATIS_ACIMA ? `, frete grátis acima de ${brlInteiro(FRETE_GRATIS_ACIMA)}` : ''} e rastreio por e-mail. Veja prazos, transportadoras e como acompanhar seu pedido.`,
     },
   },
   {
