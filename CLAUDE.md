@@ -84,8 +84,10 @@ decisão de produto já tomada:
 ## Pendências técnicas conhecidas
 
 - **Drawer funcional** (`components/Drawer.tsx`, aberto pelo botão de menu do
-  header no celular, em `Layout`). Busca e sacola do header do celular são só
-  visuais (sem busca nem checkout ainda) — ligar quando existirem.
+  header no celular, em `Layout`). A sacola do header ainda é só visual (sem checkout). A busca funciona desde
+  out/2026: `components/Busca.tsx` (campo + painel no desktop, lupa com tela cheia no celular) e motor em
+  `lib/busca.ts` — procura nos 9 produtos por nome, sobrenome, família, notas, energia, gênero e textos, com
+  sinônimos ("doce", "madeira"…), sem acento e com plural; campos fortes primeiro, textos longos só se nada casar.
   Itens sem página real (Diário olfativo) ficam visíveis mas
   desabilitados com rótulo "Em breve" em vez de link morto ou rota
   inventada — quando essas páginas existirem, trocar por `Link` de

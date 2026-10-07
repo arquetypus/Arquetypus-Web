@@ -3,6 +3,7 @@ import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { hasPreservedHydrationScroll, scrollToId } from '@/lib/scrollToId'
 import { ThemeSwitcher } from '@/components/ThemeSwitcher'
 import { Drawer } from '@/components/Drawer'
+import { BuscaDesktop, BuscaMobile } from '@/components/Busca'
 import { FooterBoutique } from '@/components/boutique/BoutiqueMore'
 import { useThemeState } from '@/lib/theme'
 import wordmarkPreto from '@/assets/brand/wordmark-preto.png'
@@ -182,28 +183,11 @@ export function Layout() {
         </Link>
 
         <div className="flex items-center justify-self-end">
-          {/* busca e sacola: só visuais por enquanto (sem busca nem checkout ainda). Celular: dois ícones;
-              desktop: campo de busca + sacola, no lugar de "Diário olfativo"/"Seja criador" (que seguem no
-              Drawer e no rodapé) */}
+          {/* busca (out/2026, components/Busca.tsx: campo com painel no desktop, lupa com tela cheia no celular) e
+              sacola (só visual — sem checkout ainda) */}
           <div className="-mr-2 flex items-center lg:mr-0 lg:gap-6">
-            <button type="button" aria-label="Buscar (em breve)" className="grid size-10 place-items-center lg:hidden">
-              <svg aria-hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" className="size-[19px]">
-                <circle cx="10.5" cy="10.5" r="6" />
-                <path d="m15 15 5 5" />
-              </svg>
-            </button>
-            <label className="hidden w-56 items-center gap-2.5 border-b border-current/30 pb-1.5 opacity-80 transition-opacity focus-within:opacity-100 hover:opacity-100 lg:flex xl:w-64">
-              <svg aria-hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" className="size-4 shrink-0">
-                <circle cx="10.5" cy="10.5" r="6" />
-                <path d="m15 15 5 5" />
-              </svg>
-              <input
-                type="search"
-                aria-label="Buscar (em breve)"
-                placeholder="Buscar fragrância"
-                className="w-full min-w-0 bg-transparent font-label text-[10.5px] tracking-[0.2em] uppercase outline-none placeholder:text-current placeholder:opacity-70"
-              />
-            </label>
+            <BuscaMobile />
+            <BuscaDesktop />
             <button type="button" aria-label="Sacola (em breve)" className="grid size-10 place-items-center">
               <svg aria-hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.3} strokeLinecap="round" strokeLinejoin="round" className="size-[19px] lg:size-5">
                 <path d="M5.5 8h13l-1 12.5h-11L5.5 8Z" />
