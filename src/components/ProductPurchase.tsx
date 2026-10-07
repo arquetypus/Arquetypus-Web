@@ -381,7 +381,8 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
               <b className="font-semibold text-tinta">Prefere comprar em outro lugar?</b>
               <span className="block text-tinta-2">Você também encontra a Arquétypus em:</span>
             </p>
-            <CanaisVenda className="mt-3 justify-center" />
+            {/* celular: largura de 4 ícones (4 × 2,75rem + 3 vãos de 0,625rem), então quebra sempre em 4 + 3, centralizados */}
+            <CanaisVenda className="mt-3 justify-center max-md:mx-auto max-md:max-w-[12.875rem]" />
           </div>
         )}
 
