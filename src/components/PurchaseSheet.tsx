@@ -19,7 +19,18 @@ const EASE = 'cubic-bezier(0.32, 0.72, 0, 1)'
  * Durante o arraste o card acompanha o dedo e o fundo clareia; soltando antes do limite, ele volta com mola.
  * lg+: modal centralizado — a saída é um fade com leve descida.
  */
-export function PurchaseSheet({ label, fullPageTo, children }: { label: string; fullPageTo: string; children: ReactNode }) {
+export function PurchaseSheet({
+  label,
+  fullPageTo,
+  mostrarLink = true,
+  children,
+}: {
+  label: string
+  fullPageTo: string
+  /** link "Ver página completa" no fim da rolagem, no celular — o pop-up de produto tem o seu junto do botão (out/2026) */
+  mostrarLink?: boolean
+  children: ReactNode
+}) {
   const navigate = useNavigate()
   const sheetRef = useRef<HTMLDivElement>(null)
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -205,18 +216,22 @@ export function PurchaseSheet({ label, fullPageTo, children }: { label: string; 
             ✕
           </button>
         </div>
-        <div ref={scrollRef} className="overflow-y-auto overscroll-contain pb-6 lg:pb-0">
+        {/* sem padding embaixo aqui: a barra de preço do celular é sticky dentro desta área e o padding do contêiner
+            de rolagem vira um vão abaixo dela (iPhone 11, out/2026) — o respiro final fica no link */}
+        <div ref={scrollRef} className="overflow-y-auto overscroll-contain">
           {children}
-          {/* lg: o ProductPurchase mostra o link na coluna da galeria — aqui só celular */}
-          <div className="mt-4 px-4 text-center lg:hidden">
-            <Link
-              to={fullPageTo}
-              replace
-              className="inline-block py-2 font-label text-[10px] tracking-[0.18em] text-latao-texto uppercase"
-            >
-              <span className="border-b border-latao-texto/40 pb-0.5">Ver página completa</span>
-            </Link>
-          </div>
+          {/* só celular (no lg o conteúdo mostra o seu) */}
+          {mostrarLink && (
+            <div className="mt-4 px-4 pb-6 text-center lg:hidden">
+              <Link
+                to={fullPageTo}
+                replace
+                className="inline-block py-2 font-label text-[10px] tracking-[0.18em] text-latao-texto uppercase"
+              >
+                <span className="border-b border-latao-texto/40 pb-0.5">Ver página completa</span>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

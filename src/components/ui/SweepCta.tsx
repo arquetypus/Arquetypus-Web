@@ -15,6 +15,7 @@ const TRANSITION = { transition: 'border-color 0.5s ease-out, box-shadow 0.5s ea
 export function SweepCta({
   children,
   to,
+  replace = false,
   onClick,
   type = 'button',
   disabled = false,
@@ -22,6 +23,8 @@ export function SweepCta({
 }: {
   children: ReactNode
   to?: string
+  /** com `to`: troca a entrada do histórico em vez de empilhar (links que saem do pop-up de compra) */
+  replace?: boolean
   onClick?: () => void
   type?: 'button' | 'submit'
   disabled?: boolean
@@ -44,7 +47,7 @@ export function SweepCta({
 
   if (to) {
     return (
-      <Link to={to} style={TRANSITION} className={`${BASE} ${className}`}>
+      <Link to={to} replace={replace} style={TRANSITION} className={`${BASE} ${className}`}>
         {inner}
       </Link>
     )

@@ -45,6 +45,18 @@ export const FRETE_GRATIS_PLANEJADO = 199
 export const FRETE_GRATIS_ACIMA: number | null = null
 
 /**
+ * Brinde na compra (out/2026, copy do usuário) — quadro abaixo do botão de comprar na PDP completa. `kitsEmEstoque`
+ * é o número real de kits de amostras: atualizar à mão (ou ligar no estoque quando houver checkout) — anunciar
+ * escassez que não existe é publicidade enganosa (CDC, art. 37). `null` desliga o quadro; `kitsEmEstoque: null`
+ * esconde só a linha de estoque.
+ */
+export const BRINDE: { amostras: number; ml: number; kitsEmEstoque: number | null } | null = {
+  amostras: 3,
+  ml: 5,
+  kitsEmEstoque: 2,
+}
+
+/**
  * Outros canais de venda (out/2026, pedido do usuário): pra quem prefere comprar num marketplace que já conhece.
  * Aparecem na coluna de compra da PDP e no rodapé. `url` null = loja ainda sem link (o selo aparece, sem clique).
  */

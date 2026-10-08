@@ -8,8 +8,9 @@ import { ProductGallery } from '@/components/ProductGallery'
 import { Sobrenome } from '@/components/ui/Sobrenome'
 import { Preco } from '@/components/ui/Preco'
 import { PDP_ARQUETIPO_FOTO, PDP_FRASCO_FOTO, PDP_LIFESTYLE_FOTO, PDP_NOTAS_FOTO, PDP_REPRESENTACAO_FOTO } from '@/data/productMedia'
-import { CONDICOES, FRETE_GRATIS_ACIMA, parcela, precoPix } from '@/data/empresa'
+import { BRINDE, CONDICOES, FRETE_GRATIS_ACIMA, parcela, precoPix } from '@/data/empresa'
 import { CanaisVenda } from '@/components/ui/CanaisVenda'
+import { SweepCta } from '@/components/ui/SweepCta'
 
 /** Order bump de layering ("Complete o ritual") — trocado pelos outros canais de venda em out/2026. */
 const SHOW_ORDER_BUMP = false
@@ -59,8 +60,8 @@ const ARTIGO_ENERGIA: Record<string, string> = { Sedução: 'a', Força: 'a', Po
  * variante/preço/comprar (regra 8 do CLAUDE.md).
  */
 /**
- * `fullPageTo`: só no pop-up — no desktop o link "Ver página completa" fica na coluna da galeria
- * (no celular ele continua no fim do PurchaseSheet).
+ * `fullPageTo`: só no pop-up — "Ver página completa" logo abaixo do botão (out/2026: botão vazado dourado no desktop,
+ * link de texto na barra do pé no celular) e o nome do produto vira link pra página.
  * Pop-up (compacto, out/2026): o botão de comprar aparece sem rolar — saem os selos de envio/garantia/pagamento e o
  * "Complete o ritual" (continuam na página completa) e, no celular, preço + botão ficam numa barra presa no pé do
  * pop-up, com a foto na largura toda. A variante mini saiu de vez (out/2026): um tamanho só, sem seletor.
@@ -116,7 +117,9 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
   return (
     // Grade de 12 colunas no lg+: galeria em 7, compra em 5, os dois blocos centralizados na altura (sem texto
     // solto no topo). Celular: uma coluna, galeria → compra. Vale pro pop-up e pra PDP
-    <div className={`lg:grid lg:grid-cols-12 lg:gap-x-12 lg:px-12 lg:py-10 ${compact ? 'xl:gap-x-16 lg:items-center' : 'lg:items-start xl:gap-x-24'}`}>
+    // Pop-up no celular: coluna flex pra o nome subir pra antes da foto (order-first) — a foto fica na largura toda e a
+    // barra de preço presa no pé nunca cobre o nome (iPhone SE e 11, out/2026)
+    <div className={`lg:grid lg:grid-cols-12 lg:gap-x-12 lg:px-12 lg:py-10 ${compact ? 'max-lg:flex max-lg:flex-col xl:gap-x-16 lg:items-center' : 'lg:items-start xl:gap-x-24'}`}>
       {/* P-02 Galeria + notas (botões Fotos/Notas embaixo). Celular: largura toda, só a margem lateral */}
       {/* página completa (out/2026): a coluna da galeria fica fixa enquanto a coluna de compra (mais alta) rola. Ela prende
           na MESMA posição em que começa (8,5rem do topo = header 5rem + respiro da seção 3,5rem), então não "acompanha"
@@ -126,7 +129,7 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
           vertical (variante `vertical`) as miniaturas descem pra baixo dela e a foto ocupa a largura da coluna */}
       <section className={`px-4 pt-3 lg:col-span-7 lg:px-0 lg:pt-0 ${compact ? '' : 'lg:sticky lg:top-[8.5rem] lg:flex lg:h-[calc(100svh-12rem)] lg:items-center'}`}>
         {/* lg: largura limitada também pela altura da tela, pra caber sem rolagem em monitores baixos */}
-        <div className={`lg:mx-auto lg:w-full ${compact ? 'lg:max-w-[min(36rem,calc(88svh-10rem))]' : 'md:max-lg:mx-auto md:max-lg:max-w-[min(36rem,calc(100svh-20.5rem))] lg:mx-0 lg:max-w-[min(49rem,calc(100svh-7.25rem))] vertical:max-w-[calc(100svh-17.75rem)]'}`}>
+        <div className={`lg:mx-auto lg:w-full ${compact ? 'lg:max-w-[min(36rem,calc(88svh-10rem))]' :'md:max-lg:mx-auto md:max-lg:max-w-[min(36rem,calc(100svh-20.5rem))] lg:mx-0 lg:max-w-[min(49rem,calc(100svh-7.25rem))] vertical:max-w-[calc(100svh-17.75rem)]'}`}>
         <div className="relative">
           <ProductGallery
             key={a.id}
@@ -195,22 +198,15 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
           </button>
         </div>
         </div>
-        {fullPageTo && (
-          <div className="hidden pt-4 text-center lg:block lg:pl-[5.25rem]">
-            <Link
-              to={fullPageTo}
-              replace
-              className="inline-block py-1 font-label text-[10px] tracking-[0.18em] text-latao-texto uppercase"
-            >
-              <span className="border-b border-latao-texto/40 pb-0.5 transition-colors hover:border-latao-texto">Ver página completa</span>
-            </Link>
-          </div>
-        )}
       </section>
 
-      <div className="lg:col-span-5">
+      {/* pop-up no celular: `contents` tira esta caixa, pra a barra de preço sticky ficar presa ao pop-up inteiro e não
+          só ao bloco do nome — senão ela não desce até o pé e sobe por cima do nome (iPhone SE, out/2026) */}
+      <div className={`lg:col-span-5 ${compact ? 'max-lg:contents' : ''}`}>
         {/* P-03/04 Identidade + frase. Hierarquia: (convite) → código/energia → nome → frase → tipo/família */}
-        <section className={`px-4 lg:px-0 lg:pt-0 ${compact ? 'pt-5' : 'pt-3'}`}>
+        {/* pop-up no celular: grade de 2 colunas — nome e estrelas à esquerda, "Energia …" no espaço vazio à direita,
+            alinhado ao topo do nome (pedido do usuário, out/2026) */}
+        <section className={`px-4 lg:px-0 lg:pt-0 ${compact ? 'pt-2.5 max-lg:order-first max-lg:grid max-lg:grid-cols-[1fr_auto] max-lg:gap-x-3 lg:pt-0' : 'pt-3'}`}>
           {/* página completa: trilha de navegação + convite pela energia (que saiu da etiqueta dos cards) */}
           {!compact && (
             <nav aria-label="Você está em" className="mb-4 max-lg:hidden font-label text-[10px] tracking-[0.14em] text-tinta-3 uppercase">
@@ -221,23 +217,29 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
               <span className="text-tinta-2">{a.nome}</span>
             </nav>
           )}
-          <Eyebrow className={compact ? undefined : 'text-latao-texto max-lg:hidden'}>
+          <Eyebrow className={compact ? 'text-latao-texto max-lg:col-start-2 max-lg:row-start-1 max-lg:mt-2 max-lg:text-right' : 'text-latao-texto max-lg:hidden'}>
             {compact ? `Energia ${a.energia}` : `Descubra ${ARTIGO_ENERGIA[a.energia] ?? ''} ${a.energia}`}
           </Eyebrow>
-          <h1 className="mt-2 font-display text-3xl leading-[1.05] lg:text-[44px]" style={{ color: a.cor }}>
-            {a.nome}
-            <Sobrenome a={a} />
+          <h1 className={`mt-2 font-display text-3xl leading-[1.05] lg:text-[44px] ${compact ? 'max-lg:col-start-1 max-lg:row-start-1 max-lg:mt-0' : ''}`} style={{ color: a.cor }}>
+            {fullPageTo ? (
+              // pop-up: o nome leva à página completa (seta discreta indica o link)
+              <Link to={fullPageTo} replace className="transition-opacity hover:opacity-75">
+                {a.nome}
+                <span aria-hidden className="ml-1.5 align-super text-[0.4em] text-latao-texto">↗</span>
+                <Sobrenome a={a} />
+              </Link>
+            ) : (
+              <>
+                {a.nome}
+                <Sobrenome a={a} />
+              </>
+            )}
           </h1>
           {/* prova social logo abaixo do nome (estilo Judge.me), mesmo dado dos cards do catálogo */}
-          <div className="mt-1.5 flex leading-none lg:mt-3">
+          <div className={`mt-1.5 flex leading-none lg:mt-3 ${compact ? 'max-lg:col-span-2' : ''}`}>
             <Avaliacao id={a.id} className="text-[13px] lg:text-sm" />
           </div>
-          {compact && <p className="mt-3 font-display text-lg leading-snug italic lg:text-xl">{a.card}</p>}
-          {compact ? (
-            <p className="mt-3 font-label text-[9px] tracking-[0.18em] text-tinta-3 uppercase lg:mt-4">
-              {a.tipo} · {a.vol} · {a.fam}
-            </p>
-          ) : (
+          {!compact && (
             // página completa: frase + etiquetas (família, volume, concentração) + 3 notas de abertura. No celular esse
             // bloco desce pra depois do botão (DetalhesTopo abaixo), pra o botão principal aparecer sem rolar (out/2026)
             <div className="max-lg:hidden">
@@ -256,6 +258,15 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
             </div>
           )}
         </section>
+        {/* pop-up: frase + tipo fora da seção do nome — no celular o nome sobe pra antes da foto e isto fica depois dela */}
+        {compact && (
+          <div className="px-4 lg:px-0">
+            <p className="mt-4 font-display text-lg leading-snug italic lg:mt-3 lg:text-xl">{a.card}</p>
+            <p className="mt-3 font-label text-[9px] tracking-[0.18em] text-tinta-3 uppercase lg:mt-4">
+              {a.tipo} · {a.vol} · {a.fam}
+            </p>
+          </div>
+        )}
 
         {isWait ? (
           /* status 'wait': lista de espera, nunca venda */
@@ -280,7 +291,7 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
             <div
               className={`px-4 lg:mt-6 lg:border-t lg:border-linha lg:px-0 lg:pt-6 ${compact ? 'mt-5' : 'mt-3'} ${
                 compact
-                  ? 'max-lg:sticky max-lg:bottom-0 max-lg:z-10 max-lg:border-t max-lg:border-linha max-lg:bg-papel max-lg:pt-3 max-lg:pb-3 max-lg:shadow-[0_-12px_20px_-14px_rgba(40,46,41,0.35)]'
+                  ? 'max-lg:sticky max-lg:bottom-0 max-lg:z-10 max-lg:border-t max-lg:border-linha max-lg:bg-papel max-lg:pt-3 max-lg:pb-[calc(env(safe-area-inset-bottom)+0.75rem)] max-lg:shadow-[0_-12px_20px_-14px_rgba(40,46,41,0.35)]'
                   : ''
               }`}
             >
@@ -288,31 +299,90 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
                   ficavam espremidos, out/2026) — regra 7: os três continuam visíveis */}
               <div>
                 <div className="flex items-center gap-2.5">
-                  <Preco a={a} className={`shrink-0 font-display lg:leading-none ${compact ? 'text-2xl lg:text-[30px]' : 'text-[30px] lg:text-[36px]'}`} />
+                  <Preco
+                    a={a}
+                    // riscado menor que o padrão (out/2026): destaca a oferta e libera espaço pro botão no celular
+                    classeRiscado="text-[0.55em]"
+                    className={`shrink-0 font-display leading-none ${compact ? 'text-xl lg:text-[28px]' : 'text-[26px] lg:text-[32px]'}`}
+                  />
                   {descontoPct > 0 && (
                     <span className="rounded-full bg-latao/15 px-2 py-0.5 font-label text-[10px] font-semibold tracking-wide text-latao-texto">
                       −{descontoPct}%
                     </span>
                   )}
                 </div>
-                <p className={`mt-1 text-xs text-tinta-2 lg:mt-2 lg:text-[13px] ${compact ? 'max-lg:mt-0.5 max-lg:truncate max-lg:text-[12px]' : ''}`}>
+                <p className={`mt-1 text-[11px] text-tinta-2 lg:mt-2 lg:text-xs ${compact ? 'max-lg:mt-0.5 max-lg:truncate' : ''}`}>
                   <b className="font-semibold text-tinta">{brl(pix)} no Pix</b> ({CONDICOES.pixDescontoPct}% off) · ou {CONDICOES.parcelasSemJuros}x de {brl(parcela(selected.price))} sem juros
                 </p>
               </div>
               <p className={`mt-1.5 flex items-center gap-1.5 font-label text-[10px] tracking-wide text-ok uppercase ${compact ? 'max-lg:hidden' : ''}`}>
-                <span aria-hidden className="size-1.5 rounded-full bg-ok" /> Em estoque e pronto para envio
+                <span aria-hidden className="estoque-pulse relative size-1.5 rounded-full bg-ok" /> Em estoque e pronto para envio
               </p>
 
-              {/* sacola desativada, ver CLAUDE.md — mantida "Em breve" no redesenho (decisão do usuário, out/2026) */}
-              <button
-                // a barra fixa da PDP (PdpStickyBar) aparece quando este botão sai da tela
-                id={compact ? undefined : 'pdp-comprar'}
-                disabled
-                onClick={addToCart}
-                className={`mt-3 w-full rounded-lg bg-tinta text-sm font-medium tracking-[0.12em] text-papel uppercase opacity-40 lg:mt-5 ${compact ? 'py-4 lg:py-3.5' : 'py-4'}`}
-              >
-                {added ? 'Adicionado ✓' : 'Em breve'}
-              </button>
+              {/* sacola desativada, ver CLAUDE.md — mantida "Em breve" no redesenho (decisão do usuário, out/2026).
+                  PDP completa com BRINDE (out/2026, pedido do usuário): o botão fica dentro da caixa bege do brinde,
+                  com a mensagem embaixo dele; dados em BRINDE (data/empresa.ts) */}
+              {!compact && BRINDE ? (
+                <div className="mt-4 rounded-lg bg-papel-2 p-3 lg:mt-5">
+                  <button
+                    // a barra fixa da PDP (PdpStickyBar) aparece quando este botão sai da tela por cima
+                    id="pdp-comprar"
+                    disabled
+                    onClick={addToCart}
+                    className="w-full rounded-lg bg-tinta py-4 text-sm font-medium tracking-[0.12em] text-papel uppercase opacity-40"
+                  >
+                    {added ? 'Adicionado ✓' : 'Em breve'}
+                  </button>
+                  {/* desktop: presente à esquerda com 85% da altura do bloco de texto (absoluto, centrado + aspect-square — em flex o ícone
+                      esticaria o próprio texto), texto centralizado com o mesmo recuo dos dois lados. Celular: ícone de
+                      28 px ao lado, texto à esquerda (pedido do usuário, out/2026) */}
+                  <div className="relative mt-3 px-1 max-lg:flex max-lg:items-center max-lg:gap-3">
+                    <svg aria-hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="brinde-shake size-7 shrink-0 text-latao-texto lg:absolute lg:inset-y-0 lg:left-1 lg:my-auto lg:aspect-square lg:h-[85%] lg:w-auto">
+                      <path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7c-1.5-3-5-3.5-5-1.5S10 7 12 7zM12 7c1.5-3 5-3.5 5-1.5S14 7 12 7z" />
+                    </svg>
+                    <p className="text-[13px] leading-snug text-tinta-2 lg:px-[3.75rem] lg:text-center">
+                      <b className="font-semibold text-tinta">
+                        Brinde grátis na compra: {BRINDE.amostras} amostras de {BRINDE.ml} ml de outros arquétipos
+                      </b>
+                      {BRINDE.kitsEmEstoque !== null && (
+                        <span className="mt-0.5 block font-medium text-alerta">
+                          {BRINDE.kitsEmEstoque === 1 ? 'Último kit' : `Últimos ${BRINDE.kitsEmEstoque} kits`} de amostras em estoque
+                        </span>
+                      )}
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <button
+                  id={compact ? undefined : 'pdp-comprar'}
+                  disabled
+                  onClick={addToCart}
+                  className={`mt-3 w-full rounded-lg bg-tinta text-sm font-medium tracking-[0.12em] text-papel uppercase opacity-40 lg:mt-5 ${compact ? 'max-lg:mt-2 py-4 lg:py-3.5' : 'py-4'}`}
+                >
+                  {added ? 'Adicionado ✓' : 'Em breve'}
+                </button>
+              )}
+              {/* pop-up (out/2026): "Ver página completa" junto do botão — enquanto não há checkout é a ação que funciona.
+                  Celular: link de texto curto na barra do pé (não encolhe a foto); desktop: botão vazado discreto (borda fina,
+                  menor, sem o brilho periódico) — não pode competir com o botão de comprar */}
+              {fullPageTo && (
+                <>
+                  <Link
+                    to={fullPageTo}
+                    replace
+                    className="mt-2 block py-1 text-center font-label text-[10px] tracking-[0.18em] text-latao-texto uppercase lg:hidden"
+                  >
+                    <span className="border-b border-latao-texto/50 pb-0.5">Ver página completa →</span>
+                  </Link>
+                  <SweepCta
+                    to={fullPageTo}
+                    replace
+                    className="mt-2.5 max-w-none! rounded-lg! max-lg:hidden! border-latao/35! bg-transparent! py-2.5! text-[11px]! text-tinta-2! hover:text-tinta! lg:block! [&_.cta-sheen]:hidden"
+                  >
+                    Ver página completa →
+                  </SweepCta>
+                </>
+              )}
               {!compact && (
                 <p className="mt-2 text-center text-[11px] text-tinta-3">As vendas abrem em breve. Volte para garantir o seu.</p>
               )}
