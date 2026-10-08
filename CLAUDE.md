@@ -209,7 +209,11 @@ decisão de produto já tomada:
   depende de onde o checkout de verdade vai rodar.
 - **"Comprar agora" hoje faz o mesmo que "Adicionar à sacola".** Não
   existe checkout — decidir isso é decisão de produto, não técnica.
-- **Botão de compra: visual pronto, DESLIGADO de novo em out/2026** (`VENDAS_ATIVAS = false`, pedido do usuário; foi ativado pra trabalhar o destaque): `VENDAS_ATIVAS` em
+- **Botão de compra ATIVO, em fase de lançamento (out/2026):** `VENDAS_ATIVAS = true` + `EM_LANCAMENTO = true`
+  (`data/empresa.ts`): o clique em "Comprar agora" faz o efeito normal (sacola + verde "Adicionado") e 0,55 s depois abre o aviso
+  `components/ui/AvisoLancamento.tsx`
+  ("Em fase de lançamento", copy minha a revisar, link pro Instagram). Desligar `EM_LANCAMENTO` quando as vendas
+  abrirem. Histórico do botão: `VENDAS_ATIVAS` em
   `data/empresa.ts` liga o `components/ui/BotaoComprar.tsx` na PDP, no pop-up e na barra fixa — "Comprar agora"
   dourado cheio, sombra dourada e brilho a cada 5 s (`.cta-compra-sheen`), hover sem trocar a cor (preto e dourado escurecido descartados): brilho passa na hora, sombra cresce, sobe 1 px; o clique põe na sacola em memória e
   mostra "Adicionado à sacola ✓" ("Adicionado ✓" no celular) em verde (`ok`) por 2 s. A sacola do header segue só visual (sem contador nem checkout).
