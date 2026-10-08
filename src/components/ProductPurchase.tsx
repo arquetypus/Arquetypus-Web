@@ -8,12 +8,15 @@ import { ProductGallery } from '@/components/ProductGallery'
 import { Sobrenome } from '@/components/ui/Sobrenome'
 import { Preco } from '@/components/ui/Preco'
 import { PDP_ARQUETIPO_FOTO, PDP_FRASCO_FOTO, PDP_LIFESTYLE_FOTO, PDP_NOTAS_FOTO, PDP_REPRESENTACAO_FOTO } from '@/data/productMedia'
-import { BRINDE, CONDICOES, FRETE_GRATIS_ACIMA, parcela, precoPix } from '@/data/empresa'
+import { BRINDE, CONDICOES, FRETE_GRATIS_ACIMA, parcela, precoPix, VENDAS_ATIVAS } from '@/data/empresa'
 import { CanaisVenda } from '@/components/ui/CanaisVenda'
 import { SweepCta } from '@/components/ui/SweepCta'
+import { BotaoComprar } from '@/components/ui/BotaoComprar'
 
 /** Order bump de layering ("Complete o ritual") — trocado pelos outros canais de venda em out/2026. */
 const SHOW_ORDER_BUMP = false
+/** teto do seletor de quantidade da PDP */
+const QTD_MAX = 10
 import { Avaliacao } from '@/components/ui/Avaliacao'
 
 export const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
@@ -81,6 +84,8 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
   const [showNotes, setShowNotes] = useState(false)
   const [addonPar, setAddonPar] = useState(false)
   const [added, setAdded] = useState(false)
+  // quantidade (só na PDP completa — o pop-up e a barra fixa põem 1)
+  const [qtd, setQtd] = useState(1)
 
   const pix = precoPix(selected.price)
   const descontoPct = a.precoCheio > a.preco ? Math.round((1 - a.preco / a.precoCheio) * 100) : 0
@@ -94,7 +99,7 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
       label: `${a.nome} · ${selected.label}`,
       variant: selected.label,
       unitPrice: selected.price,
-    })
+    }, compact ? 1 : qtd)
     if (addonPar && par) {
       addItem({
         key: `${par.id}-full-addon`,
@@ -183,7 +188,7 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
         </div>
         {/* lg: pl = largura da coluna de miniaturas + gap, pra centralizar os botões sob a foto principal.
             Só no pop-up: na página completa as notas ficam no acordeão ao lado do preço (out/2026) */}
-        <div className={`mt-3 flex justify-center gap-2 lg:pl-[5.25rem] ${compact ? '' : 'hidden'}`}>
+        <div className={`mt-3 flex justify-center gap-2 lg:pl-[5.25rem] ${compact ? 'max-lg:mt-2' : 'hidden'}`}>
           <button
             onClick={() => setShowNotes(false)}
             className={`rounded-full border px-3 py-1.5 font-label text-[9px] tracking-wide uppercase ${!showNotes ? 'border-tinta bg-tinta text-papel' : 'border-linha-2'}`}
@@ -261,7 +266,7 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
         {/* pop-up: frase + tipo fora da seção do nome — no celular o nome sobe pra antes da foto e isto fica depois dela */}
         {compact && (
           <div className="px-4 lg:px-0">
-            <p className="mt-4 font-display text-lg leading-snug italic lg:mt-3 lg:text-xl">{a.card}</p>
+            <p className="mt-3 font-display text-lg leading-snug italic lg:text-xl">{a.card}</p>
             <p className="mt-3 font-label text-[9px] tracking-[0.18em] text-tinta-3 uppercase lg:mt-4">
               {a.tipo} · {a.vol} · {a.fam}
             </p>
@@ -289,7 +294,7 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
             {/* P-06 Preço + P-07 Comprar — regra 7: Pix e parcelamento sempre junto do preço. No pop-up do celular
                 o bloco fica preso no pé do pop-up (sticky), então o botão aparece sem rolar */}
             <div
-              className={`px-4 lg:mt-6 lg:border-t lg:border-linha lg:px-0 lg:pt-6 ${compact ? 'mt-5' : 'mt-3'} ${
+              className={`px-4 lg:mt-6 lg:border-t lg:border-linha lg:px-0 lg:pt-6 mt-3 ${
                 compact
                   ? 'max-lg:sticky max-lg:bottom-0 max-lg:z-10 max-lg:border-t max-lg:border-linha max-lg:bg-papel max-lg:pt-3 max-lg:pb-[calc(env(safe-area-inset-bottom)+0.75rem)] max-lg:shadow-[0_-12px_20px_-14px_rgba(40,46,41,0.35)]'
                   : ''
@@ -319,48 +324,73 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
                 <span aria-hidden className="estoque-pulse relative size-1.5 rounded-full bg-ok" /> Em estoque e pronto para envio
               </p>
 
-              {/* sacola desativada, ver CLAUDE.md — mantida "Em breve" no redesenho (decisão do usuário, out/2026).
-                  PDP completa com BRINDE (out/2026, pedido do usuário): o botão fica dentro da caixa bege do brinde,
-                  com a mensagem embaixo dele; dados em BRINDE (data/empresa.ts) */}
-              {!compact && BRINDE ? (
-                <div className="mt-4 rounded-lg bg-papel-2 p-3 lg:mt-5">
-                  <button
-                    // a barra fixa da PDP (PdpStickyBar) aparece quando este botão sai da tela por cima
-                    id="pdp-comprar"
-                    disabled
-                    onClick={addToCart}
-                    className="w-full rounded-lg bg-tinta py-4 text-sm font-medium tracking-[0.12em] text-papel uppercase opacity-40"
-                  >
-                    {added ? 'Adicionado ✓' : 'Em breve'}
-                  </button>
-                  {/* desktop: presente à esquerda com 85% da altura do bloco de texto (absoluto, centrado + aspect-square — em flex o ícone
-                      esticaria o próprio texto), texto centralizado com o mesmo recuo dos dois lados. Celular: ícone de
-                      28 px ao lado, texto à esquerda (pedido do usuário, out/2026) */}
-                  <div className="relative mt-3 px-1 max-lg:flex max-lg:items-center max-lg:gap-3">
-                    <svg aria-hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="brinde-shake size-7 shrink-0 text-latao-texto lg:absolute lg:inset-y-0 lg:left-1 lg:my-auto lg:aspect-square lg:h-[85%] lg:w-auto">
+              {/* botão de compra (BotaoComprar): ativo desde out/2026 (VENDAS_ATIVAS) — sem checkout, põe na sacola.
+                  PDP completa (out/2026, pedido do usuário, referência: PDP da Wepink): seletor de quantidade em contorno
+                  dourado colado à esquerda do botão, mesma altura; a caixa do brinde fica separada, logo abaixo */}
+              {!compact ? (
+                <>
+                  <div className="mt-4 flex gap-2.5 lg:mt-5">
+                    {VENDAS_ATIVAS && (
+                      <div role="group" aria-label="Quantidade" className="flex shrink-0 items-stretch rounded-lg border border-latao/70 bg-papel">
+                        <button
+                          type="button"
+                          aria-label="Diminuir quantidade"
+                          disabled={qtd <= 1}
+                          onClick={() => setQtd((q) => Math.max(1, q - 1))}
+                          className="w-9 text-xl leading-none text-latao-texto transition-colors hover:text-tinta disabled:opacity-35 max-[359px]:w-8 min-[390px]:w-10 lg:w-11"
+                        >
+                          −
+                        </button>
+                        <span aria-live="polite" className="flex w-7 items-center justify-center text-base font-semibold text-tinta tabular-nums">
+                          {qtd}
+                        </span>
+                        <button
+                          type="button"
+                          aria-label="Aumentar quantidade"
+                          disabled={qtd >= QTD_MAX}
+                          onClick={() => setQtd((q) => Math.min(QTD_MAX, q + 1))}
+                          className="w-9 text-xl leading-none text-latao-texto transition-colors hover:text-tinta disabled:opacity-35 max-[359px]:w-8 min-[390px]:w-10 lg:w-11"
+                        >
+                          +
+                        </button>
+                      </div>
+                    )}
+                    <BotaoComprar
+                      // a barra fixa da PDP (PdpStickyBar) aparece quando este botão sai da tela por cima
+                      id="pdp-comprar"
+                      onClick={addToCart}
+                      adicionado={added}
+                      className="min-w-0 flex-1 px-3 py-3.5 text-xs tracking-[0.06em] whitespace-nowrap max-[359px]:text-[11px] min-[390px]:text-[13px] min-[390px]:tracking-[0.1em] lg:text-[15px] lg:tracking-[0.14em]"
+                    />
+                  </div>
+                  {/* oferta do brinde (BRINDE, data/empresa.ts). Desktop: presente à esquerda com 72% da altura do texto
+                      (absoluto — em flex o ícone esticaria o próprio texto), texto centralizado. Celular: ícone de 32 px
+                      ao lado, texto à esquerda */}
+                  {BRINDE && (
+                    <div className="relative mt-3 rounded-lg bg-papel-2 px-4 py-3 max-lg:flex max-lg:items-center max-lg:gap-3">
+                      <svg aria-hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" className="brinde-shake size-8 shrink-0 text-latao-texto lg:absolute lg:inset-y-0 lg:left-4 lg:my-auto lg:aspect-square lg:h-[72%] lg:w-auto">
                       <path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7c-1.5-3-5-3.5-5-1.5S10 7 12 7zM12 7c1.5-3 5-3.5 5-1.5S14 7 12 7z" />
                     </svg>
-                    <p className="text-[13px] leading-snug text-tinta-2 lg:px-[3.75rem] lg:text-center">
+                      <p className="text-[13px] leading-snug text-tinta-2 lg:px-[3.75rem] lg:text-center">
                       <b className="font-semibold text-tinta">
-                        Brinde grátis na compra: {BRINDE.amostras} amostras de {BRINDE.ml} ml de outros arquétipos
+                        Brinde grátis na compra: {BRINDE.amostras} decants de {BRINDE.ml} ml de outros arquétipos
                       </b>
                       {BRINDE.kitsEmEstoque !== null && (
                         <span className="mt-0.5 block font-medium text-alerta">
-                          {BRINDE.kitsEmEstoque === 1 ? 'Último kit' : `Últimos ${BRINDE.kitsEmEstoque} kits`} de amostras em estoque
+                          {BRINDE.kitsEmEstoque === 1 ? 'Último kit' : `Últimos ${BRINDE.kitsEmEstoque} kits`} de decants em estoque
                         </span>
                       )}
                     </p>
-                  </div>
-                </div>
+                    </div>
+                  )}
+                </>
               ) : (
-                <button
+                <BotaoComprar
                   id={compact ? undefined : 'pdp-comprar'}
-                  disabled
                   onClick={addToCart}
-                  className={`mt-3 w-full rounded-lg bg-tinta text-sm font-medium tracking-[0.12em] text-papel uppercase opacity-40 lg:mt-5 ${compact ? 'max-lg:mt-2 py-4 lg:py-3.5' : 'py-4'}`}
-                >
-                  {added ? 'Adicionado ✓' : 'Em breve'}
-                </button>
+                  adicionado={added}
+                  className={`mt-3 w-full text-sm lg:mt-5 ${compact ? 'max-lg:mt-2 py-4 lg:py-3.5' : 'py-4'}`}
+                />
               )}
               {/* pop-up (out/2026): "Ver página completa" junto do botão — enquanto não há checkout é a ação que funciona.
                   Celular: link de texto curto na barra do pé (não encolhe a foto); desktop: botão vazado discreto (borda fina,
@@ -370,7 +400,7 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
                   <Link
                     to={fullPageTo}
                     replace
-                    className="mt-2 block py-1 text-center font-label text-[10px] tracking-[0.18em] text-latao-texto uppercase lg:hidden"
+                    className="mt-1.5 block py-0.5 text-center font-label text-[10px] tracking-[0.18em] text-latao-texto uppercase lg:hidden"
                   >
                     <span className="border-b border-latao-texto/50 pb-0.5">Ver página completa →</span>
                   </Link>
@@ -383,7 +413,7 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
                   </SweepCta>
                 </>
               )}
-              {!compact && (
+              {!compact && !VENDAS_ATIVAS && (
                 <p className="mt-2 text-center text-[11px] text-tinta-3">As vendas abrem em breve. Volte para garantir o seu.</p>
               )}
               {/* celular: frase, etiquetas e notas logo depois do botão (no desktop ficam acima do preço) */}

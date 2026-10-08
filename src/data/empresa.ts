@@ -45,6 +45,12 @@ export const FRETE_GRATIS_PLANEJADO = 199
 export const FRETE_GRATIS_ACIMA: number | null = null
 
 /**
+ * Botão de compra ativo (out/2026, pedido do usuário pra trabalhar o destaque do CTA). Ainda NÃO existe checkout:
+ * "Comprar agora" põe o produto na sacola em memória. `false` volta ao "Em breve" desligado (BotaoComprar).
+ */
+export const VENDAS_ATIVAS = true
+
+/**
  * Brinde na compra (out/2026, copy do usuário) — quadro abaixo do botão de comprar na PDP completa. `kitsEmEstoque`
  * é o número real de kits de amostras: atualizar à mão (ou ligar no estoque quando houver checkout) — anunciar
  * escassez que não existe é publicidade enganosa (CDC, art. 37). `null` desliga o quadro; `kitsEmEstoque: null`

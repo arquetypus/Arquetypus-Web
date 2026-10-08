@@ -18,6 +18,7 @@ import { DEGRAU_CLARO, Glow, Ornament, SectionEyebrow } from '@/components/ui/Ed
 import { brl, ProductPurchase } from '@/components/ProductPurchase'
 import { Sobrenome } from '@/components/ui/Sobrenome'
 import { Preco } from '@/components/ui/Preco'
+import { BotaoComprar } from '@/components/ui/BotaoComprar'
 import { Avaliacao } from '@/components/ui/Avaliacao'
 import { rolarTrilho, useArrasteMouse } from '@/lib/useArrasteMouse'
 
@@ -48,10 +49,12 @@ function Accordion({ title, children, dark = false }: { title: string; children:
  * Barra fixa de compra (out/2026): aparece quando o botão de comprar da coluna (#pdp-comprar) sai da tela por
  * cima ao rolar, e some ao voltar e quando o rodapé entra — celular e desktop iguais (pedido do usuário, out/2026;
  * antes, no celular, ficava à vista também antes de chegar no botão). Miniatura, nome, preço e o mesmo botão — hoje
- * "Em breve" (sem checkout, ver CLAUDE.md). Presa no pé da tela; no desktop centralizada no grid da página.
+ * o `BotaoComprar` (sem checkout: põe na sacola, ver CLAUDE.md). Presa no pé da tela; no desktop centralizada no grid da página.
  */
 function PdpStickyBar({ a }: { a: Archetype }) {
   const [visivel, setVisivel] = useState(false)
+  const [adicionado, setAdicionado] = useState(false)
+  const { addItem } = useCart()
 
   useEffect(() => {
     const cta = document.getElementById('pdp-comprar')
@@ -79,26 +82,35 @@ function PdpStickyBar({ a }: { a: Archetype }) {
         visivel ? 'translate-y-0' : 'pointer-events-none translate-y-full'
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-2.5 lg:gap-5 lg:px-12 lg:py-3">
+      {/* tamanhos em três degraus (out/2026): celular pequeno (< 390 px) como está; celular maior (390+) e desktop um
+          pouco maiores — barra, miniatura, nome, preço e botão */}
+      <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-2.5 min-[390px]:py-3 lg:gap-6 lg:px-12 lg:py-4">
         {FRASCO_CUT_IMG[a.id] && (
-          <img src={FRASCO_CUT_IMG[a.id]} alt="" loading="lazy" className="h-12 w-auto shrink-0 rounded-md lg:h-14" />
+          // celular bem estreito (< 360 px, ex.: 320): a miniatura sai pra sobrar espaço pro nome
+          <img src={FRASCO_CUT_IMG[a.id]} alt="" loading="lazy" className="h-12 w-auto shrink-0 rounded-md max-[359px]:hidden min-[390px]:h-14 lg:h-[4.5rem]" />
         )}
         <div className="min-w-0 flex-1">
-          <p className="truncate font-display text-base leading-tight lg:text-lg" style={{ color: a.cor }}>
-            {a.nome} <span className="text-tinta-3">{a.sobrenome}</span>
+          {/* celular: nome e sobrenome em linhas separadas (numa linha só o nome era cortado em tela pequena, out/2026);
+              lg: os dois na mesma linha */}
+          <p className="font-display text-[19px] leading-tight lg:truncate lg:text-[22px]" style={{ color: a.cor }}>
+            <span className="block truncate lg:inline">{a.nome}</span>{' '}
+            <span className="block truncate text-[12px] text-tinta-3 min-[390px]:text-[13px] lg:inline lg:text-[length:inherit]">{a.sobrenome}</span>
           </p>
-          <p className="mt-0.5 flex flex-wrap items-baseline gap-x-2 text-[12px] text-tinta-2">
-            <Preco a={a} className="text-[15px]" />
+          <p className="mt-0.5 flex flex-wrap items-baseline gap-x-2 text-[12px] text-tinta-2 lg:mt-1 lg:text-[13px]">
+            <Preco a={a} classeRiscado="text-[0.65em]" className="text-[15px] min-[390px]:text-[17px] lg:text-xl" />
             <span className="hidden sm:inline">{brl(precoPix(a.preco))} no Pix</span>
           </p>
         </div>
-        <button
-          disabled
+        <BotaoComprar
           tabIndex={visivel ? 0 : -1}
-          className="shrink-0 rounded-lg bg-tinta px-5 py-3 text-xs font-medium tracking-[0.12em] text-papel uppercase opacity-40 lg:px-10"
-        >
-          Em breve
-        </button>
+          onClick={() => {
+            addItem({ key: `${a.id}-full`, archetypeId: a.id, label: `${a.nome} · ${a.vol}`, variant: a.vol, unitPrice: a.preco })
+            setAdicionado(true)
+            setTimeout(() => setAdicionado(false), 2000)
+          }}
+          adicionado={adicionado}
+          className="shrink-0 px-4 py-4 text-xs max-lg:tracking-[0.08em] min-[390px]:px-5 min-[390px]:py-[1.1rem] min-[390px]:text-[13px] lg:px-14 lg:py-5 lg:text-[15px]"
+        />
       </div>
     </div>
   )

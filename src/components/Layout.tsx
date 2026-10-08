@@ -168,6 +168,9 @@ export function Layout() {
           <img
             src={wordmarkMarmore}
             alt="Arquétypus"
+            // o logo à vista é o LCP da home (o Chrome descarta a foto do hero, de pouca informação por pixel): alta
+            // prioridade — o React copia pro <link rel="preload"> do HTML pré-renderizado (out/2026)
+            fetchPriority={headerOverHero ? 'high' : 'low'}
             className={`absolute inset-0 h-full w-full object-contain object-center transition-opacity duration-300 ease-out ${
               headerOverHero ? 'opacity-100' : 'opacity-0'
             }`}
@@ -175,6 +178,7 @@ export function Layout() {
           <img
             src={wordmarkPreto}
             alt="Arquétypus"
+            fetchPriority={headerOverHero ? 'low' : 'high'}
             // logo-tinta: na direção "Noite Imperial" (fundo escuro) o CSS inverte pra claro
             className={`logo-tinta absolute inset-0 h-full w-full object-contain object-center transition-opacity duration-300 ease-out ${
               headerOverHero ? 'opacity-0' : 'opacity-100'

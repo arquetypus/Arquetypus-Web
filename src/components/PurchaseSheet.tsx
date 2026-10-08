@@ -192,7 +192,7 @@ export function PurchaseSheet({
       />
       <div
         ref={sheetRef}
-        className="sheet-in relative flex max-h-[90svh] w-full max-w-md flex-col overflow-hidden rounded-t-3xl bg-papel shadow-[0_-20px_40px_-20px_rgba(0,0,0,0.5)] will-change-transform md:max-w-xl lg:max-h-[88svh] lg:max-w-6xl lg:rounded-3xl lg:shadow-[0_30px_80px_-20px_rgba(0,0,0,0.55)]"
+        className="sheet-in relative flex max-h-[94svh] w-full max-w-md flex-col overflow-hidden rounded-t-3xl bg-papel shadow-[0_-20px_40px_-20px_rgba(0,0,0,0.5)] will-change-transform md:max-w-xl lg:max-h-[88svh] lg:max-w-6xl lg:rounded-3xl lg:shadow-[0_30px_80px_-20px_rgba(0,0,0,0.55)]"
         style={sheetStyle}
         onTransitionEnd={(e) => {
           if (closing && e.target === e.currentTarget && e.propertyName === 'transform') sair()

@@ -209,6 +209,13 @@ decisão de produto já tomada:
   depende de onde o checkout de verdade vai rodar.
 - **"Comprar agora" hoje faz o mesmo que "Adicionar à sacola".** Não
   existe checkout — decidir isso é decisão de produto, não técnica.
+- **Botão de compra ATIVO desde out/2026** (pedido do usuário, pra trabalhar o destaque): `VENDAS_ATIVAS` em
+  `data/empresa.ts` liga o `components/ui/BotaoComprar.tsx` na PDP, no pop-up e na barra fixa — "Comprar agora"
+  dourado cheio, sombra dourada e brilho a cada 5 s (`.cta-compra-sheen`), hover sem trocar a cor (preto e dourado escurecido descartados): brilho passa na hora, sombra cresce, sobe 1 px; o clique põe na sacola em memória e
+  mostra "Adicionado à sacola ✓" ("Adicionado ✓" no celular) em verde (`ok`) por 2 s. A sacola do header segue só visual (sem contador nem checkout).
+  `false` volta ao "Em breve" desligado. Onde o texto acima/abaixo diz "Em breve", vale isto.
+  Na PDP completa o botão tem à esquerda um seletor de quantidade em contorno dourado (− n +, 1 a `QTD_MAX` = 10,
+  mesma altura; referência do usuário: PDP da Wepink); a quantidade vai pra sacola. Pop-up e barra fixa põem 1.
 - **Kit Descoberta saiu do ar (set/2026).** `/kit-descoberta` redireciona
   pra home; sem link no hero, drawer, rodapé nem comparativo. `KitPage`,
   `KitSheet` e `KitPurchase` ficam no repo, desligados, pra religar. O
@@ -283,9 +290,9 @@ decisão de produto já tomada:
   grátis ativo), e no rodapé ("Também à venda em"). Só os logos, monocromáticos em latão (paths da Simple Icons,
   CC0; o Mercado Livre usa o aperto de mãos do Mercado Pago; Magalu, Beleza na Web e Época foram vetorizados com potrace
   a partir dos PNG/JPG enviados pelo usuário), sem texto — as cores originais chamavam atenção demais.
-  **Brinde na compra (out/2026):** caixa bege com o botão de comprar dentro e a mensagem embaixo dele, na PDP completa (não no pop-up), no estilo do antigo
-  quadro de frete grátis: "Brinde grátis na compra: 3 amostras de 5 ml de outros arquétipos" + linha em `alerta`
-  "Últimos N kits de amostras em estoque". Dados em `BRINDE` (`data/empresa.ts`); `kitsEmEstoque` é número real,
+  **Brinde na compra (out/2026):** caixa bege só com a mensagem, logo abaixo do botão (separados desde out/2026), na PDP completa (não no pop-up), no estilo do antigo
+  quadro de frete grátis: "Brinde grátis na compra: 3 decants de 5 ml de outros arquétipos" + linha em `alerta`
+  "Últimos N kits de decants em estoque". Dados em `BRINDE` (`data/empresa.ts`); `kitsEmEstoque` é número real,
   atualizado à mão — não deixar escassez fixa que não corresponde ao estoque.
   O order bump de layering ("Complete o ritual") saiu junto, desligado por `SHOW_ORDER_BUMP` em `ProductPurchase`.
   Links ainda `null` (selo sem clique) — preencher quando o
@@ -319,7 +326,10 @@ decisão de produto já tomada:
   (pedido do usuário). Sem padding embaixo da área de rolagem do `PurchaseSheet`, senão abre vão sob a barra.
   "Ver página completa" (out/2026) fica junto do botão: link de texto na barra do pé no celular e botão vazado discreto
   (`SweepCta` de borda fina, sem brilho, `replace`) no desktop — não compete com o comprar; o nome do produto (com "↗") também leva à página. O link antigo
-  (embaixo da galeria / fim da rolagem) saiu do pop-up de produto (`mostrarLink={false}` no `PurchaseSheet`). A variante
+  (embaixo da galeria / fim da rolagem) saiu do pop-up de produto (`mostrarLink={false}` no `PurchaseSheet`). Sem scroll a partir
+  do iPhone 14 (390×844, medido no DevTools, out/2026): pop-up com até 94svh no celular e espaçamentos enxutos —
+  conteúdo até 728 px, sobra ~40 px no 14/16; o iPhone SE (375×667) rola, de propósito. A foto nunca encolhe pra
+  caber (decisão do usuário). Não engordar o pop-up sem medir de novo. A variante
   mini (8 ml) saiu de vez, também da PDP. A PDP (`/body-splash/:slug` direto) mantém selos e ritual e
   ganhou o convite "Descubra {o/a} {energia}" (a etiqueta de energia saiu dos
   cards do catálogo). `PurchaseSheet` fecha com saída animada pelo ✕, fundo, Esc,
