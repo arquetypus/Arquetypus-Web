@@ -1,3 +1,4 @@
+import { useCallback, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { Archetype } from '@/types/archetype'
 import { ARCHETYPES, productPath } from '@/data/archetypes'
@@ -10,6 +11,8 @@ import { Preco } from '@/components/ui/Preco'
 import { Avaliacao } from '@/components/ui/Avaliacao'
 import { EspiarProduto } from '@/components/ui/EspiarProduto'
 import { CONDICOES, parcela, precoPix } from '@/data/empresa'
+import { FiltroCatalogo } from '@/components/boutique/FiltroCatalogo'
+import { contarFiltros, FILTROS_VAZIOS, nomeDaOpcao, type FiltrosCatalogo } from '@/lib/filtroCatalogo'
 
 /**
  * Direção "Boutique" (ThemeSwitcher) — pegada de loja: tudo a um clique da compra. Hero compacto com os
@@ -80,17 +83,31 @@ export function CatalogGrid({
   filtro,
   setFiltro,
   filtros,
-  familia = null,
-  limparFamilia,
+  base,
+  filtrosPainel,
+  setFiltrosPainel,
 }: {
   items: Archetype[]
   filtro: Filtro
   setFiltro: (f: Filtro) => void
   filtros: { key: Filtro; label: string }[]
-  /** família olfativa escolhida em "Descubra pelo cheiro" (filtra junto com o gênero) */
-  familia?: string | null
-  limparFamilia?: () => void
+  /** catálogo só com o gênero das abas — o painel conta os resultados em cima dele */
+  base: Archetype[]
+  /** família, energia, notas e ordem (botão "Filtrar", out/2026); a família também vem dos cards de família */
+  filtrosPainel: FiltrosCatalogo
+  setFiltrosPainel: (f: FiltrosCatalogo) => void
 }) {
+  const [painelAberto, setPainelAberto] = useState(false)
+  const fecharPainel = useCallback(() => setPainelAberto(false), [])
+  const qtdFiltros = contarFiltros(filtrosPainel)
+  // um chip por filtro ligado, cada um com ✕
+  const chips = (['familias', 'energias', 'notas'] as const).flatMap((grupo) =>
+    (filtrosPainel[grupo] as string[]).map((id) => ({
+      chave: `${grupo}-${id}`,
+      nome: nomeDaOpcao(grupo, id),
+      tirar: () => setFiltrosPainel({ ...filtrosPainel, [grupo]: (filtrosPainel[grupo] as string[]).filter((x) => x !== id) }),
+    })),
+  )
   return (
     <section
       id="catalogo"
@@ -107,7 +124,26 @@ export function CatalogGrid({
           <h2 className="mt-3 font-display text-[30px] leading-[1.1] text-tinta lg:text-5xl">
             Nove fragrâncias. <span className="text-latao-texto max-lg:block">Diferentes versões de você.</span>
           </h2>
-          <div className="no-scrollbar mt-6 flex justify-start gap-2 overflow-x-auto sm:justify-center" role="tablist" aria-label="Filtrar catálogo">
+          <div className="no-scrollbar mt-6 flex justify-start gap-2 overflow-x-auto sm:justify-center">
+            {/* botão do painel de filtros (out/2026) — primeiro da fileira, pra não sumir na rolagem do celular */}
+            <button
+              type="button"
+              onClick={() => setPainelAberto(true)}
+              aria-haspopup="dialog"
+              className="inline-flex shrink-0 items-center gap-2 rounded-full border border-tinta/70 bg-papel px-4 py-2 text-xs font-medium text-tinta transition-colors hover:border-tinta"
+            >
+              <svg aria-hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" className="size-3.5">
+                <path d="M4 7h10M18 7h2M4 17h4M12 17h8M16 5v4M10 15v4" />
+              </svg>
+              Filtrar
+              {qtdFiltros > 0 && (
+                <span className="flex size-4.5 items-center justify-center rounded-full bg-latao text-[10px] leading-none text-papel">
+                  {qtdFiltros}
+                </span>
+              )}
+            </button>
+            <span aria-hidden className="my-1.5 w-px shrink-0 bg-linha-2" />
+            <div role="tablist" aria-label="Filtrar por gênero" className="flex shrink-0 gap-2">
             {filtros.map((f) => (
               <button
                 key={f.key}
@@ -122,20 +158,51 @@ export function CatalogGrid({
                 {f.label}
               </button>
             ))}
+            </div>
           </div>
-          {/* filtro de família ativo (vindo dos cards de família): chip pra tirar */}
-          {familia && (
-            <button
-              type="button"
-              onClick={limparFamilia}
-              className="mt-3 inline-flex items-center gap-2 rounded-full border border-latao/60 bg-papel px-4 py-1.5 text-xs text-tinta"
-            >
-              <span className="text-tinta-2">Família:</span> {familia}
-              <span aria-hidden className="text-tinta-3">✕</span>
-              <span className="sr-only">Remover filtro de família</span>
-            </button>
+          {/* filtros ligados: um chip por filtro, pra tirar sem abrir o painel */}
+          {chips.length > 0 && (
+            <div className="mt-3 flex flex-wrap justify-center gap-2">
+              {chips.map((c) => (
+                <button
+                  key={c.chave}
+                  type="button"
+                  onClick={c.tirar}
+                  className="inline-flex items-center gap-2 rounded-full border border-latao/60 bg-papel px-3.5 py-1.5 text-xs text-tinta"
+                >
+                  {c.nome}
+                  <span aria-hidden className="text-tinta-3">✕</span>
+                  <span className="sr-only">Remover filtro</span>
+                </button>
+              ))}
+              {chips.length > 1 && (
+                <button
+                  type="button"
+                  onClick={() => setFiltrosPainel({ ...FILTROS_VAZIOS, ordem: filtrosPainel.ordem })}
+                  className="px-2 py-1.5 text-xs text-tinta-2 underline underline-offset-4 hover:text-tinta"
+                >
+                  Limpar filtros
+                </button>
+              )}
+            </div>
           )}
         </div>
+
+        {items.length === 0 && (
+          <div className="mt-10 text-center">
+            <p className="text-sm text-tinta-2">Nenhuma fragrância com esses filtros.</p>
+            <button
+              type="button"
+              onClick={() => {
+                setFiltro('ALL')
+                setFiltrosPainel({ ...FILTROS_VAZIOS, ordem: filtrosPainel.ordem })
+              }}
+              className="mt-3 text-xs text-tinta underline underline-offset-4"
+            >
+              Ver todas
+            </button>
+          </div>
+        )}
 
         <ul className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 lg:mt-12 lg:gap-6">
           {items.map((a) => (
@@ -193,6 +260,7 @@ export function CatalogGrid({
           ))}
         </ul>
       </div>
+      {painelAberto && <FiltroCatalogo base={base} valor={filtrosPainel} aplicar={setFiltrosPainel} fechar={fecharPainel} />}
     </section>
   )
 }

@@ -15,7 +15,7 @@ export function ProductSheet() {
   if (!a) return null
 
   return (
-    <PurchaseSheet label={`Comprar ${a.nome}`} fullPageTo={productPath(a)}>
+    <PurchaseSheet label={`Comprar ${a.nome}`} fullPageTo={productPath(a)} mostrarLink={false}>
       <ProductPurchase key={a.id} a={a} fullPageTo={productPath(a)} />
     </PurchaseSheet>
   )

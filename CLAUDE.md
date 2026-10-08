@@ -193,8 +193,9 @@ decisão de produto já tomada:
   frasco); sem arquivo (desktop ou `-mobile`), o card mostra mockup tracejado até gerar. As versões com o arquétipo
   ao fundo foram testadas e deixadas pra depois (out/2026). A seção de layering antiga saiu da PDP. Depois: FAQ/ficha e carrossel dos outros 8 (o par primeiro, setas no desktop; claro desde out/2026, cards
   com contorno fino como os do combo: foto, família, nome, estrelas, preço + parcelas e "Ver fragrância →"). Barra fixa
-  de compra (`PdpStickyBar`): no celular fica à vista sempre que `#pdp-comprar` não está na tela (o botão
-  aparece sem rolar, pedido do usuário); no desktop só depois de passar o botão; some no rodapé. O botão segue
+  de compra (`PdpStickyBar`): aparece quando o botão de comprar (`#pdp-comprar`, dentro da caixa do brinde) sai da
+  tela por cima ao rolar — celular e desktop iguais, nunca antes de chegar no botão (pedido do usuário, out/2026);
+  some no rodapé. Preço da PDP/pop-up com riscado menor (`classeRiscado` do `Preco`, 0,55em) pra destacar a oferta. O botão segue
   "Em breve" (decisão do usuário: sem checkout). O pop-up (modo compacto) mantém o layout anterior.
   **Celular: o botão principal (abaixo do preço) aparece sem rolar** (pedido do usuário): ordem foto → nome →
   estrelas → preço → botão, e frase/etiquetas/notas descem pra depois do botão; a foto ocupa a largura toda com
@@ -282,6 +283,10 @@ decisão de produto já tomada:
   grátis ativo), e no rodapé ("Também à venda em"). Só os logos, monocromáticos em latão (paths da Simple Icons,
   CC0; o Mercado Livre usa o aperto de mãos do Mercado Pago; Magalu, Beleza na Web e Época foram vetorizados com potrace
   a partir dos PNG/JPG enviados pelo usuário), sem texto — as cores originais chamavam atenção demais.
+  **Brinde na compra (out/2026):** caixa bege com o botão de comprar dentro e a mensagem embaixo dele, na PDP completa (não no pop-up), no estilo do antigo
+  quadro de frete grátis: "Brinde grátis na compra: 3 amostras de 5 ml de outros arquétipos" + linha em `alerta`
+  "Últimos N kits de amostras em estoque". Dados em `BRINDE` (`data/empresa.ts`); `kitsEmEstoque` é número real,
+  atualizado à mão — não deixar escassez fixa que não corresponde ao estoque.
   O order bump de layering ("Complete o ritual") saiu junto, desligado por `SHOW_ORDER_BUMP` em `ProductPurchase`.
   Links ainda `null` (selo sem clique) — preencher quando o
   usuário passar as URLs das lojas.
@@ -295,13 +300,26 @@ decisão de produto já tomada:
   gateway quando o checkout existir.
 - **Filtro do catálogo por família (out/2026):** clicar num card de "Descubra pelo
   cheiro" filtra o catálogo pelos arquétipos da família (`FAMILIES[].arquetipos`)
-  e rola até ele, como os cards de gênero. Estado `catalogoFamilia` em
-  `HomePage.tsx`; o `CatalogGrid` (Boutique) mostra um chip "Família: X ✕".
-  Trocar o gênero nas abas tira a família.
+  e rola até ele, como os cards de gênero. Estado `catalogoFiltros` em `HomePage.tsx`.
+- **Painel "Filtrar" do catálogo (out/2026):** botão antes das abas de gênero no `CatalogGrid` abre
+  `boutique/FiltroCatalogo.tsx` (bottom sheet no celular, lateral direita no desktop, via portal — o
+  `content-visibility` da seção prenderia o `fixed`): ordenar (destaque, mais bem avaliados, mais avaliações,
+  nome — preço não, os 9 custam igual), família olfativa, energia e notas. "Ou" dentro do grupo, "e" entre grupos;
+  aplica no "Ver N fragrâncias" (conta já com o gênero). Filtros ligados viram chips com ✕ abaixo das abas; sem
+  resultado, "Ver todas". Lógica e grupos de notas em `lib/filtroCatalogo.ts` — as notas casam por palavra nas
+  pirâmides (fórmula), nunca à mão por arquétipo; nomes dos grupos (Cítricos, Frutas, Madeiras…) escritos por
+  mim, sem "Oriental"/"Aquático". Abas do catálogo mudam só o gênero; os cards de gênero (fora do catálogo) zeram
+  o painel; os de família ligam só a família.
 - **Pop-up de compra enxuto (out/2026):** no pop-up (`ProductPurchase` com
   `fullPageTo`, modo compacto) o botão de comprar aparece sem rolar — sem selos
   de envio/garantia/pagamento e sem "Complete o ritual"; no celular a foto vai na
-  largura toda e preço + botão ficam numa barra presa no pé do pop-up. A variante
+  largura toda e preço + botão ficam numa barra presa no pé do pop-up. Celular (out/2026, iPhone SE/11):
+  nome + sobrenome + estrelas sobem pra antes da foto (`order-first`), frase e tipo vêm depois dela, e a
+  barra é sticky no pop-up inteiro (`max-lg:contents` na coluna de compra) — não encolher a foto pra caber o nome
+  (pedido do usuário). Sem padding embaixo da área de rolagem do `PurchaseSheet`, senão abre vão sob a barra.
+  "Ver página completa" (out/2026) fica junto do botão: link de texto na barra do pé no celular e botão vazado discreto
+  (`SweepCta` de borda fina, sem brilho, `replace`) no desktop — não compete com o comprar; o nome do produto (com "↗") também leva à página. O link antigo
+  (embaixo da galeria / fim da rolagem) saiu do pop-up de produto (`mostrarLink={false}` no `PurchaseSheet`). A variante
   mini (8 ml) saiu de vez, também da PDP. A PDP (`/body-splash/:slug` direto) mantém selos e ritual e
   ganhou o convite "Descubra {o/a} {energia}" (a etiqueta de energia saiu dos
   cards do catálogo). `PurchaseSheet` fecha com saída animada pelo ✕, fundo, Esc,

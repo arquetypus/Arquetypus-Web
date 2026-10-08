@@ -1262,3 +1262,57 @@ button:active:not(.no-press) {
     transform: translateX(-16%);
   }
 }
+
+/* Ícone de presente da caixa do brinde (PDP, out/2026): balanço (gira e cresce 12%) a cada 4 s pra chamar atenção sem exagero.
+   Só `transform` (roda no compositor, não refaz layout); some com movimento reduzido. */
+@keyframes brinde-shake {
+  0%, 22%, 100% { transform: rotate(0) scale(1); }
+  3% { transform: rotate(-14deg) scale(1.12); }
+  7% { transform: rotate(12deg) scale(1.12); }
+  11% { transform: rotate(-9deg) scale(1.08); }
+  15% { transform: rotate(6deg) scale(1.04); }
+  19% { transform: rotate(-3deg) scale(1); }
+}
+.brinde-shake {
+  transform-origin: 50% 85%;
+  animation: brinde-shake 4s ease-in-out 1.2s infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .brinde-shake { animation: none; }
+}
+
+/* Bolinha verde "Em estoque" (PDP, out/2026): onda estilo "online" saindo do ponto a cada 2,4 s. Só transform e
+   opacity num pseudo-elemento (compositor, sem layout); parada com movimento reduzido. */
+@keyframes estoque-pulse {
+  0% { transform: scale(1); opacity: 0.55; }
+  70%, 100% { transform: scale(3); opacity: 0; }
+}
+.estoque-pulse::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: var(--color-ok);
+  animation: estoque-pulse 2.4s cubic-bezier(0.2, 0.6, 0.35, 1) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .estoque-pulse::after { animation: none; opacity: 0; }
+}
+
+/* Painel de filtros do catálogo (out/2026): sobe de baixo no celular, entra pela direita no desktop */
+@media (prefers-reduced-motion: no-preference) {
+  .filtro-in {
+    animation: filtro-in 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+@media (prefers-reduced-motion: no-preference) and (min-width: 1024px) {
+  .filtro-in {
+    animation-name: filtro-in-lg;
+  }
+}
+@keyframes filtro-in {
+  from { transform: translateY(100%); }
+}
+@keyframes filtro-in-lg {
+  from { transform: translateX(100%); }
+}

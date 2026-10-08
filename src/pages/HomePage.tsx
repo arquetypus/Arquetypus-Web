@@ -33,6 +33,7 @@ import { DifferenceSection } from '@/components/DifferenceSection'
 import { BenefitsMarquee } from '@/components/BenefitsMarquee'
 import { isBoutiqueLayout, useThemeState } from '@/lib/theme'
 // direção decidida: importada direto (entra no JS principal e no HTML pré-renderizado)
+import { aplicarFiltros, FILTROS_VAZIOS, type FiltrosCatalogo } from '@/lib/filtroCatalogo'
 import { CatalogGrid, HeroBoutique } from '@/components/boutique/BoutiqueSections'
 import { CommunityBoutique, DiaryBoutique, FooterBoutique } from '@/components/boutique/BoutiqueMore'
 import { CatalogCinema, HeroCinema } from '@/components/directions/Cinema'
@@ -318,18 +319,18 @@ const HomeConteudo = memo(function HomeConteudo({ hash }: { hash: string }) {
   const familiesScroll = useCarouselIndex<HTMLDivElement>(FAMILIES.length)
   const tapGuard = useTapGuard()
   const [catalogoFiltro, setCatalogoFiltroGenero] = useState<'ALL' | 'F' | 'M' | 'U'>('ALL')
-  // família olfativa escolhida nos cards de "Descubra pelo cheiro" — sai ao trocar o gênero no catálogo
-  const [catalogoFamilia, setCatalogoFamilia] = useState<string | null>(null)
+  // painel "Filtrar" do catálogo (out/2026): família, energia, notas e ordem. Os cards de família ligam a família;
+  // os cards de gênero (fora do catálogo) zeram o painel. Nas abas do catálogo o gênero muda e o painel fica
+  const [catalogoFiltros, setCatalogoFiltros] = useState<FiltrosCatalogo>(FILTROS_VAZIOS)
   const setCatalogoFiltro = (f: 'ALL' | 'F' | 'M' | 'U') => {
     setCatalogoFiltroGenero(f)
-    setCatalogoFamilia(null)
+    setCatalogoFiltros(FILTROS_VAZIOS)
   }
-  const catalogoFiltrado = useMemo(() => {
-    const familia = FAMILIES.find((f) => f.nome === catalogoFamilia)
-    return ARCHETYPES.filter(
-      (a) => (catalogoFiltro === 'ALL' || a.seg === catalogoFiltro) && (!familia || familia.arquetipos.includes(a.id)),
-    )
-  }, [catalogoFiltro, catalogoFamilia])
+  const catalogoGenero = useMemo(
+    () => ARCHETYPES.filter((a) => catalogoFiltro === 'ALL' || a.seg === catalogoFiltro),
+    [catalogoFiltro],
+  )
+  const catalogoFiltrado = useMemo(() => aplicarFiltros(catalogoGenero, catalogoFiltros), [catalogoGenero, catalogoFiltros])
   // um arquétipo só (ex.: Compartilhável): card único parado, sem cópias do loop infinito nem arraste
   const catalogoUnico = catalogoFiltrado.length === 1
   const catalogoLoop = catalogoUnico ? catalogoFiltrado : [...catalogoFiltrado, ...catalogoFiltrado, ...catalogoFiltrado]
@@ -363,7 +364,13 @@ const HomeConteudo = memo(function HomeConteudo({ hash }: { hash: string }) {
         catalogo === 'atelie' ? (
           <CatalogIndex {...catalogoProps} />
         ) : catalogo === 'boutique' ? (
-          <CatalogGrid {...catalogoProps} familia={catalogoFamilia} limparFamilia={() => setCatalogoFamilia(null)} />
+          <CatalogGrid
+            {...catalogoProps}
+            setFiltro={setCatalogoFiltroGenero}
+            base={catalogoGenero}
+            filtrosPainel={catalogoFiltros}
+            setFiltrosPainel={setCatalogoFiltros}
+          />
         ) : catalogo === 'oraculo' ? (
           <CatalogOraculo {...catalogoProps} />
         ) : catalogo === 'galeria' ? (
@@ -808,8 +815,8 @@ const HomeConteudo = memo(function HomeConteudo({ hash }: { hash: string }) {
                 // já chega no catálogo filtrado pela família (como os cards de gênero); rola depois de o
                 // carrossel se recentralizar com o filtro novo (2 frames)
                 onClick={() => {
-                  setCatalogoFiltro('ALL')
-                  setCatalogoFamilia(f.nome)
+                  setCatalogoFiltroGenero('ALL')
+                  setCatalogoFiltros({ ...FILTROS_VAZIOS, familias: [f.slug] })
                   requestAnimationFrame(() => requestAnimationFrame(() => scrollToId('catalogo')))
                 }}
                 className="segmento no-press @container relative isolate block aspect-[3/4] w-[74%] shrink-0 cursor-pointer snap-start overflow-hidden rounded-2xl bg-noite text-left ring-1 ring-latao/40 sm:w-[44%] lg:w-auto"

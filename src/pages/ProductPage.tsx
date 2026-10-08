@@ -46,8 +46,9 @@ function Accordion({ title, children, dark = false }: { title: string; children:
 
 /**
  * Barra fixa de compra (out/2026): aparece quando o botão de comprar da coluna (#pdp-comprar) sai da tela por
- * cima, e some ao voltar. Miniatura, nome, preço e o mesmo botão — hoje "Em breve" (sem checkout, ver CLAUDE.md).
- * Celular: presa no pé da tela; desktop: faixa fina no pé também, centralizada no grid da página.
+ * cima ao rolar, e some ao voltar e quando o rodapé entra — celular e desktop iguais (pedido do usuário, out/2026;
+ * antes, no celular, ficava à vista também antes de chegar no botão). Miniatura, nome, preço e o mesmo botão — hoje
+ * "Em breve" (sem checkout, ver CLAUDE.md). Presa no pé da tela; no desktop centralizada no grid da página.
  */
 function PdpStickyBar({ a }: { a: Archetype }) {
   const [visivel, setVisivel] = useState(false)
@@ -57,30 +58,18 @@ function PdpStickyBar({ a }: { a: Archetype }) {
     if (!cta) return
     // some também quando o rodapé entra na tela, pra não cobrir os links do fim
     const rodape = document.querySelector('footer')
-    // celular (out/2026): o botão tem que aparecer sem rolar — a barra fica à vista sempre que o botão da coluna
-    // não estiver na tela (antes de chegar nele e depois de passar). Desktop: só depois de passar (lá o botão já
-    // está na primeira tela)
-    const celular = window.matchMedia('(max-width: 1023px)')
-    let ctaFora = false
     let ctaAcima = false
     let rodapeVisivel = false
-    const atualizar = () => setVisivel((celular.matches ? ctaFora : ctaAcima) && !rodapeVisivel)
     const obs = new IntersectionObserver((entradas) => {
       for (const e of entradas) {
-        if (e.target === cta) {
-          ctaFora = !e.isIntersecting
-          ctaAcima = ctaFora && e.boundingClientRect.top < 0
-        } else rodapeVisivel = e.isIntersecting
+        if (e.target === cta) ctaAcima = !e.isIntersecting && e.boundingClientRect.top < 0
+        else rodapeVisivel = e.isIntersecting
       }
-      atualizar()
+      setVisivel(ctaAcima && !rodapeVisivel)
     })
-    celular.addEventListener('change', atualizar)
     obs.observe(cta)
     if (rodape) obs.observe(rodape)
-    return () => {
-      obs.disconnect()
-      celular.removeEventListener('change', atualizar)
-    }
+    return () => obs.disconnect()
   }, [a.id])
 
   return (
