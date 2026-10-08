@@ -227,10 +227,9 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
           </Eyebrow>
           <h1 className={`mt-2 font-display text-3xl leading-[1.05] lg:text-[44px] ${compact ? 'max-lg:col-start-1 max-lg:row-start-1 max-lg:mt-0' : ''}`} style={{ color: a.cor }}>
             {fullPageTo ? (
-              // pop-up: o nome leva à página completa (seta discreta indica o link)
+              // pop-up: o nome leva à página completa
               <Link to={fullPageTo} replace className="transition-opacity hover:opacity-75">
                 {a.nome}
-                <span aria-hidden className="ml-1.5 align-super text-[0.4em] text-latao-texto">↗</span>
                 <Sobrenome a={a} />
               </Link>
             ) : (

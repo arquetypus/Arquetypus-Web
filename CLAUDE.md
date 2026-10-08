@@ -209,7 +209,7 @@ decisão de produto já tomada:
   depende de onde o checkout de verdade vai rodar.
 - **"Comprar agora" hoje faz o mesmo que "Adicionar à sacola".** Não
   existe checkout — decidir isso é decisão de produto, não técnica.
-- **Botão de compra ATIVO desde out/2026** (pedido do usuário, pra trabalhar o destaque): `VENDAS_ATIVAS` em
+- **Botão de compra: visual pronto, DESLIGADO de novo em out/2026** (`VENDAS_ATIVAS = false`, pedido do usuário; foi ativado pra trabalhar o destaque): `VENDAS_ATIVAS` em
   `data/empresa.ts` liga o `components/ui/BotaoComprar.tsx` na PDP, no pop-up e na barra fixa — "Comprar agora"
   dourado cheio, sombra dourada e brilho a cada 5 s (`.cta-compra-sheen`), hover sem trocar a cor (preto e dourado escurecido descartados): brilho passa na hora, sombra cresce, sobe 1 px; o clique põe na sacola em memória e
   mostra "Adicionado à sacola ✓" ("Adicionado ✓" no celular) em verde (`ok`) por 2 s. A sacola do header segue só visual (sem contador nem checkout).
@@ -325,7 +325,7 @@ decisão de produto já tomada:
   barra é sticky no pop-up inteiro (`max-lg:contents` na coluna de compra) — não encolher a foto pra caber o nome
   (pedido do usuário). Sem padding embaixo da área de rolagem do `PurchaseSheet`, senão abre vão sob a barra.
   "Ver página completa" (out/2026) fica junto do botão: link de texto na barra do pé no celular e botão vazado discreto
-  (`SweepCta` de borda fina, sem brilho, `replace`) no desktop — não compete com o comprar; o nome do produto (com "↗") também leva à página. O link antigo
+  (`SweepCta` de borda fina, sem brilho, `replace`) no desktop — não compete com o comprar; o nome do produto também leva à página (sem seta, a pedido do usuário). O link antigo
   (embaixo da galeria / fim da rolagem) saiu do pop-up de produto (`mostrarLink={false}` no `PurchaseSheet`). Sem scroll a partir
   do iPhone 14 (390×844, medido no DevTools, out/2026): pop-up com até 94svh no celular e espaçamentos enxutos —
   conteúdo até 728 px, sobra ~40 px no 14/16; o iPhone SE (375×667) rola, de propósito. A foto nunca encolhe pra
