@@ -10,6 +10,7 @@ import { SweepCta } from '@/components/ui/SweepCta'
 import { useInView } from '@/lib/useInView'
 import { foto } from '@/lib/foto'
 import cetim from '@/assets/fotos/texturas/cetim.jpg?responsiva'
+import { useCupom } from '@/context/CupomContext'
 
 const CETIM = foto(cetim)
 
@@ -39,6 +40,7 @@ const SELOS = [
  * Fundo creme igual pra todos; cada arquétipo só leva a própria cor (suavizada) no nome.
  */
 export function ComboEditorial({ a, par, combo, onLevar }: { a: Archetype; par: Archetype; combo: Combo; onLevar: () => void }) {
+  const { precoFinal } = useCupom()
   const { ref, inView } = useInView<HTMLElement>()
   const duo = [a, par]
 
@@ -111,7 +113,7 @@ export function ComboEditorial({ a, par, combo, onLevar }: { a: Archetype; par: 
             </SweepCta>
             <p className="mt-3.5 text-[11px] text-tinta-3 md:mt-3">As vendas abrem em breve.</p>
             <p className="mt-2 text-[12px] text-balance text-tinta-3 md:mt-4">
-              Duo {a.nome} + {par.nome} · {brl(a.preco + par.preco)} · até {CONDICOES.parcelasSemJuros}x sem juros
+              Duo {a.nome} + {par.nome} · {brl(precoFinal(a.preco) + precoFinal(par.preco))} · até {CONDICOES.parcelasSemJuros}x sem juros
             </p>
           </div>
 

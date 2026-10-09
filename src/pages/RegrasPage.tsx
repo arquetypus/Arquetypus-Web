@@ -3,7 +3,7 @@ import { CONDICOES, OPERACAO } from '@/data/empresa'
 
 /**
  * Regras do Site (vigência 01/10/2026): as regras de compra — preço, promoções e cupom, pagamento, pedido,
- * cancelamento, estoque, informações dos produtos. Cupom confirmado pelo usuário: 15%, primeira compra, um por CPF,
+ * cancelamento, estoque, informações dos produtos. Cupom confirmado pelo usuário: 10% desde out/2026 (era 15%), primeira compra, um por CPF,
  * acumula com outras promoções. Pagamento pelo Mercado Pago (OPERACAO em data/empresa.ts).
  */
 export function RegrasPage() {

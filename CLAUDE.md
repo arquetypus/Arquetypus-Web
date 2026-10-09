@@ -209,6 +209,25 @@ decisão de produto já tomada:
 - **Sem persistência.** O carrinho vive só em memória (`useState`); dá
   reload e some. Não implementar localStorage/backend sem perguntar —
   depende de onde o checkout de verdade vai rodar.
+- **Cupom de link (out/2026):** `?cupom=CODIGO` na URL (ex.: `/?cupom=CONHECA15`) liga o desconto no site inteiro —
+  `CupomContext` (lido só depois da hidratação, guardado no sessionStorage da aba) confere no cadastro `CUPONS`
+  (`data/cupons.ts`; código desconhecido é ignorado). O `Preco` passa a riscar o preço de venda e destacar o preço com cupom (menos o %,
+  centavos arredondados pra baixo até a dezena), com um selo tracejado dourado "CONHECA15 | −15%" embaixo (ao lado do preço
+  na PDP/pop-up, `seloAoLado`; sem selo na barra fixa, `semSelo`; no card da comunidade o `SeloCupom` flutua no canto de
+  cima do cartão; o "−20%" da PDP some com cupom). Com cupom o preço final fica verde (`ok`) e 15% maior. Na chegada pelo link
+  abre o convite "Parabéns. Este acesso é seu." (`ui/BoasVindasCupom.tsx`, copy minha a revisar, neutra de gênero), uma
+  vez por aba e Pix/parcelas passam a ser calculados sobre ele (`precoFinal`). SEO,
+  JSON-LD e sacola seguem o preço normal. Sem checkout, o cupom é só exibido — cadastrar o mesmo código no checkout
+  quando existir. É diferente do cupom de primeira compra da caixa de captura (`cupomPrimeiraCompraPct`, 10%).
+- **Caixa de cupom da home grava lead (out/2026):** `components/FormCupom.tsx` (nome, e-mail, WhatsApp) envia pra API
+  do projeto `../arquetypus-vip` (`VIP_API` em `data/lead.ts`, mesmo Supabase da lista VIP; `tracking.source =
+  'site-cupom'` separa estes leads — no Supabase, a view `leads_site_cupom` filtra por essa origem). Sem esperar a
+  resposta: liga o cupom BEMVINDO10 (`ativarCupom`, % = `cupomPrimeiraCompraPct`; cupons não se somam nem se trocam: quem já está
+  com o CONHECA15 — só dos clientes Saniella, pelo cartão das amostras — fica com ele e vê o pop-up `cadastroJaTinha`) e abre o pop-up do cupom
+  (`BoasVindasCupom` variante `cadastro`) com o grupo VIP como convite opcional (link pro `/api/go` do VIP pelo
+  `event_id`, nova aba). Consentimento só de WhatsApp, base legal no aviso de privacidade (decisão do usuário: sem
+  caixas de aceite). Depende do CORS no `api/lead.ts` do VIP liberando o domínio do site — sem deploy de lá, o lead
+  não grava (só erro no console; o cupom é entregue mesmo assim).
 - **"Comprar agora" hoje faz o mesmo que "Adicionar à sacola".** Não
   existe checkout — decidir isso é decisão de produto, não técnica.
 - **Botão de compra ATIVO, em fase de lançamento (out/2026):** `VENDAS_ATIVAS = true` + `EM_LANCAMENTO = true`
@@ -380,7 +399,7 @@ decisão de produto já tomada:
   `data/empresa.ts` (`EMPRESA`, `EMPRESA_LINHA` no rodapé com endereço completo, `OPERACAO`: Mercado Pago,
   Melhor Envio + Correios/Jadlog/J&T, Vercel, Google Workspace, Google Ads/Meta/TikTok). Regras confirmadas pelo
   usuário: desistência em 7 dias **com produto lacrado e sem uso**; defeito 30 dias; reembolso Pix em até 3 dias
-  após receber e avaliar; estorno do cartão no prazo da operadora; cupom 15% uma vez por CPF, acumula com outras
+  após receber e avaliar; estorno do cartão no prazo da operadora; cupom de primeira compra 10% (era 15% até out/2026) uma vez por CPF, acumula com outras
   promoções e com o Pix; sem promessa de duração na pele (só "10% de essência"). Retenção GA4 no texto = 14 meses
   (o usuário pediu 12, que o GA4 não oferece) — configurar igual. Revisão jurídica recomendada antes de publicar.
 - **Hospedagem na Vercel (SSG em produção):** `vercel.json` define Vite, pipeline completo
@@ -410,7 +429,8 @@ decisão de produto já tomada:
     caminho, e o `verify:ssr` falha se alguém escrever `<Route path="…">` solto no `App.tsx` (só produto,
     redirecionamentos e 404 ficam fora da lista).
   - **Números comerciais** (Pix, parcelas, prazos de desistência/defeito/envio, % de essência, cupom) vêm de
-    `CONDICOES` em `data/empresa.ts`, com `precoPix`/`parcela` pras contas; a quantidade de fragrâncias por extenso
+    `CONDICOES` em `data/empresa.ts`, com `precoPix`/`parcela` pras contas (Pix e cupom com centavos arredondados pra baixo até a dezena, `arredondaDezena`:
+    75,905 → 75,90; parcelas não, senão a soma não fecha); a quantidade de fragrâncias por extenso
     vem de `ARCHETYPES.length` (`lib/extenso.ts`). Site, FAQ, políticas, descrições de SEO e `llms.txt` leem dali —
     nunca escrever "6x", "5%", "7 dias" etc. à mão. As direções desligadas ainda têm "6x" escrito no texto
     (as contas já usam `CONDICOES`).

@@ -26,7 +26,8 @@ import { CarouselDots } from '@/components/ui/CarouselDots'
 import { CutFrame } from '@/components/ui/CutFrame'
 import { SweepCta } from '@/components/ui/SweepCta'
 import { scrollToId } from '@/lib/scrollToId'
-import { EMPRESA_LINHA } from '@/data/empresa'
+import { CONDICOES, EMPRESA_LINHA } from '@/data/empresa'
+import { FormCupom } from '@/components/FormCupom'
 import { GOLD_SHEEN } from '@/lib/goldSheen'
 import { FeaturedCarousel } from '@/components/FeaturedCarousel'
 import { DifferenceSection } from '@/components/DifferenceSection'
@@ -1256,7 +1257,7 @@ const HomeConteudo = memo(function HomeConteudo({ hash }: { hash: string }) {
               </div>
 
               <div className="mt-5 font-display text-[88px] leading-[0.9] font-light tracking-tight text-latao-texto lg:mt-6 lg:text-[128px]">
-                15%
+                {CONDICOES.cupomPrimeiraCompraPct}%
               </div>
               <h2 className="mt-3 font-display text-[24px] leading-[1.2] text-tinta lg:mt-4 lg:text-[32px]">
                 na sua primeira
@@ -1268,42 +1269,8 @@ const HomeConteudo = memo(function HomeConteudo({ hash }: { hash: string }) {
               </p>
             </div>
 
-            {/* sem backend ainda: o submit não envia nada (ver CLAUDE.md) */}
-            <form className="mt-8 flex flex-col gap-5 text-left lg:mt-0 lg:gap-7 lg:pl-16" onSubmit={(e) => e.preventDefault()}>
-              <label className="block">
-                <span className="font-label text-[9px] tracking-[0.2em] text-tinta-3 uppercase">E-mail</span>
-                <input
-                  type="email"
-                  name="email"
-                  disabled={!hydrated}
-                  autoComplete="email"
-                  placeholder="seu@email.com"
-                  className="mt-1.5 block w-full border-b border-linha-2 bg-transparent pb-2.5 text-[15px] text-tinta placeholder:text-tinta-3/70 focus:border-latao focus:outline-none"
-                />
-              </label>
-              <label className="block">
-                <span className="font-label text-[9px] tracking-[0.2em] text-tinta-3 uppercase">WhatsApp</span>
-                <input
-                  type="tel"
-                  name="whatsapp"
-                  disabled={!hydrated}
-                  inputMode="tel"
-                  autoComplete="tel-national"
-                  placeholder="DDD + número"
-                  className="mt-1.5 block w-full border-b border-linha-2 bg-transparent pb-2.5 text-[15px] text-tinta placeholder:text-tinta-3/70 focus:border-latao focus:outline-none"
-                />
-              </label>
-              <div className="mt-3 text-center">
-                <SweepCta type="submit" disabled={!hydrated}>Quero meu cupom</SweepCta>
-              </div>
-              {/* LGPD: o cadastro é a base do consentimento pra novidades (ver /privacidade, seção 3) */}
-              <p className="text-center text-[11px] leading-relaxed text-tinta-3">
-                Ao se cadastrar, você aceita receber o cupom e as novidades da Arquétypus. Cancele quando quiser.{' '}
-                <Link to="/privacidade" className="border-b border-tinta-3/50 hover:text-tinta">
-                  Política de Privacidade
-                </Link>
-              </p>
-            </form>
+            {/* nome, e-mail e WhatsApp → API do VIP + pop-up do cupom BEMVINDO10 (components/FormCupom.tsx) */}
+            <FormCupom hydrated={hydrated} />
           </CutFrame>
         </Reveal>
 

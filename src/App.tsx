@@ -4,6 +4,7 @@ import type { Location } from 'react-router-dom'
 import { getArchetype, productPath } from '@/data/archetypes'
 import { PAGINAS_PUBLICAS } from '@/data/rotas'
 import { CartProvider } from '@/context/CartContext'
+import { CupomProvider } from '@/context/CupomContext'
 import { Layout } from '@/components/Layout'
 import { RouteTracker } from '@/components/RouteTracker'
 import { RouteSeo } from '@/components/RouteSeo'
@@ -53,6 +54,8 @@ export default function App() {
 
   return (
     <CartProvider>
+      {/* cupom de link (?cupom=, data/cupons.ts): preço com desconto em todo o site */}
+      <CupomProvider>
       {/* fora do <Routes>: valem pra página e pro pop-up de compra (que fica fora do Layout) */}
       <RouteSeo />
       <RouteTracker />
@@ -80,6 +83,7 @@ export default function App() {
           <Route path="body-splash/:slug" element={<ProductSheet />} />
         </Routes>
       )}
+      </CupomProvider>
     </CartProvider>
   )
 }

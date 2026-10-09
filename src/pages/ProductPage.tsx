@@ -22,6 +22,7 @@ import { BotaoComprar } from '@/components/ui/BotaoComprar'
 import { Avaliacao } from '@/components/ui/Avaliacao'
 import { IconeTraco } from '@/components/ui/IconeTraco'
 import { rolarTrilho, useArrasteMouse } from '@/lib/useArrasteMouse'
+import { useCupom } from '@/context/CupomContext'
 
 /** Teste (out/2026, pedido do Fábio): no lugar dos 3 benefícios genéricos ("O que {nome} faz por você"), os cinco
  * traços do arquétipo (`tracos` em data/archetypes.ts). `false` volta aos benefícios. */
@@ -57,6 +58,7 @@ function Accordion({ title, children, dark = false }: { title: string; children:
  * o `BotaoComprar` (sem checkout: põe na sacola, ver CLAUDE.md). Presa no pé da tela; no desktop centralizada no grid da página.
  */
 function PdpStickyBar({ a }: { a: Archetype }) {
+  const { precoFinal } = useCupom()
   const [visivel, setVisivel] = useState(false)
   const [adicionado, setAdicionado] = useState(false)
   const { addItem } = useCart()
@@ -102,8 +104,8 @@ function PdpStickyBar({ a }: { a: Archetype }) {
             <span className="block truncate text-[12px] text-tinta-3 min-[390px]:text-[13px] lg:inline lg:text-[length:inherit]">{a.sobrenome}</span>
           </p>
           <p className="mt-0.5 flex flex-wrap items-baseline gap-x-2 text-[12px] text-tinta-2 lg:mt-1 lg:text-[13px]">
-            <Preco a={a} classeRiscado="text-[0.65em]" className="text-[15px] min-[390px]:text-[17px] lg:text-xl" />
-            <span className="hidden sm:inline">{brl(precoPix(a.preco))} no Pix</span>
+            <Preco a={a} semSelo classeRiscado="text-[0.65em]" className="text-[15px] min-[390px]:text-[17px] lg:text-xl" />
+            <span className="hidden sm:inline">{brl(precoPix(precoFinal(a.preco)))} no Pix</span>
           </p>
         </div>
         <BotaoComprar
@@ -128,6 +130,7 @@ function PdpStickyBar({ a }: { a: Archetype }) {
  * preço e parcelas (regra 7) e um "Ver fragrância →" discreto. O card inteiro é o link.
  */
 function CardArquetipo({ x }: { x: Archetype }) {
+  const { precoFinal } = useCupom()
   const foto = FRASCO_FOTO[x.id]
   return (
     <Link
@@ -159,7 +162,7 @@ function CardArquetipo({ x }: { x: Archetype }) {
             <>
               <Preco a={x} className="text-[15px]" />
               <span className="mt-0.5 block text-[11px] text-tinta-2">
-                {CONDICOES.parcelasSemJuros}x de {brl(parcela(x.preco))} sem juros
+                {CONDICOES.parcelasSemJuros}x de {brl(parcela(precoFinal(x.preco)))} sem juros
               </span>
             </>
           )}

@@ -13,6 +13,7 @@ import { EspiarProduto } from '@/components/ui/EspiarProduto'
 import { CONDICOES, parcela, precoPix } from '@/data/empresa'
 import { FiltroCatalogo } from '@/components/boutique/FiltroCatalogo'
 import { contarFiltros, FILTROS_VAZIOS, nomeDaOpcao, type FiltrosCatalogo } from '@/lib/filtroCatalogo'
+import { useCupom } from '@/context/CupomContext'
 
 /**
  * Direção "Boutique" (ThemeSwitcher) — pegada de loja: tudo a um clique da compra. Hero compacto com os
@@ -26,6 +27,7 @@ const MAIS_BARATO = ARCHETYPES.reduce((m, a) => (a.preco < m.preco ? a : m))
 const PRECO_MIN = MAIS_BARATO.preco
 
 export function HeroBoutique() {
+  const { precoFinal } = useCupom()
   const slide = HERO_SLIDES[0]
   return (
     <section className="bg-papel px-5 pt-20 pb-10 md:px-10 lg:pt-28 lg:pb-16">
@@ -70,7 +72,7 @@ export function HeroBoutique() {
           <div className="absolute bottom-4 left-4 rounded-2xl bg-papel/95 px-4 py-3 shadow-lg backdrop-blur">
             <span className="block font-label text-[9px] tracking-[0.16em] text-tinta-3 uppercase">A partir de</span>
             <Preco a={MAIS_BARATO} className="font-display text-2xl leading-tight" />
-            <span className="block text-[11px] text-tinta-2">ou {brl(precoPix(PRECO_MIN))} no Pix</span>
+            <span className="block text-[11px] text-tinta-2">ou {brl(precoPix(precoFinal(PRECO_MIN)))} no Pix</span>
           </div>
         </div>
       </div>
@@ -97,6 +99,7 @@ export function CatalogGrid({
   filtrosPainel: FiltrosCatalogo
   setFiltrosPainel: (f: FiltrosCatalogo) => void
 }) {
+  const { precoFinal } = useCupom()
   const [painelAberto, setPainelAberto] = useState(false)
   const fecharPainel = useCallback(() => setPainelAberto(false), [])
   const qtdFiltros = contarFiltros(filtrosPainel)
@@ -244,7 +247,7 @@ export function CatalogGrid({
                       (out/2026) e segue no pop-up/PDP */}
                   <div className="mt-3 flex flex-col lg:mt-0.5 lg:shrink-0 lg:items-end lg:text-right">
                     <Preco a={a} className="text-base lg:flex-col lg:items-end lg:gap-y-0.5 lg:text-xl" />
-                    <span className="mt-0.5 text-[11px] text-tinta-2 lg:mt-1 lg:text-xs">{CONDICOES.parcelasSemJuros}x {brl(parcela(a.preco))} sem juros</span>
+                    <span className="mt-0.5 text-[11px] text-tinta-2 lg:mt-1 lg:text-xs">{CONDICOES.parcelasSemJuros}x {brl(parcela(precoFinal(a.preco)))} sem juros</span>
                   </div>
                 </div>
                 <div className="mt-auto pt-3.5">

@@ -12,8 +12,9 @@ import { useCoverflow } from '@/lib/useCoverflow'
 import { CarouselDots } from '@/components/ui/CarouselDots'
 import { Eyebrow } from '@/components/ui/Eyebrow'
 import { Sobrenome } from '@/components/ui/Sobrenome'
-import { Preco } from '@/components/ui/Preco'
+import { Preco, SeloCupom } from '@/components/ui/Preco'
 import { Avaliacao } from '@/components/ui/Avaliacao'
+import { useCupom } from '@/context/CupomContext'
 
 /**
  * Mais seções da direção "Boutique" (ThemeSwitcher): destaque como banner de produto, comunidade como
@@ -34,6 +35,7 @@ function SectionHead({ kicker, title, center = false }: { kicker: string; title:
 
 /** Destaque como banner de produto: foto, selo "Destaque", preço com Pix e parcelas (regra 7) e CTA. */
 export function FeaturedBoutique({ a, img }: { a: Archetype; img: string }) {
+  const { precoFinal } = useCupom()
   return (
     <section id="destaque" className="bg-papel px-4 py-14 md:px-10 lg:py-24">
       <div className="mx-auto grid max-w-7xl overflow-hidden rounded-3xl bg-papel-2 md:grid-cols-2">
@@ -59,7 +61,7 @@ export function FeaturedBoutique({ a, img }: { a: Archetype; img: string }) {
           <div className="mt-6 rounded-2xl bg-papel p-4">
             <Preco a={a} className="text-2xl" />
             <span className="text-xs text-tinta-2">
-              {brl(precoPix(a.preco))} no Pix · ou {CONDICOES.parcelasSemJuros}x de {brl(parcela(a.preco))} sem juros · {a.tipo} {a.vol}
+              {brl(precoPix(precoFinal(a.preco)))} no Pix · ou {CONDICOES.parcelasSemJuros}x de {brl(parcela(precoFinal(a.preco)))} sem juros · {a.tipo} {a.vol}
             </span>
           </div>
           <Link
@@ -224,6 +226,9 @@ export function CommunityBoutique() {
               {/* TESTE out/2026 — preço na linha do nome (celular e desktop) e botão mais fino; miniatura do frasco
                   maior (68px, mais destaque pro produto — o cartão cresce um pouco na vertical) */}
               <div className="ugc-pop relative z-10 mx-1.5 -mt-10 rounded-xl bg-papel p-2 ring-1 ring-latao/45">
+                {/* cupom de link: selo flutuando por cima do cartão, no canto de cima (out/2026, pedido do usuário) — embaixo
+                    do preço, na linha do nome, empurrava as estrelas e abria um vão */}
+                <SeloCupom flutuante className="absolute -top-2.5 right-2.5 z-10 text-[10px]" />
                 <div className="flex items-center gap-2.5">
                   {FRASCO_CUT_IMG[arq.id] && (
                     <img loading="lazy" src={FRASCO_CUT_IMG[arq.id]} alt="" className="h-[68px] w-[51px] shrink-0 rounded-md object-cover lg:h-20 lg:w-14" />
@@ -234,7 +239,7 @@ export function CommunityBoutique() {
                         {arq.nome}
                         <Sobrenome a={arq} size="text-[0.7em]" />
                       </b>
-                      <Preco a={arq} className="shrink-0 flex-col items-end gap-y-0.5 text-[15px] leading-none" />
+                      <Preco a={arq} semSelo className="shrink-0 flex-col items-end gap-y-0.5 text-[15px] leading-none" />
                     </span>
                     <Avaliacao id={arq.id} className="mt-0.5 mb-0.5 text-[10px] lg:text-[11px]" />
                     <span className="block truncate text-[13px] text-tinta-2 lg:text-sm">{arq.fam}</span>

@@ -163,7 +163,7 @@ export function Layout() {
               scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' })
             }
           }}
-          className="relative block h-10 w-28 lg:h-12 lg:w-32"
+          className="relative block h-10 w-28 lg:h-14 lg:w-40"
         >
           <img
             src={wordmarkMarmore}

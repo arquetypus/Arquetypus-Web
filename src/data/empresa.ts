@@ -97,11 +97,14 @@ export const CONDICOES = {
   defeitoDias: 30,
   envioHorasUteis: 24,
   essenciaPct: 10,
-  cupomPrimeiraCompraPct: 15,
+  cupomPrimeiraCompraPct: 10,
 } as const
 
-/** Preço no Pix (desconto de CONDICOES.pixDescontoPct) */
-export const precoPix = (v: number) => v * (1 - CONDICOES.pixDescontoPct / 100)
+/** Arredonda pra baixo até a dezena de centavos (67,915 → 67,90; 64,505 → 64,50) — regra de preço com desconto
+ * (out/2026, decisão do usuário): vale pro cupom de link e pro Pix. O 1e-9 evita erro de ponto flutuante (x,x0 exato). */
+export const arredondaDezena = (v: number) => Math.floor(v * 10 + 1e-9) / 10
+/** Preço no Pix (desconto de CONDICOES.pixDescontoPct), centavos arredondados pra baixo até a dezena */
+export const precoPix = (v: number) => arredondaDezena(v * (1 - CONDICOES.pixDescontoPct / 100))
 /** Valor de cada parcela sem juros */
 export const parcela = (v: number) => v / CONDICOES.parcelasSemJuros
 /** Valor redondo em reais, sem centavos ("R$ 199") — pra frete grátis em textos e descrições */

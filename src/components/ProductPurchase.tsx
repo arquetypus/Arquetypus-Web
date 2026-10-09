@@ -18,6 +18,7 @@ const SHOW_ORDER_BUMP = false
 /** teto do seletor de quantidade da PDP */
 const QTD_MAX = 10
 import { Avaliacao } from '@/components/ui/Avaliacao'
+import { useCupom } from '@/context/CupomContext'
 
 export const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
@@ -72,6 +73,7 @@ const ARTIGO_ENERGIA: Record<string, string> = { Sedução: 'a', Força: 'a', Po
  * lg+: duas colunas, cada uma um bloco centralizado na altura — galeria (7) e compra (5).
  */
 export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: string }) {
+  const { cupom, precoFinal } = useCupom()
   const par = getArchetype(a.par)
   const { addItem } = useCart()
   const isPerfume = a.tipo === 'Perfume'
@@ -87,7 +89,8 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
   // quantidade (só na PDP completa — o pop-up e a barra fixa põem 1)
   const [qtd, setQtd] = useState(1)
 
-  const pix = precoPix(selected.price)
+  // Pix e parcelas sobre o preço com o cupom de link, se houver (CupomContext)
+  const pix = precoPix(precoFinal(selected.price))
   const descontoPct = a.precoCheio > a.preco ? Math.round((1 - a.preco / a.precoCheio) * 100) : 0
   // uma nota-assinatura por camada, escolhida nos dados (`destaques`, sempre notas da fórmula)
   const destaques = a.destaques
@@ -305,18 +308,20 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
                 <div className="flex items-center gap-2.5">
                   <Preco
                     a={a}
+                    seloAoLado
                     // riscado menor que o padrão (out/2026): destaca a oferta e libera espaço pro botão no celular
                     classeRiscado="text-[0.55em]"
                     className={`shrink-0 font-display leading-none ${compact ? 'text-xl lg:text-[28px]' : 'text-[26px] lg:text-[32px]'}`}
                   />
-                  {descontoPct > 0 && (
+                  {/* com cupom de link o selo do cupom (no Preco) já mostra o desconto — sem um segundo % aqui */}
+                  {descontoPct > 0 && !cupom && (
                     <span className="rounded-full bg-latao/15 px-2 py-0.5 font-label text-[10px] font-semibold tracking-wide text-latao-texto">
                       −{descontoPct}%
                     </span>
                   )}
                 </div>
                 <p className={`mt-1 text-[11px] text-tinta-2 lg:mt-2 lg:text-xs ${compact ? 'max-lg:mt-0.5 max-lg:truncate' : ''}`}>
-                  <b className="font-semibold text-tinta">{brl(pix)} no Pix</b> ({CONDICOES.pixDescontoPct}% off) · ou {CONDICOES.parcelasSemJuros}x de {brl(parcela(selected.price))} sem juros
+                  <b className="font-semibold text-tinta">{brl(pix)} no Pix</b> ({CONDICOES.pixDescontoPct}% off) · ou {CONDICOES.parcelasSemJuros}x de {brl(parcela(precoFinal(selected.price)))} sem juros
                 </p>
               </div>
               <p className={`mt-1.5 flex items-center gap-1.5 font-label text-[10px] tracking-wide text-ok uppercase ${compact ? 'max-lg:hidden' : ''}`}>

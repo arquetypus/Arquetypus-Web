@@ -20,6 +20,7 @@ import { Sobrenome } from '@/components/ui/Sobrenome'
 import { Preco } from '@/components/ui/Preco'
 import { Avaliacao } from '@/components/ui/Avaliacao'
 import { CONDICOES, parcela, precoPix } from '@/data/empresa'
+import { useCupom } from '@/context/CupomContext'
 
 /** Banners do "Arquétipo em destaque", na ordem. `bg` é o fundo do card, na cor da foto: burgundy da marca
  *  (Fênix), azul-petróleo do mar (Sereia) e bronze escurecido da névoa dourada (Zeus, out/2026: frasco novo em bronze). Hex, não var(): a cor anima
@@ -45,6 +46,7 @@ const brl = (v: number) => v.toLocaleString('pt-BR', { style: 'currency', curren
  *  texto e não pula. Barras de progresso como as do hero, sem as setas; no celular dá pra deslizar.
  *  Celular: card vertical com texto sobre a foto; md+: foto à esquerda, texto à direita na cor do banner. */
 export function FeaturedCarousel() {
+  const { precoFinal } = useCupom()
   const [current, setCurrent] = useState(0)
   // banner que está saindo: fica opaco por baixo enquanto o novo aparece por cima
   const [anterior, setAnterior] = useState<number | null>(null)
@@ -205,7 +207,7 @@ export function FeaturedCarousel() {
                 </div>
                 {/* regra 7: Pix e parcelamento junto do preço — mesma conta do ProductPurchase */}
                 <p className="mt-1.5 text-[12px] text-papel-inv/60">
-                  {brl(precoPix(a.preco))} no Pix · ou {CONDICOES.parcelasSemJuros}x de {brl(parcela(a.preco))} sem juros
+                  {brl(precoPix(precoFinal(a.preco)))} no Pix · ou {CONDICOES.parcelasSemJuros}x de {brl(parcela(precoFinal(a.preco)))} sem juros
                 </p>
                 <p className="mt-2.5 max-w-[32ch] text-[13px] leading-relaxed text-papel-inv/75 lg:mt-4 lg:max-w-[42ch] lg:text-[15px]">{a.cheiro[1]}</p>
 
