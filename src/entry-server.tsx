@@ -9,6 +9,8 @@ export { DEFAULT_HTML_ATTRIBUTES } from '@/lib/theme'
 export { PUBLIC_ROUTES as routes } from '@/lib/publicRoutes'
 // Dados comerciais para o gate privado de build; não criam API ou artefato público.
 export { ARCHETYPES as products } from '@/data/archetypes'
+// Feed do Google Merchant Center: gravado em dist/produtos.xml pelo prerender (fotos com URL final do build).
+export { produtosXml } from '@/lib/feedMerchant'
 
 /** Ensaio de build: mesma árvore do cliente, sem efeitos DOM ou coleta global de SEO. */
 export function render(url: string, options?: { genericNotFound?: boolean }) {

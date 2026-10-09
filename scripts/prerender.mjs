@@ -28,4 +28,11 @@ for (const page of pages) {
   await writeFile(path.join(dist, page.file), page.html, 'utf8');
 }
 await writeFile(path.join(root, 'dist-server/prerender.json'), JSON.stringify(report, null, 2) + '\n');
+// Feed do Google Merchant Center (src/lib/feedMerchant.ts); toda foto citada precisa existir no build.
+const feed = renderer.produtosXml();
+for (const [, url] of feed.matchAll(/<g:(?:additional_)?image_link>([^<]+)</g)) {
+  await access(path.join(dist, new URL(url).pathname));
+}
+assert.equal((feed.match(/<item>/g) ?? []).length, renderer.products.length, 'Feed sem todos os produtos');
+await writeFile(path.join(dist, 'produtos.xml'), feed, 'utf8');
 console.log(`PASS geração: ${renderer.routes.length} rotas + 404, head e recursos validados antes da escrita.`);

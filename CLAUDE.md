@@ -401,6 +401,10 @@ decisão de produto já tomada:
   em `public/`. Também respondem em `npm run dev`. Frete grátis vem de `FRETE_GRATIS_ACIMA` (`data/empresa.ts`) — DESLIGADO desde out/2026 (`null`, não confirmado):
   com `null` nenhum texto (PDP, FAQ, Entrega e Frete, descrições, llms.txt) promete frete grátis; o valor planejado
   fica em `FRETE_GRATIS_PLANEJADO`.
+  - **Feed do Google Merchant Center (out/2026):** `/produtos.xml` (RSS 2.0 com `g:`), conteúdo em
+    `src/lib/feedMerchant.ts`, gravado pelo `scripts/prerender.mjs` (só o bundle do servidor sabe a URL final das fotos;
+    não responde em `npm run dev`). Preço = `preco` (sem `sale_price`, o cheio nunca foi cobrado), frete configurado no
+    Merchant Center (lá, "Inserir um link para o arquivo", atualização diária).
   - **Página pública nova:** cadastrar em `PAGINAS_PUBLICAS` (`data/rotas.ts`) e ligar o componente em `PAGINAS`
     no `App.tsx` — as rotas saem dessa lista. O `satisfies` faz o `tsc` falhar se faltar componente ou sobrar
     caminho, e o `verify:ssr` falha se alguém escrever `<Route path="…">` solto no `App.tsx` (só produto,
