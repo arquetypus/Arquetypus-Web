@@ -150,16 +150,18 @@ decisão de produto já tomada:
   Desligados desde out/2026 (`SHOW_RATIO_TAGS = false`) — o usuário pode pedir pra religar. O
   requisito de produção do `MediaSlot` fica no tooltip do selo.
 - **PDP redesenhada (out/2026, foco em conversão):** coluna de compra com trilha, estrelas
-  (`Avaliacao`), etiquetas (família, volume, % de essência), "notas em destaque" (1ª nota de cada
-  camada), selo de desconto, Pix em destaque, frete grátis/prazo abaixo do botão e acordeões (Sobre a
+  (`Avaliacao`), etiquetas (família, volume, % de essência), "notas em destaque" (`destaques` em
+  `data/archetypes.ts`: uma nota-assinatura por camada, do guia de arquétipos do Fábio, out/2026), selo de desconto, Pix em destaque, frete grátis/prazo abaixo do botão e acordeões (Sobre a
   fragrância, Notas, Como usar); galeria maior, presa ao rolar no desktop (out/2026: a coluna da galeria fica fixa na
   altura da tela abaixo do header, galeria alinhada à esquerda e o maior possível sem cortar a foto; a coluna prende na posição
   em que começa, 8,5rem, pra não acompanhar o scroll no início; a área de compra da PDP vai até 100rem de largura,
   mais que o resto do site, com vão de 6rem entre galeria e conteúdo no xl; em tela com pouco espaço horizontal — variante
   `vertical`, proporção abaixo de 3:2 — as miniaturas descem pra baixo da foto principal). Abaixo: "Arquétipo {nome}"
   (foto da representação sangrando a seção — metade esquerda no desktop, topo no celular — com degradê só nos
-  últimos ~40% pra não apagar a pessoa; degrau numa camada por cima da foto — + `quem`/`cheiro[1]`), benefícios
-  ("Por que Arquétypus", claro e centrado: ícones de traço em aro latão, colunas com filetes), pirâmide olfativa
+  últimos ~40% pra não apagar a pessoa; degrau numa camada por cima da foto — + `quem`/`cheiro[1]`), "Quem é {nome}"
+  — os cinco traços do arquétipo (`tracos` em `data/archetypes.ts`, do guia do Fábio, out/2026; um ícone de traço por traço, `ui/IconeTraco.tsx`, desenhado à mão e escolhido em `tracos[].icone`; 5 colunas com filetes
+  no desktop, lista enxuta no celular, até 750 px; em TESTE: `SHOW_TRACOS = false` em `ProductPage` volta aos 3 benefícios
+  "O que {nome} faz por você"), pirâmide olfativa
   (`components/PiramideOlfativa.tsx`, out/2026): editorial clara, foto 48% + texto 52%, "Como {nome} se revela" e três
   linhas Topo/Coração/Fundo (título fixo da camada, notas, descritores, mini natureza-morta à direita). No desktop a foto
   sangra a seção (altura toda, metade esquerda) e some no creme por máscara nos últimos ~40%, como em "Arquétipo {nome}";

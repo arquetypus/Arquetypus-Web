@@ -89,8 +89,8 @@ export function ProductPurchase({ a, fullPageTo }: { a: Archetype; fullPageTo?: 
 
   const pix = precoPix(selected.price)
   const descontoPct = a.precoCheio > a.preco ? Math.round((1 - a.preco / a.precoCheio) * 100) : 0
-  // primeira nota de cada camada da pirâmide (topo, coração, fundo) — vem da fórmula, não é copy nova
-  const destaques = [a.topo, a.coracao, a.fundo].map((camada) => camada.split(',')[0].trim())
+  // uma nota-assinatura por camada, escolhida nos dados (`destaques`, sempre notas da fórmula)
+  const destaques = a.destaques
 
   function addToCart() {
     addItem({

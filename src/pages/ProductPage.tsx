@@ -20,7 +20,12 @@ import { Sobrenome } from '@/components/ui/Sobrenome'
 import { Preco } from '@/components/ui/Preco'
 import { BotaoComprar } from '@/components/ui/BotaoComprar'
 import { Avaliacao } from '@/components/ui/Avaliacao'
+import { IconeTraco } from '@/components/ui/IconeTraco'
 import { rolarTrilho, useArrasteMouse } from '@/lib/useArrasteMouse'
+
+/** Teste (out/2026, pedido do Fábio): no lugar dos 3 benefícios genéricos ("O que {nome} faz por você"), os cinco
+ * traços do arquétipo (`tracos` em data/archetypes.ts). `false` volta aos benefícios. */
+const SHOW_TRACOS = true
 
 // ícones de traço fino (gota, ciclo, camadas), no mesmo estilo dos selos da coluna de compra
 const BENEFITS = [
@@ -241,38 +246,70 @@ export function ProductPage() {
         </div>
       </Reveal>
 
-      {/* P-11 Benefícios — redesenho out/2026: claro, centrado e editorial (o bloco escuro destoava do resto da página).
-          Três colunas separadas por filetes latão; cada uma com ícone de traço num aro dourado, número discreto,
-          título em display e texto curto. Celular: lista com ícone à esquerda */}
-      <Reveal as="section" className="relative overflow-hidden bg-papel px-5 pt-14 pb-14 md:px-10 lg:pt-24 lg:pb-24" style={DEGRAU_CLARO} animateContent>
-        <Glow className="top-1/2 left-1/2 size-80 -translate-x-1/2 -translate-y-1/2 lg:size-[34rem]" forca={10} />
-        <div className="relative mx-auto max-w-6xl">
-          <div className="text-center">
-            <SectionEyebrow center>Por que Arquétypus</SectionEyebrow>
-            <h2 className="mt-4 font-display text-[30px] leading-[1.12] text-tinta lg:text-5xl">
-              {/* nome na cor do arquétipo, como no H1 e em "Como {nome} se revela" */}
-              O que <span className="italic" style={{ color: a.cor }}>{a.nome}</span> faz por você
-            </h2>
-            <Ornament className="mx-auto mt-6 w-28 lg:mt-8" />
+      {/* Cinco traços do arquétipo (teste out/2026, SHOW_TRACOS) — mesma linguagem dos benefícios abaixo: claro,
+          centrado, colunas com filetes latão (5 no desktop), um ícone de traço por traço (IconeTraco) num aro dourado. Celular: lista enxuta
+          (respiros menores, sem ornamento) pra caber na tela */}
+      {SHOW_TRACOS ? (
+        <Reveal as="section" className="relative overflow-hidden bg-papel px-5 pt-10 pb-10 md:px-10 md:pt-14 md:pb-14 lg:pt-24 lg:pb-24" style={DEGRAU_CLARO} animateContent>
+          <Glow className="top-1/2 left-1/2 size-80 -translate-x-1/2 -translate-y-1/2 lg:size-[34rem]" forca={10} />
+          <div className="relative mx-auto max-w-7xl">
+            <div className="text-center">
+              <SectionEyebrow center>Cinco traços</SectionEyebrow>
+              <h2 className="mt-4 font-display text-[30px] leading-[1.12] text-tinta lg:text-5xl">
+                {/* nome na cor do arquétipo, como no H1 e em "Como {nome} se revela" */}
+                Quem é <span className="italic" style={{ color: a.cor }}>{a.nome}</span>
+              </h2>
+              <Ornament className="mx-auto mt-6 hidden w-28 md:block lg:mt-8" />
+            </div>
+            <ol className="mt-5 divide-y divide-latao/25 border-y border-latao/25 lg:mt-14 lg:grid lg:grid-cols-5 lg:divide-x lg:divide-y-0 lg:border-y-0">
+              {a.tracos.map((t) => (
+                <li key={t.titulo} className="flex items-start gap-4 py-3 lg:flex-col lg:items-center lg:gap-0 lg:px-6 lg:py-2 lg:text-center">
+                  <span aria-hidden className="grid size-9 shrink-0 place-items-center rounded-full bg-papel-2 text-latao-texto ring-1 ring-latao/50 lg:size-14">
+                    <IconeTraco id={t.icone} className="size-[18px] lg:size-6" />
+                  </span>
+                  <div className="min-w-0 lg:mt-5">
+                    <h3 className="font-display text-[18px] leading-snug text-tinta lg:text-[22px]">{t.titulo}</h3>
+                    <p className="mt-1 text-[13px] leading-relaxed text-tinta-2 lg:mx-auto lg:mt-3 lg:text-[14px]">{t.texto}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </div>
-          <ol className="mt-8 divide-y divide-latao/25 border-y border-latao/25 lg:mt-14 lg:grid lg:grid-cols-3 lg:divide-x lg:divide-y-0 lg:border-y-0">
-            {BENEFITS.map((b) => (
-              <li key={b.n} className="flex items-start gap-5 py-5 lg:flex-col lg:items-center lg:gap-0 lg:px-10 lg:py-2 lg:text-center">
-                <span aria-hidden className="grid size-12 shrink-0 place-items-center rounded-full bg-papel-2 ring-1 ring-latao/50 lg:size-16">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.25} strokeLinecap="round" strokeLinejoin="round" className="size-5 text-latao-texto lg:size-6">
-                    <path d={b.icon} />
-                  </svg>
-                </span>
-                <div className="min-w-0 lg:mt-6">
-                  <span className="font-label text-[9px] tracking-[0.3em] text-latao-texto">{b.n}</span>
-                  <h3 className="mt-1 font-display text-[19px] leading-snug text-tinta lg:mt-2 lg:text-2xl">{b.title}</h3>
-                  <p className="mt-1.5 text-[13px] leading-relaxed text-tinta-2 lg:mx-auto lg:mt-3 lg:max-w-[30ch] lg:text-[15px]">{b.body}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </Reveal>
+        </Reveal>
+      ) : (
+        // P-11 Benefícios — redesenho out/2026: claro, centrado e editorial (o bloco escuro destoava do resto da página).
+        // Três colunas separadas por filetes latão; cada uma com ícone de traço num aro dourado, número discreto,
+        // título em display e texto curto. Celular: lista com ícone à esquerda
+        <Reveal as="section" className="relative overflow-hidden bg-papel px-5 pt-14 pb-14 md:px-10 lg:pt-24 lg:pb-24" style={DEGRAU_CLARO} animateContent>
+          <Glow className="top-1/2 left-1/2 size-80 -translate-x-1/2 -translate-y-1/2 lg:size-[34rem]" forca={10} />
+          <div className="relative mx-auto max-w-6xl">
+            <div className="text-center">
+              <SectionEyebrow center>Por que Arquétypus</SectionEyebrow>
+              <h2 className="mt-4 font-display text-[30px] leading-[1.12] text-tinta lg:text-5xl">
+                {/* nome na cor do arquétipo, como no H1 e em "Como {nome} se revela" */}
+                O que <span className="italic" style={{ color: a.cor }}>{a.nome}</span> faz por você
+              </h2>
+              <Ornament className="mx-auto mt-6 w-28 lg:mt-8" />
+            </div>
+            <ol className="mt-8 divide-y divide-latao/25 border-y border-latao/25 lg:mt-14 lg:grid lg:grid-cols-3 lg:divide-x lg:divide-y-0 lg:border-y-0">
+              {BENEFITS.map((b) => (
+                <li key={b.n} className="flex items-start gap-5 py-5 lg:flex-col lg:items-center lg:gap-0 lg:px-10 lg:py-2 lg:text-center">
+                  <span aria-hidden className="grid size-12 shrink-0 place-items-center rounded-full bg-papel-2 ring-1 ring-latao/50 lg:size-16">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.25} strokeLinecap="round" strokeLinejoin="round" className="size-5 text-latao-texto lg:size-6">
+                      <path d={b.icon} />
+                    </svg>
+                  </span>
+                  <div className="min-w-0 lg:mt-6">
+                    <span className="font-label text-[9px] tracking-[0.3em] text-latao-texto">{b.n}</span>
+                    <h3 className="mt-1 font-display text-[19px] leading-snug text-tinta lg:mt-2 lg:text-2xl">{b.title}</h3>
+                    <p className="mt-1.5 text-[13px] leading-relaxed text-tinta-2 lg:mx-auto lg:mt-3 lg:max-w-[30ch] lg:text-[15px]">{b.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </Reveal>
+      )}
 
       {/* Pirâmide olfativa — editorial clara (out/2026), mesma estrutura pros 9; dados em data/piramideOlfativa.ts */}
       <PiramideOlfativa a={a} />

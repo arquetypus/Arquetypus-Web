@@ -1,5 +1,6 @@
 import type { Archetype } from '@/types/archetype'
 import { FAMILIAS_BY_SLUG } from '@/data/families'
+import { CONDICOES } from '@/data/empresa'
 
 /**
  * Fonte da verdade: arquetypus-prototipo-v6.html (var ARQ).
@@ -42,6 +43,14 @@ const RAW: Omit<Archetype, 'fam'>[] = [
     fundo: 'Cashmeran, cedro, vetiver haitiano, caramelo, incenso',
     par: 'cleopatra',
     layer: 'Afrodite no corpo, Cleópatra nos pulsos. A rosa de uma encontra a fruta madura da outra.',
+    destaques: ['Lichia', 'Rosa turca', 'Caramelo'],
+    tracos: [
+      { titulo: 'Romantismo', icone: 'coracao', texto: 'Afrodite é a mulher das flores, das cartas e do primeiro encontro, e a rosa turca com a peônia formam o buquê do primeiro beijo.' },
+      { titulo: 'Doçura sedutora', icone: 'gota', texto: 'Ela encanta sem esforço, como a lichia que abre a fragrância doce e suculenta e vicia já na primeira borrifada.' },
+      { titulo: 'Sensualidade', icone: 'labios', texto: 'Seu poder está na pele e no toque, e é ali que a baunilha e o almíscar deixam um calor que não vai embora.' },
+      { titulo: 'Autoestima', icone: 'espelho', texto: 'Ela se ama primeiro, e o Cashmeran traduz esse conforto consigo mesma com a maciez de um cashmere.' },
+      { titulo: 'Magnetismo', icone: 'ima', texto: 'Quem passa por ela lembra depois, porque o incenso e o caramelo do fundo deixam o rastro quando ela já saiu.' },
+    ],
   },
   {
     id: 'imperatriz',
@@ -77,6 +86,14 @@ const RAW: Omit<Archetype, 'fam'>[] = [
     fundo: 'Baunilha Bourbon, âmbar, almíscar branco, benjoim',
     par: 'imperador',
     layer: 'Imperatriz no corpo, Imperador no colarinho. Duas leituras do mesmo poder.',
+    destaques: ['Flor de laranjeira', 'Jasmim sambac', 'Baunilha Bourbon'],
+    tracos: [
+      { titulo: 'Abundância', icone: 'ramo', texto: 'A Imperatriz é a carta da fartura, e a flor de laranjeira e o néroli trazem o pomar inteiro em flor.' },
+      { titulo: 'Sedução madura', icone: 'lua', texto: 'Ela não corre atrás, ela recebe, como o jasmim sambac, a flor branca noturna, sensual e densa.' },
+      { titulo: 'Prazer sem culpa', icone: 'taca', texto: 'Bom vinho, boa mesa e tempo para si têm o gosto da baunilha Bourbon, gourmand e aveludada.' },
+      { titulo: 'Sofisticação', icone: 'diamante', texto: 'Veludo, joia e postura aparecem no âmbar e no benjoim, um calor resinoso que veste a pele como tecido nobre.' },
+      { titulo: 'Acolhimento', icone: 'casa', texto: 'Ela nutre e protege os seus, e o almíscar branco fecha a fragrância como um abraço limpo.' },
+    ],
   },
   {
     id: 'cleopatra',
@@ -112,6 +129,14 @@ const RAW: Omit<Archetype, 'fam'>[] = [
     fundo: 'Acorde atalcado, baunilha absoluta, almíscar, sândalo',
     par: 'afrodite',
     layer: 'Cleópatra à noite, Afrodite de dia. O mesmo território em dois horários.',
+    destaques: ['Ameixa', 'Rosa absoluta', 'Sândalo'],
+    tracos: [
+      { titulo: 'Poder', icone: 'coroa', texto: 'Cleópatra lidera com elegância, e a rosa absoluta, a rainha das flores na versão mais concentrada, é a sua coroa.' },
+      { titulo: 'Inteligência estratégica', icone: 'peao', texto: 'Ela pensa três jogadas à frente, como a ameixa e o cassis, frutas escuras, sofisticadas e nada óbvias.' },
+      { titulo: 'Presença', icone: 'presenca', texto: 'Quando ela entra, o clima da sala muda, e o sândalo cremoso ocupa o espaço do mesmo jeito.' },
+      { titulo: 'Elegância', icone: 'pena', texto: 'Alfaiataria e maquiagem impecável estão no acorde atalcado, o toque de pó de arroz que dá o acabamento perfeito.' },
+      { titulo: 'Exotismo', icone: 'piramide', texto: 'Ela carrega o mistério do Egito e do ouro, com a orquídea rara e o damasco solar do Nilo.' },
+    ],
   },
   {
     id: 'fada',
@@ -147,6 +172,14 @@ const RAW: Omit<Archetype, 'fam'>[] = [
     fundo: 'Akigalawood, baunilha, Ambroxan, almíscar',
     par: 'sereia',
     layer: 'Fada de manhã, Sereia à noite. A mesma discrição em duas temperaturas.',
+    destaques: ['Pêssego branco', 'Lírio-do-vale', 'Almíscar'],
+    tracos: [
+      { titulo: 'Luz própria', icone: 'brilho', texto: 'A Fada tem o brilho no olhar e a pele iluminada do glow, e os aldeídos dão essa faísca na abertura.' },
+      { titulo: 'Leveza', icone: 'pena', texto: 'Ela se move com gestos suaves e vestidos fluidos, como o pêssego branco, claro, aveludado e nada pesado.' },
+      { titulo: 'Pureza', icone: 'flor', texto: 'Sua inocência desarma, e o lírio-do-vale, a flor branca mais limpa da perfumaria, diz isso sem palavras.' },
+      { titulo: 'Encantamento', icone: 'varinha', texto: 'Ela vive o próprio conto de fadas, e a flor de laranjeira e a mahonia trazem o jardim florido ao amanhecer.' },
+      { titulo: 'Alegria', icone: 'sol', texto: 'Seu otimismo contagia, como a tangerina e a bergamota, cítricos solares que parecem sorrir.' },
+    ],
   },
   {
     id: 'sereia',
@@ -182,6 +215,14 @@ const RAW: Omit<Archetype, 'fam'>[] = [
     fundo: 'Cedro, almíscar, âmbar',
     par: 'fada',
     layer: 'Sereia no corpo, Fada no cabelo. O frescor frutado embaixo, o floral por cima.',
+    destaques: ['Limão siciliano', 'Melão', 'Cedro'],
+    tracos: [
+      { titulo: 'Liberdade', icone: 'veleiro', texto: 'A Sereia vive de mar aberto e cabelo ao vento; o limão siciliano e o bambu trazem a brisa de quem respira fundo na praia.' },
+      { titulo: 'Fluidez', icone: 'ondas', texto: 'Ela se adapta como a água; o melão e a maçã vermelha dão um frescor aguado e suculento.' },
+      { titulo: 'Fascínio', icone: 'olho', texto: 'Quem cruza o olhar dela não esquece, e o almíscar deixa um rastro de pele que atrai sem gritar.' },
+      { titulo: 'Mistério', icone: 'lua', texto: 'Ela fala pouco e revela menos, e a canela escondida no coração é o calor que ninguém espera numa fragrância fresca.' },
+      { titulo: 'Pele de sol', icone: 'porDoSol', texto: 'Bronze, fim de tarde e sal na pele ficam no âmbar e no cedro, o calor que continua depois da praia.' },
+    ],
   },
   {
     id: 'zeus',
@@ -218,6 +259,14 @@ const RAW: Omit<Archetype, 'fam'>[] = [
     fundo: 'Patchouli, sândalo, gaiaco, fava tonka, baunilha',
     par: 'guerreiro',
     layer: 'Zeus à noite, Guerreiro de dia. As mesmas madeiras em duas intensidades.',
+    destaques: ['Bergamota', 'Cardamomo', 'Patchouli'],
+    tracos: [
+      { titulo: 'Liderança', icone: 'bandeira', texto: 'Zeus é o homem que todos seguem, e o cardamomo, especiaria nobre e sóbria, tem o tom do comando.' },
+      { titulo: 'Autoridade calma', icone: 'coluna', texto: 'Ele não grita, decide; a lavanda e a bergamota trazem o frescor de quem mantém a cabeça fria.' },
+      { titulo: 'Força do raio', icone: 'raio', texto: 'Quando age, o impacto é imediato, como o estalo da pimenta-preta no meio da tempestade.' },
+      { titulo: 'Carisma', icone: 'estrela', texto: 'Ele atrai respeito e admiração, e a maçã da abertura é o toque que aproxima as pessoas antes de as madeiras assumirem.' },
+      { titulo: 'Proteção', icone: 'escudo', texto: 'Ele é o pilar da família e do time, sustentado pelo sândalo, pelo patchouli e pelo gaiaco, madeiras densas de base sólida.' },
+    ],
   },
   {
     id: 'guerreiro',
@@ -253,6 +302,14 @@ const RAW: Omit<Archetype, 'fam'>[] = [
     fundo: 'Amberwood, cedro, fava tonka, vetiver, olíbano',
     par: 'fenix',
     layer: 'Guerreiro de dia, Fênix à noite. O fresco abre, o âmbar fecha.',
+    destaques: ['Gengibre', 'Zimbro', 'Cedro'],
+    tracos: [
+      { titulo: 'Coragem', icone: 'espada', texto: 'O Guerreiro encara o desafio de frente, e o gengibre, picante, desperta na hora.' },
+      { titulo: 'Disciplina', icone: 'ampulheta', texto: 'Rotina e foco sem desculpas estão na sálvia, uma erva seca que deixa a mente limpa.' },
+      { titulo: 'Ação', icone: 'acao', texto: 'Ele é movimento e força física, e o zimbro e a bergamota dão o corte fresco do aço.' },
+      { titulo: 'Firmeza', icone: 'montanha', texto: 'Ele não recua nem quebra, apoiado no cedro e no Amberwood, madeira dura e estrutura.' },
+      { titulo: 'Ritual de batalha', icone: 'chama', texto: 'Antes do confronto vem a preparação, e o olíbano no fundo é a resina dos rituais antigos.' },
+    ],
   },
   {
     id: 'imperador',
@@ -289,6 +346,14 @@ const RAW: Omit<Archetype, 'fam'>[] = [
     fundo: 'Âmbar, couro, notas amadeiradas, patchouli indiano',
     par: 'imperatriz',
     layer: 'Imperador nos pulsos, Imperatriz no ambiente. Funciona como par, não como alternativa.',
+    destaques: ['Tangerina sanguínea', 'Canela', 'Couro'],
+    tracos: [
+      { titulo: 'Ambição', icone: 'subida', texto: 'O Imperador quer mais e vai buscar, e a tangerina sanguínea e a toranja abrem vibrantes, de sangue quente.' },
+      { titulo: 'Sucesso', icone: 'trofeu', texto: 'Ouro, conquista e resultado brilham no âmbar dourado do fundo.' },
+      { titulo: 'Autoconfiança', icone: 'medalha', texto: 'Ele sabe o que vale, e o couro tem a postura do carro e da poltrona de chefe.' },
+      { titulo: 'Imponência', icone: 'coluna', texto: 'Ele atrai olhares e oportunidades, e a canela e as notas picantes são o calor que chega antes dele.' },
+      { titulo: 'Luxo', icone: 'diamante', texto: 'Relógio, festa e celebração aparecem no patchouli indiano e na rosa, riqueza densa com um toque nobre.' },
+    ],
   },
   {
     id: 'fenix',
@@ -324,6 +389,14 @@ const RAW: Omit<Archetype, 'fam'>[] = [
     fundo: 'Resina de abeto, cedro, açúcar, Ambroxan',
     par: 'guerreiro',
     layer: 'Fênix sozinho é suficiente. Com Guerreiro, use Guerreiro primeiro e Fênix só nos pulsos.',
+    destaques: ['Açafrão', 'Madeira de âmbar', 'Açúcar'],
+    tracos: [
+      { titulo: 'Renascimento', icone: 'broto', texto: 'A Fênix é o glow up depois da queda, e o açafrão, a especiaria cor de fogo, acende a abertura.' },
+      { titulo: 'Resiliência', icone: 'infinito', texto: 'Cai, levanta e volta mais forte, como a madeira de âmbar, a brasa que não apaga.' },
+      { titulo: 'Intensidade', icone: 'chama', texto: `Sua presença não passa despercebida, e o âmbar cinzento e o Ambroxan, com ${CONDICOES.essenciaPct}% de essência, deixam rastro por onde ela passa.` },
+      { titulo: 'Transformação', icone: 'ciclo', texto: 'É o antes e o depois, e o açúcar no fundo é o doce caramelizado que só o fogo cria.' },
+      { titulo: 'Radiância', icone: 'sol', texto: 'Brilha sem pedir licença, e o jasmim e a hedione são a luz radiante dentro da chama.' },
+    ],
   },
 ]
 

@@ -1,3 +1,4 @@
+import type { IconeTracoId } from '@/components/ui/IconeTraco'
 export type Segmento = 'F' | 'M' | 'U'
 export type StatusCatalogo = 'ok' | 'wait'
 
@@ -63,6 +64,12 @@ export interface Archetype {
   /** id do arquétipo par pra layering (mesma energia) */
   par: string
   layer: string
+  /** "Notas em destaque" da PDP e do pop-up: uma nota-assinatura por camada, escolhida a dedo (guia de arquétipos
+   * do Fábio, out/2026) — antes era a 1ª nota de cada camada. Têm de existir em topo/coração/fundo. */
+  destaques: [string, string, string]
+  /** Os cinco traços do arquétipo na PDP (guia de arquétipos, out/2026): título curto + frase que liga o traço a
+   * uma nota real da fórmula. */
+  tracos: { titulo: string; icone: IconeTracoId; texto: string }[]
 }
 
 export interface QuizOption {
