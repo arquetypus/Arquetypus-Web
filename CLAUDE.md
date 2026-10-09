@@ -374,7 +374,7 @@ decisão de produto já tomada:
 - **Páginas institucionais (vigência 01/10/2026)**, no rodapé em 4 colunas no padrão de loja — Loja · Institucional · Ajuda · Políticas, com "Nossas redes" junto da marca — e nos mesmos grupos no menu do celular:
   `/perguntas-frequentes` (`FAQ_LOJA` + `FAQ_PRODUTO` em `data/faq.ts`; a PDP mostra só 5 de `FAQ_PRODUTO` — `FAQ_PDP` — com link pra cá; publica
   schema.org/FAQPage), `/entrega-e-frete`, `/trocas-e-devolucoes`, `/privacidade`, `/termos-de-uso`,
-  `/regras-do-site`, `/sobre`. Casca em `components/ui/Legal.tsx`. Dados da empresa e fornecedores num lugar só:
+  `/regras-do-site`, `/sobre`. Casca em `components/ui/Legal.tsx` (menos `/sobre`, editorial simples desde out/2026: manifesto como H1, coluna centrada com blocos separados pelo ornamento e uma faixa corrida (marquee) com os ícones dos 9 — mesmos textos). Dados da empresa e fornecedores num lugar só:
   `data/empresa.ts` (`EMPRESA`, `EMPRESA_LINHA` no rodapé com endereço completo, `OPERACAO`: Mercado Pago,
   Melhor Envio + Correios/Jadlog/J&T, Vercel, Google Workspace, Google Ads/Meta/TikTok). Regras confirmadas pelo
   usuário: desistência em 7 dias **com produto lacrado e sem uso**; defeito 30 dias; reembolso Pix em até 3 dias

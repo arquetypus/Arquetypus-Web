@@ -358,15 +358,24 @@ const PAGAMENTOS: { nome: string; glifo: React.ReactNode }[] = [
  * (símbolo + ARQUÉTYPUS + PARFUM, versão dourada), colunas de links com título em dourado, atendimento, selos de
  * pagamento em bege escuro e a faixa legal. -mb-24 cobre o pb-24 do container do Layout.
  */
-/** Ícones de traço dos canais do rodapé, em latão (marcas simplificadas, 24×24) */
-function IconeContato({ rede }: { rede: (typeof CONTATOS)[number]['rede'] }) {
-  const props = { viewBox: '0 0 24 24', className: 'size-[18px]', fill: 'none', stroke: 'var(--color-latao)', strokeWidth: 1.5, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true } as const
+/** Ícones de traço dos canais do rodapé, em latão (marcas simplificadas, 24×24). Também em /sobre, com `cor` e
+ * tamanho próprios (sobre fundo claro usa latao-texto). */
+export function IconeContato({
+  rede,
+  cor = 'var(--color-latao)',
+  className = 'size-[18px]',
+}: {
+  rede: (typeof CONTATOS)[number]['rede']
+  cor?: string
+  className?: string
+}) {
+  const props = { viewBox: '0 0 24 24', className, fill: 'none', stroke: cor, strokeWidth: 1.5, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true } as const
   if (rede === 'instagram')
     return (
       <svg {...props}>
         <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
         <circle cx="12" cy="12" r="4" />
-        <circle cx="17.2" cy="6.8" r="0.6" fill="var(--color-latao)" />
+        <circle cx="17.2" cy="6.8" r="0.6" fill={cor} />
       </svg>
     )
   if (rede === 'tiktok')
