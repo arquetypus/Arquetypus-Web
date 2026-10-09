@@ -17,3 +17,22 @@ export const CUPOM_CADASTRO = 'BEMVINDO10'
 /** link do botão "Entrar no grupo VIP" — /api/go acha o grupo ofertado ao lead pelo event_id, ou cai no grupo padrão */
 export const grupoVipUrl = (eventId: string) =>
   `${VIP_API}/api/go?${new URLSearchParams({ event_id: eventId, v: 'short', session_id: eventId })}`
+
+/**
+ * Mesmo botão sem cadastro (pop-up de quem chega pelo link com ?cupom=): /api/go no caminho sem event_id —
+ * claim_group_for_session reserva uma vaga por sessão e grava o clique (variante `cta` da página VIP). A sessão é
+ * um id por aba, guardado no sessionStorage, pra o reclique não ocupar outra vaga.
+ */
+export function grupoVipSemCadastroUrl() {
+  let sessao = ''
+  try {
+    sessao = sessionStorage.getItem('arquetypus:sessao') ?? ''
+    if (!sessao) {
+      sessao = crypto.randomUUID()
+      sessionStorage.setItem('arquetypus:sessao', sessao)
+    }
+  } catch {
+    sessao = crypto.randomUUID()
+  }
+  return `${VIP_API}/api/go?${new URLSearchParams({ session_id: sessao, v: 'cta' })}`
+}

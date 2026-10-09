@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from '
 import { useLocation } from 'react-router-dom'
 import { buscarCupom, precoComCupom, type Cupom } from '@/data/cupons'
 import { BoasVindasCupom } from '@/components/ui/BoasVindasCupom'
+import { grupoVipSemCadastroUrl } from '@/data/lead'
 
 const CHAVE = 'arquetypus:cupom'
 /** marca que o convite de boas-vindas já abriu nesta aba (não repete ao navegar/recarregar com o mesmo link) */
@@ -86,7 +87,7 @@ export function CupomProvider({ children }: { children: ReactNode }) {
   return (
     <CupomContext.Provider value={{ cupom, precoFinal: (v) => (cupom ? precoComCupom(v, cupom) : v), ativarCupom }}>
       {children}
-      {convite && cupom && <BoasVindasCupom cupom={cupom} fechar={() => setConvite(false)} />}
+      {convite && cupom && <BoasVindasCupom cupom={cupom} grupoVipUrl={grupoVipSemCadastroUrl()} fechar={() => setConvite(false)} />}
     </CupomContext.Provider>
   )
 }

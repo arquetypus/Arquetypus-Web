@@ -216,7 +216,8 @@ decisão de produto já tomada:
   na PDP/pop-up, `seloAoLado`; sem selo na barra fixa, `semSelo`; no card da comunidade o `SeloCupom` flutua no canto de
   cima do cartão; o "−20%" da PDP some com cupom). Com cupom o preço final fica verde (`ok`) e 15% maior. Na chegada pelo link
   abre o convite "Parabéns. Este acesso é seu." (`ui/BoasVindasCupom.tsx`, copy minha a revisar, neutra de gênero), uma
-  vez por aba e Pix/parcelas passam a ser calculados sobre ele (`precoFinal`). SEO,
+  vez por aba, também com o botão do grupo VIP (`grupoVipSemCadastroUrl`: /api/go do VIP por sessão, variante `cta`).
+  O botão do grupo VIP nos pop-ups é verde WhatsApp (#1DA851) e Pix/parcelas passam a ser calculados sobre ele (`precoFinal`). SEO,
   JSON-LD e sacola seguem o preço normal. Sem checkout, o cupom é só exibido — cadastrar o mesmo código no checkout
   quando existir. É diferente do cupom de primeira compra da caixa de captura (`cupomPrimeiraCompraPct`, 10%).
 - **Caixa de cupom da home grava lead (out/2026):** `components/FormCupom.tsx` (nome, e-mail, WhatsApp) envia pra API
