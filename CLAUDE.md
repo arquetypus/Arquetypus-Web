@@ -360,7 +360,7 @@ decisão de produto já tomada:
 - **`/criadores` existe** (`pages/CreatorsPage.tsx`). Redesenho editorial (out/2026): toda clara (papel / papel-2 com degrau),
   sem os blocos escuros, brilhos, flor e moldura recortada antigos; hero com a foto cobrindo a metade direita
   (degradê suave pro creme no lado esquerdo; no celular cobre o topo), números com filetes, processo em linha do tempo, "A regra" em banner de cetim, kit numerado e
-  aplicação num cartão com um ícone por arquétipo (`ui/IconeArquetipo.tsx`): medalhões em gravura de traço fino
+  aplicação num cartão com um ícone por arquétipo (`ui/IconeArquetipo.tsx`): medalhões em traço único (monoline, poucos traços — a 1ª versão em gravura era detalhada demais em tela grande)
   gerados por IA numa folha 3×3 (Higgsfield, GPT Image 2.5), recortados em `assets/icones/{id}.png` (traço com
   fundo transparente) e pintados na cor do arquétipo por máscara CSS. Ícones vetoriais desenhados à mão e o emblema
   da marca foram testados e descartados. CTA do topo = desenho do botão de compra da PDP. Textos os mesmos. Comissão do afiliado e preço do kit vêm

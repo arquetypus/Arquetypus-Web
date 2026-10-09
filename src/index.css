@@ -62,9 +62,9 @@
   --color-afrodite: #b9697f;
   --color-imperatriz: #8e4566;
   --color-cleopatra: #a08148;
-  --color-fada: #8fa3b8;
+  --color-fada: #7b5e94; /* lilás empoeirado, contraste ≥ 4,5:1 no creme (out/2026); era #8fa3b8, azulado e claro demais */
   --color-sereia: #3c7484;
-  --color-zeus: #8c8272; /* bege escuro nublado (set/2026) */
+  --color-zeus: #76694f; /* bronze nublado, escurecido pra contraste ≥ 4,5:1 no creme (out/2026); era #8c8272 */
   --color-guerreiro: #4f6484; /* azul aço, na linha do antigo azul do Zeus (set/2026) */
   --color-imperador: #7c5236;
   --color-fenix: #b0563c;

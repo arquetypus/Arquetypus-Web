@@ -286,9 +286,9 @@ export function CreatorsPage() {
                         className={`block transition-transform duration-300 ${on ? 'scale-105' : ''} ${arq.status === 'wait' ? 'opacity-40' : ''}`}
                         style={{ color: arq.cor }}
                       >
-                        <IconeArquetipo id={arq.id} className="size-14 lg:size-16" />
+                        <IconeArquetipo id={arq.id} className="size-10 lg:size-12" />
                       </span>
-                      <b className="mt-2 font-display text-[15px] leading-tight font-normal lg:text-base" style={{ color: arq.cor }}>
+                      <b className="mt-2.5 font-display text-[17px] leading-tight font-normal lg:text-xl" style={{ color: arq.cor }}>
                         {arq.nome}
                         <Sobrenome a={arq} />
                       </b>

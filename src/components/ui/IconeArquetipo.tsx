@@ -1,9 +1,10 @@
 /**
- * Ícones dos arquétipos (out/2026, pedido do usuário pros cards da aplicação em /criadores): medalhões em gravura de
- * traço fino — concha (Afrodite), diadema (Imperatriz), olho de Hórus com lótus (Cleópatra), estrela (Fada), cauda
- * sobre as ondas (Sereia), raio na nuvem (Zeus), escudo com espada (Guerreiro), louros com coroa (Imperador), fênix
- * nas chamas (Fênix). Gerados por IA (Higgsfield, GPT Image 2.5) numa folha só 3×3, recortados e convertidos em PNG
- * de traço com fundo transparente (`assets/icones/{id}.png`, 360 px). Entram como máscara CSS, então pegam a cor de
+ * Ícones dos arquétipos (out/2026, pedido do usuário pros cards da aplicação em /criadores): medalhões em traço
+ * único (monoline), poucos traços, dentro de um círculo fino — concha (Afrodite), diadema (Imperatriz), olho de Hórus
+ * (Cleópatra), estrela (Fada), cauda sobre as ondas (Sereia), raio na nuvem (Zeus), escudo com espada (Guerreiro),
+ * louros com coroa (Imperador), fênix nas chamas (Fênix). Substituíram a 1ª versão em gravura, detalhada demais em
+ * tela grande. Gerados por IA (Higgsfield, GPT Image 2.5) numa folha só 3×3, recortados, com traço levemente
+ * engrossado e convertidos em PNG com fundo transparente (`assets/icones/{id}.png`, 360 px). Entram como máscara CSS, então pegam a cor de
  * `currentColor` (a cor do arquétipo). Não é arte oficial — trocar pelos da designer quando existirem.
  */
 const ICONES: Record<string, string> = Object.fromEntries(
