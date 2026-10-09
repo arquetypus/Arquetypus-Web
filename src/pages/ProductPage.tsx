@@ -8,7 +8,7 @@ import { FRASCO_CUT_IMG, FRASCO_FOTO } from '@/data/home'
 import { PDP_REPRESENTACAO_FOTO } from '@/data/productMedia'
 import { PiramideOlfativa } from '@/components/PiramideOlfativa'
 import { ComboEditorial } from '@/components/ComboEditorial'
-import { comboDe } from '@/data/combos'
+import { slidesDoCombo } from '@/data/combos'
 import { CONDICOES, parcela, precoPix } from '@/data/empresa'
 import { useCart } from '@/context/CartContext'
 import { Eyebrow } from '@/components/ui/Eyebrow'
@@ -179,7 +179,8 @@ export function ProductPage() {
   const { slug } = useParams<{ slug: string }>()
   const a = slug ? getArchetypeBySlug(slug) : undefined
   const par = a ? getArchetype(a.par) : undefined
-  const duo = a ? comboDe(a, getArchetype) : undefined
+  // kits do arquétipo (data/kits.ts) em rotação no "Combina com"
+  const kitSlides = a ? slidesDoCombo(a, getArchetype) : []
   const { addItem } = useCart()
   const trilho = useRef<HTMLDivElement>(null)
   // desktop: arrastar os cards com o mouse (toque e trackpad já rolam sozinhos)
@@ -318,7 +319,7 @@ export function ProductPage() {
       <PiramideOlfativa a={a} />
 
       {/* P-14 Combina com — editorial (aprovado na Sereia, out/2026, espelhado pros 9; dados em data/combos.ts) */}
-      {duo && <ComboEditorial a={a} par={duo.par} combo={duo.combo} onLevar={() => levarOsDois(duo.par)} />}
+      {kitSlides.length > 0 && <ComboEditorial key={a.id} a={a} slides={kitSlides} onLevar={(par) => levarOsDois(par)} />}
 
       {/* P-17 FAQ + P-18 Ficha técnica — claro; título à esquerda, acordeões à direita no desktop */}
       <Reveal as="section" className="relative overflow-hidden bg-papel-2 px-5 pt-14 pb-14 md:px-10 lg:pt-20 lg:pb-20" style={DEGRAU_CLARO}>

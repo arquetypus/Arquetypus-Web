@@ -177,7 +177,19 @@ decisão de produto já tomada:
   e reiniciar o Vite. No celular: título → descrição → foto → camadas, e a seção passa da altura da tela (pedido
   do usuário: sem carrossel e sem esconder etapa). `PiramideInfografico.tsx`/`data/piramides.ts` e as pastas
   `pdp-piramide*` ficaram sem uso. "Combina com" editorial (`components/ComboEditorial.tsx`, out/2026) aprovado na
-  Sereia e espelhado pros 9 (`comboDe` em `data/combos.ts`): a Sereia tem entrada própria (Sereia + Afrodite, copy do
+  Sereia e espelhado pros 9. **Kits rotativos (out/2026, guia do Fábio):** `data/kits.ts` tem os 9 kits do mapa (nome,
+  prioridade, ocasião de cada lado, headline e "texto do site"); cada PDP gira até 2 (`MAX_KITS_PDP`, por prioridade —
+  Fênix: Fogo e Aço + Do Brilho à Brasa; Imperador só Dinastia, sem rotação) com abas pelo nome do kit e barra de
+  progresso, troca a cada 7 s por timer fixo (sem pausa no hover — deixava irregular); slides empilhados na mesma
+  célula, sem pulo de altura. Coluna de texto com largura fixa (26,5/32 rem, um pouco mais que "Sereia + Afrodite"): dupla de
+  nome maior encolhe a fonte do título só o necessário pra caber numa linha (`useCabeNaLinha`, medido no cliente) em vez
+  de alargar a coluna (espremia os cards e esticava o botão). Notas dos cards no tamanho cheio, podem quebrar linha. Troca animada em camadas
+  (`kit-in`/`kit-titulo-in`/`kit-out` em `index.css`): o kit que sai sobe desfocando, o título do que entra se revela
+  da esquerda pra direita e o resto chega em sequência subindo e ganhando foco. Celular enxuto (out/2026, ~760 px
+  em 390 px, antes ~1.070): sem o parágrafo e sem os selos, cards horizontais 2,3:1 e respiros menores.
+  Slides montados por `slidesDoCombo` (`data/combos.ts`): legenda do card = ocasião, embaixo família + `destaques`;
+  a copy própria da Sereia (`COMBOS`) deu lugar ao texto do kit Brisa e Beijo; `comboDe` ficou como fallback.
+  Antes: a Sereia tem entrada própria (Sereia + Afrodite, copy do
   usuário); os outros usam o par de layering (`a.par`), texto = `a.layer` + fechamento do usuário, card = `ep`,
   família e 4 notas da fórmula (nada inventado). Vende identidade e não economia (preço numa linha discreta depois do botão, sem "os dois por"),
   título grande = "Sereia + Afrodite" (nomes na cor de cada arquétipo, suavizada), headline vira título de apoio;

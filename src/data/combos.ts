@@ -14,6 +14,7 @@
  * gerada.
  */
 import type { Archetype } from '@/types/archetype'
+import { kitsDe, ladosDoKit } from '@/data/kits'
 import { fotosPorId, type Foto, type FotoBruta } from '@/lib/foto'
 
 const FOTOS = fotosPorId(import.meta.glob<FotoBruta>('@/assets/fotos/combo/*.jpg', { eager: true, import: 'default', query: '?responsiva' }))
@@ -85,4 +86,31 @@ export function comboDe(a: Archetype, buscar: (id: string) => Archetype | undefi
       cards: { [a.id]: cardPadrao(a), [par.id]: cardPadrao(par) },
     },
   }
+}
+
+/**
+ * Slides do "Combina com" da PDP (out/2026): um por kit do arquétipo (data/kits.ts, até 2, por prioridade), com os
+ * textos do guia — headline do banner, frase do site e a ocasião de cada lado como legenda do card; embaixo da foto a
+ * família e as 3 notas-assinatura (`destaques`). O dono da página vem sempre primeiro. Sem kit, cai no combo antigo
+ * (`comboDe`: par de layering). Os cards de copy própria da Sereia/Afrodite (COMBOS) deram lugar ao texto do kit
+ * Brisa e Beijo, como o guia pede ("o mesmo texto nas duas páginas da dupla").
+ */
+export function slidesDoCombo(a: Archetype, buscar: (id: string) => Archetype | undefined) {
+  const kits = kitsDe(a.id)
+  const card = (x: Archetype, momento: string) => ({ legenda: momento, descricao: x.fam, notas: x.destaques })
+  const slides = kits.flatMap((kit) => {
+    const lados = ladosDoKit(kit, a.id)
+    const par = buscar(lados.outro)
+    if (!par) return []
+    const combo: Combo = {
+      par: par.id,
+      headline: kit.headline,
+      texto: [kit.texto],
+      cards: { [a.id]: card(a, lados.momento), [par.id]: card(par, lados.momentoOutro) },
+    }
+    return [{ combo, par, kit: kit.nome }]
+  })
+  if (slides.length) return slides
+  const antigo = comboDe(a, buscar)
+  return antigo ? [antigo] : []
 }
